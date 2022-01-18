@@ -1,0 +1,31 @@
+#container {
+   display: grid; 
+   grid-template-columns: 40% 40%; 
+   padding-left: 2em;
+}
+
+
+body {
+  margin-left: 3em;
+  background-color: #171421;                   /* background color */
+}
+
+p { /* paragraph style--font, text color, background color, spacig with paragraphs and between paragraphs */
+
+  font-family: 'Lato Medium', Arial, sans-serif;
+  color: #D0CFCC;                              /* <-- text color */  
+
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 6px;
+  line-height: 1.7em; /* <--- Spacing between line within paragraph */ 
+  margin: 7px 0;      /* <--- Spacing between paragraphs. It is equivalent to the statements
+                 
+  below: 
+
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-left: 0px;
+  margin-right: 0px;  
+ */
+}
