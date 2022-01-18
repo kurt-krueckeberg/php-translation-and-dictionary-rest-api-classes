@@ -2,9 +2,8 @@
 
 ## What is RESTful API
 
-- Dr Dobbs Article [succinct explanation](https://www.drdobbs.com/web-development/restful-web-services-a-tutorial/240169069)
 - What is REST API [18 minutes video](https://www.youtube.com/watch?v=Q-BpqyOT3a8)
-- Explantion of REST [dedeciated site](https://restfulapi.net/)
+- Explanation of REST [dedeciated site](https://restfulapi.net/)
 - From site above [JSON Explanation](https://restfulapi.net/introduction-to-json/)
 
 The **base_url** = `http://api.corpora.uni-leipzig.de/ws`
