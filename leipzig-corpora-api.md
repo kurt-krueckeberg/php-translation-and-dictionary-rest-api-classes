@@ -2,9 +2,9 @@
 
 The **base_url** = `http://api.corpora.uni-leipzig.de/ws`
 
-Getting Sample Sentences
+## Getting Sample Sentences
 
-`http://api.corpora.uni-leipzig.de/ws/sentences/{corpusName}/sentences/{word}`
+Issue **HTTP GET** request: `http://api.corpora.uni-leipzig.de/ws/sentences/{corpusName}/sentences/{word}`
 
 Example using curl
 
