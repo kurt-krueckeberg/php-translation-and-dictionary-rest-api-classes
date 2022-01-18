@@ -3,8 +3,8 @@
 ## What is RESTful API
 
 - What is REST API [18 minutes video](https://www.youtube.com/watch?v=Q-BpqyOT3a8)
-- Explanation of REST [dedeciated site](https://restfulapi.net/)
-- From site above [JSON Explanation](https://restfulapi.net/introduction-to-json/)
+- Explanation of REST [dedeciated site]https://sentai.eu/info/restful-web-services/?print=print)
+- What is [JSON](https://www.w3schools.com/js/js_json_intro.asp)
 
 The **base_url** = `http://api.corpora.uni-leipzig.de/ws`
 
