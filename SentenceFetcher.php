@@ -4,30 +4,24 @@ class SentenceFetcher {
 
    private $client = null;
 
-   private $auth_key;
+   //--private $auth_key;
 
-   private $auth_email;
+   static $Service = "http://api.corpora.uni-leipzig.de/ws/sentences/";
 
-   private $accessToken;
-
-   const API_URL = "http://api.corpora.uni-leipzig.de/ws";
-
-   public function __construct($email, $key)
+   public function __construct(string $corpus)
    {
-      $this->auth_email = $email;
    
-      $this->auth_key = $key;
-   
+      $uri = self::$Service . $corpus . '/sentences/'; 	   
+
       $this->client = new Client();
+
+      $this->header = "accept: application/json";
    }
 
-   public function fetch(string $word)
+   public function get(string $word, $offset, $limit)
    {
-      $url = self::API_URL . "/server";
       
-      $option = array('exceptions' => false);
-      
-      //$header = array('Authorization'=> 'Bearer ' , $this->accessToken);
+      // TODO: Figure out how to 'encode'  German umlauts for the query string
       
       try {
       
