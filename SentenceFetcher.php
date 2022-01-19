@@ -1,5 +1,5 @@
 <?php
-use use GuzzleHttp\Client as Client;
+use GuzzleHttp\Client as Client;
 
 include "vendor/autoload.php";
 
@@ -23,7 +23,7 @@ class SentenceFetcher {
    {
       $this->base_uri = $corpus . '/sentences/'; 	   
 
-      $this->client = new Client($base_uri);
+      $this->client = new Client(array('base_uri' => $this->base_uri));
 
       $this->header = "accept: application/json"; //<---???
    }
@@ -38,7 +38,7 @@ class SentenceFetcher {
 
       try {
 
-         $response = $client->request('GET', $uri, array('query' => array('offset' => $offset, 'limit' => $limit)) );
+         $response = $this->client->request('GET', $uri, array('query' => array('offset' => $offset, 'limit' => $limit)) );
       
          $result = $response->getBody()->getContents();
          
