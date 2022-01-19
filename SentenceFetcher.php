@@ -12,18 +12,15 @@ include "vendor/autoload.php";
  */
 class SentenceFetcher {
 
-   static $base_url = "http://api.corpora.uni-leipzig.de/ws/sentences/";
+   static $base_uri = "http://api.corpora.uni-leipzig.de/ws/sentences/";
 
-   private $uri;
-   private $base_uri;
-
-   private $header;
+   private $uri; // Portion that will follow $base_uri, although it does not need to be catenated to it.
 
    public function __construct($corpus) 
    {
-      $this->base_uri = $corpus . '/sentences/'; 	   
+      $this->uri = $corpus . '/sentences'; 	   
 
-      $this->client = new Client(array('base_uri' => $this->base_uri));
+      $this->client = new Client(array('base_uri' => self::$base_uri));
 
       $this->header = "accept: application/json"; //<---???
    }
@@ -34,7 +31,7 @@ class SentenceFetcher {
        *  TODO: Guzzle Client requests can also be sent asynchronously. This can be done, too, using 'promise' objects like C++.
        *
        */  
-      $uri = $this->uri . urlencode($word);
+      $uri = $this->uri . '/' . urlencode($word);
 
       try {
 
@@ -57,6 +54,7 @@ class SentenceFetcher {
  
 }
 
-$s = new SentenceFetcher('deu_news_2012_1M');
-$result = $s->get('Zucker');
-var_dump( $result  );
+// TODO: IS a timeout required per request?
+   $s = new SentenceFetcher('deu_news_2012_1M');
+   $result = $s->get('Zucker');
+   var_dump( $result  );
