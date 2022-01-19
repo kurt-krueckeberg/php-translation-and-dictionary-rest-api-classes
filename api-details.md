@@ -2,7 +2,7 @@
 
 ## What is RESTful API
 
-- What is REST API [18 minutes video](https://www.youtube.com/watch?v=Q-BpqyOT3a8)
+- IBM Developers [Introduction to RESTful Web Services](https://developer.ibm.com/articles/ws-restful/)
 - RESTFul [Web Services](https://sentai.eu/info/restful-web-services/?print=print)
 - What is [JSON](https://www.w3schools.com/js/js_json_intro.asp)
 
