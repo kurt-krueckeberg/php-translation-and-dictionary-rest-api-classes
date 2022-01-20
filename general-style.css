@@ -1,10 +1,10 @@
 body {
   margin-left: 3em;
   font-family: 'Lato Medium', Arial, sans-serif;
-  /*
-  color: #D0CFCC;                               <-- text color   
-  background-color: #171421;                    background color 
-   */
+
+  color: #D0CFCC;               /*  <-- text color        */ 
+  background-color: #171421;    /*  <-- background color  */
+
 }
 
 #container {
@@ -17,13 +17,12 @@ body {
 #container p { /* paragraph style--font, text color, background color, spacig with paragraphs and between paragraphs */
 
   font-family: 'Lato Medium', Arial, sans-serif;
-  color: #D0CFCC;                              /* <-- text color */  
 
   padding-top: 3px;
   padding-bottom: 3px;
   padding-right: 6px;
-  line-height: 1.7em; /* <--- Spacing between line within paragraph */ 
-  margin: 7px 0;      /* <--- Spacing between paragraphs. It is equivalent to the statements
+  line-height: 1.5em; /* <--- Spacing between line within paragraph */ 
+  margin: 4px 0;      /* <--- Spacing between paragraphs. It is equivalent to the statements
                  
   below: 
 
