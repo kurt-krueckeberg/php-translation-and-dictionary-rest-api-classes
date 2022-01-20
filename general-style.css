@@ -7,6 +7,36 @@ body {
    */
 }
 
+#container {
+
+   display: grid; 
+   grid-template-columns: 40% 40%; 
+   padding-left: 2em;
+}
+
+#container p { /* paragraph style--font, text color, background color, spacig with paragraphs and between paragraphs */
+
+  font-family: 'Lato Medium', Arial, sans-serif;
+  color: #D0CFCC;                              /* <-- text color */  
+
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 6px;
+  line-height: 1.7em; /* <--- Spacing between line within paragraph */ 
+  margin: 7px 0;      /* <--- Spacing between paragraphs. It is equivalent to the statements
+                 
+  below: 
+
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-left: 0px;
+  margin-right: 0px;  
+ */
+}
+
+p.new-speaker {
+  font-weight: 600;
+}
 h1, h2, h3, h4, h5 {
 
   font-family: 'Karla Semibold', 'Open Sans', Arial, sans-serif;

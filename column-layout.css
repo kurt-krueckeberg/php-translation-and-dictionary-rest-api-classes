@@ -10,7 +10,7 @@ body {
   background-color: #171421;                   /* background color */
 }
 
-p { /* paragraph style--font, text color, background color, spacig with paragraphs and between paragraphs */
+#container p { /* paragraph style--font, text color, background color, spacig with paragraphs and between paragraphs */
 
   font-family: 'Lato Medium', Arial, sans-serif;
   color: #D0CFCC;                              /* <-- text color */  
