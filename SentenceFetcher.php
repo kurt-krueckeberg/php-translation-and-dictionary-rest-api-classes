@@ -22,7 +22,7 @@ class SentenceFetcher {
 
       $this->client = new Client(array('base_uri' => self::$base_uri));
 
-      $this->header = "accept: application/json"; //<---???
+      $this->header = "accept: application/json"; //<--- ?
    }
 
    public function get(string $word, $offset = 0, $limit = 7)
@@ -51,5 +51,4 @@ class SentenceFetcher {
          return; // TODO: Should this be different?
       }
    }
- 
 }
