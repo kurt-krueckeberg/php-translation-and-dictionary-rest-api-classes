@@ -1,5 +1,14 @@
 # Deeepl Free Api and Leipzip Sentence Corpus Code
 
+Prospective Github.com PHP Deepl repsitories:
+
+See these github repositories that use PHP
+
+- [Fluency-Translation](https://github.com/SkyLundy/Fluency-Translation/tree/1a6c94be940c84c94a7f93b32c3a3083a16ca251)
+
+- [DeepLy](https://github.com/chriskonnertz/DeepLy) is a PHP package that implements a client to interact with DeepL via their API without an API key. 
+
+
 ## The PHP REST Client will be Guzzle:
 
 - Guzzle REST client [full example](https://medium.com/hackernoon/creating-rest-api-in-php-using-guzzle-d6a890499b02)
