@@ -1,10 +1,6 @@
 # Deeepl Free Api and Leipzip Sentence Corpus Code
 
-## Free Deepl API Documentation
-
-Free Deepl API Documentation [online](https://www.deepl.com/docs-api).
-
-The PHP REST Client will be Guzzle:
+## The PHP REST Client will be Guzzle:
 
 - Guzzle REST client [full example](https://medium.com/hackernoon/creating-rest-api-in-php-using-guzzle-d6a890499b02)
 - Guzzle [Docs](https://docs.guzzlephp.org/en/stable/index.html)
@@ -61,5 +57,8 @@ class LeipzipSentenceFetch {
       }
    }
 }
-
 ```
+## Free Deepl API Documentation
+
+Deepl API Documentation [online](https://www.deepl.com/docs-api).
+
