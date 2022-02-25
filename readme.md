@@ -12,8 +12,7 @@ The PHP REST Client will be Guzzle:
 
 ## University of Leipzip Free Sentence Corpus API
 
-[Documentation](http://api.corpora.uni-leipzig.de/ws/swagger-ui.html)
- for free **REST API of the Leipzig Corpora Collection / Projekt Deutscher Wortschatz**.
+free **REST API of the Leipzig Corpora Collection / Projekt Deutscher Wortschatz** online [documentation](http://api.corpora.uni-leipzig.de/ws/swagger-ui.html)
  
 Sample PHP class to fetch sentences for a given German word:
 
