@@ -1,5 +1,3 @@
-<div class="container>
-
 # Deeepl Free Api and Leipzip Sentence Corpus Code
 
 Prospective Github.com PHP Deepl repsitories:
@@ -75,4 +73,3 @@ class LeipzipSentenceFetch {
 
 Deepl API Documentation [online](https://www.deepl.com/docs-api).
 
-</div>
