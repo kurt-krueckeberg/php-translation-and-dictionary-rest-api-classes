@@ -1,4 +1,4 @@
-<div class="container>
+<div class="container">
 
 # Deeepl Free Api and Leipzip Sentence Corpus Code
 
@@ -8,16 +8,14 @@ See these github repositories that use PHP
 
 - [Fluency-Translation](https://github.com/SkyLundy/Fluency-Translation/tree/1a6c94be940c84c94a7f93b32c3a3083a16ca251)
 
-- [DeepLy](https://github.com/chriskonnertz/DeepLy) is a PHP package that implements a client to interact with DeepL via their API without an API key. It has code the  uses Guzzle!
+- [DeepLy](https://github.com/chriskonnertz/DeepLy) is a PHP package that implements a client to interact with DeepL via their API without an API key. It has code the  uses **Guzzle**!
 
 
 ## The PHP REST Client will be Guzzle:
 
-- Medium.com article showing a [complete example](https://medium.com/hackernoon/creating-rest-api-in-php-using-guzzle-d6a890499b02) of using Guzzle as a REST API client for a 3rd party API (Cloudways API) 
-
+- Guzzle REST client [full example](https://medium.com/hackernoon/creating-rest-api-in-php-using-guzzle-d6a890499b02)
 - Guzzle [Docs](https://docs.guzzlephp.org/en/stable/index.html)
-
-- Guzzle [github](https://github.com/guzzle/guzzle) shows Guzzle installation using Composer.
+- Guzzle [github](https://github.com/guzzle/guzzle) shows installation using Composer
 
 ## University of Leipzip Free Sentence Corpus API
 
