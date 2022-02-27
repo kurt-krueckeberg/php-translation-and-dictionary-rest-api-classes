@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>readme</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="screen.css" />
+</head>
+<body>
+<h1 id="deeepl-free-api-and-leipzip-sentence-corpus-code">Deeepl Free Api and Leipzip Sentence Corpus Code</h1>
+<p>§§ Deepl Free API</p>
+<p>§§§ Translation Request Parameters</p>
+<p>Online documentation of Deepl <a href="https://www.deepl.com/docs-api/translating-text/request/">Request Parameters</a></p>
+<table style="width:97%;">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Pa rameter</th>
+<th>O ptional</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>text</td>
+<td>R equired</td>
+<td>Text to be translated. Only UTF8-encoded plain text is supported. The parameter may be specified multiple times and translations are returned in the same order as they are requested. Each of the parameter values may contain multiple sentences. Up to 50 texts can be sent for translation in one request.</td>
+</tr>
+<tr class="even">
+<td>sourc e_lang</td>
+<td>O ptional</td>
+<td><p>Language of the text to be translated. Options currently available:</p>
+<ul>
+<li><p>"BG" - Bulgarian</p></li>
+<li><p>"CS" - Czech</p></li>
+<li><p>"DA" - Danish</p></li>
+<li><p>"DE" - German</p></li>
+<li><p>"EL" - Greek</p></li>
+<li><p>"EN" - English</p></li>
+<li><p>"ES" - Spanish</p></li>
+<li><p>"ET" - Estonian</p></li>
+<li><p>"FI" - Finnish</p></li>
+<li><p>"FR" - French</p></li>
+<li><p>"HU" - Hungarian</p></li>
+<li><p>"IT" - Italian</p></li>
+<li><p>"JA" - Japanese</p></li>
+<li><p>"LT" - Lithuanian</p></li>
+<li><p>"LV" - Latvian</p></li>
+<li><p>"NL" - Dutch</p></li>
+<li><p>"PL" - Polish</p></li>
+<li><p>"PT" - Portuguese (all Portuguese varieties mixed)</p></li>
+<li><p>"RO" - Romanian</p></li>
+<li><p>"RU" - Russian</p></li>
+<li><p>"SK" - Slovak</p></li>
+<li><p>"SL" - Slovenian</p></li>
+<li><p>"SV" - Swedish</p></li>
+<li><p>"ZH" - Chinese</p></li>
+</ul>
+<p>If this parameter is omitted, the API will attempt to detect the language of the text and translate it.</p></td>
+</tr>
+<tr class="odd">
+<td>targe t_lang</td>
+<td>R equired</td>
+<td><p>The language into which the text should be translated. Options currently available:</p>
+<ul>
+<li><p>"BG" - Bulgarian</p></li>
+<li><p>"CS" - Czech</p></li>
+<li><p>"DA" - Danish</p></li>
+<li><p>"DE" - German</p></li>
+<li><p>"EL" - Greek</p></li>
+<li><p>"EN-GB" - English (British)</p></li>
+<li><p>"EN-US" - English (American)</p></li>
+<li><p>"EN" - English (unspecified variant for backward compatibility; please select EN-GB or EN-US instead)</p></li>
+<li><p>"ES" - Spanish</p></li>
+<li><p>"ET" - Estonian</p></li>
+<li><p>"FI" - Finnish</p></li>
+<li><p>"FR" - French</p></li>
+<li><p>"HU" - Hungarian</p></li>
+<li><p>"IT" - Italian</p></li>
+<li><p>"JA" - Japanese</p></li>
+<li><p>"LT" - Lithuanian</p></li>
+<li><p>"LV" - Latvian</p></li>
+<li><p>"NL" - Dutch</p></li>
+<li><p>"PL" - Polish</p></li>
+<li><p>"PT-PT" - Portuguese (all Portuguese varieties excluding Brazilian Portuguese)</p></li>
+<li><p>"PT-BR" - Portuguese (Brazilian)</p></li>
+<li><p>"PT" - Portuguese (unspecified variant for backward compatibility; please select PT-PT or PT-BR instead)</p></li>
+<li><p>"RO" - Romanian</p></li>
+<li><p>"RU" - Russian</p></li>
+<li><p>"SK" - Slovak</p></li>
+<li><p>"SL" - Slovenian</p></li>
+<li><p>"SV" - Swedish</p></li>
+<li><p>"ZH" - Chinese</p></li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>sp lit_se ntences</td>
+<td>O ptional</td>
+<td><p>Sets whether the translation engine should first split the input into sentences. This is enabled by default. Possible values are:</p>
+<ul>
+<li><p>"0" - no splitting at all, whole input is treated as one sentence</p></li>
+<li><p>"1" (default) - splits on punctuation and on newlines</p></li>
+<li><p>"nonewlines" - splits on punctuation only, ignoring newlines</p></li>
+</ul>
+<p>For applications that send one sentence per text parameter, it is advisable to set split_sentences=0, in order to prevent the engine from splitting the sentence unintentionally.</p></td>
+</tr>
+<tr class="odd">
+<td>preser ve_for matting</td>
+<td>O ptional</td>
+<td><p>Sets whether the translation engine should respect the original formatting, even if it would usually correct some aspects. Possible values are:</p>
+<ul>
+<li><p>"0" (default)</p></li>
+<li><p>"1"</p></li>
+</ul>
+<p>The formatting aspects affected by this setting include:</p>
+<ul>
+<li><p>Punctuation at the beginning and end of the sentence</p></li>
+<li><p>Upper/lower case at the beginning of the sentence</p></li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>fo rmality</td>
+<td>O ptional</td>
+<td><p>Sets whether the translated text should lean towards formal or informal language. This feature currently only works for target languages <strong>"DE" (German), "FR" (French), "IT" (Italian), "ES" (Spanish), "NL" (Dutch), "PL" (Polish), "PT-PT", "PT-BR" (Portuguese) and "RU" (Russian)</strong>.Possible options are:</p>
+<ul>
+<li><p>"default" (default)</p></li>
+<li><p>"more" - for a more formal language</p></li>
+<li><p>"less" - for a more informal language</p></li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td>gloss ary_id</td>
+<td>O ptional</td>
+<td>Specify the glossary to use for the translation. <strong>Important:</strong> This requires the source_lang parameter to be set and the language pair of the glossary has to match the language pair of the request.</td>
+</tr>
+</tbody>
+</table>
+<p>The following extended parameters are also available. Please refer to the "Handling XML" section below for further information on how to use these parameters.</p>
+<table style="width:97%;">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Pa rameter</th>
+<th>O ptional</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>tag_h andling</td>
+<td>O ptional</td>
+<td><p>Sets which kind of tags should be handled. Options currently available:</p>
+<ul>
+<li>"xml"</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>non_s plittin g_tags</td>
+<td>O ptional</td>
+<td>Comma-separated list of XML tags which never split sentences.</td>
+</tr>
+<tr class="odd">
+<td>outl ine_de tection</td>
+<td>O ptional</td>
+<td>Please see the "Handling XML" section for further details.</td>
+</tr>
+<tr class="even">
+<td>s plittin g_tags</td>
+<td>O ptional</td>
+<td>Comma-separated list of XML tags which always cause splits.</td>
+</tr>
+<tr class="odd">
+<td>ignor e_tags</td>
+<td>O ptional</td>
+<td>Comma-separated list of XML tags that indicate text not to be translated.</td>
+</tr>
+</tbody>
+</table>
+<p>Prospective Github.com PHP Deepl repsitories:</p>
+<p>This github repository uses PHP and Guzzle</p>
+<ul>
+<li><a href="https://github.com/tinyappsde/deepl-client">Deepl-Client</a></li>
+</ul>
+<h2 id="the-php-rest-client-will-be-guzzle">The PHP REST Client will be Guzzle:</h2>
+<ul>
+<li><p>Medium.com article showing a <a href="https://medium.com/hackernoon/creating-rest-api-in-php-using-guzzle-d6a890499b02">complete example</a> of using Guzzle as a REST API client for a 3rd party API (Cloudways API)</p></li>
+<li><p>Guzzle <a href="https://docs.guzzlephp.org/en/stable/index.html">Docs</a></p></li>
+<li><p>Guzzle <a href="https://github.com/guzzle/guzzle">github</a> shows Guzzle installation using Composer.</p></li>
+</ul>
+<h2 id="university-of-leipzip-free-sentence-corpus-api">University of Leipzip Free Sentence Corpus API</h2>
+<p>free <strong>REST API of the Leipzig Corpora Collection / Projekt Deutscher Wortschatz</strong> online <a href="http://api.corpora.uni-leipzig.de/ws/swagger-ui.html">documentation</a></p>
+<p>Sample PHP class to fetch sentences for a given German word:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="co">// </span><span class="al">TODO</span><span class="co">: Add that JSON response will be accepted by this client.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="kw">class</span> LeipzipSentenceFetch {</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>    </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>   <span class="kw">static</span> <span class="kw">$base_uri</span> = <span class="st">&quot;http://api.corpora.uni-leipzig.de/ws&quot;</span><span class="ot">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>   <span class="kw">private</span> <span class="kw">$uri</span><span class="ot">;</span> <span class="co">// Portion that will follow $base_uri, although it does not need to be catenated to it.</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>   <span class="kw">public</span> <span class="kw">function</span> <span class="fu">__construct</span><span class="ot">(</span><span class="kw">$corpus</span>=<span class="st">&quot;deu_news_2012_1M&quot;</span><span class="ot">)</span> </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>   {</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>      <span class="kw">$this</span>-&gt;uri = <span class="kw">$corpus</span> . <span class="st">&#39;/sentences&#39;</span><span class="ot">;</span>     </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a>      <span class="kw">$this</span>-&gt;client = <span class="kw">new</span> Client<span class="ot">(</span><span class="kw">array</span><span class="ot">(</span><span class="st">&#39;base_uri&#39;</span> =&gt; self::<span class="kw">$base_uri</span><span class="ot">));</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a>      <span class="kw">$this</span>-&gt;<span class="fu">header</span> = <span class="st">&quot;accept: application/json&quot;</span><span class="ot">;</span> <span class="co">//&lt;--- ?</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true"></a>   }</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true"></a>   <span class="kw">public</span> <span class="kw">function</span> get<span class="ot">(</span><span class="kw">string</span> <span class="kw">$word</span><span class="ot">,</span> <span class="kw">$offset</span> = <span class="dv">0</span><span class="ot">,</span> <span class="kw">$limit</span> = <span class="dv">7</span><span class="ot">)</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true"></a>   {</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true"></a>      <span class="co">/*</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true"></a><span class="co">       *  </span><span class="al">TODO</span><span class="co">: Guzzle Client requests can also be sent asynchronously. This can be done, too, using &#39;promise&#39; objects like C++.</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true"></a><span class="co">       *</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true"></a><span class="co">       */</span>  </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true"></a>      <span class="kw">$uri</span> = <span class="kw">$this</span>-&gt;uri . <span class="st">&#39;/&#39;</span> . <span class="fu">urlencode</span><span class="ot">(</span><span class="kw">$word</span><span class="ot">);</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true"></a>      <span class="kw">try</span> {</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true"></a>         <span class="kw">$response</span> = <span class="kw">$this</span>-&gt;client-&gt;request<span class="ot">(</span><span class="st">&#39;GET&#39;</span><span class="ot">,</span> <span class="kw">$uri</span><span class="ot">,</span> <span class="kw">array</span><span class="ot">(</span><span class="st">&#39;query&#39;</span> =&gt; <span class="kw">array</span><span class="ot">(</span><span class="st">&#39;offset&#39;</span> =&gt; <span class="kw">$offset</span><span class="ot">,</span> <span class="st">&#39;limit&#39;</span> =&gt; <span class="kw">$limit</span><span class="ot">))</span> <span class="ot">);</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true"></a>      </span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true"></a>         <span class="kw">$result</span> = <span class="kw">$response</span>-&gt;getBody<span class="ot">()</span>-&gt;getContents<span class="ot">();</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true"></a>         </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true"></a>         <span class="kw">return</span> <span class="kw">$result</span><span class="ot">;</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true"></a>      </span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true"></a>      } <span class="kw">catch</span> <span class="ot">(</span>RequestException <span class="kw">$e</span><span class="ot">)</span> {</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true"></a>      </span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true"></a>         <span class="kw">$response</span> = <span class="kw">$this</span>-&gt;StatusCodeHandling<span class="ot">(</span><span class="kw">$e</span><span class="ot">);</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true"></a>         <span class="kw">return</span> <span class="kw">$response</span><span class="ot">;</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true"></a>      }  <span class="kw">catch</span> <span class="ot">(</span>\<span class="kw">Exception</span> <span class="kw">$e</span><span class="ot">)</span> { </span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true"></a>         <span class="kw">return</span><span class="ot">;</span> <span class="co">// </span><span class="al">TODO</span><span class="co">: Should this be different?</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true"></a>      }</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true"></a>   }</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true"></a>}</span></code></pre></div>
+<h2 id="free-deepl-api-documentation">Free Deepl API Documentation</h2>
+<p>Deepl API Documentation <a href="https://www.deepl.com/docs-api">online</a>.</p>
+</body>
+</html>
