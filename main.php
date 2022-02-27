@@ -1,17 +1,19 @@
 <?php
-// TODO:
-// Add my code to copmoser so an autoloader can be generated
+
+include "config.php";
+include "SentenceFetcher.php";
 include "DeeplTranslator.php";
 
- /*
-  * Read config file get:
-  * 1. api_key
-  * 2. source_lang
-  * 3. target_lang
-  * 4. File of words for which we want sentences generated.
-  */  
- $trans = new DeeplTranslator("7482c761-0429-6c34-766e-fddd88c247f9:fx");
+$fetcher = new SentenceFetcher($config['leipzip']['corpus']);
 
-$r = $trans->translate("Ich interessiere mich für Politik.");
+$tr = new DeeplTranslator($config['deepl']['apikey']);
 
-echo $r . "\n";
+foreach ($file as $word) {
+
+   $sents = $fetcher->fetch();
+
+   foreach($sents as $german)	
+	   $english = $tr->translate($german,  $config['deepl']['source_lang'], $config['deepl']['target_lang']);
+
+   // Write line of .html file
+}
