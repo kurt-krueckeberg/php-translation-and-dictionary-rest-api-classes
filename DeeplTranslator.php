@@ -4,32 +4,68 @@ use GuzzleHttp\Client;
 require 'vendor/autoload.php';
 
 /*
- *  TODO: Investigatge Guzzle Client asynchronously requests. This is done using 'promise' objects (like C++).
+ *  TODO: How and where to specify for Guzzle:
  *
+ *  1. authorization key. See https://docs.guzzlephp.org/en/stable/request-options.html?highlight=authorization%20key
+ *  2. target language 
+ *  3. text to translate
+ *
+ * 
+$content = [
+    'auth_key'    => $your_api_key,
+    'text'        => $source_text,
+    'source_lang' => 'EN',
+    'target_lang' => 'JA',
+];
  */ 
 class DeeplTranslator {
     
-   static $base_uri = ""
+   private static $base_uri = 'https://api-free.deepl.com/v2/translate'; 
+
+/*
+ * Deepl Free API query string parameters:
+ *
+ * auth_key=7482c761-0429-6c34-766e-fddd88c247f9:fx \
+ *	-d "text=Hello, world!"  \
+ *	-d "target_lang=EN"
+ *
+ */ 
+   private const qs_target_lang = 'target_lang';
+   private const qs_text = 'text';
+   private const qs_auth_key = 'auth_key';
+   private const qs_source_lang = 'source_lang';
 
    private $uri; // Portion that will follow $base_uri, although it does not need to be catenated to it.
+   private $auth_key; 
 
-   public function __construct($corpus="deu_news_2012_1M") 
+   public function __construct($auth_key) 
    {
-      $this->uri = 
+      $this->auth_key = $auth_key;
 
       $this->client = new Client(array('base_uri' => self::$base_uri));
 
-      $this->header = "accept: application/json"; //<--- ?
+      $this->header = "accept: application/json"; 
    }
 
-   public function get(string $word, $offset = 0, $limit = 7)
+   public function translate(string $text, string $source_lang, string $target_lang, )
    {
-       
-      $uri = $this->uri . '/' . urlencode($word);
+       $uri = $this->uri . '/' . urlencode($text);
+
+       // TODO: lookup DeepL target_lang string in static class hashtable using \Ds\Hastable?
+      $target_lang = "todo";
+
+
+      // TODO: lookup DeepL source_lang string in static class hashtable using \Ds\Hastable?
+      $source_lang = "todo";
 
       try {
+	 // TODO:  I'm not sure that auth_key is a query parameter?
 
-         $response = $this->client->request('GET', $uri, array('query' => array('offset' => $offset, 'limit' => $limit)) );
+	      $response = $this->client->request('GET', $uri, array('query' => array(DeeplTranslator::qs_auth_key => $this->auth_key,
+		                                  DeeplTranslator::qs_text => $text,
+						  DeeplTranslator::qs_sourcelang => $source_lang,
+						  DeeplTranslator::qs_target_lang => $target_lang
+	                                            )) );
       
          $result = $response->getBody()->getContents();
          
