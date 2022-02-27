@@ -2,7 +2,11 @@
 
 class HtmlWriter {
 
-private $header =<<<EOD
+   private $file;
+   private $is_closed;
+
+
+private $header =<<<EOH
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
@@ -19,10 +23,6 @@ private $footer =<<<EOF
 </body>
 </html>
 EOF;
-
-   private $file;
-   private $is_closed;
-
    public function __construct(string $fname)
    {
       $this->file = new SplFileObject($fname, "w");
