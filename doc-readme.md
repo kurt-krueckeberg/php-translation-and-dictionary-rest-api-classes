@@ -63,11 +63,9 @@ class LeipzipSentenceFetch {
 
 Deepl API Documentation [online](https://www.deepl.com/docs-api).
 
-
 ### Translation Request Parameters
 
-Online documentation of Deepl [Request Parameters](https://www.deepl.com/docs-api/translating-text/request/)
-
+Online documentation of Deepl [Request Parameters](https://www.deepl.com/docs-api/translating-text/request/).
 
 +---------+---------+-------------------------------------------------+
 | Pa      | O       | Description                                     |
