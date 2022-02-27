@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>doc-readme</title>
+  <title>x</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -142,19 +142,22 @@
 <thead>
 <tr class="header">
 <th>Pa rameter</th>
-<th>O ptional</th>
+<th>O<br />
+ptional</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>text</td>
-<td>R equired</td>
+<td>R<br />
+equired</td>
 <td>Text to be translated. Only UTF8-encoded plain text is supported. The parameter may be specified multiple times and translations are returned in the same order as they are requested. Each of the parameter values may contain multiple sentences. Up to 50 texts can be sent for translation in one request.</td>
 </tr>
 <tr class="even">
 <td>sourc e_lang</td>
-<td>O ptional</td>
+<td>O<br />
+ptional</td>
 <td><p>Language of the text to be translated. Options currently available:</p>
 <ul>
 <li><p>"BG" - Bulgarian</p></li>
@@ -185,8 +188,10 @@
 <p>If this parameter is omitted, the API will attempt to detect the language of the text and translate it.</p></td>
 </tr>
 <tr class="odd">
-<td>targe t_lang</td>
-<td>R equired</td>
+<td>targe<br />
+t_lang</td>
+<td>R<br />
+equired</td>
 <td><p>The language into which the text should be translated. Options currently available:</p>
 <ul>
 <li><p>"BG" - Bulgarian</p></li>
@@ -221,7 +226,8 @@
 </tr>
 <tr class="even">
 <td>sp lit_se ntences</td>
-<td>O ptional</td>
+<td>O<br />
+ptional</td>
 <td><p>Sets whether the translation engine should first split the input into sentences. This is enabled by default. Possible values are:</p>
 <ul>
 <li><p>"0" - no splitting at all, whole input is treated as one sentence</p></li>
@@ -232,7 +238,8 @@
 </tr>
 <tr class="odd">
 <td>preser ve_for matting</td>
-<td>O ptional</td>
+<td>O<br />
+ptional</td>
 <td><p>Sets whether the translation engine should respect the original formatting, even if it would usually correct some aspects. Possible values are:</p>
 <ul>
 <li><p>"0" (default)</p></li>
@@ -246,7 +253,8 @@
 </tr>
 <tr class="even">
 <td>fo rmality</td>
-<td>O ptional</td>
+<td>O<br />
+ptional</td>
 <td><p>Sets whether the translated text should lean towards formal or informal language. This feature currently only works for target languages <strong>"DE" (German), "FR" (French), "IT" (Italian), "ES" (Spanish), "NL" (Dutch), "PL" (Polish), "PT-PT", "PT-BR" (Portuguese) and "RU" (Russian)</strong>.Possible options are:</p>
 <ul>
 <li><p>"default" (default)</p></li>
@@ -256,7 +264,8 @@
 </tr>
 <tr class="odd">
 <td>gloss ary_id</td>
-<td>O ptional</td>
+<td>O<br />
+ptional</td>
 <td>Specify the glossary to use for the translation. <strong>Important:</strong> This requires the source_lang parameter to be set and the language pair of the glossary has to match the language pair of the request.</td>
 </tr>
 </tbody>
@@ -272,14 +281,16 @@
 <thead>
 <tr class="header">
 <th>Pa rameter</th>
-<th>O ptional</th>
+<th>O<br />
+ptional</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>tag_h andling</td>
-<td>O ptional</td>
+<td>O<br />
+ptional</td>
 <td><p>Sets which kind of tags should be handled. Options currently available:</p>
 <ul>
 <li>"xml"</li>
@@ -287,22 +298,26 @@
 </tr>
 <tr class="even">
 <td>non_s plittin g_tags</td>
-<td>O ptional</td>
+<td>O<br />
+ptional</td>
 <td>Comma-separated list of XML tags which never split sentences.</td>
 </tr>
 <tr class="odd">
 <td>outl ine_de tection</td>
-<td>O ptional</td>
+<td>O<br />
+ptional</td>
 <td>Please see the "Handling XML" section for further details.</td>
 </tr>
 <tr class="even">
 <td>s plittin g_tags</td>
-<td>O ptional</td>
+<td>O<br />
+ptional</td>
 <td>Comma-separated list of XML tags which always cause splits.</td>
 </tr>
 <tr class="odd">
 <td>ignor e_tags</td>
-<td>O ptional</td>
+<td>O<br />
+ptional</td>
 <td>Comma-separated list of XML tags that indicate text not to be translated.</td>
 </tr>
 </tbody>
