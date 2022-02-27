@@ -49,23 +49,12 @@ class DeeplTranslator {
 
    public function translate(string $text, string $source_lang = 'DE', string $target_lang = 'EN')
    {
-      //-- $uri = $this->uri . '/' . urlencode($text);
-
-      // TODO: lookup DeepL target_lang string in static class hashtable using \Ds\Hastable?
-      // Language list: https://www.deepl.com/docs-api/translating-text/request/  
-      // $target_lang = "todo";
-
-      // TODO: lookup DeepL source_lang string in static class hashtable using \Ds\Hastable?
-      // $source_lang = "todo";
-
       try {
-	 // TODO:  I'm not sure that auth_key is a query parameter?
-         $q =  array('query' => array(DeeplTranslator::qs_auth_key => $this->auth_key,
-		                          DeeplTranslator::qs_text => $text,
-					  DeeplTranslator::qs_source_lang => $source_lang,
-					  DeeplTranslator::qs_target_lang => $target_lang
-	                                  ));
-	 print_r($query);
+
+	 $query =  ['query' => [DeeplTranslator::qs_auth_key => $this->auth_key,
+		                DeeplTranslator::qs_text => $text,
+				DeeplTranslator::qs_source_lang => $source_lang,
+				DeeplTranslator::qs_target_lang => $target_lang]];
 
 	 $response = $this->client->request('GET', self::$base_uri, $query);
 
