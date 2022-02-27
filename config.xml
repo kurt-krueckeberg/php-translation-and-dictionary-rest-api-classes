@@ -1,4 +1,15 @@
-
-<apikey>7482c761-0429-6c34-766e-fddd88c247f9:fx</apikey> 
-<source_lang></source_lang>
-<target_lang></target_lang>
+<?xml version="1.0" encoding="UTF-8"?>
+<sentence_gen>
+<leipzip>
+	<file>words.txt</file>
+	<sentence_cnt>10</sentence_cnt>
+</leipzip>
+<deepl>
+	<apikey>7482c761-0429-6c34-766e-fddd88c247f9:fx</apikey> 
+	<source_lang>DE</source_lang>
+	<target_lang>EN</target_lang>
+	<output>
+		<format>html</format>
+	</output>
+</deepl>
+</sentence_gen>

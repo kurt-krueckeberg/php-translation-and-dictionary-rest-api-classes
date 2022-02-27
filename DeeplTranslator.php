@@ -4,13 +4,9 @@ use GuzzleHttp\Client;
 require 'vendor/autoload.php';
 
 /*
- *  TODO: How and where to specify for Guzzle:
- *
- *  1. authorization key. See https://docs.guzzlephp.org/en/stable/request-options.html?highlight=authorization%20key
- *  2. target language 
- *  3. text to translate
- *
  * 
+ * DEEPL Rquest paramters:
+ *
 $content = [
     'auth_key'    => $your_api_key,
     'text'        => $source_text,
@@ -22,23 +18,14 @@ class DeeplTranslator {
     
    private static $base_uri = 'https://api-free.deepl.com/v2/translate'; 
 
-/*
- * Deepl Free API query string parameters:
- *
- * auth_key=7482c761-0429-6c34-766e-fddd88c247f9:fx \
- *	-d "text=Hello, world!"  \
- *	-d "target_lang=EN"
- *
- */ 
    private const qs_target_lang = 'target_lang';
    private const qs_text = 'text';
    private const qs_auth_key = 'auth_key';
    private const qs_source_lang = 'source_lang';
 
-   private $uri; // Portion that will follow $base_uri, although it does not need to be catenated to it.
    private $auth_key; 
 
-   private function __construct($auth_key) 
+   public function __construct($auth_key) 
    {
       $this->auth_key = $auth_key;
 
@@ -47,12 +34,7 @@ class DeeplTranslator {
       $this->header = "accept: application/json"; 
    }
 
-   static function create() 
-   {
-       return new DeeplTranslator($api_key);
-   }
-
-   public function translate(string $text, string $source_lang = 'DE', string $target_lang = 'EN')
+   public function translate(string $text, string $source_lang, string $target_lang)
    {
       try {
 
