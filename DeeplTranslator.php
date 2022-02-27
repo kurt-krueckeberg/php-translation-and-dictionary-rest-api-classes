@@ -38,13 +38,18 @@ class DeeplTranslator {
    private $uri; // Portion that will follow $base_uri, although it does not need to be catenated to it.
    private $auth_key; 
 
-   public function __construct($auth_key) 
+   private function __construct($auth_key) 
    {
       $this->auth_key = $auth_key;
 
       $this->client = new Client(array('base_uri' => self::$base_uri));
 
       $this->header = "accept: application/json"; 
+   }
+
+   static function create() 
+   {
+       return new DeeplTranslator($api_key);
    }
 
    public function translate(string $text, string $source_lang = 'DE', string $target_lang = 'EN')

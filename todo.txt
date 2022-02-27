@@ -1,0 +1,3 @@
+- factory method for creating translator class 
+
+- Code to read .xml config file.
