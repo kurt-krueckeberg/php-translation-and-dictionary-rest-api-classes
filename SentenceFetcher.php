@@ -3,17 +3,13 @@ use GuzzleHttp\Client;
 
 require 'vendor/autoload.php';
 
-/*
- *  TODO: Investigatge Guzzle Client asynchronously requests. This is done using 'promise' objects (like C++).
- *
- */ 
 class SentenceFetcher {
     
    static $base_uri = "http://api.corpora.uni-leipzig.de/ws";
 
    private $uri; // Portion that will follow $base_uri, although it does not need to be catenated to it.
 
-   public function __construct($corpus="deu_news_2012_1M") 
+   public function __construct(string $corpus)
    {
       $this->uri = $corpus . '/sentences'; 	   
 
