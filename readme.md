@@ -2,12 +2,9 @@
 
 Prospective Github.com PHP Deepl repsitories:
 
-See these github repositories that use PHP
+This github repository uses PHP and Guzzle
 
-- [Fluency-Translation](https://github.com/SkyLundy/Fluency-Translation/tree/1a6c94be940c84c94a7f93b32c3a3083a16ca251)
-
-- [DeepLy](https://github.com/chriskonnertz/DeepLy) is a PHP package that implements a client to interact with DeepL via their API without an API key. It has code the  uses Guzzle!
-
+- [Deepl-Client](https://github.com/tinyappsde/deepl-client)
 
 ## The PHP REST Client will be Guzzle:
 
