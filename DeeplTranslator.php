@@ -60,11 +60,11 @@ class DeeplTranslator {
 
       try {
 	 // TODO:  I'm not sure that auth_key is a query parameter?
-         $query =  array('query' => array(DeeplTranslator::qs_auth_key => $this->auth_key,
-		                                  DeeplTranslator::qs_text => $text,
-						  DeeplTranslator::qs_source_lang => $source_lang,
-						  DeeplTranslator::qs_target_lang => $target_lang
-	                                            ));
+         $q =  array('query' => array(DeeplTranslator::qs_auth_key => $this->auth_key,
+		                          DeeplTranslator::qs_text => $text,
+					  DeeplTranslator::qs_source_lang => $source_lang,
+					  DeeplTranslator::qs_target_lang => $target_lang
+	                                  ));
 	 print_r($query);
 
 	 $response = $this->client->request('GET', self::$base_uri, $query);
