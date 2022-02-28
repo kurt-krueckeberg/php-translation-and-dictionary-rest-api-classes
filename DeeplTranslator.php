@@ -44,11 +44,13 @@ class DeeplTranslator {
 				DeeplTranslator::qs_target_lang => $target_lang]];
 
 	 $response = $this->client->request('GET', self::$base_uri, $query);
-
-      
-         $result = $response->getBody()->getContents();
-         
-         return $result;
+          
+         if ($response->getStatusCode() !== 200) { // 200 == success
+              
+             throw new Exception("Error..."); // TODO : Decide on exception type and message. 
+         }
+ 
+         return $response->getBody()->getContents();
       
       } catch (RequestException $e) {
       

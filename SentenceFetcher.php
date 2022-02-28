@@ -42,7 +42,8 @@ class SentenceFetcher {
          return $response->getBody()->getContents();
       
       } catch (RequestException $e) {
-      
+
+         // TODO: Needs some work.      
          $response = $this->StatusCodeHandling($e);
          return $response;
       }  
