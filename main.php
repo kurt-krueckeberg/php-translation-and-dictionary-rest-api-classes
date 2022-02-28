@@ -11,7 +11,12 @@ if ($argc < 2) {
     return;
 }
 
-$fetcher = new SentenceFetcher($config['leipzip']['corpus']);
+$fetcher = new SentenceFetcher($config['leipzig']['corpus']);
+$sents = $fetcher->get("Handeln", 10);
+
+print_r($sents);
+return;
+
 
 $tr = new DeeplTranslator($config['deepl']['apikey']);
 
@@ -23,7 +28,7 @@ $writer = new HtmlWriter($argv[1] . ".html");
 
 foreach ($file as $word) {
 
-   $sents = $fetcher->fetch();
+   $sents = $fetcher->get($word);
 
    foreach($sents as $german) {
 

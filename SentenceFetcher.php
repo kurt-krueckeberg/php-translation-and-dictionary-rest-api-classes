@@ -1,31 +1,38 @@
 <?php
-use GuzzleHttp\Client;
+use GuzzleHttp\Client as Client;
 
-require 'vendor/autoload.php';
+include "vendor/autoload.php";
 
+include "config.php";
+
+/*
+ *
+ GET Request for sentences for the word 'vernachlässigen', start with first sentnece and give me 10:
+ http://api.corpora.uni-leipzig.de/ws/sentences/deu_news_2012_1M/sentences/vernachl%C3%A4ssigen?offset=0&limit=10
+ *
+ */
 class SentenceFetcher {
-    
-   static $base_uri = "http://api.corpora.uni-leipzig.de/ws";
+
+   static $base_uri = "http://api.corpora.uni-leipzig.de/ws/sentences/";
 
    private $uri; // Portion that will follow $base_uri, although it does not need to be catenated to it.
 
-   public function __construct(string $corpus)
+   public function __construct($corpus="deu_news_2012_1M") 
    {
       $this->uri = $corpus . '/sentences'; 	   
 
       $this->client = new Client(array('base_uri' => self::$base_uri));
 
-      $this->header = "accept: application/json"; //<--- ?
+      $this->header = "accept: application/json"; 
    }
 
-   public function get(string $word, $offset = 0, $limit = 7)
+   public function get(string $word, $limit=10)
    {
-       
       $uri = $this->uri . '/' . urlencode($word);
 
       try {
 
-         $response = $this->client->request('GET', $uri, array('query' => array('offset' => $offset, 'limit' => $limit)) );
+         $response = $this->client->request('GET', $uri, array('query' => array('offset' => 0, 'limit' => $limit)) );
       
          $result = $response->getBody()->getContents();
          
@@ -38,7 +45,7 @@ class SentenceFetcher {
 
       }  catch (\Exception $e) { 
 
-         throw $e; // re-throw
+         return; // TODO: Should this be different?
       }
    }
 }
