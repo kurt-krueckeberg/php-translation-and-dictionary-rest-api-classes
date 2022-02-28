@@ -23,12 +23,16 @@ if ($argc < 2) {
 
 foreach ($file as $word) {
 
+   //todo: Parse the sentence results
    $sents = $fetcher->get($word);
 
    foreach($sents as $german) {
 
 	$english = $tr->translate($german,  $config['deepl']['source_lang'], $config['deepl']['target_lang']);
-      
+
+   //todo: Parse the translation results
+	
+     //todo: write the german word itself and its english translation
         $writer->write($german, $english); 
    }
 
