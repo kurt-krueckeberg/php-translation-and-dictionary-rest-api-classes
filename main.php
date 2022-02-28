@@ -30,7 +30,7 @@ include "HtmlPageCreator.php";
  
     $creator->write($de_word, $en_word); 
 
-    $sentences_obj = $fetcher->get_sentences($de_word);
+    $sentenceInfoObjs_array= $fetcher->get_sentences($de_word);
    
    /* 
       The json object returned contains a SentencesList (instance), which has just two properties:
@@ -45,9 +45,9 @@ include "HtmlPageCreator.php";
          3. source - of type SourceInformation 
     */
        
-    foreach ($sentences_obj->sentences as $sentence_information) {
+    foreach ($sentenceInfoObjs_array as $sentenceInfo_obj) {
 
-         $de_sentence = $sentence_information->sentence;
+         $de_sentence = $sentenceInof_obj->sentence;
      
          $en_sentence = $tr->translate($de_sentence,  $config['deepl']['source_lang'], $config['deepl']['target_lang']);
  

@@ -26,12 +26,18 @@ class SentenceFetcher {
    }
 
  /* 
-  The json object returned contains a SentencesList object that has just two properties:
+  After 
+
+      $contents = $response->getBody()->getContents();
+
+      $obj = json_decode($contents);
+
+  The json object $obj contains a SentencesList object with these properties:
 
     1. count - integer
-    2. sentences - an array of SentenceInformation elements
+    2. sentences[] - an array of count SentenceInformation elements
   
-  SentenceInformation is an object containing three properties:
+  SentenceInformation containing three properties:
 
      1. id
      2. sentence - the actual string text of the sample sentence
@@ -63,7 +69,9 @@ class SentenceFetcher {
          
          $contents = $response->getBody()->getContents();
 
-         return json_decode($contents); // Returns stdClass described above.
+         $obj = json_decode($contents);
+
+         return $obj->sentences; // Return array of SentenceInformation objects  
       
       } catch (RequestException $e) {
 
