@@ -10,7 +10,7 @@ include "vendor/autoload.php";
  * http://api.corpora.uni-leipzig.de/ws/sentences/deu_news_2012_1M/sentences/Handeln?offset=0&limit=10
  */
 
-class SentenceFetcher {
+class UnivLeipzigSentenceFetcher {
 
    static $base_uri = "http://api.corpora.uni-leipzig.de/ws/sentences/";
 

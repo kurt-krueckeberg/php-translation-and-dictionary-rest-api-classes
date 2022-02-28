@@ -2,10 +2,10 @@
 use \SplFileObject as File;
 
 include "config.php";
-include "SentenceFetcher.php";
+include "UnivLeipzigSentenceFetcher.php";
 include "DeeplTranslator.php";
 
- $fetcher = new SentenceFetcher($config['leipzig']['corpus']);
+ $fetcher = new UnivLeipzigSentenceFetcher($config['leipzig']['corpus']);
 
  $trans = new DeeplTranslator($config['deepl']['apikey']);
 

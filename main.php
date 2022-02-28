@@ -1,7 +1,7 @@
 <?php
 use \SplFileObject as File;
 include "config.php";
-include "SentenceFetcher.php";
+include "UnivLeipzigSentenceFetcher.php";
 include "DeeplTranslator.php";
 include "HtmlPageCreator.php";
 
@@ -11,13 +11,13 @@ include "HtmlPageCreator.php";
       return;
   }
 
- $fetcher = new SentenceFetcher($config['leipzig']['corpus']);
+ $fetcher = new UnivLeipzigSentenceFetcher($config['leipzig']['corpus']);
 
  $tr = new DeeplTranslator($config['deepl']['apikey']);
 
  $creator = new HtmlPageCreator($argv[1]); 
 
- $file =  new File($config['leipzip']['input_file'], "r");
+ $file =  new File($config['leipzig']['input_file'], "r");
 
  $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
  
@@ -26,11 +26,11 @@ include "HtmlPageCreator.php";
     foreach ($file as $de_word) {
    
        // 1. Translate the word itself
-       $en_word = $tr->translate($de_word,  $config['deepl']['source_lang'], $config['deepl']['target_lang']);
+       //++$en_word = $tr->translate($de_word,  $config['deepl']['source_lang'], $config['deepl']['target_lang']);
        
        // todo: parse/handle-correctly the result above in $en_word.
     
-       $creator->write($de_word, $en_word); 
+       //++$creator->write($de_word, $en_word); 
    
        $sentenceInfoObjs_array= $fetcher->get_sentences($de_word);
       
@@ -46,9 +46,9 @@ include "HtmlPageCreator.php";
    
             $de_sentence = $sentenceInfoObject->sentence;
         
-            $en_sentence = $tr->translate($de_sentence,  $config['deepl']['source_lang'], $config['deepl']['target_lang']);
+            //++$en_sentence = $tr->translate($de_sentence,  $config['deepl']['source_lang'], $config['deepl']['target_lang']);
             
-            $creator->write($de_sentence, $english); //<-- todo: correct 2nd param.
+            //++$creator->write($de_sentence, $english); //<-- todo: correct 2nd param.
        }
     }
 
