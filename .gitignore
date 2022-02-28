@@ -1,3 +1,4 @@
-nbproject/*
+nbproject/
 vendor/
-composer.*
+composer.lock
+corpus-db/
