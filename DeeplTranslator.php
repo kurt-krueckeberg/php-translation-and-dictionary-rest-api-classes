@@ -50,7 +50,9 @@ class DeeplTranslator {
              throw new Exception("Error..."); // TODO : Decide on exception type and message. 
          }
  
-         return $response->getBody()->getContents();
+         $contennts = $response->getBody()->getContents();
+         
+         return json_decode($contents); // todo: describe this objects' properties
       
       } catch (RequestException $e) {
       

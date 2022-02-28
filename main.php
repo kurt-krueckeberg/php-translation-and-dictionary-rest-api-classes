@@ -25,20 +25,36 @@ include "HtmlPageCreator.php";
 
     // 1. Translate the word itself
     $en_word = $tr->translate($de_word,  $config['deepl']['source_lang'], $config['deepl']['target_lang']);
+    
+    // todo: parse/handle-correctly the result above in $en_word.
+ 
     $creator->write($de_word, $en_word); 
 
-    //todo: Parse the sentence results
-    $sents = $fetcher->get($de_word);
+    $sentences_obj = $fetcher->get_sentences($de_word);
+   
+   /* 
+      The json object returned contains a SentencesList (instance), which has just two properties:
+
+        1. count - integer
+        2. sentences - is an array (I believe) of SentenceInformation elements
+      
+      SentenceInformation (is an object) containing:
+
+         1. id
+         2. sentence - the actual string text of the sample sentence
+         3. source - of type SourceInformation 
+    */
+       
+    foreach ($sentences_obj->sentences as $sentence_information) {
+
+         $de_sentence = $sentence_information->sentence;
+     
+         $en_sentence = $tr->translate($de_sentence,  $config['deepl']['source_lang'], $config['deepl']['target_lang']);
  
-    foreach($sents as $german) {
- 
-         $english = $tr->translate($german,  $config['deepl']['source_lang'], $config['deepl']['target_lang']);
- 
-    //todo: Parse the translation results
          
-      //todo: write the german word itself and its english translation
-         $creator->write($german, $english); 
+         // todo: access the object in $en_sentence correctly.
+
+         $creator->write($de_sentence, $english); //<-- todo: correct 2nd param.
     }
  
-    // Write line of .html file
  }
