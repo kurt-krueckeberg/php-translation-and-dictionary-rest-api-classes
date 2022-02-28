@@ -25,6 +25,5 @@ include "DeeplTranslator.php";
 
       echo "Exception: code = " . $e->getCode() . "\n";  
       echo "Exception: message = " . $e->getMessage() . "\n";
-      echo "Exception: Trace\n" . $e->getTraceAsString() . "\n";
    }
  }

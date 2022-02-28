@@ -63,9 +63,13 @@ class SentenceFetcher {
       } catch (RequestException $e) { // We get here if response code from REST server is > 400, like  404 response
 
          /* Check if a response was received */
-         $str = ($e->hasResponse() == false) ?  "No response was received from Liepzig Sentence Server. The server likely timed out." : ("The response from Leipzig server was " .  $e->getResponse());
+         if ($e->hasResponse())
+             
+            $str = "Response Code is " . $e->getResponse()->getStatusCode();
+         else 
+             $str = "No respons from server.";
 
-         throw new Exception("Guzzle threw RequestException. $str."); 
+         throw new Exception("Guzzle RequestException. $str"); 
     }
   }
 }
