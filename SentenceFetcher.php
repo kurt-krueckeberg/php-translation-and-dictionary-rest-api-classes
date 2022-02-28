@@ -26,31 +26,23 @@ class SentenceFetcher {
    }
 
  /* 
-  After 
-
-      $contents = $response->getBody()->getContents();
-
-      $obj = json_decode($contents);
-
-  The json object $obj contains a SentencesList object that these properties:
+  get_sentences() returns $obj->sentences. $obj contains a Leipzig SentencesList object which has these properties: 
 
     1. count - integer
     2. sentences[count] - an array of count SentenceInformation elements
-  
-  SentenceInformation in turn contains three properties:
+   
+   SentenceInformation in turn has three properties:
 
      1. id
      2. sentence - the actual text of the sample sentence
      3. source - of type information, the URI 
 
-  Clients can iterate over the returned sentences in a loop:   
+   Clients can iterate over the sentences in a loop:   
 
     foreach ($obj->sentences as $sentence_information) {
 
        $sentence = $sentence_information->sentence;
-       
        //...
-
      }
    */
     
@@ -62,31 +54,18 @@ class SentenceFetcher {
 
          $response = $this->client->request('GET', $uri, array('query' => array('offset' => 0, 'limit' => $count)) );
          
-	 echo  $response->getStatusCode();
-
          $contents = $response->getBody()->getContents();
 
          $obj = json_decode($contents);
 
          return $obj->sentences; // Return array of SentenceInformation objects  
       
-      } catch (RequestException $e) {
+      } catch (RequestException $e) { // We get here if response code from REST server is > 400, like  404 response
 
-         $str = '';
+         /* Check if a response was received */
+         $str = ($e->hasResponse() == false) ?  "No response was received from Liepzig Sentence Server. The server likely timed out." : ("The response from Leipzig server was " .  $e->getResponse());
 
-         /*
-          * Check if a response was received
-          */
-         if ($e->hasResponse() == false) {
-            
-              $str = " no response was received from Liepzig server ";
-         } else {
-     
-              $str = " response from Liepzig server was " .  $e->getResponse();
-         }
-
-         // TODO: We get here is response code from REST server is > 400, like  404 response
-         throw new Exeption("Guzzle threw RequestException because $str."); // 'respond code >= 400' from Leipzig sentences corpus ."
+         throw new Exception("Guzzle threw RequestException. $str."); 
     }
   }
 }

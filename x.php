@@ -19,9 +19,10 @@ include "DeeplTranslator.php";
         
      $rc = $fetcher->get_sentences($de_word);
     
-     echo "Respons Return Code: $rc:\n";
+     echo "Response Return Code: $rc:\n";
 
    } catch (Exception $e) {
+
       echo "Exception: code = " . $e->getCode() . "\n";  
       echo "Exception: message = " . $e->getMessage() . "\n";
       echo "Exception: Trace\n" . $e->getTraceAsString() . "\n";
