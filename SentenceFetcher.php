@@ -5,10 +5,9 @@ use GuzzleHttp\Exception\RequestException as RequestException;
 include "vendor/autoload.php";
 
 /*
+ * Uses the Uiv. of Leipzig Sentences Corpus API:
  *
- GET Request for sentences for the word 'vernachlässigen', start with first sentnece and give me 10:
- http://api.corpora.uni-leipzig.de/ws/sentences/deu_news_2012_1M/sentences/vernachl%C3%A4ssigen?offset=0&limit=10
- *
+ * http://api.corpora.uni-leipzig.de/ws/sentences/deu_news_2012_1M/sentences/Handeln?offset=0&limit=10
  */
 
 class SentenceFetcher {
@@ -33,18 +32,18 @@ class SentenceFetcher {
 
       $obj = json_decode($contents);
 
-  The json object $obj contains a SentencesList object with these properties:
+  The json object $obj contains a SentencesList object that these properties:
 
     1. count - integer
-    2. sentences[] - an array of count SentenceInformation elements
+    2. sentences[count] - an array of count SentenceInformation elements
   
-  SentenceInformation containing three properties:
+  SentenceInformation in turn contains three properties:
 
      1. id
-     2. sentence - the actual string text of the sample sentence
-     3. source - of type SourceInformation 
+     2. sentence - the actual text of the sample sentence
+     3. source - of type information, the URI 
 
-  To iterate over the returned sentences in a loop:   
+  Clients can iterate over the returned sentences in a loop:   
 
     foreach ($obj->sentences as $sentence_information) {
 
@@ -68,7 +67,7 @@ class SentenceFetcher {
 
          if ($response->getStatusCode() !== 200) { // 200 == success
               
-             throw new Exception("Error..."); // TODO : Decide on exception type and message. 
+             throw new Exception("Error..."); // TODO: This may not needed.
          }
          
          $contents = $response->getBody()->getContents();
