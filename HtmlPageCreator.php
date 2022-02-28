@@ -1,6 +1,7 @@
 <?php
+use \SplFileObject as File;
 
-class HtmlWriter {
+class HtmlPageCreator {
 
    private $file;
    private $is_closed;
@@ -25,9 +26,10 @@ EOF;
 
    public function __construct(string $fname)
    {
-      $this->file = new SplFileObject($fname . ".html", "w");
+      $this->file = new File($fname . ".html", "w");
    
-      $this->is_closed = true;
+      $this->is_closed = false;
+
       $this->file->fwrite(self::$header);
    }
 
@@ -36,9 +38,9 @@ EOF;
         $this->close();
    }
 
-   public function write($german, string $english)
+   public function write(string $german, string $english)
    {
-      $this->file->fwrite('<p>' . $german . "</p>\n<p>" . $english . "</p>");
+      $this->file->fwrite('<p>' . $german . "</p>\n<p>" . $english . "</p>\n");
    }
 
    public function close()
