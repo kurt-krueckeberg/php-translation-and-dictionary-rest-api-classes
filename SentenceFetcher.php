@@ -63,13 +63,7 @@ class SentenceFetcher {
          $response = $this->client->request('GET', $uri, array('query' => array('offset' => 0, 'limit' => $count)) );
          
 	 echo  $response->getStatusCode();
-         return;
 
-         if ($response->getStatusCode() !== 200) { // 200 == success
-              
-             throw new Exception("Error..."); // TODO: This may not needed.
-         }
-         
          $contents = $response->getBody()->getContents();
 
          $obj = json_decode($contents);
@@ -78,9 +72,21 @@ class SentenceFetcher {
       
       } catch (RequestException $e) {
 
+         $str = '';
+
+         /*
+          * Check if a response was received
+          */
+         if ($e->hasResponse() == false) {
+            
+              $str = " no response was received from Liepzig server ";
+         } else {
+     
+              $str = " response from Liepzig server was " .  $e->getResponse();
+         }
+
          // TODO: We get here is response code from REST server is > 400, like  404 response
-          throw new Exeption("Respons code from server > 400. 404???");
-         
-      }  
-   }
+         throw new Exeption("Guzzle threw RequestException because $str."); // 'respond code >= 400' from Leipzig sentences corpus ."
+    }
+  }
 }
