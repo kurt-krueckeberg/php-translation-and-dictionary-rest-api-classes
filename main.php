@@ -11,16 +11,11 @@ if ($argc < 2) {
     return;
 }
 
-$fetcher = new SentenceFetcher($config['leipzig']['corpus']);
-$sents = $fetcher->get("Handeln", 10);
+ $fetcher = new SentenceFetcher($config['leipzig']['corpus']);
 
-print_r($sents);
-return;
+ $tr = new DeeplTranslator($config['deepl']['apikey']);
 
-
-$tr = new DeeplTranslator($config['deepl']['apikey']);
-
-$writer = new HtmlWriter($argv[1] . ".html");
+ $writer = new HtmlWriter($argv[1]); 
 
  $file =  new SplFileObject($config['leipzip']['input_file'], "r");
 
