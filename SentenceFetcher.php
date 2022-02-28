@@ -1,5 +1,6 @@
 <?php
 use GuzzleHttp\Client as Client;
+use GuzzleHttp\Exception\RequestException as RequestException;
 
 include "vendor/autoload.php";
 
@@ -61,7 +62,10 @@ class SentenceFetcher {
       try {
 
          $response = $this->client->request('GET', $uri, array('query' => array('offset' => 0, 'limit' => $count)) );
-    
+         
+	 echo  $response->getStatusCode();
+         return;
+
          if ($response->getStatusCode() !== 200) { // 200 == success
               
              throw new Exception("Error..."); // TODO : Decide on exception type and message. 
@@ -75,9 +79,9 @@ class SentenceFetcher {
       
       } catch (RequestException $e) {
 
-         // TODO: Needs some work.      
-         $response = $this->StatusCodeHandling($e);
-         return $response;
+         // TODO: We get here is response code from REST server is > 400, like  404 response
+          throw new Exeption("Respons code from server > 400. 404???");
+         
       }  
    }
 }

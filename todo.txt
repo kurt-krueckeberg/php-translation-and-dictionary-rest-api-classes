@@ -1,0 +1,5 @@
+# TODO
+
+- Incorporate any changes in x.php into main.php
+
+- I may need to find another sentence corpus since the Leipzig is often down.

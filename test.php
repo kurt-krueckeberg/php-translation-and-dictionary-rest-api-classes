@@ -15,12 +15,10 @@ include "DeeplTranslator.php";
 
  foreach ($file as $de_word) {
 
-
+    try {
     $sents = $fetcher->get_sentences($de_word);
     
     echo "Sample Sentences:\n";
-
-    $obj = json_decode($sents);
 
     var_dump($obj->sentences); 
 
@@ -42,5 +40,8 @@ include "DeeplTranslator.php";
           $sentence = $sentence_information;
 
     }
+   } catch (Exception $e) {
 
+      echo $e->getMessage();
+   }
  }
