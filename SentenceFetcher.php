@@ -33,19 +33,18 @@ class SentenceFetcher {
       try {
 
          $response = $this->client->request('GET', $uri, array('query' => array('offset' => 0, 'limit' => $limit)) );
-      
-         $result = $response->getBody()->getContents();
+    
+         if ($response->getStatusCode() !== 200) { // 200 == success
+              
+             throw new Exception("Error..."); // TODO : Decide on exception type and message. 
+         }
          
-         return $result;
+         return $response->getBody()->getContents();
       
       } catch (RequestException $e) {
       
          $response = $this->StatusCodeHandling($e);
          return $response;
-
-      }  catch (\Exception $e) { 
-
-         return; // TODO: Should this be different?
-      }
+      }  
    }
 }

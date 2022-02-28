@@ -15,18 +15,20 @@ include "HtmlPageCreator.php";
 
  $tr = new DeeplTranslator($config['deepl']['apikey']);
 
- $writer = new HtmlPageCreator($argv[1]); 
+ $creator = new HtmlPageCreator($argv[1]); 
 
  $file =  new File($config['leipzip']['input_file'], "r");
 
  $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
- foreach ($file as $word) {
+ foreach ($file as $de_word) {
 
-	 // 1. Translate the word 
-	 //
+    // 1. Translate the word itself
+    $en_word = $tr->translate($de_word,  $config['deepl']['source_lang'], $config['deepl']['target_lang']);
+    $creator->write($de_word, $en_word); 
+
     //todo: Parse the sentence results
-    $sents = $fetcher->get($word);
+    $sents = $fetcher->get($de_word);
  
     foreach($sents as $german) {
  
@@ -35,7 +37,7 @@ include "HtmlPageCreator.php";
     //todo: Parse the translation results
          
       //todo: write the german word itself and its english translation
-         $writer->write($german, $english); 
+         $creator->write($german, $english); 
     }
  
     // Write line of .html file
