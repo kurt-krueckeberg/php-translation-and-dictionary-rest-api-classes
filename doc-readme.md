@@ -7,7 +7,7 @@ Creating sample sentences for learning a language using the and Leipzip Sentence
 ## University of Leipzip Free Sentence Corpus RESTful API
 
 The [Wortschatz Leipzig](https://wortschatz.uni-leipzig.de/en) is a database of more than 30 million sentences of German newspaper material.
-Its free RESTful [sentences-service](http://api.corpora.uni-leipzig.de/ws/swagger-ui.html) API will return a specified number of example sentences for a given German word. There
+Its also has a free RESTful [sentences-service](http://api.corpora.uni-leipzig.de/ws/swagger-ui.html) API that will return a specified number of example sentences for a given German word. There
 
 
 Free **REST API of the Leipzig Corpora Collection / Projekt Deutscher Wortschatz** online [documentation](http://api.corpora.uni-leipzig.de/ws/swagger-ui.html)
