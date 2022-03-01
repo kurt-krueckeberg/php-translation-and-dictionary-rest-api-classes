@@ -1,4 +1,4 @@
-G<div class="container">
+<div class="container">
 
 # Creating Sample Sentences for Language Learning
 
