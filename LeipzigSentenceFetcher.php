@@ -5,14 +5,19 @@ use GuzzleHttp\Exception\RequestException as RequestException;
 include "vendor/autoload.php";
 
 /*
- * Uses the Uiv. of Leipzig Sentences Corpus API:
+ * The class uses the Uiv. of Leipzig Sentences Corpus REST API. Example:
  *
  * http://api.corpora.uni-leipzig.de/ws/sentences/deu_news_2012_1M/sentences/Handeln?offset=0&limit=10
+ *
+ * 'deu_news_2012_1M' is the default corpus (of German sentences) used by the constructor.
+ *
  */
 
-class UnivLeipzigSentenceFetcher {
+class LeipzigSentenceFetcher {
 
-   static $base_uri = "http://api.corpora.uni-leipzig.de/ws/sentences/";
+   private static $base_uri = "http://api.corpora.uni-leipzig.de/ws/sentences/";
+   private static $qs_offset = 'offset';
+   private static $qs_limit = 'limit';
 
    private $uri; // Portion that will follow $base_uri, although it does not need to be catenated to it.
 
@@ -26,24 +31,32 @@ class UnivLeipzigSentenceFetcher {
    }
 
  /* 
-  get_sentences() returns $obj->sentences. $obj contains a Leipzig SentencesList object which has these properties: 
+    get_sentences() returns an array of Leipzig SentenceInformation objects that have three properties:
 
-    1. count - integer
-    2. sentences[count] - an array of count SentenceInformation elements
-   
-   SentenceInformation in turn has three properties:
+    1. id
+    2. sentence - the actual text of the sample sentence
+    3. source - of type information, the URI 
 
-     1. id
-     2. sentence - the actual text of the sample sentence
-     3. source - of type information, the URI 
-
-   Clients can iterate over the sentences in a loop:   
+    Clients get extract the sentence text with this loop:
 
     foreach ($obj->sentences as $sentence_information) {
 
        $sentence = $sentence_information->sentence;
-       //...
+       //...snip
      }
+ 
+    Further Comments: After this code is first executed
+
+         $contents = $response->getBody()->getContents();
+
+         $obj = json_decode($contents);
+
+    $obj will be a Leipzig SentenceList object with these two properties: 
+
+    1. count - integer, size of sentences[] array
+    2. sentences[count] - an array of count SentenceInformation elements.
+
+    sentences[count] is returned.
    */
     
    public function get_sentences(string $word, $count=10)
@@ -52,7 +65,9 @@ class UnivLeipzigSentenceFetcher {
 
       try {
 
-         $response = $this->client->request('GET', $uri, array('query' => array('offset' => 0, 'limit' => $count)) );
+         $query =  ['query' => [LeipzigSentenceFetcher::qs_offset => 0, LeipzigSentenceFetcher::qs_limit => $count]];
+
+         $response = $this->client->request('GET', $uri, $query);
          
          $contents = $response->getBody()->getContents();
 

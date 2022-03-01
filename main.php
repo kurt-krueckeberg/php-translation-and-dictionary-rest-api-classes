@@ -1,7 +1,7 @@
 <?php
 use \SplFileObject as File;
 include "config.php";
-include "UnivLeipzigSentenceFetcher.php";
+include "LeipzigSentenceFetcher.php";
 include "DeeplTranslator.php";
 include "HtmlPageCreator.php";
 
@@ -12,7 +12,7 @@ include "HtmlPageCreator.php";
       return;
   }
 */
- $fetcher = new UnivLeipzigSentenceFetcher($config['leipzig']['corpus']);
+ $fetcher = new LeipzigSentenceFetcher($config['leipzig']['corpus']);
 
  $tr = new DeeplTranslator($config['deepl']['apikey']);
 

@@ -44,24 +44,24 @@ class DeeplTranslator {
 				DeeplTranslator::qs_target_lang => $target_lang]];
 
 	 $response = $this->client->request('GET', self::$base_uri, $query);
-          
-         if ($response->getStatusCode() !== 200) { // 200 == success
-              
-             throw new Exception("Error..."); // TODO : Decide on exception type and message. 
-         }
- 
-         $contennts = $response->getBody()->getContents();
-         
-         return json_decode($contents); // todo: describe this objects' properties
-      
-      } catch (RequestException $e) {
-      
-         $response = $this->StatusCodeHandling($e);
-         return $response;
 
-      }  catch (\Exception $e) { 
+         $contents = $response->getBody()->getContents();
 
-         throw $e; // re-throw
-      }
+         $obj = json_decode($contents);
+
+         return $obj->?????????s; // Return array of SentenceInformation objects  
+      
+      } catch (RequestException $e) { // We get here if response code from REST server is > 400, like  404 response
+
+         /* Check if a response was received */
+         if ($e->hasResponse())
+             
+            $str = "Response Code is " . $e->getResponse()->getStatusCode();
+         else 
+             $str = "No respons from server.";
+
+         throw new Exception("Guzzle RequestException. $str"); 
+    }
+
    }
 }
