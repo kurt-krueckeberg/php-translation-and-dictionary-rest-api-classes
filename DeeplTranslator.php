@@ -59,7 +59,7 @@ class DeeplTranslator {
           *
           */
 
-         return $obj->text; // Return translated Text  
+         return $obj->translations; // Return translated Text  
       
       } catch (RequestException $e) { // We get here if response code from REST server is > 400, like  404 response
 
