@@ -2,7 +2,7 @@
 
 # Creating Sample Sentences for Language Learning
 
-Creating sample sentences for learning a language using the and Leipzip Sentence Corpus Code and Deeepl Free Api.
+Creating sample sentences for learning a language using the and Leipzig Sentence Corpus Code and DEEPL Free Api.
 
 ## University of Leipzip Free Sentence Corpus RESTful API
 
