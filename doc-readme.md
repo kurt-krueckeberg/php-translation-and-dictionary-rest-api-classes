@@ -9,8 +9,7 @@ Creating sample sentences for learning a language using the and Leipzig Sentence
 The [Wortschatz Leipzig](https://wortschatz.uni-leipzig.de/en) is a database of more than 30 million sentences of German newspaper material that has a free RESTful [sentences-service API](http://api.corpora.uni-leipzig.de/ws/swagger-ui.html).
 that will return a specified number of example German sentences for a given German word. 
  
- Below is an example PHP class invokes the  [sentences-service API](http://api.corpora.uni-leipzig.de/ws/swagger-ui.html) to returns example sentences for a given word. It is implemented
- with the help of [Guzzle, HTTP Client.](https://docs.guzzlephp.org/en/stable/).
+ Below is an example PHP class invokes the  [sentences-service](http://api.corpora.uni-leipzig.de/ws/swagger-ui.html) API. It is implemented with the help of [Guzzle, HTTP Client.](https://docs.guzzlephp.org/en/stable/).
 
 ```php
 <?php
