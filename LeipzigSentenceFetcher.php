@@ -5,7 +5,7 @@ use GuzzleHttp\Exception\RequestException as RequestException;
 include "vendor/autoload.php";
 
 /*
- * The class uses the Uiv. of Leipzig Sentences Corpus REST API. Example:
+ * This class uses the free Uiv. of Leipzig Sentences Corpus REST API. Example RESTful API url with query paraemters:
  *
  * http://api.corpora.uni-leipzig.de/ws/sentences/deu_news_2012_1M/sentences/Handeln?offset=0&limit=10
  *
