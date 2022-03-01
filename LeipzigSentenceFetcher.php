@@ -65,7 +65,7 @@ class LeipzigSentenceFetcher {
 
       try {
 
-         $query =  ['query' => [LeipzigSentenceFetcher::qs_offset => 0, LeipzigSentenceFetcher::qs_limit => $count]];
+         $query =  ['query' => [LeipzigSentenceFetcher::$qs_offset => 0, LeipzigSentenceFetcher::$qs_limit => $count]];
 
          $response = $this->client->request('GET', $uri, $query);
          

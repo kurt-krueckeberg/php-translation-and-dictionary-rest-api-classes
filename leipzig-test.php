@@ -3,20 +3,8 @@ use \SplFileObject as File;
 
 include "config.php";
 include "LeipzigSentenceFetcher.php";
-include "DeeplTranslator.php";
-include "HtmlPageCreator.php";
-
-  if ($argc < 2) {
-  
-      echo "Enter name of the output .html file\n";
-      return;
-  }
 
  $fetcher = new LeipzigSentenceFetcher($config['leipzig']['corpus']);
-
- $tr = new DeeplTranslator($config['deepl']['apikey']);
-
- $creator = new HtmlPageCreator($argv[1]); 
 
  $file =  new File($config['leipzig']['input_file'], "r");
 
@@ -25,13 +13,6 @@ include "HtmlPageCreator.php";
  try {
 
     foreach ($file as $de_word) {
-   
-       /*
-         Note: Deepl's Free API doesn't do dictionary-like translations of single words. So there is no Englis 
-         translation fothe German word.
-        */
-
-       $creator->write($de_word, "&nbsp;"); 
    
        $sentenceInfoObjs_array= $fetcher->get_sentences($de_word);
       
@@ -46,14 +27,12 @@ include "HtmlPageCreator.php";
        foreach ($sentenceInfoObjs_array as $sentenceInfoObject) {
    
             $de_sentence = $sentenceInfoObject->sentence;
-        
-            $translation = $tr->translate($de_sentence,  $config['deepl']['source_lang'], $config['deepl']['target_lang']);
-            
-            $creator->write($de_sentence, $translation[0]->text);
+
+            echo "Leipzig Sample Sentence: $de_sentence\n";
        }
     }
 
   } catch (Exception $e) {
 
-         echo "Exception: message = " . $e->getMessage() . "\n";
+       echo "Exception: message = " . $e->getMessage() . "\n";
   } 

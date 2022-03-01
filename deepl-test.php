@@ -3,9 +3,9 @@ use GuzzleHttp\Client;
 
 require 'vendor/autoload.php';
 
+include "config.php";
 /*
- * Note: Deepl's Free API doesn't do dictionary-like translations of single words only sentences.
- *
+ * 
  * DEEPL Rquest paramters:
  *
 $content = [
@@ -56,10 +56,10 @@ class DeeplTranslator {
 	   "translations": [{
 	         "detected_source_language":"EN",
 	         "text":"Hallo, Welt!"]
-          *
+          
           */
 
-         return $obj->text; // Return translated Text  
+         return $obj->translations; // Return array of translated sentences. 
       
       } catch (RequestException $e) { // We get here if response code from REST server is > 400, like  404 response
 
@@ -75,3 +75,13 @@ class DeeplTranslator {
 
    }
 }
+
+
+  $tr = new DeeplTranslator($config['deepl']['apikey']);
+
+  $translations = $tr->translate("Handeln", "DE", "EN");
+
+  var_dump($translations);
+
+  var_dump($translations[0]->text);
+
