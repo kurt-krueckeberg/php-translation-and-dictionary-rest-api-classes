@@ -5,17 +5,18 @@ include "UnivLeipzigSentenceFetcher.php";
 include "DeeplTranslator.php";
 include "HtmlPageCreator.php";
 
+/*
   if ($argc < 2) {
   
       echo "Enter name of the output .html file\n";
       return;
   }
-
+*/
  $fetcher = new UnivLeipzigSentenceFetcher($config['leipzig']['corpus']);
 
  $tr = new DeeplTranslator($config['deepl']['apikey']);
 
- $creator = new HtmlPageCreator($argv[1]); 
+ //++$creator = new HtmlPageCreator($argv[1]); 
 
  $file =  new File($config['leipzig']['input_file'], "r");
 
@@ -53,6 +54,6 @@ include "HtmlPageCreator.php";
     }
 
   } catch (Exception $e) {
-         echo "Exception: code = " . $e->getCode() . "\n";  
+
          echo "Exception: message = " . $e->getMessage() . "\n";
   } 
