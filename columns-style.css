@@ -2,9 +2,13 @@ body {
   margin-left: 3em;
   font-family: 'Lato Medium', Arial, sans-serif;
 
-  color: #D0CFCC;               /*  <-- text color        */ 
-  background-color: #171421;    /*  <-- background color  */
+  color: #FFFFFF;          /*  VS Code Blue Dark theme color */
+  background-color: #002451; 
 
+  /*
+  color: #D0CFCC;            
+  background-color: #171421; 
+   */
 }
 
 #container {

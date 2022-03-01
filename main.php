@@ -46,6 +46,8 @@ include "HtmlPageCreator.php";
        foreach ($sentenceInfoObjs_array as $sentenceInfoObject) {
    
             $de_sentence = $sentenceInfoObject->sentence;
+
+            // TODO: Add HRML emphasis like so '<em>$dwe_word</em>' around the German word, so it is bolded.
         
             $translation = $tr->translate($de_sentence,  $config['deepl']['source_lang'], $config['deepl']['target_lang']);
             
