@@ -10,7 +10,8 @@ The [Wortschatz Leipzig](https://wortschatz.uni-leipzig.de/en) is a database of 
  
 It has a free RESTful [sentences-service API](http://api.corpora.uni-leipzig.de/ws/swagger-ui.html)that will return a specified number of example sentences for a given German word. 
  
- Below is PHP class implemented with Guzzle that invokes the  [sentences-service API](http://api.corpora.uni-leipzig.de/ws/swagger-ui.html) to returns example sentences for a given wordÖ
+ Below is an example PHP class invokes the  [sentences-service API](http://api.corpora.uni-leipzig.de/ws/swagger-ui.html) to returns example sentences for a given word. It is implemented
+ with the help of [Guzzle, HTTP Client.](https://docs.guzzlephp.org/en/stable/).
 
 ```php
 <?php
