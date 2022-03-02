@@ -1,7 +1,7 @@
 <?php
 use \SplFileObject as File;
 
-class HtmlPageCreator {
+class WebPageCreator {
 
    private $file;
    private $is_closed;

@@ -16,7 +16,7 @@ include "HtmlPageCreator.php";
 
  $tr = new DeeplTranslator($config['deepl']['apikey']);
 
- $creator = new HtmlPageCreator($argv[1]); 
+ $creator = new WebPageCreator($argv[1]); 
 
  $file =  new File($config['leipzig']['input_file'], "r");
 
@@ -27,8 +27,8 @@ include "HtmlPageCreator.php";
     foreach ($file as $de_word) {
    
        /*
-         Note: Deepl's Free API doesn't do dictionary-like translations of single words. So there is no Englis 
-         translation fothe German word.
+         Deepl's Free API doesn't do dictionary-like translations of single words. So there is no Englis 
+         translation for the German word.
         */
 
        $creator->write($de_word, "&nbsp;"); 
