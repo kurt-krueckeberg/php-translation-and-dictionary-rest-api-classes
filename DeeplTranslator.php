@@ -4,16 +4,16 @@ use GuzzleHttp\Client;
 require 'vendor/autoload.php';
 
 /*
- * Note: Deepl's Free API doesn't do dictionary-like translations of single words only sentences.
+ * Deepl's Free API is a sentence translation service but not a dictionary.
  *
  * DEEPL Rquest paramters:
  *
-$content = [
-    'auth_key'    => $your_api_key,
-    'text'        => $source_text,
-    'source_lang' => 'EN',
-    'target_lang' => 'JA',
-];
+   $content = [
+     'auth_key'    => $your_api_key,
+     'text'        => $source_text,
+     'source_lang' => 'EN',
+     'target_lang' => 'JA',
+   ];
  */ 
 class DeeplTranslator {
     
@@ -34,7 +34,23 @@ class DeeplTranslator {
 
       $this->header = "accept: application/json"; 
    }
+   /*
+     translate() returns an array of translated sentences, in which each element has two properties:
 
+      1. The detected_source_language - which, of course, we required to specified, so there is nothing to 'detect'.
+      2. "text" - the translated text in teh target lanauge.
+
+
+     Client code can iterate over this array like this:
+
+       $translations = $tr->translate($input_sentence, $source_lang, $target_lang);
+            
+       foreach($translations as $translation) {
+ 
+           do_something($de_sentence, $translation->text);
+       } 
+   */
+ 
    public function translate(string $text, string $source_lang, string $target_lang)
    {
       try {
@@ -51,14 +67,31 @@ class DeeplTranslator {
          $obj = json_decode($contents);
 
          /* 
-          * $obj now holds an array of Deepl 'translations' objects, where 'translations'
+          * At this point $obj holds 'translations' object, which is an array of translated sentences, where each
+            array element has two properties:
 
-	   "translations": [{
-	         "detected_source_language":"EN",
-	         "text":"Hallo, Welt!"]
-          *
-          */
+             1. The detected_source_language - which, of course, we required to specified, so there is nothing to 'detect'.
+             2. "text" - the translated text in teh target lanauge.
 
+            For example:
+
+	    "translations":[
+		    {
+			    "detected_source_language": "EN",
+			    "text": "Das ist der erste Satz."
+		    },
+		    {
+			    "detected_source_language": "EN",
+			    "text": "Das ist der zweite Satz."
+		    },
+		    {
+			    "detected_source_language": "EN",
+			    "text": "Dies ist der dritte Satz."
+		    }
+	         ] 
+
+              */
+    
          return $obj->translations; // Return translated Text  
       
       } catch (RequestException $e) { // We get here if response code from REST server is > 400, like  404 response

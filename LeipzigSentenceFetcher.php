@@ -5,7 +5,7 @@ use GuzzleHttp\Exception\RequestException as RequestException;
 include "vendor/autoload.php";
 
 /*
- * This class uses the free Uiv. of Leipzig Sentences Corpus REST API. Example RESTful API url with query paraemters:
+ * This class uses the free Univ. of Leipzig's Sentences Corpus REST API. An example RESTful API call with query paraemters:
  *
  * http://api.corpora.uni-leipzig.de/ws/sentences/deu_news_2012_1M/sentences/Handeln?offset=0&limit=10
  *
@@ -31,13 +31,13 @@ class LeipzigSentenceFetcher {
    }
 
  /* 
-    get_sentences() returns an array of Leipzig SentenceInformation objects that have three properties:
+    get_sentences() returns an array of SentenceInformation objects, each with these properties:
 
     1. id
     2. sentence - the actual text of the sample sentence
     3. source - of type information, the URI 
 
-    Clients get extract the sentence text with this loop:
+    Clients can extract the sentence with this loop:
 
     foreach ($obj->sentences as $sentence_information) {
 
@@ -45,18 +45,18 @@ class LeipzigSentenceFetcher {
        //...snip
      }
  
-    Further Comments: After this code is first executed
+    After get_sentences() executes
 
          $contents = $response->getBody()->getContents();
 
          $obj = json_decode($contents);
 
-    $obj will be a Leipzig SentenceList object with these two properties: 
+    $obj is a SentenceList object with these properties: 
 
     1. count - integer, size of sentences[] array
     2. sentences[count] - an array of count SentenceInformation elements.
 
-    sentences[count] is returned.
+    get_sentences() returns the sentences[count] array.
    */
     
    public function get_sentences(string $word, $count=10)
@@ -73,11 +73,11 @@ class LeipzigSentenceFetcher {
 
          $obj = json_decode($contents);
 
-         return $obj->sentences; // Return array of SentenceInformation objects  
+         return $obj->sentences; // Return the array of SentenceInformation objects  
       
-      } catch (RequestException $e) { // We get here if response code from REST server is > 400, like  404 response
+      } catch (RequestException $e) { // We get here if the response code from the Leipzig server is > 400 (or if it times out)
 
-         /* Check if a response was received */
+         /* If a response code was set, get it. */
          if ($e->hasResponse())
              
             $str = "Response Code is " . $e->getResponse()->getStatusCode();
