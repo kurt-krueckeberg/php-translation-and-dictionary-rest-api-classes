@@ -1,24 +1,3 @@
 # TODO
 
-- Incorporate any changes in x.php into main.php
-
-- I may need to find another sentence corpus since the Leipzig is often down.
-
-
-See:
-Guzzle [http errors ](https://docs.guzzlephp.org/en/stable/request-options.html)
-
-You can request a return code instead of an exption being thrown:
-
-$client->request('GET', '/status/500');
-// Throws a GuzzleHttp\Exception\ServerException
-
-$res = $client->request('GET', '/status/500', ['http_errors' => false]);
-echo $res->getStatusCode();
-
-
-You can also call these methods:
-
-echo $response->getStatusCode(); // 200
-echo $response->getReasonPhrase(); // OK
-echo $response->getProtocolVersion(); // 1.1
+I believe "corpusName" must be part of the URL/URI to make this code for all languages--I think?
