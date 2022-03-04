@@ -1,3 +1,0 @@
-# TODO
-
-I believe "corpusName" must be part of the URL/URI to make this code for all languages--I think?

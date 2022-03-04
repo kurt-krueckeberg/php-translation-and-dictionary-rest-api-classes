@@ -1,5 +1,4 @@
 <?php
-use \SplFileObject as File;
 
 class WebPageCreator {
 
@@ -26,7 +25,7 @@ EOF;
 
    public function __construct(string $fname)
    {
-      $this->file = new File($fname . ".html", "w");
+      $this->file = new SplFileObject($fname . ".html", "w");
    
       $this->is_closed = false;
 

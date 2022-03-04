@@ -4,15 +4,6 @@ use GuzzleHttp\Exception\RequestException as RequestException;
 
 include "vendor/autoload.php";
 
-/*
- * This class uses the free Univ. of Leipzig's Sentences Corpus REST API. An example RESTful API call with query paraemters:
- *
- * http://api.corpora.uni-leipzig.de/ws/sentences/deu_news_2012_1M/sentences/Handeln?offset=0&limit=10
- *
- * 'deu_news_2012_1M' is the default corpus (of German sentences) used by the constructor.
- *
- */
-
 class LeipzigSentenceFetcher {
 
    private static $base_uri = "http://api.corpora.uni-leipzig.de/ws/sentences/";

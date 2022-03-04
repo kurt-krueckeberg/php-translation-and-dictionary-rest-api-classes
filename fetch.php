@@ -25,26 +25,21 @@ include "FileReader.php";
 
     foreach ($file as $de) {
    
-       /*
-         Deepl's translation API doesn't do dictionary translations of words. So there is no Englis 
-         translation for the German word.
-        */
-
        $creator->write("<strong>$de</strong>", "&nbsp;"); 
-   
-       $sentInfoObjs = $fetcher->get_sentences($de);
-      
-      /* 
-        SentenceInformation (is an object) containing:
+
+       /* 
+         SentenceInformation (is an object) containing:
    
            1. id
            2. sentence - the actual string text of the sample sentence
            3. source - of type SourceInformation 
-       */
-          
-       foreach ($sentInfoObjs as $sentenceInfoObject) {
+        */
+      
+       $sentenceInfo_objs = $fetcher->get_sentences($de);
+         
+       foreach ($sentenceInfo_objs as $sentenceInfo_obj) {
    
-            $de_sentence = $sentenceInfoObject->sentence;
+            $de_sentence = $sentenceInfo_obj->sentence;
 
             $translations = $tr->translate($de_sentence,  $config['deepl']['source_lang'], $config['deepl']['target_lang']);
             
