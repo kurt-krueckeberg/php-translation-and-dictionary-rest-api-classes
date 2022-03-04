@@ -4,8 +4,6 @@ use GuzzleHttp\Exception\RequestException as RequestException;
 
 include "vendor/autoload.php";
 
-// TODO: I believe "corpusName" must be part of the URL/URI to make this code for all languages--I think?
-
 /*
  * This class uses the free Univ. of Leipzig's Sentences Corpus REST API. An example RESTful API call with query paraemters:
  *
@@ -64,6 +62,7 @@ class LeipzigSentenceFetcher {
    public function get_sentences(string $word, $count=10)
    {
       $uri = $this->uri . '/' . urlencode($word);
+      echo "DEUBG URI is: $uri\n";
 
       try {
 
