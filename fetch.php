@@ -1,11 +1,11 @@
 #!/usr/bin/env php
 <?php
-use \SplFileObject as File;
 
 include "config.php";
 include "LeipzigSentenceFetcher.php";
 include "DeeplTranslator.php";
 include "WebPageCreator.php";
+include "FileReader.php";
 
   if ($argc < 2) {
   
@@ -19,9 +19,7 @@ include "WebPageCreator.php";
 
  $creator = new WebPageCreator($argv[1]); 
 
- $file =  new File($config['leipzig']['input_file'], "r");
-
- $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
+ $file =  new FileReader($config['leipzig']['input_file']);
  
  try {
 

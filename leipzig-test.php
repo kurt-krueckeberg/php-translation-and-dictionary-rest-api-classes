@@ -1,14 +1,12 @@
 <?php
-use \SplFileObject as File;
 
 include "config.php";
 include "LeipzigSentenceFetcher.php";
+include "FileReader.php";
 
  $fetcher = new LeipzigSentenceFetcher($config['leipzig']['corpus']);
 
- $file =  new File($config['leipzig']['input_file'], "r");
-
- $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
+ $file =  new FileReader($config['leipzig']['input_file']);
  
  try {
 
