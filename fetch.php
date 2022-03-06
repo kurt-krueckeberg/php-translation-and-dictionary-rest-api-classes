@@ -25,6 +25,8 @@ include "FileReader.php";
 
     foreach ($file as $de) {
    
+      // TODO: Look up word in my dictionary database rom
+   
        $creator->write("<strong>$de</strong>", "&nbsp;"); 
 
        /* 
