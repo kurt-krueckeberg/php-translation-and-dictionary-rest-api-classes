@@ -12,7 +12,7 @@ class LeipzigSentenceFetcher {
 
    private $uri; // Portion that will follow $base_uri, although it does not need to be catenated to it.
 
-   public function __construct($corpus="deu_news_2012_1M") 
+   public function __construct(string $corpus)
    {
       $this->uri = $corpus . '/sentences'; 	   
 
@@ -53,7 +53,6 @@ class LeipzigSentenceFetcher {
    public function get_sentences(string $word, $count=10)
    {
       $uri = $this->uri . '/' . urlencode($word);
-      echo "DEUBG URI is: $uri\n";
 
       try {
 
