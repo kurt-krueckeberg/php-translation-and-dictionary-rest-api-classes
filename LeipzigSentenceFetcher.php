@@ -50,7 +50,7 @@ class LeipzigSentenceFetcher {
     get_sentences() returns the sentences[count] array.
    */
     
-   public function get_sentences(string $word, $count=10)
+   public function get_sentences(string $word, int $count=10)
    {
       $uri = $this->uri . '/' . urlencode($word);
 

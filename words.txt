@@ -1,5 +1,5 @@
 umsonst
-etwas ausrechnen
+ausrechnen
 ausgerechnet
 eigen
 gierig
@@ -9,8 +9,8 @@ kotzen
 kaum
 ehren
 entehrt
-die Ehre
-sich überlegen
+Ehre
+überlegen
 entehrt
 nötig
 offenbar
