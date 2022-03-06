@@ -1,6 +1,12 @@
 <div class="container">
+o
+# German-English Dictionary Resources
 
-## PONS
+## PONS Dictionary API
+
+- PONS Dictionary API [docsumentation](https://en.pons.com/p/files/uploads/pons/api/api-documentation.pdf)
+
+It allows 1,000 free word lookups per month. Is it downloadable?
 
 ## Universität of Chemnity Free "Ding" Dictionary
 
@@ -60,3 +66,5 @@ in the ding.txt file in enclose like so:
  -------------- ------------------------------
 
  Table: Dictionary ding.txt abbreviations 
+
+</div>
