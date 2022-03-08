@@ -8,3 +8,6 @@
 
 
 - Explore [Dlang REST Client](https://github.com/ikod/dlang-requests)
+
+[Composer Package Management](https://whoisryosuke.com/blog/2018/how-to-create-a-php-package-for-composer/)
+[Packagist The PHP Package Repository](https://packagist.org/)
