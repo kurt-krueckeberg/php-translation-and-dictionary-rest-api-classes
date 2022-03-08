@@ -146,11 +146,13 @@ hits:
       ]
       Example: https://api.pons.com/v1/dictionary?q=Haus&l=deen
 
-Note:
-For formatting the results, you may have a look at the (css) styles used on our website.
+Note: 
+
+For formatting the results, you may have a look at the (css) styles used on our website. 
 Responses with translations
 If no entries could be found, we search for translations, so there may be responses that only
 contain these:
+
 hits:
 [
 {
