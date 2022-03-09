@@ -1,15 +1,25 @@
 <?xml ?>
-<translators>
-  <translator>
-  <name>deepl</name>
-  <endpoint>   </endpoint>
-  <authentication_key>
-  </authentication_key>
-  <translator>
-  <translator>
-  <name>ibm</name>
-  <endpoint>   </endpoint>
-  <authentication_key>
-  </authentication_key>
-  <translator>
-</translators>
+<sentence_generation>
+   <translation_services>
+      <service>
+         <name>deepl</name>
+         <endpoint></endpoint>
+         <authentication_key> </authentication_key>
+         <authentication_tyep/means/etc??> </authentication_key>
+      </service>
+      <service>
+         <name>ibm</name>
+         <endpoint></endpoint>
+         <authentication_key></authentication_key>
+         <authentication_tyep/means/etc??> </authentication_key>
+      </service>
+   <translation_services>
+   <sentence_corpora>
+     <language>??? SEE the Leipzig website
+       <corpus>
+       </corpus>
+     </language>
+     <language>
+     </language>
+   </sentence_corpora>
+</sentence_generation>
