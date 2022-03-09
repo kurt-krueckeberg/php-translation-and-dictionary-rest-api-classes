@@ -1,5 +1,7 @@
 # TODO
 
+- Decide on a namespace ????/sentence-generate: 
+
 - Use general .xml config file with different translators--ibm, deepl, Microsoft.
 
 - Use php-xml-processing repsoitory for how to extract sentences .html

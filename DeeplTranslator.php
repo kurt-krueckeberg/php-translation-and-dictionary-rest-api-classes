@@ -15,7 +15,7 @@ require 'vendor/autoload.php';
      'target_lang' => 'JA',
    ];
  */ 
-class DeeplTranslator {
+class DeeplTranslator implements Translator {
     
    private static $base_uri = 'https://api-free.deepl.com/v2/translate'; 
 
@@ -51,7 +51,7 @@ class DeeplTranslator {
        } 
    */
  
-   public function translate(string $text, string $source_lang, string $target_lang)
+   public function translate(string $text, string $source_lang, string $target_lang) : string
    {
       try {
 
