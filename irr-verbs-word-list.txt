@@ -1,5 +1,6 @@
 anfangen,fängt an,fing an,hat angefangen
 ankommen,kommt an,kam an,ist angekommen
+anschießen,schießt an,schoss an,ist angeschossen
 aufgeben, gibt auf, gab auf, hat aufgegeben
 aufhalten,hält auf,hielt auf,hat aufgehalten
 ausgeben,gibt aus,gab aus,hat ausgegeben
@@ -35,6 +36,7 @@ erfahren,erfährt,erfuhr,hat erfahren
 erfinden,erfindet,erfand,hat erfunden
 erhalten,erhält,erhielt,hat erhalten
 erlöschen,erlischt,erlosch,ist erloschen
+erschießen,erschießt,erschoss,hat ergeschossen
 essen,isst,aß,hat gegessen
 fahren,fährt,fuhr,ist gefahren
 fallen,fällt,fiel,ist gefallen
@@ -67,7 +69,7 @@ heben,hebt,hob,hat gehoben
 heißen,heißt,hieß,hat geheißen
 helfen,hilft,half,hat geholfen
 kennen,kennt,kannte,hat gekannt
-kennenlernen,lerntkennen,lerntekennen,hat kennengelernt
+kennenlernen,lernt kennen,lernte kennen,hat kennengelernt
 klingen,klingt,klang,hat geklungen
 kneifen,kneift,kniff,hat gekniffen
 knüpfen,knüpft,knüpfte,hat geknüpft
@@ -109,7 +111,7 @@ schaffen,schafft,schuf,hat geschaffen
 scheinen,scheint,schien,hat geschienen
 schelten,schilt,schalt,hat gescholten
 schieben,schiebt,schob,hat geschoben
-schießen,schießt,schoss,hat geschossen
+schießen,schießt,schoss,ist geschossen
 schlafen,schläft,schlief,hat geschlafen
 schlagen,schlägt,schlug,hat geschlagen
 schleichen,schleicht,schlich,ist geschlichen
@@ -131,7 +133,7 @@ schwinden,schwindet,schwand,ist geschwunden
 schwingen,schwingt,schwang,hat geschwungen
 schwören,schwört,schwor,hat geschworen
 sehen,sieht,sah,hat gesehen
-senden,sendet,sendete,hat gesendet
+senden,sendet,sandte,hat gesandet
 singen,singt,sang,hat gesungen
 sinken,sinkt,sank,ist gesunken
 sinnen,sinnt,sann,hat gesonnen
@@ -143,7 +145,7 @@ spinnen,spinnt,spann,hat gesponnen
 sprechen,spricht,sprach,hat gesprochen
 sprießen,sprießt,spross,ist gesprossen
 springen,springt,sprang,ist gesprungen
-stattfinden,findetstatt,fandstatt,hat stattgefunden
+stattfinden,findet statt,fand statt,hat stattgefunden
 stechen,sticht,stach,hat gestochen
 stehen,steht,stand,hat gestanden
 stehlen,stiehlt,stahl,hat gestohlen
