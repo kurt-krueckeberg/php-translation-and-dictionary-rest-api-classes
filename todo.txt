@@ -12,4 +12,9 @@
 
 - Use [XPath](https://www.w3schools.com/XML/xpath_nodes.asp) to get nodes.
 
+- Use Factory Pattern to create sepcific Translator  with input of xml file. See:
+
+  - GOF Book
+  - HEAD First Design Patterns Book 
+
 - Take the documentation in the classses and place it in the README and doc-readme
