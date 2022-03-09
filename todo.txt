@@ -2,15 +2,14 @@
 
 - Decide on a namespace ????/sentence-generate: 
 
-- Use general .xml config file with different translators--ibm, deepl, Microsoft.
-
-- Use php-xml-processing repsoitory for how to extract sentences .html
-
 - Make this repositories composer-compliant, so that you can install it using composer and autoload its classes. 
 
+  - [Composer Package Management](https://whoisryosuke.com/blog/2018/how-to-create-a-php-package-for-composer/)
+ 
+  - [Packagist The PHP Package Repository](https://packagist.org/)
+
+- Use general .xml config file with different translators--ibm, deepl, Microsoft.
+
+- Use [XPath](https://www.w3schools.com/XML/xpath_nodes.asp) to get nodes.
+
 - Take the documentation in the classses and place it in the README and doc-readme
-
-- Hide my an REST API keys in private repo.
-
-[Composer Package Management](https://whoisryosuke.com/blog/2018/how-to-create-a-php-package-for-composer/)
-[Packagist The PHP Package Repository](https://packagist.org/)
