@@ -1,25 +1,28 @@
-<?xml ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <sentence_generation>
    <translation_services>
       <service>
          <name>deepl</name>
-         <endpoint></endpoint>
-         <authentication_key> </authentication_key>
-         <authentication_tyep/means/etc??> </authentication_key>
+         <endpoint>https://api-free.deepl.com/v2/translate</endpoint>
+         <src_lang>DE</src_lang>
+         <dest_lang>EN</dest_lang>
+         <dest_lang>
+         <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
       </service>
       <service>
          <name>ibm</name>
          <endpoint></endpoint>
          <authentication_key></authentication_key>
-         <authentication_tyep/means/etc??> </authentication_key>
+         <authentication_type> </authentication_type>
+      </service> <service>
+         <name>microsoft</name>
+         <endpoint></endpoint>
+         <authentication_key></authentication_key>
       </service>
    <translation_services>
-   <sentence_corpora>
-     <language>??? SEE the Leipzig website
-       <corpus>
-       </corpus>
-     </language>
-     <language>
-     </language>
+   <sentence_service>
+      <language>German</language>
+      <corpus>deu_news_2012_1M</corpus>
+      <limit>5</limit>
    </sentence_corpora>
 </sentence_generation>
