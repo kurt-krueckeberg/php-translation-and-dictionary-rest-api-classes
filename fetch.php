@@ -1,7 +1,8 @@
 #!/usr/bin/env php
 <?php
 
-include "config.php";
+include "leipzig-config.php";
+include "deepl-config.php";
 include "LeipzigSentenceFetcher.php";
 include "DeeplTranslator.php";
 include "WebPageCreator.php";
