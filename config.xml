@@ -1,0 +1,15 @@
+<?xml ?>
+<translators>
+  <translator>
+  <name>deepl</name>
+  <endpoint>   </endpoint>
+  <authentication_key>
+  </authentication_key>
+  <translator>
+  <translator>
+  <name>ibm</name>
+  <endpoint>   </endpoint>
+  <authentication_key>
+  </authentication_key>
+  <translator>
+</translators>

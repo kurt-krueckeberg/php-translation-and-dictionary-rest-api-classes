@@ -1,7 +1,8 @@
 # TODO
 
 - Deepl quota exceeded doing verbs-word-list.txt
-- SimmpleXML (from github) extractor to select sentences from do-not-erase.html, write to .odt or .md.
+
+- Use php-xml-processing repsoitory for how to extract sentences .html
 
 - Make this repositories composer-compliant, so that you can install it using composer and autoload its classes. 
 
