@@ -5,6 +5,7 @@
   - Microsoft's [owm implmentation in PHP](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP/blob/master/Translate.php)
 
   - [Matthisan Noback's code](https://github.com/matthiasnoback/microsoft-translator)
+    - Mainly just the file [Tranlate.php](https://github.com/matthiasnoback/microsoft-translator/blob/master/src/MatthiasNoback/MicrosoftTranslator/ApiCall/Translate.php)
 
   - [CURL Implementation](https://www.aw6.de/azure/)
 
