@@ -25,6 +25,14 @@ class MSTranslator implements Translator {
     // Add your location, also known as region. The default is global.
     // This is required if using a Cognitive Services resource.
     private static string $location = "YOUR_RESOURCE_LOCATION";
+
+    // TODO: Can these values be separate PHP Traits that each implementation inherits?
+    private const qs_target_lang = 'to';
+    private const qs_text = 'text';
+    private const qs_auth_key = 'auth_key';
+    private const qs_source_lang = 'source_lang';
+
+
     
     public function __construct(string $route)
     {
@@ -41,6 +49,18 @@ class MSTranslator implements Translator {
     public function translate(string $text, string $source_lang, string $target_lang) : string
     {
       try {
+
+          /*
+          $requestBody = array (
+              array (
+                  'Text' => $text,
+              ),
+          );
+          */
+
+          $requestBody = [ [ 'Text' => $text, ] ];
+
+          $content = json_encode($requestBody);
 
             /*
              TODO: these are MS Requirements"
