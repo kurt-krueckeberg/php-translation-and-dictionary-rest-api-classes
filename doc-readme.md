@@ -345,20 +345,9 @@ This github repository uses PHP and Guzzle
 
 - [Deepl-Client](https://github.com/tinyappsde/deepl-client)
 
-## Tools and Libraries Used
+## Azure Translation Service
 
-### Guzzle for PHP REST Client
 
-This github repository uses PHP and Guzzle
-
-    [deepl-client](https://github.com/tinyappsde/deepl-client)
-    
-Helpful articles explaining how to use Guzzle:
-
-- Medium.com article showing a [complete example](https://medium.com/hackernoon/creating-rest-api-in-php-using-guzzle-d6a890499b02) of using Guzzle as a REST API client for a 3rd party API (Cloudways API) 
-
-- Guzzle [Docs](https://docs.guzzlephp.org/en/stable/index.html)
-
-- Guzzle [github](https://github.com/guzzle/guzzle) shows Guzzle installation using Composer.
+## IBM Cognitive Services Translation Servoce
 
 </div>

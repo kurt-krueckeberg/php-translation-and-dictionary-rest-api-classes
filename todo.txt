@@ -1,5 +1,14 @@
 # TODO
 
+- Azure Translation Implementaqtions in PHP
+
+  - Microsoft's [owm implmentation in PHP](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP/blob/master/Translate.php)
+
+  - [Matthisan Noback's code](https://github.com/matthiasnoback/microsoft-translator)
+
+  - [CURL Implementation](https://www.aw6.de/azure/)
+
+
 - Decide on a namespace ????/sentence-generate: 
 
 - Make this repositories composer-compliant, so that you can install it using composer and autoload its classes. 
