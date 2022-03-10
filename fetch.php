@@ -13,10 +13,15 @@ include "FileReader.php";
       echo "Enter name of the output .html file\n";
       return;
   }
+  
+  $trans = create_translator($translators, $config['translator');
 
- $fetcher = new LeipzigSentenceFetcher($config['leipzig']['corpus']);
+  $src_lang = $settings 
+  $target_lang = 
 
- $tr = new DeeplTranslator($config['deepl']['apikey']);
+  $fetcher = new LeipzigSentenceFetcher($config['leipzig']['corpus']);
+
+ //--$tr = new DeeplTranslator($config['deepl']['apikey']);
 
  $creator = new WebPageCreator($argv[1]); 
 
@@ -44,7 +49,7 @@ include "FileReader.php";
    
             $de_sentence = $sentenceInfo_obj->sentence;
 
-            $translations = $tr->translate($de_sentence,  $config['deepl']['source_lang'], $config['deepl']['target_lang']);
+            $translations = $trans->translate($de_sentence,  $src_lang, $target_lang);
             
             $creator->write($de_sentence, $translations[0]->text);
        }
