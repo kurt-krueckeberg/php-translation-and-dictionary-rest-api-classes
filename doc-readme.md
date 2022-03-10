@@ -347,6 +347,9 @@ This github repository uses PHP and Guzzle
 
 ## Azure Translation Service
 
+[What is Translator](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/translator-overview)
+
+[Translator 3.0: Translate](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-translate)
 
 ## IBM Cognitive Services Translation Servoce
 

@@ -3,115 +3,53 @@ use GuzzleHttp\Client;
 
 require 'vendor/autoload.php';
 
-/*
- * Deepl's Free API is a sentence translation service but not a dictionary.
- *
- * DEEPL Rquest paramters:
- *
-   $content = [
-     'auth_key'    => $your_api_key,
-     'text'        => $source_text,
-     'source_lang' => 'EN',
-     'target_lang' => 'JA',
-   ];
- */ 
 class MSTranslator implements Translator {
 
-    // ++ private string|object $caption; // Example of PHP8.0 union type declaration.
-
     private static string $subscriptionKey = "YOUR_SUBSCRIPTION_KEY" ;
-    private static string $endpoint = "https://api.cognitive.microsofttranslator.com/";
 
     // Add your location, also known as region. The default is global.
     // This is required if using a Cognitive Services resource.
-    private static string $location = "YOUR_RESOURCE_LOCATION";
+    private static string $location = "YOUR_RESOURCE_LOCATION";    // ?????????????
 
-    // TODO: Can these values be separate PHP Traits that each implementation inherits?
-    private const qs_target_lang = 'to';
-    private const qs_text = 'text';
-    private const qs_auth_key = 'auth_key';
-    private const qs_source_lang = 'source_lang';
+    private static $base_uri = "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0";
 
+    // Query parameters:
+    private static $qs_api_version = "api-version"; // Required query parameter. USE: "3.0"
+    private static $qs_target_lang = 'to';         // Required query parameter
+    private static $qs_source_lang = 'from';
+    private static $qs_text_type   = 'plain';  // 'plain' or 'html'
 
-    
-    public function __construct(string $route)
+    public function __construct(string $key, string $location)
     {
-       $this->route = $route = "/translate?api-version=3.0&from=en&to=de&to=it";
  
       $this->client = new Client(array('base_uri' => self::$base_uri));
 
       $this->header = "accept: application/json"; 
-
-      // Input and output languages are defined as parameters.
-        
     } 
 
     public function translate(string $text, string $source_lang, string $target_lang) : string
     {
       try {
 
-          /*
-          $requestBody = array (
-              array (
-                  'Text' => $text,
-              ),
-          );
-          */
-
-          $requestBody = [ [ 'Text' => $text, ] ];
+                    $requestBody = [ [ 'Text' => $text, ] ];
 
           $content = json_encode($requestBody);
 
-            /*
-             TODO: these are MS Requirements"
+         /*
+          * TODO: See header documentation for required header settings
+          */
 
-            Encoding UTF-8 +  "application/json"
+	 $query =  ['query' => [self::$qs_api_version => '3.0', 
+                                self::$qs_source_lang => $srouce_lang,  // TODO: <-- Need to use generic values that work acorss all translators, doing a hasttable lookup if necessary.
+                                self::$qs_target_lang => $target_lang,  // TODO: <-- Need to use generic values that work acorss all translators, doing a hasttable lookup if necessary.
+                                self::$qs_text_type   => 'plain'
+                               ] ]; 
 
-            // Headers
-            request.Headers.Add("Ocp-Apim-Subscription-Key", $this->subscriptionKey);
-
-            request.Headers.Add("Ocp-Apim-Subscription-Region", $this->location);
-            */
-
-	 $query =  ['query' => [ => $text,
-				=> $source_lang,
-				=> $target_lang]];
-
-         $request_url = $this->endpoint . $this->route;
-
-	 $response = $this->client->request('POST', $request_url, $query);
+	 $response = $this->client->request('POST', $this->base_uri, $query);
 
          $contents = $response->getBody()->getContents();
 
          $obj = json_decode($contents);
-         /* 
-
-            NOTE: This ONLY pertains to DEEPL's return object:  
-
-          * At this point $obj holds 'translations' object, which is an array of translated sentences, where each
-            array element has two properties:
-
-             1. The detected_source_language - which, of course, we required to specified, so there is nothing to 'detect'.
-             2. "text" - the translated text in teh target lanauge.
-
-            For example:
-
-	    "translations":[
-		    {
-			    "detected_source_language": "EN",
-			    "text": "Das ist der erste Satz."
-		    },
-		    {
-			    "detected_source_language": "EN",
-			    "text": "Das ist der zweite Satz."
-		    },
-		    {
-			    "detected_source_language": "EN",
-			    "text": "Dies ist der dritte Satz."
-		    }
-	         ] 
-
-              */
     
          return $obj->???????; // TODO: Change per Microsoft docs
       
