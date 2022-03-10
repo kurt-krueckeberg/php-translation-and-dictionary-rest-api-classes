@@ -8,6 +8,11 @@
 
   - [CURL Implementation](https://www.aw6.de/azure/)
 
+- Gernealize the implementation thru interfaces and design patterns like
+
+  - Template Pattern
+
+  - Strategy Pattern
 
 - Decide on a namespace ????/sentence-generate: 
 
