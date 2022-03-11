@@ -1,0 +1,28 @@
+<div class="container>
+
+# Design
+
+## Get Big Picture
+
+### Understand Translation Service Requirements
+
+How to the use of these "inputs" differnt per service? Do some require authenication using headers and other query parameter? 
+Therefore we first must descibe how the passes the 'inputs' REST-fully -- via headers, query parameters, which query paramters does each service
+have in commoon or not in common?
+
+This will give us the big-picture and suggest how to define the xml, and it will help us apply good implmentation design patterns. Possible design patterns are:
+
+- Factory Pattern
+
+- Template Pattern
+
+- Strategy Pattern
+
+### Understand How XML Works
+
+- [XML Tutorial](https://www.w3schools.com/xml/)
+
+We want I want the xml elemtnst to reflect the program requirements. What does it translation service need: authenticationd key, endpoint, query parameters.
+Should query parameters have two child elements, <parm_name> and <parm_value>, the later of which can be empty?  
+The reason is, the 'microsoft' service has an 'api_version' query paramter, but we always use a fixed value of '3.0' for it.
+

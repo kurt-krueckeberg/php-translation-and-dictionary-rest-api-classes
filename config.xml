@@ -1,12 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-   Note: XML does not require that sibling parents to have identical child elements.
-
-1. Should query parameters have two child elements, <parm_name> and <parm_value>, the later of which can be empty?  
-   The reason is, the 'microsoft' service has an 'api_version' query paramter, but we always use a fixed value of '3.0' for it.
-
-  Read pu on XML files and their use as configuration files to drive an app.
--->
 <sentence_generation>
    <translation_services>
       <service>
@@ -14,31 +6,41 @@
          <endpoint>https://api-free.deepl.com/v2/translate</endpoint>
          <headers>application/json</headers>
          <request_type>GET</request_type>
-         <query_parms>
-            <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
+         <query_string_parms>
+            <parm> 
+               <name>authentication_key</name>
+               <value>7482c761-0429-6c34-766e-fddd88c247f9:fx</value>
+            </parm> 
+            <parm> 
+               <name>text</name>
+            </parm> 
+
+
             <input_text>text</input_text>
             <src_lang>source_lang</src_lang>
             <dest_lang>target_lang</dest_lang>
-         </query_parms>
+
+
+         </query_string_parms>
       </service>
       <service>
          <name>ibm</name>
          <endpoint></endpoint>
          <headers>application/json</headers>
          <request_type>GET</request_type>
-         <query_parms>
+         <query_string_parms>
             <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
             <input_text>text</input_text>
             <src_lang>source_lang</src_lang>
             <dest_lang>target_lang</dest_lang>
-         </query_parms>
+         </query_string_parms>
       </service>
      <service>
           <name>microsoft</name>
           <endpoint> https://api.cognitive.microsofttranslator.com/translate?api-version=3.0</endpoint>
           <headers>application/json</headers>
           <request_type>GET</request_type>
-          <query_parms>
+          <query_string_parms>
              <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
              <!-- Here I'm being inconsistenct. This not the name ofthe query parameter, rather its value.
                   And this query parameter is needed by the other services above. -->  
@@ -46,7 +48,7 @@
              <input_text>text</input_text>
              <src_lang>from</src_lang>
              <dest_lang>to</dest_lang>
-          </query_parms>
+          </query_string_parms>
         </service>
    </translation_services>
    <sentence_services>
