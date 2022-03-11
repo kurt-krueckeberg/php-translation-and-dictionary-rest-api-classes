@@ -1,7 +1,5 @@
-Documenation is in readme.html. It may also be generated from the doc-read.me, which is in pandoc-flavored markdown, by
+# Documentation
 
-- Installing pandoc
+- [Leipzig Sentence Service](leipzig-sentence-doc.md) documentation.
 
-```bash
-
-$ pandoc doc-readme.md -c screen.css -t html -s -o readme.html
+- [Transaltion Services](translation-services-doc.md) documentation.
