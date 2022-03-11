@@ -1,4 +1,5 @@
 <?php
+
 use GuzzleHttp\Client;
 
 require 'vendor/autoload.php';
@@ -21,8 +22,15 @@ class MSTranslator implements Translator {
 
     public function __construct(string $key, string $location)
     {
- 
-      $this->client = new Client(array('base_uri' => self::$base_uri));
+      // Example Headers. They can also accompnay the 
+      // ...->request(...) call below.
+      $headers = [ 'headers' => [
+                   'User-Agent' => 'testing/1.0',
+                   'Accept'     => 'application/json',
+                   'X-Foo'      => ['Bar', 'Baz']
+                 ]];
+                
+      $this->client = new Client(array('base_uri' => self::$base_uri), $headers); 
 
       $this->header = "accept: application/json"; 
     } 
