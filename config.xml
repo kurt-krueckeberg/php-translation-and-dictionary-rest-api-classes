@@ -1,28 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Note: XML does not require that sibling parents to have identical child elements.
+
+1. Should query parameters have two child elements, <parm_name> and <parm_value>, the later of which can be empty?  
+   The reason is, the 'microsoft' service has an 'api_version' query paramter, but we always use a fixed value of '3.0' for it.
+
+  Read pu on XML files and their use as configuration files to drive an app.
+-->
 <sentence_generation>
    <translation_services>
       <service>
          <name>deepl</name>
          <endpoint>https://api-free.deepl.com/v2/translate</endpoint>
-         <src_lang>DE</src_lang>
-         <dest_lang>EN</dest_lang>
-         <dest_lang>
-         <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
+         <headers>application/json</headers>
+         <request_type>GET</request_type>
+         <query_parms>
+            <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
+            <input_text>text</input_text>
+            <src_lang>source_lang</src_lang>
+            <dest_lang>target_lang</dest_lang>
+         </query_parms>
       </service>
       <service>
          <name>ibm</name>
          <endpoint></endpoint>
-         <authentication_key></authentication_key>
-         <authentication_type> </authentication_type>
-      </service> <service>
-         <name>microsoft</name>
-         <endpoint></endpoint>
-         <authentication_key></authentication_key>
+         <headers>application/json</headers>
+         <request_type>GET</request_type>
+         <query_parms>
+            <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
+            <input_text>text</input_text>
+            <src_lang>source_lang</src_lang>
+            <dest_lang>target_lang</dest_lang>
+         </query_parms>
       </service>
-   <translation_services>
-   <sentence_service>
-      <language>German</language>
-      <corpus>deu_news_2012_1M</corpus>
-      <limit>5</limit>
-   </sentence_corpora>
+     <service>
+          <name>microsoft</name>
+          <endpoint> https://api.cognitive.microsofttranslator.com/translate?api-version=3.0</endpoint>
+          <headers>application/json</headers>
+          <request_type>GET</request_type>
+          <query_parms>
+             <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
+             <!-- Here I'm being inconsistenct. This not the name ofthe query parameter, rather its value.
+                  And this query parameter is needed by the other services above. -->  
+             <api_version>3.0</api_version>
+             <input_text>text</input_text>
+             <src_lang>from</src_lang>
+             <dest_lang>to</dest_lang>
+          </query_parms>
+        </service>
+   </translation_services>
+   <sentence_services>
+     <service>
+       <corpus>deu_news_2012_1M</corpus>
+       <limit>5</limit>
+     </service>  
+   </sentence_services>
 </sentence_generation>

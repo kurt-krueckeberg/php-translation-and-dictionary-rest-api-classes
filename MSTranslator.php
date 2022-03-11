@@ -39,7 +39,7 @@ class MSTranslator implements Translator {
     {
       try {
 
-                    $requestBody = [ [ 'Text' => $text, ] ];
+          $requestBody = [ [ 'Text' => $text, ] ];
 
           $content = json_encode($requestBody);
 
