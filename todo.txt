@@ -1,5 +1,7 @@
 # TODO
 
+- [XML Tutorial](https://www.w3schools.com/xml/)
+
 - Azure Translation Implementaqtions in PHP
 
   - Microsoft's [owm implmentation in PHP](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP/blob/master/Translate.php)
