@@ -9,22 +9,20 @@ abstract class Translator implements TranslateInterface {
     
    private $rest_api; // strategy.
 
-   protected function create_guzzle(\SimplXMLElement $el) {}
-
    public function __construct(\SimplXMLElement $el) // XML translation service section
    {
        // Create the Derived Translator classes that use Guzzle
        switch($el->name) { 
 
          case 'I':
-           $this->guzzle = new ibm_rest_api();
+           $this->guzzle = new IbmXXXTranslator($el);
            break;
 
         case 'M':
-           $this->guzzle = new ms_rest_api();
+           $this->guzzle = new MSTranlator($el);
            break;        case 'M':
 
-           $this->guzzle = new deepl_rest_api();
+           $this->guzzle = new DeeplTranslate($el);
            break;
        }
    }
