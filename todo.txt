@@ -1,5 +1,7 @@
 # TODO
 
+- Factor out any redundant like creating the Guzzle client variable and its creaation.
+      
 - [XML Tutorial](https://www.w3schools.com/xml/)
 
 - Azure Translation Implementaqtions in PHP

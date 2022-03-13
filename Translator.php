@@ -1,30 +1,32 @@
 <?php
+declare(strict_types=1);
 use GuzzleHttp\Client;
 
 require 'vendor/autoload.php';
 
-include "TranslateInterface.php";
+include "Translate.php";
+include "TranslateAPIWrapper.php";
 
-abstract class Translator implements TranslateInterface {
+abstract class Translator extends TranslateAPIWrapper implements Translate {
     
-   private $rest_api; // strategy.
-
-   public function __construct(\SimplXMLElement $el) // XML translation service section
+   //public function __construct(\SimplXMLElement $el) // XML translation service section
+   static public function create__translator(\SimplXMLElement $el) // TODO: Add returns type of Translator. 
    {
        // Create the Derived Translator classes that use Guzzle
        switch($el->name) { 
 
          case 'I':
-           $this->guzzle = new IbmXXXTranslator($el);
+           $trans = new IbmXXXTranslator($el);
            break;
 
         case 'M':
-           $this->guzzle = new MSTranlator($el);
+           $trans = new MSTranlator($el);
            break;        case 'M':
 
-           $this->guzzle = new DeeplTranslate($el);
+           $trans = new DeeplTranslate($el);
            break;
        }
+       return $trans;
    }
 
    /*
@@ -40,12 +42,12 @@ abstract class Translator implements TranslateInterface {
        } 
    */
  
-   public function translate(string $text, string $source_lang, string $target_lang) : Translat
+   public function translate(string $text, string $source_lang, string $target_lang) // TODO: Return what type of object 
    {
-       $this->prepare_request(string $text, string $source_lang, string $target_lang);
+       prepare_request($text,  $source_lang,  $target_lang);
 
-       $this->request(); 
+       send_request(); 
 
-       $this->get_reponse(); // generic response object or iterator?
+       get_reponse(); // generic response object or iterator?
    }
 }
