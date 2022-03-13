@@ -7,13 +7,26 @@ include "TranslateInterface.php";
 
 abstract class Translator implements TranslateInterface {
     
-   private $guzzle; // strategy.
+   private $rest_api; // strategy.
 
    protected function create_guzzle(\SimplXMLElement $el) {}
 
    public function __construct(\SimplXMLElement $el) // XML translation service section
    {
-       $this->guzzle = create_guzzle($el);
+       // Create the Derived Translator classes that use Guzzle
+       switch($el->name) { 
+
+         case 'I':
+           $this->guzzle = new ibm_rest_api();
+           break;
+
+        case 'M':
+           $this->guzzle = new ms_rest_api();
+           break;        case 'M':
+
+           $this->guzzle = new deepl_rest_api();
+           break;
+       }
    }
 
    /*

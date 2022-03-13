@@ -4,7 +4,10 @@ use GuzzleHttp\Client;
 
 require 'vendor/autoload.php';
 
-class MSTranslator implements Translator {
+include "Translate.php";
+include "TranslateAPIWrapper.php";
+
+class MSTranslator implements Translate, TranslateAPIWrapper {
 
     private static string $subscriptionKey = "YOUR_SUBSCRIPTION_KEY" ;
 

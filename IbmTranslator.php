@@ -3,6 +3,9 @@ use GuzzleHttp\Client;
 
 require 'vendor/autoload.php';
 
+include "Translate.php";
+include "TranslateAPIWrapper.php";
+
 /*
  * Deepl's Free API is a sentence translation service but not a dictionary.
  *
@@ -15,7 +18,7 @@ require 'vendor/autoload.php';
      'target_lang' => 'JA',
    ];
  */ 
-class IbmTranslator implements Translator {
+class IbmTranslator implements Translate, TranslateAPIWrapper {
     
    private static $base_uri = 'https://api-free.deepl.com/v2/translate'; 
 
