@@ -7,7 +7,7 @@ require 'vendor/autoload.php';
 include "Translate.php";
 include "TranslateAPIWrapper.php";
 
-abstract class Translator extends TranslateAPIWrapper implements Translate {
+class Translator implements Translate {
 
    private $trans; 
 
