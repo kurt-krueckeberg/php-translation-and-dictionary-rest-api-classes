@@ -20,7 +20,8 @@ include "GuzzleTranslateAPIWrapper.php";
    ];
  */ 
 class DeeplTranslator extends GuzzleTranslateAPIWrapper {
-    
+
+   /*
    private static $base_uri = 'https://api-free.deepl.com/v2/translate'; 
 
    private const qs_target_lang = 'target_lang';
@@ -29,8 +30,9 @@ class DeeplTranslator extends GuzzleTranslateAPIWrapper {
    private const qs_source_lang = 'source_lang';
 
    private $auth_key; 
+   */
 
-   public function __construct($auth_key) 
+   public function __construct(object $simplexml_ele) 
    {
       $this->auth_key = $auth_key;
 

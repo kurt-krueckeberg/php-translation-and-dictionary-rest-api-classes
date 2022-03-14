@@ -6,8 +6,14 @@ abstract class GuzzleTranslateAPIWarpper {
     
     static public function create_implementor(string $xml_fname, string $service)
     {
+       // todo: Add logic to get the SimpleXMLElement pointer (to specific translation sectionn) using an XPath query.
+       $simpl = simplexml_load_file($xml_fname);
+
+       // create $query based on $service
+       $simpl_ele = $simpl->xpath($query)  
+ 
        // Create the Derived Translator classes that use Guzzle
-       switch($el->name) { 
+       switch($simpl_ele->name) { 
 
          case 'I':
            $trans = new IbmXXXTranslator($el);
