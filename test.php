@@ -5,25 +5,51 @@ declare(strict_types=1);
 
  $p2 = "']/.."; 
 
- function test(string $p1, string $p2)
+ function test1(string $query)
  {
-    $query = $p1 . "i" . $p2;
-
     $xml = simplexml_load_file("config.xml");
 
     $s = $xml->xpath($query);
 
     return $s[0];
  }
+ function test2(string $query)
+ {
+    $doc = new DOMDocument;
 
-$s = test($p1, $p2);
+    $doc->load("config.xml");
 
-$x = $s["query_string_parms"];
+    $xpath = new DOMXpath($doc);
 
-var_dump($x[0]);
+    $s = $xpath->query($query);
 
-echo "\n";
+    return $s[0];
+ }
+
+ $query = $p1 . "i" . $p2;
+
+ $s = test1($query);
+
+  var_dump($s);
+
+ echo "abbrev = " . $s->abbrev . "\n";
+ echo "name = " . $s->name . "\n";
+echo "\n========================\n";
+
 foreach ($s as $key => $value) {
   var_dump($value);
   echo "\n";
 }
+
+return;
+
+$html = '<html><body><span class="text">Hello, World!</span></body></html>';
+
+$doc = new DOMDocument();
+$doc->loadHTML($html);
+
+$xpath = new DOMXPath($doc);
+$span = $xpath->query("//span[@class='text']")->item(0);
+
+echo $span->textContent;
+

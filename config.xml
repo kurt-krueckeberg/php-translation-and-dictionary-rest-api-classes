@@ -16,8 +16,8 @@
                <name>text</name>
             </parm> 
             <input_text>text</input_text>
-            <src_lang>source_lang</src_lang>
-            <dest_lang>target_lang</dest_lang>
+            <qs_src_lang>source_lang</qs_src_lang>
+            <qs_dest_lang>target_lang</qs_dest_lang>
          </query_string_parms>
       </service>
       <service>
@@ -29,24 +29,24 @@
          <query_string_parms>
             <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
             <input_text>text</input_text>
-            <src_lang>source_lang</src_lang>
-            <dest_lang>target_lang</dest_lang>
+            <qs_src_lang>source_lang</qs_src_lang>
+            <qs_dest_lang>target_lang</qs_dest_lang>
          </query_string_parms>
       </service>
      <service>
          <abbrev>m</abbrev>
           <name>microsoft</name>
-          <endpoint> https://api.cognitive.microsofttranslator.com/translate?api-version=3.0</endpoint>
+          <endpoint> https://api.cognitive.microsofttranslator.com/translate</endpoint>
           <headers>application/json</headers>
           <request_type>GET</request_type>
           <query_string_parms>
              <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
              <!-- Here I'm being inconsistenct. This not the name ofthe query parameter, rather its value.
                   And this query parameter is needed by the other services above. -->  
-             <api_version>3.0</api_version>
+             <api-version>3.0</api-version>
              <input_text>text</input_text>
-             <src_lang>from</src_lang>
-             <dest_lang>to</dest_lang>
+             <qs_src_lang>from</qs_src_lang>
+             <qs_dest_lang>to</qs_dest_lang>
           </query_string_parms>
         </service>
    </translation_services>
