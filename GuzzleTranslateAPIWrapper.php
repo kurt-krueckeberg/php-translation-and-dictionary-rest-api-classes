@@ -47,5 +47,5 @@ abstract class GuzzleTranslateAPIWarpper {
 
     abstract public function send_trans_request(); 
 
-    abstract public function get_sentences(); // TODO: Return Generic respons object that implements--what?
+    abstract public function get_sentences(); // Return Derived Iterator class. 
 }
