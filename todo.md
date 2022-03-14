@@ -1,12 +1,20 @@
 # TODO
 
-- Change Ibm.., MST... and Deepl... so that instead of 'function translate()' we implmention these three methods:
+Try to see if I can make the XML entries precisely reflect respective API tranlation specifications; for example, if a query parameter must be fist, capture this in the XML. 
 
-  - prepare_trans_request() or create_guzzle_request();
-  - send_trans_request(); OR send_request($request);
-  - get_sentences();
-      
+- Better understand how to design XML.
+- Understand requirements of each translation service in terms of what is required for each api call. 
+- What is common across services, what differs and how?
+
+For example:
+<queryString>
+  <parm order="first">
+    <name>Key</name>
+    <value>
+
 - [XML Tutorial](https://www.w3schools.com/xml/)
+
+- See [XPath explanions](xpath-explained.md)
 
 - Azure Translation Implementaqtions in PHP
 
@@ -30,14 +38,3 @@
   - [Composer Package Management](https://whoisryosuke.com/blog/2018/how-to-create-a-php-package-for-composer/)
  
   - [Packagist The PHP Package Repository](https://packagist.org/)
-
-- Use general .xml config file with different translators--ibm, deepl, Microsoft.
-
-- Use [XPath](https://www.w3schools.com/XML/xpath_nodes.asp) to get nodes.
-
-- Use Factory Pattern to create sepcific Translator  with input of xml file. See:
-
-  - GOF Book
-  - HEAD First Design Patterns Book 
-
-- Take the documentation in the classses and place it in the README and doc-readme
