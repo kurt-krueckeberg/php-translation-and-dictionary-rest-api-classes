@@ -11,29 +11,35 @@ abstract class GuzzleTranslateAPIWarpper {
 
     static $xpath_part2 = "']/.."; 
 
-    static public function create_implementor(string $xml_fname, string $service)
+    private function get_service(string $xml_fname, string $abbrev)
     {
-       $query = self::$xpath_part1 . $service . self::$xpath_part2;
-
        $simpl = simplexml_load_file($xml_fname);
 
-       $trans_service = $simpl->xpath($query);
+       $query = self::$xpath_part1 . $abbrev . self::$xpath_part2;
+
+       $service = $simpl->xpath($query);
  
+       return $service[0];
+    }
+
+    static public function create_implementor(string $xml_fname, string $abbrev)
+    {
        // Create the Derived Translator classes that use Guzzle
        switch($trans_service) { 
 
          case 'i':
-           $trans = new IbmTranslator($trans_service);
+           $trans = new IbmTranslator($service);
            break;
 
         case 'm':
-           $trans = new MSTranlator($trans_service);
-           break;        case 'M':
+           $trans = new MSTranlator($service);
+           break;      
 
         case 'd':
-           $trans = new DeeplTranslate($trans_service);
+           $trans = new DeeplTranslate($service);
            break;
        }
+
        return $trans;
     }
 
