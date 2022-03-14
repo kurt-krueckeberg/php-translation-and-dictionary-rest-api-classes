@@ -14,7 +14,8 @@ include "FileReader.php";
       return;
   }
   
-  $trans = new Translator($simple_xmlElement); // ($translators, $config['translator');
+R: ($smlFile, $arv[2]);
+  $trans = new Translator($simple_xmlElement); // (
 
   $src_lang = $settings 
   $target_lang = 
