@@ -8,7 +8,9 @@ include "Translate.php";
 include "TranslateAPIWrapper.php";
 
 abstract class Translator extends TranslateAPIWrapper implements Translate {
-    
+
+   private $trans; 
+
    //public function __construct(\SimplXMLElement $el) // XML translation service section
    static public function create__translator(\SimplXMLElement $el) // TODO: Add returns type of Translator. 
    {
@@ -44,10 +46,10 @@ abstract class Translator extends TranslateAPIWrapper implements Translate {
  
    public function translate(string $text, string $source_lang, string $target_lang) // TODO: Return what type of object 
    {
-       prepare_request($text,  $source_lang,  $target_lang);
+       $trans->prepare_request($text,  $source_lang,  $target_lang);
 
-       send_request(); 
+       $trans->send_request(); 
 
-       get_reponse(); // generic response object or iterator?
+       $trans->get_sentences(); // generic response object or iterator?
    }
 }

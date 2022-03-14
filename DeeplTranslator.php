@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 require 'vendor/autoload.php';
 
 include "Translate.php";
-include "TranslateAPIWrapper.php";
+include "GuzzleTranslateAPIWrapper.php";
 
 /*
  * Deepl's Free API is a sentence translation service but not a dictionary.
@@ -20,7 +20,7 @@ include "TranslateAPIWrapper.php";
      'target_lang' => 'JA',
    ];
  */ 
-class DeeplTranslator implements Translate, TranslateAPIWrapper {
+class DeeplTranslator implements Translate, GuzzleTranslateAPIWrapper {
     
    private static $base_uri = 'https://api-free.deepl.com/v2/translate'; 
 
