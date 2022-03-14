@@ -12,6 +12,17 @@ For example:
     <name>Key</name>
     <value>
 
+OR
+
+<parms>
+ <parm type="header">
+   <name>api-key</name>
+   <preset>3.0</preset>
+ <parm type="query">
+ //....
+</parms>
+
+
 - [XML Tutorial](https://www.w3schools.com/xml/)
 
 - See [XPath explanions](xpath-explained.md)
