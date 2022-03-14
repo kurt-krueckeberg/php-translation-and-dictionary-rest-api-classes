@@ -2,6 +2,7 @@
 <sentence_generation>
    <translation_services>
       <service>
+         <abbrev>d</abbrev>
          <name>deepl</name>
          <endpoint>https://api-free.deepl.com/v2/translate</endpoint>
          <headers>application/json</headers>
@@ -14,16 +15,13 @@
             <parm> 
                <name>text</name>
             </parm> 
-
-
             <input_text>text</input_text>
             <src_lang>source_lang</src_lang>
             <dest_lang>target_lang</dest_lang>
-
-
          </query_string_parms>
       </service>
       <service>
+         <abbrev>i</abbrev>
          <name>ibm</name>
          <endpoint></endpoint>
          <headers>application/json</headers>
@@ -36,6 +34,7 @@
          </query_string_parms>
       </service>
      <service>
+         <abbrev>m</abbrev>
           <name>microsoft</name>
           <endpoint> https://api.cognitive.microsofttranslator.com/translate?api-version=3.0</endpoint>
           <headers>application/json</headers>

@@ -1,0 +1,87 @@
+array(3) {
+  [0]=>
+  object(SimpleXMLElement)#2 (5) {
+    ["name"]=>
+    string(5) "deepl"
+    ["endpoint"]=>
+    string(39) "https://api-free.deepl.com/v2/translate"
+    ["headers"]=>
+    string(16) "application/json"
+    ["request_type"]=>
+    string(3) "GET"
+    ["query_string_parms"]=>
+    object(SimpleXMLElement)#5 (4) {
+      ["parm"]=>
+      array(2) {
+        [0]=>
+        object(SimpleXMLElement)#6 (2) {
+          ["name"]=>
+          string(18) "authentication_key"
+          ["value"]=>
+          string(39) "7482c761-0429-6c34-766e-fddd88c247f9:fx"
+        }
+        [1]=>
+        object(SimpleXMLElement)#7 (1) {
+          ["name"]=>
+          string(4) "text"
+        }
+      }
+      ["input_text"]=>
+      string(4) "text"
+      ["src_lang"]=>
+      string(11) "source_lang"
+      ["dest_lang"]=>
+      string(11) "target_lang"
+    }
+  }
+  [1]=>
+  object(SimpleXMLElement)#3 (5) {
+    ["name"]=>
+    string(3) "ibm"
+    ["endpoint"]=>
+    object(SimpleXMLElement)#5 (0) {
+    }
+    ["headers"]=>
+    string(16) "application/json"
+    ["request_type"]=>
+    string(3) "GET"
+    ["query_string_parms"]=>
+    object(SimpleXMLElement)#7 (4) {
+      ["authentication_key"]=>
+      string(39) "7482c761-0429-6c34-766e-fddd88c247f9:fx"
+      ["input_text"]=>
+      string(4) "text"
+      ["src_lang"]=>
+      string(11) "source_lang"
+      ["dest_lang"]=>
+      string(11) "target_lang"
+    }
+  }
+  [2]=>
+  object(SimpleXMLElement)#4 (5) {
+    ["name"]=>
+    string(9) "microsoft"
+    ["endpoint"]=>
+    string(72) " https://api.cognitive.microsofttranslator.com/translate?api-version=3.0"
+    ["headers"]=>
+    string(16) "application/json"
+    ["request_type"]=>
+    string(3) "GET"
+    ["query_string_parms"]=>
+    object(SimpleXMLElement)#7 (6) {
+      ["authentication_key"]=>
+      string(39) "7482c761-0429-6c34-766e-fddd88c247f9:fx"
+      ["comment"]=>
+      object(SimpleXMLElement)#5 (0) {
+      }
+      ["api_version"]=>
+      string(3) "3.0"
+      ["input_text"]=>
+      string(4) "text"
+      ["src_lang"]=>
+      string(4) "from"
+      ["dest_lang"]=>
+      string(2) "to"
+    }
+  }
+}
