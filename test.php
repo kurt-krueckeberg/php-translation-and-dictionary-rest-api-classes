@@ -34,13 +34,17 @@ declare(strict_types=1);
 
  echo "abbrev = " . $s->abbrev . "\n";
  echo "name = " . $s->name . "\n";
+
 echo "\n========================\n";
 
 foreach ($s as $key => $value) {
-  var_dump($value);
-  echo "\n";
+  echo "Key of $key has node-content of " . $value . "\n";
 }
 
+foreach ($s->query_string_parms[0] as $key => $value) {
+
+  echo "Key of $key has node-content of " . $value . "\n";
+}
 return;
 
 $html = '<html><body><span class="text">Hello, World!</span></body></html>';

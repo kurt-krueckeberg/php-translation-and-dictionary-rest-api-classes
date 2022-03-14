@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Decide on a consistenct form that the implmentation class can use in the same manner -->
 <sentence_generation>
    <translation_services>
       <service>

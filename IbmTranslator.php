@@ -27,15 +27,29 @@ class IbmTranslator extends GuzzleTranslateAPIWrapper {
    private const qs_auth_key = 'auth_key';
    private const qs_source_lang = 'source_lang';
 
-   private $auth_key; 
+   private $auth_key;  
 
-   public function __construct($auth_key) 
+  /*
+   TODO: I need a custom, nested class that knows how to exract the required settings from $this->settings:
+
+ $this->settings->endpoint
+ $this->settings->headers
+ $this->settings->request_type
+ $this->settings->query_string_parms[0]->input_text                      
+ $this->settings->query_string_parms[0]->qs_src_lang
+ $this->settings->query_string_parms[0]->qs_dest_lang
+
+ */
+
+   private $settings;
+
+   public function __construct($xml_section) // input array of xml section.
    {
-      $this->auth_key = $auth_key;
+     $this->settings = $xml_Section;
 
-      $this->client = new Client(array('base_uri' => self::$base_uri));
+     $this->client = new Client(array('base_uri' => $this->settings->endpoint));
 
-      $this->header = "accept: application/json"; 
+     $this->header = $this->settings->headers; // "accept: application/json"; 
    }
    /*
      translate() returns an array of translated sentences, in which each element has two properties:
