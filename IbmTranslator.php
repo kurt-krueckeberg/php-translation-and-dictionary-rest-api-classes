@@ -4,7 +4,6 @@ use GuzzleHttp\Client;
 
 require 'vendor/autoload.php';
 
-include "Translate.php";
 include "GuzzleTranslateAPIWrapper.php";
 
 /*
@@ -19,7 +18,7 @@ include "GuzzleTranslateAPIWrapper.php";
      'target_lang' => 'JA',
    ];
  */ 
-class IbmTranslator implements Translate, GuzzleTranslateAPIWrapper {
+class IbmTranslator extends GuzzleTranslateAPIWrapper {
     
    private static $base_uri = 'https://api-free.deepl.com/v2/translate'; 
 
@@ -55,6 +54,7 @@ class IbmTranslator implements Translate, GuzzleTranslateAPIWrapper {
        } 
    */
  
+   // todo: break this into the three methods -- prepare_trans_request(), send_trans_request and get_sentences()
    public function translate(string $text, string $source_lang, string $target_lang) : string
    {
       try {

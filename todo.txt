@@ -1,6 +1,10 @@
 # TODO
 
-- Factor out any redundant like creating the Guzzle client variable and its creaation.
+- Change Ibm.., MST... and Deepl... so that instead of 'function translate()' we implmention these three methods:
+
+  - prepare_trans_request() or create_guzzle_request();
+  - send_trans_request(); OR send_request($request);
+  - get_sentences();
       
 - [XML Tutorial](https://www.w3schools.com/xml/)
 

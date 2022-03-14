@@ -5,51 +5,39 @@ use GuzzleHttp\Client;
 require 'vendor/autoload.php';
 
 include "Translate.php";
-include "TranslateAPIWrapper.php";
+include "GuzzleTranslateAPIWrapper.php";
 
 class Translator implements Translate {
 
-   private $trans; 
+   private $api_impl; 
 
    //public function __construct(\SimplXMLElement $el) // XML translation service section
-   public function __construct(\SimplXMLElement $el) // TODO: Add returns type of Translator. 
+   public function __construct(string $fxml, string $service) // TODO: Add returns type of Translator. 
    {
-       // Create the Derived Translator classes that use Guzzle
-       switch($el->name) { 
-
-         case 'I':
-           $trans = new IbmXXXTranslator($el);
-           break;
-
-        case 'M':
-           $trans = new MSTranlator($el);
-           break;        case 'M':
-
-           $trans = new DeeplTranslate($el);
-           break;
-       }
-       return $trans;
+      $this->api_iml = GuzzleTranslateAPIWarpper::create_implementor($xml_fname, $service);
    }
 
    /*
-     translate() returns an array of translated sentences, in which each element has two properties:
+     Translate() returns an array of translated sentences, in which each element has two properties:
+
       1. The detected_source_language - which, of course, we required to specified, so there is nothing to 'detect'.
       2. "text" - the translated text in teh target lanauge.
+
      Client code can iterate over this array like this:
-       $translations = $tr->translate($input_sentence, $source_lang, $target_lang);
+       $api_impllations = $tr->translate($input_sentence, $source_lang, $target_lang);
             
-       foreach($translations as $translation) {
+       foreach($api_impllations as $api_impllation) {
  
-           do_something($de_sentence, $translation->text);
+           do_something($de_sentence, $api_impllation->text);
        } 
    */
  
    public function translate(string $text, string $source_lang, string $target_lang) // TODO: Return what type of object 
    {
-       $trans->prepare_request($text,  $source_lang,  $target_lang);
+       $api_impl->prepare_trans_request($text,  $source_lang,  $target_lang);
 
-       $trans->send_request(); 
+       $api_impl->send_trans_request(); 
 
-       $trans->get_sentences(); // generic response object or iterator?
+       return $api_impl->get_sentences(); // generic response object or iterator?
    }
 }

@@ -2,11 +2,30 @@
 declare(strict_types=1);
 
 // Generic rest translation API wrapper for guzzle/http users.
-interface GuzzleTranslateAPIWarpper {
+abstract class GuzzleTranslateAPIWarpper {
     
-    public function prepare_request(string $text, string $source_lang, string $target_lang);
+    static public function create_implementor(string $xml_fname, string $service)
+    {
+       // Create the Derived Translator classes that use Guzzle
+       switch($el->name) { 
 
-    public function send_request(); 
+         case 'I':
+           $trans = new IbmXXXTranslator($el);
+           break;
 
-    public function get_sentences(); // TODO: Return Generic respons object that implements--what?
+        case 'M':
+           $trans = new MSTranlator($el);
+           break;        case 'M':
+
+           $trans = new DeeplTranslate($el);
+           break;
+       }
+       return $trans;
+    }
+
+    abstract public function prepare_trans_request(string $text, string $source_lang, string $target_lang);
+
+    abstract public function send_trans_request(); 
+
+    abstract public function get_sentences(); // TODO: Return Generic respons object that implements--what?
 }

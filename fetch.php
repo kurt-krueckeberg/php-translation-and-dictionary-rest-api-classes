@@ -14,25 +14,21 @@ include "FileReader.php";
       return;
   }
   
-R: ($smlFile, $arv[2]);
-  $trans = new Translator($simple_xmlElement); // (
+  $rc = check_args($xmlFile, $argv[2]);
 
-  $src_lang = $settings 
-  $target_lang = 
+  $trans = new Translator($xmlFile, $argv[2]);
 
   $fetcher = new LeipzigSentenceFetcher($config['leipzig']['corpus']);
 
- //--$tr = new DeeplTranslator($config['deepl']['apikey']);
+  $creator = new WebPageCreator($argv[1]); 
 
- $creator = new WebPageCreator($argv[1]); 
-
- $file =  new FileReader($config['leipzig']['input_file']);
+  $file =  new FileReader($config['leipzig']['input_file']);
  
- try {
+  try {
 
     foreach ($file as $de) {
    
-      // TODO: Look up word in my dictionary database rom
+       // TODO: MS Trnaslator Azure Service has a dictionary look up--IBM, too?
    
        $creator->write("<strong>$de</strong>", "&nbsp;"); 
 
@@ -52,7 +48,7 @@ R: ($smlFile, $arv[2]);
 
             $translations = $trans->translate($de_sentence,  $src_lang, $target_lang);
             
-            $creator->write($de_sentence, $translations[0]->text);
+            $creator->write($de_sentence, $translations[0]->text); // <-- todo: Get rid of '[0]' and invent a general return type.
        }
     }
 

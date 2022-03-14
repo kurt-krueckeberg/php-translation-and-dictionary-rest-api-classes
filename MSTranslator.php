@@ -5,10 +5,9 @@ use GuzzleHttp\Client;
 
 require 'vendor/autoload.php';
 
-include "Translate.php";
 include "GuzzleTranslateAPIWrapper.php";
 
-class MSTranslator implements Translate, GuzzleTranslateAPIWrapper {
+class MSTranslator extends GuzzleTranslateAPIWrapper {
 
     private static string $subscriptionKey = "YOUR_SUBSCRIPTION_KEY" ;
 
@@ -38,8 +37,8 @@ class MSTranslator implements Translate, GuzzleTranslateAPIWrapper {
 
       $this->header = "accept: application/json"; 
     } 
-
-    public function translate(string $text, string $source_lang, string $target_lang) : string
+    // todo: break this into the three methods -- prepare_trans_request(), send_trans_request and get_sentences()
+    public function prepare_trans_request(string $text, string $source_lang, string $target_lang) : string
     {
       try {
 
