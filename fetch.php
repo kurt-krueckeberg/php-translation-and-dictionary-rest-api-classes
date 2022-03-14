@@ -4,7 +4,7 @@
 include "leipzig-config.php";
 include "deepl-config.php";
 include "LeipzigSentenceFetcher.php";
-include "DeeplTranslator.php";
+include "Translator.php";
 include "WebPageCreator.php";
 include "FileReader.php";
 
@@ -14,7 +14,7 @@ include "FileReader.php";
       return;
   }
   
-  $trans = create_translator($translators, $config['translator');
+  $trans = new Translator($simple_xmlElement); // ($translators, $config['translator');
 
   $src_lang = $settings 
   $target_lang = 

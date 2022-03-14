@@ -12,7 +12,7 @@ class Translator implements Translate {
    private $trans; 
 
    //public function __construct(\SimplXMLElement $el) // XML translation service section
-   static public function create__translator(\SimplXMLElement $el) // TODO: Add returns type of Translator. 
+   public function __construct(\SimplXMLElement $el) // TODO: Add returns type of Translator. 
    {
        // Create the Derived Translator classes that use Guzzle
        switch($el->name) { 
