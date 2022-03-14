@@ -10,13 +10,13 @@ include "FileReader.php";
 
   if ($argc < 2) {
   
-      echo "Enter name of the output .html file\n";
+      echo "Enter name of translation service (i for IBM, m for Microsoft or d for DEEPL), and the name of the output HTML file (omit .html)\n";
       return;
   }
   
-  $rc = check_args($xmlFile, $argv[2]);
+  $rc = check_args($argv);
 
-  $trans = new Translator($xmlFile, $argv[2]);
+  $trans = new Translator("config.xml", $argv[1]);
 
   $fetcher = new LeipzigSentenceFetcher($config['leipzig']['corpus']);
 
