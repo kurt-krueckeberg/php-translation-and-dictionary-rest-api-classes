@@ -7,7 +7,7 @@ require 'vendor/autoload.php';
 
 include "GuzzleTranslateAPIWrapper.php";
 
-class MSTranslator extends GuzzleTranslateAPIWrapper {
+class AzureTranslator extends GuzzleTranslateAPIWrapper {
 
     private static string $subscriptionKey = "YOUR_SUBSCRIPTION_KEY" ;
 
@@ -21,23 +21,47 @@ class MSTranslator extends GuzzleTranslateAPIWrapper {
     private static $qs_api_version = "api-version"; // Required query parameter. USE: "3.0"
     private static $qs_target_lang = 'to';         // Required query parameter
     private static $qs_source_lang = 'from';
-    private static $qs_text_type   = 'plain';  // 'plain' or 'html'
 
-   
-    private function build_header($bearerToken) // Make this a lambda
+    private function com_create_guid() 
     {
-          return  [
-            'Content-Type' => 'application/json',
-            'Authorization' => 'Bearer ' . $bearerToken,
+        return sprintf( '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+            mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ),
+            mt_rand( 0, 0xffff ),
+            mt_rand( 0, 0x0fff ) | 0x4000,
+            mt_rand( 0, 0x3fff ) | 0x8000,
+            mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff )
+        );
+    }
+  
+    private function build_header($key, $region) 
+    {
+          $headers =  [
+                'Content-type' => 'application/json; UTF-8',
+                'Content-length' =>  strlen($content),
+                'Ocp-Apim-Subscription-Key' => '$key',
+                'Ocp-Apim-Subscription-Region' => '$region' ,
+                'X-ClientTraceId' => '' , $this->com_create_guid()
             ];
-    }  
-    https://docs.guzzlephp.org/en/stable/request-options.html#auth
-    public function __construct(string $key, string $location)
-    {
-        
-      $this->client = new Client(array('base_uri' => self::$base_uri), 'headers' => $this->build_header($bearerToken) );
 
-      $this->header = "accept: application/json"; 
+           return $headers;
+    }  
+/*
+    // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
+    // http://php.net/manual/en/function.stream-context-create.php
+    $options = array (
+        'http' => array (
+            'header' => $headers,
+            'method' => 'POST',
+            'content' => $content
+        )
+    );
+*/
+
+    public function __construct(string $base_uri, string $key, string $region)
+    {
+       $headers = $this->build_headers($key, $region);
+ 
+       $this->client = new Client(array('base_uri' => $base_uri), array('headers' => $headers)));
     } 
 
     // todo: break this into the three methods -- prepare_trans_request(), send_trans_request and get_sentences()
