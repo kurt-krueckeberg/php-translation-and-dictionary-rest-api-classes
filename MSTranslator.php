@@ -31,7 +31,7 @@ class MSTranslator extends GuzzleTranslateAPIWrapper {
             'Authorization' => 'Bearer ' . $bearerToken,
             ];
     }  
-
+    https://docs.guzzlephp.org/en/stable/request-options.html#auth
     public function __construct(string $key, string $location)
     {
         
