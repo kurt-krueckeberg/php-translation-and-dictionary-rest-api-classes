@@ -23,20 +23,23 @@ class MSTranslator extends GuzzleTranslateAPIWrapper {
     private static $qs_source_lang = 'from';
     private static $qs_text_type   = 'plain';  // 'plain' or 'html'
 
+   
+    private function build_header($bearerToken) // Make this a lambda
+    {
+          return  [
+            'Content-Type' => 'application/json',
+            'Authorization' => 'Bearer ' . $bearerToken,
+            ];
+    }  
+
     public function __construct(string $key, string $location)
     {
-      // Example Headers. They can also accompnay the 
-      // ...->request(...) call below.
-      $headers = [ 'headers' => [
-                   'User-Agent' => 'testing/1.0',
-                   'Accept'     => 'application/json',
-                   'X-Foo'      => ['Bar', 'Baz']
-                 ]];
-                
-      $this->client = new Client(array('base_uri' => self::$base_uri), $headers); 
+        
+      $this->client = new Client(array('base_uri' => self::$base_uri), 'headers' => $this->build_header($bearerToken) );
 
       $this->header = "accept: application/json"; 
     } 
+
     // todo: break this into the three methods -- prepare_trans_request(), send_trans_request and get_sentences()
     public function prepare_trans_request(string $text, string $source_lang, string $target_lang) : string
     {
