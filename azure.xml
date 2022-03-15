@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Decide on a consistenct form that the implmentation class can use in the same manner -->
+<sentence_generation>
+   <translation_services>
+    <service>
+         <abbrev>m</abbrev>
+          <name>microsoft</name>
+          <endpoint> https://api.cognitive.microsofttranslator.com/translate</endpoint>
+          <headers>
+             application/json</headers>
+          <request_type>GET</request_type>
+          <query_string_parms>
+             <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
+             <!-- Here I'm being inconsistenct. This not the name ofthe query parameter, rather its value.
+                  And this query parameter is needed by the other services above. -->  
+             <api-version>3.0</api-version>
+             <input_text>text</input_text>
+             <qs_src_lang>from</qs_src_lang>
+             <qs_dest_lang>to</qs_dest_lang>
+          </query_string_parms>
+        </service>
+   </translation_services>
+   <sentence_services>
+     <service>
+       <corpus>deu_news_2012_1M</corpus>
+       <limit>5</limit>
+     </service>  
+   </sentence_services>
+</sentence_generation>

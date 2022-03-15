@@ -11,6 +11,20 @@ Try to see if I can make the XML entries precisely reflect respective API tranla
 ### Examples
 
 ```xml
+<authentication means="header">
+  <key>          </key>
+</authentication>
+```
+
+```xml
+<authentication means="query">
+  <key>          </key>
+</authentication>
+```
+
+
+
+```xml
 <queryString>
   <parm order="first">
     <name>Key</name>

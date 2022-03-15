@@ -8,7 +8,7 @@
          <endpoint>https://api-free.deepl.com/v2/translate</endpoint>
          <headers>application/json</headers>
          <request_type>GET</request_type>
-         <query_string_parms>
+         <query_string>
             <parm> 
                <name>authentication_key</name>
                <value>7482c761-0429-6c34-766e-fddd88c247f9:fx</value>
@@ -17,9 +17,9 @@
                <name>text</name>
             </parm> 
             <input_text>text</input_text>
-            <qs_src_lang>source_lang</qs_src_lang>
-            <qs_dest_lang>target_lang</qs_dest_lang>
-         </query_string_parms>
+            <src_lang>source_lang</src_lang>
+            <dest_lang>target_lang</dest_lang>
+         </query_string>
       </service>
       <service>
          <abbrev>i</abbrev>
@@ -27,28 +27,31 @@
          <endpoint></endpoint>
          <headers>application/json</headers>
          <request_type>GET</request_type>
-         <query_string_parms>
+         <query_string>
             <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
             <input_text>text</input_text>
-            <qs_src_lang>source_lang</qs_src_lang>
-            <qs_dest_lang>target_lang</qs_dest_lang>
-         </query_string_parms>
+            <src_lang>source_lang</src_lang>
+            <dest_lang>target_lang</dest_lang>
+         </query_string>
       </service>
      <service>
          <abbrev>m</abbrev>
           <name>microsoft</name>
           <endpoint> https://api.cognitive.microsofttranslator.com/translate</endpoint>
-          <headers>application/json</headers>
+          <headers>
+             <content-type>application/json;UTF-8</content-type>
+
+          </headers>
           <request_type>GET</request_type>
-          <query_string_parms>
+          <query_string>
              <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
              <!-- Here I'm being inconsistenct. This not the name ofthe query parameter, rather its value.
                   And this query parameter is needed by the other services above. -->  
              <api-version>3.0</api-version>
              <input_text>text</input_text>
-             <qs_src_lang>from</qs_src_lang>
-             <qs_dest_lang>to</qs_dest_lang>
-          </query_string_parms>
+             <src_lang>from</src_lang>
+             <dest_lang>to</dest_lang>
+          </query_string>
         </service>
    </translation_services>
    <sentence_services>
