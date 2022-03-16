@@ -2,11 +2,13 @@
 
 ## Design
 
-Try to see if I can make the XML entries precisely reflect respective API tranlation specifications; for example, if a query parameter must be fist, capture this in the XML. 
+Make the XML entries "precisely" (at least do a 'first darft') reflect the respective API tranlation service's pecifications.
+In  the process, try to:
 
 - Better understand how to design XML.
 - Understand requirements of each translation service in terms of what is required for each api call. 
 - What is common across services, what differs and how?
+- Make code driven by the xml settings as unintelligent as possible.
 
 ### Examples
 
@@ -21,8 +23,6 @@ Try to see if I can make the XML entries precisely reflect respective API tranla
   <key>          </key>
 </authentication>
 ```
-
-
 
 ```xml
 <queryString>
@@ -76,7 +76,7 @@ PHP's SimpleXMLElement has an xpath() function.
 
 ## Azure Translator
 
-### My Settings
+### My Azure Settings
 
  ------------------------------------------------------------------
  Setting          Value
@@ -91,8 +91,7 @@ PHP's SimpleXMLElement has an xpath() function.
  url        
  ---------------- -------------------------------------------------
 
-
-[Documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-reference)
+[Azure Translator 3.0 Documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ### Translation Implementaqtions in PHP
 
@@ -103,7 +102,7 @@ PHP's SimpleXMLElement has an xpath() function.
 
   - [CURL Implementation](https://www.aw6.de/azure/)
 
-## Composer
+## PHP Composer
 
 - Make this repositories composer-compliant, so that you can install it using composer and autoload its classes. 
 

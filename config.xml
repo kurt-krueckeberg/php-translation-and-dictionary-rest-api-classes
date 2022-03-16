@@ -2,6 +2,46 @@
 <!-- Decide on a consistenct form that the implmentation class can use in the same manner -->
 <sentence_generation>
    <translation_services>
+      <!-- NOTE: New xml settings in the Micrsoft service are based upon reading Microsoft Azure Translotr 3.0 specification -->
+      <service>
+          <abbrev>m</abbrev>
+          <name>microsoft</name>
+          <baseurl>https://api-nam.cognitive.microsofttranslator.com<baseurl>
+          <endpoint>translate?api-version=3.0<endpoint>
+          <rest_method>POST</rest_method>
+          <headers>
+             <header>
+                <name>Ocp-Apim-Subscription-Key</name>
+                <value>My Key</value>
+             </header>    
+             <header>
+                 <name>Ocp-Apim-Subscription-Region</name>
+                 <value>????</value> 
+              </header>
+              <header>
+                 <name>Content-Type</name>
+                 <value>application/json;charset=UTF-8</value> 
+              </header>
+              <header>
+                 <name>Content-Length</name>
+              </header>
+              <header>
+              </header>
+          </headers>
+          <inputtext>
+              <location>body</location>
+              <parm_name>Text???</parm_name> 
+              <format>json</format>
+          </inputtext>  
+          </body>
+          <query> <!-- Here the XML element name will be used for the Query String parameter's nmme. The 
+                       text() node will be the paraqmeter's value. --> 
+             <from>from</from>
+             <to>to</to>
+             <textText>plain</textType>
+             <includeSentenceLength>true</includeSentenceLength>
+          </query>
+       </service>
       <service>
          <abbrev>d</abbrev>
          <name>deepl</name>
@@ -34,25 +74,6 @@
             <dest_lang>target_lang</dest_lang>
          </query_string>
       </service>
-     <service>
-         <abbrev>m</abbrev>
-          <name>microsoft</name>
-          <endpoint> https://api.cognitive.microsofttranslator.com/translate</endpoint>
-          <headers>
-             <content-type>application/json;UTF-8</content-type>
-
-          </headers>
-          <request_type>GET</request_type>
-          <query_string>
-             <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
-             <!-- Here I'm being inconsistenct. This not the name ofthe query parameter, rather its value.
-                  And this query parameter is needed by the other services above. -->  
-             <api-version>3.0</api-version>
-             <input_text>text</input_text>
-             <src_lang>from</src_lang>
-             <dest_lang>to</dest_lang>
-          </query_string>
-        </service>
    </translation_services>
    <sentence_services>
      <service>
