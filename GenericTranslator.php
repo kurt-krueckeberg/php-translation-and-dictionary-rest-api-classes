@@ -13,6 +13,7 @@ class Translator implements Translate {
     static $queryEnd = "']/.."; 
 
     private $xml; 
+    private $client;
    
     private function get_service(string $xml_fname, string $abbrev)
     {
@@ -35,11 +36,13 @@ class Translator implements Translate {
        */ 
       $this->xml = $this->get_service($fxml, $service); 
 
-      $this->headers = $this->get_headers($this->xml); 
+      $headers = $this->get_headers($this->xml); 
 
-      $this->query_string = $this->get_query($this->xml);
+      $query = $this->get_query($this->xml);
+     
+      $body = $this->get_body(...);  
 
-      $this->guzzle = new Guzzle(..$this->headers, ... $this->query_string);
+      $this->client = new Client(array('base_uri' => $this->base_url(), 'headers' => $headers, 'query' => $query); 
    }
 
    public function translate(string $text, string $source_lang, string $target_lang) // TODO: Return what type of sentences object should be returned?
