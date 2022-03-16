@@ -1,5 +1,5 @@
 <?php
-   $simp = simplexml_load_file("test.xml");
+   $simp = simplexml_load_file("config.xml");
 
    $q ="/sentence_generation/translation_services/service/abbrev[normalize-space() = 'm']/.."; 
 
