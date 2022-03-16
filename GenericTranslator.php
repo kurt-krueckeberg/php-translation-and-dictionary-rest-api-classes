@@ -12,8 +12,11 @@ class Translator implements Translate {
 
     static $querye = "']/.."; 
 
-    private $xml; 
+    private $endpoint; 
+    
     private $client;
+    
+    private $request_method;
    
     private function get_service(string $xml_fname, string $abbrev)
     {
@@ -31,14 +34,24 @@ class Translator implements Translate {
    {
       //todo: read up on SimpleXMLElement
        
-      $this->xml = $this->get_service($fxml, $service); 
+      $this->service = $this->get_service($fxml, $service); 
 
-      $headers = $this->xml->headers; 
-
-      $this->xml->baseurl;
-      $this->xml->endpoint;
-      $this->xml->request_method;
-      $this->xml->query_string;
+      foreach($service->headers->header as $header) {
+       
+         echo "Header name: value = " . $header->name . ": ". $header->value . "\n";
+       
+       }
+   
+      $baseurl = $this->service->baseurl;
+      
+      $this->endpoint = $xml->service->endpoint;
+      
+      $this->request_method = $this->service->request_method;
+      
+      foreach ($this->service->query_string as $qs) {
+          
+      }
+      
            
       // $body = $this->get_body(...);  
 

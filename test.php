@@ -6,11 +6,21 @@
    $service = $simp->xpath($q);
 
    $s = $service[0];
-   var_dump($s->abbrev);
+   
+   echo $s->abbrev;
+   
    echo "\n\n";
-   var_dump($s->name);
+   
+   echo $s->name;
+   
    echo "\n\n";
-   var_dump($s->headers);
+   
+   foreach($s->headers->header as $header) {
+       
+       echo "Header name: value = " . $header->name . ": ". $header->value . "\n";
+       
+    }
+   
     return;
   /* 
     Use SimpleXML to retieve:
