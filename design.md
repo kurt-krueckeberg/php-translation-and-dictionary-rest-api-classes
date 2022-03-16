@@ -10,6 +10,8 @@ In  the process, try to:
 - What is common across services, what differs and how?
 - Make code driven by the xml settings as unintelligent as possible.
 
+The goal is xml-driven that will be put in Translator.php code, and the elimnation of GuzzleAPIWrapper entirely.
+
 ### Examples
 
 ```xml
@@ -101,6 +103,14 @@ PHP's SimpleXMLElement has an xpath() function.
     - Mainly just the file [Tranlate.php](https://github.com/matthiasnoback/microsoft-translator/blob/master/src/MatthiasNoback/MicrosoftTranslator/ApiCall/Translate.php)
 
   - [CURL Implementation](https://www.aw6.de/azure/)
+
+## Modern AJAX
+
+- [Making HTTP Requests from Javascript](https://drstearns.github.io/tutorials/ajax/)
+
+- [AJAX with Fetch or with XHR](https://code.tutsplus.com/en/articles/create-a-javascript-ajax-post-request-with-and-without-jquery--cms-39195)
+
+- [Five Ways to Make HTTP Requests in PHP](https://www.twilio.com/blog/5-ways-to-make-http-requests-in-php)
 
 ## PHP Composer
 
