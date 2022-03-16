@@ -48,7 +48,7 @@ class AzureTranslator extends GuzzleTranslateAPIWrapper {
 /*
     // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
     // http://php.net/manual/en/function.stream-context-create.php
-    $options = array (
+    $options = array ( <--- Not necessary!!
         'http' => array (
             'header' => $headers,
             'method' => 'POST',
@@ -61,7 +61,7 @@ class AzureTranslator extends GuzzleTranslateAPIWrapper {
     {
        $headers = $this->build_headers($key, $region);
  
-       $this->client = new Client(array('base_uri' => $base_uri), array('headers' => $headers)));
+       $this->client = new Client(array('base_uri' => $base_uri), array('headers' => $headers));
     } 
 
     // todo: break this into the three methods -- prepare_trans_request(), send_trans_request and get_sentences()
@@ -89,7 +89,7 @@ class AzureTranslator extends GuzzleTranslateAPIWrapper {
 
          $obj = json_decode($contents);
     
-         return $obj->???????; // TODO: Change per Microsoft docs
+         return $obj; // TODO: Return an array of translated "sentences".
       
       } catch (RequestException $e) { // We get here if response code from REST server is > 400, like  404 response
 

@@ -16,18 +16,25 @@
              </header>    
              <header>
                  <name>Ocp-Apim-Subscription-Region</name>
-                 <value>????</value> 
+                 <value>"YOUR_SUBSCRIPTION_KEY"<value> 
               </header>
               <header>
                  <name>Content-Type</name>
-                 <value>application/json;charset=UTF-8</value> 
+                 <value>application/json; charset=UTF-8</value> 
               </header>
               <header>
                  <name>Content-Length</name>
+                 <handler>length</hanlder> <!-- Signifies that the code should calculate the strlen($input_text) of the enire array (or of each array element?) 
+
+                    The following limitations apply to the json array with the input text:
+
+                        The array can have at most 100 elements.
+                        The entire text included in the request cannot exceed 10,000 characters including spaces.
+                    -->
               </header>
           </headers>
           <inputtext>
-              <how_passed>body</how_passed>
+              <location>body</location>
               <parmeter_name>Text???</parmeter_name><!-- "Text:   -->
               <format>json</format>
           </inputtext>  
@@ -36,7 +43,7 @@
              <from>from</from>
              <to>to</to>
              <textText>plain</textType>
-             <includeSentenceLength>true</includeSentenceLength>
+             <includeSentenceLength????????>true</includeSentenceLength>
           </query>
        </service>
       <service>
@@ -46,7 +53,7 @@
          <headers>application/json</headers>
          <rest_method>GET</rest_method>
          <inputtext>
-              <how_passed>query</how_passed>
+              <location>query</location>
               <parmeter_name>text</parmeter_name>
               <format>???? url_encode???</format>
          </inputtext>
