@@ -29,20 +29,20 @@ class Translator implements Translate {
 
    public function __construct(string $fxml, string $service) 
    {
-      /* 
-        Use SimpleXML to retieve:
-        - headers
-        - query string parameters
-       */ 
+      //todo: read up on SimpleXMLElement
+       
       $this->xml = $this->get_service($fxml, $service); 
 
-      $headers = $this->get_headers($this->xml); 
+      $headers = $this->xml->headers; 
 
-      $query = $this->get_query($this->xml);
-     
-      $body = $this->get_body(...);  
+      $this->xml->baseurl;
+      $this->xml->endpoint;
+      $this->xml->request_method;
+      $this->xml->query_string;
+           
+      // $body = $this->get_body(...);  
 
-      $this->client = new Client(array('base_uri' => $this->base_url(), 'headers' => $headers, 'query' => $query); 
+     //++ $this->client = new Client(array('base_uri' => $this->base_url(), 'headers' => $headers, 'query' => $query); 
    }
 
    public function translate(string $text, string $source_lang, string $target_lang) // TODO: Return what type of sentences object should be returned?
