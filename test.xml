@@ -42,36 +42,6 @@
               </header>
           </headers>
       </service>
-      <service>
-         <abbrev>d</abbrev>
-         <name>deepl</name>
-         <endpoint>https://api-free.deepl.com/v2/translate</endpoint>
-         <headers>application/json</headers>
-         <request_method>GET</request_method>
-         <inputtext>
-              <location>query</location>
-              <parmeter_name>text</parmeter_name>
-              <format>???? url_encode???</format>
-         </inputtext>
-         <query_string>
-            <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
-            <from>source_lang</from>
-            <to>target_lang</to>
-         </query_string>
-      </service>
-      <service>
-         <abbrev>i</abbrev>
-         <name>ibm</name>
-         <endpoint></endpoint>
-         <headers>application/json</headers>
-         <request_type>GET</request_type>
-         <query_string>
-            <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
-            <input_text>text</input_text>
-            <src_lang>source_lang</src_lang>
-            <dest_lang>target_lang</dest_lang>
-         </query_string>
-      </service>
    </translation_services>
    <sentence_services>
      <service>

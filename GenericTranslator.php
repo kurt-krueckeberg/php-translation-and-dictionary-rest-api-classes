@@ -8,9 +8,9 @@ include "Translate.php";
 
 class Translator implements Translate {
 
-    static $queryStart = "/sentence_generation/translation_services/service/abbrev[normalize-space() = '";
+    static $querys = "/sentence_generation/translation_services/service/abbrev[normalize-space() = '";
 
-    static $queryEnd = "']/.."; 
+    static $querye = "']/.."; 
 
     private $xml; 
     private $client;
@@ -19,7 +19,7 @@ class Translator implements Translate {
     {
        $simp = simplexml_load_file($xml_fname);
 
-       $query = self::$queryStart . $abbrev . self::$queryEnd;
+       $query = self::$quers . $abbrev . self::$querye;
 
        $service = $simp->xpath($query);
  
