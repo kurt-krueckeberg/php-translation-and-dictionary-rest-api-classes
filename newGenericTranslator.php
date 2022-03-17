@@ -22,7 +22,7 @@ class Translator implements Translate {
     
     private $query_str = array(); // query string array that will be pass to guzzle client
 
-    private $client; // <-- new \Guzzle\Client
+    private $client; // Guzzle\Client
    
    static private function get_service(string $xml_fname, string $abbrev)
    {
@@ -64,8 +64,6 @@ class Translator implements Translate {
    {
       $this->service = $service; // ?
       
-      $x = array();
-
       foreach($service->headers->header as $header) 
           
       $this->headers[(string) $header->name] = (string) $header->value; 
@@ -81,7 +79,7 @@ class Translator implements Translate {
           $this->query_str[(string) $qs->name] = (string) $qs->value;
            
 
-     //++ $this->client = new Client(array('base_uri' => $this->base_url(), 'headers' => $headers, 'query' => $query); 
+      $this->client = new Client(array('base_uri' => $this->base_url, 'headers' => $headers, 'query' => $query)); 
    }
 
    // Template method that call protected method overriden by derived classes
@@ -95,6 +93,12 @@ class Translator implements Translate {
        $request = new Request();  
 
        $this->prepare_request($request);
+
+      /*
+          todo:
+              Add $this->endpoint to get request call.
+              Add $this->method to get request call.
+       */
        
        //++$this->client->send(); 
 
