@@ -1,109 +1,117 @@
 <?php
+declare(strict_types=1);
+use GuzzleHttp\Client;
 
+require 'vendor/autoload.php';
 
-class Test {
+include "Translate.php";
 
-    static $xquerys = "/sentence_generation/translation_services/service/abbrev[normalize-space() = '";
+class Translator implements Translate {
 
-    static $xquerye = "']/.."; 
+    static $xqs = "/sentence_generation/translation_services/service/abbrev[normalize-space() = '";
+
+    static $xqe = "']/.."; 
+
+    private $service; 
 
     private $endpoint; 
-    
-    private $client; // <-- new \Guzzle\Client
-    
+
     private $request_method;
 
-    private $headers = array();
+    private $headers = array(); // headers array that will be pass to guzzle client
     
-    private $query_str = array();
+    private $query_str = array(); // query string array that will be pass to guzzle client
+
+    private $client; // Guzzle\Client
    
-    private function get_service(string $xml_fname, string $abbrev)
-    {
-       $simp = simplexml_load_file($xml_fname);
-       
-       $query = self::$xquerys . $abbrev . self::$xquerye;
-
-       $service = $simp->xpath($query); // todo: return $simp->xpath($query)[0];  ??
- 
-       return $service[0];
-    }
-
-   public function __construct(string $fxml, string $service) 
+   static private function get_service(string $xml_fname, string $abbrev)
    {
-      $service = $this->get_service($fxml, $service); 
+      $simp = simplexml_load_file($xml_fname);
       
-      $x = array();
+      $query = self::$xqs . $abbrev . self::$xqe;
 
-      foreach($service->headers->header as $header) 
-          
-          $this->headers[(string) $header->name] = (string) $header->value; 
+      $service = $simp->xpath($query); // todo: return $simp->xpath($query)[0];  ??
+ 
+      return $service[0];
+   }
+   /*
+    * Overriden by derived classes to do any special handling
+    */
+   protected function prepare_request(object $request)
+   {
+       
+   }
+   /*
+    * Factory method to create correct derived (or the bas Translator) class based on .xml <transaltor> value.
+    */ 
+   static public function createTranslator(string $fxml, string $abbrev) 
+   {
+      $service = self::get_service($fxml, $abbrev);
+
+      $refl = new ReflectionClass((string) $service->translator);
+
+      $trans = $refl->newInstanceArgs(array($service));
+
+      return $trans;  
+   }
+
+   public function __construct($service)
+   {
+      $this->service = $service; 
+      
+      foreach($service->headers->header as $header){ 
+
+            $this->headers[(string) $header->name] = (string) $header->value; 
+      }
    
-      $this->baseurl = (string) $service->baseurl;
+      $this->base_url = (string) $service->baseurl;
       
       $this->endpoint = (string) $service->endpoint;
       
       $this->request_method = (string) $service->request_method;
             
-      foreach ($service->query_string as $qs)  
+      foreach ($service->query_string as $qs) {
           
           $this->query_str[(string) $qs->name] = (string) $qs->value;
+      }
            
-      // $body = $this->get_body(...);  
 
-     //++ $this->client = new Client(array('base_uri' => $this->base_url(), 'headers' => $headers, 'query' => $query); 
+      $this->client = new Client(array('base_uri' => $this->base_url, 'headers' => $this->headers, 'query' => $this->query_str)); 
    }
-   /*
-    * Execute any required handlers.
-    */
-   protected function prepare_request()
+
+   // Template method that call protected method overriden by derived classes
+   public function translate(string $text, string $source_lang, string $target_lang) 
    {
+       /*
+         todo:
+          1. Add $this->endpoint.
+          2. Figure out how special pre-reqest end can be set in the Client. See design.md. See Guzzle prepare middleware and special "handler" facility.
+        */
+       $request = new Request();  
+
+       $this->prepare_request($request);
+
+      /*
+          todo:
+              Add $this->endpoint to get request call.
+              Add $this->method to get request call.
+       */
        
-   }
-   
-   protected function send_request()
-   {
-       
-   }
-   
-   public send_request()
-   {
-       $this->prepare_request();
-       
-       $this->client->send(); 
-    }
-   
-   public function dump()
-   {
-       var_dump($this);
+       //++$this->client->send(); 
+
+       /*
+        * Use SimpleXMLElement to determine:
+        *   - where the input text should be plaece--in requrst body, as a query string paramter, etc
+        *   - do any associated processing like calulating the text's input length 
+        */
+       $obj = array(); 
+       //...
+      //++  $request = new Request(....);
+      //++   $requst->body???  
+      //++  return $obj; // generic response object or iterator?
    }
 }
 
- $x = new Test("./config.xml", "m");
- 
- $x->dump($x);
-/*
-   $q ="/sentence_generation/translation_services/service/abbrev[normalize-space() = 'm']/.."; 
+$x = Translator::createTranslator("config.xml", 'm');
 
-   $service = $simp->xpath($q);
-
-   $s = $service[0];
-   
-   display($s->abbrev);
-   
-   display($s->name);
-   
-   
-   foreach($s->headers->header as $header) 
-       
-        $header->name . ": Header value = ". display($header->value);
-   
-    return;
-
-  $xml = $s;
-
-   //var_dump($xml->headers);
-   
-   echo "\n\n";
-   
-   var_dump($xml->headers[0]);
-*/
+$d = 10;
