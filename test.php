@@ -4,8 +4,64 @@ function display($v)
 {
   echo $v . "\n";
 }
-   $simp = simplexml_load_file("config.xml");
 
+class Test {
+
+    static $xquerys = "/sentence_generation/translation_services/service/abbrev[normalize-space() = '";
+
+    static $xquerye = "']/.."; 
+
+    private $endpoint; 
+    
+    private $client; // <-- new \Guzzle\Client
+    
+    private $request_method;
+
+    private $headers = array();
+    private $query_str = array();
+   
+    private function get_service(string $xml_fname, string $abbrev)
+    {
+       $simp = simplexml_load_file($xml_fname);
+       
+       //Test::$xquery
+
+       $query = self::$xquerys . $abbrev . self::$xquerye;
+
+       $service = $simp->xpath($query); // todo: return $simp->xpath($query)[0];  ??
+ 
+       return $service[0];
+    }
+
+
+   public function __construct(string $fxml, string $service) 
+   {
+      $service = $this->get_service($fxml, $service); 
+
+      foreach($service->headers->header as $header) 
+          $this->headers[$header->name] = $header->value; 
+   
+      $this->baseurl = $this->service->baseurl;
+      
+      $this->endpoint = $xml->service->endpoint;
+      
+      $this->request_method = $this->service->request_method;
+      
+      foreach ($this->service->query_string as $qs)  $this->query_str[$qs->name] = $qs->value;
+           
+      // $body = $this->get_body(...);  
+
+     //++ $this->client = new Client(array('base_uri' => $this->base_url(), 'headers' => $headers, 'query' => $query); 
+   }
+
+   public function __toString()
+   {
+
+   }
+}
+
+ $x = new Test("./config.xml", "m");
+/*
    $q ="/sentence_generation/translation_services/service/abbrev[normalize-space() = 'm']/.."; 
 
    $service = $simp->xpath($q);
@@ -22,11 +78,7 @@ function display($v)
         $header->name . ": Header value = ". display($header->value);
    
     return;
-  /* 
-    Use SimpleXML to retieve:
-    - headers
-    - query string parameters
-   */ 
+
   $xml = $s;
 
    //var_dump($xml->headers);
@@ -34,5 +86,4 @@ function display($v)
    echo "\n\n";
    
    var_dump($xml->headers[0]);
-
-
+*/
