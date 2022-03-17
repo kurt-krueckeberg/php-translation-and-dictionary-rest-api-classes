@@ -12,15 +12,17 @@ class Translator implements Translate {
 
     static $xquerye = "']/.."; 
 
+    private $service; 
+
     private $endpoint; 
-    
-    private $client; // <-- new \Guzzle\Client
-    
+
     private $request_method;
 
-    private $headers = array();
+    private $headers = array(); // headers array that will be pass to guzzle client
     
-    private $query_str = array();
+    private $query_str = array(); // query string array that will be pass to guzzle client
+
+    private $client; // <-- new \Guzzle\Client
    
    private function get_service(string $xml_fname, string $abbrev)
    {
@@ -32,26 +34,23 @@ class Translator implements Translate {
  
       return $service[0];
    }
-
-   protected function prepare_request()
+   /*
+    * Overriden by derived classes to do any special handling
+    */
+   protected function prepare_request(object $request)
    {
        
    }
    
-   protected function send_request()
-   {
-       
-   }
- 
    public function __construct(string $fxml, string $service) 
    {
-      $service = $this->get_service($fxml, $service); 
+      $this->service = $service = $this->get_service($fxml, $service); 
       
       $x = array();
 
       foreach($service->headers->header as $header) 
           
-          $this->headers[(string) $header->name] = (string) $header->value; 
+      $this->headers[(string) $header->name] = (string) $header->value; 
    
       $this->baseurl = (string) $service->baseurl;
       
@@ -63,7 +62,6 @@ class Translator implements Translate {
           
           $this->query_str[(string) $qs->name] = (string) $qs->value;
            
-      // $body = $this->get_body(...);  
 
      //++ $this->client = new Client(array('base_uri' => $this->base_url(), 'headers' => $headers, 'query' => $query); 
    }
@@ -71,8 +69,14 @@ class Translator implements Translate {
    // Template method that call protected method overriden by derived classes
    public function translate(string $text, string $source_lang, string $target_lang) // TODO: Return what type of sentences object should be returned?
    {
-      
-       $this->prepare_request($text, $source_lang, $target_lang); // Derived classes do special handling here.
+       /*
+         todo:
+          1. Add $this->endpoint.
+          2. Figure out how special pre-reqest end can be set in the Client. See design.md. See Guzzle prepare middleware and special "handler" facility.
+        */
+       $request = new Request();  
+
+       $this->prepare_request($request);
        
        //++$this->client->send(); 
 
