@@ -2,35 +2,32 @@
 
 ## Design
 
-Try a hybrid approach, where fixed, preset values are in the XML file, but where any extra computation like computing the string input length is in s derived class?
-The drived class constructor will call the base class constructor, which will processi the XML period. 
-
 If another translator like the IBM translator requires a speical authorization authorization using a special authorization method,like Digest, then the action melt
 xml can be modified to accommodate an <authorization><method>digest</method></authorizaion>. This might simply be handled as a preset header name and value as with Azure
 Translator.
 
-### Coomments on Use of Guzz;e:
+### Coomments on Use of Guzzle:
+
+[Guzzle Request Options](https://docs.guzzlephp.org/en/stable/request-options.html) can be set on the ctor or a Request object:
+
+ - [Authorization](https://docs.guzzlephp.org/en/stable/request-options.html#auth)
+
+ - [headers](https://docs.guzzlephp.org/en/stable/request-options.html#headers)
 
 #### Hanlders
 
-Look into the Guzzle Hanlders and Middlewares. Hanldeer and "handle" request options, whic means about anything from headers to query string parms.
+Maybe look into the Guzzle hanlders and middlewares. Do they allow a sort of "override" or late-setup of how headers to query string parms are set?
 
-I'm not sure what Middleware  means or does?
+Check if Guzzle usesd "application/json" ase the default setting for Content-Type (header). See [doc](https://docs.guzzlephp.org/en/stable/request-options.html#json)
 
-Guzzle may set "json" may be the default setting to the Content-Type header. See [doc](https://docs.guzzlephp.org/en/stable/request-options.html#json)
+### body option 
 
-### body xoption 
-
-It can be set [three ways](https://docs.guzzlephp.org/en/stable/request-options.html#body).
+The request body evidently can be set [three ways](https://docs.guzzlephp.org/en/stable/request-options.html#body).
+Does Guzzle allow you to add an handler to handle preparing the request body. Is this even important?
 
 ### Setting Headers
 
-See [doc](https://docs.guzzlephp.org/en/stable/request-options.html#headers)
-
-
-You can add an handler when the **body** during `prepare_body`
-
-
+See the various ways headers can be  [set](https://docs.guzzlephp.org/en/stable/request-options.html#headers)
 
 ## XML
 
@@ -46,14 +43,6 @@ You can add an handler when the **body** during `prepare_body`
   - [Find all elements with certain text](https://riptutorial.com/xpath/example/6209/find-all-elements-with-certain-text)
 
 PHP's SimpleXMLElement has an xpath() function.
-
-## Guzzle
-
-[Guzzle Request Options](https://docs.guzzlephp.org/en/stable/request-options.html) can be set on the ctor or a Request object:
-
- - [Authorization](https://docs.guzzlephp.org/en/stable/request-options.html#auth)
-
- - [headers](https://docs.guzzlephp.org/en/stable/request-options.html#headers)
 
 ## Azure Translator
 
