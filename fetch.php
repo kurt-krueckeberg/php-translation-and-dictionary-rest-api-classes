@@ -16,7 +16,7 @@ include "FileReader.php";
   
   $rc = check_args($argv);
 
-  $trans = new Translator("config.xml", $argv[1]);
+  $trans = new Translator("config.xml", $argv[1]); // Translator::createTranslator("config.xml", $argv[1])
 
   $fetcher = new LeipzigSentenceFetcher($config['leipzig']['corpus']);
 

@@ -33,7 +33,10 @@ class Translator implements Translate {
       
       $query = self::$xqs . $abbrev . self::$xqe;
 
-      $service = $simp->xpath($query); // todo: return $simp->xpath($query)[0];  ??
+      $service = $simp->xpath($query); 
+ 
+      if ($service === null || $service === false)
+          throw new ErrorException("Translation service not found.");
  
       return $service[0];
    }
