@@ -38,14 +38,19 @@ class Test {
    {
       $service = $this->get_service($fxml, $service); 
 
-      foreach($service->headers->header as $header) 
-          $this->headers[$header->name] = $header->value; 
+      foreach($service->headers->header as $header) {
+
+          //$this->headers[$header->name] = $header->value; 
+          var_dump($header->name[0]);
+          var_dump( $header->value ); 
+      }
    
-      $this->baseurl = $this->service->baseurl;
+      $this->baseurl = $service->baseurl;
       
-      $this->endpoint = $xml->service->endpoint;
+      $this->endpoint = $service->endpoint;
       
-      $this->request_method = $this->service->request_method;
+      $this->request_method = $service->request_method;
+      return;
       
       foreach ($this->service->query_string as $qs)  $this->query_str[$qs->name] = $qs->value;
            
