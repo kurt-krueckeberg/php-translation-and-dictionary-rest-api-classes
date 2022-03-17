@@ -5,6 +5,7 @@
       <service>
           <abbrev>m</abbrev>
           <name>microsoft</name>
+          <translator>MSTranslator</translator>
           <baseurl>https://api-nam.cognitive.microsofttranslator.com</baseurl>
           <endpoint>translate?api-version=3.0</endpoint>
           <request_method>POST</request_method>
@@ -45,6 +46,7 @@
       <service>
          <abbrev>d</abbrev>
          <name>deepl</name>
+          <translator>DeeplTranslator</translator>
          <endpoint>https://api-free.deepl.com/v2/translate</endpoint>
          <headers>application/json</headers>
          <request_method>GET</request_method>
