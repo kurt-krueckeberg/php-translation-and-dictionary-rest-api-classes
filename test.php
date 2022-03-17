@@ -19,7 +19,7 @@ function display($v)
    
    foreach($s->headers->header as $header) 
        
-       echo "Header name: = " . display($header->name) . "Header value = ". display($header->value);
+        $header->name . ": Header value = ". display($header->value);
    
     return;
   /* 
