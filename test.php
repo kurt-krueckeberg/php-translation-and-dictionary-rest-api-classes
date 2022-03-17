@@ -1,4 +1,9 @@
 <?php
+
+function display($v)
+{
+  echo $v . "\n";
+}
    $simp = simplexml_load_file("config.xml");
 
    $q ="/sentence_generation/translation_services/service/abbrev[normalize-space() = 'm']/.."; 
@@ -7,19 +12,14 @@
 
    $s = $service[0];
    
-   echo $s->abbrev;
+   display($s->abbrev);
    
-   echo "\n\n";
+   display($s->name);
    
-   echo $s->name;
    
-   echo "\n\n";
-   
-   foreach($s->headers->header as $header) {
+   foreach($s->headers->header as $header) 
        
-       echo "Header name: value = " . $header->name . ": ". $header->value . "\n";
-       
-    }
+       echo "Header name: = " . display($header->name) . "Header value = ". display($header->value);
    
     return;
   /* 

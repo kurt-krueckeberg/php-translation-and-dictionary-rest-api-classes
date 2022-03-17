@@ -2,56 +2,35 @@
 
 ## Design
 
-Make the XML entries "precisely" (at least do a 'first darft') reflect the respective API tranlation service's pecifications.
-In  the process, try to:
+Try a hybrid approach, where fixed, preset values are in the XML file, but where any extra computation like computing the string input length is in s derived class?
+The drived class constructor will call the base class constructor, which will processi the XML period. 
 
-- Better understand how to design XML.
-- Understand requirements of each translation service in terms of what is required for each api call. 
-- What is common across services, what differs and how?
-- Make code driven by the xml settings as unintelligent as possible.
+If another translator like the IBM translator requires a speical authorization authorization using a special authorization method,like Digest, then the action melt
+xml can be modified to accommodate an <authorization><method>digest</method></authorizaion>. This might simply be handled as a preset header name and value as with Azure
+Translator.
 
-The goal is xml-driven that will be put in Translator.php code, and the elimnation of GuzzleAPIWrapper entirely.
+### Coomments on Use of Guzz;e:
 
-### Examples
+#### Hanlders
 
-```xml
-<authentication means="header">
-  <key>          </key>
-</authentication>
-```
+Look into the Guzzle Hanlders and Middlewares. Hanldeer and "handle" request options, whic means about anything from headers to query string parms.
 
-```xml
-<authentication means="query">
-  <key>          </key>
-</authentication>
-```
+I'm not sure what Middleware  means or does?
 
-```xml
-<queryString>
-  <parm order="first">
-    <name>Key</name>
-    <value>
-```
+Guzzle may set "json" may be the default setting to the Content-Type header. See [doc](https://docs.guzzlephp.org/en/stable/request-options.html#json)
 
-```xml
-<parms>
- <parm type="header">
-   <name>api-key</name>
-   <preset>3.0</preset>
- <parm type="query">
- //....
-</parms>
-```
+### body xoption 
 
-```xml
-<parms>
- <preset>
-   <heeader>...
-   </header>
-   <query>
-   </query>
- </prest>
-```
+It can be set [three ways](https://docs.guzzlephp.org/en/stable/request-options.html#body).
+
+### Setting Headers
+
+See [doc](https://docs.guzzlephp.org/en/stable/request-options.html#headers)
+
+
+You can add an handler when the **body** during `prepare_body`
+
+
 
 ## XML
 
