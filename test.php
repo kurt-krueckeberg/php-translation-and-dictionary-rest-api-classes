@@ -1,9 +1,5 @@
 <?php
 
-function display($v)
-{
-  echo $v . "\n";
-}
 
 class Test {
 
@@ -18,14 +14,13 @@ class Test {
     private $request_method;
 
     private $headers = array();
+    
     private $query_str = array();
    
     private function get_service(string $xml_fname, string $abbrev)
     {
        $simp = simplexml_load_file($xml_fname);
        
-       //Test::$xquery
-
        $query = self::$xquerys . $abbrev . self::$xquerye;
 
        $service = $simp->xpath($query); // todo: return $simp->xpath($query)[0];  ??
@@ -33,39 +28,59 @@ class Test {
        return $service[0];
     }
 
-
    public function __construct(string $fxml, string $service) 
    {
       $service = $this->get_service($fxml, $service); 
+      
+      $x = array();
 
-      foreach($service->headers->header as $header) {
-
-          //$this->headers[$header->name] = $header->value; 
-          var_dump($header->name[0]);
-          var_dump( $header->value ); 
-      }
+      foreach($service->headers->header as $header) 
+          
+          $this->headers[(string) $header->name] = (string) $header->value; 
    
-      $this->baseurl = $service->baseurl;
+      $this->baseurl = (string) $service->baseurl;
       
-      $this->endpoint = $service->endpoint;
+      $this->endpoint = (string) $service->endpoint;
       
-      $this->request_method = $service->request_method;
-      return;
-      
-      foreach ($this->service->query_string as $qs)  $this->query_str[$qs->name] = $qs->value;
+      $this->request_method = (string) $service->request_method;
+            
+      foreach ($service->query_string as $qs)  
+          
+          $this->query_str[(string) $qs->name] = (string) $qs->value;
            
       // $body = $this->get_body(...);  
 
      //++ $this->client = new Client(array('base_uri' => $this->base_url(), 'headers' => $headers, 'query' => $query); 
    }
-
-   public function __toString()
+   /*
+    * Execute any required handlers.
+    */
+   protected function prepare_request()
    {
-
+       
+   }
+   
+   protected function send_request()
+   {
+       
+   }
+   
+   public send_request()
+   {
+       $this->prepare_request();
+       
+       $this->client->send(); 
+    }
+   
+   public function dump()
+   {
+       var_dump($this);
    }
 }
 
  $x = new Test("./config.xml", "m");
+ 
+ $x->dump($x);
 /*
    $q ="/sentence_generation/translation_services/service/abbrev[normalize-space() = 'm']/.."; 
 

@@ -11,7 +11,7 @@
           <headers>
              <header>
                 <name>Ocp-Apim-Subscription-Key</name>
-                 <value>"YOUR_SUBSCRIPTION_KEY"</value> 
+                 <value>YOUR_SUBSCRIPTION_KEY</value> 
              </header>    
              <header>
                  <name>Ocp-Apim-Subscription-Region</name>
