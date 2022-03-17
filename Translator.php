@@ -6,7 +6,11 @@ require 'vendor/autoload.php';
 
 include "Translate.php";
 
-
+/*
+ *
+ * Try to remove properties and still have flexible code.
+ *
+ */
 class Translator implements Translate {
 
     static $xqs = "/sentence_generation/translation_services/service/abbrev[normalize-space() = '";
@@ -91,8 +95,10 @@ class Translator implements Translate {
    {
        /*
          todo:
-          1. Add $this->endpoint.
-          2. Figure out how special pre-reqest end can be set in the Client. See design.md. See Guzzle prepare middleware and special "handler" facility.
+          1. Add $this->endpoint to Request
+.
+          2. Figure out prepare_request() end can best be used. See design.md. Is Guzzle prepare middleware and special "handler" facility relevant?
+             Would we, say, just use specical Handler class instead of derived-Translator classes?
         */
        $request = new Request();  
 
