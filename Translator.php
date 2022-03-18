@@ -55,7 +55,7 @@ class Translator implements Translate {
 
       $refl = new ReflectionClass((string) $service->translator);
 
-      $trans = $refl->newInstanceArgs($service);
+      $trans = $refl->newInstance($service);
 
       return $trans;  
    }
