@@ -28,20 +28,7 @@
                 -->
                  <value>application/json; charset=UTF-8</value> 
               </header>
-              <header>
-               <!-- Azure Translator 3.0 requires the strlen($input_text) of &mdash; either the enire array or of each array element? $mdash; I'm
-                    not sure which
-
-                    The following limitations apply to the json array with the input text:
-
-                        The array can have at most 100 elements.
-                        The entire text included in the request cannot exceed 10,000 characters including spaces.
-                    -->
-                 <name>Content-Length</name>
-                  <!-- hanlder could also be a DerivedTransltorClass ? Overkill? --> 
-                 <handler>string_length</handler> 
-              </header>
-          </headers>
+         </headers>
           <queryString>
             <parm>
                <name>textType</name>

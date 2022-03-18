@@ -6,6 +6,30 @@ If another translator like the IBM translator requires a speical authorization a
 xml can be modified to accommodate an <authorization><method>digest</method></authorizaion>. This might simply be handled as a preset header name and value as with Azure
 Translator.
 
+
+Azure Confusion
+
+Does Azure Translator 3.0 requires the strlen($input\_text) of &mdash; either the enire array or of each array element? $mdash; I'm
+not sure which
+
+Is it true that the following limitations apply to the json array with the input text:
+
+    The array can have at most 100 elements.
+    The entire text included in the request cannot exceed 10,000 characters including spaces.
+
+Azure Translator 
+
+Should it handle "Content-Length" header:    'Content-length' =>  strlen($content)?
+
+It is unclear if Content-Length is really required because the Quick Start guide states(https://docs.microsoft.com/en-us/azure/cognitive-services/translator/quickstart-translator?tabs=csharp):
+
+You can get character counts for both source text and translation output using the translate endpoint. To return sentence length (srcSenLen and transSenLen) you must set the includeSentenceLength parameter to True.
+Change design of Transltor-devied ctors? or prepare\_request?:
+
+-  Add this query sring setting to request, OR 
+-  Do it in the ctro, or
+- Create and return the Request object here. 
+
 ### Coomments on Use of Guzzle:
 
 [Guzzle Request Options](https://docs.guzzlephp.org/en/stable/request-options.html) can be set on the ctor or a Request object:
