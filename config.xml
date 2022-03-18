@@ -7,16 +7,17 @@
           <name>microsoft</name>
           <translator>Translator</translator>
           <baseurl>https://api-nam.cognitive.microsofttranslator.com</baseurl>
+
           <endpoint>translate?api-version=3.0</endpoint>
           <request_method>POST</request_method>
           <headers>
              <header>
                 <name>Ocp-Apim-Subscription-Key</name>
-                 <value>YOUR_SUBSCRIPTION_KEY</value> 
+                 <value>ef6e5b44c68d438c8d79cae2f8c020ba</value> 
              </header>    
              <header>
                  <name>Ocp-Apim-Subscription-Region</name>
-                 <value>YOUR_REGION</value> 
+                 <value>eastus2</value> 
               </header>
               <header>
               <!-- I believe this is a common header to all the tranlation API services, including IBM. -->
@@ -41,10 +42,13 @@
                  <handler>string_length</handler> 
               </header>
           </headers>
-          <query_string>
-            <name>textType</name>
-            <value>plain</value>
-          </query_string>
+          <queryString>
+            <parm>
+               <name>textType</name>
+              <value>plain</value>
+            </parm>
+            <parm>
+          </querString>
       </service>
       <service>
          <abbrev>d</abbrev>

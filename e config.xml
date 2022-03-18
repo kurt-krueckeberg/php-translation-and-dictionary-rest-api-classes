@@ -9,8 +9,6 @@ include "GuzzleTranslateAPIWrapper.php";
 
 class AzureTranslator extends GuzzleTranslateAPIWrapper {
 
-    static private $qs_src = "from";
-    static private $qs_dest = "to";
 
     private function com_create_guid() 
     {
@@ -22,6 +20,9 @@ class AzureTranslator extends GuzzleTranslateAPIWrapper {
             mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff )
         );
     }
+  
+  
+
 
    public function __construct($service)
    {
@@ -29,28 +30,29 @@ class AzureTranslator extends GuzzleTranslateAPIWrapper {
    } 
 
     // todo: break this into the three methods -- prepare_trans_request(), send_trans_request and get_sentences()
-    public function prepare_request(string $text, string $source_lang, string $target_lang)
+    public function prepare_request(string $text, string $source_lang, string $target_lang) : string
     {
 
   /* TODO:
-    Handle "Content-Length" header:    'Content-length' =>  strlen($content)?
+    Handle "Content-Length" header
 
-   It is unclear if Content-Length is really required because the Quick Start guide states(https://docs.microsoft.com/en-us/azure/cognitive-services/translator/quickstart-translator?tabs=csharp):
-
-	You can get character counts for both source text and translation output using the translate endpoint. To return sentence length (srcSenLen and transSenLen) you must set the includeSentenceLength parameter to True.
-     TODO: 
-        -  Add this query sring setting to request, OR 
-        -  Do it in the ctro, or
-        - Create and return the Request object here. 
-
+   'Content-length' =>  strlen($content),
    */
          try {
-
-          $query = [ 'from' => $srouce_lang, 'to' => $target_lang];
 
           $requestBody = [ [ 'Text' => $text, ] ];
 
           $content = json_encode($requestBody);
+
+         /*
+          * TODO: See header documentation for required header settings
+          */
+
+	 $query =  ['query' => [self::$qs_api_version => '3.0', 
+                                self::$qs_source_lang => $srouce_lang,  // TODO: <-- Need to use generic values that work acorss all translators, doing a hasttable lookup if necessary.
+                                self::$qs_target_lang => $target_lang,  // TODO: <-- Need to use generic values that work acorss all translators, doing a hasttable lookup if necessary.
+                                self::$qs_text_type   => 'plain'
+                               ] ]; 
 
 	 $response = $this->client->request('POST', $this->base_uri, $query);
 
