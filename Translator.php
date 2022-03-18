@@ -55,7 +55,7 @@ class Translator implements Translate {
 
       $refl = new ReflectionClass((string) $service->translator);
 
-      $trans = $refl->newInstanceArgs(array($service));
+      $trans = $refl->newInstanceArgs($service);
 
       return $trans;  
    }
@@ -143,9 +143,10 @@ class Translator implements Translate {
         *   - do any associated processing like calulating the text's input length 
         */
        $obj = array(); 
-       //...
+      //...
       //++  $request = new Request(....);
       //++   $requst->body???  
-      //++  return $obj; // generic response object or iterator?
+      //
+      //++  return an Array or TranslationObject/Translation object/stdClass tha has a common format between translators.
    }
 }
