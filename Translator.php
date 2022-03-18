@@ -49,7 +49,7 @@ class Translator implements Translate {
    /*
     * Factory method to create correct derived (or the bas Translator) class based on .xml <transaltor> value.
     */ 
-   static public function createTranslator(string $fxml, string $abbrev) 
+   static public function create(string $fxml, string $abbrev) 
    {
       $service = self::get_service($fxml, $abbrev);
 
