@@ -40,11 +40,11 @@
                   <!-- hanlder could also be a DerivedTransltorClass ? Overkill? --> 
                  <handler>string_length</handler> 
               </header>
-              <query_string>
-                <name>textType</name>
-                <value>plain</value>
-              </query_string>
           </headers>
+          <query_string>
+            <name>textType</name>
+            <value>plain</value>
+          </query_string>
       </service>
       <service>
          <abbrev>d</abbrev>

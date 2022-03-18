@@ -8,7 +8,11 @@ include "Translate.php";
 
 /*
  *
- * Try to remove properties and still have flexible code.
+ * TODO: Try to remove these class properties
+
+   $query_string
+   $headers
+
  *
  */
 class Translator implements Translate {
@@ -17,11 +21,6 @@ class Translator implements Translate {
 
     static $xqe = "']/.."; 
 
-/*
-    private $service; 
-
-    private $base_url;
-*/
     private $endpoint; 
 
     private $request_method;
@@ -67,30 +66,6 @@ class Translator implements Translate {
    {
        
    }
-   /*
-   public function __construct($service)
-   {
-      $this->service = $service; 
-      
-      foreach($service->headers->header as $header){ 
-
-            $this->headers[(string) $header->name] = (string) $header->value; 
-      }
-   
-      $this->base_url = (string) $service->baseurl;
-      
-      $this->endpoint = (string) $service->endpoint;
-      
-      $this->request_method = (string) $service->request_method;
-            
-      foreach ($service->query_string as $qs) {
-          
-          $this->query_str[(string) $qs->name] = (string) $qs->value;
-      }
-
-      $this->client = new Client(array('base_uri' => $this->base_url, 'headers' => $this->headers, 'query' => $this->query_str)); 
-   }
-   */
 
    public function __construct($service)
    {
@@ -112,7 +87,7 @@ class Translator implements Translate {
           $this->query_str[(string) $qs->name] = (string) $qs->value;
       }
 
-      $client = new Client(array('base_uri' => $base_url, 'headers' => $this->headers, 'query' => $this->query_str)); 
+      $this->client = new Client(array('base_uri' => $base_url, 'headers' => $this->headers, 'query' => $this->query_str)); 
    } 
 
    // Template method that call protected method overriden by derived classes
