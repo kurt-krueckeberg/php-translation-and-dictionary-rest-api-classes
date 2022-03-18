@@ -6,8 +6,12 @@ If another translator like the IBM translator requires a speical authorization a
 xml can be modified to accommodate an <authorization><method>digest</method></authorizaion>. This might simply be handled as a preset header name and value as with Azure
 Translator.
 
+### PS-7 Message Interfaces
 
-Azure Confusion
+- PHP's [Http PS-7 Interfaces](https://www.dotkernel.com/how-to/what-is-psr-7-and-how-to-use-it/).
+- [Guzzle and PSR-7](https://docs.guzzlephp.org/en/stable/psr7.html)
+
+### Azure Confusion
 
 Does Azure Translator 3.0 requires the strlen($input\_text) of &mdash; either the enire array or of each array element? $mdash; I'm
 not sure which

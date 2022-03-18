@@ -40,13 +40,13 @@ class Translator implements Translate {
       $service = $simp->xpath($query); 
  
       if ($service === null || $service === false)
-          throw new ErrorException("Translation service not found.");
+          throw new ErrorException("Translation service not found in $xml_fname.\n");
  
       return $service[0];
    }
 
    /*
-    * Factory method to create correct derived (or the bas Translator) class based on .xml <transaltor> value.
+    * Factory method to create correct Translator class based on .xml <transaltor>MyTranslator</translator> value.
     */ 
    static public function create(string $fxml, string $abbrev) 
    {
@@ -71,13 +71,11 @@ class Translator implements Translate {
    {
       $service = $service; 
       
-      foreach($service->headers->header as $header){ 
+      foreach($service->headers->header as $header) { 
 
             $this->headers[(string) $header->name] = (string) $header->value; 
       }
    
-      $base_url = (string) $service->baseurl;
-      
       $this->endpoint = (string) $service->endpoint;
       
       $request_method = (string) $service->request_method;
@@ -87,7 +85,7 @@ class Translator implements Translate {
           $this->query_str[(string) $qs->name] = (string) $qs->value;
       }
 
-      $this->client = new Client(array('base_uri' => $base_url, 'headers' => $this->headers, 'query' => $this->query_str)); 
+      $this->client = new Client(array('base_uri' => (string) $service->baseurl, 'headers' => $this->headers, 'query' => $this->query_str)); 
    } 
 
    // Template method that call protected method overriden by derived classes
@@ -100,7 +98,7 @@ class Translator implements Translate {
           2. Figure out prepare_request() end can best be used. See design.md. Is Guzzle prepare middleware and special "handler" facility relevant?
              Would we, say, just use specical Handler class instead of derived-Translator classes?
         */
-       $request = new Request();  
+       $request = new Request($this->endpoint, );  
 
        $this->prepare_request($request);
 
