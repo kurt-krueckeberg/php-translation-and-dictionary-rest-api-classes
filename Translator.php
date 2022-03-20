@@ -8,11 +8,8 @@ include "Translate.php";
 
 /*
  *
- * TODO: Try to remove these class properties
-
-   $query_string
-   $headers
-
+ * TODO: urlencode of query string parameters.
+ *
  *
  */
 class Translator implements Translate {
@@ -62,6 +59,7 @@ class Translator implements Translate {
    /*
     * Overriden by derived classes to do any special handling
     */
+   //protected function create_request(object $request)
    protected function prepare_request(object $request)
    {
        
@@ -81,6 +79,8 @@ class Translator implements Translate {
       $request_method = (string) $service->request_method;
             
       foreach ($service->query_string as $qs) {
+
+         //todo: urlencode of certain query string parameters.
           
           $this->query_str[(string) $qs->name] = (string) $qs->value;
       }
@@ -93,14 +93,16 @@ class Translator implements Translate {
    {
        /*
          todo:
-          1. Add $this->endpoint to Request
-.
-          2. Figure out prepare_request() end can best be used. See design.md. Is Guzzle prepare middleware and special "handler" facility relevant?
+          1. Include $this->endpoint to Request
+ 
+          2. Figure out prepare_request() end can best be used. See the Request and PS-7 IMessage interface methods. 
              Would we, say, just use specical Handler class instead of derived-Translator classes?
+
+          3. How does MySQL prepare_statement work?
         */
        $request = new Request($this->endpoint, );  
 
-       $this->prepare_request($request);
+       $this->prepare_request($request); 
 
       /*
           todo:
