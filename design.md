@@ -4,54 +4,13 @@
 
 ## Design
 
-Azure's **Translator version 3.0** supports more than just text translation, while Deepl only supports text translation. I'm not sure if IBM Watson supports more than just text 
-translation. All the REST APIs have requirements for:
-
-- baseurl
-
-- Supported request type: 
-  - translation
-  - dictionary lookup
-  - etc
-
-- For each supported translation service above, what are the API details:
- 
-  - POST or GET HTTP method? 
-  - URL "route" that is appened to endpoint
-  - means of authentication--header or query string parameter--and details.
-  - required headers
-  - query string parameters
-  - Is input text in request body data and its format (json encoded most likely), or is it a query parameter?
-  - format of request 
-  - failure error codes
-  - format of returned response
-  - etc
-
-Generalize the .xml configuration to capture the requires of each.
+Understand the PHP PSR-7 HTTP Message-related interfaces. See PSR-7 under PHP bookmarks. Guzzle implements these interfaces. These interfaces or extensions of them will be
+the basis for implementing the translation the REST api calls for Deepl, IBM and Azure, for implementing--as well as for dictionary lookup and maybe dictionary examples.
  
 ### PHP PS-7 Message Interfaces
 
 - PHP's [Http PS-7 Interfaces](https://www.dotkernel.com/how-to/what-is-psr-7-and-how-to-use-it/).
 - [Guzzle and PSR-7](https://docs.guzzlephp.org/en/stable/psr7.html)
-
-### Azure Translator Questions
-
-Does Azure Translator 3.0 actually require the **Content-Length** header? The Translator 3.0 [Quick Start](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/quickstart-translator)
-
-For text translation requrest, where does is say "the following limitations apply to the json array with the input text:"
-
-    The array can have at most 100 elements.
-    The entire text included in the request cannot exceed 10,000 characters including spaces.
-
-
-It is unclear if Content-Length is really required because the 
-
-You can get character counts for both source text and translation output using the translate endpoint. To return sentence length (srcSenLen and transSenLen) you must set the includeSentenceLength parameter to True.
-Change design of Transltor-devied ctors? or prepare\_request?:
-
--  Add this query sring setting to request, OR 
--  Do it in the ctro, or
-- Create and return the Request object here. 
 
 ### Coomments on Use of Guzzle:
 
