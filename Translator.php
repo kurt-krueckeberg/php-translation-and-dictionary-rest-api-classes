@@ -63,6 +63,16 @@ class Translator implements Translate {
    protected function prepare_request(object $request)
    {
        
+      /*
+        Sample code
+        todo: We supply the url "route" as the 2nd Request parameter
+       */
+
+       $query = ['query' => 
+                    [ 'abc' => 'def']
+                ]; 
+
+       new Request("GET", $url, $query);
    }
 
    public function __construct($service)

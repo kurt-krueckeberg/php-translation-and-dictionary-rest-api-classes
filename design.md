@@ -1,46 +1,50 @@
+<section>
+
 # TODO
 
 ## Design
 
-Summary the Azure and Deepl requirements in terms of:
+Azure's **Translator version 3.0** supports more than just text translation, while Deepl only supports text translation. I'm not sure if IBM Watson supports more than just text 
+translation. All the REST APIs have requirements for:
 
 - baseurl
 
-- Request types: 
+- Supported request type: 
   - translation
   - dictionary lookup
   - etc
 
-- Each request types:
-  - method: POST or GET. 
-  - ULR "route"
-  - means of authentication
+- For each supported translation service above, what are the API details:
+ 
+  - POST or GET HTTP method? 
+  - URL "route" that is appened to endpoint
+  - means of authentication--header or query string parameter--and details.
+  - required headers
   - query string parameters
-  - request body data
-  - Error codes
+  - Is input text in request body data and its format (json encoded most likely), or is it a query parameter?
+  - format of request 
+  - failure error codes
   - format of returned response
   - etc
+
+Generalize the .xml configuration to capture the requires of each.
  
 ### PHP PS-7 Message Interfaces
 
 - PHP's [Http PS-7 Interfaces](https://www.dotkernel.com/how-to/what-is-psr-7-and-how-to-use-it/).
 - [Guzzle and PSR-7](https://docs.guzzlephp.org/en/stable/psr7.html)
 
-### Azure Confusion
+### Azure Translator Questions
 
-Does Azure Translator 3.0 requires the strlen($input\_text) of &mdash; either the enire array or of each array element? $mdash; I'm
-not sure which
+Does Azure Translator 3.0 actually require the **Content-Length** header? The Translator 3.0 [Quick Start](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/quickstart-translator)
 
-Is it true that the following limitations apply to the json array with the input text:
+For text translation requrest, where does is say "the following limitations apply to the json array with the input text:"
 
     The array can have at most 100 elements.
     The entire text included in the request cannot exceed 10,000 characters including spaces.
 
-Azure Translator 
 
-Should it handle "Content-Length" header:    'Content-length' =>  strlen($content)?
-
-It is unclear if Content-Length is really required because the Quick Start guide states(https://docs.microsoft.com/en-us/azure/cognitive-services/translator/quickstart-translator?tabs=csharp):
+It is unclear if Content-Length is really required because the 
 
 You can get character counts for both source text and translation output using the translate endpoint. To return sentence length (srcSenLen and transSenLen) you must set the includeSentenceLength parameter to True.
 Change design of Transltor-devied ctors? or prepare\_request?:
@@ -130,3 +134,5 @@ PHP's SimpleXMLElement has an xpath() function.
   - [Composer Package Management](https://whoisryosuke.com/blog/2018/how-to-create-a-php-package-for-composer/)
  
   - [Packagist The PHP Package Repository](https://packagist.org/)
+
+</section>

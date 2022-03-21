@@ -1,20 +1,16 @@
 body {
 
-}
-
-.container {
-
-  font-family: 'Lato Medium', Arial, sans-serif;
-  margin: auto;
-  width: 60%;
-
-  color: black;        
-  background-color: white;   
+  color: black;  
+  background-color: white;
 
   /* Alernate colors: */
   /* 
   color: #FFFFFF;  
   background-color: #102450;
+
+  color: black;        
+  background-color: white;   
+
    */
 
   /* 
@@ -27,24 +23,23 @@ body {
   background-color: #171421;  
   */
 
+}
+
+section {
+
+  font-family: 'Lato Medium', Arial, sans-serif;
+  margin: auto;
+  width: 60%;
 
 }
 
+section p { 
 
-p { 
-  padding-top: 3px;
-  padding-bottom: 3px;
   padding-right: 6px;
-  line-height: 1.7em; /* <--- Spacing between line within paragraph */ 
-  /*margin: 6px 0; */     /* <--- Spacing between paragraphs. It is equivalent to the statements
-          
-  below: 
-
-  margin-top: 7px;
+  line-height: 1.7em; 
   margin-bottom: 7px;
   margin-left: 0px;
   margin-right: 0px;  
- */
 }
 
 
