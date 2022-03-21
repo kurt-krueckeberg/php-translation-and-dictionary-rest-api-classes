@@ -2,11 +2,26 @@
 
 ## Design
 
-If another translator like the IBM translator requires a speical authorization authorization using a special authorization method,like Digest, then the action melt
-xml can be modified to accommodate an <authorization><method>digest</method></authorizaion>. This might simply be handled as a preset header name and value as with Azure
-Translator.
+Summary the Azure and Deepl requirements in terms of:
 
-### PS-7 Message Interfaces
+- baseurl
+
+- Request types: 
+  - translation
+  - dictionary lookup
+  - etc
+
+- Each request types:
+  - method: POST or GET. 
+  - ULR "route"
+  - means of authentication
+  - query string parameters
+  - request body data
+  - Error codes
+  - format of returned response
+  - etc
+ 
+### PHP PS-7 Message Interfaces
 
 - PHP's [Http PS-7 Interfaces](https://www.dotkernel.com/how-to/what-is-psr-7-and-how-to-use-it/).
 - [Guzzle and PSR-7](https://docs.guzzlephp.org/en/stable/psr7.html)

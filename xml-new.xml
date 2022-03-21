@@ -72,9 +72,7 @@
          <name>deepl</name>
          <translator>DeeplTranslator</translator>
          <endpoint>https://api-free.deepl.com/v2</endpoint>
-         <urls>
-           <translate>/translate</translate>
-         </urls>
+         <url>translate</url>
          <headers>application/json</headers>
          <request_method>GET</request_method>
          <inputtext>
