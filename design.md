@@ -9,6 +9,7 @@ Using jvavscript [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fe
 ## Design
 
 Understand what an [HTTP Messages](https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages) is.
+Understand [HTTP Authenication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication)
 
 Understand the PHP HTTP MEssage interfaces invent to represent such HTTP messages by consuling:
 
