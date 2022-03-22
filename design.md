@@ -2,15 +2,16 @@
 
 # TODO
 
+## Alternate Javasrcript Design
+
+Using jvavscript [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+
 ## Design
 
 Understand the PHP PSR-7 HTTP Message-related interfaces. See PSR-7 under PHP bookmarks. Guzzle implements these interfaces. These interfaces or extensions of them will be
 the basis for implementing the translation the REST api calls for Deepl, IBM and Azure, for implementing--as well as for dictionary lookup and maybe dictionary examples.
  
-### PHP PS-7 Message Interfaces
-
-- PHP's [Http PS-7 Interfaces](https://www.dotkernel.com/how-to/what-is-psr-7-and-how-to-use-it/).
-- [Guzzle and PSR-7](https://docs.guzzlephp.org/en/stable/psr7.html)
+ [Guzzle and PSR-7](https://docs.guzzlephp.org/en/stable/psr7.html)
 
 ### Coomments on Use of Guzzle:
 

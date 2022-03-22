@@ -3,10 +3,16 @@
    <translation_services>
       <!-- NOTE: The new xml settings in this Micrsoft service are based upon reading Microsoft Azure Translotr 3.0 specification -->
       <service>
-          <abbrev>m</abbrev>
           <name>microsoft</name>
-          <translator_class>Translator</translator_class>
+          <abbrev>m</abbrev>
           <baseurl>https://api-nam.cognitive.microsofttranslator.com</baseurl>
+          <url>transnlate</url> <!-- or "route" -->
+          <translator_class>Translator</translator_class>
+          <credentials>
+          </credentials>
+          <inputText> <!-- The text to translate' message location -->
+            <location>body</location> <!-- or 'query (string) -->
+          </inputText> 
           <!-- 
 
           Trnaslotor 3.o supports:
@@ -26,11 +32,6 @@
                 https://api-nam.cognitive.microsofttranslator.com</dictionary/lookup
 
           -->
-          <urls>
-            <translate>translate</translate>
-            <dictionary_lookup>dictonary/lookup</dictionary>
-            <dictionary_examples>dictonary/examples</dictionary>
-          </urls>
           <request_method>POST</request_method> <!-- This is WRONG. Some urls reuqire POST, some GET -->
           <headers>
              <header>
@@ -53,8 +54,6 @@
          </headers>
           <queryString>
             <parm>
-             
-            <parm>
                <name>textType</name>
               <value>plain</value>
             </parm>
@@ -67,43 +66,5 @@
           </data>   
           -->
       </service>
-      <service>
-         <abbrev>d</abbrev>
-         <name>deepl</name>
-         <translator>DeeplTranslator</translator>
-         <endpoint>https://api-free.deepl.com/v2</endpoint>
-         <url>translate</url>
-         <headers>application/json</headers>
-         <request_method>GET</request_method>
-         <inputtext>
-              <location>query</location>
-              <parmeter_name>text</parmeter_name>
-              <format>???? url_encode???</format>
-         </inputtext>
-         <params>
-            <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
-            <from>source_lang</from>
-            <to>target_lang</to>
-         </params>
-      </service>
-      <service>
-         <abbrev>i</abbrev>
-         <name>ibm</name>
-         <endpoint></endpoint>
-         <headers>application/json</headers>
-         <request_type>GET</request_type>
-         <params>
-            <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
-            <input_text>text</input_text>
-            <src_lang>source_lang</src_lang>
-            <dest_lang>target_lang</dest_lang>
-         </params>
-      </service>
-   </translation_services>
-   <sentence_services>
-     <service>
-       <corpus>deu_news_2012_1M</corpus>
-       <limit>5</limit>
-     </service>  
    </sentence_services>
 </sentence_generation>
