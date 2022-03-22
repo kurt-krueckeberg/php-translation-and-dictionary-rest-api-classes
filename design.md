@@ -8,10 +8,13 @@ Using jvavscript [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fe
 
 ## Design
 
-Understand the PHP PSR-7 HTTP Message-related interfaces. See PSR-7 under PHP bookmarks. Guzzle implements these interfaces. These interfaces or extensions of them will be
-the basis for implementing the translation the REST api calls for Deepl, IBM and Azure, for implementing--as well as for dictionary lookup and maybe dictionary examples.
- 
- [Guzzle and PSR-7](https://docs.guzzlephp.org/en/stable/psr7.html)
+Understand what the PHP PSR-7 HTTP Message-related interfaces actually represent. What is an HTTP Message (according to the aqppropo RFC standard), how are they repsetnted and 
+how do the PHP classes capture this. Guzzle's Request object implements RequestInterface, so understanding how to use the RequestInterface will give us they
+flexibiilty of designing a general Translator class (that will work for IBM, Azure, DEEPL and any others). This general implementation may beneift from design pattern like Template Method.
+
+It will also help to undertand how HTTP message authentication works.
+
+See the bookmarks PHP Bookmarks and the documentation on [Guzzle and PSR-7](https://docs.guzzlephp.org/en/stable/psr7.html)
 
 ### Coomments on Use of Guzzle:
 
@@ -21,20 +24,7 @@ the basis for implementing the translation the REST api calls for Deepl, IBM and
 
  - [headers](https://docs.guzzlephp.org/en/stable/request-options.html#headers)
 
-#### Hanlders
-
-Maybe look into the Guzzle hanlders and middlewares. Do they allow a sort of "override" or late-setup of how headers to query string parms are set?
-
-Check if Guzzle usesd "application/json" ase the default setting for Content-Type (header). See [doc](https://docs.guzzlephp.org/en/stable/request-options.html#json)
-
-### body option 
-
-The request body evidently can be set [three ways](https://docs.guzzlephp.org/en/stable/request-options.html#body).
-Does Guzzle allow you to add an handler to handle preparing the request body. Is this even important?
-
-### Setting Headers
-
-See the various ways headers can be  [set](https://docs.guzzlephp.org/en/stable/request-options.html#headers)
+ - [body](???)
 
 ## XML
 
@@ -50,34 +40,6 @@ See the various ways headers can be  [set](https://docs.guzzlephp.org/en/stable/
   - [Find all elements with certain text](https://riptutorial.com/xpath/example/6209/find-all-elements-with-certain-text)
 
 PHP's SimpleXMLElement has an xpath() function.
-
-## Azure Translator
-
-### My Azure Settings
-
- ------------------------------------------------------------------
- Setting          Value
- ---------------- -------------------------------------------------
- location         eastus2
-                
- key1             ef6e5b44c68d438c8d79cae2f8c020ba
-                
- key2             a3c9c437de3b43a7a93f707a71740af6
-
- Translation\     https://api.cognitive.microsofttranslator.com/
- url        
- ---------------- -------------------------------------------------
-
-[Azure Translator 3.0 Documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-reference)
-
-### Translation Implementaqtions in PHP
-
-  - Microsoft's [owm implmentation in PHP](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP/blob/master/Translate.php)
-
-  - [Matthisan Noback's code](https://github.com/matthiasnoback/microsoft-translator)
-    - Mainly just the file [Tranlate.php](https://github.com/matthiasnoback/microsoft-translator/blob/master/src/MatthiasNoback/MicrosoftTranslator/ApiCall/Translate.php)
-
-  - [CURL Implementation](https://www.aw6.de/azure/)
 
 ## Modern AJAX
 
