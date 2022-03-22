@@ -11,6 +11,7 @@ Using jvavscript [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fe
 Understand:
 
 - [Basics of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP)
+- [What HTTP is](https://www.w3schools.com/whatis/whatis_http.asp)
 - What an [HTTP Messages](https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages) are.
 - What [HTTP Authenication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication) is and how it works.
 
