@@ -8,13 +8,20 @@ Using jvavscript [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fe
 
 ## Design
 
-Understand what the PHP PSR-7 HTTP Message-related interfaces actually represent. What is an HTTP Message (according to the aqppropo RFC standard), how are they repsetnted and 
-how do the PHP classes capture this. Guzzle's Request object implements RequestInterface, so understanding how to use the RequestInterface will give us they
-flexibiilty of designing a general Translator class (that will work for IBM, Azure, DEEPL and any others). This general implementation may beneift from design pattern like Template Method.
+Understand what an [HTTP Messages](https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages) is.
 
-It will also help to undertand how HTTP message authentication works.
+Understand the PHP HTTP MEssage interfaces invent to represent such HTTP messages by consuling:
+
+Concise Summary of all PSR-7 HTTP Message [Interfaces](https://github.com/php-fig/http-message/blob/master/docs/PSR7-Interfaces.md)
+Relate [Usage Guide](https://github.com/php-fig/http-message/blob/master/docs/PSR7-Usage.md)
+
+
+Guzzle's Request object implements RequestInterface (or ClientInterface, which is also a PSR-7 standard) and a Guzzle-speicific ClientInterface (or is it?).
 
 See the bookmarks PHP Bookmarks and the documentation on [Guzzle and PSR-7](https://docs.guzzlephp.org/en/stable/psr7.html)
+
+The goal is a general Translator or RESTTransltor class that will work for IBM's, Azure's, DEEPL and any others translation services. This general implementation may
+beneift from design pattern like Template Method.
 
 ### Coomments on Use of Guzzle:
 
