@@ -2,6 +2,17 @@
 <services>
    <sentences>
      <name>leipzig</name>
+     <baseurl>http://api.corpora.uni-leipzig.de/ws/sentences</baseurl> <!-- https?? -->
+      <url>sentences</url> <!-- or "route" -->
+      <credentials>
+          <header>
+         </header>    
+      </credentials>
+      <request_method>GET</request_method> 
+      <query>
+       <corpus>deu_news_2012_1M'</corpus>
+       <count>10</count>  <!-- offset and limit instead? -->
+      </query> 
    </sentences>
    <translation>
        <!-- NOTE: The new xml settings in this Micrsoft service are based upon reading Microsoft Azure Translotr 3.0 specification -->
@@ -45,7 +56,7 @@
              https://api-nam.cognitive.microsofttranslator.com</dictionary/lookup
 
        -->
-       <request_method>POST</request_method> <!-- This is WRONG. Some urls reuqire POST, some GET -->
+       <request_method>POST</request_method> 
        <headers>
            <header>
            <!-- I believe this is a common header to all the tranlation API services, including IBM. -->
