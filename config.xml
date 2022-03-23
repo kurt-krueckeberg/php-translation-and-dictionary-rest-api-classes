@@ -55,15 +55,12 @@
                  <value>application/json; charset=UTF-8</value> 
               </header>
          </headers>
-          <queryString>
-            <parm>
-               <name>textType</name>
-               <value>plain</value>
-            </parm>
-            <parm>
-                <from>from??</from>
-                <to>to??</to>
-          </querString>
+         <query>
+         <!-- By convention name="from" is recognized as the source langauge query string parameter name and name="to" as the destination parm name -->
+            <parameter name="textType" value="plain" />
+            <parameter name="from" value"from??" />
+            <parameter name="to" value"to??" />
+         </query>
        </service
        ><service>
          <abbrev>d</abbrev>
@@ -92,12 +89,15 @@
          <endpoint></endpoint>
          <headers>application/json</headers>
          <request_type>GET</request_type>
-         <params>
+         <credentials>
             <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
-            <input_text>text</input_text>
-            <src_lang>source_lang</src_lang>
-            <dest_lang>target_lang</dest_lang>
-         </params>
+         </credentials>
+         <query>
+             <paramter name="?/" value="?????/" />
+             <paramter name="?/" value="?????/" />
+            <parameter name="from" value="source_lang" />
+            <parameter name="to" value="target_lang" />
+         </query>
       </service>
    </sentence_services>
 </sentence_generation>
