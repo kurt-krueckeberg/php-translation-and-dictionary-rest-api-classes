@@ -8,6 +8,9 @@ Using jvavscript [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fe
 
 ## Design
 
+The code will understand every aspect of the .XML configuration file. If we later see we can generalze the PHP implemntation based on
+capturing the requirements of each translation REST API in a general way, this will be put in the .xml configuarition. 
+
 The .xml the query parameters (for translation of text) are not bound to or exclusively associated with the translation-of-text, so introduce:
 
   <service>
