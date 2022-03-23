@@ -8,6 +8,21 @@ Using jvavscript [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fe
 
 ## Design
 
+The .xml the query parameters (for translation of text) are not bound to or exclusively associated with the translation-of-text, so introduce:
+
+  <service>
+     <settings>....
+     </settings>
+     <translation>
+        <settings>....
+        </settings>
+     </translation>
+     <dictionary>
+        <settings>....
+        </settings>
+     </dictionay>
+  </service>
+
 Understand:
 
 - [Basics of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP)
