@@ -1,103 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sentence_generation>
-   <translation_services>
-      <!-- NOTE: The new xml settings in this Micrsoft service are based upon reading Microsoft Azure Translotr 3.0 specification -->
-      <service>
-          <name>microsoft</name>
-          <abbrev>m</abbrev>
-          <implementation>translator</implementation>
-          <baseurl>https://api-nam.cognitive.microsofttranslator.com</baseurl>
-          <url>translate</url> <!-- or "route" -->
-          <credentials>
-             <header>
-                <name>Ocp-Apim-Subscription-Key</name>
-                <value>ef6e5b44c68d438c8d79cae2f8c020ba</value> 
-             </header>    
-             <header>
-                 <name>Ocp-Apim-Subscription-Region</name>
-                 <value>eastus2</value> 
-              </header>
-          </credentials>
-          <data>
-          <!-- 
-            "data" == data setin request body. For Azure this is an arrray of json objects:
+<services>
+   <sentences>
+     <name>leipzig</name>
+   </sentences>
+   <translation>
+       <!-- NOTE: The new xml settings in this Micrsoft service are based upon reading Microsoft Azure Translotr 3.0 specification -->
+       <name>microsoft</name>
+       <abbrev>m</abbrev>
+       <implementation>translator</implementation>
+       <baseurl>https://api-nam.cognitive.microsofttranslator.com</baseurl>
+       <url>translate</url> <!-- or "route" -->
+       <credentials>
+          <header>
+             <name>Ocp-Apim-Subscription-Key</name>
+             <value>ef6e5b44c68d438c8d79cae2f8c020ba</value> 
+          </header>    
+          <header>
+              <name>Ocp-Apim-Subscription-Region</name>
+              <value>eastus2</value> 
+           </header>
+       </credentials>
+       <data>
+       <!-- 
+         "data" == data setin request body. For Azure this is an arrray of json objects:
 
-               [{"text": "Guten Tag!"}, {"text": "Guten Morgen!"}, {"text" : "Guten Nachmittag"}]
-          -->
-          </data>   
-          <!-- 
-          Trnaslotor 3.o supports:
+            [{"text": "Guten Tag!"}, {"text": "Guten Morgen!"}, {"text" : "Guten Nachmittag"}]
+       -->
+       </data>   
+       <!-- 
+       Trnaslotor 3.o supports:
 
-            1. translation
-            2. dictionary look up
+         1. translation
+         2. dictionary look up
 
-          Each has a different "route" that is appended to the base URL. For example, to translate you append "/tranlate" and do dictionary look up
-          (to find alternate translations) you appened "/dictionary/lookup":
+       Each has a different "route" that is appended to the base URL. For example, to translate you append "/tranlate" and do dictionary look up
+       (to find alternate translations) you appened "/dictionary/lookup":
 
-          1. Translation request:
+       1. Translation request:
 
-                https://api-nam.cognitive.microsofttranslator.com</translate
+             https://api-nam.cognitive.microsofttranslator.com</translate
 
-          2. Dictionary look up 
+       2. Dictionary look up 
 
-                https://api-nam.cognitive.microsofttranslator.com</dictionary/lookup
+             https://api-nam.cognitive.microsofttranslator.com</dictionary/lookup
 
-          -->
-          <request_method>POST</request_method> <!-- This is WRONG. Some urls reuqire POST, some GET -->
-          <headers>
-              <header>
-              <!-- I believe this is a common header to all the tranlation API services, including IBM. -->
-                 <name>Content-Type</name>
-              <!-- 
-                  Double check if simpley "json;UTF-8" will work, wheterh "charset=" is needed, etc.
-                  Checkt that all translation services, including IBM, use "json" and "UTF-8"? 
-                -->
-                 <value>application/json; charset=UTF-8</value> 
-              </header>
-         </headers>
-         <query>
-         <!-- By convention name="from" is recognized as the source langauge query string parameter name and name="to" as the destination parm name -->
-            <parameter name="textType" value="plain" />
-            <parameter name="from" value"from??" />
-            <parameter name="to" value"to??" />
-         </query>
-       </service
-       ><service>
-         <abbrev>d</abbrev>
-         <name>deepl</name>
-         <translator>DeeplTranslator</translator>
-         <endpoint>https://api-free.deepl.com/v2</endpoint>
-         <urls>
-           <translate>/translate</translate>
-         </urls>
-         <headers>application/json</headers>
-         <request_method>GET</request_method>
-         <inputtext>
-              <location>query</location>
-              <parmeter_name>text</parmeter_name>
-              <format>???? url_encode???</format>
-         </inputtext>
-         <params>
-            <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
-            <from>source_lang</from>
-            <to>target_lang</to>
-         </params>
-      </service>
-      <service>
-         <abbrev>i</abbrev>
-         <name>ibm</name>
-         <endpoint></endpoint>
-         <headers>application/json</headers>
-         <request_type>GET</request_type>
-         <credentials>
-            <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
-         </credentials>
-         <query>
-             <paramter name="?/" value="?????/" />
-             <paramter name="?/" value="?????/" />
-            <parameter name="from" value="source_lang" />
-            <parameter name="to" value="target_lang" />
-         </query>
-      </service>
-   </sentence_services>
-</sentence_generation>
+       -->
+       <request_method>POST</request_method> <!-- This is WRONG. Some urls reuqire POST, some GET -->
+       <headers>
+           <header>
+           <!-- I believe this is a common header to all the tranlation API services, including IBM. -->
+              <name>Content-Type</name>
+           <!-- 
+               Double check if simpley "json;UTF-8" will work, wheterh "charset=" is needed, etc.
+               Checkt that all translation services, including IBM, use "json" and "UTF-8"? 
+             -->
+              <value>application/json; charset=UTF-8</value> 
+           </header>
+      </headers>
+      <query>
+      <!-- By convention name="from" is recognized as the source langauge query string parameter name and name="to" as the destination parm name -->
+         <parameter name="textType" value="plain" />
+         <parameter name="from" value"from??" />
+         <parameter name="to" value"to??" />
+      </query>
+    </translation>
+    <translation>
+      <abbrev>d</abbrev>
+      <name>deepl</name>
+      <translator>DeeplTranslator</translator>
+      <endpoint>https://api-free.deepl.com/v2</endpoint>
+      <urls>
+        <translate>/translate</translate>
+      </urls>
+      <headers>application/json</headers>
+      <request_method>GET</request_method>
+      <inputtext>
+           <location>query</location>
+           <parmeter_name>text</parmeter_name>
+           <format>???? url_encode???</format>
+      </inputtext>
+      <params>
+         <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
+         <from>source_lang</from>
+         <to>target_lang</to>
+      </params>
+   </translation>
+   <translation>
+      <abbrev>i</abbrev>
+      <name>ibm</name>
+      <endpoint></endpoint>
+      <headers>application/json</headers>
+      <request_type>GET</request_type>
+      <credentials>
+         <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
+      </credentials>
+      <query>
+          <paramter name="?/" value="?????/" />
+          <paramter name="?/" value="?????/" />
+         <parameter name="from" value="source_lang" />
+         <parameter name="to" value="target_lang" />
+      </query>
+   </translation>
+</services>
