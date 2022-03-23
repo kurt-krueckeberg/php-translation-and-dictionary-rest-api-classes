@@ -25,6 +25,10 @@ The .xml the query parameters (for translation of text) are not bound to or excl
 
 Understand:
 
+Review:
+
+- http://www.usingxml.com/Basics/XmlApplications
+
 - [Basics of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP)
 - [What HTTP is](https://www.w3schools.com/whatis/whatis_http.asp)
 - What an [HTTP Messages](https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages) are.
