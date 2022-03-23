@@ -5,22 +5,33 @@
       <service>
           <name>microsoft</name>
           <abbrev>m</abbrev>
+          <implementation>translator</implementation>
           <baseurl>https://api-nam.cognitive.microsofttranslator.com</baseurl>
-          <url>transnlate</url> <!-- or "route" -->
-          <translator_class>Translator</translator_class>
+          <url>translate</url> <!-- or "route" -->
           <credentials>
+             <header>
+                <name>Ocp-Apim-Subscription-Key</name>
+                <value>ef6e5b44c68d438c8d79cae2f8c020ba</value> 
+             </header>    
+             <header>
+                 <name>Ocp-Apim-Subscription-Region</name>
+                 <value>eastus2</value> 
+              </header>
           </credentials>
-          <inputText> <!-- The text to translate' message location -->
-            <location>body</location> <!-- or 'query (string) -->
-          </inputText> 
+          <data>
           <!-- 
+            "data" == data setin request body. For Azure this is an arrray of json objects:
 
+               [{"text": "Guten Tag!"}, {"text": "Guten Morgen!"}, {"text" : "Guten Nachmittag"}]
+          -->
+          </data>   
+          <!-- 
           Trnaslotor 3.o supports:
 
             1. translation
             2. dictionary look up
 
- E        Each has a different "route" that is appended to the base URL. For example, to translate you append "/tranlate" and do dictionary look up
+          Each has a different "route" that is appended to the base URL. For example, to translate you append "/tranlate" and do dictionary look up
           (to find alternate translations) you appened "/dictionary/lookup":
 
           1. Translation request:
@@ -34,14 +45,6 @@
           -->
           <request_method>POST</request_method> <!-- This is WRONG. Some urls reuqire POST, some GET -->
           <headers>
-             <header>
-                <name>Ocp-Apim-Subscription-Key</name>
-                 <value>ef6e5b44c68d438c8d79cae2f8c020ba</value> 
-             </header>    
-             <header>
-                 <name>Ocp-Apim-Subscription-Region</name>
-                 <value>eastus2</value> 
-              </header>
               <header>
               <!-- I believe this is a common header to all the tranlation API services, including IBM. -->
                  <name>Content-Type</name>
@@ -55,16 +58,12 @@
           <queryString>
             <parm>
                <name>textType</name>
-              <value>plain</value>
+               <value>plain</value>
             </parm>
             <parm>
+                <from>from??</from>
+                <to>to??</to>
           </querString>
-          <!--  
-          The data is the json input of an associative array with "text" as the key.          -->       
-          <data>
-            
-          </data>   
-          -->
-      </service>
+       </service>
    </sentence_services>
 </sentence_generation>
