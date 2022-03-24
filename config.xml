@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <services>
    <sentences>
-     <name>leipzig</name>
-     <baseurl>http://api.corpora.uni-leipzig.de/ws/sentences</baseurl> <!-- https?? -->
-      <url>sentences</url> <!-- or "route" -->
-      <credentials>
-          <header>
-         </header>    
-      </credentials>
-      <request_method>GET</request_method> 
-      <query>
-       <corpus>deu_news_2012_1M'</corpus>
-       <count>10</count>  <!-- offset and limit instead? -->
-      </query> 
+       <name>leipzig</name>
+       <baseurl>http://api.corpora.uni-leipzig.de/ws/sentences</baseurl> <!-- https?? -->
+       <url>sentences</url> <!-- or "route" -->
+       <credentials>
+            <header>
+           </header>    
+       </credentials>
+       <request_method>GET</request_method> 
+       <query>
+        <corpus>deu_news_2012_1M'</corpus>
+        <count>10</count>  <!-- offset and limit instead? -->
+       </query> 
    </sentences>
    <translation>
        <!-- NOTE: The new xml settings in this Micrsoft service are based upon reading Microsoft Azure Translotr 3.0 specification -->
        <name>microsoft</name>
        <abbrev>m</abbrev>
-       <implementation>translator</implementation>
+       <implementation>AzureTranslator</implementation>
        <baseurl>https://api-nam.cognitive.microsofttranslator.com</baseurl>
        <url>translate</url> <!-- or "route" -->
        <credentials>
