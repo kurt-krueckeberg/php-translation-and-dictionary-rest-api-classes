@@ -4,15 +4,14 @@
      <name abbrev="l">leipzig</name>
      <settings>       <!-- TODO: Sepetet the genearl setting hta pply to all sub-services from specific-service settings -->
         <baseurl>http://api.corpora.uni-leipzig.de/ws</baseurl> <!-- https?? -->
-        <url>sentences</url> <!-- or "route" -->
-        <corpus>deu_news_2012_1M'</corpus>
         <credentials>
-           <header>
-           </header>    
+           <header name="Content-Type" value="application/json; charset=UTF-8"</header>    
          </credentials>
      </settings>
      <!-- services: types, subtypes -->
      <service type="sentences"> 
+        <url>sentences</url> <!-- or "route" -->
+        <corpus>deu_news_2012_1M</corpus>
         <query>
            <offset>0</offset>  <!-- offset and limit instead? -->
            <liimit>10</limit> 
@@ -64,7 +63,7 @@
           </data>   
           <request_method>POST</request_method> 
           <headers>
-              <property name="Content-Type" value="application/json; charset=UTF-8" />
+              <header name="Content-Type" value="application/json; charset=UTF-8" />
           </headers>
           <query>
           <!-- By convention name="from" is recognized as the source langauge query string parameter name and name="to" as the destination parm name -->
