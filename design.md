@@ -26,7 +26,11 @@ The .xml the query parameters (for translation of text) are not bound to or excl
      </dictionay>
   </service>
 
-Understand:
+## Azure Translator
+
+- main [landing page](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/)
+
+## Understand These Technologies:
 
 Review:
 
