@@ -1,25 +1,48 @@
 <?php
 declare(strict_types=1);
 
- $p1 = "/sentence_generation/translation_services/service/abbrev[normalize-space() = '";
+ $provider_query =  "/providers/provider/name[@abbrev='%s']";
+
+  // Alternative query:    "/providers/provide/service/abbrev[normalize-space() = '";
+
+  // 
+
+   /*
+    To use access the attributes of an SimpleXMLElement, use the `attibutes()` method like this:
+
+
+    $xpath_str = "/providers/provide/name[@abbrev='l']";
+
+    $xpath = ....
+    $dom = ...
+
+    $service = $dom->query($xpath);
+
+    $serive->attributes()->type
+   */  
 
  $p2 = "']/.."; 
 
- function test1(string $query)
+ function test_simple(string $provider_q, string $abbrev)
  {
     $xml = simplexml_load_file("config.xml");
+
+    $query = sprintf($provider_q, $abbrev);
 
     $s = $xml->xpath($query);
 
     return $s[0];
  }
- function test2(string $query)
+
+ function test_dom(string $provider_q, string $abbrev)
  {
     $doc = new DOMDocument;
 
     $doc->load("config.xml");
 
     $xpath = new DOMXpath($doc);
+
+    $query = sprintf($provider_q, $abbrev);
 
     $s = $xpath->query($query);
 
@@ -28,7 +51,7 @@ declare(strict_types=1);
 
  $query = $p1 . "i" . $p2;
 
- $s = test1($query);
+ $s = test_simple($query, "sentences");
 
   var_dump($s);
 

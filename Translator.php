@@ -4,7 +4,7 @@ use GuzzleHttp\Client;
 
 require 'vendor/autoload.php';
 
-include "Translate.php";
+include "TranslateInterface.php";
 
 /*
  *
@@ -12,9 +12,9 @@ include "Translate.php";
  *
  *
  */
-class Translator implements Translate {
+class Translator implements TranslateInterface {
 
-    static $xqs = "/sentence_generation/translation_services/service/abbrev[normalize-space() = '";
+    static $xqs = "/providers/provider/nametranslation_services/service/abbrev[normalize-space() = '";
 
     static $xqe = "']/.."; 
 
@@ -28,7 +28,7 @@ class Translator implements Translate {
 
     private $client; // Guzzle\Client
    
-   static private function get_service(string $xml_fname, string $abbrev)
+   static private function get_provider(string $xml_fname, string $abbrev)
    {
       $simp = simplexml_load_file($xml_fname);
       
@@ -38,7 +38,21 @@ class Translator implements Translate {
  
       if ($service === null || $service === false)
           throw new ErrorException("Translation service not found in $xml_fname.\n");
+  
+      return $service[0];
+
+   static private function get_settings(string $xml_fname, string $abbrev)
+   {
+
+      $simp = simplexml_load_file($xml_fname);
+      
+      $query = self::$xqs . $abbrev . self::$xqe;
+
+      $service = $simp->xpath($query); 
  
+      if ($service === null || $service === false)
+          throw new ErrorException("Translation service not found in $xml_fname.\n");
+  
       return $service[0];
    }
 
@@ -47,9 +61,17 @@ class Translator implements Translate {
     */ 
    static public function create(string $fxml, string $abbrev) 
    {
-      $service = self::get_service($fxml, $abbrev);
 
-      $refl = new ReflectionClass((string) $service->translator);
+      /*
+         todo: 
+           Q: Should I change this get_credentials() or get_settings()/get_general_settings() or get_client_settings/prepare_client() or
+              get_client_settings()?
+           Q: Should I call this method after creating the Guzzel\Client() 
+
+       */   
+      $service = self::get_settings($fxml, $abbrev);
+
+      $refl = new ReflectionClass((string) $service->translator{); //todo: Change $service-
 
       $trans = $refl->newInstance($service);
 

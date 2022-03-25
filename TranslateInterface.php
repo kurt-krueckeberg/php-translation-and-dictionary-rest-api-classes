@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-interface Translate {
+interface TranslateInterface {
 
    public function translate(string $str, string $src, string $target); // todo: return type?
 }
