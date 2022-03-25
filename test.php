@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
- $provider_query =  "/providers/provider/name[@abbrev='%s']";
+
 
   // Alternative query:    "/providers/provide/service/abbrev[normalize-space() = '";
 
@@ -21,11 +21,9 @@ declare(strict_types=1);
     $serive->attributes()->type
    */  
 
- $p2 = "']/.."; 
-
  function test_simple(string $provider_q, string $abbrev)
  {
-    $xml = simplexml_load_file("config.xml");
+    $xml = simplexml_load_file("test.xml");
 
     $query = sprintf($provider_q, $abbrev);
 
@@ -33,7 +31,7 @@ declare(strict_types=1);
 
     return $s[0];
  }
-
+/*
  function test_dom(string $provider_q, string $abbrev)
  {
     $doc = new DOMDocument;
@@ -48,10 +46,25 @@ declare(strict_types=1);
 
     return $s[0];
  }
+*/
 
- $s = test_simple($query, "l");
+ $xml = simplexml_load_file("test.xml");
+ 
+ $provider_q =  "/providers/provider/name[@abbrev='%s']";
+ 
+ $query = sprintf($provider_q, "l");
+ 
+ echo $query . "\b";
+
+  $s = $xml->xpath($query);
 
   var_dump($s);
+
+  echo "\n===========\n";
+
+  print_r($s);
+
+  return;
 
  echo "abbrev = " . $s->abbrev . "\n";
  echo "name = " . $s->name . "\n";

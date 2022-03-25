@@ -1,97 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <providers>
-  <provider> 
-    <name> abbrev"l">leipzig</name>
-       <service type="sentences"> 
-         <baseurl>http://api.corpora.uni-leipzig.de/ws/sentences</baseurl> <!-- https?? -->
-         <url>sentences</url> <!-- or "route" -->
-         <credentials>
-            <header>
-            </header>    
-          </credentials>
-          <request_method>GET</request_method> 
-          <query>
-            <corpus>deu_news_2012_1M'</corpus>
-            <count>10</count>  <!-- offset and limit instead? -->
-          </query> 
+ <provider> 
+      <name abbrev="l">leipzig</name>
+        <settings>       <!-- TODO: Sepetet the genearl setting hta pply to all sub-services from specific-service settings -->
+           <baseurl>http://api.corpora.uni-leipzig.de/ws/sentences</baseurl> <!-- https?? -->
+           <url>sentences</url> <!-- or "route" -->
+           <credentials>
+              <header>
+              </header>    
+            </credentials>
+         </settings>
+        <service type="sentences"> 
+           <query>
+              <corpus>deu_news_2012_1M'</corpus>
+              <count>10</count>  <!-- offset and limit instead? -->
+           </query> 
        </service>
-     </name>
    </provider>
    <provider> 
-      <name abbrev="a">Azure</name>
-      <!--  Azure Translator 3.0 also supports "dictionary lookups" and dictionary examples.
-          
-               1. translation
-               2. dictionary look up
-               3. dictionary examples
-          
-             Each type of three request types above has a different "route" (that is appended to the base URL)
-          
-             1. Translation request:
-          
-                   https://api-nam.cognitive.microsofttranslator.com/translate
-          
-             2. Dictionary look up 
-          
-                   https://api-nam.cognitive.microsofttranslator.com/dictionary/lookup
-          
-        -->
+     <name abbrev="a">Azure</name>
         <settings> <!-- General settinsg that apply to all Azure Translator services --> 
           <baseurl>https://api-nam.cognitive.microsofttranslator.com</baseurl>
-          <content-type></content-type>
+          <content-type></conten-type>
+          <credentials>
+              <header>
+                 <name>Ocp-Apim-Subscription-Key</name>
+                 <value>ef6e5b44c68d438c8d79cae2f8c020ba</value> 
+              </header>    
+              <header>
+                  <name>Ocp-Apim-Subscription-Region</name>
+                  <value>eastus2</value> 
+              </header>
+           </credentials>
          </settings>
-         <service type="translate"> 
-          <!-- These are settings that apply to all types of requests \-\- text translation, dictionary lookup, etc -->
-             <implementation>AzureTranslator</implementation>
-             <baseurl>https://api-nam.cognitive.microsofttranslator.com</baseurl>
-             <url>translate</url> <!-- or "route" -->
-             <credentials>
-                <header>
-                   <name>Ocp-Apim-Subscription-Key</name>
-                   <value>ef6e5b44c68d438c8d79cae2f8c020ba</value> 
-                </header>    
-                <header>
-                    <name>Ocp-Apim-Subscription-Region</name>
-                    <value>eastus2</value> 
-                 </header>
-             </credentials>
-             <data>  <!--  BODY data
-                          "data" == data setin request body. For Azure this is an arrray of json objects:
-          
-                          [{"text": "Guten Tag!"}, {"text": "Guten Morgen!"}, {"text" : "Guten Nachmittag"}]
-                     -->
-             </data>   
-                          <request_method>POST</request_method> 
-             <headers>
-                 <header>
-                 <!-- I believe this is a common header to all the tranlation API services, including IBM. -->
-                    <name>Content-Type</name>
-                 <!-- 
-                     Double check if simpley "json;UTF-8" will work, wheterh "charset=" is needed, etc.
-                     Checkt that all translation services, including IBM, use "json" and "UTF-8"? 
-                   -->
-                    <value>application/json; charset=UTF-8</value> 
-                 </header>
+         <service type="translation">
+          <!--  Azure Translator 3.0 also supports "dictionary lookups" and dictionary examples.
+              
+                   1. translation
+                   2. dictionary look up
+                   3. dictionary examples
+              
+                 Each type of three request types above has a different "route" (that is appended to the base URL)
+              
+                 1. Translation request:
+              
+                       https://api-nam.cognitive.microsofttranslator.com/translate
+              
+                 2. Dictionary look up 
+              
+                       https://api-nam.cognitive.microsofttranslator.com/dictionary/lookup
+              
+            -->
+                  <!-- These are settings that apply to all types of requests \-\- text translation, dictionary lookup, etc -->
+            <implementation>AzureTranslator</implementation>
+            <url>translate</url> <!-- or "route" -->
+            <data>  <!--  BODY data
+                         "data" == data setin request body. For Azure this is an arrray of json objects:
+         
+                         [{"text": "Guten Tag!"}, {"text": "Guten Morgen!"}, {"text" : "Guten Nachmittag"}]
+                    -->
+            </data>   
+            <request_method>POST</request_method> 
+            <headers>
+                <property name="Content-Type" value="application/json; charset=UTF-8" />
             </headers>
             <query>
-            <!-- By convention name="from" is recognized as the source langauge query string parameter name and name="to" as the destination parm name -->
-               <parameter name="textType" value="plain" />
-               <parameter name="from" value"from??" />
-               <parameter name="to" value"to??" />
+           <!-- By convention name="from" is recognized as the source langauge query string parameter name and name="to" as the destination parm name -->
+              <parameter name="textType" value="plain" />
+              <parameter name="from" value"from??" />
+              <parameter name="to" value"to??" />
             </query>
-         </service>
-         <service type="dictionary-lookup">
-         </service?
-    <dictionaryLoookup>
-    <dictionaryLoookup>
-    <translation>
-      <abbrev>d</abbrev>
-      <name>deepl</name>
-      <translator>DeeplTranslator</translator>
-      <endpoint>https://api-free.deepl.com/v2</endpoint>
-      <urls>
-        <translate>/translate</translate>
-      </urls>
+        </service>
+  <service type="dictionary-lookup">
+  <!--        
+ 
+  -->
+  <provider> 
+      <name> abbrev"d">deepl</name>
+      <service type="translation"> 
+      <baseul>https://api-free.deepl.com/v2</endpoint>
+      <url>translate</url>
       <headers>application/json</headers>
       <request_method>GET</request_method>
       <inputtext>
