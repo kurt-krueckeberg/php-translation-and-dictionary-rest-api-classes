@@ -3,13 +3,15 @@
  <provider> 
       <name abbrev="l">leipzig</name>
         <settings>       <!-- TODO: Sepetet the genearl setting hta pply to all sub-services from specific-service settings -->
-           <baseurl>http://api.corpora.uni-leipzig.de/ws/sentences</baseurl> <!-- https?? -->
+           <baseurl>http://api.corpora.uni-leipzig.de/ws</baseurl> <!-- https?? -->
            <url>sentences</url> <!-- or "route" -->
            <credentials>
               <header>
               </header>    
             </credentials>
-         </settings>
+        </settings>
+        <!-- services: types, subtypes -->
+        
         <service type="sentences"> 
            <query>
               <corpus>deu_news_2012_1M'</corpus>
@@ -77,36 +79,29 @@
   -->
   <provider> 
       <name> abbrev"d">deepl</name>
-      <service type="translation"> 
-      <baseul>https://api-free.deepl.com/v2</endpoint>
-      <url>translate</url>
-      <headers>application/json</headers>
-      <request_method>GET</request_method>
-      <inputtext>
-           <location>query</location>
-           <parmeter_name>text</parmeter_name>
-           <format>???? url_encode???</format>
-      </inputtext>
-      <params>
-         <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
-         <from>source_lang</from>
-         <to>target_lang</to>
-      </params>
-   </translation>
-   <translation>
-      <abbrev>i</abbrev>
-      <name>ibm</name>
-      <endpoint></endpoint>
-      <headers>application/json</headers>
-      <request_type>GET</request_type>
-      <credentials>
-         <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
-      </credentials>
-      <query>
-          <paramter name="?/" value="?????/" />
-          <paramter name="?/" value="?????/" />
-         <parameter name="from" value="source_lang" />
-         <parameter name="to" value="target_lang" />
-      </query>
-   </translation>
+      <settings>       <!-- TODO: Sepetet the genearl setting hta pply to all sub-services from specific-service settings -->
+          <baseul>https://api-free.deepl.com/v2</endpoint>
+           <credentials>
+              <header>
+              </header>    
+            </credentials>
+       </settings>
+      <services>
+         <service type="translation"> 
+            <url>translate</url>
+            <headers>application/json</headers>
+            <request_method>GET</request_method>
+            <inputtext>
+                 <location>query</location>
+                 <parmeter_name>text</parmeter_name>
+                 <format>???? url_encode???</format>
+            </inputtext>
+            <params>
+               <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
+               <from>source_lang</from>
+               <to>target_lang</to>
+            </params>
+         </service>
+      </services>
+   </provider>
 </providers>
