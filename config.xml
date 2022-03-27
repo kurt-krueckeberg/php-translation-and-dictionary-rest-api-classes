@@ -6,9 +6,9 @@
         <baseurl>http://api.corpora.uni-leipzig.de/ws</baseurl> <!-- https?? -->
         <credentials>
         </credentials>
-        <header>
+        <headers> <!-- Does this apply to all reuqeust types.  -->
            <Content-Type>application/json; charset=UTF-8</Content-Type>
-         </header>
+         </headers>
      </settings>
      <!-- services: types, subtypes -->
      <service type="sentences"> 
@@ -24,7 +24,7 @@
       <name abbrev="a">Azure</name>
       <settings> <!-- General settinsg that apply to all Azure Translator services --> 
         <baseurl>https://api-nam.cognitive.microsofttranslator.com</baseurl>
-        <content-type></conten-type>
+        <content-type></content-type>
         <credentials>
             <header name="Ocp-Apim-Subscription-Key">ef6e5b44c68d438c8d79cae2f8c020ba</header> 
             <header name="Ocp-Apim-Subscription-Region">eastus2</header>
