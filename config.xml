@@ -81,8 +81,7 @@
       <settings>       <!-- TODO: Sepetet the genearl setting hta pply to all sub-services from specific-service settings -->
           <baseul>https://api-free.deepl.com/v2</endpoint>
            <credentials>
-              <header>
-              </header>    
+              <header name="DeepL-Auth-Key"></header>    
             </credentials>
        </settings>
       <services>
