@@ -35,11 +35,11 @@
                 <value>eastus2</value> 
             </header>
          </credentials>
-        <params>
+        <query>
            <input_lang name="from" />
            <output_lang name="to" />
            <textType>plain</textType>
-        </params>
+        </query>
        </settings>
        <service type="translation">
         <!--  Azure Translator 3.0 also supports "dictionary lookups" and dictionary examples.
