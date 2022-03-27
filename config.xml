@@ -12,7 +12,7 @@
      </settings>
      <!-- services: types, subtypes -->
      <service type="sentences"> 
-        <url>sentences</url> <!-- or "route" -->
+        <url>sentences</url>
         <corpus>deu_news_2012_1M</corpus>
         <query>
            <offset>0</offset>  <!-- offset and limit instead? -->
@@ -26,14 +26,8 @@
         <baseurl>https://api-nam.cognitive.microsofttranslator.com</baseurl>
         <content-type></conten-type>
         <credentials>
-            <header>
-               <name>Ocp-Apim-Subscription-Key</name>
-               <value>ef6e5b44c68d438c8d79cae2f8c020ba</value> 
-            </header>    
-            <header>
-                <name>Ocp-Apim-Subscription-Region</name>
-                <value>eastus2</value> 
-            </header>
+            <header name="Ocp-Apim-Subscription-Key">ef6e5b44c68d438c8d79cae2f8c020ba</header> 
+            <header name="Ocp-Apim-Subscription-Region">eastus2</header>
          </credentials>
         <query>
            <input_lang name="from" />
@@ -73,16 +67,15 @@
               <header name="Content-Type" value="application/json; charset=UTF-8" />
           </headers>
           <query>
-          <!-- By convention name="from" is recognized as the source langauge query string parameter name and name="to" as the destination parm name -->
-            <parameter name="textType" value="plain" />
-            <parameter name="from" value"from??" />
-            <parameter name="to" value"to??" />
+            <textType>plain</textType>
           </query>
        </service>
-  <service type="dictionary-lookup">
+    <service type="dictionary-lookup">
   <!--        
  
   -->
+    </service>
+  </provider>
   <provider> 
       <name> abbrev"d">deepl</name>
       <settings>       <!-- TODO: Sepetet the genearl setting hta pply to all sub-services from specific-service settings -->
