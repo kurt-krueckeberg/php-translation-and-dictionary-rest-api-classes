@@ -11,22 +11,6 @@ Using jvavscript [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fe
 The code will understand every aspect of the .XML configuration file. If we later see we can generalze the PHP implemntation based on
 capturing the requirements of each translation REST API in a general way, this will be put in the .xml configuarition. 
 
-The .xml the query parameters (for translation of text) are not bound to or exclusively associated with the translation-of-text, so introduce:
-
-  <service>
-     <settings>....
-     </settings>
-     <translation>
-        <settings>....
-        </settings>
-     </translation>
-     <dictionary>
-        <settings>....
-        </settings>
-     </dictionay>
-  </service>
-
-Each servie needs From and To settings.
 
 ## Azure Translator
 
@@ -36,12 +20,14 @@ Each servie needs From and To settings.
 
 Review:
 
-- http://www.usingxml.com/Basics/XmlApplications
-
-- [Basics of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP)
+- [Understanding HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
 - [What HTTP is](https://www.w3schools.com/whatis/whatis_http.asp)
 - What an [HTTP Messages](https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages) are.
 - What [HTTP Authenication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication) is and how it works.
+- [Authentication Methods](https://blog.restcase.com/4-most-used-rest-api-authentication-methods/)
+
+- http://www.usingxml.com/Basics/XmlApplications
+
 
 Understand the PHP HTTP Message interfaces created to represent HTTP messages:
 
