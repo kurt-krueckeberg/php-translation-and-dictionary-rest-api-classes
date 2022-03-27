@@ -5,8 +5,10 @@
      <settings>       <!-- TODO: Sepetet the genearl setting hta pply to all sub-services from specific-service settings -->
         <baseurl>http://api.corpora.uni-leipzig.de/ws</baseurl> <!-- https?? -->
         <credentials>
-           <header name="Content-Type" value="application/json; charset=UTF-8"</header>    
-         </credentials>
+        </credentials>
+        <header>
+           <Content-Type>application/json; charset=UTF-8</Content-Type>
+         </header>
      </settings>
      <!-- services: types, subtypes -->
      <service type="sentences"> 
@@ -33,6 +35,11 @@
                 <value>eastus2</value> 
             </header>
          </credentials>
+        <params>
+           <input_lang name="from" />
+           <output_lang name="to" />
+           <textType>plain</textType>
+        </params>
        </settings>
        <service type="translation">
         <!--  Azure Translator 3.0 also supports "dictionary lookups" and dictionary examples.
