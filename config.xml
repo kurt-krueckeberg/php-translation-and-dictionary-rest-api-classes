@@ -2,21 +2,29 @@
 <providers>
  <provider> 
      <name abbrev="l">leipzig</name>
-     <settings>       <!-- TODO: Sepetet the genearl setting hta pply to all sub-services from specific-service settings -->
+     <settings>       <!-- TODO: Genearl setting for all request types. -->
         <baseurl>http://api.corpora.uni-leipzig.de/ws</baseurl> <!-- https?? -->
         <credentials>
+           <!--
+            For DEEEPL an Authorization header is sent with these settings:
+   
+            Authorization: DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx       
+          -->
         </credentials>
         <headers> <!-- Does this apply to all reuqeust types.  -->
            <Content-Type>application/json; charset=UTF-8</Content-Type>
          </headers>
      </settings>
      <!-- services: types, subtypes -->
+     <!-- Since the corpus is pat of the sentences route ( /sentences/{corpusName}/sentences/{word} ), and since we don't plan to change it, there is no separate
+          configuration setting for it.  -->
      <service type="sentences"> 
-        <url>sentences</url>
-        <corpus>deu_news_2012_1M</corpus>
+        <url>sentences/deu_news_2012_1M/sentences</url> 
         <query>
            <offset>0</offset>  <!-- offset and limit instead? -->
            <liimit>10</limit> 
+           <input_lang name="from" />
+           <output_lang name="to" />
         </query> 
      </service>
    </provider>
