@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-
+ $provider_query =  "/providers/provider/name[@abbrev='%s']";
 
   // Alternative query:    "/providers/provide/service/abbrev[normalize-space() = '";
 
@@ -21,9 +21,11 @@ declare(strict_types=1);
     $serive->attributes()->type
    */  
 
+ $p2 = "']/.."; 
+
  function test_simple(string $provider_q, string $abbrev)
  {
-    $xml = simplexml_load_file("test.xml");
+    $xml = simplexml_load_file("config.xml");
 
     $query = sprintf($provider_q, $abbrev);
 
@@ -31,7 +33,7 @@ declare(strict_types=1);
 
     return $s[0];
  }
-/*
+
  function test_dom(string $provider_q, string $abbrev)
  {
     $doc = new DOMDocument;
@@ -46,25 +48,10 @@ declare(strict_types=1);
 
     return $s[0];
  }
-*/
 
- $xml = simplexml_load_file("test.xml");
- 
- $provider_q =  "/providers/provider/name[@abbrev='%s']";
- 
- $query = sprintf($provider_q, "l");
- 
- echo $query . "\b";
-
-  $s = $xml->xpath($query);
+ $s = test_simple($query, "l");
 
   var_dump($s);
-
-  echo "\n===========\n";
-
-  print_r($s);
-
-  return;
 
  echo "abbrev = " . $s->abbrev . "\n";
  echo "name = " . $s->name . "\n";
@@ -79,6 +66,7 @@ foreach ($s->query_string_parms[0] as $key => $value) {
 
   echo "Key of $key has node-content of " . $value . "\n";
 }
+
 return;
 
 $html = '<html><body><span class="text">Hello, World!</span></body></html>';

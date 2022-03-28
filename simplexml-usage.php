@@ -84,7 +84,6 @@ foreach ($movies->movie[1]->characters->character as $character) {
    echo $character->name, ' played by ', $character->actor, PHP_EOL;
 }
 
-
 foreach ($movies->movie[0]->rating as $rating) {
     
     switch((string) $rating['type']) { // Get attributes as element indices
