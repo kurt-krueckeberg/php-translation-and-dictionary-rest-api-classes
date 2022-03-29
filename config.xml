@@ -101,8 +101,14 @@
       <name> abbrev="i">ibm</name>
       <settings>   
         <baseul></endpoint>
-        <credentials method="token">
-           <header name="blah-token-request">blah</header>
+        <credentials method="basic">
+           <!-- 
+           I believe basic authorization is used in which a username and password are passed, separated from each other by a colon.
+           The username is 'apikey' and the password is your private api-key.
+
+           Bear token is also supported and recommended for production code.
+           -->
+           <header name="apikey">ENftXvTcCVMaYEW5tjKV0gKbUxbLSm_7p_siP89_ciNb</header>
         </credentials>
       </settings>
       <services>
