@@ -14,9 +14,10 @@ include "TranslateInterface.php";
  */
 class Translator implements TranslateInterface {
 
+    // $xqs = XPath query 'start'
     static $xqs = "/providers/provider/nametranslation_services/service/abbrev[normalize-space() = '";
 
-    static $xqe = "']/.."; 
+    static $xqe = "']/.."; // $xqe = XPath query 'end'
 
     private $endpoint; 
 

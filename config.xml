@@ -10,6 +10,7 @@
    
             Authorization: DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx       
           -->
+            <param name="authKey"> <!-- This looks more like a query parameter, but shows one way, one option, for writing the xml.  -->
         </credentials>
         <headers> <!-- Does this apply to all reuqeust types.  -->
            <Content-Type>application/json; charset=UTF-8</Content-Type>

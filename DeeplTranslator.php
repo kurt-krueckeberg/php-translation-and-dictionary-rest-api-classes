@@ -5,21 +5,49 @@ use GuzzleHttp\Client;
 
 require 'vendor/autoload.php';
 
-include "GuzzleTranslateAPIWrapper.php";
-
 /*
  * Deepl's Free API is a sentence translation service but not a dictionary.
  *
- * DEEPL Rquest paramters:
+ * Header-based authentication is the preferred method of authentication, and overrides the auth_key parameter.
+ * New API functions added in the future will only support the header-based authentication.  
  *
+ * DEEPL Authentication:
+ *
+ * Two examplee code for using Guzzle to authenticate DEEPL:
+ *
+ *   $client = new Client([ 'base_uri' => 'https://api-free.deepl.com' ]);
+ * 
+ *    $headers = [                                                                                                                                                                                                                              
+ *         'Authorization' => "DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx", // <-- This is my key. Protect it.
+ *    ];
+ *     
+ *    $response = $client->request('GET', '/v2/usage', [
+ *          'headers' => $headers
+ *      ]); 
+ *
+ *    var_dump($response);
+ *
+ *  ----------------------------
+ *
+ *   $headers = [
+          *   'Authorization' => "DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx",
+ *   ];
+ *   
+ *   $client = new Client([ 'base_uri' => 'https://api-free.deepl.com' , 'headers' => $headers]); 
+ *   
+ *   $response = $client->request('GET', '/v2/usage');
+ *   
+ *   
+ * DEEPL Rquest paramters:
+ * =======================
+ *   
    $content = [
-     'auth_key'    => $your_api_key,
      'text'        => $source_text,
-     'source_lang' => 'EN',
-     'target_lang' => 'JA',
+     'source_lang' => 'DE',
+     'target_lang' => 'EN',
    ];
  */ 
-class DeeplTranslator extends GuzzleTranslateAPIWrapper {
+class DeeplTranslator extends Translator {
 
    /*
    private static $base_uri = 'https://api-free.deepl.com/v2/translate'; 
@@ -34,11 +62,15 @@ class DeeplTranslator extends GuzzleTranslateAPIWrapper {
 
    public function __construct(object $simplexml_ele) 
    {
-      $this->auth_key = $auth_key;
+     $auth_key = "blah..blah";
 
-      $this->client = new Client(array('base_uri' => self::$base_uri));
+     $headers = [
+              //'Authorization' => "DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx",
+              'Authorization' => "DeepL-Auth-Key $auth_key",
+     ];
 
-      $this->header = "accept: application/json"; 
+     $this->client = new Client([ 'base_uri' => 'https://api-free.deepl.com' , 'headers' => $headers]); 
+
    }
    /*
      translate() returns an array of translated sentences, in which each element has two properties:
