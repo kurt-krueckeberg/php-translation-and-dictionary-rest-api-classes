@@ -4,16 +4,14 @@
      <name abbrev="l">leipzig</name>
      <settings>       <!-- TODO: Genearl setting for all request types. -->
         <baseurl>http://api.corpora.uni-leipzig.de/ws</baseurl> <!-- https?? -->
-        <headers> 
-        </headers>
      </settings>
      <service type="sentences"> 
         <url>sentences/deu_news_2012_1M/sentences</url> 
         <query> <!-- Alternately: Use parms instead of query -->
            <offset>0</offset>  <!-- offset and limit instead? -->
            <liimit>10</limit> 
-           <input_lang name="from" />
-           <output_lang name="to" />
+           <from name="from" />
+           <to name="to" />
         </query> 
      </service>
    </provider>
@@ -25,7 +23,10 @@
             <header name="Ocp-Apim-Subscription-Key">ef6e5b44c68d438c8d79cae2f8c020ba</header> 
             <header name="Ocp-Apim-Subscription-Region">eastus2</header>
         </credentials>
-        <query> <!-- Alternately: Use parms instead of query -->
+        <headers>
+              <header name="Content-Type">application/json; charset=UTF-8</header>
+          </headers>
+        <query> 
            <input_lang name="from" />
            <output_lang name="to" />
            <textType>plain</textType>
@@ -51,18 +52,16 @@
           -->
                 <!-- These are settings that apply to all types of requests \-\- text translation, dictionary lookup, etc -->
           <implementation>AzureTranslator</implementation>
-          <url>translate</url> <!-- or "route" -->
-          <data>  <!--  BODY data
+          <url>translate</url> 
+          <request_method>POST</request_method> 
+          <!--  BODY data
                        "data" == data setin request body. For Azure this is an arrray of json objects:
        
                        [{"text": "Guten Tag!"}, {"text": "Guten Morgen!"}, {"text" : "Guten Nachmittag"}]
-                  -->
+          -->
+          <data>  
           </data>   
-          <request_method>POST</request_method> 
-          <headers>
-              <header name="Content-Type" value="application/json; charset=UTF-8" />
-          </headers>
-          <query> <!-- Alternately: Use parms instead of query -->
+          <query> 
             <textType>plain</textType>
           </query>
        </service>
