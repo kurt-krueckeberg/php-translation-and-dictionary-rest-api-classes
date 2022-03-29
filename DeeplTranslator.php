@@ -30,7 +30,7 @@ require 'vendor/autoload.php';
  *  ----------------------------
  *
  *   $headers = [
-          *   'Authorization' => "DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx",
+          'Authorization' => "DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx",
  *   ];
  *   
  *   $client = new Client([ 'base_uri' => 'https://api-free.deepl.com' , 'headers' => $headers]); 

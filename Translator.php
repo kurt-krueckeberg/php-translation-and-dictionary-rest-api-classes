@@ -14,65 +14,40 @@ include "TranslateInterface.php";
  */
 class Translator implements TranslateInterface {
 
-    // $xqs = XPath query 'start'
-    static $xqs = "/providers/provider/nametranslation_services/service/abbrev[normalize-space() = '";
+   static $provider_query =  "/providers/provider/name[@abbrev='%s']";  // "/providers/provider/name[normalize-space() = '"; // $movies->xpath('//character') as $character) 
 
-    static $xqe = "']/.."; // $xqe = XPath query 'end'
-
-    private $endpoint; 
-
-    private $request_method;
-
-    private $headers = array(); // headers array that will be pass to guzzle client
-    
-    private $query_str = array(); // query string array that will be pass to guzzle client
-
-    private $client; // Guzzle\Client
+   private $client; // Guzzle\Client
    
+   static private function build_header(string $xml_fname, string $abbrev) // todo: These static methods in a trait?
+   {
+      /*
+        build_header() // Example
+        {
+           // The array below is hardcoded. An actual implementaion should instead build the array from the credentials section of the xml.
+           return ['Authorization' => "DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx",];
+         ];                                                                                            
+        } 
+       */
+       //todo: ibm requires token authorization.
+   }
+
    static private function get_provider(string $xml_fname, string $abbrev)
    {
       $simp = simplexml_load_file($xml_fname);
-      
-      $query = self::$xqs . $abbrev . self::$xqe;
 
-      $service = $simp->xpath($query); 
- 
-      if ($service === null || $service === false)
-          throw new ErrorException("Translation service not found in $xml_fname.\n");
-  
-      return $service[0];
+      $query = sprintf(self::$provider_query, $abbrev); 
 
-   static private function get_settings(string $xml_fname, string $abbrev)
-   {
+      $response = $simp->xpath($query);
 
-      $simp = simplexml_load_file($xml_fname);
-      
-      $query = self::$xqs . $abbrev . self::$xqe;
-
-      $service = $simp->xpath($query); 
- 
-      if ($service === null || $service === false)
-          throw new ErrorException("Translation service not found in $xml_fname.\n");
-  
-      return $service[0];
-   }
+      return $response[0];
+    }
 
    /*
     * Factory method to create correct Translator class based on .xml <transaltor>MyTranslator</translator> value.
     */ 
-   static public function create(string $fxml, string $abbrev) 
+   static public function createTranslatorClass()
    {
-
-      /*
-         todo: 
-           Q: Should I change this get_credentials() or get_settings()/get_general_settings() or get_client_settings/prepare_client() or
-              get_client_settings()?
-           Q: Should I call this method after creating the Guzzel\Client() 
-
-       */   
-      $service = self::get_settings($fxml, $abbrev);
-
-      $refl = new ReflectionClass((string) $service->translator{); //todo: Change $service-
+      $refl = new ReflectionClass((string) $this->proivder->translator); //todo: Change $service-
 
       $trans = $refl->newInstance($service);
 
@@ -100,25 +75,11 @@ class Translator implements TranslateInterface {
 
    public function __construct($service)
    {
-      $service = $service; 
-      
-      foreach($service->headers->header as $header) { 
+      $this->provider = self::get_provier($service);
 
-            $this->headers[(string) $header->name] = (string) $header->value; 
-      }
-   
-      $this->endpoint = (string) $service->endpoint;
-      
-      $request_method = (string) $service->request_method;
-            
-      foreach ($service->query_string as $qs) {
-
-         //todo: urlencode of certain query string parameters.
-          
-          $this->query_str[(string) $qs->name] = (string) $qs->value;
-      }
-
-      $this->client = new Client(array('base_uri' => (string) $service->baseurl, 'headers' => $this->headers, 'query' => $this->query_str)); 
+      $headers = self::build_header($this->provider);  
+                                                                                                   
+      $this->client = new Client([ 'base_uri' => (string) $this->provider->settings->baseurl, 'headers' => $headers]);  
    } 
 
    // Template method that call protected method overriden by derived classes

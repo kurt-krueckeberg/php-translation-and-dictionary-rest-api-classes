@@ -4,24 +4,12 @@
      <name abbrev="l">leipzig</name>
      <settings>       <!-- TODO: Genearl setting for all request types. -->
         <baseurl>http://api.corpora.uni-leipzig.de/ws</baseurl> <!-- https?? -->
-        <credentials>
-           <!--
-            For DEEEPL an Authorization header is sent with these settings:
-   
-            Authorization: DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx       
-          -->
-            <param name="authKey"> <!-- This looks more like a query parameter, but shows one way, one option, for writing the xml.  -->
-        </credentials>
-        <headers> <!-- Does this apply to all reuqeust types.  -->
-           <Content-Type>application/json; charset=UTF-8</Content-Type>
-         </headers>
+        <headers> 
+        </headers>
      </settings>
-     <!-- services: types, subtypes -->
-     <!-- Since the corpus is pat of the sentences route ( /sentences/{corpusName}/sentences/{word} ), and since we don't plan to change it, there is no separate
-          configuration setting for it.  -->
      <service type="sentences"> 
         <url>sentences/deu_news_2012_1M/sentences</url> 
-        <query>
+        <query> <!-- Alternately: Use parms instead of query -->
            <offset>0</offset>  <!-- offset and limit instead? -->
            <liimit>10</limit> 
            <input_lang name="from" />
@@ -33,12 +21,11 @@
       <name abbrev="a">Azure</name>
       <settings> <!-- General settinsg that apply to all Azure Translator services --> 
         <baseurl>https://api-nam.cognitive.microsofttranslator.com</baseurl>
-        <content-type></content-type>
-        <credentials>
+        <credentials method="header">
             <header name="Ocp-Apim-Subscription-Key">ef6e5b44c68d438c8d79cae2f8c020ba</header> 
             <header name="Ocp-Apim-Subscription-Region">eastus2</header>
-         </credentials>
-        <query>
+        </credentials>
+        <query> <!-- Alternately: Use parms instead of query -->
            <input_lang name="from" />
            <output_lang name="to" />
            <textType>plain</textType>
@@ -75,7 +62,7 @@
           <headers>
               <header name="Content-Type" value="application/json; charset=UTF-8" />
           </headers>
-          <query>
+          <query> <!-- Alternately: Use parms instead of query -->
             <textType>plain</textType>
           </query>
        </service>
@@ -86,12 +73,12 @@
     </service>
   </provider>
   <provider> 
-      <name> abbrev"d">deepl</name>
-      <settings>       <!-- TODO: Sepetet the genearl setting hta pply to all sub-services from specific-service settings -->
-          <baseul>https://api-free.deepl.com/v2</endpoint>
-           <credentials>
-              <header name="DeepL-Auth-Key"></header>    
-            </credentials>
+      <name> abbrev="d">deepl</name>
+      <settings>   
+        <baseul>https://api-free.deepl.com/v2</endpoint>
+        <credentials method="header">
+            <header name="Authorization">DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx</header>
+         </credentials>
        </settings>
       <services>
          <service type="translation"> 
@@ -103,11 +90,36 @@
                  <parmeter_name>text</parmeter_name>
                  <format>???? url_encode???</format>
             </inputtext>
-            <params>
+            <query> <!-- Alternately: Use parms instead of query -->
                <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
                <from>source_lang</from>
                <to>target_lang</to>
-            </params>
+            </query>
+         </service>
+      </services>
+   </provider>
+  <provider> 
+      <name> abbrev="i">ibm</name>
+      <settings>   
+        <baseul></endpoint>
+        <credentials method="token">
+           <header name="blah-token-request">blah</header>
+        </credentials>
+      </settings>
+      <services>
+         <service type="translation"> 
+            <url>translate</url>
+            <headers>application/json</headers>
+            <request_method>GET/POST???</request_method>
+            <inputtext>
+                 <location>query</location>
+                 <parmeter_name>text</parmeter_name>
+                 <format>???? url_encode???</format>
+            </inputtext>
+            <query> <!-- Alternately: Use parms instead of query -->
+               <from>???</from>
+               <to>???</to>
+            </query>
          </service>
       </services>
    </provider>
