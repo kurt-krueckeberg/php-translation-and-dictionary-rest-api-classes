@@ -11,45 +11,8 @@ Using jvavscript [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fe
 The code will understand every aspect of the .XML configuration file. If we later see we can generalze the PHP implemntation based on
 capturing the requirements of each translation REST API in a general way, this will be put in the .xml configuarition. 
 
-## Guggle: Setting Headers
 
-```php
-// Set various headers on a request
-$client->request('GET', '/get', [
-    'headers' => [
-        'User-Agent' => 'testing/1.0',
-        'Accept'     => 'application/json',
-        'X-Foo'      => ['Bar', 'Baz']
-    ]
-]);
-```
-
-
-OR Maybe 
-
-```php
-// For username/password authentication:
-$client->request('GET', '/get', ['auth' => ['username', 'password']]);
-```
-
-```php
-$client = new Client();
-
-$response = $client->request(
-    'POST', /*instead of POST, you can use GET, PUT, DELETE, etc*/
-    $url,
-    [
-      'auth' => ['username', 'password'] /*if you don't need to use a password, just leave it null*/
-    ] 
-);
-```
-
-```php
-$client = new GuzzleHttp\Client();
-$request = $client->createRequest('GET', '/get');
-$request->addHeader('X-Authorization', 'OAuth realm=<OAUTH STUFF HERE>');
-$resp = $client->send($request);
-```
+This Guzzle documentation is clearer: https://guzzle3.readthedocs.io/http-client/client.html#request-options
 
 ## Azure Translator
 
