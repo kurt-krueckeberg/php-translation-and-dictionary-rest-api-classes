@@ -6,31 +6,31 @@
       </settings>
       <services> 
          <sentences>
-             <route>sentences/deu_news_2012_1M/sentences</route> 
-             <query> <!-- Alternately: Use parms instead of query -->
+            <route>sentences/deu_news_2012_1M/sentences</route> 
+            <query> <!-- Alternately: Use parms instead of query -->
                 <offset>0</offset>  <!-- offset and limit instead? -->
                 <liimit>10</limit> 
                 <from name="from" />
                 <to name="to" />
-              </query> 
+            </query> 
          </sentences>
       </service>
  </provider>
  <provider name="Azure" abbrev="a">
       <settings> <!-- General settinsg that apply to all Azure Translator services --> 
-        <baseurl>https://api-nam.cognitive.microsofttranslator.com</baseurl>
-        <credentials method="header">
+         <baseurl>https://api-nam.cognitive.microsofttranslator.com</baseurl>
+         <credentials method="header">
             <header name="Ocp-Apim-Subscription-Key">ef6e5b44c68d438c8d79cae2f8c020ba</header> 
             <header name="Ocp-Apim-Subscription-Region">eastus2</header>
-        </credentials>
-        <headers>
+         </credentials>
+         <headers>
               <header name="Content-Type">application/json; charset=UTF-8</header>
-        </headers>
-        <query> 
+         </headers>
+         <query> 
            <input_lang name="from" />
            <output_lang name="to" />
            <textType>plain</textType>
-        </query>
+         </query>
       </settings>
       <services>
         <translation>
@@ -52,19 +52,19 @@
             
           -->
                 <!-- These are settings that apply to all types of requests \-\- text translation, dictionary lookup, etc -->
-          <implementation>AzureTranslator</implementation>
-          <route>translate</route> 
-          <request_method>POST</request_method> 
-          <!--  BODY data
+           <implementation>AzureTranslator</implementation>
+           <route>translate</route> 
+           <request_method>POST</request_method> 
+           <!--  BODY data
                        "data" == data setin request body. For Azure this is an arrray of json objects:
        
                        [{"text": "Guten Tag!"}, {"text": "Guten Morgen!"}, {"text" : "Guten Nachmittag"}]
-          -->
-          <data>  
-          </data>   
-          <query> 
-            <textType>plain</textType>
-          </query>
+           -->
+           <data>  
+           </data>   
+           <query> 
+             <textType>plain</textType>
+           </query>
         </translation>
       <dictionary-lookup>
       </dictionary-lookup>
