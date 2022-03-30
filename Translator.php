@@ -22,13 +22,13 @@ class Translator implements TranslateInterface {
    static private function get_provider(string $xml_fname, string $abbrev)
    {
       $simp = simplexml_load_file($xml_fname);
-
+     
       $query = sprintf(self::$provider_query, $abbrev); 
-
+     
       $response = $simp->xpath($query);
-
+     
       return $response[0];
-    }
+   }
 
    /*
     * Factory method to create correct Translator class based on .xml <transaltor>MyTranslator</translator> value.
@@ -43,7 +43,6 @@ class Translator implements TranslateInterface {
 
       return $trans;  
    }
-
   
    protected function createClient(SimpleXMLElement $provider) : Client
    {
