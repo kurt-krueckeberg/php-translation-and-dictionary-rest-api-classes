@@ -9,12 +9,12 @@
             <route>sentences/deu_news_2012_1M/sentences</route> 
             <query> <!-- Alternately: Use parms instead of query -->
                 <offset>0</offset>  <!-- offset and limit instead? -->
-                <liimit>10</limit> 
+                <limit>10</limit> 
                 <from name="from" />
                 <to name="to" />
             </query> 
          </sentences>
-      </service>
+      </services>
  </provider>
  <provider name="Azure" abbrev="a">
       <settings> <!-- General settinsg that apply to all Azure Translator services --> 
@@ -75,7 +75,7 @@
   </provider>
   <provider name="deepl" abbrev="d">
       <settings>   
-        <baseul>https://api-free.deepl.com/v2</endpoint>
+        <baseurl>https://api-free.deepl.com/v2</baseurl>
         <credentials method="header">
             <header name="Authorization">DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx</header>
          </credentials>
@@ -100,7 +100,7 @@
    </provider>
   <provider name="ibm" abbrev="i">
       <settings>   
-        <baseul></endpoint>
+        <baseurl></baseurl>
         <credentials method="basic">
            <!-- 
            I believe basic authorization is used in which a username and password are passed, separated from each other by a colon.
@@ -109,6 +109,7 @@
            Bear token is also supported and recommended for production code.
            -->
            <header name="apikey">ApiKey-2c8264c6-168e-457a-a910-3be0f9177313</header>
+        </credentials>   
         <credentials method="token">
         </credentials>
       </settings>
