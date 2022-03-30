@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 use GuzzleHttp\Client;
+use Psr\Http\Message\RequestInterface;
 
 require 'vendor/autoload.php';
 
@@ -43,25 +44,7 @@ class Translator implements TranslateInterface {
       return $trans;  
    }
 
-   /*
-    * Overriden by derived classes to do any special handling
-    */
-   //protected function create_request(object $request)
-   protected function prepare_request(object $request)
-   {
-       
-      /*
-        Sample code
-        todo: We supply the url "route" as the 2nd Request parameter
-       */
-
-       $query = ['query' => 
-                    [ 'abc' => 'def']
-                ]; 
-
-       new Request("GET", $url, $query);
-   }
-   
+  
    protected function createClient(SimpleXMLElement $provider) : Client
    {
        $headers = ""; // todo: 
@@ -78,37 +61,31 @@ class Translator implements TranslateInterface {
    // Template method that call protected method overriden by derived classes
    public function translate(string $text, string $source_lang, string $target_lang) 
    {
-       /*
-         todo:
-          1. Include $this->endpoint to Request
- 
-          2. Figure out prepare_request() end can best be used. See the Request and PS-7 IMessage interface methods. 
-             Would we, say, just use specical Handler class instead of derived-Translator classes?
+       $request = new Request($this->endpoint, GET/POST, $othersuff);  
 
-          3. How does MySQL prepare_statement work?
-        */
-       $request = new Request($this->endpoint, );  
+       $this->prepare_request($request);
 
-       $this->prepare_request($request); 
+       $this->client->send($request);
 
-      /*
-          todo:
-              Add $this->endpoint to get request call.
-              Add $this->method to get request call.
-       */
-       
-       //++$this->client->send(); 
-
-       /*
-        * Use SimpleXMLElement to determine:
-        *   - where the input text should be plaece--in requrst body, as a query string paramter, etc
-        *   - do any associated processing like calulating the text's input length 
-        */
-       $obj = array(); 
-      //...
-      //++  $request = new Request(....);
-      //++   $requst->body???  
-      //
-      //++  return an Array or TranslationObject/Translation object/stdClass tha has a common format between translators.
+       //...
    }
+   /*
+    * Overriden by derived classes to do any special handling
+    */
+   //protected function create_request(object $request)
+   protected function prepare_request(RequestInterface $req)
+   {
+       
+      /*
+        Sample code
+        todo: We supply the url "route" as the 2nd Request parameter
+       */
+
+       $query = ['query' => 
+                    [ 'abc' => 'def']
+                ]; 
+
+       new Request("GET", $url, $query);
+   }
+   
 }
