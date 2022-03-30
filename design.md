@@ -11,15 +11,17 @@ Using jvavscript [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fe
 The code, of course, understands he XML settings. Generic XML processing will go in the base Translator class. It will process the <settings> section with the basuri and crednetials. It will also handle the 
 general translation settings:
 
+- baseuri
+
 - the url route for the service (sentence or translation)
 
-- Save the query parameter 'names' for:
+- Save the query parameter 'names':
 
   - input language
 
   - target language
 
-- Anything else  
+- POST or GET request
 
 
 Derived Translator class will override `prepareRequest()` to insert the text to be translated in the reuqest (in the body or query parameters, etc), to format it as required (as a json object or encode it as

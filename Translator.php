@@ -75,7 +75,13 @@ class Translator implements TranslateInterface {
 
    public function __construct($service)
    {
-      $this->provider = self::get_provier($service);
+      /*
+       Do generic stuff:
+         - baseuri
+         - credentials
+         
+       */ 
+      $this->provider = self::get_provider($service);
 
       $headers = self::build_header($this->provider);  
                                                                                                    
