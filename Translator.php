@@ -8,10 +8,7 @@ require 'vendor/autoload.php';
 include "TranslateInterface.php";
 
 /*
- *
- * TODO: urlencode of query string parameters.
- *
- *
+ * TODO: Add urlencode() of query each string parameter.
  */
 class Translator implements TranslateInterface {
 
@@ -31,28 +28,26 @@ class Translator implements TranslateInterface {
    }
 
    /*
-    * Factory method to create correct Translator class based on .xml <transaltor>MyTranslator</translator> value.
+    * Factory method to create correct Translator class based on .xml <transaltor>SomeTranslatorClassHere</translator> value.
     */ 
    static public function createTranslator(string $fxml, string $abbrev) : Translator
    {
       $provider = self::get_provider($fxml, $abbrev); 
       
-      $refl = new ReflectionClass((string) $provider->services->translation->implementation); //todo: Change $service-
+      $refl = new ReflectionClass((string) $provider->services->translation->implementation); 
 
-      $trans = $refl->newInstance($provider);
-
-      return $trans;  
+      return $refl->newInstance($provider);
    }
   
    protected function createClient(SimpleXMLElement $provider) : Client
    {
-       $headers = ""; // todo: 
+       $headers = ""; // todo: Add whatever is neede to extract xml settings and create Guzzle\Client
        return  new Client([ 'base_uri' => (string) $this->provider->settings->baseurl, 'headers' => $headers]);        
    }
 
    public function __construct(SimpleXMLElement $provider)
    {      
-      $this->provider = $provider; //--self::get_provider($service);
+      $this->provider = $provider; 
       
       $this->client = $this->createClient($provider); 
    } 
@@ -74,17 +69,5 @@ class Translator implements TranslateInterface {
    //protected function create_request(object $request)
    protected function prepare_request(RequestInterface $req)
    {
-       
-      /*
-        Sample code
-        todo: We supply the url "route" as the 2nd Request parameter
-       */
-
-       $query = ['query' => 
-                    [ 'abc' => 'def']
-                ]; 
-
-       new Request("GET", $url, $query);
    }
-   
 }
