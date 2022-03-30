@@ -8,11 +8,24 @@ Using jvavscript [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fe
 
 ## Design
 
-The code, of course, understands he XML settings. Generic XML processing will go in the base Translator class. Derived Translator class will override `prepareRequest()`
-to insert the text to be translated in the reuqest (in the body or query parameters, etc), to format it as required (as a json object or encode it as a query string parameter).
-It will use the methods of the PSR `IRequestInterface` methods to do so. 
+The code, of course, understands he XML settings. Generic XML processing will go in the base Translator class. It will process the <settings> section with the basuri and crednetials. It will also handle the 
+general translation settings:
 
-Clearest [Guzzle documentation](https://guzzle3.readthedocs.io/http-client/client.html#request-options).
+- the url route for the service (sentence or translation)
+
+- Save the query parameter 'names' for:
+
+  - input language
+
+  - target language
+
+- Anything else  
+
+
+Derived Translator class will override `prepareRequest()` to insert the text to be translated in the reuqest (in the body or query parameters, etc), to format it as required (as a json object or encode it as
+a query string parameter).  It will use the methods of the PSR `IRequestInterface` methods to do so. 
+
+The clearest Guzzle documentation is [here](https://guzzle3.readthedocs.io/http-client/client.html#request-options).
 
 ## Azure Translator
 
