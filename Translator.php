@@ -17,7 +17,8 @@ class Translator implements TranslateInterface {
    static $provider_query =  "/providers/provider/name[@abbrev='%s']";  // "/providers/provider/name[normalize-space() = '"; // $movies->xpath('//character') as $character) 
 
    private $client; // Guzzle\Client
-   
+
+   // TODO: These methods -- static or otherwise -- are part of extracting the XML settings and preparing to create \Guzzle\Client.   
    static private function build_header(string $xml_fname, string $abbrev) // todo: These static methods in a trait?
    {
       /*
