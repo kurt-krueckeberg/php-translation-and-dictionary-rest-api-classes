@@ -23,6 +23,8 @@ general translation settings:
 
 - POST or GET request
 
+Implement each translation service, based on the documentation and curl examples. Later try to generalize the code.
+
 
 Derived Translator class will override `prepareRequest()` to insert the text to be translated in the reuqest (in the body or query parameters, etc), to format it as required (as a json object or encode it as
 a query string parameter).  It will use the methods of the PSR `IRequestInterface` methods to do so. 
