@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <providers>
- <provider> 
-     <name abbrev="l">leipzig</name>
-     <settings>       <!-- TODO: Genearl setting for all request types. -->
-        <baseurl>http://api.corpora.uni-leipzig.de/ws</baseurl> <!-- https?? -->
-     </settings>
-     <service type="sentences"> 
-        <url>sentences/deu_news_2012_1M/sentences</url> 
-        <query> <!-- Alternately: Use parms instead of query -->
-           <offset>0</offset>  <!-- offset and limit instead? -->
-           <liimit>10</limit> 
-           <from name="from" />
-           <to name="to" />
-        </query> 
-     </service>
-   </provider>
-   <provider> 
-      <name abbrev="a">Azure</name>
+  <provider name="leipzig" abbrev="l">
+      <settings>      
+         <baseurl>http://api.corpora.uni-leipzig.de/ws</baseurl> <!-- https?? -->
+      </settings>
+      <services> 
+         <sentences>
+             <route>sentences/deu_news_2012_1M/sentences</route> 
+             <query> <!-- Alternately: Use parms instead of query -->
+                <offset>0</offset>  <!-- offset and limit instead? -->
+                <liimit>10</limit> 
+                <from name="from" />
+                <to name="to" />
+              </query> 
+         </sentences>
+      </service>
+ </provider>
+ <provider name="Azure" abbrev="a">
       <settings> <!-- General settinsg that apply to all Azure Translator services --> 
         <baseurl>https://api-nam.cognitive.microsofttranslator.com</baseurl>
         <credentials method="header">
@@ -25,14 +25,15 @@
         </credentials>
         <headers>
               <header name="Content-Type">application/json; charset=UTF-8</header>
-          </headers>
+        </headers>
         <query> 
            <input_lang name="from" />
            <output_lang name="to" />
            <textType>plain</textType>
         </query>
-       </settings>
-       <service type="translation">
+      </settings>
+      <services>
+        <translation>
         <!--  Azure Translator 3.0 also supports "dictionary lookups" and dictionary examples.
             
                  1. translation
@@ -52,7 +53,7 @@
           -->
                 <!-- These are settings that apply to all types of requests \-\- text translation, dictionary lookup, etc -->
           <implementation>AzureTranslator</implementation>
-          <url>translate</url> 
+          <route>translate</route> 
           <request_method>POST</request_method> 
           <!--  BODY data
                        "data" == data setin request body. For Azure this is an arrray of json objects:
@@ -64,15 +65,15 @@
           <query> 
             <textType>plain</textType>
           </query>
-       </service>
-    <service type="dictionary-lookup">
+        </translation>
+      <dictionary-lookup>
+      </dictionary-lookup>
+    </services>
   <!--        
  
   -->
-    </service>
   </provider>
-  <provider> 
-      <name> abbrev="d">deepl</name>
+  <provider name="deepl" abbrev="d">
       <settings>   
         <baseul>https://api-free.deepl.com/v2</endpoint>
         <credentials method="header">
@@ -80,8 +81,8 @@
          </credentials>
        </settings>
       <services>
-         <service type="translation"> 
-            <url>translate</url>
+         <translation> 
+            <route>translate</route>
             <headers>application/json</headers>
             <request_method>GET</request_method>
             <inputtext>
@@ -94,11 +95,10 @@
                <from>source_lang</from>
                <to>target_lang</to>
             </query>
-         </service>
+         </translation>
       </services>
    </provider>
-  <provider> 
-      <name> abbrev="i">ibm</name>
+  <provider name="ibm" abbrev="i">
       <settings>   
         <baseul></endpoint>
         <credentials method="basic">
@@ -110,12 +110,11 @@
            -->
            <header name="apikey">ApiKey-2c8264c6-168e-457a-a910-3be0f9177313</header>
         <credentials method="token">
-              
         </credentials>
       </settings>
       <services>
-         <service type="translation"> 
-            <url>translate</url>
+         <translation> 
+            <route>translate</route>
             <headers>application/json</headers>
             <request_method>GET/POST???</request_method>
             <inputtext>
@@ -127,7 +126,7 @@
                <from>???</from>
                <to>???</to>
             </query>
-         </service>
+         </translation>
       </services>
    </provider>
 </providers>
