@@ -14,23 +14,9 @@ include "TranslateInterface.php";
  */
 class Translator implements TranslateInterface {
 
-   static $provider_query =  "/providers/provider/name[@abbrev='%s']";  // "/providers/provider/name[normalize-space() = '"; // $movies->xpath('//character') as $character) 
+   static string $provider_query =  "/providers/provider[@abbrev='%s']"; 
 
-   private $client; // Guzzle\Client
-
-   // TODO: These methods -- static or otherwise -- are part of extracting the XML settings and preparing to create \Guzzle\Client.   
-   static private function build_header(string $xml_fname, string $abbrev) // todo: These static methods in a trait?
-   {
-      /*
-        build_header() // Example
-        {
-           // The array below is hardcoded. An actual implementaion should instead build the array from the credentials section of the xml.
-           return ['Authorization' => "DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx",];
-         ];                                                                                            
-        } 
-       */
-       //todo: ibm requires token authorization.
-   }
+   private Client $client; // Guzzle\Client
 
    static private function get_provider(string $xml_fname, string $abbrev)
    {
@@ -46,11 +32,13 @@ class Translator implements TranslateInterface {
    /*
     * Factory method to create correct Translator class based on .xml <transaltor>MyTranslator</translator> value.
     */ 
-   static public function createTranslatorClass()
+   static public function createTranslator(string $fxml, string $abbrev) : Translator
    {
-      $refl = new ReflectionClass((string) $this->proivder->translator); //todo: Change $service-
+      $provider = self::get_provider($fxml, $abbrev); 
+      
+      $refl = new ReflectionClass((string) $provider->services->translation->implementation); //todo: Change $service-
 
-      $trans = $refl->newInstance($service);
+      $trans = $refl->newInstance($provider);
 
       return $trans;  
    }
@@ -73,20 +61,18 @@ class Translator implements TranslateInterface {
 
        new Request("GET", $url, $query);
    }
-
-   public function __construct($service)
+   
+   protected function createClient(SimpleXMLElement $provider) : Client
    {
-      /*
-       Do generic stuff:
-         - baseuri
-         - credentials
-         
-       */ 
-      $this->provider = self::get_provider($service);
+       $headers = ""; // todo: 
+       return  new Client([ 'base_uri' => (string) $this->provider->settings->baseurl, 'headers' => $headers]);        
+   }
 
-      $headers = self::build_header($this->provider);  
-                                                                                                   
-      $this->client = new Client([ 'base_uri' => (string) $this->provider->settings->baseurl, 'headers' => $headers]);  
+   public function __construct(SimpleXMLElement $provider)
+   {      
+      $this->provider = $provider; //--self::get_provider($service);
+      
+      $this->client = $this->createClient($provider); 
    } 
 
    // Template method that call protected method overriden by derived classes

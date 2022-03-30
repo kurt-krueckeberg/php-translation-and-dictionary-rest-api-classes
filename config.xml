@@ -70,6 +70,7 @@
            <translation> 
               <route>translate</route>
               <request_method>GET</request_method>
+              <implementation>Translator</implementation>
               <input> <!-- This is not meaningful. This seems like a code responsibility, a prepareRequest() call that invokes IRequestInterface. -->
                    <location>query</location>
                    <parmeter_name>text</parmeter_name>

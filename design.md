@@ -23,6 +23,8 @@ general translation settings:
 
 - POST or GET request
 
+Translator __csontructor wtll call createClient()
+
 Implement each translation service, based on the documentation and curl examples. Later try to generalize the code.
 
 
