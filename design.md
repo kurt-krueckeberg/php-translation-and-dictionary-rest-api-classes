@@ -25,6 +25,8 @@ general translation settings:
 
 Translator __csontructor wtll call createClient()
 
+See also: https://php.watch/versions/7.4/typed-properties
+
 Implement each translation service, based on the documentation and curl examples. Later try to generalize the code.
 
 
