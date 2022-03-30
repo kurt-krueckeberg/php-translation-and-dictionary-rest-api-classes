@@ -1,133 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <providers>
-  <provider name="leipzig" abbrev="l">
-      <settings>      
-         <baseurl>http://api.corpora.uni-leipzig.de/ws</baseurl> <!-- https?? -->
-      </settings>
-      <services> 
-         <sentences>
-            <route>sentences/deu_news_2012_1M/sentences</route> 
-            <query> <!-- Alternately: Use parms instead of query -->
-                <offset>0</offset>  <!-- offset and limit instead? -->
-                <limit>10</limit> 
-                <from name="from" />
-                <to name="to" />
-            </query> 
-         </sentences>
-      </services>
- </provider>
- <provider name="Azure" abbrev="a">
-      <settings> <!-- General settinsg that apply to all Azure Translator services --> 
-         <baseurl>https://api-nam.cognitive.microsofttranslator.com</baseurl>
-         <credentials method="header">
-            <header name="Ocp-Apim-Subscription-Key">ef6e5b44c68d438c8d79cae2f8c020ba</header> 
-            <header name="Ocp-Apim-Subscription-Region">eastus2</header>
-         </credentials>
-         <headers>
-              <header name="Content-Type">application/json; charset=UTF-8</header>
-         </headers>
-         <query> 
-           <input_lang name="from" />
-           <output_lang name="to" />
-           <textType>plain</textType>
-         </query>
-      </settings>
-      <services>
-        <translation>
-        <!--  Azure Translator 3.0 also supports "dictionary lookups" and dictionary examples.
-            
-                 1. translation
-                 2. dictionary look up
-                 3. dictionary examples
-            
-               Each type of three request types above has a different "route" (that is appended to the base URL)
-            
-               1. Translation request:
-            
-                     https://api-nam.cognitive.microsofttranslator.com/translate
-            
-               2. Dictionary look up 
-            
-                     https://api-nam.cognitive.microsofttranslator.com/dictionary/lookup
-            
-          -->
-                <!-- These are settings that apply to all types of requests \-\- text translation, dictionary lookup, etc -->
-           <implementation>AzureTranslator</implementation>
-           <route>translate</route> 
-           <request_method>POST</request_method> 
-           <!--  BODY data
-                       "data" == data setin request body. For Azure this is an arrray of json objects:
-       
-                       [{"text": "Guten Tag!"}, {"text": "Guten Morgen!"}, {"text" : "Guten Nachmittag"}]
-           -->
-           <data>  
-           </data>   
+    <provider name="leipzig" abbrev="l">
+        <settings>      
+           <baseurl>http://api.corpora.uni-leipzig.de/ws</baseurl> <!-- https?? -->
+        </settings>
+        <services> 
+           <sentences>
+              <route>sentences/deu_news_2012_1M/sentences</route> 
+              <query> <!-- Alternately: Use parms instead of query -->
+                  <offset>0</offset>  <!-- offset and limit instead? -->
+                  <limit>10</limit> 
+                  <from name="from" />
+                  <to name="to" />
+              </query> 
+           </sentences>
+        </services>
+   </provider>
+   <provider name="Azure" abbrev="a">
+        <settings> <!-- General settinsg that apply to all Azure Translator services --> 
+           <baseurl>https://api-nam.cognitive.microsofttranslator.com</baseurl>
+           <credentials method="header">
+              <header name="Ocp-Apim-Subscription-Key">ef6e5b44c68d438c8d79cae2f8c020ba</header> 
+              <header name="Ocp-Apim-Subscription-Region">eastus2</header>
+           </credentials>
+           <headers>
+                <header name="Content-Type">application/json; charset=UTF-8</header>
+           </headers>
            <query> 
+             <input_lang name="from" />
+             <output_lang name="to" />
              <textType>plain</textType>
            </query>
-        </translation>
-      <dictionary-lookup>
-      </dictionary-lookup>
-    </services>
-  <!--        
- 
-  -->
-  </provider>
-  <provider name="deepl" abbrev="d">
-      <settings>   
-        <baseurl>https://api-free.deepl.com/v2</baseurl>
-        <credentials method="header">
-            <header name="Authorization">DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx</header>
-         </credentials>
-       </settings>
-      <services>
-         <translation> 
-            <route>translate</route>
-            <headers>application/json</headers>
-            <request_method>GET</request_method>
-            <inputtext>
-                 <location>query</location>
-                 <parmeter_name>text</parmeter_name>
-                 <format>???? url_encode???</format>
-            </inputtext>
-            <query> <!-- Alternately: Use parms instead of query -->
-               <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
-               <from>source_lang</from>
-               <to>target_lang</to>
-            </query>
-         </translation>
+        </settings>
+        <services>
+          <translation>
+          <!--  Azure Translator 3.0 also supports "dictionary lookups" and dictionary examples.
+              
+                   1. translation
+                   2. dictionary look up
+                   3. dictionary examples
+              
+                 Each type of three request types above has a different "route" (that is appended to the base URL)
+              
+                 1. Translation request:
+              
+                       https://api-nam.cognitive.microsofttranslator.com/translate
+              
+                 2. Dictionary look up 
+              
+                       https://api-nam.cognitive.microsofttranslator.com/dictionary/lookup
+              
+            -->
+                  <!-- These are settings that apply to all types of requests \-\- text translation, dictionary lookup, etc -->
+             <implementation>AzureTranslator</implementation>
+             <route>translate</route> 
+             <request_method>POST</request_method> 
+             <!--  BODY data
+                         "data" == data setin request body. For Azure this is an arrray of json objects:
+         
+                         [{"text": "Guten Tag!"}, {"text": "Guten Morgen!"}, {"text" : "Guten Nachmittag"}]
+             -->
+             <data>  
+             </data>   
+             <query> 
+               <textType>plain</textType>
+             </query>
+          </translation>
+        <dictionary-lookup>
+        </dictionary-lookup>
       </services>
-   </provider>
-  <provider name="ibm" abbrev="i">
-      <settings>   
-        <baseurl></baseurl>
-        <credentials method="basic">
-           <!-- 
-           I believe basic authorization is used in which a username and password are passed, separated from each other by a colon.
-           The username is 'apikey' and the password is your private api-key.
-
-           Bear token is also supported and recommended for production code.
-           -->
-           <header name="apikey">ApiKey-2c8264c6-168e-457a-a910-3be0f9177313</header>
-        </credentials>   
-        <credentials method="token">
-        </credentials>
-      </settings>
-      <services>
-         <translation> 
-            <route>translate</route>
-            <headers>application/json</headers>
-            <request_method>GET/POST???</request_method>
-            <inputtext>
-                 <location>query</location>
-                 <parmeter_name>text</parmeter_name>
-                 <format>???? url_encode???</format>
-            </inputtext>
-            <query> <!-- Alternately: Use parms instead of query -->
-               <from>???</from>
-               <to>???</to>
-            </query>
-         </translation>
-      </services>
-   </provider>
+    <!--        
+   
+    -->
+    </provider>
+    <provider name="deepl" abbrev="d">
+        <settings>   
+          <baseurl>https://api-free.deepl.com/v2</baseurl>
+          <credentials method="header">
+              <header name="Authorization">DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx</header>
+           </credentials>
+         </settings>
+        <services>
+           <translation> 
+              <route>translate</route>
+              <headers>application/json</headers>
+              <request_method>GET</request_method>
+              <inputtext> <!-- This is not meaningful. This seems like a code responsibility, a prepareRequest() call that invokes IRequestInterface. -->
+                   <location>query</location>
+                   <parmeter_name>text</parmeter_name>
+                   <format>???? url_encode???</format>
+              </inputtext>
+              <query> 
+                 <authentication_key>7482c761-0429-6c34-766e-fddd88c247f9:fx</authentication_key>
+                 <from>source_lang</from>
+                 <to>target_lang</to>
+              </query>
+           </translation>
+        </services>
+     </provider>
+    <provider name="ibm" abbrev="i">
+        <settings>   
+          <baseurl></baseurl>
+          <credentials method="basic">
+             <!-- 
+             I believe basic authorization is used in which a username and password are passed, separated from each other by a colon.
+             The username is 'apikey' and the password is your private api-key.
+  
+             Bear token is also supported and recommended for production code.
+             -->
+             <header name="apikey">ApiKey-2c8264c6-168e-457a-a910-3be0f9177313</header>
+          </credentials>   
+          <credentials method="token">
+          </credentials>
+        </settings>
+        <services>
+           <translation> 
+              <route>translate</route>
+              <headers>application/json</headers>
+              <request_method>GET/POST???</request_method>
+              <inputtext>
+                   <location>query</location>
+                   <parmeter_name>text</parmeter_name>
+                   <format>???? url_encode???</format>
+              </inputtext>
+              <query> <!-- Alternately: Use parms instead of query -->
+                 <from>???</from>
+                 <to>???</to>
+              </query>
+           </translation>
+        </services>
+     </provider>
 </providers>

@@ -8,11 +8,11 @@ Using jvavscript [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fe
 
 ## Design
 
-The code will understand every aspect of the .XML configuration file. If we later see we can generalze the PHP implemntation based on
-capturing the requirements of each translation REST API in a general way, this will be put in the .xml configuarition. 
+The code, of course, understands he XML settings. Generic XML processing will go in the base Translator class. Derived Translator class will override `prepareRequest()`
+to insert the text to be translated in the reuqest (in the body or query parameters, etc), to format it as required (as a json object or encode it as a query string parameter).
+It will use the methods of the PSR `IRequestInterface` methods to do so. 
 
-
-This Guzzle documentation is clearer: https://guzzle3.readthedocs.io/http-client/client.html#request-options
+Clearest [Guzzle documentation](https://guzzle3.readthedocs.io/http-client/client.html#request-options).
 
 ## Azure Translator
 
