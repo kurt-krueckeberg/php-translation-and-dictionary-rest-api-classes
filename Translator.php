@@ -9,10 +9,10 @@ include "TranslateInterface.php";
 
 class Translator implements TranslateInterface {
 
-    private $route;    
-    private $method;   
-    private $from_name;
-    private $to_name;  
+   private $route;    
+   private $method;   
+   private $from_name;
+   private $to_name;  
 
    private Client $client; 
 
@@ -40,7 +40,8 @@ class Translator implements TranslateInterface {
 
       return $refl->newInstance($provider);
    }
-   // For derived classe use, 
+
+   // For derived class use, 
    protected function getCredentials(SimpleXMLElement $credentials) : string
    {
    }
@@ -81,7 +82,6 @@ class Translator implements TranslateInterface {
       $this->client = $this->createClient($provider); 
 
       $this->getTranslationSettings();
-      //todo: $this->otherSutff = from .xml for request call...  
    } 
 
    // Template method that call protected method overriden by derived classes
@@ -103,5 +103,6 @@ class Translator implements TranslateInterface {
    //protected function create_request(object $request)
    protected function prepare_request(RequestInterface $req)
    {
+
    }
 }
