@@ -11,6 +11,24 @@ Using jvavscript [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fe
 The code, of course, understands he XML settings. Generic XML processing will go in the base Translator class. It will process the <settings> section with the basuri and crednetials. It will also handle the 
 general translation settings:
 
+``php
+ Translation::__construct(SimpleXMLElement $provider)
+ {
+   //...
+  /*   
+       // Settings for client 
+       baseurl == $provider->settings->baseurl;
+       credentials == $provider->settings->credentials;
+
+       // Settings for request:
+       route == (string) $provider->services->service->translation->route; 
+       method == (string) $provider->services->service->translation->request_method;
+       from_name =  (string) $provider->services->service->translation->from;
+       to_name  =  (string) $provider->services->service->translation->to;
+
+   */
+}
+
 - baseuri
 
 - the url route for the service (sentence or translation)

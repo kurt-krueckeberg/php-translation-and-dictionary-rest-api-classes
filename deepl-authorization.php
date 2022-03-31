@@ -13,13 +13,28 @@ require 'vendor/autoload.php';
  * 
  */
 
+     $headers = [
+        // Example of bearer token setup:   'Authorization' => 'Bearer ' . $token,        
+              'Authorization' => "DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx",
+     ];
+      
+     $client = new Client([ 'base_uri' => 'https://api-free.deepl.com' ], ['headers' => $headers]);
+
+     $response = $client->request('GET', '/v2/usage', [
+             'headers' => $headers
+         ]); 
+     
+     var_dump($response);
+
+return;     
+
 $client = new Client([ 'base_uri' => 'https://api-free.deepl.com' ]);
  
   try {
 
 
      $headers = [
-        //    'Authorization' => 'Bearer ' . $token,        
+        // Example of bearer token setup:   'Authorization' => 'Bearer ' . $token,        
               'Authorization' => "DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx",
      ];
       

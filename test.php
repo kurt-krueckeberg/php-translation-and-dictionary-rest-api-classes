@@ -1,33 +1,19 @@
 <?php
+include "Translator.php";
 
-class Base {
-    
-    
-  protected function authorize()
-  {
-     echo "\tI am Base::authorize()\n";
-  }
-    
-    public function __construct()
-    {
-       echo "Construction of Base class \n";
-       $this->authorize();
-    }
-}
+  $trans = Translator::createTranslator("config.xml", "d");
 
-class Derived extends Base {
-    
-  protected function authorize()
-  {
-     echo "\tI am D::authorize()\n";
-  }
+  $a = array("Guten Tag!", "Geten Morgen");      
 
-    public function __construct()
-    {
-        parent::__construct();
-        echo "Construction of Derived class \n";
-    }
-}
+  try {
+         
+   foreach ($sentences as $sentence) {
+   
+         $translation = $trans->translate($sentence, 'DE',  'EN');
+   }
 
+  } catch (Exception $e) {
 
-$obj2 = new Derived(); 
+         echo "Exception: message = " . $e->getMessage() . "\n";
+  } 
+

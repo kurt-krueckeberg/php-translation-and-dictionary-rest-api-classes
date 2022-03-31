@@ -52,6 +52,13 @@ XML;
 
 $movies = new SimpleXMLElement($xmlstr);
 
+  echo (string) $movies->movie->{'great-lines'}->line;
+
+echo "\n";
+
+return;
+
+
 echo $movies->movie[0]->plot;
 
 echo "\n--------------\n";
@@ -87,6 +94,7 @@ foreach ($movies->movie[1]->characters->character as $character) {
 foreach ($movies->movie[0]->rating as $rating) {
     
     switch((string) $rating['type']) { // Get attributes as element indices
+
     case 'thumbs':
         echo $rating, ' thumbs up';
         break;

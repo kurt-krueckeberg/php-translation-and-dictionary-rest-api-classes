@@ -23,7 +23,7 @@ declare(strict_types=1);
 
  $p2 = "']/.."; 
 
- function test_simple(string $provider_q, string $abbrev)
+ function test_xpath(string $provider_q, string $abbrev)
  {
     $xml = simplexml_load_file("config.xml");
 
@@ -34,7 +34,7 @@ declare(strict_types=1);
     return $s[0];
  }
 
- function test_dom(string $provider_q, string $abbrev)
+ function test_dom_xpath(string $provider_q, string $abbrev)
  {
     $doc = new DOMDocument;
 
@@ -49,7 +49,7 @@ declare(strict_types=1);
     return $s[0];
  }
 
- $s = test_simple($query, "l");
+ $s = test_xpath($query, "l");
 
   var_dump($s);
 
