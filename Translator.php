@@ -87,13 +87,13 @@ class Translator implements TranslateInterface {
    // Template method that call protected method overriden by derived classes
    public function translate(string $text, string $source_lang, string $target_lang) 
    {
-       $request = new Request($this->endpoint, $this->method, $othersuff);  
-
      /*
       * TODO: Add urlencode() of query each string parameter.
       */
-     
-       $this->prepare_request($request);
+
+       $request = new Request($this->endpoint, $this->method, $todo_othersuff);  
+
+       $this->prepare_request($request); // prepare_input()?
 
        $this->client->send($request);
    }
