@@ -40,12 +40,12 @@ class Translator implements TranslateInterface {
 
       return $refl->newInstance($provider);
    }
-
+   // For derived classe use, 
    protected function getCredentials(SimpleXMLElement $credentials) : string
    {
    }
 
-   protected function createClient(SimpleXMLElement $provider) : Client
+   final protected function createClient(SimpleXMLElement $provider) : Client
    {
        $headers = ""; // todo: Add whatever is neede to extract xml settings and create Guzzle\Client
 
@@ -65,7 +65,8 @@ class Translator implements TranslateInterface {
        
        return  new Client([ 'base_uri' => (string) $this->provider->settings->baseurl, 'headers' => $headers]);        
    }
-   protected function getTranslationSettings()
+
+   final protected function getTranslationSettings()
    {
        $this->route     = (string) $provider->services->service->translation->route; 
        $this->method    = (string) $provider->services->service->translation->request_method;
@@ -80,7 +81,7 @@ class Translator implements TranslateInterface {
       $this->client = $this->createClient($provider); 
 
       $this->getTranslationSettings();
-//todo: $this->otherSutff = from .xml for request call...  
+      //todo: $this->otherSutff = from .xml for request call...  
    } 
 
    // Template method that call protected method overriden by derived classes

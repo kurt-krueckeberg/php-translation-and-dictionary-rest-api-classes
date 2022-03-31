@@ -85,7 +85,7 @@
     <provider name="ibm" abbrev="i">
         <settings>   
           <baseurl></baseurl>
-          <credentials method="basic">
+          <credentials method="custom">
              <!-- 
              I believe basic authorization is used in which a username and password are passed, separated from each other by a colon.
              The username is 'apikey' and the password is your private api-key.
