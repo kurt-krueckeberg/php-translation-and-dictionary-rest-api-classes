@@ -72,12 +72,15 @@ class Translator implements TranslateInterface {
       $this->route  = (string) $provider->services->translation->route;  
       $this->method = (string) $provider->services->translation->method;
 
-      $this->query_str = ['query' => [
-                              urlencode((string) $provider->services->translation->query->from["from"] =  (string) $provider->services->translation->query->from),       
-                              urlencode((string) $provider->services->translation->query->from["to"]   =  (string) $provider->services->translation->query->to),       
-                        ]]; 
+      // todo: test
+      $parms = array();
+ 
+      foreach($provider->services->translation->query->parm as $parm) 
 
-      $this->query_str;
+         $parms[ (string) $parm["name"] ] = urlencode( (string) $parm );
+
+
+      $this->query_str = ['query' => $parms ];
    }  
 
    public function __construct(SimpleXMLElement $provider)

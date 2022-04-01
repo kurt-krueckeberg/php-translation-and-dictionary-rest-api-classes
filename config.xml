@@ -11,8 +11,8 @@
               <route>sentences/deu_news_2012_1M/sentences</route> 
               <method>GET</method> 
               <query> 
-                  <offset>0</offset> 
-                  <limit>10</limit> 
+                  <parm name="offset">0</parm> 
+                  <parm name="limit">10</parm> 
               </query> 
            </sentences>
         </services>
@@ -47,11 +47,12 @@
             -->
                   <!-- These are settings that apply to all types of requests \-\- text translation, dictionary lookup, etc -->
              <implementation>AzureTranslator</implementation>
-             <route>translate</route> 
+             <route>translate?api-version=3.0</route> 
              <method>POST</method> 
              <query> 
-               <from name="from">DE</from>
-               <to name="to">EN</to>
+               <parm name="textType">plain</parm>
+               <parm name="from">DE</parm>
+               <parm name="to">EN</parm>
            </query>
           </translation>
         <dictionary-lookup>
@@ -60,20 +61,20 @@
     </provider>
     <provider name="deepl" abbrev="d">
         <settings>   
-          <baseurl>https://api-free.deepl.com/v2</baseurl>
-          <credentials method="header">
-              <header name="Authorization">DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx</header>
+           <baseurl>https://api-free.deepl.com/v2</baseurl>
+           <credentials method="header">
+               <header name="Authorization">DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx</header>
            </credentials>
            <Content-Type>application/json; charset=UTF-8</Content-Type>
-         </settings>
+        </settings>
         <services>
            <translation> 
               <route>translate</route>
               <method>GET</method>
               <implementation>Translator</implementation>
               <query> 
-                 <from name="source_lang">DE</from>
-                 <to name="target_lang">EN</to>
+                 <parm name="source_lang">DE</parm>
+                 <parm name="target_lang">EN</parm>
               </query>
            </translation>
         </services>
@@ -99,8 +100,8 @@
               <route>translate</route>
               <method>GET/POST???</method>
               <query> 
-                 <from name="????">DE</from>
-                 <to name="???">to</to>
+                 <parm name="????">DE</parm>
+                 <parm name="???">to</parm>
               </query>
            </translation>
         </services>
