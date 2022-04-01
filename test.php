@@ -1,5 +1,6 @@
 <?php
 include "Translator.php";
+include "AzureTranslator.php";
 
   $trans = Translator::createTranslator("config.xml", "m");
 
@@ -7,10 +8,8 @@ include "Translator.php";
 
   try {
          
-   foreach ($sentences as $sentence) {
    
-         $translation = $trans->translate($sentence, 'DE',  'EN');
-   }
+    $translation = $trans->translate("Guten Mogen",  'DE',  'EN');
 
   } catch (Exception $e) {
 

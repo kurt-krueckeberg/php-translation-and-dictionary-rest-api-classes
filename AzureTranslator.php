@@ -2,12 +2,13 @@
 declare(strict_types=1);
 
 use GuzzleHttp\Client;
+use Psr\Http\Message\RequestInterface;
 
 require 'vendor/autoload.php';
 
-include "GuzzleTranslateAPIWrapper.php";
+require_once "Translator.php";
 
-class AzureTranslator extends GuzzleTranslateAPIWrapper {
+class AzureTranslator extends Translator {
 
     static private $qs_src = "from";
     static private $qs_dest = "to";
@@ -34,11 +35,10 @@ class AzureTranslator extends GuzzleTranslateAPIWrapper {
    } 
 
     // todo: break this into the three methods -- prepare_trans_request(), send_trans_request and get_sentences()
-    public function prepare_request(string $text, string $source_lang, string $target_lang)
+    public function prepare_request(RequestInterface $request, string $text)
     {
-
-          $requestBody = [ [ 'Text' => $sentence1 ] [ 'Text' => $sentence2 ], ];
-
-          $content = json_encode($requestBody);
+          $input = json_encode([ [ 'Text' => $text ] ]); 
+             
+          $request->withBody($input);
    }
 }

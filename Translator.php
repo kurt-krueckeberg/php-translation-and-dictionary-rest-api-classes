@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\RequestInterface;
 
 require 'vendor/autoload.php';
@@ -101,7 +102,7 @@ class Translator implements TranslateInterface {
 
        $request = new Request($this->route, $this->method, $this->query_str);  
 
-       $this->prepare_request($request); // todo: prepare_text()?
+       $this->prepare_request($request, $text); // todo: prepare_text()?
 
        $this->client->send($request);
    }
@@ -109,8 +110,7 @@ class Translator implements TranslateInterface {
     * Overriden by derived classes to do any special handling
     */
    //protected function create_request(object $request)
-   protected function prepare_request(RequestInterface $req)
+   protected function prepare_request(RequestInterface $requst, string $text)
    {
-
    }
 }
