@@ -1,6 +1,14 @@
 {
-   "require": {
-      "guzzlehttp/guzzle": "^7.0"
-   }
+    "name": "kurt/sample-sentences",
+    "description": "Generate sample sentences in a given language (default being German) for words in an input word list, and translate the generated sentences into your target language, too. Output is a bilingual html file.",
+    "type": "project",
+    "require": {
+        "guzzlehttp/guzzle": "^7.4"
+    },
+    "authors": [
+        {
+            "name": "Kurt Krueckeberg",
+            "email": "kurt.krueckeberg@gmail.com"
+        }
+    ]
 }
-
