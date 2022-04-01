@@ -17,7 +17,7 @@
            </sentences>
         </services>
    </provider>
-   <provider name="Azure" abbrev="a">
+   <provider name="Microsoft" abbrev="m">
         <settings> 
            <baseurl>https://api-nam.cognitive.microsofttranslator.com</baseurl>
            <credentials method="header">

@@ -1,7 +1,7 @@
 <?php
 include "Translator.php";
 
-  $trans = Translator::createTranslator("config.xml", "d");
+  $trans = Translator::createTranslator("config.xml", "m");
 
   $a = array("Guten Tag!", "Geten Morgen");      
 
