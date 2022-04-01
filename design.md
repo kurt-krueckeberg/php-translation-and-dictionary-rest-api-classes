@@ -8,48 +8,13 @@ Using jvavscript [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fe
 
 ## Design
 
-The code, of course, understands he XML settings. Generic XML processing will go in the base Translator class. It will process the <settings> section with the basuri and crednetials. It will also handle the 
-general translation settings:
-
-``php
- Translation::__construct(SimpleXMLElement $provider)
- {
-   //...
-  /*   
-       // Settings for client 
-       baseurl == $provider->settings->baseurl;
-       credentials == $provider->settings->credentials;
-
-       // Settings for request:
-       route == (string) $provider->services->service->translation->route; 
-       method == (string) $provider->services->service->translation->request_method;
-       from_name =  (string) $provider->services->service->translation->from;
-       to_name  =  (string) $provider->services->service->translation->to;
-
-   */
-}
-
-- baseuri
-
-- the url route for the service (sentence or translation)
-
-- Save the query parameter 'names':
-
-  - input language
-
-  - target language
-
-- POST or GET request
-
-Translator __csontructor wtll call createClient()
-
 See also: https://php.watch/versions/7.4/typed-properties
 
 Implement each translation service, based on the documentation and curl examples. Later try to generalize the code.
 
-
-Derived Translator class will override `prepareRequest()` to insert the text to be translated in the reuqest (in the body or query parameters, etc), to format it as required (as a json object or encode it as
-a query string parameter).  It will use the methods of the PSR `IRequestInterface` methods to do so. 
+Derived Translator class will override `prepareInput/prepareText()` to insert the text to be translated in the reuqest (in the body or query parameters, etc), to format
+it as required--including calling urlendocde()?--as a json object or encode it as a query string paramete).  It will use the methods of the PSR `IRequestInterface` methods
+to do so. 
 
 The clearest Guzzle documentation is [here](https://guzzle3.readthedocs.io/http-client/client.html#request-options).
 
