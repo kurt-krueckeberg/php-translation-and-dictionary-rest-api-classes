@@ -48,7 +48,7 @@
                   <!-- These are settings that apply to all types of requests \-\- text translation, dictionary lookup, etc -->
              <implementation>AzureTranslator</implementation>
              <route>translate</route> 
-             <request_method>POST</request_method> 
+             <method>POST</method> 
              <query> 
                <from name="from">DE</from>
                <to name="to">EN</to>
@@ -69,7 +69,7 @@
         <services>
            <translation> 
               <route>translate</route>
-              <request_method>GET</request_method>
+              <method>GET</method>
               <implementation>Translator</implementation>
               <query> 
                  <from name="source_lang">DE</from>
@@ -97,7 +97,7 @@
         <services>
            <translation> 
               <route>translate</route>
-              <request_method>GET/POST???</request_method>
+              <method>GET/POST???</method>
               <query> 
                  <from name="????">DE</from>
                  <to name="???">to</to>

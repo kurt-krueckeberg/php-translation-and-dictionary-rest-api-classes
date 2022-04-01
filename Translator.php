@@ -9,20 +9,19 @@ include "TranslateInterface.php";
 
 class Translator implements TranslateInterface {
 
-   private $route;    
-   private $method;   
-   private $from_name;
-   private $to_name;  
+   private $route;      // $provider->services->service->translation->route;  
+   private $method;     // $provider->services->service->translation->method; 
+   private $query_str = array();
 
    private Client $client; 
 
-   static string $provider_query =  "/providers/provider[@abbrev='%s']"; 
+   static string $xpath =  "/providers/provider[@abbrev='%s']"; 
 
    static private function get_provider(string $xml_name, string $abbrev)
    {
       $simp = simplexml_load_file($xml_name);
      
-      $query = sprintf(self::$provider_query, $abbrev); 
+      $query = sprintf(self::$xpath, $abbrev); 
      
       $response = $simp->xpath($query);
      
@@ -48,52 +47,58 @@ class Translator implements TranslateInterface {
 
    final protected function createClient(SimpleXMLElement $provider) : Client
    {
-       $headers = ""; // todo: Add whatever is neede to extract xml settings and create Guzzle\Client
+       //--$baseurl = (string) $provider->settings->baseurl;
 
-       $baseurl = $provider->settings->credentials->baseurl;
-
-        // Build Credentials header
+       // Set credentials header and anything else like Content-Type, etc.
        $headers = array();
 
        if ((string)$provider->settings->credentials["method"] == "custom") 
 
                $headers = $this->getCredentials($provider->settings->credentials);
 
-       else
-            foreach($provider->settings->credentials->header as $header) 
-
-               $headers['name'] = (string) $header;
+       else {
+           
+           foreach($provider->settings->credentials->header as $header) 
+                
+                $headers[(string) $provider->settings->credentials->header['name']] = (string) $header;
+            
+       }
        
        return  new Client([ 'base_uri' => (string) $this->provider->settings->baseurl, 'headers' => $headers]);        
    }
 
-   final protected function getTranslationSettings()
+   final protected function getAPISettings(SimpleXMLElement $provider)
    {
-       $this->route     = (string) $provider->services->service->translation->route; 
-       $this->method    = (string) $provider->services->service->translation->request_method;
-       $this->from_name = (string) $provider->services->service->translation->from;
-       $this->to_name   = (string) $provider->services->service->translation->to;
+      $this->route  = (string) $provider->services->translation->route;  
+      $this->method = (string) $provider->services->translation->method;
+
+      $this->query_str = ['query' => [
+                              urlencode((string) $provider->services->translation->query->from["from"] =  (string) $provider->services->translation->query->from),       
+                              urlencode((string) $provider->services->translation->query->from["to"]   =  (string) $provider->services->translation->query->to),       
+                        ]]; 
+
+      $this->query_str;
    }  
 
    public function __construct(SimpleXMLElement $provider)
    {      
-      $this->provider = $provider; 
+      $this->provider = $provider; // todo: Is this needed?
       
       $this->client = $this->createClient($provider); 
 
-      $this->getTranslationSettings();
+      $this->getAPISettings($provider);
    } 
 
-   // Template method that call protected method overriden by derived classes
+   // Template pattern method that call protected method overriden by derived classes
    public function translate(string $text, string $source_lang, string $target_lang) 
    {
-     /*
-      * TODO: Add urlencode() of query each string parameter.
-      */
+       /*
+        * TODO: Do any remaining urlencode()'ing of any remaining query string parms.
+        */
 
-       $request = new Request($this->endpoint, $this->method, $todo_othersuff);  
+       $request = new Request($this->route, $this->method, $this->query_str);  
 
-       $this->prepare_request($request); // prepare_input()?
+       $this->prepare_request($request); // todo: prepare_text()?
 
        $this->client->send($request);
    }
