@@ -9,7 +9,7 @@
         <services> 
            <sentences>
               <route>sentences/deu_news_2012_1M/sentences</route> 
-              <request-method>GET</request-method> 
+              <method>GET</method> 
               <query> 
                   <offset>0</offset> 
                   <limit>10</limit> 
@@ -50,8 +50,8 @@
              <route>translate</route> 
              <request_method>POST</request_method> 
              <query> 
-               <from name="from" />
-               <to name="to" />
+               <from name="from">DE</from>
+               <to name="to">EN</to>
            </query>
           </translation>
         <dictionary-lookup>
@@ -71,13 +71,9 @@
               <route>translate</route>
               <request_method>GET</request_method>
               <implementation>Translator</implementation>
-              <input> <!-- This is not meaningful. This seems like a code responsibility, a prepareRequest() call that invokes IRequestInterface. -->
-                   <location>query</location>
-                   <parmeter_name>text</parmeter_name>
-              </input>
               <query> 
-                 <from name="source_lang" />
-                 <to name="target_lang" />
+                 <from name="source_lang">DE</from>
+                 <to name="target_lang">EN</to>
               </query>
            </translation>
         </services>
@@ -103,8 +99,8 @@
               <route>translate</route>
               <request_method>GET/POST???</request_method>
               <query> 
-                 <from name="????" />
-                 <to name="???" />
+                 <from name="????">DE</from>
+                 <to name="???">to</to>
               </query>
            </translation>
         </services>
