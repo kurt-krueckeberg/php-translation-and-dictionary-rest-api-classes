@@ -48,15 +48,15 @@ $body = [
     'json' => $text;
 ];
 
+//  $body is just an array whose key is 'json' and whose value is...encoded json ( I think).
 $response = $client->post($path, $body);
 
 $responseBody = $response->getBody();
-
 ```
 
 - The clearest Guzzle documentation is [here](https://guzzle3.readthedocs.io/http-client/client.html#request-options).
 
-- Azure Translotor PHP [code](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP/blob/master/Translate.php).
+- Azure Translator PHP implementation [code](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP/blob/master/Translate.php).
 
 ## Azure Translator
 
