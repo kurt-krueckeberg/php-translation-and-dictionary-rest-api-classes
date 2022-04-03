@@ -37,8 +37,8 @@ class AzureTranslator extends Translator {
     // todo: break this into the three methods -- prepare_trans_request(), send_trans_request and get_sentences()
     public function prepare_request(RequestInterface $request, string $text)
     {
-          $input = json_encode([ [ 'Text' => $text ] ]); 
+          $input = json_encode([ [ 'Text' => $text ] ]);  // <-- todo: urlencode($text)? 
              
-          $request->withBody($input);
+          
    }
 }

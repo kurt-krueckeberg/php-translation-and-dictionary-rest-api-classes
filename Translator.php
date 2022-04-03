@@ -102,10 +102,50 @@ class Translator implements TranslateInterface {
 
        $request = new Request($this->route, $this->method, $this->query_str);  
 
-       $this->prepare_request($request, $text); // todo: prepare_text()?
+       $input/$optiions =  prepare_input/prepare_options();
+        
 
-       $this->client->send($request);
+       /*
+        Three possible designs. See design.md for examples and ideas.
+
+        I.
+        $options = $this->prepare_options/inpput($text);  
+
+        $request = new Request($this->route, $this->method, $options);  
+
+        $this->client->send($request);
+        
+        //... 
+
+        II.
+ 
+        $request = new Request($this->route, $this->method, $options);  
+
+        $this->prepare_request($request, $text);  // Less clear
+
+ 
+        $input/$optiions =  prepare_input/prepare_options();
+       
+        $this->client->send($request);
+
+         III.
+
+        $ooptions = $this->prepare_input($text); // Either 'query' or 'body' or 'json'--or all or part.
+
+        if (post) {
+
+             $this->client->post($route, $options); 
+
+        } else if (get) {
+
+             $this->client->get($route, $options);
+
+        } else {
+
+        }
+       */
    }
+
    /*
     * Overriden by derived classes to do any special handling
     */

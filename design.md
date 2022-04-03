@@ -26,7 +26,7 @@ to do so.
 COMMENT: Maybe simply setting `'json' =>[ stuff .... ]` as shown in the above exampls is the way to go?
 
 
-- One example found from stackoverflow:
+- Examples I found Googleing:
 
 ```php
 $response = $client->post('the/endpoint', [
@@ -39,6 +39,19 @@ $response = $client->post('the/endpoint', [
 
 $body = $response->getBody();
 print_r(json_decode((string) $body));
+```
+
+```php
+$text =  ['text' => iconv(mb_detect_encoding($query, mb_detect_order(), true), "UTF-8", $query) ];
+
+$body = [
+    'json' => $text;
+];
+
+$response = $client->post($path, $body);
+
+$responseBody = $response->getBody();
+
 ```
 
 - The clearest Guzzle documentation is [here](https://guzzle3.readthedocs.io/http-client/client.html#request-options).
