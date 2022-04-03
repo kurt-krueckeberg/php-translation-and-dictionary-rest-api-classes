@@ -16,6 +16,21 @@ Derived Translator class will override `prepareInput/prepareText()` to insert th
 it as required--including calling urlendocde()?--as a json object or encode it as a query string paramete).  It will use the methods of the PSR `IRequestInterface` methods
 to do so. 
 
+Extensivly Guzzle GET and POST [requests](https://artisansweb.net/use-guzzle-php-http-client-sending-http-requests/). Using either 'header' or 'json'.
+
+```php
+$response = $client->post('the/endpoint', [
+  'debug' => TRUE,
+  'body' => $payload,
+  'headers' => [
+    'Content-Type' => 'application/x-www-form-urlencoded',
+  ]
+]);
+
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
+
 The clearest Guzzle documentation is [here](https://guzzle3.readthedocs.io/http-client/client.html#request-options).
 
 ## Azure Translator
