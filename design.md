@@ -18,9 +18,15 @@ to do so.
 
 ### Example Code
 
+
 #### Guzzle
 
 - Extensivly Guzzle GET and POST request [examples](https://artisansweb.net/use-guzzle-php-http-client-sending-http-requests/). Using either 'header' or 'json'.
+
+COMMENT: Maybe simply setting `'json' =>[ stuff .... ]` as shown in the above exampls is the way to go?
+
+
+- One example found from stackoverflow:
 
 ```php
 $response = $client->post('the/endpoint', [
