@@ -16,7 +16,11 @@ Derived Translator class will override `prepareInput/prepareText()` to insert th
 it as required--including calling urlendocde()?--as a json object or encode it as a query string paramete).  It will use the methods of the PSR `IRequestInterface` methods
 to do so. 
 
-Extensivly Guzzle GET and POST [requests](https://artisansweb.net/use-guzzle-php-http-client-sending-http-requests/). Using either 'header' or 'json'.
+### Example Code
+
+#### Guzzle
+
+- Extensivly Guzzle GET and POST request [examples](https://artisansweb.net/use-guzzle-php-http-client-sending-http-requests/). Using either 'header' or 'json'.
 
 ```php
 $response = $client->post('the/endpoint', [
@@ -31,7 +35,9 @@ $body = $response->getBody();
 print_r(json_decode((string) $body));
 ```
 
-The clearest Guzzle documentation is [here](https://guzzle3.readthedocs.io/http-client/client.html#request-options).
+- The clearest Guzzle documentation is [here](https://guzzle3.readthedocs.io/http-client/client.html#request-options).
+
+- Azure Translotor PHP [code](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP/blob/master/Translate.php).
 
 ## Azure Translator
 
