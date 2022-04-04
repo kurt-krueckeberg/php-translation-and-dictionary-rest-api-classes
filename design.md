@@ -38,16 +38,14 @@ class Request {
 ```
 
 where the `GuzzleHttp\Psr7\Request` constructor's parameters are:
-    
- ---------------------------------------------------------------------------------------------
- Parameter      Meaning                               types allowed
- -------------- ------------------------------------- ----------------------------------------
- $method        HTTP method--GET, POST, DELETE, etc    string                              
- $uri           route                                  string|UriInterface                 
- $headers       headers                                array<string, string|string[]>      
- $body          request body                           string|resource|StreamInterface|null
- $version       Protocol version (defaults)            string                              
- -------------- ------------------------------------- ----------------------------------------
+
+|Parameter  | Meaning                              |Types Allowed
+|-----------|--------------------------------------|--------------------------------------|
+|$method    | HTTP method--GET, POST, DELETE, etc  | string                               |
+|$uri       | route                                | string|UriInterface                  |
+|$headers   | headers                              | array<string, string|string[]>       |
+|$body      | request body                         | string|resource|StreamInterface|null |
+|$version   | Protocol version (defaults)          | string                               | 
 
 Example code of Request objects:
 
