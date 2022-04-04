@@ -8,14 +8,7 @@ Using jvavscript [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fe
 
 ## Design
 
-See also: https://php.watch/versions/7.4/typed-properties
-
-Implement each translation service, based on the documentation and curl examples. Later try to generalize the code.
-
-Derived Translator class will override `prepareInput/prepareText()` to insert the text to be translated in the reuqest (in the body or query parameters, etc), to format
-it as required--including calling urlendocde()?--as a json object or encode it as a query string paramete).  It will use the methods of the PSR `IRequestInterface` methods
-to do so. 
-
+Seems like you have to pass authorization headers (at least for deepl) on the request constructor
 
 ### Guzzle Request objects
 
@@ -49,7 +42,7 @@ Example:
    // Create a PSR-7 request object to send
    $headers = ['X-Foo' => 'Bar'];
    $body = 'Hello!';
-   $request = new Request('HEAD', 'http://httpbin.org/head', $headers, $body);
+   $request = new Request('HEAD', 'http://httpbin.org/head', $headers, $body); // <-- Must pass base_uri -- I believe!
 ```	
 #### Guzzle json Option
 
@@ -117,15 +110,15 @@ Example of using fluent interface to set query parameters
 Examples I found online:
 
 ```php
-$text =  ['text' => iconv(mb_detect_encoding($query, mb_detect_order(), true), "UTF-8", $query) ];
-
-$body = [
-    'json' => $text; // <=======  **NOTE** The use of the key 'json'
-];
-
-//  $body is just an array whose key is 'json' and whose value is...encoded json ( I think).
-$response = $client->post($path, $body);
-
+   $text =  ['text' => iconv(mb_detect_encoding($query, mb_detect_order(), true), "UTF-8", $query) ];
+   
+   $body = [
+       'json' => $text; // <=======  **NOTE** The use of the key 'json'
+   ];
+   
+   //  $body is just an array whose key is 'json' and whose value is...encoded json ( I think).
+   $response = $client->post($path, $body);
+   
 $responseBody = $response->getBody();
 ```
 

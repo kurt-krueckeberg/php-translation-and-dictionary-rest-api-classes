@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Request; 
+
 
 require 'vendor/autoload.php';
 
@@ -18,9 +20,16 @@ require 'vendor/autoload.php';
     // Create a client and provide a base URL
 
     $client = new Client(['base_uri' => 'https://api-free.deepl.com']);
-    
-      
+ 
     $response = $client->request('GET', '/v2/usage', [ 'headers' => $headers ]); 
+     
+    var_dump($response);
+
+    echo "\n========================================\n"; 
+
+    $request = new Request('GET', '/v2/usage', [ 'headers' => $headers ]);  // <-- This fails.
+
+    $response = $client->send($request);
      
     var_dump($response);
 
