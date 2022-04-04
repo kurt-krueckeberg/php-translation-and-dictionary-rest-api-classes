@@ -28,7 +28,7 @@ class Request {
    public function __construct(string $method,           
         $uri,                     
         array $headers = [],      
-        $body = null,             
+        $body = null,        // <-- Don't specify the next two paramaters if only query parameters are used.     
         string $version = '1.1'   
       ) { //...  }
 }
