@@ -43,14 +43,22 @@ takes these parameters
 |$body      | request body                         | string|resource|StreamInterface|null |
 |$version   | Protocol version (defaults)          | string                               | 
 
-Example code:
+Example:
 
 ```php
-// Create a PSR-7 request object to send
-$headers = ['X-Foo' => 'Bar'];
-$body = 'Hello!';
-$request = new Request('HEAD', 'http://httpbin.org/head', $headers, $body);
+   // Create a PSR-7 request object to send
+   $headers = ['X-Foo' => 'Bar'];
+   $body = 'Hello!';
+   $request = new Request('HEAD', 'http://httpbin.org/head', $headers, $body);
 ```	
+#### Guzzle json Option
+
+The `json` request option [documentation](https://docs.guzzlephp.org/en/stable/request-options.html#json) states:
+
+> The json option is used to easily upload JSON encoded data as the body of a request. A **Content-Type** header of **application/json** will be added if no Content-Type header is
+already present on the message.
+
+
 Example of using fluent interface to set query parameters
 
 **TODO:** Try test
@@ -110,19 +118,6 @@ Example of using fluent interface to set query parameters
 Examples I found online:
 
 ```php
-$response = $client->post('the/endpoint', [
-  'debug' => TRUE,
-  'body' => $payload,
-  'headers' => [
-    'Content-Type' => 'application/x-www-form-urlencoded',
-  ]
-]);
-
-$body = $response->getBody();
-print_r(json_decode((string) $body));
-```
-
-```php
 $text =  ['text' => iconv(mb_detect_encoding($query, mb_detect_order(), true), "UTF-8", $query) ];
 
 $body = [
@@ -135,15 +130,7 @@ $response = $client->post($path, $body);
 $responseBody = $response->getBody();
 ```
 
-
 Lots of Guzzle [examples](https://hotexamples.com/examples/-/Guzzle%255CHttp%255CClient/get/php-guzzle%255chttp%255cclient-get-method-examples.html)
-
-#### Guzzle json Option
-
-The `json` request option [documentation](https://docs.guzzlephp.org/en/stable/request-options.html#json) states:
-
-> The json option is used to easily upload JSON encoded data as the body of a request. A Content-Type header of application/json will be added if no Content-Type header is
-already present on the message.
 
 ## Azure Translator
 

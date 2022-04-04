@@ -22,7 +22,7 @@ require 'vendor/autoload.php';
 
      $headers = [ 'Authorization' => "DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx", ];
       
-     $response = $client->request('GET', '/v2/usage', [ 'headers' => $headers ]); 
+    $response = $client->request('GET', '/v2/usage', [ 'headers' => $headers ]); 
      
      var_dump($response);
 
