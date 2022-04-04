@@ -59,8 +59,40 @@ already present on the message.
 
 #### Questions
 
-Can you pass both 'json' and 'query' on the `$client->request(...);` call?
+Can you pass both 'json' and 'query' on the `$client->request(...);` call like:
 
+```php
+
+   $client->request('POST', 'dest/addr', [ 'json' => $json_data,
+       'headers' => $headers,
+       'query' => $query
+   ]);
+```
+
+I found this example online:
+
+```php
+   $headers = $this->getHeaders();
+
+   $query = ["\$filter" => "employeeId eq '$employeeId'", "\$select" => "displayName,givenName,postalCode,employeeId,id"];
+
+   try {
+
+       $result = $this->client->request('GET', self::FIND_USER_BY_EMPLOYEE_ID_URL, [
+           RequestOptions::HEADERS => $headers,
+           RequestOptions::QUERY => $query,
+           'debug' => true
+       ]);
+
+       return JsonResponse::fromJsonString($result->getBody()->getContents());
+
+   } catch (RequestException $exception) {
+
+       throw $exception;
+   }
+```
+
+#### Other code
 
 Examples I found online:
 
