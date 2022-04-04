@@ -86,43 +86,78 @@
 <p>See also: https://php.watch/versions/7.4/typed-properties</p>
 <p>Implement each translation service, based on the documentation and curl examples. Later try to generalize the code.</p>
 <p>Derived Translator class will override <code>prepareInput/prepareText()</code> to insert the text to be translated in the reuqest (in the body or query parameters, etc), to format it as required–including calling urlendocde()?–as a json object or encode it as a query string paramete). It will use the methods of the PSR <code>IRequestInterface</code> methods to do so.</p>
-<h3 id="example-code">Example Code</h3>
-<h4 id="guzzle">Guzzle</h4>
-<ul>
-<li>Extensivly Guzzle GET and POST request <a href="https://artisansweb.net/use-guzzle-php-http-client-sending-http-requests/">examples</a>. Using either ‘header’ or ‘json’.</li>
-</ul>
-<p>COMMENT: Maybe simply setting <code>'json' =&gt;[ stuff .... ]</code> as shown in the above exampls is the way to go?</p>
-<ul>
-<li>Examples I found Googleing:</li>
-</ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">$response</span> = <span class="kw">$client</span>-&gt;post<span class="ot">(</span><span class="st">&#39;the/endpoint&#39;</span><span class="ot">,</span> <span class="ot">[</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>  <span class="st">&#39;debug&#39;</span> =&gt; <span class="kw">TRUE</span><span class="ot">,</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>  <span class="st">&#39;body&#39;</span> =&gt; <span class="kw">$payload</span><span class="ot">,</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>  <span class="st">&#39;headers&#39;</span> =&gt; <span class="ot">[</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>    <span class="st">&#39;Content-Type&#39;</span> =&gt; <span class="st">&#39;application/x-www-form-urlencoded&#39;</span><span class="ot">,</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>  <span class="ot">]</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="ot">]);</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a><span class="kw">$body</span> = <span class="kw">$response</span>-&gt;getBody<span class="ot">();</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a><span class="fu">print_r</span><span class="ot">(</span><span class="fu">json_decode</span><span class="ot">(</span><span class="dt">(string)</span> <span class="kw">$body</span><span class="ot">));</span></span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="kw">$text</span> =  <span class="ot">[</span><span class="st">&#39;text&#39;</span> =&gt; <span class="fu">iconv</span><span class="ot">(</span><span class="fu">mb_detect_encoding</span><span class="ot">(</span><span class="kw">$query</span><span class="ot">,</span> <span class="fu">mb_detect_order</span><span class="ot">(),</span> <span class="kw">true</span><span class="ot">),</span> <span class="st">&quot;UTF-8&quot;</span><span class="ot">,</span> <span class="kw">$query</span><span class="ot">)</span> <span class="ot">];</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="kw">$body</span> = <span class="ot">[</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>    <span class="st">&#39;json&#39;</span> =&gt; <span class="kw">$text</span><span class="ot">;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="ot">];</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a><span class="co">//  $body is just an array whose key is &#39;json&#39; and whose value is...encoded json ( I think).</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a><span class="kw">$response</span> = <span class="kw">$client</span>-&gt;post<span class="ot">(</span><span class="kw">$path</span><span class="ot">,</span> <span class="kw">$body</span><span class="ot">);</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a><span class="kw">$responseBody</span> = <span class="kw">$response</span>-&gt;getBody<span class="ot">();</span></span></code></pre></div>
-<ul>
-<li><p>The clearest Guzzle documentation is <a href="https://guzzle3.readthedocs.io/http-client/client.html#request-options">here</a>.</p></li>
-<li><p>Azure Translator PHP implementation <a href="https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP/blob/master/Translate.php">code</a>.</p></li>
-</ul>
+<h3 id="guzzle-request-objects">Guzzle Request objects</h3>
+<p>The request object is <code>GuzzleHttp\Psr7\Request</code>. Its constructor takes these parameters</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">class</span> Request {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="co">//...</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>   <span class="kw">public</span> <span class="kw">function</span> <span class="fu">__construct</span><span class="ot">(</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>        <span class="kw">string</span> <span class="kw">$method</span><span class="ot">,</span>           </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>        <span class="kw">$uri</span><span class="ot">,</span>                     </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>        <span class="kw">array</span> <span class="kw">$headers</span> = <span class="ot">[],</span>      </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>        <span class="kw">$body</span> = <span class="kw">null</span><span class="ot">,</span>             </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>        <span class="kw">string</span> <span class="kw">$version</span> = <span class="st">&#39;1.1&#39;</span>   </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>      <span class="ot">)</span> </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>     { <span class="co">//...</span></span></code></pre></div>
+<p>where the <code>GuzzleHttp\Psr7\Request</code> constructor’s parameters are:</p>
+<table style="width:99%;">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 40%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Meaning</th>
+<th style="text-align: left;">types allowed</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">$method $uri $headers $body $version</td>
+<td style="text-align: left;">HTTP method–GET, POST, DELETE, etc route headers request body Protocol version (defaults)</td>
+<td style="text-align: left;">string string|UriInterface array&lt;string, string|string[]&gt; string|resource|StreamInterface|null string</td>
+</tr>
+</tbody>
+</table>
+<p>Example code of Request objects:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="co">// Create a PSR-7 request object to send</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="kw">$headers</span> = <span class="ot">[</span><span class="st">&#39;X-Foo&#39;</span> =&gt; <span class="st">&#39;Bar&#39;</span><span class="ot">];</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="kw">$body</span> = <span class="st">&#39;Hello!&#39;</span><span class="ot">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="kw">$request</span> = <span class="kw">new</span> Request<span class="ot">(</span><span class="st">&#39;HEAD&#39;</span><span class="ot">,</span> <span class="st">&#39;http://httpbin.org/head&#39;</span><span class="ot">,</span> <span class="kw">$headers</span><span class="ot">,</span> <span class="kw">$body</span><span class="ot">);</span></span></code></pre></div>
+<p>Examples I found Googleing:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">$response</span> = <span class="kw">$client</span>-&gt;post<span class="ot">(</span><span class="st">&#39;the/endpoint&#39;</span><span class="ot">,</span> <span class="ot">[</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>  <span class="st">&#39;debug&#39;</span> =&gt; <span class="kw">TRUE</span><span class="ot">,</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>  <span class="st">&#39;body&#39;</span> =&gt; <span class="kw">$payload</span><span class="ot">,</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>  <span class="st">&#39;headers&#39;</span> =&gt; <span class="ot">[</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>    <span class="st">&#39;Content-Type&#39;</span> =&gt; <span class="st">&#39;application/x-www-form-urlencoded&#39;</span><span class="ot">,</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>  <span class="ot">]</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a><span class="ot">]);</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a><span class="kw">$body</span> = <span class="kw">$response</span>-&gt;getBody<span class="ot">();</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a><span class="fu">print_r</span><span class="ot">(</span><span class="fu">json_decode</span><span class="ot">(</span><span class="dt">(string)</span> <span class="kw">$body</span><span class="ot">));</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="kw">$text</span> =  <span class="ot">[</span><span class="st">&#39;text&#39;</span> =&gt; <span class="fu">iconv</span><span class="ot">(</span><span class="fu">mb_detect_encoding</span><span class="ot">(</span><span class="kw">$query</span><span class="ot">,</span> <span class="fu">mb_detect_order</span><span class="ot">(),</span> <span class="kw">true</span><span class="ot">),</span> <span class="st">&quot;UTF-8&quot;</span><span class="ot">,</span> <span class="kw">$query</span><span class="ot">)</span> <span class="ot">];</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="kw">$body</span> = <span class="ot">[</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>    <span class="st">&#39;json&#39;</span> =&gt; <span class="kw">$text</span><span class="ot">;</span> <span class="co">// &lt;=======  **</span><span class="al">NOTE</span><span class="co">** The use of the key &#39;json&#39;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a><span class="ot">];</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a><span class="co">//  $body is just an array whose key is &#39;json&#39; and whose value is...encoded json ( I think).</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a><span class="kw">$response</span> = <span class="kw">$client</span>-&gt;post<span class="ot">(</span><span class="kw">$path</span><span class="ot">,</span> <span class="kw">$body</span><span class="ot">);</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a><span class="kw">$responseBody</span> = <span class="kw">$response</span>-&gt;getBody<span class="ot">();</span></span></code></pre></div>
+<h4 id="guzzle-json-option">Guzzle json Option</h4>
+<p>The <code>json</code> request option <a href="https://docs.guzzlephp.org/en/stable/request-options.html#json">documentation</a> states:</p>
+<blockquote>
+<p>The json option is used to easily upload JSON encoded data as the body of a request. A Content-Type header of application/json will be added if no Content-Type header is already present on the message.</p>
+</blockquote>
+<h4 id="documentation">Documentation</h4>
+<p>The clearest Guzzle documentation is <a href="https://guzzle3.readthedocs.io/http-client/client.html#request-options">here</a>.</p>
 <h2 id="azure-translator">Azure Translator</h2>
-<ul>
-<li>main <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/">landing page</a></li>
-</ul>
+<h3 id="azure-translator-php-implementations">Azure Translator PHP Implementations</h3>
+<p>Azure Translator PHP implementation <a href="https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP/blob/master/Translate.php">code</a>.</p>
+<p>main <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/">landing page</a></p>
 <h2 id="understand-these-technologies">Understand These Technologies:</h2>
 <p>Review:</p>
 <ul>

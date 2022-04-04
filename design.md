@@ -24,15 +24,17 @@ The request object is `GuzzleHttp\Psr7\Request`. Its constructor takes these par
 ```php
 class Request {
 
-//...
-   public function __construct(
-        string $method,           
+  //...
+   public function __construct(string $method,           
         $uri,                     
         array $headers = [],      
         $body = null,             
         string $version = '1.1'   
       ) 
-     { //...
+     { 
+     //...
+     }
+}
 ```
 
 where the `GuzzleHttp\Psr7\Request` constructor's parameters are:
