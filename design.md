@@ -19,7 +19,7 @@ to do so.
 
 ### Guzzle Request objects
 
-The request object is `GuzzleHttp\Psr7\Request`. Its constructor takes these parameters
+`GuzzleHttp\Psr7\Request` constructor 
 
 ```php
 class Request {
@@ -36,8 +36,7 @@ class Request {
      }
 }
 ```
-
-where the `GuzzleHttp\Psr7\Request` constructor's parameters are:
+takes these parameters
 
 |Parameter  | Meaning                              |Types Allowed
 |-----------|--------------------------------------|--------------------------------------|
