@@ -39,7 +39,7 @@ takes these parameters
 |-----------|--------------------------------------|--------------------------------------|
 |$method    | HGET, POST, DELETE, etc              | string                               |
 |$uri       | route                                | string|UriInterface                  |
-|$headers   | headers                              | array<string, string|string[]>       |
+|$headers   | headers                              | array<string, string|string\[\]>     |
 |$body      | request body                         | string|resource|StreamInterface|null |
 |$version   | Protocol version (defaults)          | string                               | 
 
