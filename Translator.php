@@ -13,6 +13,7 @@ class Translator implements TranslateInterface {
    private $route;      // $provider->services->service->translation->route;  
    private $method;     // $provider->services->service->translation->method; 
    private $query_str = array();
+   private $headers = array();
 
    private Client $client; 
 
@@ -41,44 +42,33 @@ class Translator implements TranslateInterface {
       return $refl->newInstance($provider);
    }
 
-   // For derived class use, 
+   // override: For derived classes.
    protected function getCredentials(SimpleXMLElement $credentials) : string
    {
    }
 
-   final protected function createClient(SimpleXMLElement $provider) : Client
+
+   final protected function getSettings(SimpleXMLElement $provider)
    {
-       //--$baseurl = (string) $provider->settings->baseurl;
-
-       // Set credentials header and anything else like Content-Type, etc.
-       $headers = array();
-
-       if ((string)$provider->settings->credentials["method"] == "custom") 
-
-               $headers = $this->getCredentials($provider->settings->credentials);
-
+      if ((string)$provider->settings->credentials["method"] == "custom") 
+      
+           $this->headers = $this->getCredentials($provider->settings->credentials);
+      
        else {
-           
-           foreach($provider->settings->credentials->header as $header) 
-                
-                $headers[(string) $provider->settings->credentials->header['name']] = (string) $header;
             
-       }
-       
-       return  new Client([ 'base_uri' => (string) $this->provider->settings->baseurl, 'headers' => $headers]);        
-   }
+            foreach($provider->settings->credentials->header as $header) 
+                 
+                 $this->headers[(string) $provider->settings->credentials->header['name']] = (string) $header;
+      }
 
-   final protected function getAPISettings(SimpleXMLElement $provider)
-   {
       $this->route  = (string) $provider->services->translation->route;  
       $this->method = (string) $provider->services->translation->method;
 
-      // todo: test
       $parms = array();
  
       foreach($provider->services->translation->query->parm as $parm) 
 
-         $parms[ (string) $parm["name"] ] = urlencode( (string) $parm );
+           $parms[ (string) $parm["name"] ] = urlencode( (string) $parm );
 
 
       $this->query_str = ['query' => $parms ];
@@ -88,9 +78,9 @@ class Translator implements TranslateInterface {
    {      
       $this->provider = $provider; // todo: Is this needed?
       
-      $this->client = $this->createClient($provider); 
+       $this->client = new Client([ 'base_uri' => (string) $this->provider->settings->baseurl]);
 
-      $this->getAPISettings($provider);
+      $this->getSettings($provider);
    } 
 
    // Template pattern method that call protected method overriden by derived classes
@@ -100,50 +90,18 @@ class Translator implements TranslateInterface {
         * TODO: Do any remaining urlencode()'ing of any remaining query string parms.
         */
 
-       $request = new Request($this->route, $this->method, $this->query_str);  
+       // get the input text ready as either 'query' parameter or 'json' object.
 
+       $options = $this->prepare_input(???); 
+
+       if (hasBody()) 
+           $this->getBody($text);
+
+         
        $input/$optiions =  prepare_input/prepare_options();
         
-
-       /*
-        Three possible designs. See design.md for examples and ideas.
-
-        I.
-        $options = $this->prepare_options/inpput($text);  
-
-        $request = new Request($this->route, $this->method, $options);  
-
-        $this->client->send($request);
-        
-        //... 
-
-        II.
- 
-        $request = new Request($this->route, $this->method, $options);  
-
-        $this->prepare_request($request, $text);  // Less clear
-
- 
-        $input/$optiions =  prepare_input/prepare_options();
-       
-        $this->client->send($request);
-
-         III.
-
-        $ooptions = $this->prepare_input($text); // Either 'query' or 'body' or 'json'--or all or part.
-
-        if (post) {
-
-             $this->client->post($route, $options); 
-
-        } else if (get) {
-
-             $this->client->get($route, $options);
-
-        } else {
-
-        }
-       */
+       $response = $this->client->request($this->method, $this->route, ??);
+       //...
    }
 
    /*
