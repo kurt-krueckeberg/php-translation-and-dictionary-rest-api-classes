@@ -13,27 +13,25 @@ require 'vendor/autoload.php';
  * 
  */
 
-// NEW test
+// I.
 
-    // Create a client and provide a base URL
-    $client = new Client('https://api-free.deepl.com');
-    
-    $request = $client->get('/v2/usage');
-
-    $request->setAuth('user', 'pass');
-
-    echo $request->getUrl();
-    // >>> https://api.github.com/user
-    
-    // You must send a request in order for the transfer to occur
-    $response = $request->send();
+    /*
+     NOTE: Specifying the headers on the constructor doesn't seem to do any good since the `->request(...) call` will fail unless you
+     pass $headers to it.
+    */
+    $headers = [ 'Authorization' => "DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx", ];
      
-     var_dump($response);
+    $client = new Client([ 'base_uri' => 'https://api-free.deepl.com' ], ['headers' => $headers]);
 
-     return;     
+    echo "hIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII\n";
+ 
+    $response = $client->request('GET', '/v2/usage', ['headers' => $headers]);
+     
+    var_dump($response);
 
+    return; 
 
-     // This fails--why?
+     // Speciying this header on 
      $headers = [ 'Authorization' => "DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx" ];
       
      $client = new Client([ 'base_uri' => 'https://api-free.deepl.com' ], ['headers' => $headers]);
@@ -49,12 +47,9 @@ require 'vendor/autoload.php';
      // This works
      $client = new Client([ 'base_uri' => 'https://api-free.deepl.com' ]);
 
-     $headers = [
-        // Example of bearer token setup:   'Authorization' => 'Bearer ' . $token,        
-              'Authorization' => "DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx",
-     ];
+     $headers = [ 'Authorization' => "DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx", ];
       
-       $response = $client->request('GET', '/v2/usage', [ 'headers' => $headers ]); 
+     $response = $client->request('GET', '/v2/usage', [ 'headers' => $headers ]); 
      
      var_dump($response);
      

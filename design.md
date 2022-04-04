@@ -145,10 +145,6 @@ The `json` request option [documentation](https://docs.guzzlephp.org/en/stable/r
 > The json option is used to easily upload JSON encoded data as the body of a request. A Content-Type header of application/json will be added if no Content-Type header is
 already present on the message.
 
-#### Documentation
-
-The clearest Guzzle documentation is [here](https://guzzle3.readthedocs.io/http-client/client.html#request-options).
-
 ## Azure Translator
 
 ### Azure Translator PHP Implementations
