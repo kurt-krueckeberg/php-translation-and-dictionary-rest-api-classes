@@ -30,10 +30,7 @@ class Request {
         array $headers = [],      
         $body = null,             
         string $version = '1.1'   
-      ) 
-     { 
-     //...
-     }
+      ) { //...  }
 }
 ```
 takes these parameters
