@@ -51,8 +51,63 @@ $headers = ['X-Foo' => 'Bar'];
 $body = 'Hello!';
 $request = new Request('HEAD', 'http://httpbin.org/head', $headers, $body);
 ```	
+Example of using fluent interface to set query parameters
 
-Examples I found Googleing:
+**TODO:** Try test
+
+``php
+  /** @var $request Request */
+    $request = $client->createRequest();
+
+    $request->setPath('/API/jsonI.php');
+
+    $request->getQuery()
+        ->set('length', 10)
+        ->set('type', 'uint8');
+
+  //...
+
+    $request = $client->get('user/keys');
+
+    $query = $request->getQuery();
+
+    $query->add('access_token', $oauthToken);
+
+    $request->getCurlOptions()->set(CURLOPT_SSL_VERIFYPEER, false);
+
+    try {
+
+        $response = $request->send();
+
+        $body = $response->getBody(true);
+
+        echo $body;
+    } catch (Exception $e) {
+        echo $request->getResponse()->getRawHeaders();
+    }
+
+   //...
+  $request = $client->post('authorizations', array(), 
+            json_encode(
+                    array(
+                            'scopes' => array(
+                                    'public_repo',
+                                    'user',
+                                    'repo',
+                                    'gist'
+                            ),
+                            'note' => 'auto client' . uniqid()
+                    )));
+
+  $request->setAuth('john@doe.tst', 'yourpasswordhere');
+
+  $response = $request->send();
+
+  $body = json_decode($response->getBody(true));
+
+```
+
+Examples I found online:
 
 ```php
 $response = $client->post('the/endpoint', [
@@ -79,6 +134,10 @@ $response = $client->post($path, $body);
 
 $responseBody = $response->getBody();
 ```
+
+
+Lots of Guzzle [examples](https://hotexamples.com/examples/-/Guzzle%255CHttp%255CClient/get/php-guzzle%255chttp%255cclient-get-method-examples.html)
+
 #### Guzzle json Option
 
 The `json` request option [documentation](https://docs.guzzlephp.org/en/stable/request-options.html#json) states:
