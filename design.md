@@ -43,7 +43,7 @@ takes these parameters
 |$body      | request body                         | string|resource|StreamInterface|null |
 |$version   | Protocol version (defaults)          | string                               | 
 
-Example code of Request objects:
+Example code:
 
 ```php
 // Create a PSR-7 request object to send
@@ -79,8 +79,6 @@ $response = $client->post($path, $body);
 
 $responseBody = $response->getBody();
 ```
-
-
 #### Guzzle json Option
 
 The `json` request option [documentation](https://docs.guzzlephp.org/en/stable/request-options.html#json) states:
