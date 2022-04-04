@@ -20,8 +20,8 @@ class Request {
   //...
    public function __construct(string $method,           
         $uri,                     
-        array $headers = [],      
-        $body = null,        // <-- Don't specify the next two paramaters if only query parameters are used.     
+        array $headers = [],     // <--- This apparently can also take a 'query' array. See DeeplTranslator.php 
+        $body = null,        // <-- This can be 'json' array--I think--as described below ('json' can't be put in the header, too?) 
         string $version = '1.1'   
       ) { //...  }
 }

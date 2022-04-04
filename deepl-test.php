@@ -40,7 +40,7 @@ class DeeplTranslator {
       try {
 
 	 $query =  ['query' => [DeeplTranslator::qs_auth_key => $this->auth_key,
-		                DeeplTranslator::qs_text => $text,
+		                DeeplTranslator::qs_text =>  $text,            //todo: urlencode($text);
 				DeeplTranslator::qs_source_lang => $source_lang,
 				DeeplTranslator::qs_target_lang => $target_lang]];
 
