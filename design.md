@@ -51,61 +51,16 @@ The `json` request option [documentation](https://docs.guzzlephp.org/en/stable/r
 > The json option is used to easily upload JSON encoded data as the body of a request. A **Content-Type** header of **application/json** will be added if no Content-Type header is
 already present on the message.
 
-Example of using fluent interface to set query parameters
 
-**TODO:** Try test
+#### Guzzle query Option
 
-``php
-  /** @var $request Request */
-    $request = $client->createRequest();
+[query](https://docs.guzzlephp.org/en/stable/request-options.html#query) option 
 
-    $request->setPath('/API/jsonI.php');
 
-    $request->getQuery()
-        ->set('length', 10)
-        ->set('type', 'uint8');
+#### Questions
 
-  //...
+Can you pass both 'json' and 'query' on the `$client->request(...);` call?
 
-    $request = $client->get('user/keys');
-
-    $query = $request->getQuery();
-
-    $query->add('access_token', $oauthToken);
-
-    $request->getCurlOptions()->set(CURLOPT_SSL_VERIFYPEER, false);
-
-    try {
-
-        $response = $request->send();
-
-        $body = $response->getBody(true);
-
-        echo $body;
-    } catch (Exception $e) {
-        echo $request->getResponse()->getRawHeaders();
-    }
-
-   //...
-  $request = $client->post('authorizations', array(), 
-            json_encode(
-                    array(
-                            'scopes' => array(
-                                    'public_repo',
-                                    'user',
-                                    'repo',
-                                    'gist'
-                            ),
-                            'note' => 'auto client' . uniqid()
-                    )));
-
-  $request->setAuth('john@doe.tst', 'yourpasswordhere');
-
-  $response = $request->send();
-
-  $body = json_decode($response->getBody(true));
-
-```
 
 Examples I found online:
 
