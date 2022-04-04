@@ -12,7 +12,7 @@ class Translator implements TranslateInterface {
 
    private $route;      // $provider->services->service->translation->route;  
    private $method;     // $provider->services->service->translation->method; 
-   private $query_str = array();
+   private $query = array();
    private $headers = array();
 
    private Client $client; 
@@ -71,7 +71,7 @@ class Translator implements TranslateInterface {
            $parms[ (string) $parm["name"] ] = urlencode( (string) $parm );
 
 
-      $this->query_str = ['query' => $parms ];
+      $this->query = ['query' => $parms ];
    }  
 
    public function __construct(SimpleXMLElement $provider)
@@ -84,7 +84,7 @@ class Translator implements TranslateInterface {
    } 
 
    // Template pattern method that call protected method overriden by derived classes
-   public function translate(string $text, string $source_lang, string $target_lang) 
+   public function translate(string $text)
    {
        /*
         * TODO: Do any remaining urlencode()'ing of any remaining query string parms.
@@ -92,15 +92,16 @@ class Translator implements TranslateInterface {
 
        // get the input text ready as either 'query' parameter or 'json' object.
 
-       $options = $this->prepare_input(???); 
+       $options = ['query' => $this->query,
+                   'headers' => $this->headers];
+ 
+       if (input is not query) 
+          $input = $this->prepare_json_text($text);
+       else 
+           $input // = set ups query parameter that holds input text.
 
-       if (hasBody()) 
-           $this->getBody($text);
-
-         
-       $input/$optiions =  prepare_input/prepare_options();
-        
-       $response = $this->client->request($this->method, $this->route, ??);
+ 
+       $response = $this->client->request($this->method, $this->route, $options);
        //...
    }
 
@@ -108,7 +109,7 @@ class Translator implements TranslateInterface {
     * Overriden by derived classes to do any special handling
     */
    //protected function create_request(object $request)
-   protected function prepare_request(RequestInterface $requst, string $text)
+   protected function prepare_json_text(string $text)
    {
    }
 }

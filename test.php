@@ -7,9 +7,8 @@ include "AzureTranslator.php";
   $a = array("Guten Tag!", "Geten Morgen");      
 
   try {
-         
    
-    $translation = $trans->translate("Guten Mogen",  'DE',  'EN');
+    $translation = $trans->translate("Guten Mogen");
 
   } catch (Exception $e) {
 
