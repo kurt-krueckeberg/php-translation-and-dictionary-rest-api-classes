@@ -16,17 +16,47 @@ Derived Translator class will override `prepareInput/prepareText()` to insert th
 it as required--including calling urlendocde()?--as a json object or encode it as a query string paramete).  It will use the methods of the PSR `IRequestInterface` methods
 to do so. 
 
-### Example Code
 
+### Guzzle Request objects
 
-#### Guzzle
+The request object is `GuzzleHttp\Psr7\Request`. Its constructor takes these parameters
 
-- Extensivly Guzzle GET and POST request [examples](https://artisansweb.net/use-guzzle-php-http-client-sending-http-requests/). Using either 'header' or 'json'.
+```php
+class Request {
 
-COMMENT: Maybe simply setting `'json' =>[ stuff .... ]` as shown in the above exampls is the way to go?
+//...
+   public function __construct(
+        string $method,           
+        $uri,                     
+        array $headers = [],      
+        $body = null,             
+        string $version = '1.1'   
+      ) 
+     { //...
+```
 
+where the `GuzzleHttp\Psr7\Request` constructor's parameters are:
+    
+ ---------------------------------------------------------------------------------------------
+ Parameter      Meaning                               types allowed
+ -------------- ------------------------------------- ----------------------------------------
+ $method        HTTP method--GET, POST, DELETE, etc    string                              
+ $uri           route                                  string|UriInterface                 
+ $headers       headers                                array<string, string|string[]>      
+ $body          request body                           string|resource|StreamInterface|null
+ $version       Protocol version (defaults)            string                              
+ -------------- ------------------------------------- ----------------------------------------
 
-- Examples I found Googleing:
+Example code of Request objects:
+
+```php
+// Create a PSR-7 request object to send
+$headers = ['X-Foo' => 'Bar'];
+$body = 'Hello!';
+$request = new Request('HEAD', 'http://httpbin.org/head', $headers, $body);
+```	
+
+Examples I found Googleing:
 
 ```php
 $response = $client->post('the/endpoint', [
@@ -45,7 +75,7 @@ print_r(json_decode((string) $body));
 $text =  ['text' => iconv(mb_detect_encoding($query, mb_detect_order(), true), "UTF-8", $query) ];
 
 $body = [
-    'json' => $text;
+    'json' => $text; // <=======  **NOTE** The use of the key 'json'
 ];
 
 //  $body is just an array whose key is 'json' and whose value is...encoded json ( I think).
@@ -54,13 +84,25 @@ $response = $client->post($path, $body);
 $responseBody = $response->getBody();
 ```
 
-- The clearest Guzzle documentation is [here](https://guzzle3.readthedocs.io/http-client/client.html#request-options).
 
-- Azure Translator PHP implementation [code](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP/blob/master/Translate.php).
+#### Guzzle json Option
+
+The `json` request option [documentation](https://docs.guzzlephp.org/en/stable/request-options.html#json) states:
+
+> The json option is used to easily upload JSON encoded data as the body of a request. A Content-Type header of application/json will be added if no Content-Type header is
+already present on the message.
+
+#### Documentation
+
+The clearest Guzzle documentation is [here](https://guzzle3.readthedocs.io/http-client/client.html#request-options).
 
 ## Azure Translator
 
-- main [landing page](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/)
+### Azure Translator PHP Implementations
+
+Azure Translator PHP implementation [code](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP/blob/master/Translate.php).
+
+main [landing page](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/)
 
 ## Understand These Technologies:
 
