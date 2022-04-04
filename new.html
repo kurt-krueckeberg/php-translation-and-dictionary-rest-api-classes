@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Deepl-doc</title>
+  <title>design</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -79,68 +79,175 @@
 </head>
 <body>
 <section>
-<h1 id="deepl-translation-rest-api">Deepl Translation REST API</h1>
-<h2 id="translation-endpoint-and-route">Translation Endpoint and Route</h2>
-<p>The endpoint or base URL for a Translator 3.0 request is:</p>
+<h1 id="todo">TODO</h1>
+<h2 id="alternate-javasrcript-design">Alternate Javasrcript Design</h2>
+<p>Using jvavscript <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a></p>
+<h2 id="design">Design</h2>
+<p>See also: https://php.watch/versions/7.4/typed-properties</p>
+<p>Implement each translation service, based on the documentation and curl examples. Later try to generalize the code.</p>
+<p>Derived Translator class will override <code>prepareInput/prepareText()</code> to insert the text to be translated in the reuqest (in the body or query parameters, etc), to format it as required–including calling urlendocde()?–as a json object or encode it as a query string paramete). It will use the methods of the PSR <code>IRequestInterface</code> methods to do so.</p>
+<h3 id="guzzle-request-objects">Guzzle Request objects</h3>
+<p><code>GuzzleHttp\Psr7\Request</code> constructor</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">class</span> Request {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>  <span class="co">//...</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>   <span class="kw">public</span> <span class="kw">function</span> <span class="fu">__construct</span><span class="ot">(</span><span class="kw">string</span> <span class="kw">$method</span><span class="ot">,</span>           </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>        <span class="kw">$uri</span><span class="ot">,</span>                     </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>        <span class="kw">array</span> <span class="kw">$headers</span> = <span class="ot">[],</span>      </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>        <span class="kw">$body</span> = <span class="kw">null</span><span class="ot">,</span>        <span class="co">// &lt;-- Don&#39;t specify the next two paramaters if only query parameters are used.     </span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>        <span class="kw">string</span> <span class="kw">$version</span> = <span class="st">&#39;1.1&#39;</span>   </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>      <span class="ot">)</span> { <span class="co">//...  }</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>}</span></code></pre></div>
+<p>takes these parameters</p>
 <table>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Meaning</th>
+<th>Types Allowed</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Endpoint</td>
-<td style="text-align: left;">URL “route”</td>
+<td>$method</td>
+<td>GET, POST, DELETE, etc</td>
+<td>string</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">https://api-free.deepl.com/v2</td>
-<td style="text-align: left;">/translate</td>
+<td>$uri</td>
+<td>route</td>
+<td>string</td>
+</tr>
+<tr class="odd">
+<td>$headers</td>
+<td>headers</td>
+<td>array&lt;string, string|string[]&gt;</td>
+</tr>
+<tr class="even">
+<td>$body</td>
+<td>request body</td>
+<td>string</td>
+</tr>
+<tr class="odd">
+<td>$version</td>
+<td>Protocol version (default)</td>
+<td>string</td>
 </tr>
 </tbody>
 </table>
-<h2 id="authentication">Authentication</h2>
-<p>Currently all requests support the following two ways to provide your authentication keys:</p>
+<p>Example:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>   <span class="co">// Create a PSR-7 request object to send</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>   <span class="kw">$headers</span> = <span class="ot">[</span><span class="st">&#39;X-Foo&#39;</span> =&gt; <span class="st">&#39;Bar&#39;</span><span class="ot">];</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>   <span class="kw">$body</span> = <span class="st">&#39;Hello!&#39;</span><span class="ot">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>   <span class="kw">$request</span> = <span class="kw">new</span> Request<span class="ot">(</span><span class="st">&#39;HEAD&#39;</span><span class="ot">,</span> <span class="st">&#39;http://httpbin.org/head&#39;</span><span class="ot">,</span> <span class="kw">$headers</span><span class="ot">,</span> <span class="kw">$body</span><span class="ot">);</span></span></code></pre></div>
+<h4 id="guzzle-json-option">Guzzle json Option</h4>
+<p>The <code>json</code> request option <a href="https://docs.guzzlephp.org/en/stable/request-options.html#json">documentation</a> states:</p>
+<blockquote>
+<p>The json option is used to easily upload JSON encoded data as the body of a request. A <strong>Content-Type</strong> header of <strong>application/json</strong> will be added if no Content-Type header is already present on the message.</p>
+</blockquote>
+<p>This <a href="https://dev.to/dallington256/using-guzzle-http-in-laravel-to-send-http-requests-4po6">code</a> passes the authorizaion ot hte client constructor? Why does it work??</p>
+<p>Example of using fluent interface to set query parameters</p>
+<p><strong>TODO:</strong> Try test</p>
+<p>``php /** <span class="citation" data-cites="var">@var</span> $request Request */ $request = $client-&gt;createRequest();</p>
+<pre><code>$request-&gt;setPath(&#39;/API/jsonI.php&#39;);
+
+$request-&gt;getQuery()
+    -&gt;set(&#39;length&#39;, 10)
+    -&gt;set(&#39;type&#39;, &#39;uint8&#39;);</code></pre>
+<p>//…</p>
+<pre><code>$request = $client-&gt;get(&#39;user/keys&#39;);
+
+$query = $request-&gt;getQuery();
+
+$query-&gt;add(&#39;access_token&#39;, $oauthToken);
+
+$request-&gt;getCurlOptions()-&gt;set(CURLOPT_SSL_VERIFYPEER, false);
+
+try {
+
+    $response = $request-&gt;send();
+
+    $body = $response-&gt;getBody(true);
+
+    echo $body;
+} catch (Exception $e) {
+    echo $request-&gt;getResponse()-&gt;getRawHeaders();
+}</code></pre>
+<p>//… $request = $client-&gt;post(‘authorizations’, array(), json_encode( array( ‘scopes’ =&gt; array( ‘public_repo’, ‘user’, ‘repo’, ‘gist’ ), ‘note’ =&gt; ‘auto client’ . uniqid() )));</p>
+<p>$request-&gt;setAuth(‘john@doe.tst’, ‘yourpasswordhere’);</p>
+<p>$response = $request-&gt;send();</p>
+<p><span class="math inline"><em>b</em><em>o</em><em>d</em><em>y</em> = <em>j</em><em>s</em><em>o</em><em>n</em><sub><em>d</em></sub><em>e</em><em>c</em><em>o</em><em>d</em><em>e</em>(</span>response-&gt;getBody(true));</p>
+<pre><code>
+Examples I found online:
+
+```php
+$text =  [&#39;text&#39; =&gt; iconv(mb_detect_encoding($query, mb_detect_order(), true), &quot;UTF-8&quot;, $query) ];
+
+$body = [
+    &#39;json&#39; =&gt; $text; // &lt;=======  **NOTE** The use of the key &#39;json&#39;
+];
+
+//  $body is just an array whose key is &#39;json&#39; and whose value is...encoded json ( I think).
+$response = $client-&gt;post($path, $body);
+
+$responseBody = $response-&gt;getBody();</code></pre>
+<p>Lots of Guzzle <a href="https://hotexamples.com/examples/-/Guzzle%255CHttp%255CClient/get/php-guzzle%255chttp%255cclient-get-method-examples.html">examples</a></p>
+<h2 id="azure-translator">Azure Translator</h2>
+<h3 id="azure-translator-php-implementations">Azure Translator PHP Implementations</h3>
+<p>Azure Translator PHP implementation <a href="https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP/blob/master/Translate.php">code</a>.</p>
+<p>main <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/">landing page</a></p>
+<h2 id="understand-these-technologies">Understand These Technologies:</h2>
+<p>Review:</p>
 <ul>
-<li><p>Header-based authentication by setting the <em>Authorization</em> header (<em>DeepL-Auth-Key [yourAuthKey]</em>)</p></li>
-<li><p>Setting the <em>auth_key</em> as a request parameter</p></li>
+<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP">Understanding HTTP</a></p></li>
+<li><p><a href="https://www.w3schools.com/whatis/whatis_http.asp">What HTTP is</a></p></li>
+<li><p>What an <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages">HTTP Messages</a> are.</p></li>
+<li><p>What <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication">HTTP Authenication</a> is and how it works.</p></li>
+<li><p><a href="https://blog.restcase.com/4-most-used-rest-api-authentication-methods/">Authentication Methods</a></p></li>
+<li><p>http://www.usingxml.com/Basics/XmlApplications</p></li>
 </ul>
-<h3 id="header-based-authentication">Header-based Authentication</h3>
-<p>Header-based authentication is the preferred method of authentication, and overrides the <em>auth_key</em> parameter. New API functions added in the future will only support the header-based authentication.</p>
-<p>Example HTTP Request</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">GET</span> /v2/usage HTTP/1.0</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">Host</span>: api-free.deepl.com</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="ex">User-Agent</span>: YourApp</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="ex">Accept</span>: */*</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="ex">Authorization</span>: DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx</span></code></pre></div>
-<p>Example Curl Request</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">curl</span> -H <span class="dt">\&quot;</span>Authorization: DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx<span class="dt">\&quot;</span> https://api-free.deepl.com/v2/usage</span></code></pre></div>
-<p>Example using PHP and Guzzle</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">&lt;?php</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="kw">declare</span><span class="ot">(</span>strict_types=<span class="dv">1</span><span class="ot">);</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="kw">use</span> GuzzleHttpClient<span class="ot">;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a><span class="kw">require</span> <span class="st">&#39;vendor/autoload.php&#39;</span><span class="ot">;</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>    </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a>   <span class="kw">try</span> {</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a>       </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a>       <span class="kw">$headers</span> = <span class="ot">[</span> <span class="st">&#39;Authorization&#39;</span> =&gt; <span class="st">&quot;DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx&quot;</span><span class="ot">,</span> <span class="ot">];</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a>       </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a>       <span class="co">// Technique I</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a>       </span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true"></a>       <span class="kw">$client</span> = <span class="kw">new</span> Client<span class="ot">([</span> <span class="st">&#39;base_uri&#39;</span> =&gt;</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true"></a>       <span class="st">&#39;https://api-free.deepl.com&#39;</span> <span class="ot">]);</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true"></a>       </span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true"></a>       <span class="kw">$response</span> = <span class="kw">$client</span>-&gt;request<span class="ot">(</span><span class="st">&#39;GET&#39;</span><span class="ot">,</span> <span class="st">&#39;/v2/usage&#39;</span><span class="ot">,</span> <span class="ot">[</span><span class="st">&#39;headers&#39;</span> =&gt; <span class="kw">$headers</span><span class="ot">]</span> <span class="ot">);</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true"></a>       </span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true"></a>       <span class="co">// Technique II: **add the headers to the constructor and omit them from the request:**</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true"></a>       </span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true"></a>       <span class="kw">$client</span> = <span class="kw">new</span> Client<span class="ot">(</span>**<span class="ot">[</span> <span class="st">&#39;base_uri&#39;</span> =&gt; <span class="st">&#39;https://api-free.deepl.com&#39;</span> <span class="ot">,</span> <span class="st">&#39;headers&#39;</span> =&gt; <span class="kw">$headers</span><span class="ot">]</span>**<span class="ot">);</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true"></a>       </span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true"></a>       <span class="kw">$response</span> = <span class="kw">$client</span>-&gt;request<span class="ot">(</span><span class="st">&#39;GET&#39;</span><span class="ot">,</span> <span class="st">&#39;/v2/usage&#39;</span><span class="ot">);</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true"></a>       </span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true"></a>       <span class="fu">var_dump</span><span class="ot">(</span><span class="kw">$response</span><span class="ot">);</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true"></a>       </span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true"></a>   } <span class="kw">catch</span> <span class="ot">(</span><span class="kw">Exception</span> <span class="kw">$e</span><span class="ot">)</span> {</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true"></a>       </span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true"></a>       <span class="kw">echo</span> <span class="st">&quot;Exception: message = &quot;</span> . <span class="kw">$e</span>-&gt;getMessage<span class="ot">()</span> . <span class="st">&quot;n&quot;</span><span class="ot">;</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true"></a>       </span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true"></a>   }</span></code></pre></div>
+<p>Understand the PHP HTTP Message interfaces created to represent HTTP messages:</p>
+<ul>
+<li>Concise Summary of all PSR-7 HTTP Message <a href="https://github.com/php-fig/http-message/blob/master/docs/PSR7-Interfaces.md">Interfaces</a></li>
+<li>Related <a href="https://github.com/php-fig/http-message/blob/master/docs/PSR7-Usage.md">Usage Guide</a></li>
+</ul>
+<p>Understamd:</p>
+<ul>
+<li>Guzzle’s Request object implements RequestInterface (or ClientInterface, which is also a PSR-7 standard) and a Guzzle-speicific ClientInterface (or is it?).</li>
+</ul>
+<p>Consult:</p>
+<ul>
+<li><a href="https://docs.guzzlephp.org/en/stable/psr7.html">Guzzle and PSR-7</a></li>
+</ul>
+<p>The goal is a general Translator or RESTTransltor class that will work for IBM’s, Azure’s, DEEPL and any others translation services. This general implementation may beneift from design pattern like Template Method.</p>
+<h2 id="xml">XML</h2>
+<p><a href="https://www.w3schools.com/xml/">XML Tutorial</a></p>
+<h2 id="understanding-xpath-queries">Understanding XPath Queries</h2>
+<ul>
+<li><p>W3School <a href="https://www.w3schools.com/xml/xpath_nodes.asp">XPath Tutorial</a><br />
+</p></li>
+<li><p><a href="https://www.softwaretestinghelp.com/xml-path-language-xpath-tutorial/">XPath tutorial</a></p></li>
+<li><p><a href="https://www.educba.com/xml-features/?source=leftnav">XPath Tutorial</a></p></li>
+<li><p><a href="https://riptutorial.com/xpath">Getting Started with XPath</a> is Exellent!</p>
+<ul>
+<li><a href="https://riptutorial.com/xpath/example/6209/find-all-elements-with-certain-text">Find all elements with certain text</a></li>
+</ul></li>
+</ul>
+<p>PHP’s SimpleXMLElement has an xpath() function.</p>
+<h2 id="modern-ajax">Modern AJAX</h2>
+<ul>
+<li><p><a href="https://drstearns.github.io/tutorials/ajax/">Making HTTP Requests from Javascript</a></p></li>
+<li><p><a href="https://code.tutsplus.com/en/articles/create-a-javascript-ajax-post-request-with-and-without-jquery--cms-39195">AJAX with Fetch or with XHR</a></p></li>
+<li><p><a href="https://www.twilio.com/blog/5-ways-to-make-http-requests-in-php">Five Ways to Make HTTP Requests in PHP</a></p></li>
+</ul>
+<h2 id="php-composer">PHP Composer</h2>
+<ul>
+<li><p>Make this repositories composer-compliant, so that you can install it using composer and autoload its classes.</p>
+<ul>
+<li><p><a href="https://whoisryosuke.com/blog/2018/how-to-create-a-php-package-for-composer/">Composer Package Management</a></p></li>
+<li><p><a href="https://packagist.org/">Packagist The PHP Package Repository</a></p></li>
+</ul></li>
+</ul>
 </section>
 </body>
 </html>

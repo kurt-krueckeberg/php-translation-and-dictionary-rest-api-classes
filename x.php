@@ -13,20 +13,15 @@ require 'vendor/autoload.php';
  * 
  */
 
-// This works
+    $headers = [ 'Authorization' => "DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx",  'Content-Type' => 'application/json'];
 
     // Create a client and provide a base URL
+
     $client = new Client(['base_uri' => 'https://api-free.deepl.com']);
     
-   //++ var_dump($client);
-
-     $headers = [ 'Authorization' => "DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx", ];
       
     $response = $client->request('GET', '/v2/usage', [ 'headers' => $headers ]); 
      
-     var_dump($response);
+    var_dump($response);
 
-       return;     
-
-
-
+    return;     

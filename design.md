@@ -35,13 +35,13 @@ class Request {
 ```
 takes these parameters
 
-|Parameter  | Meaning                              |Types Allowed
-|-----------|--------------------------------------|--------------------------------------|
-|$method    | HGET, POST, DELETE, etc              | string                               |
-|$uri       | route                                | string|UriInterface                  |
-|$headers   | headers                              | array<string, string\|string[]>      |
-|$body      | request body                         | string|resource|StreamInterface|null |
-|$version   | Protocol version (defaults)          | string                               | 
+| Parameter  | Meaning                              |Types Allowed
+|------------|--------------------------------------|--------------------------------------------|
+| $method    | GET, POST, DELETE, etc               | string                                     |
+| $uri       | route                                | string|UriInterface                        |
+| $headers   | headers                              | array<string, string\|string[]>            |
+| $body      | request body                         | string|resource|StreamInterface|null       |
+| $version   | Protocol version (default)           | string                                     | 
 
 Example:
 
@@ -58,7 +58,7 @@ The `json` request option [documentation](https://docs.guzzlephp.org/en/stable/r
 > The json option is used to easily upload JSON encoded data as the body of a request. A **Content-Type** header of **application/json** will be added if no Content-Type header is
 already present on the message.
 
-This [code](https://dev.to/dallington256/using-guzzle-http-in-laravel-to-send-http-requests-4po6) passes the authorizaion ot hte client constructor?
+This [code](https://dev.to/dallington256/using-guzzle-http-in-laravel-to-send-http-requests-4po6) passes the authorizaion ot hte client constructor? Why does it work??
 
 Example of using fluent interface to set query parameters
 
