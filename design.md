@@ -37,7 +37,7 @@ takes these parameters
 
 |Parameter  | Meaning                              |Types Allowed
 |-----------|--------------------------------------|--------------------------------------|
-|$method    | HTTP method--GET, POST, DELETE, etc  | string                               |
+|$method    | HGET, POST, DELETE, etc              | string                               |
 |$uri       | route                                | string|UriInterface                  |
 |$headers   | headers                              | array<string, string|string[]>       |
 |$body      | request body                         | string|resource|StreamInterface|null |
