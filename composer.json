@@ -10,7 +10,7 @@
     "require": {
         "guzzlehttp/guzzle": "^7.4",
         "ext-xml": "^8.0",
-        "ext-simplexml": "intl",
+        "ext-simplexml": "*",
         "ext-intl": "^8.0"
     },
     "license": "MIT",

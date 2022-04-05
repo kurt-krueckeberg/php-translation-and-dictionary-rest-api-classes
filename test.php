@@ -1,7 +1,10 @@
 <?php
-include "Translator.php";
+declare(strict_types=1);
+use Translators\Translator;
 
-include "AzureTranslator.php";
+include "vendor/autoload.php";
+
+//include "AzureTranslator.php";
 
   $trans = Translator::createFromXML("config.xml", "d");
 
