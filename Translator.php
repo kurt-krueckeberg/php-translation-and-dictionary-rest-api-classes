@@ -84,7 +84,6 @@ abstract class Translator implements TranslateInterface {
       } else 
           
          $this->requires_jsonInput = true;    
-      
    }  
 
    public function __construct(protected SimpleXMLElement $provider) // PHP 8.0 feature: automatic member variable assignemnt syntax.
@@ -98,28 +97,28 @@ abstract class Translator implements TranslateInterface {
    final public function translate(string $text)
    {
        // get the input text ready as either 'query' parameter or 'json' object.
+       $input = $this->prepare_input($text);
+       
+       if (isset($input['json']))  // If array holds json encoded body entity. 
 
-       if ($this->requires_jsonInput === true)  
-
-          $request_input = ['query' => $this->query, 'headers' => $headers, 'json' => $this->prepare_input($text)]; 
+          $request_input = ['query' => $this->query, 'headers' => $headers, /* 'json' => $this->prepare_input($text)*/ $input]; 
 
        else { // input is a query string paramter whose name name is attribute of <implementation name="text">Translator</implementaion>
           
-          // Call the default prepartion of query input
-          $this->query[$this->input_queryparm] =  $this->prepare_input($text);
+          array_push($this->query, $input);
 
           $request_input = ['query' => $this->query, 'headers' => $this->headers]; 
        }
 
        $response = $this->client->request($this->method, $this->route, $request_input);
-
+       
        return $this->process_response($response);
    }
 
-   public function prepare_input(string $text) : string
+   public function prepare_input(string $text) : array // IF key is 'json', then input is json body entity.
    {
-          // Call the default prepartion of query input
-          return  urlencode($text);
+        // Call the default prepartion of query input
+        return  urlencode($text);
     }
     
     // Overriden by derived classes to do any special handling

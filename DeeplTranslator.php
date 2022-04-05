@@ -74,6 +74,11 @@ class DeeplTranslator extends Translator {
     }
     */  
 
+    public function prepare_input(string $text) : array 
+    {
+        return  array('text' => urlencode($text));
+    }
+
     public function process_response(Response $response) : string
     {
        $contents = $response->getBody()->getContents();

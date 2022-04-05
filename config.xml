@@ -73,7 +73,7 @@
               <method>GET</method>
               <!-- The presence of the `input="text"` attribute implies the input text is a query parameter named 'text'. If the input attribute is not present,
                 json input is required. The name attribute is present if and only if the  implementation class is Translator.   -->
-              <implementation input="text">DeeplTranslator</implementation>
+              <implementation>DeeplTranslator</implementation>
               <query> 
                  <parm name="source_lang">DE</parm>
                  <parm name="target_lang">EN</parm>
