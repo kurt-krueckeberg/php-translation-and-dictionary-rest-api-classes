@@ -39,30 +39,12 @@ require_once "Translator.php";
 */
 class DeeplTranslator extends Translator {
 
- 
-   private static $base_uri = 'https://api-free.deepl.com'; 
-
-   public function __construct() // todo: Change to passin SimpleXMLElement provider that has: authorization and query paraemter names and default values
+   public function __construct(SimpleXMLElement $provider) 
    {
-      $this->client = new Client(array('base_uri' => self::$base_uri));
+       parent::construct($provider); 
    }
 
-   /*
-     translate() returns an array of translated sentences, in which each element has two properties:
-
-      1. The detected_source_language - which, of course, we required to specified, so there is nothing to 'detect'.
-      2. "text" - the translated text in teh target lanauge.
-
-     Client code can iterate over this array like this:
-
-       $translations = $tr->translate($input_sentence, $source_lang, $target_lang);
-            
-       foreach($translations as $translation) {
- 
-           do_something($de_sentence, $translation->text);
-       } 
-   */
-   
+   /* old working code:  
    public function translate(string $text, string $source_lang, string $target_lang) : string
    {
    try {
@@ -79,22 +61,12 @@ class DeeplTranslator extends Translator {
 
       $obj = json_decode($contents);
 
-         /* 
-          * $obj now holds an array of Deepl 'translations' objects, where 'translations'
+      return $obj->translations[0]->text); // Return array of translated sentences.  
 
-	   "translations": [{
-	         "detected_source_language":"EN",
-	         "text":"Hallo, Welt!"]
-          
-          */
-
-       var_dump ( $obj->translations); // Return array of translated sentences. 
-
-       return "something";
       
       } catch (RequestException $e) { // We get here if response code from REST server is > 400, like  404 response
 
-         /* Check if a response was received */
+     
          if ($e->hasResponse())
              
             $str = "Response Code is " . $e->getResponse()->getStatusCode();
@@ -103,13 +75,23 @@ class DeeplTranslator extends Translator {
 
          throw new Exception("Guzzle RequestException. $str"); 
     }
+    */  
 
+    public function process_response(Response $response) : string
+    {
+       $contents = $response->getBody()->getContents();
+
+       $obj = json_decode($contents);
+
+       return $obj->translations[0]->text; // Return array of translated sentences. 
+     }
+
+   /*
+    * Overriden by derived classes to do any special handling
+    */
+   //protected function create_request(object $request)
+   protected function prepare_json_input(string $text) : string // todo: prepare_query??()
+   {
    }
+
 }
-
-  $tr = new DeeplTranslator();
-
-  $translations = $tr->translate("Handeln", "DE", "EN");
-
-  var_dump($translations);
-

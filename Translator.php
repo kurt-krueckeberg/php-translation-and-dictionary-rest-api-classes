@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
 use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Request;
-use Psr\Http\Message\RequestInterface;
+//use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Psr7\Response;
+
 
 require 'vendor/autoload.php';
 
@@ -106,23 +107,28 @@ class Translator implements TranslateInterface {
           $request_input = ['query' => $this->query, 'headers' => $headers, 'json' => $this->prepare_json_input($text)]; 
 
        else { // input is a query string paramter whose name name is attribute of <implementation name="text">Translator</implementaion>
-
-          $this->query[$this->input_queryparm] =  urlencode($text);
+          
+          // Call the default prepartion of query input
+          $this->query[$this->input_queryparm] =  $this->prepare_query_input($text);
 
           $request_input = ['query' => $this->query, 'headers' => $this->headers]; 
        }
 
        $response = $this->client->request($this->method, $this->route, $request_input);
 
-        // Deepl 'decoding'
-       $contents = $response->getBody()->getContents();
-
-       $obj = json_decode($contents);
-
-       var_dump ( $obj->translations[0]->text); // Return array of translated sentences. 
-
-       // todo: call json_decode() and return a common format.
+       return $this->process_response($response);
    }
+
+   public function prepare_query_input(string $text) : string
+   {
+          // Call the default prepartion of query input
+          return  urlencode($text);
+    }
+
+    public function process_response(Response $response) : string // todo: abstract method and therfore class?
+    {
+       return "";
+    }
 
    /*
     * Overriden by derived classes to do any special handling

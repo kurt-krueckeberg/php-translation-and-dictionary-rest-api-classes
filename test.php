@@ -10,6 +10,7 @@ include "AzureTranslator.php";
   try {
    
     $translation = $trans->translate("Guten Mogen");
+    echo $translation . "\n";
 
   } catch (Exception $e) {
 
