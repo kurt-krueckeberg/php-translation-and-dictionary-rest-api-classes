@@ -8,7 +8,9 @@ Using jvavscript [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fe
 
 ## Design
 
-Make code autoloadable by making it a composer package.
+Make code autoloadable by making it a composer package. Using the input\_parm attribute below is putting the cart before the horse: the .xml is 
+now overly complicated and involves a speical case (for input that only goes in the query string). Instead have the derived Translator class prepare the
+request. They will contain all the logic including whatever class properties are required to prepare either the query parameter or the json input body object--but how?
 
 If the implementation class specifed has a name attribute
 
