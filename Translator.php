@@ -74,6 +74,9 @@ class Translator implements TranslateInterface {
 
 
       $this->query = $parms;
+
+      // todo: Set a 'has_jsonInput' flag
+      $this->requires_json = 
    }  
 
    // TODO: Do I need to save $this->provider?
@@ -98,14 +101,19 @@ class Translator implements TranslateInterface {
        $options = ['query' => $this->query,
                    'headers' => $this->headers];
  
-       if (true) // todo: Fix. Is input a query parameter or json text
-          $input = $this->prepare_json_input($text);
-       else  
-           $input = "abc"; // = set ups query parameter that holds input text.
+       if ($this->requires_json === true)  {
 
+          $json = $this->prepare_json_input($text);
+
+          $request_input = 
+
+       } else { // input is a query string paramter--which one
+
+          // todo: assign intput to the name attribute of the <input name="text" /> node of the  <query> section.
+       }
+      
  
-       $response = $this->client->request($this->method, $this->route, $options);
-       //...
+       $response = $this->client->request($this->method, $this->route, $request_input);
    }
 
    /*
