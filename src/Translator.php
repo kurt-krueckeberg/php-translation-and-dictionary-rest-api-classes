@@ -9,14 +9,14 @@ require 'vendor/autoload.php';
 
 abstract class Translator implements TranslateInterface {
 
-   // These values are set by fetchAPISettings 
+   // These values are set in fetchAPISettings() 
    private $route;           // $provider->services->service->translation->route;  
    private $method;          // $provider->services->service->translation->method; 
    private $query = array();
    private $headers = array();
    private $bneedsJson; // boolean
 
-   /* private $provider; This variable is define in __constructor's arument list. */
+   /* private $provider; This variable is defined in and set by __constructor's argument list. */
    
    private Client $client; 
 
