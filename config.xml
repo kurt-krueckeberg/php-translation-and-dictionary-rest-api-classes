@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<bneedsJson?xml version="1.0" encoding="UTF-8"?>
 <providers>
     <provider name="leipzig" abbrev="l">
         <settings>      
@@ -101,6 +101,7 @@
         </settings>
         <services>
            <translation> 
+             <implementation>IbmTranslator</implementation>
               <route>translate</route>
               <method>GET/POST???</method>
               <input>json</method>

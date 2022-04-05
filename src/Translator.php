@@ -14,7 +14,8 @@ abstract class Translator implements TranslateInterface {
    private $method;          // $provider->services->service->translation->method; 
    private $query = array();
    private $headers = array();
-   private $isJsonInput; // boolean
+   private $isJsonInput;  // boolean
+   private $inputKeyName; // boolean
 
    /* private $provider; This variable is defined in and set by __constructor's argument list. */
    
@@ -57,9 +58,9 @@ abstract class Translator implements TranslateInterface {
       
            $this->headers = $this->getCredentials($provider->settings->credentials);
       
-       else {
+      else {
             
-            foreach($provider->settings->credentials->header as $header) 
+          foreach($provider->settings->credentials->header as $header) 
                  
                  $this->headers[(string) $provider->settings->credentials->header['name']] = (string) $header;
       }
@@ -69,21 +70,12 @@ abstract class Translator implements TranslateInterface {
 
       $this->isJsonInput = ('json' == (string) $provider->services->translation->input) ?  true : false;
 
-      $parms = array();
- 
+      if (isset($provider->services->translation->input['parm']))
+          $this->inputKeyName = $provider->services->translation->input['parm'];
+
       foreach($provider->services->translation->query->parm as $parm) 
 
-           $parms[ (string) $parm["name"] ] = urlencode( (string) $parm );
-
-      $this->query = $parms;
-
-      if (isset($provider->services->translation->implementation['input'])) {
-
-          $this->requires_jsonInput = false;
-          $this->input_queryparm = (string) $provider->services->translation->implementation['input'];
-      } else 
-          
-         $this->requires_jsonInput = true;    
+          $this->query[ (string) $parm["name"] ] = urlencode( (string) $parm );
    }  
 
    public function __construct(protected SimpleXMLElement $provider) // PHP 8.0 feature: automatic member variable assignemnt syntax.
@@ -105,7 +97,7 @@ abstract class Translator implements TranslateInterface {
 
        else { // input is a query string paramter whose name name is attribute of <implementation name="text">Translator</implementaion>
           
-          $this->query['??where to put the key??'] = $input;
+          $this->query[$this->inputKeyName] = $input;
 
           $request_input = ['query' => $this->query, 'headers' => $this->headers]; 
        }
