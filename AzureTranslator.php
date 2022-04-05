@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 use GuzzleHttp\Client;
-use Psr\Http\Message\RequestInterface;
+use GuzzleHttp\Psr7\Response;
 
 require 'vendor/autoload.php';
 
@@ -24,7 +24,15 @@ class AzureTranslator extends Translator {
    public function __construct(SimpleXMLElement $provider)
    {
          parent::__construct($provider);     
+   }     
+
+   // Overriden by derived classes to do any special handling
+   final function process_response(Response $response) : string
+   {
+      return ""; // todo: implement
    } 
+
+
 
     // todo: break this into the three methods -- prepare_trans_request(), send_trans_request and get_sentences()
     final protected function prepare_json_input(string $text) : string

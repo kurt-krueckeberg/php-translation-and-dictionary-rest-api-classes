@@ -8,13 +8,15 @@ Using jvavscript [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fe
 
 ## Design
 
+Make code autoloadable by making it a composer package.
+
 If the implementation class specifed has a name attribute
 
 ```xml
       <implementation input_parm="text">ClassHere</implementation> 
 ```
 
-this implies the input text is to be place in a query string parameter of this name. This attribute currently is only present if and only if the implementation class is Translator.
+this implies the input text is to be place in a query string parameter of this name. Translator will support default process of this configuration attribute setting
 
 ### Guzzle Request objects
 

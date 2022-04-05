@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Response;
 
 require 'vendor/autoload.php';
 
@@ -32,10 +33,6 @@ require_once "Translator.php";
  *
  *    var_dump($response);
  *
-
-  todo: get rid of this class and put its logic into Translator, which will do what this code does, but will do it by using the 
-  settings in SimpleXMLElement $provider.
-
 */
 class DeeplTranslator extends Translator {
 
@@ -85,13 +82,4 @@ class DeeplTranslator extends Translator {
 
        return $obj->translations[0]->text; // Return array of translated sentences. 
      }
-
-   /*
-    * Overriden by derived classes to do any special handling
-    */
-   //protected function create_request(object $request)
-   protected function prepare_json_input(string $text) : string // todo: prepare_query??()
-   {
-   }
-
 }

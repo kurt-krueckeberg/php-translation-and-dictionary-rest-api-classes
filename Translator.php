@@ -1,7 +1,6 @@
 <?php
 declare(strict_types=1);
 use GuzzleHttp\Client;
-//use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 
 
@@ -9,7 +8,7 @@ require 'vendor/autoload.php';
 
 include "TranslateInterface.php";
 
-class Translator implements TranslateInterface {
+abstract class Translator implements TranslateInterface {
 
    // These values are set by fetchAPISettings 
    private $route;           // $provider->services->service->translation->route;  
@@ -18,6 +17,7 @@ class Translator implements TranslateInterface {
    private $headers = array();
    private $input_queryparm;
    private $requires_jsonInput;
+
    /* private $provider; This variable is define in __constructor's arument list. */
    
    private Client $client; 
@@ -66,7 +66,7 @@ class Translator implements TranslateInterface {
                  $this->headers[(string) $provider->settings->credentials->header['name']] = (string) $header;
       }
 
-      $this->route  = (string) $provider->services->translation->route;  //todo: urlencode() ?? 
+      $this->route  = (string) $provider->services->translation->route;  //todo: urlencode()? 
       $this->method = (string) $provider->services->translation->method;
 
       $parms = array();
@@ -87,14 +87,11 @@ class Translator implements TranslateInterface {
       
    }  
 
-   // TODO: Do I need to save $this->provider?
    public function __construct(protected SimpleXMLElement $provider) // PHP 8.0 feature: automatic member variable assignemnt syntax.
    {      
-      //$this->provider = $provider; // todo: Is this needed?
-      
        $this->client = new Client([ 'base_uri' => (string) $this->provider->settings->baseurl]);
 
-      $this->fetchAPISettings($provider);
+       $this->fetchAPISettings($provider);
    } 
 
    // Template pattern method that call protected method overriden by derived classes
@@ -104,12 +101,12 @@ class Translator implements TranslateInterface {
 
        if ($this->requires_jsonInput === true)  
 
-          $request_input = ['query' => $this->query, 'headers' => $headers, 'json' => $this->prepare_json_input($text)]; 
+          $request_input = ['query' => $this->query, 'headers' => $headers, 'json' => $this->prepare_input($text)]; 
 
        else { // input is a query string paramter whose name name is attribute of <implementation name="text">Translator</implementaion>
           
           // Call the default prepartion of query input
-          $this->query[$this->input_queryparm] =  $this->prepare_query_input($text);
+          $this->query[$this->input_queryparm] =  $this->prepare_input($text);
 
           $request_input = ['query' => $this->query, 'headers' => $this->headers]; 
        }
@@ -119,22 +116,12 @@ class Translator implements TranslateInterface {
        return $this->process_response($response);
    }
 
-   public function prepare_query_input(string $text) : string
+   public function prepare_input(string $text) : string
    {
           // Call the default prepartion of query input
           return  urlencode($text);
     }
-
-    public function process_response(Response $response) : string // todo: abstract method and therfore class?
-    {
-       return "";
-    }
-
-   /*
-    * Overriden by derived classes to do any special handling
-    */
-   //protected function create_request(object $request)
-   protected function prepare_json_input(string $text) : string
-   {
-   }
+    
+    // Overriden by derived classes to do any special handling
+    abstract protected function process_response(Response $response) : string; 
 }
