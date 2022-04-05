@@ -79,7 +79,7 @@ class Translator implements TranslateInterface {
       if (isset($provider->services->translation->implementation['input'])) {
 
           $this->requires_jsonInput = false;
-          $this->input_queryparm = $provider->services->translation->implementation['input'];
+          $this->input_queryparm = (string) $provider->services->translation->implementation['input'];
       } else 
           
          $this->requires_jsonInput = true;    
