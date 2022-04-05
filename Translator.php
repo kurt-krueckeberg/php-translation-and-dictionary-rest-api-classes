@@ -75,10 +75,7 @@ class Translator implements TranslateInterface {
 
       $this->query = $parms;
 
-      // todo: Set a 'has_jsonInput' flag
-      $attribs = $provider->services->translation->implementation->attributes();
-
-      $this->requires_jsonInput = (isset($attribs->input)) ? false : true;
+      $this->requires_jsonInput =  isset($provider->services->translation->implementation['name']) ? false : true;
    }  
 
    // TODO: Do I need to save $this->provider?
