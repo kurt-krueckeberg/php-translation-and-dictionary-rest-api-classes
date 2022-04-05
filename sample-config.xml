@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<providers>
+    <provider name="leipzig" abbrev="l">
+        <settings>      
+           <credentials method="none"></credentials>
+           <baseurl>http://api.corpora.uni-leipzig.de/ws</baseurl> <!-- https?? -->
+           <Content-Type>application/json; charset=UTF-8</Content-Type>  <!-- This seems to be the default of RST APIs. It is the Guzzle default, right? -->
+        </settings>
+        <services> 
+           <sentences>
+              <route>sentences/deu_news_2012_1M/sentences</route> 
+              <method>GET</method> 
+              <query> 
+                  <parm name="offset">0</parm> 
+                  <parm name="limit">10</parm> 
+              </query> 
+           </sentences>
+        </services>
+   </provider>
+   <provider name="Microsoft" abbrev="m">
+        <settings> 
+           <baseurl>https://api-nam.cognitive.microsofttranslator.com</baseurl>
+           <credentials method="header">
+              <header name="Ocp-Apim-Subscription-Key">Your-Key-Goes-Here</header> 
+              <header name="Ocp-Apim-Subscription-Region">eastus2</header>
+           </credentials>
+           <Content-Type>application/json; charset=UTF-8</Content-Type>
+        </settings>
+        <services>
+          <translation>
+          <!--  Azure Translator 3.0 also supports "dictionary lookups" and dictionary examples.
+              
+                   1. translation
+                   2. dictionary look up
+                   3. dictionary examples
+              
+                 Each type of three request types above has a different "route" (that is appended to the base URL)
+              
+                 1. Translation request:
+              
+                       https://api-nam.cognitive.microsofttranslator.com/translate
+              
+                 2. Dictionary look up 
+              
+                       https://api-nam.cognitive.microsofttranslator.com/dictionary/lookup
+              
+            -->
+                  <!-- These are settings that apply to all types of requests \-\- text translation, dictionary lookup, etc -->
+             <implementation>AzureTranslator</implementation>
+             <route>translate?api-version=3.0</route> 
+             <method>POST</method> 
+             <query> 
+               <parm name="textType">plain</parm>
+               <parm name="from">DE</parm>
+               <parm name="to">EN</parm>
+           </query>
+          </translation>
+        <dictionary-lookup>
+        </dictionary-lookup>
+      </services>
+    </provider>
+    <provider name="deepl" abbrev="d">
+        <settings>   
+           <baseurl>https://api-free.deepl.com/v2</baseurl>
+           <credentials method="header">
+               <header name="Authorization">DeepL-Auth-Key Your-Key-Goes-Here</header>
+           </credentials>
+           <Content-Type>application/json; charset=UTF-8</Content-Type>
+        </settings>
+        <services>
+           <translation> 
+              <route>v2/translate</route>
+              <method>GET</method>
+              <!-- The presence of the `input="text"` attribute implies the input text is a query parameter named 'text'. If the input attribute is not present,
+                json input is required. The name attribute is present if and only if the  implementation class is Translator.   -->
+              <implementation>DeeplTranslator</implementation>
+              <query> 
+                 <parm name="source_lang">DE</parm>
+                 <parm name="target_lang">EN</parm>
+              </query>
+           </translation>
+        </services>
+     </provider>
+    <provider name="ibm" abbrev="i">
+        <settings>   
+          <baseurl></baseurl>
+          <credentials method="custom">
+             <!-- 
+             I believe basic authorization is used in which a username and password are passed, separated from each other by a colon.
+             The username is 'apikey' and the password is your private api-key.
+  
+             Bear token is also supported and recommended for production code.
+             -->
+             <header name="apikey">7482c761-0429-6c34-766e-fddd88c247f9:fx</header>
+          </credentials>   
+          <credentials method="token">
+          </credentials>
+          <Content-Type>application/json; charset=UTF-8</Content-Type>
+        </settings>
+        <services>
+           <translation> 
+              <route>translate</route>
+              <method>GET/POST???</method>
+              <query> 
+                 <parm name="????">DE</parm>
+                 <parm name="???">to</parm>
+              </query>
+           </translation>
+        </services>
+     </provider>
+</providers>

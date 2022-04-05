@@ -1,12 +1,11 @@
 <?php
 declare(strict_types=1);
+namespace Translators;
+
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
-
 require 'vendor/autoload.php';
-
-include "TranslateInterface.php";
 
 abstract class Translator implements TranslateInterface {
 
@@ -115,6 +114,6 @@ abstract class Translator implements TranslateInterface {
 
    abstract protected function prepare_input(string $text, array &$query_array) : array;
     
-    // Overriden by derived classes to do any special handling
-    abstract protected function process_response(Response $response) : string; 
+   // Overriden by derived classes to do any special handling
+   abstract protected function process_response(Response $response) : string; 
 }
