@@ -15,6 +15,7 @@ class Translator implements TranslateInterface {
    private $method;          // $provider->services->service->translation->method; 
    private $query = array();
    private $headers = array();
+   private $requires_jsonInput;
    /* private $provider; This variable is define in __constructor's arument list. */
    
    private Client $client; 
@@ -72,11 +73,12 @@ class Translator implements TranslateInterface {
 
            $parms[ (string) $parm["name"] ] = urlencode( (string) $parm );
 
-
       $this->query = $parms;
 
       // todo: Set a 'has_jsonInput' flag
-      $this->requires_json = 
+      $attribs = $provider->services->translation->implementation->attributes();
+
+      $this->requires_jsonInput = (isset($attribs->input)) ? false : true;
    }  
 
    // TODO: Do I need to save $this->provider?
@@ -101,13 +103,13 @@ class Translator implements TranslateInterface {
        $options = ['query' => $this->query,
                    'headers' => $this->headers];
  
-       if ($this->requires_json === true)  {
+       if ($this->requires_jsonInput === true)  {
 
           $json = $this->prepare_json_input($text);
 
-          $request_input = 
+          //$request_input = 
 
-       } else { // input is a query string paramter--which one
+       } else { // input is a query string paramter whose name name is attribute of <implementation name="text">Translator</implementaion>
 
           // todo: assign intput to the name attribute of the <input name="text" /> node of the  <query> section.
        }
