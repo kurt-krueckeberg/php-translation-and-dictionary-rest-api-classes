@@ -15,8 +15,6 @@ abstract class Translator implements TranslateInterface {
    private $method;          // $provider->services->service->translation->method; 
    private $query = array();
    private $headers = array();
-   private $input_queryparm;
-   private $requires_jsonInput;
 
    /* private $provider; This variable is define in __constructor's arument list. */
    
@@ -97,7 +95,7 @@ abstract class Translator implements TranslateInterface {
    final public function translate(string $text)
    {
        // get the input text ready as either 'query' parameter or 'json' object.
-       $input = $this->prepare_input($text);
+       $input = $this->prepare_input($text, $this->query);
        
        if (isset($input['json']))  // If array holds json encoded body entity. 
 
@@ -115,11 +113,13 @@ abstract class Translator implements TranslateInterface {
        return $this->process_response($response);
    }
 
-   public function prepare_input(string $text) : array // IF key is 'json', then input is json body entity.
+   abstract protected function prepare_input(string $text, array &$query_array) : array;
+   /*
    {
         // Call the default prepartion of query input
         return  urlencode($text);
     }
+   */
     
     // Overriden by derived classes to do any special handling
     abstract protected function process_response(Response $response) : string; 

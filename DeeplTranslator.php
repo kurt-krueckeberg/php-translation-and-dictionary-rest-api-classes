@@ -74,9 +74,10 @@ class DeeplTranslator extends Translator {
     }
     */  
 
-    public function prepare_input(string $text) : array 
+    protected function prepare_input(string $text, array &$query_array) : array
     {
-        return  array('text' => urlencode($text));
+        $query_array['text'] = urlencode($text);
+        return $query_array;
     }
 
     public function process_response(Response $response) : string

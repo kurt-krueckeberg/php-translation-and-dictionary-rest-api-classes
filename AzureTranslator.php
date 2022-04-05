@@ -32,11 +32,9 @@ class AzureTranslator extends Translator {
       return ""; // todo: implement
    } 
 
-
-
-    // todo: break this into the three methods -- prepare_trans_request(), send_trans_request and get_sentences()
-    final protected function prepare_json_input(string $text) : string
-    {
-          return json_encode([ [ 'Text' => $text ] ]);  // <-- todo: urlencode($text)?           
+   final protected function prepare_input(string $text) : string
+   {
+      $json = json_encode([ [ 'Text' => $text ] ]); // todo: urlencode($text)?  
+      return array('json' => $json);
    }
 }
