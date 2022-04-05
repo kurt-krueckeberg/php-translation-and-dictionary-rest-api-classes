@@ -14,7 +14,7 @@ abstract class Translator implements TranslateInterface {
    private $method;          // $provider->services->service->translation->method; 
    private $query = array();
    private $headers = array();
-   private $bneedsJson; // boolean
+   private $isJsonInput; // boolean
 
    /* private $provider; This variable is defined in and set by __constructor's argument list. */
    
@@ -67,9 +67,7 @@ abstract class Translator implements TranslateInterface {
       $this->route  = (string) $provider->services->translation->route;  //todo: urlencode()? 
       $this->method = (string) $provider->services->translation->method;
 
-      $inputLocation = (string) $provider->services->translation->method['input'];
-
-      $this->bneedsJson = ($inputLocation == 'json') ? true : false;
+      $this->isJsonInput = ('json' == (string) $provider->services->translation->input) ?  true : false;
 
       $parms = array();
  
@@ -101,7 +99,7 @@ abstract class Translator implements TranslateInterface {
        // get the input text ready as either 'query' parameter or 'json' object.
        $input = $this->prepare_input($text);
        
-       if ($this->bneedsJson)  // If array holds json encoded body entity. 
+       if ($this->isJsonInput)  // If array holds json encoded body entity. 
 
           $request_input = ['query' => $this->query, 'headers' => $headers, 'json' => $input]; 
 
