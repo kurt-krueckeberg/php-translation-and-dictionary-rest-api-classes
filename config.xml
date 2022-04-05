@@ -71,7 +71,7 @@
            <translation> 
               <route>translate</route>
               <method>GET</method>
-              <!-- The presence of the name attribute implies the input text is a query parameter named 'text'. If the input attribute is not present,
+              <!-- The presence of the `input="text"` attribute implies the input text is a query parameter named 'text'. If the input attribute is not present,
                 json input is required. The name attribute is present if and only if the  implementation class is Translator.   -->
               <implementation input="text">Translator</implementation>
               <query> 

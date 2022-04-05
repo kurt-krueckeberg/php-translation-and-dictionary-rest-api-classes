@@ -3,7 +3,7 @@ include "Translator.php";
 
 include "AzureTranslator.php";
 
-  $trans = Translator::createFromXML("config.xml", "m");
+  $trans = Translator::createFromXML("config.xml", "d");
 
   $a = array("Guten Tag!", "Geten Morgen");      
 

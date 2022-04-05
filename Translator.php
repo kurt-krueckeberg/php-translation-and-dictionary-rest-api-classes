@@ -76,11 +76,14 @@ class Translator implements TranslateInterface {
 
       $this->query = $parms;
 
-      if (isset($provider->services->translation->implementation['name'])) {
+      if (isset($provider->services->translation->implementation['input'])) {
 
-          $this->requires_jsonInput = true;
-          $this->input_queryparm = $provider->services->translation->implementation['name'];
-      }
+          $this->requires_jsonInput = false;
+          $this->input_queryparm = $provider->services->translation->implementation['input'];
+      } else 
+          
+         $this->requires_jsonInput = true;    
+      
    }  
 
    // TODO: Do I need to save $this->provider?
