@@ -35,7 +35,7 @@ class Translator implements TranslateInterface {
    /*
     * Factory method to create correct Translator class based on .xml <transaltor>SomeTranslatorClassHere</translator> value.
     */ 
-   static public function createTranslator(string $fxml, string $abbrev) : Translator
+   static public function createFromXML(string $fxml, string $abbrev) : Translator
    {
       $provider = self::get_provider($fxml, $abbrev); 
      
@@ -76,6 +76,7 @@ class Translator implements TranslateInterface {
       $this->query = $parms;
    }  
 
+   // TODO: Do I need to save $this->provider?
    public function __construct(protected SimpleXMLElement $provider) // PHP 8.0 feature: automatic member variable assignemnt syntax.
    {      
       //$this->provider = $provider; // todo: Is this needed?
@@ -86,7 +87,7 @@ class Translator implements TranslateInterface {
    } 
 
    // Template pattern method that call protected method overriden by derived classes
-   public function translate(string $text)
+   final public function translate(string $text)
    {
        /*
         * TODO: Do any remaining urlencode()'ing of any remaining query string parms.
@@ -111,7 +112,7 @@ class Translator implements TranslateInterface {
     * Overriden by derived classes to do any special handling
     */
    //protected function create_request(object $request)
-   protected function prepare_json_input(string $text) // todo: what type does json encode return?
+   protected function prepare_json_input(string $text) : string
    {
    }
 }

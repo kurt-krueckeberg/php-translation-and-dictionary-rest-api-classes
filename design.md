@@ -10,7 +10,13 @@ Using jvavscript [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fe
 
 Add this to cdonfig.xml:
 
--  <input>query|json</input> ... if query, then it will also have an attribute of name: <input name="text">query</input>
+<input>query|json</input> ... if query, then it will also have an attribute of name: <input name="text">query</input>
+
+OR we have <input name="text" /> in the <query> section if and only if <implementation> is Translator; that is, if and only if <implementation>Translator</implementation>
+and not a derived Tranaslator class. After all, the code has to understand the xml file. The xml files is not solely driving the code. The Translator code interprests the xml and it
+xml because it undersatnds it.
+
+The derived Translator classes are only used to prepare json input. TODO: Therefore make most methos of Translator final.
 
 ### Guzzle Request objects
 

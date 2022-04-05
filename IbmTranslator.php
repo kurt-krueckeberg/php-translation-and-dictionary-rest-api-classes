@@ -9,11 +9,10 @@ class IbmTranslator extends Translator {
     
    public function __construct(SimpleXMLElelement $provider) 
    {
-
       parent::__construct($provider);
    }
 
-   protected function prepare_request(Request $requst, string $text)
+   protected function prepare_json_input(string $text) : string
    {
    }
 }
