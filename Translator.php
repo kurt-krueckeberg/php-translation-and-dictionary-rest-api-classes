@@ -15,7 +15,8 @@ class Translator implements TranslateInterface {
    private $method;          // $provider->services->service->translation->method; 
    private $query = array();
    private $headers = array();
-
+   /* private $provider; This variable is define in __constructor's arument list. */
+   
    private Client $client; 
 
    static string $xpath =  "/providers/provider[@abbrev='%s']"; 
@@ -75,13 +76,13 @@ class Translator implements TranslateInterface {
       $this->query = $parms;
    }  
 
-   public function __construct(SimpleXMLElement $provider)
+   public function __construct(protected SimpleXMLElement $provider) // PHP 8.0 feature: automatic member variable assignemnt syntax.
    {      
-      $this->provider = $provider; // todo: Is this needed?
+      //$this->provider = $provider; // todo: Is this needed?
       
        $this->client = new Client([ 'base_uri' => (string) $this->provider->settings->baseurl]);
 
-      $this->getSettings($provider);
+      $this->fetchAPISettings($provider);
    } 
 
    // Template pattern method that call protected method overriden by derived classes
