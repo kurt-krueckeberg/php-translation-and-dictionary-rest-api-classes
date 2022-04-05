@@ -8,7 +8,9 @@ Using jvavscript [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fe
 
 ## Design
 
-Seems like you have to pass authorization headers (at least for deepl) on the request constructor
+Add this to cdonfig.xml:
+
+-  <input>query|json</input> ... if query, then it will also have an attribute of name: <input name="text">query</input>
 
 ### Guzzle Request objects
 
@@ -44,6 +46,16 @@ Example:
    $body = 'Hello!';
    $request = new Request('HEAD', 'http://httpbin.org/head', $headers, $body); // <-- Must pass base_uri -- I believe!
 ```	
+
+Note: The request method of `Guzzle\Client` allows for more flexibilty than the Requeset constructor. You can pass 'headers', 'json' and 'query' input as an array of 
+arrays:
+
+```php
+  $client->request(..., ['jsom' => $json, 'query' => $query, 'headers' => $headers]); // 
+```
+
+$headers and $query are themselves arrays. $json is encoded json--I believe?
+
 #### Guzzle json Option
 
 The `json` request option [documentation](https://docs.guzzlephp.org/en/stable/request-options.html#json) states:

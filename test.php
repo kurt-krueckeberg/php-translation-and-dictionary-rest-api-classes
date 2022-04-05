@@ -1,5 +1,6 @@
 <?php
 include "Translator.php";
+
 include "AzureTranslator.php";
 
   $trans = Translator::createTranslator("config.xml", "m");

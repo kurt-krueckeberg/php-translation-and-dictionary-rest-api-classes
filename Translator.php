@@ -10,8 +10,9 @@ include "TranslateInterface.php";
 
 class Translator implements TranslateInterface {
 
-   private $route;      // $provider->services->service->translation->route;  
-   private $method;     // $provider->services->service->translation->method; 
+   // These values are set by fetchAPISettings 
+   private $route;           // $provider->services->service->translation->route;  
+   private $method;          // $provider->services->service->translation->method; 
    private $query = array();
    private $headers = array();
 
@@ -48,7 +49,7 @@ class Translator implements TranslateInterface {
    }
 
 
-   final protected function getSettings(SimpleXMLElement $provider)
+   final protected function fetchAPISettings(SimpleXMLElement $provider)
    {
       if ((string)$provider->settings->credentials["method"] == "custom") 
       
@@ -71,7 +72,7 @@ class Translator implements TranslateInterface {
            $parms[ (string) $parm["name"] ] = urlencode( (string) $parm );
 
 
-      $this->query = ['query' => $parms ];
+      $this->query = $parms;
    }  
 
    public function __construct(SimpleXMLElement $provider)
@@ -95,10 +96,10 @@ class Translator implements TranslateInterface {
        $options = ['query' => $this->query,
                    'headers' => $this->headers];
  
-       if (input is not query) 
-          $input = $this->prepare_json_text($text);
-       else 
-           $input // = set ups query parameter that holds input text.
+       if (true) // todo: Fix. Is input a query parameter or json text
+          $input = $this->prepare_json_input($text);
+       else  
+           $input = "abc"; // = set ups query parameter that holds input text.
 
  
        $response = $this->client->request($this->method, $this->route, $options);
@@ -109,7 +110,7 @@ class Translator implements TranslateInterface {
     * Overriden by derived classes to do any special handling
     */
    //protected function create_request(object $request)
-   protected function prepare_json_text(string $text)
+   protected function prepare_json_input(string $text) // todo: what type does json encode return?
    {
    }
 }
