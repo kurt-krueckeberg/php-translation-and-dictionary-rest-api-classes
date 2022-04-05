@@ -49,7 +49,7 @@
              <implementation>AzureTranslator</implementation>
              <route>translate?api-version=3.0</route> 
              <method input="json">POST</method> 
-              <input>json</method>
+              <input>json</input>
              <query> 
                <parm name="textType">plain</parm>
                <parm name="from">DE</parm>
@@ -72,7 +72,7 @@
            <translation> 
               <route>v2/translate</route>
               <method>GET</method>
-              <input parm="text">query</method>
+              <input parm="text">query</input>
               <!-- The presence of the `input="text"` attribute implies the input text is a query parameter named 'text'. If the input attribute is not present,
                 json input is required. The name attribute is present if and only if the  implementation class is Translator.   -->
               <implementation>DeeplTranslator</implementation>
