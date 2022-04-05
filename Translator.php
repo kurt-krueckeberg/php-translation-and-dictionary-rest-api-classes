@@ -104,13 +104,13 @@ class Translator implements TranslateInterface {
 
           $json = $this->prepare_json_input($text);
 
-          //$request_input = 
+          //$request_input =  todo: build this
 
        } else { // input is a query string paramter whose name name is attribute of <implementation name="text">Translator</implementaion>
 
           // todo: assign intput to the name attribute of the <input name="text" /> node of the  <query> section.
+          //$request_input =  todo: build this
        }
-      
  
        $response = $this->client->request($this->method, $this->route, $request_input);
    }
