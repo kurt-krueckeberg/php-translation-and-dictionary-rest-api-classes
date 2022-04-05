@@ -14,6 +14,7 @@ abstract class Translator implements TranslateInterface {
    private $method;          // $provider->services->service->translation->method; 
    private $query = array();
    private $headers = array();
+   private $bneedsJson; // boolean
 
    /* private $provider; This variable is define in __constructor's arument list. */
    
@@ -66,6 +67,10 @@ abstract class Translator implements TranslateInterface {
       $this->route  = (string) $provider->services->translation->route;  //todo: urlencode()? 
       $this->method = (string) $provider->services->translation->method;
 
+      $inputLocation = (string) $provider->services->translation->method['input'];
+
+      $this->bneedsJson = ($inputLocation == 'json') ? true : false;
+
       $parms = array();
  
       foreach($provider->services->translation->query->parm as $parm) 
@@ -94,15 +99,15 @@ abstract class Translator implements TranslateInterface {
    final public function translate(string $text)
    {
        // get the input text ready as either 'query' parameter or 'json' object.
-       $input = $this->prepare_input($text, $this->query);
+       $input = $this->prepare_input($text);
        
-       if (isset($input['json']))  // If array holds json encoded body entity. 
+       if ($this->bneedsJson)  // If array holds json encoded body entity. 
 
-          $request_input = ['query' => $this->query, 'headers' => $headers, /* 'json' => $this->prepare_input($text)*/ $input]; 
+          $request_input = ['query' => $this->query, 'headers' => $headers, 'json' => $input]; 
 
        else { // input is a query string paramter whose name name is attribute of <implementation name="text">Translator</implementaion>
           
-          array_push($this->query, $input);
+          $this->query['??where to put the key??'] = $input;
 
           $request_input = ['query' => $this->query, 'headers' => $this->headers]; 
        }
@@ -112,7 +117,7 @@ abstract class Translator implements TranslateInterface {
        return $this->process_response($response);
    }
 
-   abstract protected function prepare_input(string $text, array &$query_array) : array;
+   abstract protected function prepare_input(string $text) : string;
     
    // Overriden by derived classes to do any special handling
    abstract protected function process_response(Response $response) : string; 
