@@ -114,6 +114,13 @@ class Translator implements TranslateInterface {
 
        $response = $this->client->request($this->method, $this->route, $request_input);
 
+        // Deepl 'decoding'
+       $contents = $response->getBody()->getContents();
+
+       $obj = json_decode($contents);
+
+       var_dump ( $obj->translations[0]->text); // Return array of translated sentences. 
+
        // todo: call json_decode() and return a common format.
    }
 
