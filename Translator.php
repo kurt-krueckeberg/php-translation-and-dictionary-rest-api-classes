@@ -15,6 +15,7 @@ class Translator implements TranslateInterface {
    private $method;          // $provider->services->service->translation->method; 
    private $query = array();
    private $headers = array();
+   private $input_queryparm;
    private $requires_jsonInput;
    /* private $provider; This variable is define in __constructor's arument list. */
    
@@ -64,7 +65,7 @@ class Translator implements TranslateInterface {
                  $this->headers[(string) $provider->settings->credentials->header['name']] = (string) $header;
       }
 
-      $this->route  = (string) $provider->services->translation->route;  
+      $this->route  = (string) $provider->services->translation->route;  //todo: urlencode() ?? 
       $this->method = (string) $provider->services->translation->method;
 
       $parms = array();
@@ -75,7 +76,11 @@ class Translator implements TranslateInterface {
 
       $this->query = $parms;
 
-      $this->requires_jsonInput =  isset($provider->services->translation->implementation['name']) ? false : true;
+      if (isset($provider->services->translation->implementation['name'])) {
+
+          $this->requires_jsonInput = true;
+          $this->input_queryparm = $provider->services->translation->implementation['name'];
+      }
    }  
 
    // TODO: Do I need to save $this->provider?
@@ -91,28 +96,22 @@ class Translator implements TranslateInterface {
    // Template pattern method that call protected method overriden by derived classes
    final public function translate(string $text)
    {
-       /*
-        * TODO: Do any remaining urlencode()'ing of any remaining query string parms.
-        */
-
        // get the input text ready as either 'query' parameter or 'json' object.
 
-       $options = ['query' => $this->query,
-                   'headers' => $this->headers];
- 
-       if ($this->requires_jsonInput === true)  {
+       if ($this->requires_jsonInput === true)  
 
-          $json = $this->prepare_json_input($text);
+          $request_input = ['query' => $this->query, 'headers' => $headers, 'json' => $this->prepare_json_input($text)]; 
 
-          //$request_input =  todo: build this
+       else { // input is a query string paramter whose name name is attribute of <implementation name="text">Translator</implementaion>
 
-       } else { // input is a query string paramter whose name name is attribute of <implementation name="text">Translator</implementaion>
+          $this->query[$this->input_queryparm] =  urlencode($text);
 
-          // todo: assign intput to the name attribute of the <input name="text" /> node of the  <query> section.
-          //$request_input =  todo: build this
+          $request_input = ['query' => $this->query, 'headers' => $this->headers]; 
        }
- 
+
        $response = $this->client->request($this->method, $this->route, $request_input);
+
+       // todo: call json_decode() and return a common format.
    }
 
    /*
