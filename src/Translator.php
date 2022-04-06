@@ -40,9 +40,10 @@ abstract class Translator implements TranslateInterface {
    static public function createFromXML(string $fxml, string $abbrev) : Translator
    {
       $provider = self::get_provider($fxml, $abbrev); 
-     
-      $refl = new \ReflectionClass((string) $provider->services->translation->implementation); 
-
+      $class = (string) $provider->services->translation->implementation;
+      
+      $refl = new \ReflectionClass($class); 
+      
       return $refl->newInstance($provider);
    }
 

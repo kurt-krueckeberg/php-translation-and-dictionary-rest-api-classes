@@ -46,7 +46,7 @@
               
             -->
                   <!-- These are settings that apply to all types of requests \-\- text translation, dictionary lookup, etc -->
-             <implementation>Deeplranslator\AzureTranslator</implementation>
+             <implementation>lranslators\AzureTranslator</implementation>
              <route>translate?api-version=3.0</route> 
              <method input="json">POST</method> 
               <input>json</input>
@@ -75,7 +75,7 @@
               <input parm="text">query</input>
               <!-- The presence of the `input="text"` attribute implies the input text is a query parameter named 'text'. If the input attribute is not present,
                 json input is required. The name attribute is present if and only if the  implementation class is Translator.   -->
-              <implementation>Translator\DeeplTranslator</implementation>
+              <implementation>Translators\DeeplTranslator</implementation>
               <query> 
                  <parm name="source_lang">DE</parm>
                  <parm name="target_lang">EN</parm>
@@ -101,7 +101,7 @@
         </settings>
         <services>
            <translation> 
-             <implementation>Translator\IbmTranslator</implementation>
+             <implementation>Translators\IbmTranslator</implementation>
               <route>translate</route>
               <method>GET/POST???</method>
               <input>json</input>
