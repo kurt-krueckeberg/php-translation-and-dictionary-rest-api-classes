@@ -104,7 +104,7 @@
              <implementation>IbmTranslator</implementation>
               <route>translate</route>
               <method>GET/POST???</method>
-              <input>json</method>
+              <input>json</input>
               <query> 
                  <parm name="????">DE</parm>
                  <parm name="???">to</parm>
