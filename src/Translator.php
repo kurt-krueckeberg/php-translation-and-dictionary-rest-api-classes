@@ -10,7 +10,9 @@ abstract class Translator implements TranslateInterface {
    // These values are set in fetchAPISettings() 
    private $route;           // $provider->services->service->translation->route;  
    private $method;          // $provider->services->service->translation->method; 
-   private $query = array();
+   private $query_str = array();
+   private $from_key;      // key for source language (optionsal)
+   private $to_key;        //  key for destination language (required)
    private $headers = array();
    private $isJsonInput;  // boolean
    private $inputKeyName; // This will only be set if the '<input..' node has a parm attibute,
@@ -66,18 +68,28 @@ abstract class Translator implements TranslateInterface {
           
       }
 
-      //todo: Should route and method be urlencode()'ed?
       $this->route  = (string) $provider->services->translation->route;  
       $this->method = (string) $provider->services->translation->method;
 
-      $this->isJsonInput = ('json' == (string) $provider->services->translation->input) ?  true : false;
+      $this->isJsonInput = ('json' == (string) $provider->services->translation->input) ? true : false;
 
       if (isset($provider->services->translation->input['parm']))
           $this->inputKeyName = (string) $provider->services->translation->input['parm'];
 
-      foreach($provider->services->translation->query->parm as $parm) 
+      $this->from_key = (string) $provider->services->translation->query->from['name'];
 
-          $this->query[ (string) $parm["name"] ] = urlencode( (string) $parm );
+      if ($provider->services->translation->query->from !== '')
+
+            $this->query_str[$this->from_key] = (string) $provider->services->translation->query->from;
+      
+      $this->to_key = (string) $provider->services->translation->query->to['name'];
+
+      if ($provider->services->translation->query->to !== '')
+            $this->query_str[$this->to_key] = (string) $provider->services->translation->query->to;
+
+      foreach($provider->services->translation->query->parm as $parm)  // These are required parameters with default values
+
+          $this->query_str[ (string) $parm["name"] ] = urlencode( (string) $parm );
    }  
 
    public function __construct(protected \SimpleXMLElement $provider) // PHP 8.0 feature: automatic member variable assignemnt syntax.
@@ -88,20 +100,30 @@ abstract class Translator implements TranslateInterface {
        $this->fetchAPISettings($provider);
    } 
 
+   final protected function setLanguages(string $dest_lang, $source_lang="")
+   {
+      if ($source_lang !== "")
+            $this->query_str[$this->from_key] = $source_lang; 
+
+      $this->query_str[$this->to_key] = $dest_lang; 
+   }
+
    /* 'Template pattern' method that calls abstract protected methods overriden by derived classes (to prepare the input amd
        to extract the translated text (as a string) from he reponse. */
-   final public function translate(string $text)
+   final public function translate(string $text, string $dest_lang, $source_lang="")
    {
+       $this->setLanguages($dest_lang, $source_lang);
+
        $input = $this->prepare_input($text); 
 
        if ($this->isJsonInput) {  // If array holds json encoded body entity. 
 
-          $options = ['query' => $this->query, 'headers' => $this->headers, 'json' => $input];
+          $options = ['query' => $this->query_str, 'headers' => $this->headers, 'json' => $input];
 
        } else { 
           
-          $this->query[$this->inputKeyName] = $input;
-          $options = ['query' => $this->query, 'headers' => $this->headers];
+          $this->query_str[$this->inputKeyName] = $input;
+          $options = ['query' => $this->query_str, 'headers' => $this->headers];
        }
 
        $response = $this->client->request($this->method, $this->route, $options); 

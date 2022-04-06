@@ -8,13 +8,13 @@ include "vendor/autoload.php";
 
 //include "AzureTranslator.php";
 
-  $trans = Translator::createFromXML("config.xml", "m");
+  $trans = Translator::createFromXML("config.xml", "d");
 
    $a = array("Guten Tag!", "Geten Morgen");      
 
   try {
    
-    $translation = $trans->translate("Guten Morgen");
+    $translation = $trans->translate("Guten Morgen", "RU");
     echo $translation . "\n";
 
   } catch (ClientException $e) {

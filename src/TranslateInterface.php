@@ -4,5 +4,5 @@ namespace Translators;
 
 interface TranslateInterface {
 
-   public function translate(string $str);
+   public function translate(string $str, string $dest_lang, string $src_lang="");
 }
