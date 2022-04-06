@@ -21,8 +21,8 @@
         <settings> 
            <baseurl>https://api-nam.cognitive.microsofttranslator.com</baseurl>
            <credentials method="header">
-              <header name="Ocp-Apim-Subscription-Key">Your-Key-Goes-Here</header> 
-              <header name="Ocp-Apim-Subscription-Region">eastus2</header>
+              <header name="Ocp-Apim-Subscription-Key">your key here</header> 
+              <header name="Ocp-Apim-Subscription-Region">your  region here</header>
            </credentials>
            <Content-Type>application/json; charset=UTF-8</Content-Type>
         </settings>
@@ -46,9 +46,10 @@
               
             -->
                   <!-- These are settings that apply to all types of requests \-\- text translation, dictionary lookup, etc -->
-             <implementation>AzureTranslator</implementation>
+             <implementation>lranslators\AzureTranslator</implementation>
              <route>translate?api-version=3.0</route> 
-             <method>POST</method> 
+             <method input="json">POST</method> 
+              <input>json</input>
              <query> 
                <parm name="textType">plain</parm>
                <parm name="from">DE</parm>
@@ -63,7 +64,7 @@
         <settings>   
            <baseurl>https://api-free.deepl.com/v2</baseurl>
            <credentials method="header">
-               <header name="Authorization">DeepL-Auth-Key Your-Key-Goes-Here</header>
+               <header name="Authorization">DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx</header>
            </credentials>
            <Content-Type>application/json; charset=UTF-8</Content-Type>
         </settings>
@@ -71,9 +72,10 @@
            <translation> 
               <route>v2/translate</route>
               <method>GET</method>
+              <input parm="text">query</input>
               <!-- The presence of the `input="text"` attribute implies the input text is a query parameter named 'text'. If the input attribute is not present,
                 json input is required. The name attribute is present if and only if the  implementation class is Translator.   -->
-              <implementation>DeeplTranslator</implementation>
+              <implementation>Translators\DeeplTranslator</implementation>
               <query> 
                  <parm name="source_lang">DE</parm>
                  <parm name="target_lang">EN</parm>
@@ -91,7 +93,7 @@
   
              Bear token is also supported and recommended for production code.
              -->
-             <header name="apikey">7482c761-0429-6c34-766e-fddd88c247f9:fx</header>
+             <header name="apikey">ApiKey-your key here</header>
           </credentials>   
           <credentials method="token">
           </credentials>
@@ -99,8 +101,10 @@
         </settings>
         <services>
            <translation> 
+             <implementation>Translators\IbmTranslator</implementation>
               <route>translate</route>
               <method>GET/POST???</method>
+              <input>json</input>
               <query> 
                  <parm name="????">DE</parm>
                  <parm name="???">to</parm>

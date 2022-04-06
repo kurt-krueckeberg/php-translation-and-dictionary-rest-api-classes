@@ -71,7 +71,7 @@ abstract class Translator implements TranslateInterface {
       $this->isJsonInput = ('json' == (string) $provider->services->translation->input) ?  true : false;
 
       if (isset($provider->services->translation->input['parm']))
-          $this->inputKeyName = $provider->services->translation->input['parm'];
+          $this->inputKeyName = (string) $provider->services->translation->input['parm'];
 
       foreach($provider->services->translation->query->parm as $parm) 
 
