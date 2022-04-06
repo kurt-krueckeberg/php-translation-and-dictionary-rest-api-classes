@@ -17,6 +17,6 @@ class DeeplTranslator extends Translator {
 
       $obj = json_decode($contents);
 
-      return $obj->translations[0]->text; // Return array of translated sentences. 
+      return urldecode($obj->translations[0]->text); // Return array of translated sentences. 
    }
 }

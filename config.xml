@@ -34,8 +34,8 @@
                 json input is required. The name attribute is present if and only if the  implementation class is Translator.   -->
               <implementation>Translators\DeeplTranslator</implementation>
               <query> 
-                 <parm name="source_lang">DE</parm>
-                 <parm name="target_lang">EN</parm>
+                 <parm name="source_lang">DE</parm> <!-- not required -->
+                 <parm name="target_lang">EN-US</parm> <!-- required -->
               </query>
            </translation>
         </services>

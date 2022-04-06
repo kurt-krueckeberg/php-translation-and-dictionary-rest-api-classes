@@ -1,6 +1,6 @@
 Deepl- and AzureTransltor work.
 
-- Deepl places '+' between works in the repsonse--why?
+- Deepl places '+' between works in the repsonse--why? A: Must call urldecode($text). DONE. 
 
 - Change TranslatorInterface::translate() to take two language parms, as before.
 
