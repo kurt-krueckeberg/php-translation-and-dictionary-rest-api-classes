@@ -82,7 +82,6 @@ abstract class Translator implements TranslateInterface {
           $this->query[ (string) $parm["name"] ] = urlencode( (string) $parm );
    }  
 
-   //public function __construct(protected \SimpleXMLElement $provider) // PHP 8.0 feature: automatic member variable assignemnt syntax.
    public function __construct(protected \SimpleXMLElement $provider) // PHP 8.0 feature: automatic member variable assignemnt syntax.
    {      
        $this->provider = $provider;
@@ -95,22 +94,20 @@ abstract class Translator implements TranslateInterface {
        to extract the translated text (as a string) from he reponse. */
    final public function translate(string $text)
    {
-       // get the input text ready as either 'query' parameter or 'json' object.
        $input = $this->prepare_input($text); 
 
        if ($this->isJsonInput) {  // If array holds json encoded body entity. 
 
-          $response = $this->client->request($this->method, $this->route, ['query' => $this->query, 'headers' => $this->headers, 'json' => $input]);
+          $options = ['query' => $this->query, 'headers' => $this->headers, 'json' => $input];
 
-       } else { // input is a query string paramter whose name name is attribute of <implementation name="text">Translator</implementaion>
+       } else { 
           
           $this->query[$this->inputKeyName] = $input;
-
-          $request_input = ['query' => $this->query, 'headers' => $this->headers]; 
+          $options = ['query' => $this->query, 'headers' => $this->headers];
        }
 
-       //++$response = $this->client->request($this->method, $this->route, $request_input);
-       
+       $response = $this->client->request($this->method, $this->route, $options); 
+
        return $this->process_response($response);
    }
 

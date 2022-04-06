@@ -1,0 +1,12 @@
+Deepl- and AzureTransltor work.
+
+- Deepl places '+' between works in the repsonse--why?
+
+- Change TranslatorInterface::translate() to take two language parms, as before.
+
+- Add code for Azure dictionary lookup.
+
+
+- Remove Keys from sample.xml
+
+- Look over design.
