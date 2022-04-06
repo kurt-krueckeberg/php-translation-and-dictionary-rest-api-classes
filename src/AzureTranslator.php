@@ -2,9 +2,6 @@
 declare(strict_types=1);
 namespace Translators;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Response;
-
 require 'vendor/autoload.php';
 
 class AzureTranslator extends Translator {

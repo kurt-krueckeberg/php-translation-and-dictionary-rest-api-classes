@@ -41,18 +41,18 @@ abstract class Translator implements TranslateInterface {
    {
       $provider = self::get_provider($fxml, $abbrev); 
      
-      $refl = new ReflectionClass((string) $provider->services->translation->implementation); 
+      $refl = new \ReflectionClass((string) $provider->services->translation->implementation); 
 
       return $refl->newInstance($provider);
    }
 
    // override: For derived classes.
-   protected function getCredentials(SimpleXMLElement $credentials) : string
+   protected function getCredentials(\SimpleXMLElement $credentials) : string
    {
    }
 
 
-   final protected function fetchAPISettings(SimpleXMLElement $provider)
+   final protected function fetchAPISettings(\SimpleXMLElement $provider)
    {
       if ((string)$provider->settings->credentials["method"] == "custom") 
       
@@ -78,7 +78,7 @@ abstract class Translator implements TranslateInterface {
           $this->query[ (string) $parm["name"] ] = urlencode( (string) $parm );
    }  
 
-   public function __construct(protected SimpleXMLElement $provider) // PHP 8.0 feature: automatic member variable assignemnt syntax.
+   public function __construct(protected \SimpleXMLElement $provider) // PHP 8.0 feature: automatic member variable assignemnt syntax.
    {      
        $this->client = new Client([ 'base_uri' => (string) $this->provider->settings->baseurl]);
 

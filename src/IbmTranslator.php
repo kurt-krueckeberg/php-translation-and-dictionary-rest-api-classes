@@ -2,14 +2,11 @@
 declare(strict_types=1);
 namespace Translators;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Request;
-
 require 'vendor/autoload.php';
 
 class IbmTranslator extends Translator {
     
-   public function __construct(SimpleXMLElelement $provider) 
+   public function __construct(\SimpleXMLElelement $provider) 
    {
       parent::__construct($provider);
    }
