@@ -6,34 +6,21 @@ use Guzzle\Exception\ClientException;
 
 include "vendor/autoload.php";
 
-//include "AzureTranslator.php";
+  echo "First add your keys to sample-config.xml. Then rename it config.xml\n";
+  return;
 
-  $trans = Translator::createFromXML("config.xml", "d");
+  $trans = Translator::createFromXML("config.xml", "m");
 
-   $a = array("Guten Tag!", "Geten Morgen");      
+   $a = array("Guten Tag!");
 
   try {
    
     $translation = $trans->translate("Guten Morgen", "RU");
+
     echo $translation . "\n";
 
-  } catch (ClientException $e) {
-         
+  }  catch (\Exception $e) {
       
-  }  catch (RequestException $e) {
-
-         $req = $e->getRequest();
-
-         echo "Dumping request:\n";
-
-         var_dump($req);
-           
-         echo "\nRequestException message = " . $e->getMessage() . "\n";
-         
-  } catch (\Exception $e) {
-      
-        $e->getCode();
-        
-         echo "\nException: message = " . $e->getMessage() . "\n";
+      echo "\nException: message = " . $e->getMessage() . "\n";
   } 
 
