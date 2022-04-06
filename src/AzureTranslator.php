@@ -39,7 +39,7 @@ class AzureTranslator extends Translator {
         json_encode apparently need not be called because Guzzle does so.
     */
  
-   final  protected function prepare_input(string $text) :  array|string
+   final  protected function prepare_input(string $text) :  array
    {
       return [['Text' => $text]];       
    }

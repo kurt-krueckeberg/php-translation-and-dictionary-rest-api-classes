@@ -112,7 +112,10 @@ abstract class Translator implements TranslateInterface {
    }
 
    // Overriden by derived classes to prepare input text in HTTP Message that Guzzle\Client will send.
-   abstract protected function prepare_input(string $text) : array|string;
+   protected function prepare_input(string $text) : array|string
+   {
+      return urlencode($text);
+   } 
     
    // Overriden by derived classes to return translated text as a string.
    abstract protected function process_response(Response $response) : string; 
