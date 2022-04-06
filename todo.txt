@@ -1,12 +1,7 @@
 Deepl- and AzureTransltor work.
 
-- Deepl places '+' between works in the repsonse--why? A: Must call urldecode($text). DONE. 
+- add github repositories
 
 - Change TranslatorInterface::translate() to take two language parms, as before.
 
 - Add code for Azure dictionary lookup.
-
-
-- Remove Keys from sample.xml
-
-- Look over design.
