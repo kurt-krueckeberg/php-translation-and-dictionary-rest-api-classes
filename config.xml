@@ -42,7 +42,7 @@
    </provider>
    <provider name="Microsoft" abbrev="m">
         <settings> 
-           <baseurl>https://api.cognitive.microsofttranslator.com/translate?api-version=3.0</baseurl>
+           <baseurl>https://api.cognitive.microsofttranslator.com</baseurl>
            <credentials method="header">
               <header name="Ocp-Apim-Subscription-Key">ef6e5b44c68d438c8d79cae2f8c020ba</header> 
               <header name="Ocp-Apim-Subscription-Region">eastus2</header>
@@ -71,9 +71,10 @@
                   <!-- These are settings that apply to all types of requests \-\- text translation, dictionary lookup, etc -->
              <implementation>Translators\AzureTranslator</implementation>
              <route>translate</route> 
-             <method input="json">POST</method> 
-              <input>json</input>
+             <method>POST</method> 
+             <input>json</input>
              <query> 
+               <parm name="api-version">3.0</parm>
                <parm name="textType">plain</parm>
                <parm name="from">DE</parm>
                <parm name="to">EN</parm>

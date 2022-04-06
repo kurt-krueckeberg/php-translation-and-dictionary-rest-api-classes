@@ -98,11 +98,8 @@ abstract class Translator implements TranslateInterface {
        // get the input text ready as either 'query' parameter or 'json' object.
        $input = $this->prepare_input($text); 
 
-       var_dump(json_encode($input), true); 
-
        if ($this->isJsonInput) {  // If array holds json encoded body entity. 
 
-          //--$response = $this->client->request($this->method, $this->route, ['query' => $this->query, 'headers' => $this->headers, 'json' => [$input]]);
           $response = $this->client->request($this->method, $this->route, ['query' => $this->query, 'headers' => $this->headers, 'json' => $input]);
 
        } else { // input is a query string paramter whose name name is attribute of <implementation name="text">Translator</implementaion>

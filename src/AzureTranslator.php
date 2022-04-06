@@ -27,11 +27,21 @@ class AzureTranslator extends Translator {
    {
        $contents = $response->getBody()->getContents();
 
+       var_dump($contents, true);
+
        $obj = json_decode($contents);
+       
 
        return $obj->translations[0]->text; // Return array of translated sentences. 
    } 
+   /*
+    * The Azure Translator input is an array or arrays of the form:
 
+         [['Text' => "Initial text"1], ['Text' => "other text"];       
+
+        json_encode apparently need not be called because Guzzle does so.
+    */
+ 
    final  protected function prepare_input(string $text) :  array|string
    {
       return [['Text' => $text]];       
