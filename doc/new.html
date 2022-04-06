@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>azure-doc</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="screen.css" />
+</head>
+<body>
+<section>
+<h1 id="azure-translator-3.0-rest-services-documentation">Azure Translator 3.0 REST Services Documentation</h1>
+<p>See documentation:</p>
+<ul>
+<li>On <a href="https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/cognitive-services/Translator/reference/v3-0-translate.md">github</a>.</li>
+<li>Main <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/">landing page</a> which is excellent</li>
+</ul>
+<h2 id="endpoint-for-all-translator-version-3.0-requests">Endpoint for All Translator Version 3.0 Requests</h2>
+<p>The endpoint or base URL for a Translator 3.0 request is:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Country</td>
+<td style="text-align: left;">Endpoint</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">https://api.cognitive.microsofttranslator.com</td>
+</tr>
+</tbody>
+</table>
+<p>The version of Translator we will use will be 3.0, which is specified as a query string parameter. For example, to request tranlation of input text, we append “/translate” to the endpoint and then supply the version number:</p>
+<p><strong><em>https://api.cognitive.microsofttranslator.com</em></strong><em>/</em><strong><em>translate</em></strong><em>?api-version=3.0</em>**</p>
+<h2 id="the-five-azure-translator-3.0-rest-api-request-types">The Five Azure Translator 3.0 (REST API) Request Types</h2>
+<p>Azure Translator 3.0 supports the five types of services. Each uses a different URL “route” that is appened to the endpoint. The REST requests types are listed below.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-languages"><strong>languages</strong></a></td>
+<td style="text-align: left;">/languages</td>
+<td style="text-align: left;"><strong>GET</strong></td>
+<td style="text-align: left;">Returns the set of languages currently supported by the <strong>translation</strong>, <strong>transliteration</strong>, and <strong>dictionary</strong> methods. This request does not require authentication headers and you do not need a Translator resource to view the supported language set.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-translate"><strong>translate</strong></a></td>
+<td style="text-align: left;">/translate</td>
+<td style="text-align: left;"><strong>POST</strong></td>
+<td style="text-align: left;">Translate specified source language text into the target language text.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-break-sentence"><strong>breakSentence</strong></a></td>
+<td style="text-align: left;">/breaksentence</td>
+<td style="text-align: left;"><strong>POST</strong></td>
+<td style="text-align: left;">Returns an array of integers representing the length of sentences in a source text.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup"><strong>dictionary/lookup</strong></a></td>
+<td style="text-align: left;">/dictionary/lookup</td>
+<td style="text-align: left;"><strong>POST</strong></td>
+<td style="text-align: left;">Returns alternatives for single word translations.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-dictionary-examples"><strong>dictionary/examples</strong></a></td>
+<td style="text-align: left;">/dictionary/examples</td>
+<td style="text-align: left;"><strong>POST</strong></td>
+<td style="text-align: left;">Returns how a term is used in context.</td>
+</tr>
+</tbody>
+</table>
+<p>Since version 3.0 of Translator will always be used, the five request types will begin with these extended URLs:</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 17%" />
+<col style="width: 46%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>[<strong>languages</strong>](https://docs.m es**](https://docs.m icrosoft.com/en-us/a zure/cognitive-servi ces/translator/refer ence/v3-0-languages)</td>
+<td>/languages</td>
+<td><strong><em>https: //api.cognitive.micr osofttranslator.com</em> </strong><em>/</em><strong><em>languages</em></strong> <em>?api-version=3.0</em>**</td>
+</tr>
+<tr class="even">
+<td><a href="https://docs.m%20icrosoft.com/en-us/a%20zure/cognitive-servi%20ces/translator/refer%20ence/v3-0-translate"><strong>transla te</strong></a></td>
+<td>/translate</td>
+<td><strong><em>https: //api.cognitive.micr osofttranslator.com</em> </strong><em>/</em><strong><em>translate</em></strong> <em>?api-version=3.0</em>**</td>
+</tr>
+<tr class="odd">
+<td>[<strong>breakSentence</strong>] (https://docs.micros oft.com/en-us/azure/ cognitive-services/t ranslator/reference/ v3-0-break-sentence)</td>
+<td>/breaksentence</td>
+<td><strong><em>https://ap i.cognitive.microsof ttranslator.com</em></strong><em>/ </em><strong><em>breaksentence</em></strong> <em>?api-version=3.0</em>**</td>
+</tr>
+<tr class="even">
+<td><a href="ht%20tps://docs.microsoft%20.com/en-us/azure/cog%20nitive-services/tran%20slator/reference/v3-%200-dictionary-lookup"><strong>dic tionary/lookup</strong></a></td>
+<td>/dictionary/lookup</td>
+<td><strong><em>https://api.co gnitive.microsofttra nslator.com</em></strong><em>/</em><strong><em> dictionary/lookup</em></strong> <em>?api-version=3.0</em>**</td>
+</tr>
+<tr class="odd">
+<td><a href="http%20s://docs.microsoft.c%20om/en-us/azure/cogni%20tive-services/transl%20ator/reference/v3-0-%20dictionary-examples"><strong>diction ary/examples</strong></a></td>
+<td>/dictionary/examples</td>
+<td><strong><em>https://api.cogn itive.microsofttrans lator.com</em></strong><em>/dictio nary/</em><strong><em>examples</em></strong> <em>?api-version=3.0</em>**</td>
+</tr>
+</tbody>
+</table>
+<p><strong><em>Important</em></strong>: <strong>api-verions=3.0</strong> must be the first query string parameter.</p>
+<h2 id="translator-3.0-translate-requests">Translator 3.0 Translate Requests</h2>
+<p>Translate REST API <a href="https://docs.microsoft.com/en-us/rest/api/cognitiveservices/translator/translator/translate#request-body">documentation</a>.</p>
+<h3 id="endpoint-and-route">Endpoint and Route</h3>
+<p><strong><em>https://api.cognitive.microsofttranslator.com</em></strong><em>/</em><strong><em>translate?</em></strong><em>api-version=3.0</em>**</p>
+<p>Blue = endpoint. Red = translate URL route.</p>
+<h3 id="translator-3.0-required-headers">Translator 3.0 Required Headers</h3>
+<h4 id="autehtication-headers">Autehtication Headers</h4>
+<p>While there are several different methods of authenication—including the use of a bearer token, Azure Active Directory and so on—the header settings below are how I will authencitcate when making a Translaor 3.0 REST API call.</p>
+<table style="width:96%;">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 31%" />
+<col style="width: 31%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Ocp-A pim-Subscription-Key</td>
+<td>The value is the Azure <strong>secret key</strong> for your subscription to Translator. My keys are:</td>
+<td>See my Azure portal account for my keys.</td>
+</tr>
+<tr class="even">
+<td>Ocp-Apim -Subscription-Region</td>
+<td>The value is the <strong>region </strong>of the translator resource.</td>
+<td><strong>eastus2 </strong>is my region.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="header-for-content-and-length">Header for Content and Length</h4>
+<table style="width:99%;">
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 68%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Headers</th>
+<th style="text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ontent-Type</td>
+<td style="text-align: center;">Specifies the content type of the payload.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">Accepted value is <strong><em>application/json;charset=UTF-8</em></strong></td>
+</tr>
+</tbody>
+</table>
+<p>Content-Length (See comments The length of the request body.<br />
+below) This is NOT Needed for <em>translation</em> requests<br />
+——————————— —————————————————————————</p>
+<p>Comments:</p>
+<p>I believe <strong>json</strong> is the <em>default setting</em> Guzzle uses for Content-Type. Thus, <strong>Content-Length</strong> is not really required for the translation request.</p>
+<p>The <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/quickstart-translator?tabs=csharp#get-sentence-length-during-translation">Get Sentence Length</a>“section of the <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/quickstart-translator?tabs=csharp">Quick Start guide</a> explains if you set (when requesting <strong>translation?api-version=3.0</strong> ) the query parameter”<strong><em>includeSentenceLength</em></strong><em>=true"</em><strong>, </strong>the input and output sentence lengths will be also returned in the response.**</p>
+<h3 id="optional-headers">Optional Headers</h3>
+<table style="width:99%;">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Headers X-ClientTraceId</td>
+<td style="text-align: left;">Description A <strong>client-generated GUID</strong> to uniquely identify the request. You can omit this header if you include the trace ID in the query string using a query parameter named <em>ClientTraceId</em>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="translate-request-body">Translate Request Body</h3>
+<p>See <a href="https://docs.microsoft.com/en-us/rest/api/cognitiveservices/translator/translator/translate#request-body" class="uri">https://docs.microsoft.com/en-us/rest/api/cognitiveservices/translator/translator/translate#request-body</a></p>
+<p>The body of the request is a JSON array. Each array element is a JSON object with a string property named <em>Text</em>, which represents the string to translate. The following limitations apply:</p>
+<ul>
+<li><p>The array can have at most <em>25 elements</em>.</p></li>
+<li><p>The entire text included in the request cannot exceed <em>5,000 characters including spaces</em>.</p></li>
+</ul>
+<p>Example input JSON array of two JSON objects:</p>
+<p>[ {"Text":"Freitag"}, {"Text":"Montag"} ];</p>
+<h3 id="translator-3.0-optional-query-parameters">Translator 3.0 Optional Query Parameters</h3>
+<h4 id="required-parameters">Required Parameters</h4>
+<table style="width:97%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 77%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>api-version</td>
+<td><em>Required parameter</em>.<br />
+Version of the API requested by the client. Value must be <strong><em>3.0</em></strong>.</td>
+</tr>
+<tr class="even">
+<td>to</td>
+<td><p><em>Required parameter</em>.</p>
+<p><br />
+Specifies the language of the output text. The target language must be one of the <a href="https://docs.microsoft.com/en-us/azure/co%20gnitive-services/translator/reference/v3-0-languages">supported languages</a> included in the <em>translation</em> scope. For example, use <em>to=de</em> to translate to German.<br />
+It's possible to translate to multiple languages simultaneously by repeating the parameter in the query string. For example, use <em>to=de&amp;to=it</em> to translate to German and Italian.</p></td>
+</tr>
+</tbody>
+</table>
+<h4 id="optional-parameters">Optional Parameters</h4>
+<p>These query paramters apply (TODO: double check) to all five Tranaslor requst types above.</p>
+<table style="width:97%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 63%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>from</td>
+<td><p><em>Optional parameter</em>.</p>
+<p><br />
+Specifies the language of the input text. Find which languages are available to translate from by looking up <a href="https://%20docs.microsoft.com/en-us/azure/cognitive-se%20rvices/translator/reference/v3-0-languages">supported languages</a> using the <em>translation</em> scope. If the <em>from</em> parameter is not specified, automatic language detection is applied to determine the source language.<br />
+<br />
+You must use the <em>from</em> parameter rather than autodetection when using the <a href="ht%20tps://docs.microsoft.com/en-us/azure/cognit%20ive-services/translator/dynamic-dictionary">dynamic dictionary</a> feature.</p></td>
+</tr>
+<tr class="even">
+<td>textType</td>
+<td><p><em>Optional parameter</em>.</p>
+<p><br />
+Defines whether the text being translated is plain text or HTML text. Any HTML needs to be a well-formed, complete element. Possible values are: <strong><em>plain</em></strong> (default) or <strong><em>html</em></strong>.</p></td>
+</tr>
+<tr class="odd">
+<td>category</td>
+<td><p><em>Optional parameter</em>.</p>
+<p><br />
+A string specifying the category (domain) of the translation. This parameter is used to get translations from a customized system built with <a href="https://docs.microsoft.com/en-us/azure/co%20gnitive-services/translator/customization">Custom Translator</a>. Add the Category ID from your Custom Translator <a href="h%20ttps://docs.microsoft.com/en-us/azure/cogni%20tive-services/translator/custom-translator/%20how-to-create-project#view-project-details">project details</a> to this parameter to use your deployed customized system. Default value is: <em>general</em>.</p></td>
+</tr>
+<tr class="even">
+<td>profanityAction</td>
+<td><p><em>Optional parameter</em>.</p>
+<p><br />
+Specifies how profanities should be treated in translations. Possible values are: <em>NoAction</em> (default), <em>Marked</em> or <em>Deleted</em>. To understand ways to treat profanity, see <a href="https://docs.microsoft.com%20/en-us/azure/cognitive-services/translator/%20reference/v3-0-translate#handle-profanity">Profanity handling</a>.</p></td>
+</tr>
+<tr class="odd">
+<td>profanityMarker</td>
+<td><p><em>Optional parameter</em>.</p>
+<p><br />
+Specifies how profanities should be marked in translations. Possible values are: <em>Asterisk</em> (default) or <em>Tag</em>. To understand ways to treat profanity, see <a href="https://docs.microsoft.com%20/en-us/azure/cognitive-services/translator/%20reference/v3-0-translate#handle-profanity">Profanity handling</a>.</p></td>
+</tr>
+<tr class="even">
+<td>includeAlignment</td>
+<td><p><em>Optional parameter</em>.</p>
+<p><br />
+Specifies whether to include alignment projection from source text to translated text. Possible values are: <em>true</em> or <em>false</em> (default).</p></td>
+</tr>
+<tr class="odd">
+<td>includeSentenceLength</td>
+<td><p><em>Optional parameter</em>.</p>
+<p><br />
+Specifies whether to include sentence boundaries for the input text and the translated text. Possible values are: <em>true</em> or <em>false</em> (default).</p></td>
+</tr>
+<tr class="even">
+<td>suggestedFrom</td>
+<td><p><em>Optional parameter</em>.</p>
+<p><br />
+Specifies a fallback language if the language of the input text can't be identified. Language autodetection is applied when the <em>from</em> parameter is omitted. If detection fails, the <em>suggestedFrom</em> language will be assumed.</p></td>
+</tr>
+<tr class="odd">
+<td>fromScript</td>
+<td><p><em>Optional parameter</em>.</p>
+<p><br />
+Specifies the script of the input text.</p></td>
+</tr>
+<tr class="even">
+<td>toScript</td>
+<td><p><em>Optional parameter</em>.</p>
+<p><br />
+Specifies the script of the translated text.</p></td>
+</tr>
+<tr class="odd">
+<td>allowFallback</td>
+<td><p><em>Optional parameter</em>.</p>
+<p><br />
+Specifies that the service is allowed to fall back to a general system when a custom system does not exist. Possible values are: <em>true</em> (default) or <em>false</em>.<br />
+<br />
+<em>allowFallback=false</em> specifies that the translation should only use systems trained for the <em>category</em> specified by the request. If a translation for language X to language Y requires chaining through a pivot language E, then all the systems in the chain (X-&gt;E and E-&gt;Y) will need to be custom and have the same category. If no system is found with the specific category, the request will return a 400 status code. <em>allowFallback=true</em> specifies that the service is allowed to fall back to a general system when a custom system does not exist.</p></td>
+</tr>
+</tbody>
+</table>
+<h3 id="section"></h3>
+<h3 id="example-response-object">Example Response Object</h3>
+<p>Input Request Body</p>
+<p>The input is an json array of two json objects:</p>
+<p><code>[ {"text":"Freitag"}, {"text":"Montag"} ];</code></p>
+<p>Response Object</p>
+<p>This is the joson response object:</p>
+<p><code>[ { "translations": [ { "text": "Friday", "to": "en", "sentLen": { "srcSentLen": [ 7 ], "transSentLen": [ 6 ] } } ] },     { "translations": [ { "text": "Monday", "to": "en", "sentLen": { "srcSentLen": [ 6 ], "transSentLen": [ 6 ] } } ] } ]</code></p>
+</section>
+</body>
+</html>

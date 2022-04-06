@@ -2,8 +2,6 @@
 declare(strict_types=1);
 namespace Translators;
 
-require 'vendor/autoload.php';
-
 class AzureTranslator extends Translator {
 
     static private function com_create_guid() 
@@ -17,7 +15,7 @@ class AzureTranslator extends Translator {
         );
     }
 
-   public function __construct(SimpleXMLElement $provider)
+   public function __construct(\SimpleXMLElement $provider)
    {
          parent::__construct($provider);     
    }     
@@ -28,7 +26,7 @@ class AzureTranslator extends Translator {
       return ""; // todo: implement
    } 
 
-   final  protected function prepare_input(string $text, array &$query_array) : array
+   final  protected function prepare_input(string $text) : string
    {
       $json = json_encode([ [ 'Text' => urlencode($text) ] ]); 
       return array('json' => $json);

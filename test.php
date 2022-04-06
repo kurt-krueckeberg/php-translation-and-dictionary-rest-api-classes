@@ -6,7 +6,7 @@ include "vendor/autoload.php";
 
 //include "AzureTranslator.php";
 
-  $trans = Translator::createFromXML("config.xml", "d");
+  $trans = Translator::createFromXML("config.xml", "m");
 
    $a = array("Guten Tag!", "Geten Morgen");      
 
