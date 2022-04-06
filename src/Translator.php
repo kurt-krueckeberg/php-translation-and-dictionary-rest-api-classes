@@ -40,9 +40,8 @@ abstract class Translator implements TranslateInterface {
    static public function createFromXML(string $fxml, string $abbrev) : Translator
    {
       $provider = self::get_provider($fxml, $abbrev); 
-      $class = (string) $provider->services->translation->implementation;
       
-      $refl = new \ReflectionClass($class); 
+      $refl = new \ReflectionClass((string) $provider->services->translation->implementation); 
       
       return $refl->newInstance($provider);
    }
@@ -79,8 +78,10 @@ abstract class Translator implements TranslateInterface {
           $this->query[ (string) $parm["name"] ] = urlencode( (string) $parm );
    }  
 
-   public function __construct(protected \SimpleXMLElement $provider) // PHP 8.0 feature: automatic member variable assignemnt syntax.
+   //public function __construct(protected \SimpleXMLElement $provider) // PHP 8.0 feature: automatic member variable assignemnt syntax.
+   public function __construct(\SimpleXMLElement $provider) // PHP 8.0 feature: automatic member variable assignemnt syntax.
    {      
+       $this->provider = $provider;
        $this->client = new Client([ 'base_uri' => (string) $this->provider->settings->baseurl]);
 
        $this->fetchAPISettings($provider);

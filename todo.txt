@@ -1,1 +1,0 @@
-See https://mattstauffer.com/blog/how-to-build-and-autoload-your-own-php-package-locally/

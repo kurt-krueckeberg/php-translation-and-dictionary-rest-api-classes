@@ -2,7 +2,6 @@
 declare(strict_types=1);
 namespace Translators;
 
-use Translators\Translator;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
@@ -38,7 +37,7 @@ class DeeplTranslator extends Translator {
 
    public function __construct(\SimpleXMLElement $provider) 
    {
-       parent::construct($provider); 
+       parent::__construct($provider); 
    }
 
    /* old working code:  
