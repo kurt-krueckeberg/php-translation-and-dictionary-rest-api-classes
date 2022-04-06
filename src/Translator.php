@@ -5,8 +5,6 @@ namespace Translators;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
-require 'vendor/autoload.php';
-
 abstract class Translator implements TranslateInterface {
 
    // These values are set in fetchAPISettings() 
