@@ -17,9 +17,32 @@
            </sentences>
         </services>
    </provider>
+   <provider name="deepl" abbrev="d">
+        <settings>   
+           <baseurl>https://api-free.deepl.com/v2</baseurl>
+           <credentials method="header">
+               <header name="Authorization">DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx</header>
+           </credentials>
+           <Content-Type>application/json; charset=UTF-8</Content-Type>
+        </settings>
+        <services>
+           <translation> 
+              <route>v2/translate</route>
+              <method>GET</method>
+              <input parm="text">query</input>
+              <!-- The presence of the `input="text"` attribute implies the input text is a query parameter named 'text'. If the input attribute is not present,
+                json input is required. The name attribute is present if and only if the  implementation class is Translator.   -->
+              <implementation>Translators\DeeplTranslator</implementation>
+              <query> 
+                 <parm name="source_lang">DE</parm>
+                 <parm name="target_lang">EN</parm>
+              </query>
+           </translation>
+        </services>
+   </provider>
    <provider name="Microsoft" abbrev="m">
         <settings> 
-           <baseurl>https://api-nam.cognitive.microsofttranslator.com</baseurl>
+           <baseurl>https://api.cognitive.microsofttranslator.com/translate?api-version=3.0</baseurl>
            <credentials method="header">
               <header name="Ocp-Apim-Subscription-Key">ef6e5b44c68d438c8d79cae2f8c020ba</header> 
               <header name="Ocp-Apim-Subscription-Region">eastus2</header>
@@ -46,8 +69,8 @@
               
             -->
                   <!-- These are settings that apply to all types of requests \-\- text translation, dictionary lookup, etc -->
-             <implementation>lranslators\AzureTranslator</implementation>
-             <route>translate?api-version=3.0</route> 
+             <implementation>Translators\AzureTranslator</implementation>
+             <route>translate</route> 
              <method input="json">POST</method> 
               <input>json</input>
              <query> 
@@ -60,29 +83,6 @@
         </dictionary-lookup>
       </services>
     </provider>
-    <provider name="deepl" abbrev="d">
-        <settings>   
-           <baseurl>https://api-free.deepl.com/v2</baseurl>
-           <credentials method="header">
-               <header name="Authorization">DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx</header>
-           </credentials>
-           <Content-Type>application/json; charset=UTF-8</Content-Type>
-        </settings>
-        <services>
-           <translation> 
-              <route>v2/translate</route>
-              <method>GET</method>
-              <input parm="text">query</input>
-              <!-- The presence of the `input="text"` attribute implies the input text is a query parameter named 'text'. If the input attribute is not present,
-                json input is required. The name attribute is present if and only if the  implementation class is Translator.   -->
-              <implementation>Translators\DeeplTranslator</implementation>
-              <query> 
-                 <parm name="source_lang">DE</parm>
-                 <parm name="target_lang">EN</parm>
-              </query>
-           </translation>
-        </services>
-     </provider>
     <provider name="ibm" abbrev="i">
         <settings>   
           <baseurl></baseurl>

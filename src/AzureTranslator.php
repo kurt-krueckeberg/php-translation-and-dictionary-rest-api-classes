@@ -2,6 +2,8 @@
 declare(strict_types=1);
 namespace Translators;
 
+use GuzzleHttp\Psr7\Response;
+
 class AzureTranslator extends Translator {
 
     static private function com_create_guid() 
@@ -23,12 +25,16 @@ class AzureTranslator extends Translator {
    // Overriden by derived classes to do any special handling
    final function process_response(Response $response) : string
    {
-      return ""; // todo: implement
+       $contents = $response->getBody()->getContents();
+
+       $obj = json_decode($contents);
+
+       return $obj->translations[0]->text; // Return array of translated sentences. 
    } 
 
    final  protected function prepare_input(string $text) : string
    {
-      $json = json_encode([ [ 'Text' => urlencode($text) ] ]); 
+      $json = json_encode([[ 'Text' => urlencode($text) ]]); 
       return array('json' => $json);
    }
 }
