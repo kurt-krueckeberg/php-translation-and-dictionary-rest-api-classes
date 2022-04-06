@@ -19,7 +19,7 @@ class AzureTranslator extends Translator {
 
    public function __construct(\SimpleXMLElement $provider)
    {
-         parent::__construct($provider);     
+        parent::__construct($provider);     
    }     
 
    // Overriden by derived classes to do any special handling
@@ -34,7 +34,6 @@ class AzureTranslator extends Translator {
 
    final  protected function prepare_input(string $text) : string
    {
-      $json = json_encode([[ 'Text' => urlencode($text) ]]); 
-      return array('json' => $json);
+      return json_encode([[ 'Text' => urlencode($text) ]]);       
    }
 }

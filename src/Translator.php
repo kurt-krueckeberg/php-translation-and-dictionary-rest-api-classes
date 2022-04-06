@@ -63,8 +63,9 @@ abstract class Translator implements TranslateInterface {
       else {
             
           foreach($provider->settings->credentials->header as $header) 
-                 
-                 $this->headers[(string) $provider->settings->credentials->header['name']] = (string) $header;
+          
+               $this->headers[(string) $header['name']] = (string) $header;
+          
       }
 
       //todo: Should route and method be urlencode()'ed?
