@@ -21,7 +21,7 @@
         <settings>   
            <baseurl>https://api-free.deepl.com/v2</baseurl>
            <credentials method="header">
-               <header name="Authorization">DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx</header>
+               <header name="Authorization">DeepL-Auth-Key ADD YOUR KEY HERE</header>
            </credentials>
            <Content-Type>application/json; charset=UTF-8</Content-Type>
         </settings>
@@ -34,8 +34,8 @@
                 json input is required. The name attribute is present if and only if the  implementation class is Translator.   -->
               <implementation>Translators\DeeplTranslator</implementation>
               <query> 
-                 <parm name="source_lang">DE</parm> <!-- not required -->
-                 <parm name="target_lang">EN-US</parm> <!-- required -->
+                 <from name="source_lang"></from> <!-- A value is not required -->
+                 <to name="target_lang" />
               </query>
            </translation>
         </services>
@@ -44,8 +44,8 @@
         <settings> 
            <baseurl>https://api.cognitive.microsofttranslator.com</baseurl>
            <credentials method="header">
-              <header name="Ocp-Apim-Subscription-Key">ef6e5b44c68d438c8d79cae2f8c020ba</header> 
-              <header name="Ocp-Apim-Subscription-Region">eastus2</header>
+              <header name="Ocp-Apim-Subscription-Key">ADD YOUR KEY HERE</header> 
+              <header name="Ocp-Apim-Subscription-Region">ADD YOUR REGION HERE</header>
            </credentials>
            <Content-Type>application/json; charset=UTF-8</Content-Type>
         </settings>
@@ -76,8 +76,8 @@
              <query> 
                <parm name="api-version">3.0</parm>
                <parm name="textType">plain</parm>
-               <parm name="from">DE</parm>
-               <parm name="to">EN</parm>
+               <from name="from">DE</from> <!-- A value is not required -->
+               <to name="to" />
            </query>
           </translation>
         <dictionary-lookup>
@@ -94,7 +94,7 @@
   
              Bear token is also supported and recommended for production code.
              -->
-             <header name="apikey">ApiKey-2c8264c6-168e-457a-a910-3be0f9177313</header>
+             <header name="apikey">YOUR KEY HERE</header>
           </credentials>   
           <credentials method="token">
           </credentials>
