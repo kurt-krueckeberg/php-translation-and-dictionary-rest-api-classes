@@ -6,21 +6,13 @@
 
 Using jvavscript [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 
-## Design
+## TODO
 
-Make code autoloadable by making it a composer package. Using the input\_parm attribute below is putting the cart before the horse: the .xml is 
-now overly complicated and involves a speical case (for input that only goes in the query string). Instead have the derived Translator class prepare the
-request. They will contain all the logic including whatever class properties are required to prepare either the query parameter or the json input body object--but how?
+Get AzureTranslation working.
 
-If the implementation class specifed has a name attribute
+## Guzzle Requests 
 
-```xml
-      <implementation input_parm="text">ClassHere</implementation> 
-```
-
-this implies the input text is to be place in a query string parameter of this name. Translator will support default process of this configuration attribute setting
-
-### Guzzle Request objects
+### Request object
 
 `GuzzleHttp\Psr7\Request` constructor 
 
@@ -55,16 +47,14 @@ Example:
    $request = new Request('HEAD', 'http://httpbin.org/head', $headers, $body); // <-- Must pass base_uri -- I believe!
 ```	
 
-Note: The request method of `Guzzle\Client` allows for more flexibilty than the Requeset constructor. You can pass 'headers', 'json' and 'query' input as an array of 
-arrays:
+**Note:** The `request()` method of `Guzzle\Client` allows for far more flexibilty than creating a separate Requeset object because you can pass 'headers', 'json' and 'query' 
+as an array of input options, and you don't have to re-supply the baseuri (endpoint):
 
 ```php
-  $client->request(..., ['jsom' => $json, 'query' => $query, 'headers' => $headers]); // 
+  $client->request('GET', $my_route, ['jsom' => $json, 'query' => $query, 'headers' => $headers]);  
 ```
 
-$headers and $query are themselves arrays. $json is encoded json--I believe?
-
-#### Guzzle json Option
+### Guzzle json Option
 
 The `json` request option [documentation](https://docs.guzzlephp.org/en/stable/request-options.html#json) states:
 
@@ -72,47 +62,12 @@ The `json` request option [documentation](https://docs.guzzlephp.org/en/stable/r
 already present on the message.
 
 
-#### Guzzle query Option
+### Guzzle query Option 
 
 [query](https://docs.guzzlephp.org/en/stable/request-options.html#query) option 
 
 
-#### Questions
-
-Can you pass both 'json' and 'query' on the `$client->request(...);` call like:
-
-```php
-
-   $client->request('POST', 'dest/addr', [ 'json' => $json_data,
-       'headers' => $headers,
-       'query' => $query
-   ]);
-```
-
-I found this example online:
-
-```php
-   $headers = $this->getHeaders();
-
-   $query = ["\$filter" => "employeeId eq '$employeeId'", "\$select" => "displayName,givenName,postalCode,employeeId,id"];
-
-   try {
-
-       $result = $this->client->request('GET', self::FIND_USER_BY_EMPLOYEE_ID_URL, [
-           RequestOptions::HEADERS => $headers,
-           RequestOptions::QUERY => $query,
-           'debug' => true
-       ]);
-
-       return JsonResponse::fromJsonString($result->getBody()->getContents());
-
-   } catch (RequestException $exception) {
-
-       throw $exception;
-   }
-```
-
-#### Other code
+## Other code
 
 Examples I found online:
 
