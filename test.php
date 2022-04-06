@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 use Translators\Translator;
+use Guzzle\Exception\RequestException;
+use Guzzle\Exception\ClientException;
 
 include "vendor/autoload.php";
 
@@ -12,11 +14,26 @@ include "vendor/autoload.php";
 
   try {
    
-    $translation = $trans->translate("Guten Mogen");
+    $translation = $trans->translate("Hallo");
     echo $translation . "\n";
 
-  } catch (Exception $e) {
+  } catch (ClientException $e) {
+         
+      
+  }  catch (RequestException $e) {
 
-         echo "Exception: message = " . $e->getMessage() . "\n";
+         $req = $e->getRequest();
+
+         echo "Dumping request:\n";
+
+         var_dump($req);
+           
+         echo "\nRequestException message = " . $e->getMessage() . "\n";
+         
+  } catch (\Exception $e) {
+      
+        $e->getCode();
+        
+         echo "\nException: message = " . $e->getMessage() . "\n";
   } 
 

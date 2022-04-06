@@ -1,1 +1,29 @@
-`AzureTranslator::prepare_input($test)` is not encoding the json correctly.
+It appears that Guzzle probably encodse json input for you--if that is actaull needed or not, I don't know.
+
+
+Guzzle's info on [json](https://docs.guzzlephp.org/en/stable/request-options.html#json). It needs to be of the form
+
+
+
+$response = $client->request('PUT', '/put', ['json' => ['foo' => 'bar']]);
+
+
+Code I found.
+
+## Prepare to call curl_exec()
+
+```php
+	$request_fields = [[
+		'text' => $this->string, // 'text' or 'Text' ???
+	]];
+
+	$request_body = json_encode($request_fields, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+
+	$headers = [
+		"Ocp-Apim-Subscription-Key: {$key}",
+		"Ocp-Apim-Subscription-Region: {$region}",
+		"Content-type: application/json; charset=utf-8",
+		"Content-Length: " . strlen($request_body),
+	];
+```
+

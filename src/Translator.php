@@ -96,26 +96,26 @@ abstract class Translator implements TranslateInterface {
    final public function translate(string $text)
    {
        // get the input text ready as either 'query' parameter or 'json' object.
-       $input = $this->prepare_input($text);
-       
-       if ($this->isJsonInput)  // If array holds json encoded body entity. 
+       $input = $this->prepare_input($text); 
 
-          $request_input = ['query' => $this->query, 'headers' => $this->headers, 'json' => $input]; 
+       if ($this->isJsonInput) {  // If array holds json encoded body entity. 
 
-       else { // input is a query string paramter whose name name is attribute of <implementation name="text">Translator</implementaion>
+          $response = $this->client->request($this->method, $this->route, ['query' => $this->query, 'headers' => $this->headers, 'json' => $input]);
+
+       } else { // input is a query string paramter whose name name is attribute of <implementation name="text">Translator</implementaion>
           
           $this->query[$this->inputKeyName] = $input;
 
           $request_input = ['query' => $this->query, 'headers' => $this->headers]; 
        }
 
-       $response = $this->client->request($this->method, $this->route, $request_input);
+       //++$response = $this->client->request($this->method, $this->route, $request_input);
        
        return $this->process_response($response);
    }
 
    // Overriden by derived classes to prepare input text in HTTP Message that Guzzle\Client will send.
-   abstract protected function prepare_input(string $text) : string;
+   abstract protected function prepare_input(string $text) : array|string;
     
    // Overriden by derived classes to return translated text as a string.
    abstract protected function process_response(Response $response) : string; 

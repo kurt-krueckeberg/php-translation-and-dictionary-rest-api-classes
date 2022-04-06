@@ -32,8 +32,8 @@ class AzureTranslator extends Translator {
        return $obj->translations[0]->text; // Return array of translated sentences. 
    } 
 
-   final  protected function prepare_input(string $text) : string
+   final  protected function prepare_input(string $text) :  array|string
    {
-      return json_encode([[ 'Text' => urlencode($text) ]]);       
+      return [ 'Text' => $text];       
    }
 }
