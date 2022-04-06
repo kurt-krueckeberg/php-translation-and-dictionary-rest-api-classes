@@ -1,5 +1,4 @@
-
-<div class="container">
+<section>
 
 # Creating Sample Sentences for Language Learning
 
@@ -105,4 +104,4 @@ class LeipzigSentenceFetcher {
 }
 
 
-</div>
+</section>

@@ -15,11 +15,15 @@ abstract class Translator implements TranslateInterface {
    private $query = array();
    private $headers = array();
    private $isJsonInput;  // boolean
-   private $inputKeyName; // boolean
+   private $inputKeyName; // This will only be set if the '<input..' node has a parm attibute,
+                          // for example: <input parm="text">query</input>
 
-   /* private $provider; This variable is defined in and set by __constructor's argument list. */
+   /* 
+   private $provider; // <-- Also a class member variable. 
+   Note: $provider is also defined and set on the constructor's argument list, using PHP 8.0 new feature that allows this. 
+    */
    
-   private Client $client; 
+   private Client $client;  
 
    static string $xpath =  "/providers/provider[@abbrev='%s']"; 
 
@@ -35,7 +39,7 @@ abstract class Translator implements TranslateInterface {
    }
 
    /*
-    * Factory method to create correct Translator class based on .xml <transaltor>SomeTranslatorClassHere</translator> value.
+    * Method clients will call to create the Translator-derived class specified in the config.xml in <implementation>...</implementation>
     */ 
    static public function createFromXML(string $fxml, string $abbrev) : Translator
    {
@@ -46,11 +50,9 @@ abstract class Translator implements TranslateInterface {
       return $refl->newInstance($provider);
    }
 
-   // override: For derived classes.
    protected function getCredentials(\SimpleXMLElement $credentials) : string
    {
    }
-
 
    final protected function fetchAPISettings(\SimpleXMLElement $provider)
    {
@@ -65,7 +67,8 @@ abstract class Translator implements TranslateInterface {
                  $this->headers[(string) $provider->settings->credentials->header['name']] = (string) $header;
       }
 
-      $this->route  = (string) $provider->services->translation->route;  //todo: urlencode()? 
+      //todo: Should route and method be urlencode()'ed?
+      $this->route  = (string) $provider->services->translation->route;  
       $this->method = (string) $provider->services->translation->method;
 
       $this->isJsonInput = ('json' == (string) $provider->services->translation->input) ?  true : false;
@@ -79,7 +82,7 @@ abstract class Translator implements TranslateInterface {
    }  
 
    //public function __construct(protected \SimpleXMLElement $provider) // PHP 8.0 feature: automatic member variable assignemnt syntax.
-   public function __construct(\SimpleXMLElement $provider) // PHP 8.0 feature: automatic member variable assignemnt syntax.
+   public function __construct(protected \SimpleXMLElement $provider) // PHP 8.0 feature: automatic member variable assignemnt syntax.
    {      
        $this->provider = $provider;
        $this->client = new Client([ 'base_uri' => (string) $this->provider->settings->baseurl]);
@@ -87,7 +90,8 @@ abstract class Translator implements TranslateInterface {
        $this->fetchAPISettings($provider);
    } 
 
-   // Template pattern method that call protected method overriden by derived classes
+   /* 'Template pattern' method that calls abstract protected methods overriden by derived classes (to prepare the input amd
+       to extract the translated text (as a string) from he reponse. */
    final public function translate(string $text)
    {
        // get the input text ready as either 'query' parameter or 'json' object.
@@ -109,8 +113,9 @@ abstract class Translator implements TranslateInterface {
        return $this->process_response($response);
    }
 
+   // Overriden by derived classes to prepare input text in HTTP Message that Guzzle\Client will send.
    abstract protected function prepare_input(string $text) : string;
     
-   // Overriden by derived classes to do any special handling
+   // Overriden by derived classes to return translated text as a string.
    abstract protected function process_response(Response $response) : string; 
 }

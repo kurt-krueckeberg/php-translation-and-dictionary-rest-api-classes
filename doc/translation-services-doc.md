@@ -1,4 +1,4 @@
-<div class="container">
+<section>
 
 ## Tranlation Service Info
 
@@ -260,4 +260,4 @@ This github repository uses PHP and Guzzle: [Deepl-Client](https://github.com/ti
 
 ### IBM Cognitive Services Translation Servoce
 
-</div>
+</section>
