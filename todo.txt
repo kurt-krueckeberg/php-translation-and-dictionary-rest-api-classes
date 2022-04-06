@@ -1,0 +1,1 @@
+`AzureTranslator::prepare_input($test)` is not encoding the json correctly.
