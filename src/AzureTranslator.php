@@ -34,6 +34,6 @@ class AzureTranslator extends Translator {
 
    final  protected function prepare_input(string $text) :  array|string
    {
-      return [ 'Text' => $text];       
+      return [['Text' => $text]];       
    }
 }
