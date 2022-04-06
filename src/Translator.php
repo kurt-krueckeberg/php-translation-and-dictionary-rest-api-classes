@@ -11,14 +11,14 @@ abstract class Translator implements TranslateInterface {
    private $route;           // $provider->services->service->translation->route;  
    private $method;          // $provider->services->service->translation->method; 
    private $query_str = array();
-   private $from_key;      // key for source language (optionsal)
-   private $to_key;        //  key for destination language (required)
+   private $from_key;       // key for source language (optionsal)
+   private $to_key;         //  key for destination language (required)
    private $headers = array();
-   private $bJsonInput;  // boolean
-   private $inputKeyName; // This will only be set if, '<input parm="text">..' node has a parm attibute,
+   private $bJsonInput;    // boolean indicates if json input (rather thna a query string parameter) is required by the API.
+   private $inputKeyName; // This will only be set if, '<input parm="text">..' node has the parm attibute,
 
    /* 
-   private $provider; // <-- This is also a class member variable. It is also defined and set on the constructor's argument list (requires PHP).
+   private $provider; // <-- This is also a class member variable defined and set on the constructor's argument list (PHP >=8.0 required).
     */
    
    private Client $client;  
@@ -37,7 +37,7 @@ abstract class Translator implements TranslateInterface {
    }
 
    /*
-    * Method clients will call to create the Translator-derived class specified in the config.xml in <implementation>...</implementation>
+    * Method clients call to instantiate the Translator-derived class specified in the config.xml in <implementation>...</implementation>
     */ 
    static public function createFromXML(string $fxml, string $abbrev) : Translator
    {
@@ -52,23 +52,14 @@ abstract class Translator implements TranslateInterface {
    {
    }
 
-   protected function fetchQuerySection(\SimpleXMLElement $query)
-   {
-      $this->from_key = (string) $query->from['name'];
+   public function __construct(protected \SimpleXMLElement $provider) // PHP 8.0 feature: automatic member variable assignemnt syntax.
+   {      
+       $this->provider = $provider;
+       $this->client = new Client([ 'base_uri' => (string) $this->provider->settings->baseurl]);
 
-      if ($query->from !== '')
+       $this->fetchAPISettings($provider);
+   } 
 
-            $this->query_str[$this->from_key] = (string) $query->from;
-      
-      $this->to_key = (string) $query->to['name'];
-
-      if ($query->to !== '')
-            $this->query_str[$this->to_key] = (string) $query->to;
-
-      foreach($query->parm as $parm)  // These are required parameters with default values
-
-          $this->query_str[ (string) $parm["name"] ] = urlencode( (string) $parm );
-   }
 
    final protected function fetchAPISettings(\SimpleXMLElement $provider)
    {
@@ -95,13 +86,24 @@ abstract class Translator implements TranslateInterface {
       $this->fetchQuerySection($provider->services->translation->query);
    }  
 
-   public function __construct(protected \SimpleXMLElement $provider) // PHP 8.0 feature: automatic member variable assignemnt syntax.
-   {      
-       $this->provider = $provider;
-       $this->client = new Client([ 'base_uri' => (string) $this->provider->settings->baseurl]);
+   protected function fetchQuerySection(\SimpleXMLElement $query)
+   {
+      $this->from_key = (string) $query->from['name'];
 
-       $this->fetchAPISettings($provider);
-   } 
+      if ($query->from !== '')
+
+          $this->query_str[$this->from_key] = (string) $query->from;
+      
+      $this->to_key = (string) $query->to['name'];
+
+      if ($query->to !== '')
+
+            $this->query_str[$this->to_key] = (string) $query->to;
+
+      foreach($query->parm as $parm)  // These are required parameters with default values
+
+          $this->query_str[ (string) $parm["name"] ] = urlencode( (string) $parm );
+   }
 
    final protected function setLanguages(string $dest_lang, $source_lang="")
    {
@@ -126,6 +128,7 @@ abstract class Translator implements TranslateInterface {
        } else { 
           
           $this->query_str[$this->inputKeyName] = $input;
+
           $options = ['query' => $this->query_str, 'headers' => $this->headers];
        }
 
