@@ -14,13 +14,11 @@ abstract class Translator implements TranslateInterface {
    private $from_key;      // key for source language (optionsal)
    private $to_key;        //  key for destination language (required)
    private $headers = array();
-   private $isJsonInput;  // boolean
-   private $inputKeyName; // This will only be set if the '<input..' node has a parm attibute,
-                          // for example: <input parm="text">query</input>
+   private $bJsonInput;  // boolean
+   private $inputKeyName; // This will only be set if, '<input parm="text">..' node has a parm attibute,
 
    /* 
-   private $provider; // <-- Also a class member variable. 
-   Note: $provider is also defined and set on the constructor's argument list, using PHP 8.0 new feature that allows this. 
+   private $provider; // <-- This is also a class member variable. It is also defined and set on the constructor's argument list (requires PHP).
     */
    
    private Client $client;  
@@ -54,6 +52,24 @@ abstract class Translator implements TranslateInterface {
    {
    }
 
+   protected function fetchQuerySection(\SimpleXMLElement $query)
+   {
+      $this->from_key = (string) $query->from['name'];
+
+      if ($query->from !== '')
+
+            $this->query_str[$this->from_key] = (string) $query->from;
+      
+      $this->to_key = (string) $query->to['name'];
+
+      if ($query->to !== '')
+            $this->query_str[$this->to_key] = (string) $query->to;
+
+      foreach($query->parm as $parm)  // These are required parameters with default values
+
+          $this->query_str[ (string) $parm["name"] ] = urlencode( (string) $parm );
+   }
+
    final protected function fetchAPISettings(\SimpleXMLElement $provider)
    {
       if ((string)$provider->settings->credentials["method"] == "custom") 
@@ -71,25 +87,12 @@ abstract class Translator implements TranslateInterface {
       $this->route  = (string) $provider->services->translation->route;  
       $this->method = (string) $provider->services->translation->method;
 
-      $this->isJsonInput = ('json' == (string) $provider->services->translation->input) ? true : false;
+      $this->bJsonInput = ('json' == (string) $provider->services->translation->input) ? true : false;
 
       if (isset($provider->services->translation->input['parm']))
           $this->inputKeyName = (string) $provider->services->translation->input['parm'];
 
-      $this->from_key = (string) $provider->services->translation->query->from['name'];
-
-      if ($provider->services->translation->query->from !== '')
-
-            $this->query_str[$this->from_key] = (string) $provider->services->translation->query->from;
-      
-      $this->to_key = (string) $provider->services->translation->query->to['name'];
-
-      if ($provider->services->translation->query->to !== '')
-            $this->query_str[$this->to_key] = (string) $provider->services->translation->query->to;
-
-      foreach($provider->services->translation->query->parm as $parm)  // These are required parameters with default values
-
-          $this->query_str[ (string) $parm["name"] ] = urlencode( (string) $parm );
+      $this->fetchQuerySection($provider->services->translation->query);
    }  
 
    public function __construct(protected \SimpleXMLElement $provider) // PHP 8.0 feature: automatic member variable assignemnt syntax.
@@ -116,7 +119,7 @@ abstract class Translator implements TranslateInterface {
 
        $input = $this->prepare_input($text); 
 
-       if ($this->isJsonInput) {  // If array holds json encoded body entity. 
+       if ($this->bJsonInput) {  // If array holds json encoded body entity. 
 
           $options = ['query' => $this->query_str, 'headers' => $this->headers, 'json' => $input];
 
