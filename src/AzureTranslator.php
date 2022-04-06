@@ -27,12 +27,9 @@ class AzureTranslator extends Translator {
    {
        $contents = $response->getBody()->getContents();
 
-       var_dump($contents, true);
-
        $obj = json_decode($contents);
        
-
-       return $obj->translations[0]->text; // Return array of translated sentences. 
+       return $obj[0]->translations[0]->text; // Returns array of arrays of translated sentences. 
    } 
    /*
     * The Azure Translator input is an array or arrays of the form:

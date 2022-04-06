@@ -14,7 +14,7 @@ include "vendor/autoload.php";
 
   try {
    
-    $translation = $trans->translate("Hallo");
+    $translation = $trans->translate("Guten Morgen");
     echo $translation . "\n";
 
   } catch (ClientException $e) {
