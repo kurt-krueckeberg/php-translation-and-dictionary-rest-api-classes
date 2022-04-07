@@ -29,14 +29,16 @@ class AzureTranslator extends Translator {
 
        $obj = json_decode($contents);
        
-       return $obj[0]->translations[0]->text; // Returns array of arrays of translated sentences. 
+       return $obj[0]->translations[0]->text; // The $obj[0]->translations array can have more elements, if the input does. But this
+                                              // code currently only passes one input text string at a time.  
    } 
    /*
-    * The Azure Translator input is an array or arrays of the form:
+    * The Azure Translator input is an array of arrays form:
 
          [['Text' => "Initial text"1], ['Text' => "other text"];       
 
-        json_encode apparently need not be called because Guzzle does so.
+      Currently TranslatorInterface::translate(string $input, string $dest_lang, string source_lang='')
+       only accepts one text input string. Modify it if your needs differ.
     */
  
    final  protected function prepare_input(string $text) :  array

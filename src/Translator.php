@@ -60,7 +60,6 @@ abstract class Translator implements TranslateInterface {
        $this->fetchAPISettings($provider);
    } 
 
-
    final protected function fetchAPISettings(\SimpleXMLElement $provider)
    {
       if ((string)$provider->settings->credentials["method"] == "custom") 
@@ -72,7 +71,6 @@ abstract class Translator implements TranslateInterface {
           foreach($provider->settings->credentials->header as $header) 
           
                $this->headers[(string) $header['name']] = (string) $header;
-          
       }
 
       $this->route  = (string) $provider->services->translation->route;  
