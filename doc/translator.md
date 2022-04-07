@@ -1,7 +1,7 @@
 ## Translator class
 
-The private member vartiables of `Translator` are set in `fetchAPISettings(\SimpleXMLElement $provider)` called by the constructor. The table below
-shows how the XML elements correspond to the class variables
+The private member vartiables of `Translator` are set in `Translator::fetchAPISettings(\SimpleXMLElement $provider)` called by the constructor. The table below
+shows how the XML elements correspond to the class variables:
 
 |Member Variable       |SimpleXMLElement                                                             |
 |----------------------|-----------------------------------------------------------------------------|
