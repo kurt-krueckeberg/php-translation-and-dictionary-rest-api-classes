@@ -5,6 +5,7 @@ namespace Translators;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
+// todo: Move comments to readme that has links to the doc folder
 abstract class Translator implements TranslateInterface {
 
    // These values are set in fetchAPISettings() 
