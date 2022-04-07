@@ -14,11 +14,9 @@ class LeipzigSentenceFetcher {
 
    public function __construct(string $corpus)
    {
-      $this->uri = $corpus . '/sentences'; 	   
+      $this->route = $corpus . '/sentences'; 	   
 
       $this->client = new Client(array('base_uri' => self::$base_uri));
-
-      $this->header = "accept: application/json"; 
    }
 
  /* 
@@ -52,30 +50,15 @@ class LeipzigSentenceFetcher {
     
    public function get_sentences(string $word, int $count=10)
    {
-      $uri = $this->uri . '/' . urlencode($word);
+      $url = $this->route . '/' . urlencode($word);
 
-      try {
-
-         $query =  ['query' => [LeipzigSentenceFetcher::$qs_offset => 0, LeipzigSentenceFetcher::$qs_limit => $count]];
-
-         $response = $this->client->request('GET', $uri, $query);
-         
-         $contents = $response->getBody()->getContents();
-
-         $obj = json_decode($contents);
-
-         return $obj->sentences; // Return the array of SentenceInformation objects  
+      $response = $this->client->request('GET', $url, ['query' => [LeipzigSentenceFetcher::$qs_offset => 0, LeipzigSentenceFetcher::$qs_limit => $count]]);
       
-      } catch (RequestException $e) { // We get here if the response code from the Leipzig server is > 400 (or if it times out)
+      $contents = $response->getBody()->getContents();
 
-         /* If a response code was set, get it. */
-         if ($e->hasResponse())
-             
-            $str = "Response Code is " . $e->getResponse()->getStatusCode();
-         else 
-             $str = "No respons from server.";
+      $obj = json_decode($contents);
 
-         throw new Exception("Guzzle RequestException. $str"); 
+      return $obj->sentences; // Return the array of SentenceInformation objects  
+      
     }
-  }
 }

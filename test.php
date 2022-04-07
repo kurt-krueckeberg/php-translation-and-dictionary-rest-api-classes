@@ -19,7 +19,18 @@ include "vendor/autoload.php";
 
     echo $translation . "\n";
 
-  }  catch (\Exception $e) {
+  } catch (RequestException $e) { // We get here if the response code from the Leipzig server is > 400 (or if it times out)
+
+      /* If a response code was set, get it. */
+      if ($e->hasResponse())
+          
+         echo "Response Code is " . $e->getResponse()->getStatusCode();
+      else 
+         echo  "No respons from server.";
+
+       echo "\nException: message = " . $e->getMessage() . "\n";
+
+  } catch (\Exception $e) {
       
       echo "\nException: message = " . $e->getMessage() . "\n";
   } 
