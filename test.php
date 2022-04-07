@@ -6,9 +6,6 @@ use Guzzle\Exception\ClientException;
 
 include "vendor/autoload.php";
 
-  echo "First add your keys to sample-config.xml. Then rename it config.xml\n";
-  return;
-
   $trans = Translator::createFromXML("config.xml", "m");
 
    $a = array("Guten Tag!");

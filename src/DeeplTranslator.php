@@ -19,4 +19,9 @@ class DeeplTranslator extends Translator {
 
       return urldecode($obj->translations[0]->text); // Return the string in the the first element of the translations array.
    }
+
+   protected function add_input(string $text)
+   {
+      $this->setQueryParm('text', urlencode($text));
+   }
 }

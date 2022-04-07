@@ -5,18 +5,19 @@ namespace Translators;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
-// todo: Move comments to readme that has links to the doc folder
 abstract class Translator implements TranslateInterface {
 
+   /*
+   todo: Replace $query and $haders $options array with 'headers' and 'query' keys.
+    */
+    
    // These values are set in fetchAPISettings() 
-   private $route;           // $provider->services->service->translation->route;  
-   private $method;          // $provider->services->service->translation->method; 
-   private $query_str = array();
-   private $from_key;       // key for source language (optionsal)
-   private $to_key;         //  key for destination language (required)
-   private $headers = array();
-   private $bJsonInput;    // boolean indicates if json input (rather thna a query string parameter) is required by the API.
-   private $inputKeyName; // This will only be set if, '<input parm="text">..' node has the parm attibute,
+   private string $route;           // $provider->services->service->translation->route;  
+   private string $method;          // $provider->services->service->translation->method; 
+   private string $from_key;       // key for source language (optionsal)
+   private string $to_key;         //  key for destination language (required)
+
+   private array $options;  // todo: Add the xml settings -- header and query -- to $options in the constructor.
 
    /* 
    private $provider; // <-- This is also a class member variable defined and set on the constructor's argument list (PHP >=8.0 required).
@@ -56,60 +57,65 @@ abstract class Translator implements TranslateInterface {
    public function __construct(protected \SimpleXMLElement $provider) // PHP 8.0 feature: automatic member variable assignemnt syntax.
    {      
        $this->provider = $provider;
-       $this->client = new Client([ 'base_uri' => (string) $this->provider->settings->baseurl]);
 
-       $this->fetchAPISettings($provider);
+       $options= $this->setConfigOptions($provider);
+
+       $this->client = new Client(['base_uri' => (string) $this->provider->settings->baseurl]);
    } 
 
-   final protected function fetchAPISettings(\SimpleXMLElement $provider)
+   private function setConfigOptions(\SimpleXMLElement $provider)
    {
+      // set the headers
+      $headers = array();
+      
       if ((string)$provider->settings->credentials["method"] == "custom") 
       
-           $this->headers = $this->getCredentials($provider->settings->credentials);
+           $headers = $this->getCredentials($provider->settings->credentials);
       
       else {
             
           foreach($provider->settings->credentials->header as $header) 
           
-               $this->headers[(string) $header['name']] = (string) $header;
+               $headers[(string) $header['name']] = (string) $header;
       }
 
-      $this->route  = (string) $provider->services->translation->route;  
+      $this->options['headers'] = $headers;
+
+      $this->route  = (string) $provider->services->translation->route;   // passed on ->request($this->method, $this->route, $this->options)
       $this->method = (string) $provider->services->translation->method;
 
-      $this->bJsonInput = ('json' == (string) $provider->services->translation->input) ? true : false;
-
-      if (isset($provider->services->translation->input['parm']))
-          $this->inputKeyName = (string) $provider->services->translation->input['parm'];
-
-      $this->fetchQuerySection($provider->services->translation->query);
+      $this->setQueryOptions($provider->services->translation->query);
    }  
 
-   protected function fetchQuerySection(\SimpleXMLElement $query)
+   private function setQueryOptions(\SimpleXMLElement $query)
    {
       $this->from_key = (string) $query->from['name'];
+      $query_array = array();
+      
+      if ($query->from !== '')// set default source language, if present
 
-      if ($query->from !== '')
-
-          $this->query_str[$this->from_key] = (string) $query->from;
+          $query_array[$this->from_key] = (string) $query->from;
       
       $this->to_key = (string) $query->to['name'];
 
-      if ($query->to !== '')
+      // set query options
+      if ($query->to !== '') // set default destination language, if present
 
-            $this->query_str[$this->to_key] = (string) $query->to;
+            $query_array[$this->to_key] = (string) $query->to;
 
-      foreach($query->parm as $parm)  // These are required parameters with default values
+      foreach($query->parm as $parm)  // These are required parameters with default values that are fixed.
 
-          $this->query_str[ (string) $parm["name"] ] = urlencode( (string) $parm );
+          $query_array[ (string) $parm["name"] ] = urlencode( (string) $parm );
+
+      $this->options['query'] = $query_array;
    }
 
-   final protected function setLanguages(string $dest_lang, $source_lang="")
+   private function setLanguages(string $dest_lang, $source_lang="")
    {
       if ($source_lang !== "")
-            $this->query_str[$this->from_key] = $source_lang; 
+           $this->options['query'][$this->from_key] = $source_lang; 
 
-      $this->query_str[$this->to_key] = $dest_lang; 
+      $this->options['query'][$this->to_key] = $dest_lang; 
    }
 
    /* 'Template pattern' method that calls abstract protected methods overriden by derived classes (to prepare the input amd
@@ -118,30 +124,26 @@ abstract class Translator implements TranslateInterface {
    {
        $this->setLanguages($dest_lang, $source_lang);
 
-       $input = $this->prepare_input($text); 
+       $this->add_input($text); 
 
-       if ($this->bJsonInput) {  // If array holds json encoded body entity. 
-
-          $options = ['query' => $this->query_str, 'headers' => $this->headers, 'json' => $input];
-
-       } else { 
-          
-          $this->query_str[$this->inputKeyName] = $input;
-
-          $options = ['query' => $this->query_str, 'headers' => $this->headers];
-       }
-
-       $response = $this->client->request($this->method, $this->route, $options); 
+       $response = $this->client->request($this->method, $this->route, $this->options); 
 
        return $this->process_response($response);
    }
 
-   // Overriden by derived classes to prepare input text in HTTP Message that Guzzle\Client will send.
-   protected function prepare_input(string $text) : array|string
-   {
-      return urlencode($text);
-   } 
+   // Overriden by derived classes to add input text in HTTP Message that Guzzle\Client will send.
+   abstract protected function add_input(string $text);
     
    // Overriden by derived classes to return translated text as a string.
    abstract protected function process_response(Response $response) : string; 
+   
+   protected function setQueryParm(string $key, string $value)
+   {
+       $this->options['query'][$key] = $value;
+   }
+
+   protected function setJson(array $json)
+   {
+       $this->options['json'] = $json;
+   }
 }

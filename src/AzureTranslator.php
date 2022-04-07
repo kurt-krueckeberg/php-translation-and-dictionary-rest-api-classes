@@ -33,8 +33,8 @@ class AzureTranslator extends Translator {
        return $obj[0]->translations[0]->text; 
    } 
  
-   final  protected function prepare_input(string $text) :  array
+   final protected function add_input(string $text)
    {
-      return [['Text' => $text]];       
+      $this->setJson( [['Text' => $text]] );       
    }
 }

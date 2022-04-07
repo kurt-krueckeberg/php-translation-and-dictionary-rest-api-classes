@@ -9,7 +9,7 @@ class IbmTranslator extends Translator {
       parent::__construct($provider);
    }
 
-   protected function prepare_json_input(string $text) : string
+   protected function add_input(string $text, array $options)
    {
    }
 }
