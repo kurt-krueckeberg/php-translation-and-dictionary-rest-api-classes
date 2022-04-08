@@ -23,7 +23,6 @@ class AzureTranslator extends Translator {
         parent::__construct($provider);     
    }     
 
-   // Overriden by derived classes to do any special handling
    final function process_response(Response $response) : string
    {
        $contents = $response->getBody()->getContents();

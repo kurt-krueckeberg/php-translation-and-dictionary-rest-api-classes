@@ -7,20 +7,16 @@ use GuzzleHttp\Psr7\Response;
 
 abstract class Translator implements TranslateInterface {
 
-   /*
-   todo: Replace $query and $haders $options array with 'headers' and 'query' keys.
-    */
-    
-   // These values are set in fetchAPISettings() 
-   private string $route;           // $provider->services->service->translation->route;  
-   private string $method;          // $provider->services->service->translation->method; 
-   private string $from_key;       // key for source language (optionsal)
-   private string $to_key;         //  key for destination language (required)
+   
+   private string $route;      
+   private string $method;     
+   private string $from_key;   // key for source language (optionsal)
+   private string $to_key;     //  key for destination language (required)
 
-   private array $options;  // todo: Add the xml settings -- header and query -- to $options in the constructor.
+   private array $options; 
 
-   /* 
-   private $provider; // <-- This is also a class member variable defined and set on the constructor's argument list (PHP >=8.0 required).
+   /*  This is also a class member variable defined and set on the constructor's argument list (PHP >=8.0 required).
+   private $provider;
     */
    
    private Client $client;  
@@ -39,7 +35,7 @@ abstract class Translator implements TranslateInterface {
    }
 
    /*
-    * Method clients call to instantiate the Translator-derived class specified in the config.xml in <implementation>...</implementation>
+    * Instantiates the Translator-derived class specified in <implementation>...</implementation>
     */ 
    static public function createFromXML(string $fxml, string $abbrev) : Translator
    {
@@ -49,12 +45,13 @@ abstract class Translator implements TranslateInterface {
       
       return $refl->newInstance($provider);
    }
-
+   
    protected function getCredentials(\SimpleXMLElement $credentials) : string
    {
    }
 
-   public function __construct(protected \SimpleXMLElement $provider) // PHP 8.0 feature: automatic member variable assignemnt syntax.
+   // PHP 8.0 feature: automatic member variable assignemnt syntax.
+   public function __construct(protected \SimpleXMLElement $provider) 
    {      
        $this->provider = $provider;
 
@@ -65,7 +62,7 @@ abstract class Translator implements TranslateInterface {
 
    private function setConfigOptions(\SimpleXMLElement $provider)
    {
-      // set the headers
+      // Set the headers
       $headers = array();
       
       if ((string)$provider->settings->credentials["method"] == "custom") 
@@ -81,35 +78,39 @@ abstract class Translator implements TranslateInterface {
 
       $this->options['headers'] = $headers;
 
-      $this->route  = (string) $provider->services->translation->route;   // passed on ->request($this->method, $this->route, $this->options)
+      $this->route  = (string) $provider->services->translation->route;  
       $this->method = (string) $provider->services->translation->method;
 
       $this->setQueryOptions($provider->services->translation->query);
    }  
 
+   // Puts xml query settings in $this->options['query']
    private function setQueryOptions(\SimpleXMLElement $query)
    {
       $this->from_key = (string) $query->from['name'];
       $query_array = array();
-      
-      if ($query->from !== '')// set default source language, if present
+
+       // set default source language, if present     
+      if ($query->from !== '')
 
           $query_array[$this->from_key] = (string) $query->from;
       
       $this->to_key = (string) $query->to['name'];
 
-      // set query options
-      if ($query->to !== '') // set default destination language, if present
+      // set default destination language, if present
+      if ($query->to !== '') 
 
             $query_array[$this->to_key] = (string) $query->to;
 
-      foreach($query->parm as $parm)  // These are required parameters with default values that are fixed.
+      // Set other default query string settings
+      foreach($query->parm as $parm)  
 
           $query_array[ (string) $parm["name"] ] = urlencode( (string) $parm );
 
       $this->options['query'] = $query_array;
    }
 
+   // Called by translate(string $text, string $dest_lang, $source_lang="")
    private function setLanguages(string $dest_lang, $source_lang="")
    {
       if ($source_lang !== "")
@@ -131,7 +132,7 @@ abstract class Translator implements TranslateInterface {
        return $this->process_response($response);
    }
 
-   // Overriden by derived classes to add input text in HTTP Message that Guzzle\Client will send.
+   // Overriden by derived classes to add input text in the HTTP Message that Guzzle\Client will send.
    abstract protected function add_input(string $text);
     
    // Overriden by derived classes to return translated text as a string.
@@ -142,6 +143,7 @@ abstract class Translator implements TranslateInterface {
        $this->options['query'][$key] = $value;
    }
 
+   // Helper method for use by derived classes, to set json input, if needed
    protected function setJson(array $json)
    {
        $this->options['json'] = $json;
