@@ -7,13 +7,12 @@ use GuzzleHttp\Psr7\Response;
 
 abstract class Translator implements TranslateInterface {
 
-   
    private string $route;      
    private string $method;     
    private string $from_key;   // key for source language (optionsal)
-   private string $to_key;     //  key for destination language (required)
+   private string $to_key;     // key for destination language (required)
 
-   private array $options; 
+   private array $options;    
 
    /*  This is also a class member variable defined and set on the constructor's argument list (PHP >=8.0 required).
    private $provider;
