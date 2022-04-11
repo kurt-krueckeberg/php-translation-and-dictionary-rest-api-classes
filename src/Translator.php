@@ -20,25 +20,13 @@ abstract class Translator implements TranslateInterface {
 
    static string $xpath =  "/providers/provider[@abbrev='%s']"; 
 
-   /*
-    * Returns SimpleXMLElement pointing to correct <provider> element.
-    */
-   static private function get_provider(string $xml_name, string $abbrev)
+   // Instantiates the Translator-derived class specified in <implementation>...</implementation>
+   static public function createFromXML(\SimpleXMLElement $xml, string $abbrev) : Translator
    {
-      $simp = simplexml_load_file($xml_name);
-     
       $query = sprintf(self::$xpath, $abbrev); 
      
-      $response = $simp->xpath($query);
+      $provider = $xml->xpath($query)[0];
      
-      return $response[0];
-   }
-
-   // Instantiates the Translator-derived class specified in <implementation>...</implementation>
-   static public function createFromXML(string $fxml, string $abbrev) : Translator
-   {
-      $provider = self::get_provider($fxml, $abbrev); 
-      
       $refl = new \ReflectionClass((string) $provider->settings->implementation); 
       
       return $refl->newInstance($provider);
@@ -126,6 +114,8 @@ abstract class Translator implements TranslateInterface {
 
        $this->add_input($text); // Implemented by derived classes.
 
+       // todo: IF AzureTranslator supports more than translate requests. It supports requests for dicitonary lookup and examples 
+       // which have different routes. 
        $response = $this->client->request($this->method, $this->route, $this->options); 
 
        return $this->process_response($response);
