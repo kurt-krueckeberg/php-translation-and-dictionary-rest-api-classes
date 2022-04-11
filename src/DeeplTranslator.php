@@ -11,7 +11,7 @@ class DeeplTranslator extends Translator {
        parent::__construct($provider); 
    }
 
-   // Return the string in the the first element of the translations array. 
+   // Overriden to return the string in the the first element of the translations array. 
    public function process_response(Response $response) : string
    {
       $contents = $response->getBody()->getContents();
@@ -21,6 +21,7 @@ class DeeplTranslator extends Translator {
       return urldecode($obj->translations[0]->text); 
    }
 
+   // Overriden to add input to send with request
    protected function add_input(string $text)
    {
       $this->setQueryParm('text', urlencode($text));

@@ -5,13 +5,10 @@ namespace Translators;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
-abstract class Translator implements TranslateInterface {
+abstract class ApiBase {
 
    private string $route;      
    private string $method;     // GET, POST, etc 
-   private string $from_key;   // key for source language (which is optional)
-   private string $to_key;     // key for destination language (required)
-
    private array $options;    // [['headers' => [...], 'query' => [...], 'json' => [...]]
 
    // private $provider; is defined and set on the constructor's argument list (PHP >=8.0 required).
@@ -34,12 +31,12 @@ abstract class Translator implements TranslateInterface {
       return $response[0];
    }
 
-   // Instantiates the Translator-derived class specified in <implementation>...</implementation>
-   static public function createFromXML(string $fxml, string $abbrev) : Translator
+   // Instantiates the ApiBase-derived class specified in <implementation>...</implementation>
+   static public function createFromXML(string $fxml, string $abbrev) : ApiBase
    {
       $provider = self::get_provider($fxml, $abbrev); 
       
-      $refl = new \ReflectionClass((string) $provider->settings->implementation); 
+      $refl = new \ReflectionClass((string) $provider->requests->request[translation]->implementation); 
       
       return $refl->newInstance($provider);
    }
@@ -75,26 +72,16 @@ abstract class Translator implements TranslateInterface {
 
       $this->options['headers'] = $headers;
 
-      $trans = $provider->xpath("requests/request[@type='translation']")[0];
+      $this->route  = (string) $provider->requests->request['translation']->route;  
+      $this->method = (string) $provider->requests->request['translation']->method;
 
-      $this->route  = (string) $trans->route;  
-      $this->method = (string) $trans->method; 
-
-      $this->setQueryOptions($provider->settings->query);
+      $this->setQueryOptions($provider->requests->request['translation']->query);
    }  
 
-   // Assign xml <query> section settings 
+   // Assign xml <query> section settings in $this->options['query']
    private function setQueryOptions(\SimpleXMLElement $query)
    {
-      $this->from_key = (string) $query->from['name'];
       $query_array = array();
-
-       // set default source language, if present     
-      if ($query->from !== '')
-
-          $query_array[$this->from_key] = (string) $query->from;
-      
-      $this->to_key = (string) $query->to['name'];
 
       // set default destination language, if present
       if ($query->to !== '') 

@@ -6,29 +6,28 @@ use Guzzle\Exception\ClientException;
 
 include "vendor/autoload.php";
 
-  $trans = Translator::createFromXML("config.xml", "m");
+$trans = Translator::createFromXML("config.xml", "d");
 
-   $a = array("Guten Tag!");
+$input = array("Guten Tag!", "Guten Morgen");
 
-  try {
-   
-    $translation = $trans->translate("Guten Morgen", "RU");
+try {
 
-    echo $translation . "\n";
+  foreach ($input as $text) // Translate into Russian 
+     $translation = $trans->translate($text, "RU");
 
-  } catch (RequestException $e) { // We get here if the response code from the Leipzig server is > 400 (or if it times out)
+  echo $translation . "\n";
 
-      /* If a response code was set, get it. */
-      if ($e->hasResponse())
-          
-         echo "Response Code is " . $e->getResponse()->getStatusCode();
-      else 
-         echo  "No respons from server.";
+} catch (RequestException $e) { 
 
-       echo "\nException: message = " . $e->getMessage() . "\n";
+    // If a response code was set, get it.
+    if ($e->hasResponse()) echo "Response Code = " . $e->getResponse()->getStatusCode();
 
-  } catch (\Exception $e) {
-      
-      echo "\nException: message = " . $e->getMessage() . "\n";
-  } 
+    else echo  "No response from server.";
+
+    echo "\nException: message = " . $e->getMessage() . "\n";
+
+} catch (\Exception $e) {
+    
+    echo "\nException: message = " . $e->getMessage() . "\n";
+} 
 

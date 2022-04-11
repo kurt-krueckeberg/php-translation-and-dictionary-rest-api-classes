@@ -6,7 +6,7 @@
            <baseurl>http://api.corpora.uni-leipzig.de/ws</baseurl> <!-- https?? -->
            <Content-Type>application/json; charset=UTF-8</Content-Type>  <!-- This seems to be the default of RST APIs. It is the Guzzle default, right? -->
         </settings>
-        <services> 
+        <requests> 
            <sentences>
               <route>sentences/deu_news_2012_1M/sentences</route> 
               <method>GET</method> 
@@ -15,42 +15,47 @@
                   <parm name="limit">10</parm> 
               </query> 
            </sentences>
-        </services>
+        </requests>
    </provider>
    <provider name="deepl" abbrev="d">
         <settings>   
            <baseurl>https://api-free.deepl.com/v2</baseurl>
            <credentials method="header">
-               <header name="Authorization">DeepL-Auth-Key ADD YOUR KEY HERE</header>
+               <header name="Authorization">DeepL-Auth-Key ???????????????????????????????????????</header>
            </credentials>
            <Content-Type>application/json; charset=UTF-8</Content-Type>
+           <query> 
+              <from name="source_lang"></from> <!-- A value is not required -->
+              <to name="target_lang" />
+           </query>
         </settings>
-        <services>
-           <translation> 
+        <requests>
+           <request type="translation"> 
               <route>v2/translate</route>
               <method>GET</method>
-              <input parm="text">query</input>
               <!-- The presence of the `input="text"` attribute implies the input text is a query parameter named 'text'. If the input attribute is not present,
                 json input is required. The name attribute is present if and only if the  implementation class is Translator.   -->
               <implementation>Translators\DeeplTranslator</implementation>
-              <query> 
-                 <from name="source_lang"></from> <!-- A value is not required -->
-                 <to name="target_lang" />
-              </query>
-           </translation>
-        </services>
+           </request>
+        </requests>
    </provider>
    <provider name="Microsoft" abbrev="m">
         <settings> 
            <baseurl>https://api.cognitive.microsofttranslator.com</baseurl>
            <credentials method="header">
-              <header name="Ocp-Apim-Subscription-Key">ADD YOUR KEY HERE</header> 
-              <header name="Ocp-Apim-Subscription-Region">ADD YOUR REGION HERE</header>
+              <header name="Ocp-Apim-Subscription-Key">????????????????????????????????</header> 
+              <header name="Ocp-Apim-Subscription-Region">???????</header>
            </credentials>
            <Content-Type>application/json; charset=UTF-8</Content-Type>
+           <query> 
+               <parm name="api-version">3.0</parm>
+               <parm name="textType">????</parm>
+               <from name="from">DE</from> <!-- A value is not required -->
+               <to name="to" />
+           </query>
         </settings>
-        <services>
-          <translation>
+        <requests>
+          <request type="translation">
           <!--  Azure Translator 3.0 also supports "dictionary lookups" and dictionary examples.
               
                    1. translation
@@ -72,17 +77,31 @@
              <implementation>Translators\AzureTranslator</implementation>
              <route>translate</route> 
              <method>POST</method> 
-             <input>json</input>
-             <query> 
-               <parm name="api-version">3.0</parm>
-               <parm name="textType">plain</parm>
-               <from name="from">DE</from> <!-- A value is not required -->
-               <to name="to" />
-           </query>
-          </translation>
-        <dictionary-lookup>
-        </dictionary-lookup>
-      </services>
+          </request>
+          <request type="dictionary">
+          <!--  Azure Translator 3.0 also supports "dictionary lookups" and dictionary examples.
+              
+                   1. translation
+                   2. dictionary look up
+                   3. dictionary examples
+              
+                 Each type of three request types above has a different "route" (that is appended to the base URL)
+              
+                 1. Translation request:
+              
+                       https://api-nam.cognitive.microsofttranslator.com/translate
+              
+                 2. Dictionary look up 
+              
+                       https://api-nam.cognitive.microsofttranslator.com/dictionary/lookup
+              
+            -->
+                  <!-- These are settings that apply to all types of requests \-\- text translation, dictionary lookup, etc -->
+             <implementation>Translators\AzureTranslator</implementation>
+             <route>Dictionary/Lookup</route> 
+             <method>POST</method> 
+          </request>
+      </requests>
     </provider>
     <provider name="ibm" abbrev="i">
         <settings>   
@@ -94,23 +113,22 @@
   
              Bear token is also supported and recommended for production code.
              -->
-             <header name="apikey">YOUR KEY HERE</header>
+             <header name="apikey">???????????????????????????????????????????</header>
           </credentials>   
           <credentials method="token">
           </credentials>
           <Content-Type>application/json; charset=UTF-8</Content-Type>
+          <query> 
+             <parm name="????">DE</parm>
+             <parm name="???">to</parm>
+          </query>
         </settings>
-        <services>
-           <translation> 
+        <requests>
+           <request type="translation"> 
              <implementation>Translators\IbmTranslator</implementation>
               <route>translate</route>
               <method>GET/POST???</method>
-              <input>json</input>
-              <query> 
-                 <parm name="????">DE</parm>
-                 <parm name="???">to</parm>
-              </query>
-           </translation>
-        </services>
+           </request>
+        </requests>
      </provider>
 </providers>

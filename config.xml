@@ -6,7 +6,7 @@
            <baseurl>http://api.corpora.uni-leipzig.de/ws</baseurl> <!-- https?? -->
            <Content-Type>application/json; charset=UTF-8</Content-Type>  <!-- This seems to be the default of RST APIs. It is the Guzzle default, right? -->
         </settings>
-        <services> 
+        <requests> 
            <sentences>
               <route>sentences/deu_news_2012_1M/sentences</route> 
               <method>GET</method> 
@@ -15,7 +15,7 @@
                   <parm name="limit">10</parm> 
               </query> 
            </sentences>
-        </services>
+        </requests>
    </provider>
    <provider name="deepl" abbrev="d">
         <settings>   
@@ -24,20 +24,20 @@
                <header name="Authorization">DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx</header>
            </credentials>
            <Content-Type>application/json; charset=UTF-8</Content-Type>
+           <implementation>Translators\DeeplTranslator</implementation>
+           <query> 
+              <from name="source_lang"></from> <!-- A value is not required -->
+              <to name="target_lang" />
+           </query>
         </settings>
-        <services>
-           <translation> 
+        <requests>
+           <request type="translation"> 
               <route>v2/translate</route>
               <method>GET</method>
               <!-- The presence of the `input="text"` attribute implies the input text is a query parameter named 'text'. If the input attribute is not present,
                 json input is required. The name attribute is present if and only if the  implementation class is Translator.   -->
-              <implementation>Translators\DeeplTranslator</implementation>
-              <query> 
-                 <from name="source_lang"></from> <!-- A value is not required -->
-                 <to name="target_lang" />
-              </query>
-           </translation>
-        </services>
+           </request>
+        </requests>
    </provider>
    <provider name="Microsoft" abbrev="m">
         <settings> 
@@ -47,9 +47,38 @@
               <header name="Ocp-Apim-Subscription-Region">eastus2</header>
            </credentials>
            <Content-Type>application/json; charset=UTF-8</Content-Type>
+           <implementation>Translators\AzureTranslator</implementation>
+           <query> 
+               <parm name="api-version">3.0</parm>
+               <parm name="textType">plain</parm>
+               <from name="from">DE</from> <!-- A value is not required -->
+               <to name="to" />
+           </query>
         </settings>
-        <services>
-          <translation>
+        <requests>
+          <request type="translation">
+          <!--  Azure Translator 3.0 also supports "dictionary lookups" and dictionary examples.
+              
+                   1. translation
+                   2. dictionary look up
+                   3. dictionary examples
+              
+                 Each type of three request types above has a different "route" (that is appended to the base URL)
+              
+                 1. Translation request:
+              
+                       https://api-nam.cognitive.microsofttranslator.com/translate
+              
+                 2. Dictionary look up 
+              
+                       https://api-nam.cognitive.microsofttranslator.com/dictionary/lookup
+              
+            -->
+                  <!-- These are settings that apply to all types of requests \-\- text translation, dictionary lookup, etc -->
+             <route>translate</route> 
+             <method>POST</method> 
+          </request>
+          <request type="dictionary">
           <!--  Azure Translator 3.0 also supports "dictionary lookups" and dictionary examples.
               
                    1. translation
@@ -69,18 +98,10 @@
             -->
                   <!-- These are settings that apply to all types of requests \-\- text translation, dictionary lookup, etc -->
              <implementation>Translators\AzureTranslator</implementation>
-             <route>translate</route> 
+             <route>Dictionary/Lookup</route> 
              <method>POST</method> 
-             <query> 
-               <parm name="api-version">3.0</parm>
-               <parm name="textType">plain</parm>
-               <from name="from">DE</from> <!-- A value is not required -->
-               <to name="to" />
-           </query>
-          </translation>
-        <dictionary-lookup>
-        </dictionary-lookup>
-      </services>
+          </request>
+      </requests>
     </provider>
     <provider name="ibm" abbrev="i">
         <settings>   
@@ -97,17 +118,17 @@
           <credentials method="token">
           </credentials>
           <Content-Type>application/json; charset=UTF-8</Content-Type>
+          <implementation>Translators\IbmTranslator</implementation>
+          <query> 
+             <parm name="????">DE</parm>
+             <parm name="???">to</parm>
+          </query>
         </settings>
-        <services>
-           <translation> 
-             <implementation>Translators\IbmTranslator</implementation>
+        <requests>
+           <request type="translation"> 
               <route>translate</route>
               <method>GET/POST???</method>
-              <query> 
-                 <parm name="????">DE</parm>
-                 <parm name="???">to</parm>
-              </query>
-           </translation>
-        </services>
+           </request>
+        </requests>
      </provider>
 </providers>
