@@ -24,6 +24,7 @@
                <header name="Authorization">DeepL-Auth-Key ???????????????????????????????????????</header>
            </credentials>
            <Content-Type>application/json; charset=UTF-8</Content-Type>
+           <implementation>Translators\DeeplTranslator</implementation>
            <query> 
               <from name="source_lang"></from> <!-- A value is not required -->
               <to name="target_lang" />
@@ -35,7 +36,6 @@
               <method>GET</method>
               <!-- The presence of the `input="text"` attribute implies the input text is a query parameter named 'text'. If the input attribute is not present,
                 json input is required. The name attribute is present if and only if the  implementation class is Translator.   -->
-              <implementation>Translators\DeeplTranslator</implementation>
            </request>
         </requests>
    </provider>
@@ -43,13 +43,14 @@
         <settings> 
            <baseurl>https://api.cognitive.microsofttranslator.com</baseurl>
            <credentials method="header">
-              <header name="Ocp-Apim-Subscription-Key">????????????????????????????????</header> 
-              <header name="Ocp-Apim-Subscription-Region">???????</header>
+              <header name="Ocp-Apim-Subscription-Key">???????????//</header> 
+              <header name="Ocp-Apim-Subscription-Region">??????</header>
            </credentials>
            <Content-Type>application/json; charset=UTF-8</Content-Type>
+           <implementation>Translators\AzureTranslator</implementation>
            <query> 
                <parm name="api-version">3.0</parm>
-               <parm name="textType">????</parm>
+               <parm name="textType">plain</parm>
                <from name="from">DE</from> <!-- A value is not required -->
                <to name="to" />
            </query>
@@ -74,7 +75,6 @@
               
             -->
                   <!-- These are settings that apply to all types of requests \-\- text translation, dictionary lookup, etc -->
-             <implementation>Translators\AzureTranslator</implementation>
              <route>translate</route> 
              <method>POST</method> 
           </request>
@@ -113,11 +113,12 @@
   
              Bear token is also supported and recommended for production code.
              -->
-             <header name="apikey">???????????????????????????????????????????</header>
+             <header name="apikey">ApiKey-????????????????????????????????????</header>
           </credentials>   
           <credentials method="token">
           </credentials>
           <Content-Type>application/json; charset=UTF-8</Content-Type>
+          <implementation>Translators\IbmTranslator</implementation>
           <query> 
              <parm name="????">DE</parm>
              <parm name="???">to</parm>
@@ -125,7 +126,6 @@
         </settings>
         <requests>
            <request type="translation"> 
-             <implementation>Translators\IbmTranslator</implementation>
               <route>translate</route>
               <method>GET/POST???</method>
            </request>
