@@ -57,46 +57,10 @@
         </settings>
         <requests>
           <request type="translation">
-          <!--  Azure Translator 3.0 also supports "dictionary lookups" and dictionary examples.
-              
-                   1. translation
-                   2. dictionary look up
-                   3. dictionary examples
-              
-                 Each type of three request types above has a different "route" (that is appended to the base URL)
-              
-                 1. Translation request:
-              
-                       https://api-nam.cognitive.microsofttranslator.com/translate
-              
-                 2. Dictionary look up 
-              
-                       https://api-nam.cognitive.microsofttranslator.com/dictionary/lookup
-              
-            -->
-                  <!-- These are settings that apply to all types of requests \-\- text translation, dictionary lookup, etc -->
              <route>translate</route> 
              <method>POST</method> 
           </request>
           <request type="dictionary">
-          <!--  Azure Translator 3.0 also supports "dictionary lookups" and dictionary examples.
-              
-                   1. translation
-                   2. dictionary look up
-                   3. dictionary examples
-              
-                 Each type of three request types above has a different "route" (that is appended to the base URL)
-              
-                 1. Translation request:
-              
-                       https://api-nam.cognitive.microsofttranslator.com/translate
-              
-                 2. Dictionary look up 
-              
-                       https://api-nam.cognitive.microsofttranslator.com/dictionary/lookup
-              
-            -->
-                  <!-- These are settings that apply to all types of requests \-\- text translation, dictionary lookup, etc -->
              <implementation>Translators\AzureTranslator</implementation>
              <route>Dictionary/Lookup</route> 
              <method>POST</method> 
@@ -107,12 +71,6 @@
         <settings>   
           <baseurl></baseurl>
           <credentials method="custom">
-             <!-- 
-             I believe basic authorization is used in which a username and password are passed, separated from each other by a colon.
-             The username is 'apikey' and the password is your private api-key.
-  
-             Bear token is also supported and recommended for production code.
-             -->
              <header name="apikey">ApiKey-2c8264c6-168e-457a-a910-3be0f9177313</header>
           </credentials>   
           <credentials method="token">
