@@ -4,6 +4,5 @@ namespace Translators;
 
 interface DictionaryInterface {
 
-   public function lookup(string $str, string $dest_lang, string $src_lang="");
-   public function get_examples(string $str, string $dest_lang, string $src_lang="");
+   public function lookup(string $str, string $src_lang, string $dest_lang) : string;
 }

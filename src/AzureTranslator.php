@@ -4,7 +4,7 @@ namespace Translators;
 
 use GuzzleHttp\Psr7\Response;
 
-class AzureTranslator extends Translator {
+class AzureTranslator extends Translator implements DictionaryInterface {
 
    static private string $dict_route = "dictionary/lookup";
 
@@ -42,7 +42,7 @@ class AzureTranslator extends Translator {
    }
 
    // Azure Translator offers dictionary lookup service, too.
-   final public function dict_lookup(string $word, string $src_lang, string $dest_lang) 
+   final public function lookup(string $word, string $src_lang, string $dest_lang) : string 
    {
       // 1. Set the dictionary languages
       $this->setLanguages($dest_lang, $src_lang); 

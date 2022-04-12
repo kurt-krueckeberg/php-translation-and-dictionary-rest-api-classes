@@ -5,6 +5,8 @@ namespace Translators;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
+// This class is not currently used.
+
 abstract class ApiBase {
 
    private string $route;      
