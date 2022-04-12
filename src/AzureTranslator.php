@@ -25,6 +25,7 @@ class AzureTranslator extends Translator {
         parent::__construct($provider);     
    }     
 
+   // Called by base Translator::translate method 
    final function extract_translation(Response $response) : string
    {
        $contents = $response->getBody()->getContents();
@@ -33,12 +34,14 @@ class AzureTranslator extends Translator {
 
        return $obj[0]->translations[0]->text; 
    } 
- 
+
+   // Called by base Translator::translate method 
    final protected function add_text(string $text)
    {
       $this->setJson( [['Text' => $text]] );       
    }
 
+   // Azure Translator offers dictionary lookup service, too.
    final public function dict_lookup(string $word, string $src_lang, string $dest_lang) 
    {
       // 1. Set the dictionary languages
@@ -54,7 +57,7 @@ class AzureTranslator extends Translator {
 
       $contents = $response->getBody()->getContents();
 
-      $obj = json_decode($contents)[0]; // Returned as PHP object
+      $obj = json_decode($contents)[0]; 
 
       return $obj->translations[0]->displayTarget;
    }
