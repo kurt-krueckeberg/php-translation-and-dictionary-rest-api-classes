@@ -6,6 +6,8 @@ use GuzzleHttp\Psr7\Response;
 
 class AzureTranslator extends Translator {
 
+   static private string $dict_route = "dictionary/lookup";
+
     // Azure Translator REST calls can also accept a GUID
    static private function com_create_guid() 
    {
@@ -32,8 +34,20 @@ class AzureTranslator extends Translator {
        return $obj[0]->translations[0]->text; 
    } 
  
-   final protected function add_translation_text(string $text)
+   final protected function add_text(string $text)
    {
       $this->setJson( [['Text' => $text]] );       
+   }
+
+   final public function dict_lookup(string $word, string $to_lang) // todo: Add: dest language
+   {
+      // Uses the same query settings found in config.xml: api-version, from, to 
+      // Question is 'Content-Length'header required?
+      $this->add_text($word);
+
+      // tod: How to add to query parameter a different destination language, say: 'to' => 'EN-US' 
+      $response = $this->post(self::$dict_lookup);
+
+      var_dump($response);
    }
 }

@@ -111,7 +111,7 @@ abstract class ApiBase {
    {
        $this->setLanguages($dest_lang, $source_lang);
 
-       $this->add_translation_text($text); // Implemented by derived classes.
+       $this->add_text($text); // Implemented by derived classes.
 
        $response = $this->client->request($this->method, $this->route, $this->options); 
 
@@ -120,7 +120,7 @@ abstract class ApiBase {
 
    // Overriden by derived classes to add input text to the HTTP Message that Guzzle\Client will send.
    // IT will be added either as a query strng parameter or JSON set in the body of the message by Guzzle\Client.
-   abstract protected function add_translation_text(string $text);
+   abstract protected function add_text(string $text);
     
    // Overriden by derived classes to return translated text as a string.
    abstract protected function extract_translation(Response $response) : string; 

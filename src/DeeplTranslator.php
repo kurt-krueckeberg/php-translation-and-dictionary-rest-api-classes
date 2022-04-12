@@ -22,7 +22,7 @@ class DeeplTranslator extends Translator {
    }
 
    // Overriden to add input to send with request
-   protected function add_translation_text(string $text)
+   protected function add_text(string $text)
    {
       $this->setQueryParm('text', urlencode($text));
    }
