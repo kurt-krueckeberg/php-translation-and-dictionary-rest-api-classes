@@ -137,7 +137,8 @@ abstract class Translator implements TranslateInterface {
        $this->options['json'] = $json;
    }
 
-   // General post method. Intended for AzureTranslator which can do more than translate.
+   // Guzzle  post method, mainly intended for AzureTranslator. in addtion to tranlate, it can do
+   // diictionary lookups and get example sentences, etc.
    protected function post(string $route, array $options)
    {
         return $response = $this->client->request('POST', $route, $optiions);
