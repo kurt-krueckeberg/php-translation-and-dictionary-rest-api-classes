@@ -16,9 +16,12 @@ include "FileReader.php";
   
   $rc = check_args($argv);
 
-  $trans = Translator::createTranslator("config.xml", $argv[1]); // Translator::createTranslator("config.xml", $argv[1])
+  $xml = \simplexml_load_file("config.xml");
 
-  $fetcher = new LeipzigSentenceFetcher($config['leipzig']['corpus']);
+  $trans = Translator::createTranslator($xml, $argv[1]); // Translator::createTranslator("config.xml", $argv[1])
+
+  //-- $fetcher = new LeipzigSentenceFetcher($config['leipzig']['corpus']);
+  $fetcher = new LeipzigSentenceFetcher($xml);
 
   $creator = new WebPageCreator($argv[1]); 
 

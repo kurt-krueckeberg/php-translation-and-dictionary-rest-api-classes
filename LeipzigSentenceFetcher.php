@@ -6,17 +6,23 @@ include "vendor/autoload.php";
 
 class LeipzigSentenceFetcher {
 
-   private static $base_uri = "http://api.corpora.uni-leipzig.de/ws/sentences/";
-   private static $qs_offset = 'offset';
-   private static $qs_limit = 'limit';
+   //--private static $qs_offset = 'offset';
+   //--private static $qs_limit = 'limit';
+   private $route;
+
+   static string $xpath =  "/providers/provider[@abbrev='%s']"; 
 
    private $uri; // Portion that will follow $base_uri, although it does not need to be catenated to it.
 
-   public function __construct(string $corpus)
+   public function __construct(\SimpleXMLElement $xml)
    {
-      $this->route = $corpus . '/sentences'; 	   
+      $query = sprintf(self::$xpath, "l"); 
+     
+      $provider = $xml->xpath($query)[0];
+ 
+      $this->route = $provider->settings->requests->request->route;
 
-      $this->client = new Client(array('base_uri' => self::$base_uri));
+      $this->client = new Client(['base_uri' => (string) $provider->settings->baseurl]);
    }
 
  /* 
