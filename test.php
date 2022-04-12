@@ -19,11 +19,9 @@ try {
 
   echo $translation . "\n";
   
-  echo "Do dictionary lookup..\n";
+  echo "Dictionary lookup:\n";
 
-  $dict = $trans->dict_lookup("Anlagen", "DE", "EN");
-
-  print_r($dict);
+  echo $trans->lookup("Anlagen", "DE", "EN") . "\n";
 
 } catch (RequestException $e) { 
 
