@@ -6,8 +6,10 @@ use Guzzle\Exception\ClientException;
 
 include "vendor/autoload.php";
 
-$trans = Translator::createFromXML("config.xml", "d");
+$xml = \simplexml_load_file("config.xml");
 
+$trans = Translator::createFromXML($xml, "m");
+ 
 $input = array("Guten Tag!", "Guten Morgen");
 
 try {
@@ -16,6 +18,12 @@ try {
      $translation = $trans->translate($text, "RU");
 
   echo $translation . "\n";
+  
+  echo "Do dictionary lookup..\n";
+
+  $dict = $trans->dict_lookup("Anlagen", "DE", "EN");
+
+  print_r($dict);
 
 } catch (RequestException $e) { 
 

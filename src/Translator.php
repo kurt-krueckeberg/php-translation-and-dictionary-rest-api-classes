@@ -74,40 +74,31 @@ abstract class Translator implements TranslateInterface {
    // Assign xml <query> section settings 
    private function setQueryOptions(\SimpleXMLElement $query)
    {
-      $this->from_key = (string) $query->from['name'];
       $query_array = array();
 
-       // set default source language, if present     
-      if ($query->from !== '')
+      $this->from_key = (string) $query->from['name'];
 
-          $query_array[$this->from_key] = (string) $query->from;
-      
       $this->to_key = (string) $query->to['name'];
 
-      // set default destination language, if present
-      if ($query->to !== '') 
-
-            $query_array[$this->to_key] = (string) $query->to;
-
-      // Set other default query string settings
       foreach($query->parm as $parm)  
-
-          $query_array[ (string) $parm["name"] ] = urlencode( (string) $parm );
+              $query_array[ (string) $parm["name"] ] = urlencode( (string) $parm );
 
       $this->options['query'] = $query_array;
    }
 
-   // Called by translate(string $text, string $dest_lang, $source_lang="")
-   private function setLanguages(string $dest_lang, $source_lang="")
+   // If this is a translation request and there is no source language, the source langauge will be auto-detected.
+   protected function setLanguages(string $dest_lang, $source_lang="")
    {
-      if ($source_lang !== "")
+      if ($source_lang !== "") 
            $this->options['query'][$this->from_key] = $source_lang; 
 
       $this->options['query'][$this->to_key] = $dest_lang; 
    }
 
-   /* 'Template pattern' method that calls abstract protected methods overriden by derived classes (to prepare the input amd
-       to extract the translated text (as a string) from he reponse. */
+   /*
+     Template-pattern method that calls abstract protected methods overriden by derived classes (to prepare the input amd
+       to extract the translated text and return a translated string from he reponse). 
+    */
    final public function translate(string $text, string $dest_lang, $source_lang="")
    {
        $this->setLanguages($dest_lang, $source_lang);
@@ -141,6 +132,6 @@ abstract class Translator implements TranslateInterface {
    // diictionary lookups and get example sentences, etc.
    protected function post(string $route)
    {
-        return $response = $this->client->request('POST', $route, $optiions);
+        return $this->client->request('POST', $route, $this->options);
    }
 }

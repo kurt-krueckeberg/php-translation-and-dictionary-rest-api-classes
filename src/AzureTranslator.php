@@ -39,15 +39,24 @@ class AzureTranslator extends Translator {
       $this->setJson( [['Text' => $text]] );       
    }
 
-   final public function dict_lookup(string $word, string $to_lang) // todo: Add: dest language
+   final public function dict_lookup(string $word, string $src_lang, string $dest_lang) 
    {
+      // 1. Set the dictionary languages
+      $this->setLanguages($dest_lang, $src_lang); 
+       
+      // 2. Add the json input
       // Uses the same query settings found in config.xml: api-version, from, to 
       // Question is 'Content-Length'header required?
-      $this->add_text($word);
+      $this->setJson( [['Text' => $word]] );
 
-      // tod: How to add to query parameter a different destination language, say: 'to' => 'EN-US' 
-      $response = $this->post(self::$dict_lookup);
+      // 3. Issue post request 
+      $response = $this->post(self::$dict_route);
 
-      var_dump($response);
+      $contents = $response->getBody()->getContents();
+
+      $obj = json_decode($contents); // Returned as PHP object
+      die("Extract from the PHP object the dictionary lookups we want\n");
+
+      return $obj;
    }
 }
