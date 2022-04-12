@@ -12,7 +12,7 @@ class DeeplTranslator extends Translator {
    }
 
    // Overriden to return the string in the the first element of the translations array. 
-   public function process_response(Response $response) : string
+   public function extract_translation(Response $response) : string
    {
       $contents = $response->getBody()->getContents();
 
@@ -22,7 +22,7 @@ class DeeplTranslator extends Translator {
    }
 
    // Overriden to add input to send with request
-   protected function add_input(string $text)
+   protected function add_translation_text(string $text)
    {
       $this->setQueryParm('text', urlencode($text));
    }

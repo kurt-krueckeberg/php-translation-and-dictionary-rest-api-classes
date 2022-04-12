@@ -23,7 +23,7 @@ class AzureTranslator extends Translator {
         parent::__construct($provider);     
    }     
 
-   final function process_response(Response $response) : string
+   final function extract_translation(Response $response) : string
    {
        $contents = $response->getBody()->getContents();
 
@@ -32,7 +32,7 @@ class AzureTranslator extends Translator {
        return $obj[0]->translations[0]->text; 
    } 
  
-   final protected function add_input(string $text)
+   final protected function add_translation_text(string $text)
    {
       $this->setJson( [['Text' => $text]] );       
    }

@@ -9,7 +9,7 @@ class IbmTranslator extends Translator {
       parent::__construct($provider);
    }
 
-   protected function add_input(string $text, array $options)
+   protected function add_translation_text(string $text, array $options)
    {
    }
 }

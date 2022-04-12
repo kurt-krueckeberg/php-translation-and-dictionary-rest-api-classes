@@ -112,21 +112,19 @@ abstract class Translator implements TranslateInterface {
    {
        $this->setLanguages($dest_lang, $source_lang);
 
-       $this->add_input($text); // Implemented by derived classes.
+       $this->add_translation_text($text); // Implemented by derived classes.
 
-       // todo: IF AzureTranslator supports more than translate requests. It supports requests for dicitonary lookup and examples 
-       // which have different routes. 
        $response = $this->client->request($this->method, $this->route, $this->options); 
 
-       return $this->process_response($response);
+       return $this->extract_translation($response);
    }
 
    // Overriden by derived classes to add input text to the HTTP Message that Guzzle\Client will send.
    // IT will be added either as a query strng parameter or JSON set in the body of the message by Guzzle\Client.
-   abstract protected function add_input(string $text);
+   abstract protected function add_translation_text(string $text);
     
    // Overriden by derived classes to return translated text as a string.
-   abstract protected function process_response(Response $response) : string; 
+   abstract protected function extract_translation(Response $response) : string; 
    
    protected function setQueryParm(string $key, string $value)
    {
@@ -137,5 +135,11 @@ abstract class Translator implements TranslateInterface {
    protected function setJson(array $json)
    {
        $this->options['json'] = $json;
+   }
+
+   // General post method. Intended for AzureTranslator which can do more than translate.
+   protected function post(string $route, array $options)
+   {
+        return $response = $this->client->request('POST', $route, $optiions);
    }
 }
