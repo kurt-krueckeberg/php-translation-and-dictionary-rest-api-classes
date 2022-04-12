@@ -5,16 +5,16 @@
            <credentials method="none"></credentials>
            <baseurl>http://api.corpora.uni-leipzig.de/ws</baseurl> <!-- https?? -->
            <Content-Type>application/json; charset=UTF-8</Content-Type>  <!-- This seems to be the default of RST APIs. It is the Guzzle default, right? -->
+           <query> 
+               <parm name="offset">0</parm> 
+               <parm name="limit">10</parm> 
+           </query> 
         </settings>
         <requests> 
-           <sentences>
+           <request type="sentences"> 
               <route>sentences/deu_news_2012_1M/sentences</route> 
               <method>GET</method> 
-              <query> 
-                  <parm name="offset">0</parm> 
-                  <parm name="limit">10</parm> 
-              </query> 
-           </sentences>
+          </request>
         </requests>
    </provider>
    <provider name="deepl" abbrev="d">
