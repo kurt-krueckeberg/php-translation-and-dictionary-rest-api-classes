@@ -42,17 +42,24 @@ use Guzzle\Exception\ClientException;
 
 include "vendor/autoload.php";
 
-// Passing configuration XML file and provider one-letter abbreviation
-$trans = Translator::createFromXML("config.xml", "d");
+$xml = \simplexml_load_file("config.xml");
 
+$trans = Translator::createFromXML($xml, "m");
+ 
 $input = array("Guten Tag!", "Guten Morgen");
 
 try {
 
-  foreach ($input as $text) // Translate German (specified in config.xml) into Russian 
+  foreach ($input as $text) // Translate into Russian 
      $translation = $trans->translate($text, "RU");
 
   echo $translation . "\n";
+  
+  echo "Do dictionary lookup..\n";
+
+  $dict = $trans->dict_lookup("Anlagen", "DE", "EN");
+
+  print_r($dict);
 
 } catch (RequestException $e) { 
 
@@ -79,7 +86,24 @@ Describe config.xml
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <providers>
-    <provider name="deepl" abbrev="d">
+    <provider name="leipzig" abbrev="l">
+        <settings>      
+           <credentials method="none"></credentials>
+           <baseurl>http://api.corpora.uni-leipzig.de/ws</baseurl> <!-- https?? -->
+           <Content-Type>application/json; charset=UTF-8</Content-Type>  <!-- This seems to be the default of RST APIs. It is the Guzzle default, right? -->
+        </settings>
+        <requests> 
+           <sentences>
+              <route>sentences/deu_news_2012_1M/sentences</route> 
+              <method>GET</method> 
+              <query> 
+                  <parm name="offset">0</parm> 
+                  <parm name="limit">10</parm> 
+              </query> 
+           </sentences>
+        </requests>
+   </provider>
+   <provider name="deepl" abbrev="d">
         <settings>   
            <baseurl>https://api-free.deepl.com/v2</baseurl>
            <credentials method="header">
@@ -88,7 +112,7 @@ Describe config.xml
            <Content-Type>application/json; charset=UTF-8</Content-Type>
            <implementation>Translators\DeeplTranslator</implementation>
            <query> 
-              <from name="source_lang"></from> <!-- A value is not required -->
+              <from name="source_lang" />
               <to name="target_lang" />
            </query>
         </settings>
@@ -113,52 +137,16 @@ Describe config.xml
            <query> 
                <parm name="api-version">3.0</parm>
                <parm name="textType">plain</parm>
-               <from name="from">DE</from> <!-- A value is not required -->
+               <from name="from" />
                <to name="to" />
            </query>
         </settings>
         <requests>
           <request type="translation">
-          <!--  Azure Translator 3.0 also supports "dictionary lookups" and dictionary examples.
-              
-                   1. translation
-                   2. dictionary look up
-                   3. dictionary examples
-              
-                 Each type of three request types above has a different "route" (that is appended to the base URL)
-              
-                 1. Translation request:
-              
-                       https://api-nam.cognitive.microsofttranslator.com/translate
-              
-                 2. Dictionary look up 
-              
-                       https://api-nam.cognitive.microsofttranslator.com/dictionary/lookup
-              
-            -->
-                  <!-- These are settings that apply to all types of requests \-\- text translation, dictionary lookup, etc -->
              <route>translate</route> 
              <method>POST</method> 
           </request>
           <request type="dictionary">
-          <!--  Azure Translator 3.0 also supports "dictionary lookups" and dictionary examples.
-              
-                   1. translation
-                   2. dictionary look up
-                   3. dictionary examples
-              
-                 Each type of three request types above has a different "route" (that is appended to the base URL)
-              
-                 1. Translation request:
-              
-                       https://api-nam.cognitive.microsofttranslator.com/translate
-              
-                 2. Dictionary look up 
-              
-                       https://api-nam.cognitive.microsofttranslator.com/dictionary/lookup
-              
-            -->
-                  <!-- These are settings that apply to all types of requests \-\- text translation, dictionary lookup, etc -->
              <implementation>Translators\AzureTranslator</implementation>
              <route>Dictionary/Lookup</route> 
              <method>POST</method> 
@@ -169,13 +157,7 @@ Describe config.xml
         <settings>   
           <baseurl></baseurl>
           <credentials method="custom">
-             <!-- 
-             I believe basic authorization is used in which a username and password are passed, separated from each other by a colon.
-             The username is 'apikey' and the password is your private api-key.
-  
-             Bear token is also supported and recommended for production code.
-             -->
-             <header name="apikey">ApiKey-????????????????????????????????????</header>
+              <header name="apikey">ApiKey-????????????????????????????????????</header>
           </credentials>   
           <credentials method="token">
           </credentials>
@@ -184,6 +166,8 @@ Describe config.xml
           <query> 
              <parm name="????">DE</parm>
              <parm name="???">to</parm>
+             <from name="from" /> 
+             <to name="to" />
           </query>
         </settings>
         <requests>
