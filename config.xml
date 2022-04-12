@@ -43,7 +43,7 @@
         <settings> 
            <baseurl>https://api.cognitive.microsofttranslator.com</baseurl>
            <credentials method="header">              
-              <header name="Ocp-Apim-Subscription-Key">ef6e5b44c68d438c8d79cae2f8c020ba</header>  <!-- Not working anymore -->
+              <header name="Ocp-Apim-Subscription-Key">ef6e5b44c68d438c8d79cae2f8c020ba</header> 
               <header name="Ocp-Apim-Subscription-Region">eastus2</header>
            </credentials>
            <Content-Type>application/json; charset=UTF-8</Content-Type>

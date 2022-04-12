@@ -26,7 +26,7 @@
            <Content-Type>application/json; charset=UTF-8</Content-Type>
            <implementation>Translators\DeeplTranslator</implementation>
            <query> 
-              <from name="source_lang"></from> <!-- A value is not required -->
+              <from name="source_lang" />
               <to name="target_lang" />
            </query>
         </settings>
@@ -51,7 +51,7 @@
            <query> 
                <parm name="api-version">3.0</parm>
                <parm name="textType">plain</parm>
-               <from name="from">DE</from> <!-- A value is not required -->
+               <from name="from" />
                <to name="to" />
            </query>
         </settings>
@@ -80,6 +80,8 @@
           <query> 
              <parm name="????">DE</parm>
              <parm name="???">to</parm>
+             <from name="from" /> 
+             <to name="to" />
           </query>
         </settings>
         <requests>
