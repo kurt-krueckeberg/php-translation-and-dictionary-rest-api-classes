@@ -1,39 +1,62 @@
+#!/usr/bin/env php
 <?php
 declare(strict_types=1);
 use Translators\Translator;
-use Guzzle\Exception\RequestException;
-use Guzzle\Exception\ClientException;
 
-include "vendor/autoload.php";
+include "LeipzigSentenceFetcher.php";
 
-$xml = \simplexml_load_file("config.xml");
-
-$trans = Translator::createFromXML($xml, "m");
- 
-$input = array("Guten Tag!", "Guten Morgen");
-
-try {
-
-  foreach ($input as $text) // Translate into Russian 
-     $translation = $trans->translate($text, "RU");
-
-  echo $translation . "\n";
+include "WebPageCreator.php";
+include "FileReader.php";
+/*
+  if ($argc < 2) {
   
-  echo "Dictionary lookup:\n";
+      echo "Enter name of translation service (i for IBM, m for Microsoft or d for DEEPL), and the name of the output HTML file (omit .html)\n";
+      return;
+  }
+  */
 
-  echo $trans->lookup("Anlagen", "DE", "EN") . "\n";
+  //$rc = check_args($argv);
 
-} catch (RequestException $e) { 
+  $xml = \simplexml_load_file("config.xml");
 
-    // If a response code was set, get it.
-    if ($e->hasResponse()) echo "Response Code = " . $e->getResponse()->getStatusCode();
+  $trans = Translator::createfromXML($xml, "m"); //$argv[1]); // Translator::createTranslator("config.xml", $argv[1])
 
-    else echo  "No response from server.";
+  //-- $fetcher = new LeipzigSentenceFetcher($config['leipzig']['corpus']);
+  $fetcher = new LeipzigSentenceFetcher($xml);
 
-    echo "\nException: message = " . $e->getMessage() . "\n";
+  $creator = new WebPageCreator($argv[1]); 
 
-} catch (\Exception $e) {
-    
-    echo "\nException: message = " . $e->getMessage() . "\n";
-} 
+  $file =  new FileReader($config['leipzig']['input_file']);
+ 
+  try {
 
+    foreach ($file as $de) {
+   
+       // TODO: MS Trnaslator Azure Service has a dictionary look up--IBM, too?
+   
+       $creator->write("<strong>$de</strong>", "&nbsp;"); 
+
+       /* 
+         SentenceInformation (is an object) containing:
+   
+           1. id
+           2. sentence - the actual string text of the sample sentence
+           3. source - of type SourceInformation 
+        */
+      
+       $sentenceInfo_objs = $fetcher->get_sentences($de);
+         
+       foreach ($sentenceInfo_objs as $sentenceInfo_obj) {
+   
+            $de_sentence = $sentenceInfo_obj->sentence;
+
+            $translations = $trans->translate($de_sentence,  $src_lang, $target_lang);
+            
+            $creator->write($de_sentence, $translations[0]->text); // <-- todo: Get rid of '[0]' and invent a general return type.
+       }
+    }
+
+  } catch (Exception $e) {
+
+         echo "Exception: message = " . $e->getMessage() . "\n";
+  } 

@@ -19,10 +19,18 @@ class LeipzigSentenceFetcher {
       $query = sprintf(self::$xpath, "l"); 
      
       $provider = $xml->xpath($query)[0];
+      
+      $this->setConfig(($provider);
  
-      $this->route = $provider->settings->requests->request->route;
+      $this->route = $provider->requests->request->route;
 
       $this->client = new Client(['base_uri' => (string) $provider->settings->baseurl]);
+   }
+   
+   private function setConfig(\SimpleXMLElemen $p)
+   {
+      $this->route = $p->requests->request->route;
+      // todo:finish
    }
 
  /* 
