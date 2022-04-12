@@ -54,9 +54,8 @@ class AzureTranslator extends Translator {
 
       $contents = $response->getBody()->getContents();
 
-      $obj = json_decode($contents); // Returned as PHP object
-      die("Extract from the PHP object the dictionary lookups we want\n");
+      $obj = json_decode($contents)[0]; // Returned as PHP object
 
-      return $obj;
+      return $obj->translations[0]->displayTarget;
    }
 }
