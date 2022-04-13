@@ -17,7 +17,7 @@
 
 - [Related articles to code above](https://medium.com/@anhaia.gabriel)
 
-- [pDesign Patterns PHP](https://designpatternsphp.readthedocs.io/en/latest/README.html) has all classical DP, plus some more.
+- [Design Patterns PHP](https://designpatternsphp.readthedocs.io/en/latest/README.html) has all classical DP, plus some more.
 
 - [Chain of Resposibilty Pattern](https://orangesoft.co/blog/chain-of-responsibility-design-pattern-in-php) in PHP
 
