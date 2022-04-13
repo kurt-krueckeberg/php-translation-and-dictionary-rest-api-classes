@@ -23,19 +23,21 @@ include "FileReader.php";
 
   $fetcher = new SentenceFetcher($xml);
   
-  // TODO: Add in FileReader that will open file with words to translate
-  
+  $creator = new WebPageCreator("new");// $argv[1]); 
+
+  $file =  new FileReader($argv[0]);
+ 
   try {
 
-    foreach ($file as $de) {
+    foreach ($file as $word) {
    
        $creator->write("<strong>$de</strong>", "&nbsp;"); 
 
-       foreach ( $fetcher->fetch("Anlagen", 3) as $de_sentence) {
+       foreach ( $fetcher->fetch($word, 3) as $sentence) {
 
-            echo $de_sentence . "\n";
+            echo $sentence . "\n";
 
-            $translation = $trans->translate($de_sentence,  $src_lang, $target_lang);
+            $translation = $trans->translate($sentence,  "DE", "EN-US");
             
             $creator->write($de_sentence, $translation); 
        }
@@ -44,4 +46,4 @@ include "FileReader.php";
   } catch (Exception $e) {
 
          echo "Exception: message = " . $e->getMessage() . "\n";
-  } 
+  }  
