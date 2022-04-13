@@ -23,4 +23,16 @@
 
 ## Understanding PHP Iterators 
 
-???
+## PHP Iterators
+
+They are applicable to what SentenceFetcher::fetches() retunrs.
+
+- Basic Intor to [WPHP ITerators](https://www.w3schools.com/php/php_iterables.asp)
+
+- Extensive Explantion of PHP [iteraters](https://webmobtuts.com/backend-development/php-iterators-part-1-traversable-iterable-iterator-and-iterator-aggregate/)
+
+- [PHP Iterators and "decorating them"](http://piotrpasich.com/spl-iterators-against-the-performance/)
+
+- [Iterators in PHP](https://www.sitepoint.com/using-spl-iterators-1/)
+
+- [Discussion and Overiview of PHP Iteraters](https://startutorial.com/view/modern-php-developer-iterator)
