@@ -9,16 +9,16 @@ class SentenceInformationResultsIterator implements \Iterator {
     private int $cnt;
     private int $current;
 
-    public function __construct(array $objs, int $count) 
+    public function __construct(array $objs) 
     {
        $this->sents = $objs;
-       $this->cnt = $count;
+       $this->cnt = count($objs);
        $this->current = 0; 
     }
 
     public function current(): mixed
     {
-        return $this->sents[$current]->sentence;
+        return $this->sents[$this->current]->sentence;
     }
 
     public function key(): mixed
@@ -141,6 +141,6 @@ class SentenceFetcher {
            3. source => ["daate" => ..., "id" => string, "url" => string]
         */
 
-      return new SentenceInformationResultsIterator( $obj->sentences, $obj->count ); // Return the array of SentenceInformation objects  
+      return new SentenceInformationResultsIterator( $obj->sentences ); // Return the array of SentenceInformation objects  
    }
 }
