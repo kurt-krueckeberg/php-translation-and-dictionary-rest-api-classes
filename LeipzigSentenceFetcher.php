@@ -1,14 +1,15 @@
 <?php
+namespace Sentences;
 use GuzzleHttp\Client as Client;
-use GuzzleHttp\Exception\RequestException as RequestException;
 
 include "vendor/autoload.php";
 
 class LeipzigSentenceFetcher {
 
-   //--private static $qs_offset = 'offset';
-   //--private static $qs_limit = 'limit';
+   private static $offset = 'offset';
+   private static $limit = 'limit';
    private $route;
+   private $client;
 
    static string $xpath =  "/providers/provider[@abbrev='%s']"; 
 
@@ -20,18 +21,23 @@ class LeipzigSentenceFetcher {
      
       $provider = $xml->xpath($query)[0];
       
-      $this->setConfig(($provider);
+      $this->setConfig($provider);
  
-      $this->route = $provider->requests->request->route;
-
       $this->client = new Client(['base_uri' => (string) $provider->settings->baseurl]);
    }
    
-   private function setConfig(\SimpleXMLElemen $p)
+   private function setConfig(\SimpleXMLElement $p)
    {
       $this->route = $p->requests->request->route;
-      // todo:finish
-   }
+      $this->method = $p->requests->request->route;
+
+      $query = array();
+
+      foreach($p->settings->query->parm as $parm)  
+              $query_array[ (string) $parm["name"] ] = urlencode( (string) $parm );
+
+      $this->options['query'] = $query_array;
+    }
 
  /* 
     get_sentences() returns an array of SentenceInformation objects, each with these properties:
@@ -66,10 +72,11 @@ class LeipzigSentenceFetcher {
    {
       $url = $this->route . '/' . urlencode($word);
 
-      $response = $this->client->request('GET', $url, ['query' => [LeipzigSentenceFetcher::$qs_offset => 0, LeipzigSentenceFetcher::$qs_limit => $count]]);
+      $response = $this->client->request('GET', $url, ['query' => [LeipzigSentenceFetcher::$offset => 0, LeipzigSentenceFetcher::$limit => $count]]);
       
       $contents = $response->getBody()->getContents();
-
+ 
+      // urlecode?
       $obj = json_decode($contents);
 
       return $obj->sentences; // Return the array of SentenceInformation objects  

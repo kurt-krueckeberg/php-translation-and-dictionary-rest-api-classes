@@ -24,7 +24,7 @@ include "FileReader.php";
   //-- $fetcher = new LeipzigSentenceFetcher($config['leipzig']['corpus']);
   $fetcher = new LeipzigSentenceFetcher($xml);
 
-  $creator = new WebPageCreator($argv[1]); 
+  $creator = new WebPageCreator("new.html");// $argv[1]); 
 
   $file =  new FileReader($config['leipzig']['input_file']);
  
