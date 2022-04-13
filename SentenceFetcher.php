@@ -67,7 +67,7 @@ class SentenceFetcher {
     get_sentences() returns the sentences[count] array.
    */
 
-   public function fetch(string $word, int $count=3) : \Iterator
+   public function fetch(string $word, int $count=3) : \ArrayIterator
    {
       $url = $this->route . '/' . urlencode($word);
 
@@ -78,7 +78,24 @@ class SentenceFetcher {
       // urlecode?
       $obj = json_decode($contents);
 
-       /* 
+     /*
+       This is what Leipzip returns{
+       
+       {
+         "count": 0,
+         "sentences": [
+           {
+             "id": "string",
+             "sentence": "string",
+             "source": {
+               "date": "2022-04-13T12:40:23.904Z",
+               "id": "string",
+               "url": "string"
+             }
+           }
+         ]
+       }
+     
          SentenceInformation (is an object) containing:
    
            1. id
@@ -89,4 +106,52 @@ class SentenceFetcher {
       return $obj->sentences; // Return the array of SentenceInformation objects  
       
    }
+}
+
+class SentenceInformationArray implements ArrayIterator {
+
+       /* 
+         SentenceInformation (is an object) containing:
+   
+           1. id
+           2. sentence - the actual string text of the sample sentence
+           3. source - of type SourceInformation 
+        */
+
+    private $container = array();
+
+    public function __construct() 
+    {
+        $this->container = array(
+            "one"   => 1,
+            "two"   => 2,
+            "three" => 3,
+        );
+    }
+
+    public function offsetSet($offset, $value) 
+    {
+        if (is_null($offset)) {
+
+            $this->container[] = $value;
+        } else {
+
+            $this->container[$offset] = $value;
+        }
+    }
+
+    public function offsetExists($offset) 
+    {
+        return isset($this->container[$offset]);
+    }
+
+    public function offsetUnset($offset) 
+    {
+        unset($this->container[$offset]);
+    }
+
+    public function offsetGet($offset) 
+    {
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+    }
 }
