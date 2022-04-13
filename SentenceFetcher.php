@@ -3,7 +3,7 @@ use GuzzleHttp\Client as Client;
 
 include "vendor/autoload.php";
 
-class SentenceInformationResultsIterator implements \Iterator {
+class SentenceResultsIterator implements \Iterator {
 
     private array $sents;
     private int $cnt;
@@ -41,6 +41,7 @@ class SentenceInformationResultsIterator implements \Iterator {
       return ($this->cnt !== $this->current); 
     }
 }
+
 class SentenceFetcher {
 
    private static $offset = 'offset';
@@ -76,35 +77,6 @@ class SentenceFetcher {
       $this->options['query'] = $query_array;
     }
 
- /* 
-    get_sentences() returns an array of SentenceInformation objects, each with these properties:
-
-    1. id
-    2. sentence - the actual text of the sample sentence
-    3. source - of type information, the URI 
-
-    Clients can extract the sentence with this loop:
-
-    foreach ($obj->sentences as $sentence_information) {
-
-       $sentence = $sentence_information->sentence;
-       //...snip
-     }
- 
-    After get_sentences() executes
-
-         $contents = $response->getBody()->getContents();
-
-         $obj = json_decode($contents);
-
-    $obj is a SentenceList object with these properties: 
-
-    1. count - integer, size of sentences[] array
-    2. sentences[count] - an array of count SentenceInformation elements.
-
-    get_sentences() returns the sentences[count] array.
-   */
-
    public function fetch(string $word, int $count=3) : SentenceInformationResultsIterator 
    {
       $url = $this->route . '/' . urlencode($word);
@@ -113,11 +85,11 @@ class SentenceFetcher {
       
       $contents = $response->getBody()->getContents();
  
-      // urlecode?
+      // todo: urlecode needed?
       $obj = json_decode($contents);
 
      /*
-       This is what Leipzip returns
+       This is what is returned:
        
        {
          "count": 0,
@@ -134,7 +106,7 @@ class SentenceFetcher {
          ]
        }
      
-         SentenceInformation is an object, (stdClass) containing:
+         SentenceInformation is a PHP stdClass containing:
    
            1. id  => string
            2. sentence => the actual string text of the sample sentence
