@@ -22,6 +22,8 @@ include "FileReader.php";
   $trans = Translator::createfromXML($xml, "m"); //$argv[1]); // Translator::createTranslator("config.xml", $argv[1])
 
   $fetcher = new SentenceFetcher($xml); 
+  
+  $r = $fetcher->fetch("Anlagen", 3);
 
   $creator = new WebPageCreator("new");// $argv[1]); 
 

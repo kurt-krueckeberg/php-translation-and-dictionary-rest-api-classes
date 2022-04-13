@@ -1,3 +1,4 @@
+- See SentenceFetcher::fetch() todo.
 
 - Make ~/rest-translators a github repositories composer package.
 

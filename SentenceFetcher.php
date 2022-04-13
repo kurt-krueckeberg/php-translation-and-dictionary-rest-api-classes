@@ -66,8 +66,9 @@ class SentenceFetcher {
 
     get_sentences() returns the sentences[count] array.
    */
-    
-   public function fetch(string $word, int $count=3)
+
+  // TODO: Return an Iterable class/object.  
+   public function fetch(string $word, int $count=3) 
    {
       $url = $this->route . '/' . urlencode($word);
 
@@ -77,6 +78,14 @@ class SentenceFetcher {
  
       // urlecode?
       $obj = json_decode($contents);
+
+       /* 
+         SentenceInformation (is an object) containing:
+   
+           1. id
+           2. sentence - the actual string text of the sample sentence
+           3. source - of type SourceInformation 
+        */
 
       return $obj->sentences; // Return the array of SentenceInformation objects  
       
