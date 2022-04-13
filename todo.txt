@@ -1,15 +1,3 @@
-Deepl- and AzureTransltor work.
 
-- add github repositories
+- Make ~/rest-translators a github repositories composer package.
 
-- Change TranslatorInterface::translate() to take two language parms, as before.
-
-- Add code for Azure dictionary lookup.
-
-## Design Changes
-
-During Translator::__construct(...) pass the default config.xml seeting to the to Guzzle\Client constructor that are currently pass during the translate() call
-This includes all the query-section settings and a default json option if and only json input will be required--something that derived classes will know. Therefore
-make Translator::__constructor() a template method that call, say, `configureAddtionalOptions($options)` or `addSpeccalConfiguration($options)`. In the case,
-
-Then when translate(string $text) is called, it will call, say, `add_request_options($this->client->getConfig());` other adding the basic options.

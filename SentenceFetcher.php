@@ -1,10 +1,9 @@
 <?php
-namespace Sentences;
 use GuzzleHttp\Client as Client;
 
 include "vendor/autoload.php";
 
-class LeipzigSentenceFetcher {
+class SentenceFetcher {
 
    private static $offset = 'offset';
    private static $limit = 'limit';
@@ -68,11 +67,11 @@ class LeipzigSentenceFetcher {
     get_sentences() returns the sentences[count] array.
    */
     
-   public function get_sentences(string $word, int $count=10)
+   public function fetch(string $word, int $count=3)
    {
       $url = $this->route . '/' . urlencode($word);
 
-      $response = $this->client->request('GET', $url, ['query' => [LeipzigSentenceFetcher::$offset => 0, LeipzigSentenceFetcher::$limit => $count]]);
+      $response = $this->client->request('GET', $url, ['query' => [self::$offset => 0, self::$limit => $count]]);
       
       $contents = $response->getBody()->getContents();
  

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 use Translators\Translator;
 
-include "LeipzigSentenceFetcher.php";
+include "SentenceFetcher.php";
 
 include "WebPageCreator.php";
 include "FileReader.php";
@@ -21,8 +21,7 @@ include "FileReader.php";
 
   $trans = Translator::createfromXML($xml, "m"); //$argv[1]); // Translator::createTranslator("config.xml", $argv[1])
 
-  //-- $fetcher = new LeipzigSentenceFetcher($config['leipzig']['corpus']);
-  $fetcher = new LeipzigSentenceFetcher($xml);
+  $fetcher = new SentenceFetcher($xml); 
 
   $creator = new WebPageCreator("new.html");// $argv[1]); 
 
@@ -31,8 +30,6 @@ include "FileReader.php";
   try {
 
     foreach ($file as $de) {
-   
-       // TODO: MS Trnaslator Azure Service has a dictionary look up--IBM, too?
    
        $creator->write("<strong>$de</strong>", "&nbsp;"); 
 
@@ -44,7 +41,7 @@ include "FileReader.php";
            3. source - of type SourceInformation 
         */
       
-       $sentenceInfo_objs = $fetcher->get_sentences($de);
+       $sentenceInfo_objs = $fetcher->fetch($de); // todo: Retirn Iterator? IteratorIterator?
          
        foreach ($sentenceInfo_objs as $sentenceInfo_obj) {
    
