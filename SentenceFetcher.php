@@ -3,6 +3,44 @@ use GuzzleHttp\Client as Client;
 
 include "vendor/autoload.php";
 
+class SentenceInformationResultsIterator implements \Iterator {
+
+    private array $sents;
+    private int $cnt;
+    private int $current;
+
+    public function __construct(array $objs, int $count) 
+    {
+       $this->sents = $objs;
+       $this->cnt = $count;
+       $this->current = 0; 
+    }
+
+    public function current(): mixed
+    {
+        return $this->sents[$current]->sentence;
+    }
+
+    public function key(): mixed
+    {
+         return $this->current;
+    }
+
+    public function next(): void
+    {
+       ++$this->current;
+
+    }
+    public function rewind(): void
+    {
+       $this->current = 0; 
+    }
+
+    public function valid(): bool
+    {
+      return ($this->cnt !== $this->current); 
+    }
+}
 class SentenceFetcher {
 
    private static $offset = 'offset';
@@ -67,7 +105,7 @@ class SentenceFetcher {
     get_sentences() returns the sentences[count] array.
    */
 
-   public function fetch(string $word, int $count=3) : \ArrayIterator //todo: Return \ArrayIterator?? OR \Iterator??. See class below this one.
+   public function fetch(string $word, int $count=3) : SentenceInformationResultsIterator 
    {
       $url = $this->route . '/' . urlencode($word);
 
@@ -103,35 +141,6 @@ class SentenceFetcher {
            3. source => ["daate" => ..., "id" => string, "url" => string]
         */
 
-      return $obj->sentences; // Return the array of SentenceInformation objects  
-
-
-      /* todo:
-        Get a quick implementation of ArrayIterator:
-        $x = ArrayObject($obj->sentences)
-        return $x->getIterator();    
-       */ 
+      return new SentenceInformationResultsIterator( $obj->sentences, $obj->count ); // Return the array of SentenceInformation objects  
    }
-}
-
-/*
-class SentenceInformationResults {
-
-    private $sents;
-
-    public function __construct($objs) 
-    {
-       $this->sents = $objs;
-    }
-}
-*/
-
-class SentenceInformationResultsIterator implements \Iterator {
-
-    private $sents;
-
-    public function __construct($objs) 
-    {
-       $this->sents = $objs;
-    }
 }
