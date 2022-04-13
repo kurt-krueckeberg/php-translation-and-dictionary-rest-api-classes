@@ -67,7 +67,7 @@ class SentenceFetcher {
     get_sentences() returns the sentences[count] array.
    */
 
-   public function fetch(string $word, int $count=3) : //todo: Return \ArrayIterator?? OR \Iterator??. See class below this one.
+   public function fetch(string $word, int $count=3) : \ArrayIterator //todo: Return \ArrayIterator?? OR \Iterator??. See class below this one.
    {
       $url = $this->route . '/' . urlencode($word);
 
@@ -105,6 +105,7 @@ class SentenceFetcher {
 
       return $obj->sentences; // Return the array of SentenceInformation objects  
 
+
       /* todo:
         Get a quick implementation of ArrayIterator:
         $x = ArrayObject($obj->sentences)
@@ -113,16 +114,24 @@ class SentenceFetcher {
    }
 }
 
+/*
+class SentenceInformationResults {
 
-class SentenceInformationIterator implements Iterator, Countable {
+    private $sents;
 
-    private &$sents;
-
-    public function __construct(&$objs) 
+    public function __construct($objs) 
     {
-       $this->sents = &obkjs
+       $this->sents = $objs;
     }
+}
+*/
 
+class SentenceInformationResultsIterator implements \Iterator {
 
-$it = $obj->getIterator();
+    private $sents;
+
+    public function __construct($objs) 
+    {
+       $this->sents = $objs;
+    }
 }
