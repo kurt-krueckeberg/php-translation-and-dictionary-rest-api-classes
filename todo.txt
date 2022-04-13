@@ -1,4 +1,5 @@
-- See SentenceFetcher::fetch() todo.
 
-- Make ~/rest-translators a github repositories composer package.
+- Make ~/rest-translators a github respoistory-backed composer package.
+
+- Make ~/e a github respoistory-backed composer package that usese the rest-tranlators pakckage.
 
