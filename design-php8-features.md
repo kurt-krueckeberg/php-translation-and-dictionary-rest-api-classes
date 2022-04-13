@@ -29,7 +29,7 @@ They are applicable to what SentenceFetcher::fetches() retunrs.
 
 - Basic Introduction to [PHP ITerators](https://www.w3schools.com/php/php_iterables.asp)
 
-- Extensive Explantion of PHP [iteraters](https://webmobtuts.com/backend-development/php-iterators-part-1-traversable-iterable-iterator-and-iterator-aggregate/)
+- Extensive Explantion of PHP [Iteraters](https://webmobtuts.com/backend-development/php-iterators-part-1-traversable-iterable-iterator-and-iterator-aggregate/)
 
 - [PHP Iterators and "decorating them"](http://piotrpasich.com/spl-iterators-against-the-performance/)
 
