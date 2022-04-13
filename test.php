@@ -23,7 +23,7 @@ include "FileReader.php";
 
   $fetcher = new SentenceFetcher($xml); 
 
-  $creator = new WebPageCreator("new.html");// $argv[1]); 
+  $creator = new WebPageCreator("new");// $argv[1]); 
 
   $file =  new FileReader($config['leipzig']['input_file']);
  
