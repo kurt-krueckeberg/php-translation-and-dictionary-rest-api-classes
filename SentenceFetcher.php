@@ -67,7 +67,7 @@ class SentenceFetcher {
     get_sentences() returns the sentences[count] array.
    */
 
-   public function fetch(string $word, int $count=3) : \ArrayIterator
+   public function fetch(string $word, int $count=3) : //todo: Return \ArrayIterator?? OR \Iterator??. See class below this one.
    {
       $url = $this->route . '/' . urlencode($word);
 
@@ -79,11 +79,11 @@ class SentenceFetcher {
       $obj = json_decode($contents);
 
      /*
-       This is what Leipzip returns{
+       This is what Leipzip returns
        
        {
          "count": 0,
-         "sentences": [
+         "sentences": [ // SentenceInfomration json object.
            {
              "id": "string",
              "sentence": "string",
@@ -96,31 +96,27 @@ class SentenceFetcher {
          ]
        }
      
-         SentenceInformation (is an object) containing:
+         SentenceInformation is an object, (stdClass) containing:
    
-           1. id
-           2. sentence - the actual string text of the sample sentence
-           3. source - of type SourceInformation 
+           1. id  => string
+           2. sentence => the actual string text of the sample sentence
+           3. source => ["daate" => ..., "id" => string, "url" => string]
         */
 
       return $obj->sentences; // Return the array of SentenceInformation objects  
-      
+
+      /* todo:
+        Get a quick implementation of ArrayIterator:
+        $x = ArrayObject($obj->sentences)
+        return $x->getIterator();    
+       */ 
    }
 }
 
+
 class SentenceInformationArray implements ArrayIterator {
 
-       /* 
-         SentenceInformation (is an object) containing:
-   
-           1. id
-           2. sentence - the actual string text of the sample sentence
-           3. source - of type SourceInformation 
-        */
-
-    private $container = array();
-
-    public function __construct() 
+    public function __construct($objs) 
     {
         $this->container = array(
             "one"   => 1,
@@ -129,29 +125,6 @@ class SentenceInformationArray implements ArrayIterator {
         );
     }
 
-    public function offsetSet($offset, $value) 
-    {
-        if (is_null($offset)) {
 
-            $this->container[] = $value;
-        } else {
-
-            $this->container[$offset] = $value;
-        }
-    }
-
-    public function offsetExists($offset) 
-    {
-        return isset($this->container[$offset]);
-    }
-
-    public function offsetUnset($offset) 
-    {
-        unset($this->container[$offset]);
-    }
-
-    public function offsetGet($offset) 
-    {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
-    }
+$it = $obj->getIterator();
 }
