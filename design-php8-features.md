@@ -31,6 +31,8 @@ They are applicable to what SentenceFetcher::fetches() retunrs.
 
 - Good Series of articles that go step-by-step explaining PHP [Iteraters](https://webmobtuts.com/?s=PHP+Iterators+Part+2)
 
+- [ArrayIterator and IteratorArregate](https://www.sitepoint.com/creating-strictly-typed-arrays-collections-php/)
+
 - [PHP Iterators and "decorating them"](http://piotrpasich.com/spl-iterators-against-the-performance/)
 
 - [Iterators in PHP](https://www.sitepoint.com/using-spl-iterators-1/)

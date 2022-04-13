@@ -114,15 +114,13 @@ class SentenceFetcher {
 }
 
 
-class SentenceInformationArray implements ArrayIterator {
+class SentenceInformationIterator implements Iterator, Countable {
 
-    public function __construct($objs) 
+    private &$sents;
+
+    public function __construct(&$objs) 
     {
-        $this->container = array(
-            "one"   => 1,
-            "two"   => 2,
-            "three" => 3,
-        );
+       $this->sents = &obkjs
     }
 
 
