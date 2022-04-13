@@ -67,8 +67,7 @@ class SentenceFetcher {
     get_sentences() returns the sentences[count] array.
    */
 
-  // TODO: Return an Iterable class/object.  
-   public function fetch(string $word, int $count=3) 
+   public function fetch(string $word, int $count=3) : \Iterator
    {
       $url = $this->route . '/' . urlencode($word);
 
@@ -89,5 +88,5 @@ class SentenceFetcher {
 
       return $obj->sentences; // Return the array of SentenceInformation objects  
       
-    }
+   }
 }
