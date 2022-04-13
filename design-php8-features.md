@@ -27,7 +27,7 @@
 
 They are applicable to what SentenceFetcher::fetches() retunrs.
 
-- Basic Intor to [WPHP ITerators](https://www.w3schools.com/php/php_iterables.asp)
+- Basic Introduction to [PHP ITerators](https://www.w3schools.com/php/php_iterables.asp)
 
 - Extensive Explantion of PHP [iteraters](https://webmobtuts.com/backend-development/php-iterators-part-1-traversable-iterable-iterator-and-iterator-aggregate/)
 
