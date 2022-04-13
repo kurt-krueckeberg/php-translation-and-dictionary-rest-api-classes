@@ -14,21 +14,20 @@ include "FileReader.php";
       return;
   }
 
-
   $rc = check_args($argv);
 
-  $xml = \simplexml_load_file("config.xml");
-
-  $trans = Translator::createfromXML($xml, "m"); // <-- Translator::createfromXML($xml, $argv[1]); 
-
-  $fetcher = new SentenceFetcher($xml); 
-
-  $creator = new WebPageCreator("new");// $argv[1]); 
-
-  $file =  new FileReader($argv[0]);
- 
   try {
 
+    $xml = \simplexml_load_file("config.xml");
+  
+    $trans = Translator::createfromXML($xml, "m"); // <-- Translator::createfromXML($xml, $argv[0]); 
+  
+    $fetcher = new SentenceFetcher($xml); 
+  
+    $creator = new WebPageCreator("new"); // <--- WebPageCreator($argv[1]); 
+  
+    $file =  new FileReader($argv[0]);
+   
     foreach ($file as $word) {
    
        $creator->write("<strong>$de</strong>", "&nbsp;"); 

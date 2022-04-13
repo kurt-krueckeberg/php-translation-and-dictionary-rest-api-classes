@@ -11,7 +11,7 @@ abstract class ApiBase {
 
    private string $route;      
    private string $method;     // GET, POST, etc 
-   private array  $options;    // [['headers' => [...], 'query' => [...], 'json' => [...]]
+   private array $options;    // [['headers' => [...], 'query' => [...], 'json' => [...]]
 
    // private $provider; is defined and set on the constructor's argument list (PHP >=8.0 required).
    
