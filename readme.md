@@ -48,5 +48,3 @@ Add your **DEEPL** and **Azure Translator** keys to **sample-config.xml**, and r
 3. Call `Translator:: translate(string $text, string $dest_lang, $source_lang="");`
 
    If the source language (the 2nd paramter) is omitted, the input language will be detected.
-
-The various REST translators can automatically detect the source (input) language, but you can alos set a default source language in `config.xml`.
