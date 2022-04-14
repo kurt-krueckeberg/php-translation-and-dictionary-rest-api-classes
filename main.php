@@ -10,20 +10,20 @@ include "FileReader.php";
 
 function check_args(array $argv)
 {
-  if (strlen($argv[0]) !== 1 || $argv[0] !== 'd' ||  $argv[0] !== 'm' ||  $argv[0] !== 'i')
-        throw new \Exception("First argument must be 'd', 'm' or 'i'");
-
-  if (substr($argv[1], strpos($argv[1], ".")) !== "xml")
-        throw new \Exception("2nd argument must be config.xml file");
-
-}
   if ($argc < 2) {
   
-      echo "Enter name of translation service (i for IBM, m for Microsoft or d for DEEPL), and the name of the output HTML file (omit .html)\n";
+      die ("Enter name of translation service (i for IBM, m for Microsoft or d for DEEPL), and the name of the output HTML file (omit .html)\n");
       return;
   }
 
-  $rc = check_args($argv);
+  if ( (strlen($argv[1]) !== 1) || ($argv[1] !== 'd' &&  $argv[1] !== 'm' && $argv[1] !== 'i' ) )
+        die ("First argument must be 'd', 'm' or 'i'");
+
+  if (substr($argv[2], strpos($argv[2], ".") + 1) !== "xml")
+        die ("2nd argument must be config.xml file");
+}
+
+  check_args($argv);
 
   try {
 
