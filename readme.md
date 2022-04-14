@@ -43,7 +43,7 @@ Add your **DEEPL** and **Azure Translator** keys to **sample-config.xml**, and r
 |----------|--------------|-------------------| 
 | DEEPL| d | `<provider name="deepl" abbrev="d">` |          
 | Microsoft Azure Translator| m | `<provider name="Azure" abbrev="m">` |
-| IBM Watson Translator | i |  `<provider name="IBM" abbrev="i">` | 
+| IBM Watson Translator(not yet implemented)| i |  `<provider name="IBM" abbrev="i">` | 
 
 3. Call `Translator:: translate(string $text, string $dest_lang, $source_lang="");`
 
