@@ -3,7 +3,7 @@ use GuzzleHttp\Client as Client;
 
 include "vendor/autoload.php";
 
-class SentenceResultsIterator implements \Iterator {
+class SentenceResultsIterator implements \Iterator, \Countable {
 
     private array $sents;
     private int $cnt;
@@ -15,7 +15,12 @@ class SentenceResultsIterator implements \Iterator {
        $this->cnt = count($objs);
        $this->current = 0; 
     }
-
+    
+    public function count(): int
+    {
+        return $this->cnt;
+    }
+    
     public function current(): mixed
     {
         return $this->sents[$this->current]->sentence;
