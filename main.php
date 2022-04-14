@@ -10,9 +10,9 @@ include "FileReader.php";
 
 function check_args(int $argc, array $argv)
 {
-  if ($argc < 2) {
+  if ($argc < 3) {
   
-      die ("Enter name of translation service (i for IBM, m for Microsoft or d for DEEPL), and the name of the output HTML file (omit .html)\n");
+      die ("Enter abbreviation of translation service (i for IBM, m for Microsoft or d for DEEPL),followed by 'config.xml'");
       return;
   }
 
