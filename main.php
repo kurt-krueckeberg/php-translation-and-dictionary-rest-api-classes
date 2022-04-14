@@ -3,7 +3,7 @@ declare(strict_types=1);
 use \SplFileObject as File;
 use Translators\Translator;
 
-include "SentenceFetcher.php";
+include "SentenceFetcher.php"; // todo: Add to compser.json 
 include "WebPageCreator.php";
 
 function check_args(int $argc, array $argv)
@@ -18,7 +18,7 @@ function check_args(int $argc, array $argv)
        die("config.xml not found in current directory.\n");
 }
 
-function create_output(\SimpleXMLElement $xml, string  $fname)
+function create_html_output(\SimpleXMLElement $xml, string  $fname)
 { 
    $fetcher = new SentenceFetcher($xml); 
   
@@ -56,7 +56,7 @@ function create_output(\SimpleXMLElement $xml, string  $fname)
 
     $xml = \simplexml_load_file("config.xml");
   
-    create_output($xml, $argv[1]);
+    create_html_output($xml, $argv[1]);
 
   } catch (Exception $e) {
 
