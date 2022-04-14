@@ -8,7 +8,7 @@ include "SentenceFetcher.php";
 include "WebPageCreator.php";
 include "FileReader.php";
 
-function check_args(array $argv)
+function check_args(int $argc, array $argv)
 {
   if ($argc < 2) {
   
@@ -19,11 +19,12 @@ function check_args(array $argv)
   if ( (strlen($argv[1]) !== 1) || ($argv[1] !== 'd' &&  $argv[1] !== 'm' && $argv[1] !== 'i' ) )
         die ("First argument must be 'd', 'm' or 'i'");
 
-  if (substr($argv[2], strpos($argv[2], ".") + 1) !== "xml")
+  if ($argv[2] !== "config.xml")
         die ("2nd argument must be config.xml file");
 }
 
-  check_args($argv);
+
+  check_args($argc, $argv);
 
   try {
 
