@@ -42,9 +42,9 @@ EOF;
         $this->close();
    }
 
-   public function write(string $german, string $english)
+   public function write(string $input, string $translation)
    {
-      $this->file->fwrite('<p>' . $german . "</p>\n<p>" . $english . "</p>\n");
+      $this->file->fwrite('<p>' . $input . "</p>\n<p>" . $translation . "</p>\n");
    }
 
    public function close()

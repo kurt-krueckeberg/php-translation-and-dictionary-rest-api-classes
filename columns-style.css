@@ -11,14 +11,14 @@ body {
    */
 }
 
-#container {
+section {
 
    display: grid; 
    grid-template-columns: 40% 40%; 
    padding-left: 2em;
 }
 
-#container p { /* paragraph style--font, text color, background color, spacig with paragraphs and between paragraphs */
+section p { /* paragraph style--font, text color, background color, spacig with paragraphs and between paragraphs */
 
   font-family: 'Lato Medium', Arial, sans-serif;
 
