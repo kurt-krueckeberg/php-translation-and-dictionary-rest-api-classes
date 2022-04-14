@@ -2,7 +2,7 @@
 
 **Note:** The code is working but in beta. 
 
-## OVerview
+## Overview
 
 This code generates German example sentences and translates them into your target language. The input is file with a list of words ( one word per line). To use it you must have either a DEEPL account or a Microsoft Azure account.
 
