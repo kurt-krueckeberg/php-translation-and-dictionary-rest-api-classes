@@ -12,7 +12,7 @@ function check_args(int $argc, array $argv)
       die ("Enter file with the list of words.\n");
 
   if (!file_exists($argv[1]))
-       die("The input file does not exist!\n");
+       die("Input file " . $argv[1] . " does not exist!\n");
 
   if (!file_exists("config.xml"))
        die("config.xml not found in current directory.\n");
