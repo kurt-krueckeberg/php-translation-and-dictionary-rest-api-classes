@@ -13,7 +13,7 @@ static private $header =<<<EOH
 <html>
 <head>
    <meta http-equiv="content-type" content="text/html" charset="UTF-8"/>
-   <link rel="stylesheet" type="text/css" media="screen" href="columns-style.css">
+   <link rel="stylesheet" type="text/css" media="screen" href="screen.css">
    <title></title>
 </head>
 <body>
