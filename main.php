@@ -32,7 +32,7 @@ function check_args(int $argc, array $argv)
 
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-    $trans = Translator::createfromXML($xml, "m"); // <-- Translator::createfromXML($xml, $argv[1]); 
+    $trans = Translator::createfromXML($xml, "m"); 
   
     foreach ($file as $word) {
    
@@ -42,7 +42,9 @@ function check_args(int $argc, array $argv)
 
             echo $sentence . "\n";
 
-            $translation = $trans->translate($sentence,  "DE", "EN-US");
+            // 2nd parameter is destination language. 3rd parameter is optional source language.
+            // If 3rd parameter is ommited, source language is automatically detected.
+            $translation = $trans->translate($sentence, "EN-US", "DE"); 
             
             $creator->write($sentence, $translation); 
        }
