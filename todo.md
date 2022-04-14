@@ -12,4 +12,8 @@ date("m-d-y:H:i:s")
 
 2. Make ~/rest-translators a github respoistory-backed composer package.
 
+See these articles:
+
+- [composer: How to Use Git Repositories](https://www.daggerhartlab.com/composer-how-to-use-git-repositories/)
+
 3. Make ~/e a github respoistory-backed composer package that usese the rest-tranlators pakckage.
