@@ -17,11 +17,11 @@ static private $header =<<<EOH
    <title></title>
 </head>
 <body>
-<div id="container">
+<section>\n
 EOH;
 
 static private $footer =<<<EOF
-</div>
+</section>
 </body>
 </html>
 EOF;

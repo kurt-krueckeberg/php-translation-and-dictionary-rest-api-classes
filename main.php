@@ -36,7 +36,7 @@ function check_args(int $argc, array $argv)
   
     foreach ($file as $word) {
    
-       $creator->write("<strong>$word</strong>", "&nbsp;"); 
+       $creator->write("<strong>$word</strong>", "<strong>No Definitions (yet)</strong>"); 
 
        foreach ( $fetcher->fetch($word, 3) as $sentence) {
 
