@@ -25,7 +25,7 @@ It uses:
 The configuration is XML-driven set of translation classes for issuing REST translation calls to [DEEPL](https://www.deepl.com/docs-api), [Azure Translator](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/)
 and [IBM Watson Translator](https://cloud.ibm.com/docs/language-translator/getting-started.html#gettingstarted) (not yet implemnted). Client code uses the base class `Translator` class that implements `TranslatorInterface`.
 
-The underlying REST client (in the implementation) is [Guzzle](https://docs.guzzlephp.org/en/stable/).
+The REST client used in the implementation is [Guzzle](https://docs.guzzlephp.org/en/stable/).
 
 Usage:
 
@@ -37,7 +37,7 @@ After cloing the repository:
 $ composer dump-autoload
 ```
 
-Add your **DEEPL** and **Azure Translator** keys to **sample-config.xml**, and rename it **config.xml**. If you are using the Pro version of DEEPL, change the DEEPL `<baseurl>` in config.xml.
+Add your **DEEPL** and/or **Azure Translator** keys to **sample-config.xml**, and rename it **config.xml**. If you are using the Pro version of DEEPL, change the DEEPL `<baseurl>` in config.xml.
 
 2. Modify [main.php](main.php) to your needs. Changing the call to `Translator::createFromXML("config.xml", "d");` to use your translator of choice (either **m** for Microsfot Azure Translator or **d** for DEEPL):
 
