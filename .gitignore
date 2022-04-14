@@ -2,4 +2,4 @@ nbproject/
 vendor/
 composer.lock
 corpus-db/
-examples-*.html
+examples_*.html
