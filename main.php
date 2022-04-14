@@ -5,7 +5,6 @@ use Translators\Translator;
 
 include "SentenceFetcher.php";
 include "WebPageCreator.php";
-include "FileReader.php";
 
 function check_args(int $argc, array $argv)
 {
@@ -29,15 +28,15 @@ function check_args(int $argc, array $argv)
   
     $creator = new WebPageCreator();
   
-    $file =  new FileReader($argv[0]);
+    $file =  new File($argv[1]);
 
-    $this->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
+    $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
     $trans = Translator::createfromXML($xml, "m"); // <-- Translator::createfromXML($xml, $argv[1]); 
   
     foreach ($file as $word) {
    
-       $creator->write("<strong>$de</strong>", "&nbsp;"); 
+       $creator->write("<strong>$word</strong>", "&nbsp;"); 
 
        foreach ( $fetcher->fetch($word, 3) as $sentence) {
 
@@ -45,7 +44,7 @@ function check_args(int $argc, array $argv)
 
             $translation = $trans->translate($sentence,  "DE", "EN-US");
             
-            $creator->write($de_sentence, $translation); 
+            $creator->write($sentence, $translation); 
        }
     }
 

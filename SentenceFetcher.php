@@ -75,9 +75,9 @@ class SentenceFetcher {
               $query_array[ (string) $parm["name"] ] = urlencode( (string) $parm );
 
       $this->options['query'] = $query_array;
-    }
+   }
 
-   public function fetch(string $word, int $count=3) : SentenceInformationResultsIterator 
+   public function fetch(string $word, int $count=3) : SentenceResultsIterator 
    {
       $url = $this->route . '/' . urlencode($word);
 
@@ -113,6 +113,6 @@ class SentenceFetcher {
            3. source => ["daate" => ..., "id" => string, "url" => string]
         */
 
-      return new SentenceInformationResultsIterator( $obj->sentences ); // Return the array of SentenceInformation objects  
+      return new SentenceResultsIterator( $obj->sentences ); // Return the array of SentenceInformation objects  
    }
 }
