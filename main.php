@@ -18,6 +18,27 @@ function check_args(int $argc, array $argv)
        die("config.xml not found in current directory.\n");
 }
 
+function create_output(File $file, WebPageCreator $creator, SentenceFetcher $fetcher, Translator $trans)
+{ 
+   foreach ($file as $word) {
+  
+      $creator->write("<strong>$word</strong>", "<strong>No Definitions (yet)</strong>"); 
+
+      echo "Fetching '$word' examples:\n";
+
+      foreach ( $fetcher->fetch($word, 3) as $sentence) {
+
+           echo "Translating: " . $sentence . "\n";
+
+           // 2nd parameter is destination language. 3rd parameter is optional source language.
+           // If 3rd parameter is ommited, source language is automatically detected.
+           $translation = $trans->translate($sentence, "EN-US", "DE"); 
+           
+           $creator->write($sentence, $translation); 
+      }
+      echo "\n";
+   }
+}
   check_args($argc, $argv);
 
   try {
@@ -32,23 +53,9 @@ function check_args(int $argc, array $argv)
 
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-    $trans = Translator::createfromXML($xml, "m"); 
-  
-    foreach ($file as $word) {
-   
-       $creator->write("<strong>$word</strong>", "<strong>No Definitions (yet)</strong>"); 
+    $translator = Translator::createfromXML($xml, "m"); 
 
-       foreach ( $fetcher->fetch($word, 3) as $sentence) {
-
-            echo "Translating: " . $sentence . "\n";
-
-            // 2nd parameter is destination language. 3rd parameter is optional source language.
-            // If 3rd parameter is ommited, source language is automatically detected.
-            $translation = $trans->translate($sentence, "EN-US", "DE"); 
-            
-            $creator->write($sentence, $translation); 
-       }
-    }
+    create_output($file, $creator, $fetcher, $translator);
 
   } catch (Exception $e) {
 
