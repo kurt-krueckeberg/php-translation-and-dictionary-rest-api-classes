@@ -1,6 +1,6 @@
 # Documentation 
 
-**note:** The code is working but in beta. 
+**Note:** The code is working but in beta. 
 
 ## OVerview
 
