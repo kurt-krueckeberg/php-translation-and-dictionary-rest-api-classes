@@ -16,7 +16,7 @@ It uses:
 
 - [Azure Translator](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/) (which is not free)
 
-- [DEEPL](https://www.deepl.com/docs-apiD) Trranslator (which has free version with a limited monthly quota)
+- [DEEPL](https://www.deepl.com/docs-apiD) Translator. There is a free version with a limited monthly quota and a Pro paid version.
 
 ## Comments
 
