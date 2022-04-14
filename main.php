@@ -40,7 +40,7 @@ function check_args(int $argc, array $argv)
 
        foreach ( $fetcher->fetch($word, 3) as $sentence) {
 
-            echo $sentence . "\n";
+            echo "Translating: " . $sentence . "\n";
 
             // 2nd parameter is destination language. 3rd parameter is optional source language.
             // If 3rd parameter is ommited, source language is automatically detected.
