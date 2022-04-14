@@ -1,4 +1,4 @@
-1. No getting any translations!
+1. Tranlations are swapped--why? 
 
 2.  Change examples_ file name to NOT have : and to have AM or PM:
 
