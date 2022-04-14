@@ -8,6 +8,7 @@ include "SentenceFetcher.php";
 include "WebPageCreator.php";
 include "FileReader.php";
 
+// todo: Need input argument of new-words.txt file.
 function check_args(int $argc, array $argv)
 {
   if ($argc < 3) {
@@ -16,8 +17,12 @@ function check_args(int $argc, array $argv)
       return;
   }
 
+/* 
+  This is a client coding option not a cmd line argument
+
   if ( (strlen($argv[1]) !== 1) || ($argv[1] !== 'd' &&  $argv[1] !== 'm' && $argv[1] !== 'i' ) )
-        die ("First argument must be 'd', 'm' or 'i'");
+      die ("First argument must be 'd', 'm' or 'i'");
+*/
 
   if ($argv[2] !== "config.xml")
         die ("2nd argument must be config.xml file");

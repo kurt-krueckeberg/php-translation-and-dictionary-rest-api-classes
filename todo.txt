@@ -1,3 +1,7 @@
+1. Need input argument of new-words.txt file.
+
+2. Remove the command line requirement that the abbreviation of the provider be passed. Instead this will be a client code option.
+
 
 - Make ~/rest-translators a github respoistory-backed composer package.
 
