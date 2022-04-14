@@ -1,4 +1,3 @@
-#!/usr/bin/env php
 <?php
 declare(strict_types=1);
 use Translators\Translator;
@@ -10,17 +9,15 @@ include "FileReader.php";
 
 function check_args(int $argc, array $argv)
 {
-  if ($argc < 2) {
-      die ("Enter file with list of words.");
-  }
+  if ($argc < 2)
+      die ("Enter file with the list of words.\n");
 
   if (!file_exists($argv[1]))
        die("The input file does not exist!\n");
 
   if (!file_exists("config.xml"))
-       die("config.xml not doun in current directory.\n");
+       die("config.xml not found in current directory.\n");
 }
-
 
   check_args($argc, $argv);
 
