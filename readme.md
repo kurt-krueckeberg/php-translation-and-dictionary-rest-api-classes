@@ -4,13 +4,15 @@
 
 ## Overview
 
-This code generates German example sentences and translates them into your target language. The input is file with a list of words ( one word per line). To use it you must have either a DEEPL account or a Microsoft Azure account.
+This code generates German example sentences, using the University of [Leipzig Corpora Collection](https://wortschatz.uni-leipzig.de/en), and translates them into your target language. The input is file with a list of words ( one word per line). To use it you must have either a DEEPL account or a Microsoft Azure account.
+
+**Note:** The [Leipzig Corpora Collection](https://wortschatz.uni-leipzig.de/en) provides example sentences in other languages besides German.
 
 ## Requriements
 
 It uses:
 
-- the REST API of the University of Leipzig Corpora Collection (which is free)
+- the REST API of the University of [Leipzig Corpora Collection](https://wortschatz.uni-leipzig.de/en) (which is free)
 
 - [Azure Translator](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/) (which is not free)
 
