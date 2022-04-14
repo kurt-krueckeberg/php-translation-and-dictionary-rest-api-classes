@@ -28,7 +28,7 @@ EOF;
 
    public function __construct()
    {
-      $fname = "examples_" . date("m-d-y:H:i:s") .  ".html";
+      $fname = "examples_" . date("F_j_Y_h_i_s_A") . ".html"; // date("m-d-y:H:i:s") 
 
       $this->file = new File($fname, "w");
    
