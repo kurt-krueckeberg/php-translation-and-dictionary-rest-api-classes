@@ -1,4 +1,7 @@
 <?php
+declare(strict_types=1);
+
+use \SplFileObject as File;
 
 class WebPageCreator {
 
@@ -23,9 +26,11 @@ static private $footer =<<<EOF
 </html>
 EOF;
 
-   public function __construct(string $fname)
+   public function __construct()
    {
-      $this->file = new SplFileObject($fname . ".html", "w");
+      $fname = "examples_" . date("m-d-y:H:i:s") .  ".html";
+
+      $this->file = new File($fname, "w");
    
       $this->is_closed = false;
 

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
+use \SplFileObject as File;
 use Translators\Translator;
 
 include "SentenceFetcher.php";
-
 include "WebPageCreator.php";
 include "FileReader.php";
 
@@ -25,14 +25,16 @@ function check_args(int $argc, array $argv)
 
     $xml = \simplexml_load_file("config.xml");
   
-    $trans = Translator::createfromXML($xml, "m"); // <-- Translator::createfromXML($xml, $argv[1]); 
-  
     $fetcher = new SentenceFetcher($xml); 
   
-    $creator = new WebPageCreator("new"); //todo: Create this with a unique, time-stamped name.
+    $creator = new WebPageCreator();
   
     $file =  new FileReader($argv[0]);
-   
+
+    $this->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
+
+    $trans = Translator::createfromXML($xml, "m"); // <-- Translator::createfromXML($xml, $argv[1]); 
+  
     foreach ($file as $word) {
    
        $creator->write("<strong>$de</strong>", "&nbsp;"); 
