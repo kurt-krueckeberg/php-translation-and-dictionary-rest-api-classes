@@ -35,7 +35,7 @@ After cloing the repository:
 $ composer dump-autoload
 ```
 
-Add your **DEEPL** and **Azure Translator** keys to **sample-config.xml** and rename it **config.xml**. If you are using the Pro version of DEEPL, you will also need to change `<baseurl>` in the config.xml file.
+Add your **DEEPL** and **Azure Translator** keys to **sample-config.xml**, and rename it **config.xml**. If you are using the Pro version of DEEPL, you will also need to change `<baseurl>` in the config.xml file.
 
 2. In your code call, for example, `Translator::createFromXML("config.xml", "d");`, where the 2nd paramter is one-letter abbreviation of the provider:
 
