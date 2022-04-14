@@ -30,11 +30,11 @@ function check_args(int $argc, array $argv)
 
     $xml = \simplexml_load_file("config.xml");
   
-    $trans = Translator::createfromXML($xml, "m"); // <-- Translator::createfromXML($xml, $argv[0]); 
+    $trans = Translator::createfromXML($xml, "m"); // <-- Translator::createfromXML($xml, $argv[1]); 
   
     $fetcher = new SentenceFetcher($xml); 
   
-    $creator = new WebPageCreator("new"); // <--- WebPageCreator($argv[1]); 
+    $creator = new WebPageCreator("new"); //todo: Create this with a unique, time-stamped name.
   
     $file =  new FileReader($argv[0]);
    
