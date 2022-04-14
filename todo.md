@@ -1,6 +1,6 @@
-1.  Create output file with time-stamp using `date()` function. Something similiar to `date("H:i:s")`. PHP's date() function can return both month, day and year, and also the hour, minute and second.
+1. No getting any translations!
 
-See:
+2.  Change examples_ file name to NOT have : and to have AM or PM:
 
 - [date()](https://www.php.net/manual/en/function.date.php)
 
@@ -8,7 +8,7 @@ See:
 
 ```php
 // Prints the day, date, month, year, time, AM or PM
-echo date("l jS \of F Y h:i:s A") . "<br>";
+echo date("l jS \of F Y h:i:s A") . "\n";
 ```
 date("m-d-y:H:i:s")
 
