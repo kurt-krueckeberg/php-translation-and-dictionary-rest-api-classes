@@ -37,7 +37,7 @@ $ composer dump-autoload
 
 Add your **DEEPL** and **Azure Translator** keys to **sample-config.xml**, and rename it **config.xml**. If you are using the Pro version of DEEPL, change the DEEPL `<baseurl>` in config.xml.
 
-2. Call, for example, `Translator::createFromXML("config.xml", "d");`, chaing the 2nd paramter to one-letter abbreviation of your provider (eith **m** for Microsfot Azure Translator or **d** for DEEPL):
+2. Modify [main.php](src/main.php) to your needs. Changing the call to `Translator::createFromXML("config.xml", "d");` to use your translator of choice (either **m** for Microsfot Azure Translator or **d** for DEEPL):
 
 | Provider | Abbreviation | XML `<provider>` node |
 |----------|--------------|-------------------| 
