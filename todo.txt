@@ -1,4 +1,4 @@
-1. Need input argument of new-words.txt file.
+1. Need input argument of new-words.txt file only. We will check file "config.xml" in the current directory.
 
 2. Remove the command line requirement that the abbreviation of the provider be passed. Instead this will be a client code option.
 
