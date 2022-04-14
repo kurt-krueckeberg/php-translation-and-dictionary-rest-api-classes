@@ -18,8 +18,18 @@ function check_args(int $argc, array $argv)
        die("config.xml not found in current directory.\n");
 }
 
-function create_output(File $file, WebPageCreator $creator, SentenceFetcher $fetcher, Translator $trans)
+function create_output(\SimpleXMLElement $xml, string  $fname)
 { 
+   $fetcher = new SentenceFetcher($xml); 
+  
+   $creator = new WebPageCreator();
+  
+   $file =  new File($fname);
+
+   $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
+
+   $translator = Translator::createfromXML($xml, "m"); 
+
    foreach ($file as $word) {
   
       $creator->write("<strong>$word</strong>", "<strong>No Definitions (yet)</strong>"); 
@@ -39,23 +49,14 @@ function create_output(File $file, WebPageCreator $creator, SentenceFetcher $fet
       echo "\n";
    }
 }
+
   check_args($argc, $argv);
 
   try {
 
     $xml = \simplexml_load_file("config.xml");
   
-    $fetcher = new SentenceFetcher($xml); 
-  
-    $creator = new WebPageCreator();
-  
-    $file =  new File($argv[1]);
-
-    $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
-
-    $translator = Translator::createfromXML($xml, "m"); 
-
-    create_output($file, $creator, $fetcher, $translator);
+    create_output($xml, $argv[1]);
 
   } catch (Exception $e) {
 
