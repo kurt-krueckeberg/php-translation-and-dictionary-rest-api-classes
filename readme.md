@@ -18,7 +18,7 @@ It uses:
 
 ## Comments
 
-**note:** The code is working but in beta.  The IBM Watson Translator class is nnot yet implemented.
+**Note:** The code is working but in beta.  The IBM Watson Translator class is nnot yet implemented.
 
 The configuration is XML-driven set of translation classes for issuing REST translation calls to [DEEPL](https://www.deepl.com/docs-api), [Azure Translator](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/)
 and [IBM Watson Translator](https://cloud.ibm.com/docs/language-translator/getting-started.html#gettingstarted) (not yet implemnted). Client code uses the base class `Translator` class that implements `TranslatorInterface`.
