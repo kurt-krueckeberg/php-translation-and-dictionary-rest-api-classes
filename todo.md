@@ -1,6 +1,4 @@
-1. Tranlations are swapped--why? 
-
-2.  Change examples_ file name to NOT have : and to have AM or PM:
+1.  Change examples_ file name to NOT have ':' and to have AM or PM:
 
 - [date()](https://www.php.net/manual/en/function.date.php)
 
