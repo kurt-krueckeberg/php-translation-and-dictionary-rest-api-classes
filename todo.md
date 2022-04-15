@@ -1,4 +1,6 @@
-1.  Change examples_ file name to NOT have ':' and to have AM or PM:
+1. Question: Are the input and output language two-letter abbreviations the same as those used by deepl, Azure and IBM? That is, is there a standard for the language abbreviations?
+
+2.  Change examples_ file name to NOT have ':' and to have AM or PM:
 
 - [date()](https://www.php.net/manual/en/function.date.php)
 
@@ -9,8 +11,6 @@
 echo date("l jS \of F Y h:i:s A") . "\n";
 ```
 date("m-d-y:H:i:s")
-
-2. Make a namespace hierachy -- if needed -- to accomodate PonsDictinary.
 
 3. Make ~/rest-translators a github respoistory-backed composer package.
 
