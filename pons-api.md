@@ -597,3 +597,68 @@ Question: Are the input and output language two-letter abbreviations the same as
 
 The German => English dictionary is: **deen**; i.e. Duetsch to Englisch. 
 
+
+
+### Pons Dictionary Results
+
+After PonsDictionary::lookup(...)
+
+after the line `$obj = json_decode(...);`, `$obj[0]["hits]` is an array with this layout:
+
+[hits] => Array
+    (
+        [0] => stdClass Object
+            (
+                [type] => entry
+                [opendict] => 
+                [roms] => Array
+                    (
+                        [0] => stdClass Object
+                            (
+                                [headword] => Han·deln
+                                [headword_full] => Han<span class="separator">·</span>deln <span class="flexion">&lt;-s&gt;</span> <span class="phonetics">[ˈhandl̩n]</span> <span class="wordclass"><acronym title="noun">N</acronym></span> <span class="genus"><acronym title="neuter">nt</acronym></span> <span class="info">kein <acronym title="plural">pl</acronym></span>
+                                [wordclass] => noun
+                                [arabs] => Array
+                                    (
+                                        [0] => stdClass Object
+                                            (
+                                                [header] => 1. Handeln <span class="sense">(Feilschen)</span>:
+                                                [translations] => Array
+                                                    (
+                                                        [0] => stdClass Object
+                                                            (
+                                                                [source] => <strong class="headword">Handeln</strong>
+                                                                [target] => haggling
+                                                            )
+
+                                                    )
+
+                                            )
+
+                                        [1] => stdClass Object
+                                            (
+                                                [header] => 2. Handeln <span class="sense">(das Handeltreiben)</span>:
+                                                [translations] => Array
+                                                    (
+                                                        [0] => stdClass Object
+                                                            (
+                                                                [source] => <strong class="headword">Handeln</strong>
+                                                                [target] => trading
+                                                            )
+
+                                                        [1] => stdClass Object
+                                                            (
+                                                                [source] => <span class="grammatical_construction">das <strong class="tilde">Handeln</strong> mit <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span></span>
+                                                                [target] => trading <acronym title="something">sth</acronym>
+                                                            )
+
+                                                        [2] => stdClass Object
+                                                            (
+                                                                [source] => <span class="example">das <strong class="tilde">Handeln</strong> mit Drogen ist verboten</span>
+                                                                [target] => drug trafficking is against the law
+                                                            )
+
+                                                    )
+
+
+
