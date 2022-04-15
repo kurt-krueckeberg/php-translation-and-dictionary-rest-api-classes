@@ -1,8 +1,14 @@
-1. Figure out the stes of languiage codes supported by Deepl, Azure and PONS, respectively. 
+1. Figure out which subset of world languages are supported respectively by Deepl, Azure and PONS. 
 
 - Both deepl and Azure take mostly two-letter codes, but for some languages there take 4 letter, hyphenated codes. Pons seems to take only two-letter codes.
 
 - The PONS dictinaries query paramter seems to be determined by the input and output language. Confirm this and document how the dectinary is derived from the input and output languages, if in fact is.
+
+PONS
+
+Pons returns more than just translations. It returns information that is not throoughly documented, but would be clear if I could find the CSS that pons uses to format translation results.
+
+Probably the best thing , if I can't find th CSS, is stop in the debugger, and find where the translations are: Under what top-level key are they, what 2nary key, etc.
 
 2.  Change examples_ file name to NOT have ':' and to have AM or PM:
 
