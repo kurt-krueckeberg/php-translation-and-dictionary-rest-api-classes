@@ -49,14 +49,35 @@ class PonsDictionary implements DictionaryInterface {
        $contents = $response->getBody()->getContents();
  
        // todo: urlecode needed?
-       $obj = json_decode($contents);
+       /*
+       $arr = json_decode($contents, true)[0];
        
-       foreach ($obj[0]['hits'] as $row) {
+       echo count( $arr["hits"] ) . "\n";
+       */
+       $obj = json_decode($contents)[0];
+       
+       foreach ($obj->hits as $o) { // hits is an array. foreach hit in the array...
+            
+           $roms = $o->roms; // access the toms property, whic his an array (stdClass objects)
+           
+           foreach ($roms as $r) {
+               
+               print_r($r);
+               
+               $debug = 10;
+               
+               ++$debug;
+           }
+           
 
-             print_r($row);
        }
        
        /*
+        * 
+        * Alternat: object syntax:
+        *   $obj->hits
+        * 
+               
         *  todo: 
         * I. Get the translations
         * 
