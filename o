@@ -1,0 +1,846 @@
+array(1) {
+  [0]=>
+  object(stdClass)#36 (2) {
+    ["lang"]=>
+    string(2) "de"
+    ["hits"]=>
+    array(5) {
+      [0]=>
+      object(stdClass)#34 (3) {
+        ["type"]=>
+        string(5) "entry"
+        ["opendict"]=>
+        bool(false)
+        ["roms"]=>
+        array(1) {
+          [0]=>
+          object(stdClass)#4 (4) {
+            ["headword"]=>
+            string(9) "Han·deln"
+            ["headword_full"]=>
+            string(321) "Han<span class="separator">·</span>deln <span class="flexion">&lt;-s&gt;</span> <span class="phonetics">[ˈhandl̩n]</span> <span class="wordclass"><acronym title="noun">N</acronym></span> <span class="genus"><acronym title="neuter">nt</acronym></span> <span class="info">kein <acronym title="plural">pl</acronym></span>"
+            ["wordclass"]=>
+            string(4) "noun"
+            ["arabs"]=>
+            array(5) {
+              [0]=>
+              object(stdClass)#29 (2) {
+                ["header"]=>
+                string(50) "1. Handeln <span class="sense">(Feilschen)</span>:"
+                ["translations"]=>
+                array(1) {
+                  [0]=>
+                  object(stdClass)#23 (2) {
+                    ["source"]=>
+                    string(41) "<strong class="headword">Handeln</strong>"
+                    ["target"]=>
+                    string(8) "haggling"
+                  }
+                }
+              }
+              [1]=>
+              object(stdClass)#22 (2) {
+                ["header"]=>
+                string(58) "2. Handeln <span class="sense">(das Handeltreiben)</span>:"
+                ["translations"]=>
+                array(3) {
+                  [0]=>
+                  object(stdClass)#20 (2) {
+                    ["source"]=>
+                    string(41) "<strong class="headword">Handeln</strong>"
+                    ["target"]=>
+                    string(7) "trading"
+                  }
+                  [1]=>
+                  object(stdClass)#35 (2) {
+                    ["source"]=>
+                    string(193) "<span class="grammatical_construction">das <strong class="tilde">Handeln</strong> mit <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span></span>"
+                    ["target"]=>
+                    string(48) "trading <acronym title="something">sth</acronym>"
+                  }
+                  [2]=>
+                  object(stdClass)#27 (2) {
+                    ["source"]=>
+                    string(95) "<span class="example">das <strong class="tilde">Handeln</strong> mit Drogen ist verboten</span>"
+                    ["target"]=>
+                    string(35) "drug trafficking is against the law"
+                  }
+                }
+              }
+              [2]=>
+              object(stdClass)#19 (2) {
+                ["header"]=>
+                string(50) "3. Handeln <span class="sense">(Verhalten)</span>:"
+                ["translations"]=>
+                array(1) {
+                  [0]=>
+                  object(stdClass)#37 (2) {
+                    ["source"]=>
+                    string(41) "<strong class="headword">Handeln</strong>"
+                    ["target"]=>
+                    string(186) "behaviour <span class="target">[<span class="or"><acronym title="or">or</acronym></span> <span class="region"><acronym title="American English" class="Am">Am</acronym></span> -or]</span>"
+                  }
+                }
+              }
+              [3]=>
+              object(stdClass)#38 (2) {
+                ["header"]=>
+                string(57) "4. Handeln <span class="sense">(das Tätigwerden)</span>:"
+                ["translations"]=>
+                array(1) {
+                  [0]=>
+                  object(stdClass)#39 (2) {
+                    ["source"]=>
+                    string(41) "<strong class="headword">Handeln</strong>"
+                    ["target"]=>
+                    string(6) "action"
+                  }
+                }
+              }
+              [4]=>
+              object(stdClass)#40 (2) {
+                ["header"]=>
+                string(106) "5. Handeln <span class="topic"><acronym title="law">LAW</acronym></span> <span class="sense">(Tun)</span>:"
+                ["translations"]=>
+                array(8) {
+                  [0]=>
+                  object(stdClass)#41 (2) {
+                    ["source"]=>
+                    string(41) "<strong class="headword">Handeln</strong>"
+                    ["target"]=>
+                    string(6) "acting"
+                  }
+                  [1]=>
+                  object(stdClass)#42 (2) {
+                    ["source"]=>
+                    string(95) "<span class="full_collocation"> <strong class="tilde">Handeln</strong> auf eigene Gefahr</span>"
+                    ["target"]=>
+                    string(28) "acting at one&#39;s own risk"
+                  }
+                  [2]=>
+                  object(stdClass)#43 (2) {
+                    ["source"]=>
+                    string(94) "<span class="full_collocation"> <strong class="tilde">Handeln</strong> im eigenen Namen</span>"
+                    ["target"]=>
+                    string(28) "acting in one&#39;s own name"
+                  }
+                  [3]=>
+                  object(stdClass)#44 (2) {
+                    ["source"]=>
+                    string(94) "<span class="full_collocation"> <strong class="tilde">Handeln</strong> in fremdem Namen</span>"
+                    ["target"]=>
+                    string(29) "acting in the name of another"
+                  }
+                  [4]=>
+                  object(stdClass)#45 (2) {
+                    ["source"]=>
+                    string(97) "<span class="full_collocation"> <strong class="tilde">Handeln</strong> unter fremdem Namen</span>"
+                    ["target"]=>
+                    string(28) "acting under an assumed name"
+                  }
+                  [5]=>
+                  object(stdClass)#46 (2) {
+                    ["source"]=>
+                    string(97) "<span class="full_collocation"> <strong class="tilde">Handeln</strong> auf eigene Rechnung</span>"
+                    ["target"]=>
+                    string(32) "trading on one&#39;s own account"
+                  }
+                  [6]=>
+                  object(stdClass)#47 (2) {
+                    ["source"]=>
+                    string(98) "<span class="full_collocation"> <strong class="tilde">Handeln</strong> unter falschem Recht</span>"
+                    ["target"]=>
+                    string(22) "acting under false law"
+                  }
+                  [7]=>
+                  object(stdClass)#48 (2) {
+                    ["source"]=>
+                    string(109) "<span class="full_collocation">fahrlässiges/gesetzeswidriges <strong class="tilde">Handeln
+</strong> </span>"
+                    ["target"]=>
+                    string(29) "acting negligently/unlawfully"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      [1]=>
+      object(stdClass)#49 (3) {
+        ["type"]=>
+        string(5) "entry"
+        ["opendict"]=>
+        bool(true)
+        ["roms"]=>
+        array(1) {
+          [0]=>
+          object(stdClass)#50 (4) {
+            ["headword"]=>
+            string(7) "Handeln"
+            ["headword_full"]=>
+            string(72) "Handeln <span class="wordclass"><acronym title="noun">N</acronym></span>"
+            ["wordclass"]=>
+            string(4) "noun"
+            ["arabs"]=>
+            array(1) {
+              [0]=>
+              object(stdClass)#51 (2) {
+                ["header"]=>
+                string(0) ""
+                ["translations"]=>
+                array(1) {
+                  [0]=>
+                  object(stdClass)#52 (2) {
+                    ["source"]=>
+                    string(121) "kollektives <strong class="tilde">Handeln</strong> <span class="topic"><acronym title="sociology">SOCIOL</acronym></span>"
+                    ["target"]=>
+                    string(17) "collective action"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      [2]=>
+      object(stdClass)#53 (3) {
+        ["type"]=>
+        string(5) "entry"
+        ["opendict"]=>
+        bool(false)
+        ["roms"]=>
+        array(3) {
+          [0]=>
+          object(stdClass)#54 (4) {
+            ["headword"]=>
+            string(9) "han·deln"
+            ["headword_full"]=>
+            string(231) "han<span class="separator">·</span>deln <span class="phonetics">[ˈhandl̩n]</span> <span class="wordclass"><acronym title="verb">VB</acronym></span> <span class="verbclass"><acronym title="intransitive verb">intr</acronym></span>"
+            ["wordclass"]=>
+            string(17) "intransitive verb"
+            ["arabs"]=>
+            array(7) {
+              [0]=>
+              object(stdClass)#55 (2) {
+                ["header"]=>
+                string(61) "1. handeln <span class="sense">(kaufen und verkaufen)</span>:"
+                ["translations"]=>
+                array(9) {
+                  [0]=>
+                  object(stdClass)#56 (2) {
+                    ["source"]=>
+                    string(423) "<span class="grammatical_construction">mit <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span> [<span class="or"><acronym title="oder">o.</acronym></span> <span class="topic"><acronym title="economy">ECON</acronym></span> in <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>] <strong class="tilde">handeln
+</strong> </span>"
+                    ["target"]=>
+                    string(144) "to trade <span class="target">[<span class="or"><acronym title="or">or</acronym></span> deal]</span> in <acronym title="something">sth</acronym>"
+                  }
+                  [1]=>
+                  object(stdClass)#57 (2) {
+                    ["source"]=>
+                    string(64) "<span class="full_collocation">in Dollar gehandelt werden</span>"
+                    ["target"]=>
+                    string(23) "to be traded in dollars"
+                  }
+                  [2]=>
+                  object(stdClass)#58 (2) {
+                    ["source"]=>
+                    string(69) "<span class="full_collocation">zu drei Dollar gehandelt werden</span>"
+                    ["target"]=>
+                    string(120) "to be traded at <span class="target">[<span class="or"><acronym title="or">or</acronym></span> for]</span> three dollars"
+                  }
+                  [3]=>
+                  object(stdClass)#59 (2) {
+                    ["source"]=>
+                    string(122) "<span class="example">er handelt mit [<span class="or"><acronym title="oder">o.</acronym></span> in] Gebrauchtwagen</span>"
+                    ["target"]=>
+                    string(122) "he trades <span class="target">[<span class="or"><acronym title="or">or</acronym></span> deals]</span> in second-hand cars"
+                  }
+                  [4]=>
+                  object(stdClass)#60 (2) {
+                    ["source"]=>
+                    string(122) "<span class="example">er handelt mit [<span class="or"><acronym title="oder">o.</acronym></span> in] Gebrauchtwagen</span>"
+                    ["target"]=>
+                    string(37) "he&#39;s in the second-hand car trade"
+                  }
+                  [5]=>
+                  object(stdClass)#61 (2) {
+                    ["source"]=>
+                    string(85) "<span class="example">sie hat einen Laden, in dem sie mit Bioprodukten handelt</span>"
+                    ["target"]=>
+                    string(37) "she owns a shop selling natural foods"
+                  }
+                  [6]=>
+                  object(stdClass)#62 (2) {
+                    ["source"]=>
+                    string(96) "<span class="full_collocation">mit Drogen/Waffen <strong class="tilde">handeln
+</strong> </span>"
+                    ["target"]=>
+                    string(24) "to traffic in drugs/arms"
+                  }
+                  [7]=>
+                  object(stdClass)#63 (2) {
+                    ["source"]=>
+                    string(97) "<span class="full_collocation">mit Frauen/Sklaven <strong class="tilde">handeln
+</strong> </span>"
+                    ["target"]=>
+                    string(24) "to trade in women/slaves"
+                  }
+                  [8]=>
+                  object(stdClass)#64 (2) {
+                    ["source"]=>
+                    string(96) "<span class="full_collocation">en gros/en detail <strong class="tilde">handeln
+</strong> </span>"
+                    ["target"]=>
+                    string(35) "to be in the wholesale/retail trade"
+                  }
+                }
+              }
+              [1]=>
+              object(stdClass)#65 (2) {
+                ["header"]=>
+                string(182) "2. handeln <span class="restriction"><acronym title="rare">rare</acronym></span> <span class="sense">(mit <acronym title="jemandem">jdm</acronym> im Geschäftsverkehr stehen)</span>:"
+                ["translations"]=>
+                array(2) {
+                  [0]=>
+                  object(stdClass)#66 (2) {
+                    ["source"]=>
+                    string(130) "<span class="grammatical_construction">mit <acronym title="jemandem">jdm</acronym> <strong class="tilde">handeln
+</strong> </span>"
+                    ["target"]=>
+                    string(52) "to trade with <acronym title="somebody">sb</acronym>"
+                  }
+                  [1]=>
+                  object(stdClass)#67 (2) {
+                    ["source"]=>
+                    string(106) "<span class="example">die alten Ägypter haben mit Ländern des gesamten Mittelmeerraumes gehandelt</span>"
+                    ["target"]=>
+                    string(77) "the ancient Egyptians traded with countries throughout the Mediterranean area"
+                  }
+                }
+              }
+              [2]=>
+              object(stdClass)#68 (2) {
+                ["header"]=>
+                string(50) "3. handeln <span class="sense">(feilschen)</span>:"
+                ["translations"]=>
+                array(8) {
+                  [0]=>
+                  object(stdClass)#69 (2) {
+                    ["source"]=>
+                    string(196) "<span class="grammatical_construction">[um <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span>] <strong class="tilde">handeln
+</strong> </span>"
+                    ["target"]=>
+                    string(57) "to haggle [over <acronym title="something">sth</acronym>]"
+                  }
+                  [1]=>
+                  object(stdClass)#70 (2) {
+                    ["source"]=>
+                    string(116) "<span class="example">es ist immer peinlich, mit einem Verkäufer zu <strong class="tilde">handeln
+</strong> </span>"
+                    ["target"]=>
+                    string(54) "it&#39;s always embarrassing to haggle with a salesman"
+                  }
+                  [2]=>
+                  object(stdClass)#71 (2) {
+                    ["source"]=>
+                    string(91) "<span class="full_collocation">um den Preis <strong class="tilde">handeln
+</strong> </span>"
+                    ["target"]=>
+                    string(24) "to haggle over the price"
+                  }
+                  [3]=>
+                  object(stdClass)#72 (2) {
+                    ["source"]=>
+                    string(85) "<span class="example">auf dem Basar wird um den Preis der Ware lange gehandelt</span>"
+                    ["target"]=>
+                    string(63) "a lot of haggling goes on at the bazaar over the price of goods"
+                  }
+                  [4]=>
+                  object(stdClass)#73 (2) {
+                    ["source"]=>
+                    string(269) "<span class="full_collocation">mit sich <span class="case"><acronym title="dative">dat</acronym></span> [über <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span>] <strong class="tilde">handeln</strong> lassen</span>"
+                    ["target"]=>
+                    string(70) "to be prepared to negotiate [<acronym title="something">sth</acronym>]"
+                  }
+                  [5]=>
+                  object(stdClass)#74 (2) {
+                    ["source"]=>
+                    string(139) "<span class="example">wenn Sie alles nehmen, lasse ich auch noch mit mir über einen Rabatt <strong class="tilde">handeln
+</strong> </span>"
+                    ["target"]=>
+                    string(63) "if you take everything I&#39;m prepared to negotiate a discount"
+                  }
+                  [6]=>
+                  object(stdClass)#75 (2) {
+                    ["source"]=>
+                    string(109) "<span class="example">über den Preis lasse ich nicht mit mir <strong class="tilde">handeln
+</strong> </span>"
+                    ["target"]=>
+                    string(36) "the price is not open to negotiation"
+                  }
+                  [7]=>
+                  object(stdClass)#76 (2) {
+                    ["source"]=>
+                    string(122) "<span class="example">meine Entscheidung steht, da lasse ich nicht mit mir <strong class="tilde">handeln
+</strong> </span>"
+                    ["target"]=>
+                    string(55) "my decision stands, I&#39;m not open to any suggestions"
+                  }
+                }
+              }
+              [3]=>
+              object(stdClass)#77 (2) {
+                ["header"]=>
+                string(54) "4. handeln <span class="sense">(tätig werden)</span>:"
+                ["translations"]=>
+                array(8) {
+                  [0]=>
+                  object(stdClass)#78 (2) {
+                    ["source"]=>
+                    string(41) "<strong class="headword">handeln</strong>"
+                    ["target"]=>
+                    string(6) "to act"
+                  }
+                  [1]=>
+                  object(stdClass)#79 (2) {
+                    ["source"]=>
+                    string(100) "<span class="example">wir müssen <strong class="tilde">handeln</strong>, ehe es zu spät ist</span>"
+                    ["target"]=>
+                    string(33) "we must act before it is too late"
+                  }
+                  [2]=>
+                  object(stdClass)#80 (2) {
+                    ["source"]=>
+                    string(96) "<span class="example">er ist ein schnell <strong class="tilde">handelnder</strong> Mensch</span>"
+                    ["target"]=>
+                    string(27) "he is a quick-acting person"
+                  }
+                  [3]=>
+                  object(stdClass)#81 (2) {
+                    ["source"]=>
+                    string(99) "<span class="full_collocation">im Affekt/in Notwehr <strong class="tilde">handeln
+</strong> </span>"
+                    ["target"]=>
+                    string(48) "to act in the heat of the moment/in self-defence"
+                  }
+                  [4]=>
+                  object(stdClass)#82 (2) {
+                    ["source"]=>
+                    string(89) "<span class="full_collocation">auf Befehl <strong class="tilde">handeln
+</strong> </span>"
+                    ["target"]=>
+                    string(16) "to act on orders"
+                  }
+                  [5]=>
+                  object(stdClass)#83 (2) {
+                    ["source"]=>
+                    string(191) "<span class="grammatical_construction">aus <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span> <strong class="tilde">handeln
+</strong> </span>"
+                    ["target"]=>
+                    string(54) "to act out of <acronym title="something">sth</acronym>"
+                  }
+                  [6]=>
+                  object(stdClass)#84 (2) {
+                    ["source"]=>
+                    string(67) "<span class="example">die Frau handelte aus purer Eifersucht</span>"
+                    ["target"]=>
+                    string(36) "the woman acted out of pure jealousy"
+                  }
+                  [7]=>
+                  object(stdClass)#85 (2) {
+                    ["source"]=>
+                    string(95) "<span class="full_collocation">aus Überzeugung <strong class="tilde">handeln
+</strong> </span>"
+                    ["target"]=>
+                    string(24) "to act out of conviction"
+                  }
+                }
+              }
+              [4]=>
+              object(stdClass)#86 (2) {
+                ["header"]=>
+                string(50) "5. handeln <span class="sense">(verfahren)</span>:"
+                ["translations"]=>
+                array(4) {
+                  [0]=>
+                  object(stdClass)#87 (2) {
+                    ["source"]=>
+                    string(96) "<span class="grammatical_construction">irgendwie <strong class="tilde">handeln
+</strong> </span>"
+                    ["target"]=>
+                    string(26) "to act in a certain manner"
+                  }
+                  [1]=>
+                  object(stdClass)#88 (2) {
+                    ["source"]=>
+                    string(111) "<span class="example">die Regierung hätte entschlossener <strong class="tilde">handeln</strong> müssen</span>"
+                    ["target"]=>
+                    string(58) "the government should have acted in a more decisive manner"
+                  }
+                  [2]=>
+                  object(stdClass)#89 (2) {
+                    ["source"]=>
+                    string(91) "<span class="full_collocation">rechtswidrig <strong class="tilde">handeln
+</strong> </span>"
+                    ["target"]=>
+                    string(16) "to act illegally"
+                  }
+                  [3]=>
+                  object(stdClass)#90 (2) {
+                    ["source"]=>
+                    string(112) "<span class="full_collocation">eigenmächtig/richtig/fahrlässig <strong class="tilde">handeln
+</strong> </span>"
+                    ["target"]=>
+                    string(54) "to act on one&#39;s own authority/correctly/carelessly"
+                  }
+                }
+              }
+              [5]=>
+              object(stdClass)#91 (2) {
+                ["header"]=>
+                string(130) "6. handeln <span class="style"><acronym title="formal language">form</acronym></span> <span class="sense">(sich verhalten)</span>:"
+                ["translations"]=>
+                array(3) {
+                  [0]=>
+                  object(stdClass)#92 (2) {
+                    ["source"]=>
+                    string(187) "<span class="grammatical_construction">irgendwie [an <acronym title="jemandem">jdm</acronym>/gegen <acronym title="jemanden">jdn</acronym>] <strong class="tilde">handeln
+</strong> </span>"
+                    ["target"]=>
+                    string(169) "to act <span class="target">[<span class="or"><acronym title="or">or</acronym></span> behave]</span> [towards <acronym title="somebody">sb</acronym>] in a certain manner"
+                  }
+                  [1]=>
+                  object(stdClass)#93 (2) {
+                    ["source"]=>
+                    string(100) "<span class="example">wie konntest du so übel an ihr <strong class="tilde">handeln?</strong></span>"
+                    ["target"]=>
+                    string(42) "how could you behave so badly towards her?"
+                  }
+                  [2]=>
+                  object(stdClass)#94 (2) {
+                    ["source"]=>
+                    string(67) "<span class="example">sie hat barmherzig gegen ihn gehandelt</span>"
+                    ["target"]=>
+                    string(44) "she acted in a compassionate way towards him"
+                  }
+                }
+              }
+              [6]=>
+              object(stdClass)#95 (2) {
+                ["header"]=>
+                string(56) "7. handeln <span class="sense">(zum Thema haben)</span>:"
+                ["translations"]=>
+                array(4) {
+                  [0]=>
+                  object(stdClass)#96 (2) {
+                    ["source"]=>
+                    string(302) "<span class="grammatical_construction">von <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>/über <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span> <strong class="tilde">handeln
+</strong> </span>"
+                    ["target"]=>
+                    string(52) "to be about <acronym title="something">sth</acronym>"
+                  }
+                  [1]=>
+                  object(stdClass)#97 (2) {
+                    ["source"]=>
+                    string(302) "<span class="grammatical_construction">von <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>/über <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span> <strong class="tilde">handeln
+</strong> </span>"
+                    ["target"]=>
+                    string(53) "to deal with <acronym title="something">sth</acronym>"
+                  }
+                  [2]=>
+                  object(stdClass)#98 (2) {
+                    ["source"]=>
+                    string(72) "<span class="example">der Zeitungsartikel handelte von dem Streik</span>"
+                    ["target"]=>
+                    string(43) "the newspaper article dealt with the strike"
+                  }
+                  [3]=>
+                  object(stdClass)#99 (2) {
+                    ["source"]=>
+                    string(64) "<span class="example">ein neues Buch? von was handelt es?</span>"
+                    ["target"]=>
+                    string(32) "a new book? what&#39;s it about?"
+                  }
+                }
+              }
+            }
+          }
+          [1]=>
+          object(stdClass)#100 (4) {
+            ["headword"]=>
+            string(9) "han·deln"
+            ["headword_full"]=>
+            string(304) "han<span class="separator">·</span>deln <span class="phonetics">[ˈhandl̩n]</span> <span class="wordclass"><acronym title="verb">VB</acronym></span> <span class="verbclass"><acronym title="reflexive verb">refl</acronym></span> <span class="info"><acronym title="impersonal verb">impers</acronym></span>"
+            ["wordclass"]=>
+            string(14) "reflexive verb"
+            ["arabs"]=>
+            array(3) {
+              [0]=>
+              object(stdClass)#101 (2) {
+                ["header"]=>
+                string(130) "1. handeln <span class="sense">(<acronym title="jemand">jd</acronym>/<acronym title="etwas">etw</acronym> Bestimmtes sein)</span>:"
+                ["translations"]=>
+                array(5) {
+                  [0]=>
+                  object(stdClass)#102 (2) {
+                    ["source"]=>
+                    string(277) "<span class="grammatical_construction">es handelt sich <span class="case"><acronym title="accusative">acc</acronym></span> um <acronym title="etwas">etw</acronym>/<acronym title="jemanden">jdn</acronym></span> <span class="example">es handelt sich hier um ein Verbrechen</span>"
+                    ["target"]=>
+                    string(41) "it&#39;s a crime we are dealing with here"
+                  }
+                  [1]=>
+                  object(stdClass)#103 (2) {
+                    ["source"]=>
+                    string(91) "<span class="example">die Polizei vermutet, dass es sich nicht um Selbstmord handelt</span>"
+                    ["target"]=>
+                    string(42) "the police suspect that it was not suicide"
+                  }
+                  [2]=>
+                  object(stdClass)#104 (2) {
+                    ["source"]=>
+                    string(97) "<span class="example">es handelt sich bei diesen angeblichen UFOs um optische Täuschungen</span>"
+                    ["target"]=>
+                    string(47) "these alleged UFOs are simply optical illusions"
+                  }
+                  [3]=>
+                  object(stdClass)#105 (2) {
+                    ["source"]=>
+                    string(84) "<span class="example">bei den Gästen handelte es sich um entfernte Verwandte</span>"
+                    ["target"]=>
+                    string(33) "the guests were distant relatives"
+                  }
+                  [4]=>
+                  object(stdClass)#106 (2) {
+                    ["source"]=>
+                    string(132) "<span class="example">bei den Tätern soll es sich um Angehörige einer Terrorgruppe <strong class="tilde">handeln
+</strong> </span>"
+                    ["target"]=>
+                    string(56) "the culprits are said to be members of a terrorist group"
+                  }
+                }
+              }
+              [1]=>
+              object(stdClass)#107 (2) {
+                ["header"]=>
+                string(60) "2. handeln <span class="sense">(gehen um, betreffen)</span>:"
+                ["translations"]=>
+                array(6) {
+                  [0]=>
+                  object(stdClass)#108 (2) {
+                    ["source"]=>
+                    string(237) "<span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> um <acronym title="jemanden">jdn</acronym>/<acronym title="etwas">etw</acronym> <strong class="tilde">handeln</strong></span>"
+                    ["target"]=>
+                    string(91) "to be about <acronym title="somebody">sb</acronym>/<acronym title="something">sth</acronym>"
+                  }
+                  [1]=>
+                  object(stdClass)#109 (2) {
+                    ["source"]=>
+                    string(237) "<span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> um <acronym title="jemanden">jdn</acronym>/<acronym title="etwas">etw</acronym> <strong class="tilde">handeln</strong></span>"
+                    ["target"]=>
+                    string(90) "to concern <acronym title="somebody">sb</acronym>/<acronym title="something">sth</acronym>"
+                  }
+                  [2]=>
+                  object(stdClass)#110 (2) {
+                    ["source"]=>
+                    string(51) "<span class="example">worum handelt es sich?</span>"
+                    ["target"]=>
+                    string(20) "what&#39;s it about?"
+                  }
+                  [3]=>
+                  object(stdClass)#111 (2) {
+                    ["source"]=>
+                    string(90) "<span class="example">es handelt sich um einige Beobachtungen, die ich gemacht habe</span>"
+                    ["target"]=>
+                    string(49) "it&#39;s about some observations that I have made"
+                  }
+                  [4]=>
+                  object(stdClass)#112 (2) {
+                    ["source"]=>
+                    string(173) "<span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> darum <strong class="tilde">handeln</strong>, dass ...</span>"
+                    ["target"]=>
+                    string(21) "to be a matter of ..."
+                  }
+                  [5]=>
+                  object(stdClass)#113 (2) {
+                    ["source"]=>
+                    string(103) "<span class="example">es handelt sich jetzt darum, dass wir die veranschlagten Kosten reduzieren</span>"
+                    ["target"]=>
+                    string(53) "it&#39;s a matter now of reducing the estimated costs"
+                  }
+                }
+              }
+              [2]=>
+              object(stdClass)#114 (2) {
+                ["header"]=>
+                string(56) "3. handeln <span class="sense">(darauf ankommen)</span>:"
+                ["translations"]=>
+                array(3) {
+                  [0]=>
+                  object(stdClass)#115 (2) {
+                    ["source"]=>
+                    string(180) "<span class="grammatical_construction">es handelt sich <span class="case"><acronym title="accusative">acc</acronym></span> darum, <acronym title="etwas">etw</acronym> zu tun</span>"
+                    ["target"]=>
+                    string(66) "it is a question of doing <acronym title="something">sth</acronym>"
+                  }
+                  [1]=>
+                  object(stdClass)#116 (2) {
+                    ["source"]=>
+                    string(96) "<span class="example">es handelt sich einzig und allein darum, über die Runden zu kommen</span>"
+                    ["target"]=>
+                    string(48) "it is purely and simply a question of getting by"
+                  }
+                  [2]=>
+                  object(stdClass)#117 (2) {
+                    ["source"]=>
+                    string(77) "<span class="example">es kann sich jetzt nicht darum handeln, dass ...</span>"
+                    ["target"]=>
+                    string(46) "it is of no importance at the moment, that ..."
+                  }
+                }
+              }
+            }
+          }
+          [2]=>
+          object(stdClass)#118 (4) {
+            ["headword"]=>
+            string(9) "han·deln"
+            ["headword_full"]=>
+            string(230) "han<span class="separator">·</span>deln <span class="phonetics">[ˈhandl̩n]</span> <span class="wordclass"><acronym title="verb">VB</acronym></span> <span class="verbclass"><acronym title="transitive verb">trans</acronym></span>"
+            ["wordclass"]=>
+            string(15) "transitive verb"
+            ["arabs"]=>
+            array(2) {
+              [0]=>
+              object(stdClass)#119 (2) {
+                ["header"]=>
+                string(70) "1. handeln <span class="sense">(angeboten und verkauft werden)</span>:"
+                ["translations"]=>
+                array(3) {
+                  [0]=>
+                  object(stdClass)#120 (2) {
+                    ["source"]=>
+                    string(174) "<span class="grammatical_construction">[für <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span>] gehandelt werden</span>"
+                    ["target"]=>
+                    string(153) "to be traded <span class="target">[<span class="or"><acronym title="or">or</acronym></span> to sell]</span> [at <acronym title="something">sth</acronym>]"
+                  }
+                  [1]=>
+                  object(stdClass)#121 (2) {
+                    ["source"]=>
+                    string(73) "<span class="example">Silber wird für Euro 216 das Kilo gehandelt</span>"
+                    ["target"]=>
+                    string(37) "silver is trading at 216 euros a kilo"
+                  }
+                  [2]=>
+                  object(stdClass)#122 (2) {
+                    ["source"]=>
+                    string(67) "<span class="example">an den Börsen werden Aktien gehandelt</span>"
+                    ["target"]=>
+                    string(40) "shares are traded on the stock exchanges"
+                  }
+                }
+              }
+              [1]=>
+              object(stdClass)#123 (2) {
+                ["header"]=>
+                string(58) "2. handeln <span class="sense">(im Gespräch sein)</span>:"
+                ["translations"]=>
+                array(2) {
+                  [0]=>
+                  object(stdClass)#124 (2) {
+                    ["source"]=>
+                    string(213) "<span class="grammatical_construction">als <acronym title="jemand">jd</acronym>/für <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span> gehandelt werden</span>"
+                    ["target"]=>
+                    string(99) "to be touted as <acronym title="somebody">sb</acronym>/for <acronym title="something">sth</acronym>"
+                  }
+                  [1]=>
+                  object(stdClass)#125 (2) {
+                    ["source"]=>
+                    string(87) "<span class="example">er wird schon lange als Nachfolger für Dr. Alle gehandelt</span>"
+                    ["target"]=>
+                    string(62) "he has been touted for a long time as Dr. Alle&#39;s successor"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      [3]=>
+      object(stdClass)#126 (3) {
+        ["type"]=>
+        string(5) "entry"
+        ["opendict"]=>
+        bool(false)
+        ["roms"]=>
+        array(1) {
+          [0]=>
+          object(stdClass)#127 (4) {
+            ["headword"]=>
+            string(7) "handeln"
+            ["headword_full"]=>
+            string(232) "handeln <span class="wordclass"><acronym title="verb">VB</acronym></span> <span class="verbclass"><acronym title="transitive verb">trans</acronym></span> <span class="topic"><acronym title="financial markets">FINMKT</acronym></span>"
+            ["wordclass"]=>
+            string(15) "transitive verb"
+            ["arabs"]=>
+            array(1) {
+              [0]=>
+              object(stdClass)#128 (2) {
+                ["header"]=>
+                string(0) ""
+                ["translations"]=>
+                array(1) {
+                  [0]=>
+                  object(stdClass)#129 (2) {
+                    ["source"]=>
+                    string(79) "<strong class="headword">handeln</strong> <span class="sense">(anbieten)</span>"
+                    ["target"]=>
+                    string(5) "trade"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      [4]=>
+      object(stdClass)#130 (3) {
+        ["type"]=>
+        string(5) "entry"
+        ["opendict"]=>
+        bool(false)
+        ["roms"]=>
+        array(1) {
+          [0]=>
+          object(stdClass)#131 (4) {
+            ["headword"]=>
+            string(10) "hän·deln"
+            ["headword_full"]=>
+            string(299) "hän<span class="separator">·</span>deln <span class="phonetics">[ˈhɛndl̩n]</span> <span class="wordclass"><acronym title="verb">VB</acronym></span> <span class="verbclass"><acronym title="transitive verb">trans</acronym></span> <span class="style"><acronym title="informal">inf</acronym></span>"
+            ["wordclass"]=>
+            string(15) "transitive verb"
+            ["arabs"]=>
+            array(1) {
+              [0]=>
+              object(stdClass)#132 (2) {
+                ["header"]=>
+                string(0) ""
+                ["translations"]=>
+                array(1) {
+                  [0]=>
+                  object(stdClass)#133 (2) {
+                    ["source"]=>
+                    string(164) "<span class="grammatical_construction"><acronym title="jemanden">jdn</acronym>/<acronym title="etwas">etw</acronym> <strong class="tilde">händeln
+</strong> </span>"
+                    ["target"]=>
+                    string(89) "to handle <acronym title="somebody">sb</acronym>/<acronym title="something">sth</acronym>"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

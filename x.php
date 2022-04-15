@@ -9,7 +9,15 @@ include 'vendor/autoload.php';
 
   try {
 
-        $d = new PonsDictionary();
+    $xml = \simplexml_load_file("config.xml");
+  
+    $p = new PonsDictionary($xml);
+    
+    $p->lookup("Handeln", "DE", "EN");
+    
+    $debug = 10;
+    
+    ++$debug;
 
   } catch (Exception $e) {
 

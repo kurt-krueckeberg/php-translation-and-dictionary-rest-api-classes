@@ -28,14 +28,14 @@ class PonsDictionary implements DictionaryInterface {
    public function __construct(\SimpleXMLElement $xml)
    {   
 
-       $pons = $xml->xpath(self::$xpath);
+       $pons = $xml->xpath(self::$xpath)[0];
 
-       $this->headers[self::$credential] = (string) $pons->secret;
+       $this->headers[self::$credential] = (string) $pons->settings->secret;
 
        $this->client = new Client(['base_uri' =>self::$base_url]); 
    } 
 
-   public function lookup(string $str, string $src, string $dest) : string
+   public function lookup(string $text, string $src, string $dest) : string
    {
        $this->query[PonsDictionary::INPUT] = urlencode($text); 
 
@@ -44,8 +44,22 @@ class PonsDictionary implements DictionaryInterface {
 
        $this->query[PonsDictionary::DICTIONARY] = strtolower($src . $dest);  
 
-       $response = $this->client->request('GET', $this->route, ['query' => $this->query, 'headers' => $this->headers]); 
+       $response = $this->client->request('GET', self::$route, ['query' => $this->query, 'headers' => $this->headers]);       
 
-       // todo: process this ... urldecode ??
+       $contents = $response->getBody()->getContents();
+ 
+       // todo: urlecode needed?
+       $obj = json_decode($contents);
+
+       var_dump($obj);
+       
+       /*
+        *  todo: 
+        * I. Get the translations
+        * 
+        * 1. remove html makrup
+        * 2. convert htmlentities
+        */
+       return "nonhing";   
    }
 }
