@@ -1,9 +1,11 @@
 <?php
 declare(strict_types=1);
 use \SplFileObject as File;
-use LanguageTools\Translator;
 use LanguageTools\SentenceFetcher;
 use LanguageTools\WebPageCreator;
+use LanguageTools\Translator;;
+
+include 'vendor/autoload.php';
 
 function check_args(int $argc, array $argv)
 {
