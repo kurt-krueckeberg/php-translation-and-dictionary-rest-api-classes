@@ -24,7 +24,7 @@
                <header name="Authorization">DeepL-Auth-Key ???????????????????????????????????????</header>
            </credentials>
            <Content-Type>application/json; charset=UTF-8</Content-Type>
-           <implementation>Translators\DeeplTranslator</implementation>
+           <implementation>LanguageTools\DeeplTranslator</implementation>
            <query> 
               <from name="source_lang" />
               <to name="target_lang" />
@@ -47,7 +47,7 @@
               <header name="Ocp-Apim-Subscription-Region">??????</header>
            </credentials>
            <Content-Type>application/json; charset=UTF-8</Content-Type>
-           <implementation>Translators\AzureTranslator</implementation>
+           <implementation>LanguageTools\AzureTranslator</implementation>
            <query> 
                <parm name="api-version">3.0</parm>
                <parm name="textType">plain</parm>
@@ -61,7 +61,7 @@
              <method>POST</method> 
           </request>
           <request type="dictionary">
-             <implementation>Translators\AzureTranslator</implementation>
+             <implementation>LanguageTools\AzureTranslator</implementation>
              <route>Dictionary/Lookup</route> 
              <method>POST</method> 
           </request>
@@ -76,7 +76,7 @@
           <credentials method="token">
           </credentials>
           <Content-Type>application/json; charset=UTF-8</Content-Type>
-          <implementation>Translators\IbmTranslator</implementation>
+          <implementation>LanguageTools\IbmTranslator</implementation>
           <query> 
              <parm name="????">DE</parm>
              <parm name="???">to</parm>

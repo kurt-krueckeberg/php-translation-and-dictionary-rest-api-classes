@@ -3,7 +3,7 @@ declare(strict_types=1);
 use \SplFileObject as File;
 use LanguageTools\SentenceFetcher;
 use LanguageTools\WebPageCreator;
-use LanguageTools\Translator;;
+use LanguageTools\Translator;
 
 include 'vendor/autoload.php';
 
@@ -43,7 +43,7 @@ function create_html_output(\SimpleXMLElement $xml, string  $fname)
 
            // 2nd parameter is destination language. 3rd parameter is optional source language.
            // If 3rd parameter is ommited, source language is automatically detected.
-           $translation = $trans->translate($sentence, "EN-US", "DE"); 
+           $translation = $translator->translate($sentence, "EN-US", "DE"); 
            
            $creator->write($sentence, $translation); 
       }
