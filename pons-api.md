@@ -13,11 +13,13 @@ Other pricing models, such as flat fees, limited access to a subset of dictionar
 
 ## List of Bilingual Dictionaries
 
-To get of supported bilingual dictinaries:
+To get of supported bilingual German dictinaries:
 
 ```bash
 wget -O - --no-check-certificate "https://api.pons.com/v1/dictionaries?language=de"
 ```
+
+The German => English dictionary is: **deen**; i.e. Duetsch to Englisch. 
 
 ## Dictionary Queries
 
