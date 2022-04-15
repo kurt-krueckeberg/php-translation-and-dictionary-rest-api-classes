@@ -1,6 +1,6 @@
 # PONS Dictinary API
 
-PONS Dictinary API [main page](https://bg.pons.com/p/online-dictionary/developers/api). PONS REST PAI allows 1,000 quereires per month. You can contact them at that prior page if more querires are needed.
+PONS Dictinary API [main page](https://en.pons.com/p/online-dictionary/developers/api). PONS REST PAI allows 1,000 quereires per month. You can contact them at that prior page if more querires are needed.
 
 > The POD-API is provided to you directly with a free quota of 1000 reference queries per month.
 
