@@ -2,7 +2,7 @@
 
 ## Deepl
 
-### Source langues
+### Source Language Codes for Supported Sources Languages
 
 |Souce Language Code|Language Name|
 |-------------------|-------------|
@@ -31,7 +31,7 @@
 |SV|Swedish|
 |ZH|Chinese|
 
-### Target Languages
+### Target Language Codes for Supported Taget Languages
 
 |Destination Language Code|Language Name|
 |--------------------------|-------------|
