@@ -11,6 +11,8 @@ Other pricing models, such as flat fees, limited access to a subset of dictionar
 
 [documentation](https://bg.pons.com/p/files/uploads/pons/api/api-documentation.pdf)
 
+Secret key [page](https://en.pons.com/open_dict/public_api?logged=1)
+
 ## PONS Dictionary Queries
 
 |Name|Type|Description|

@@ -2,7 +2,7 @@
 declare(strict_types=1);
 use \SplFileObject as File;
 use LanguageTools\SentenceFetcher;
-use LanguageTools\WebPageCreator;
+use LanguageTools\WebpageCreator;
 use LanguageTools\Translator;
 
 include 'vendor/autoload.php';
@@ -23,7 +23,7 @@ function create_html_output(\SimpleXMLElement $xml, string  $fname)
 { 
    $fetcher = new SentenceFetcher($xml); 
   
-   $creator = new WebPageCreator();
+   $creator = new WebpageCreator();
   
    $file =  new File($fname);
 

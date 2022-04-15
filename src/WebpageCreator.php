@@ -4,7 +4,7 @@ namespace LanguageTools;
 
 use \SplFileObject as File;
 
-class WebPageCreator {
+class WebpageCreator {
 
    private $file;
    private $is_closed;
