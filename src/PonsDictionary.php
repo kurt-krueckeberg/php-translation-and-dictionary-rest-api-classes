@@ -12,6 +12,8 @@ class PonsDictionary implements DictionaryInterface {
    static string  $route = "v1/dictionary";
    static string  $credential = "X-Secret";
 
+   static string $xpath =  "/providers/provider[@abbrev='p']"; 
+
    public const SRC_LANG = 'in';
    public const DEST_LANG = 'language';
    public const DICTIONARY = 'l';
@@ -23,9 +25,12 @@ class PonsDictionary implements DictionaryInterface {
 
    private Client $client;  
 
-   public function __construct(string $key)
+   public function __construct(\SimpleXMLElement $xml)
    {   
-       $this->headers[self::$credential] = $key;
+
+       $pons = $xml->xpath(self::$xpath);
+
+       $this->headers[self::$credential] = (string) $pons->secret;
 
        $this->client = new Client(['base_uri' =>self::$base_url]); 
    } 

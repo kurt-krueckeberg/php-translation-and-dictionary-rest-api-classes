@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <providers>
+    <provider name="pons" abbrev="p">
+        <settings>      
+          <secret>your key here ?????????????????????????</secret>
+        </settings>
+    </provider>
+
    <provider name="leipzig" abbrev="l">
         <settings>      
            <credentials method="none"></credentials>
