@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace Translators;
+namespace LanguageTools;
 use GuzzleHttp\Psr7\Response;
 
 // See documentation in Deepl-doc.md 

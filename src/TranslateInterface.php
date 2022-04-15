@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace Translators;
+namespace LanguageTools;
 
 interface TranslateInterface {
 

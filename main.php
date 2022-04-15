@@ -1,10 +1,9 @@
 <?php
 declare(strict_types=1);
 use \SplFileObject as File;
-use Translators\Translator;
-
-include "SentenceFetcher.php"; // todo: Add to compser.json 
-include "WebPageCreator.php";
+use LanguageTools\Translator;
+use LanguageTools\SentenceFetcher;
+use LanguageTools\WebPageCreator;
 
 function check_args(int $argc, array $argv)
 {

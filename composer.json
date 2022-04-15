@@ -1,10 +1,10 @@
 {
-    "name": "kurt-krueckeberg/translators",
-    "description": "xml driven REST Translator classes for Azure Translator, DEEPL Translator and IBM Watson Translation services",
+    "name": "kurt-krueckeberg/language-learning-tools",
+    "description": "xml driven REST API Language Learning classes for getting example sentences, translator and dictionary classes",
     "type": "library",
     "autoload": {
         "psr-4": {
-            "LanguageTranslators\\": "src"
+            "LanguageTools\\": "src"
         }
     },
     "require": {

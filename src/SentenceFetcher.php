@@ -1,7 +1,8 @@
 <?php
-use GuzzleHttp\Client as Client;
+declare(strict_types=1);
+namespace LanguageTools;
 
-include "vendor/autoload.php";
+use GuzzleHttp\Client as Client;
 
 class SentenceResultsIterator implements \Iterator, \Countable {
 
