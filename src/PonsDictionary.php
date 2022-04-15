@@ -50,8 +50,11 @@ class PonsDictionary implements DictionaryInterface {
  
        // todo: urlecode needed?
        $obj = json_decode($contents);
+       
+       foreach ($obj[0]['hits'] as $row) {
 
-       print_r($obj);
+             print_r($row);
+       }
        
        /*
         *  todo: 

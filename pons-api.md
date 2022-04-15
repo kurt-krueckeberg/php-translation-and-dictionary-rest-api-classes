@@ -605,6 +605,7 @@ After PonsDictionary::lookup(...)
 
 after the line `$obj = json_decode(...);`, `$obj[0]["hits]` is an array with this layout:
 
+```php
 [hits] => Array
     (
         [0] => stdClass Object
@@ -659,6 +660,6 @@ after the line `$obj = json_decode(...);`, `$obj[0]["hits]` is an array with thi
                                                             )
 
                                                     )
-
+```
 
 
