@@ -8,9 +8,9 @@ use GuzzleHttp\Psr7\Response;
 class PonsDictionary implements DictionaryInterface {
 
    private string $route;      
-   private string $method;     // GET, POST, etc 
-   private string $from_key;   // key for source language (which is optional)
-   private string $to_key;     // key for destination language (required)
+   private string $method;   // GET, POST, etc 
+   private string $from;     // key for source language (which is optional)
+   private string $to;       // key for destination language (required)
 
    private array $options;    // [['headers' => [...], 'query' => [...], 'json' => [...]]
 
@@ -18,24 +18,10 @@ class PonsDictionary implements DictionaryInterface {
    
    private Client $client;  
 
-   static string $xpath =  "/providers/provider[@abbrev='%s']"; 
-
-   /*
-   // Instantiates the Translator-derived class specified in <implementation>...</implementation>
-   static public function createFromXML(\SimpleXMLElement $xml, string $abbrev) : Translator
-   {
-      $query = sprintf(self::$xpath, $abbrev); 
-     
-      $provider = $xml->xpath($query)[0];
-     
-      $refl = new \ReflectionClass((string) $provider->settings->implementation); 
-      
-      return $refl->newInstance($provider);
-   }
-  */
+   //?? static string $xpath =  "/providers/provider[@abbrev='%s']"; 
 
    // PHP 8.0 feature required: automatic member variable assignemnt syntax.
-   public function __construct(protected \SimpleXMLElement $provider) 
+   public function __construct(protected \SimpleXMLElement $provider, string $src_lang, string $dest_lang) 
    {      
        $this->provider = $provider;
 
@@ -54,30 +40,14 @@ class PonsDictionary implements DictionaryInterface {
 
       $this->options['headers'] = $headers;
 
-      $trans = $provider->xpath("requests/request[@type='translation']")[0];
-
-      $this->route  = (string) $trans->route;  
-      $this->method = (string) $trans->method; 
+      $dict = $provider->xpath("requests/request[@type='dictionary']")[0];
+      $this->route  = (string) $dict->route;  
+      $this->method = (string) $dict->method; 
 
       $this->setQueryOptions($provider->settings->query);
    }  
-
-   // Assign xml <query> section settings 
-   private function setQueryOptions(\SimpleXMLElement $query)
-   {
-      $query_array = array();
-
-      $this->from_key = (string) $query->from['name'];
-
-      $this->to_key = (string) $query->to['name'];
-
-      foreach($query->parm as $parm)  
-              $query_array[ (string) $parm["name"] ] = urlencode( (string) $parm );
-
-      $this->options['query'] = $query_array;
-   }
+   
  /*
-   // If this is a translation request and there is no source language, the source langauge will be auto-detected.
    protected function setLanguages(string $dest_lang, $source_lang="")
    {
       if ($source_lang !== "") 
@@ -87,14 +57,17 @@ class PonsDictionary implements DictionaryInterface {
    }
  */
    /*
-     Template-pattern method that calls abstract protected methods overriden by derived classes (to prepare the input amd
-       to extract the lookupd text and return a lookupd string from he reponse). 
-    */
-   final public function lookup(string $text, string $dest_lang, $source_lang="")
-   {
-       $this->setLanguages($dest_lang, $source_lang);
+     Q: Doesn't PONs require a particular dictionary paramter from particular source and destination languages?
+        If so, we will need a hashtable to lookup the dictionary based on the inupt (nad maybe output) language.
 
-       $this->add_text($text); // Implemented by derived classes.
+     A: This will require investigate this--most likely--empricially with test code.
+    */
+   //--final public function lookup(string $text, string $dest_lang, $source_lang="") //???
+   final public function definition(string $text)
+   {
+       //--$this->setLanguages($dest_lang, $source_lang);
+
+       $this->query['l'] = urlencode($text); // urlencode?
 
        $response = $this->client->request($this->method, $this->route, $this->options); 
 
