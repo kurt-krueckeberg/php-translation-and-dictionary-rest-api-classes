@@ -10,10 +10,12 @@ echo date("l jS \of F Y h:i:s A") . "\n";
 ```
 date("m-d-y:H:i:s")
 
-2. Make ~/rest-translators a github respoistory-backed composer package.
+2. Make a namespace hierachy -- if needed -- to accomodate PonsDictinary.
+
+3. Make ~/rest-translators a github respoistory-backed composer package.
 
 See these articles:
 
 - [composer: How to Use Git Repositories](https://www.daggerhartlab.com/composer-how-to-use-git-repositories/)
 
-3. Make ~/e a github respoistory-backed composer package that usese the rest-tranlators pakckage.
+4. Make ~/e a github respoistory-backed composer package that usese the rest-tranlators pakckage.

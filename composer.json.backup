@@ -4,7 +4,7 @@
     "type": "library",
     "autoload": {
         "psr-4": {
-            "LanguageTranslators\\": "src"
+            "Translators\\": "src"
         }
     },
     "require": {
