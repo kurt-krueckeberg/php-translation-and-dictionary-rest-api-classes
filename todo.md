@@ -8,7 +8,7 @@ PONS
 
 Pons returns more than just translations. It returns information that is not throoughly documented, but would be clear if I could find the CSS that pons uses to format translation results.
 
-Probably the best thing , if I can't find th CSS, is stop in the debugger, and find where the translations are: Under what top-level key are they, what 2nary key, etc.
+See comments in PonsDictionary::lookup()...at end of method.
 
 2.  Change examples_ file name to NOT have ':' and to have AM or PM:
 
