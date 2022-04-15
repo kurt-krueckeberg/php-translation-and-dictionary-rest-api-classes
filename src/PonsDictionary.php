@@ -62,6 +62,18 @@ class PonsDictionary implements DictionaryInterface {
            
            foreach ($roms as $r) {
                
+               /*
+                * $r is an object with the keys:
+                *               [headword] => han·deln      <-- The input word was "Handeln" not "handeln", yet translations for the verb handeln were returned?
+This seesm to be a html version [headword_full] => han<span class="separator">·</span>deln <span class="phonetics">[ˈhandl̩n]</span> <span class="wordclass"><acronym title="verb">VB</acronym></span> <span class="verbclass"><acronym title="intransitive verb">intr</acronym></span>
+                    [wordclass] => intransitive verb
+                *   [arabs] is an array of objects with the keys:
+                *                              [header] => string with German word, followd by an explanation of some sort. Note: The word 
+                *                              [translations] is an array with the keys:
+                *                                                                  [source] with the definition in html or an example sentence
+                *                                                                  [target] with the definition or an example sentence.
+                * 
+                */ 
                print_r($r);
                
                $debug = 10;
