@@ -1,3 +1,5 @@
+# Some Dictionary APIs
+
 ## PONS Dictinary API
 
 PONS Dictinary API [main page](https://bg.pons.com/p/online-dictionary/developers/api). PONS REST PAI allows 1,000 quereires per month. You can contact them at that prior page if more querires are needed.
@@ -17,24 +19,15 @@ To get of supported bilingual dictinaries:
 wget -O - --no-check-certificate "https://api.pons.com/v1/dictionaries?language=de"
 ```
 
-|Name|Type|Description|
-|----------------------|
-|X-Secret|HTTP-Header|The supplied secret|
-|q|Request-Parameter|Search term (URL-escaped UTF-8)|
-|l|Request-Parameter|Dictionary (i.e. deen,deru) - consult the search url on the result page of a search (on our website).  Note: This does not imply a direction, i.e. 'deen' may yield results in both german->english and english->german directions. To specify a direction, use the in-parameter|
-|in|Request-Parameter|[optional] Specify the source language (the language of the search term)|
-
 ## dict.cc 
 
-Dowload [page](https://www1.dict.cc/translation_file_request.php?l=e)
-
+dict.cc has a download text [file](https://www1.dict.cc/translation_file_request.php?l=e)with delimited fields. Logi to parse it is not readily available.
 
 ## DING (Dictionary Nice Grep)
 
-[ding](https://www-user.tu-chemnitz.de/~fri/ding/)
+[ding](https://www-user.tu-chemnitz.de/~fri/ding/) also have a downloadable text files that is (I think) designed to be grep'able.
 
 
 ## Oxford Dictionarys API
 
-[page](https://developer.oxforddictionaries.com/).  Does it have German <> English?
-
+[page](https://developer.oxforddictionaries.com/).  There is a limited set of languages supported by their API, and German is not (I dont' think) included.

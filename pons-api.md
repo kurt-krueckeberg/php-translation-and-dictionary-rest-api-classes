@@ -11,21 +11,29 @@ Other pricing models, such as flat fees, limited access to a subset of dictionar
 
 [documentation](https://bg.pons.com/p/files/uploads/pons/api/api-documentation.pdf)
 
-## ISO Alpha Language Codes
+## PONS Dictionary Queries
 
-There are ISO standards for 2- and 3-letter language codes. See:
+|Name|Type|Description|
+|----------------------|
+|X-Secret|HTTP-Header|The supplied secret|
+|q|Request-Parameter|Search term (URL-escaped UTF-8)|
+|l|Request-Parameter|Dictionary (i.e. deen,deru) - consult the search url on the result page of a search (on our website).  Note: This does not imply a direction, i.e. 'deen' may yield results in both german->english and english->german directions. To specify a direction, use the in-parameter|
+|in|Request-Parameter|[optional] Specify the source language (the language of the search term)|
 
-- This list in a github [repository](https://github.com/datasets/language-codes)
+## Supported Languages
 
-- Library of Congress [ISO Language Codes](https://www.loc.gov/standards/iso639-2/langhome.html) page.
+To get of supported PONS bilingual dictinaries:
 
-## List of Bilingual Dictionaries
+```bash
+wget -O - --no-check-certificate "https://api.pons.com/v1/dictionaries?language"
+```
 
 To get of supported bilingual German dictinaries:
 
 ```bash
 wget -O - --no-check-certificate "https://api.pons.com/v1/dictionaries?language=de"
 ```
+
 This returns this JSON result of dictionaries for input and output language combinations:
 
 ```json
@@ -552,20 +560,11 @@ This returns this JSON result of dictionaries for input and output language comb
   }
 ]
 ```
-Comments:
+**Comments:**
 
 If seems that the four-letter dictionary **key** and **simple_label** are composed from the names (in German?) of the input and output langagues?
 
 Question: Are the input and output language two-letter abbreviations the same as those used by deepl, Azure and IBM? That is, is there a standard for the language abbreviations?
 
 The German => English dictionary is: **deen**; i.e. Duetsch to Englisch. 
-
-## Dictionary Queries
-
-|Name|Type|Description|
-|----------------------|
-|X-Secret|HTTP-Header|The supplied secret|
-|q|Request-Parameter|Search term (URL-escaped UTF-8)|
-|l|Request-Parameter|Dictionary (i.e. deen,deru) - consult the search url on the result page of a search (on our website).  Note: This does not imply a direction, i.e. 'deen' may yield results in both german->english and english->german directions. To specify a direction, use the in-parameter|
-|in|Request-Parameter|[optional] Specify the source language (the language of the search term)|
 
