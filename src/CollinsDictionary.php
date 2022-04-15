@@ -5,7 +5,7 @@ namespace LanguageTools;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
-class PonsDictionary implements DictionaryInterface {
+class CollinsDictionary implements DictionaryInterface {
 
    static string  $base_url = "https://api.pons.com/baseurl";
    static string  $method = "GET";

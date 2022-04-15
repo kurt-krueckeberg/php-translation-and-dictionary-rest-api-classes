@@ -31,3 +31,11 @@ dict.cc has a download text [file](https://www1.dict.cc/translation_file_request
 ## Oxford Dictionarys API
 
 [page](https://developer.oxforddictionaries.com/).  There is a limited set of languages supported by their API, and German is not (I dont' think) included.
+
+## Collins Bilingula API
+
+They offer a Concise German English dictinary.
+
+- [Collins API](https://www.collinsdictionary.com/collins-api) allows 5,000 free calls per month. 
+
+- Apply for key [here](https://blog.collinsdictionary.com/collins-api-apply-for-a-key/)
