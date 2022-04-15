@@ -34,6 +34,7 @@ After cloing the repository:
 1. Generate the autoloader using **composer**:
 
 ```bash
+$ composer update 
 $ composer dump-autoload
 ```
 
