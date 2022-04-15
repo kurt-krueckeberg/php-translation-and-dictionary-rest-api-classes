@@ -1,26 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <providers>
-   <provider name="pons" abbrev="p">
-     <settings>      
-         <baseurl>"https://api.pons.com</baseurl>
-         <credentials method="header">
-             <header name="X-Secret">your key here ???????????????????</header>
-       </credentials>
-       <Content-Type>application/json; charset=UTF-8</Content-Type>
-       <query> 
-          <dictionary name="l">deen</dictionary>
-          <from name="in" />
-          <to name="language" />
-          <ref>false</ref>
-       </query>
-     </settings>      
-     <requests> 
-        <request type="dictionary"> 
-            <route>v1/dictionary</route> 
-            <method>GET</method> 
-        </request>
-     </requests>
-   </provider>
    <provider name="leipzig" abbrev="l">
         <settings>      
            <credentials method="none"></credentials>
