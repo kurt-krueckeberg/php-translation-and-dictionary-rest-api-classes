@@ -22,6 +22,33 @@ Other pricing models, such as flat fees, limited access to a subset of dictionar
 
 ## Supported Languages
 
+Pons uses the **ISO 639-1** two-letter language codes. The main supported languages that have bi-lingual dictionaries are:
+
+|ISO 639-1 Code|Language|
+|--------------|--------|
+|de|German|
+|el|Greek|
+|en|English|
+|es|Spanish|
+|fr|French|
+|it|Italian|
+|pl|Polis|
+|pt|Portugese|
+|ru|Russian|
+|sl|Slovenian|
+|tr|Turkish|
+|zh|Chinese|
+
+Other more limited supported languages are:
+
+|ISO 639-1 Code|Language|
+|--------------|--------|
+|sr|Serbian|
+|nl| Netherlands
+|hr|Croatian
+|ro|Romanian
+|hu|Hungrian
+
 To get of supported PONS bilingual dictinaries:
 
 ```bash
