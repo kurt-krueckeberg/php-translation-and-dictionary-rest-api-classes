@@ -21,7 +21,7 @@ wget -O - --no-check-certificate "https://api.pons.com/v1/dictionaries?language=
 
 ## dict.cc 
 
-dict.cc has a download text [file](https://www1.dict.cc/translation_file_request.php?l=e) with delimited fields. Logi to parse it is not readily available.
+dict.cc is a download text [file](https://www1.dict.cc/translation_file_request.php?l=e) with delimited fields. There is no documentation on how to best parse it.
 
 ## DING (Dictionary Nice Grep)
 
