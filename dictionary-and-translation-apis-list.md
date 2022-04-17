@@ -2,13 +2,13 @@
 
 ## Translators
 
-- Azure/Microsoft
+- Azure/Microsoft $29/month.
 
-- Deepl Translator
+- Deepl Translator 
 
 - IBM Watson Translator
 
-- Yandex
+- Yandex Their price seems quite good.
 
 ## Dictionaries
 
