@@ -5,26 +5,6 @@ namespace LanguageTools;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
-class PonsResultsIterator extends ResultsIteratorBase {
-   
-    protected function get_current(mixed $current) : mixed
-    {
-        //return $current->??;
-        return " ";
-    }        
-    /*
-    {
-        return $this->sents[$this->current]->sentence;
-    }
-    */
-
-
-}
-/*
- * Class lookup() method unfiniahsed because  Pons Dictionary responses are so ersely documented. 
- * Plus some of the responses contain <span> html elements, which makes them hard to read.
- */
-
 class PonsDictionary implements DictionaryInterface {
 
    static string  $base_url = "https://api.pons.com/baseurl";
@@ -84,7 +64,7 @@ class PonsDictionary implements DictionaryInterface {
         */
        foreach ($obj->hits as $element) { // Iteratoe over hits
             
-           foreach($element->roms as $rom) { // ITerate over roms, then arabs 
+           foreach($element->roms as $rom) { // Iterate over roms, then arabs 
            
              foreach($rom->arabs as $arab) {    
                  
