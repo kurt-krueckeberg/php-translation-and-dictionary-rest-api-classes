@@ -55,7 +55,7 @@ class PonsDictionary implements DictionaryInterface {
        $this->client = new Client(['base_uri' =>self::$base_url]); 
    } 
 
-   public function lookup(string $text, string $src, string $dest) : string
+   public function lookup(string $text, string $src, string $dest) : array
    {
        $this->query[PonsDictionary::INPUT] = urlencode($text); 
 
@@ -68,7 +68,7 @@ class PonsDictionary implements DictionaryInterface {
 
        $contents = $response->getBody()->getContents();
  
-       // todo: urlecode needed?
+       // todo: Is urlecode needed?
        /*
        $arr = json_decode($contents, true)[0];
        
@@ -82,32 +82,16 @@ class PonsDictionary implements DictionaryInterface {
         * The PONS results as so tersely documented that one is not certain how to best parse 
         * and retreive the results.
         */
-       foreach ($obj->hits as $o) { // hits is an array. foreach hit in the array...
+       foreach ($obj->hits as $element) { // Iteratoe over hits
             
-           foreach($o->roms as $rom) { // access the roms property, whic his an array (stdClass objects)
+           foreach($element->roms as $rom) { // ITerate over roms, then arabs 
            
              foreach($rom->arabs as $arab) {    
                  
                  foreach ($arab->translations as $translation) {
                      
                       $results[] = $translation->target;   
-/*
-  [headword] => han·deln      <-- NOTE: The input word was "Handeln" not "handeln", yet translations for the verb handeln were returned?
-
-  [headword_full] (html version) => han<span class="separator">·</span>deln <span class="phonetics">[ˈhandl̩n]</span> <span class="wordclass"><acronym title="verb">VB</acronym></span> <span class="verbclass"><acronym title="intransitive verb">intr</acronym></span>
-  [wordclass] => intransitive verb
-  [arabs] is an array of objects with the keys:
-       [header] => string with the German word, followd by an explanation of some sort. 
-       [translations] is an array with the keys:
-          [source] with the definition in html or an example sentence
-          [target] with the definition or an example sentence.
- 
-*/ 
-                  print_r($translation);
-               
-                  $debug = 10;
-               
-                  ++$debug;
+                      // print_r($translation); debug
                }
              }
           }
