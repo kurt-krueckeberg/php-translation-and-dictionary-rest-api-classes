@@ -5,6 +5,11 @@ namespace LanguageTools;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
+/*
+ * Class lookup() method unfiniahsed because  Pons Dictionary responses are so ersely documented. 
+ * Plus some of the responses contain <span> html elements, which makes them hard to read.
+ */
+
 class PonsDictionary implements DictionaryInterface {
 
    static string  $base_url = "https://api.pons.com/baseurl";
