@@ -4,7 +4,23 @@ namespace LanguageTools;
 
 use GuzzleHttp\Client as Client;
 
-class SentenceResultsIterator implements \Iterator, \Countable {
+/* New code
+class SentenceResultsIterator  extends ResultsIteratorBase { 
+ 
+    public function __construct(array $objs)
+    {
+       $this->sents = $objs;
+       $this->cnt = count($objs);
+       $this->current = 0; 
+    }
+    protected function get_current()
+    {
+        return $this->objs->sentence;
+    }
+}
+*/
+
+class SentenceResultsIterator implements \Iterator, \Countable { 
 
     private array $sents;
     private int $cnt;
