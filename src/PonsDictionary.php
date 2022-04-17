@@ -5,6 +5,21 @@ namespace LanguageTools;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
+class PonsResultsIterator extends ResultsIteratorBase {
+   
+    protected function get_current(mixed $current) : mixed
+    {
+        //return $current->??;
+        return " ";
+    }        
+    /*
+    {
+        return $this->sents[$this->current]->sentence;
+    }
+    */
+
+
+}
 /*
  * Class lookup() method unfiniahsed because  Pons Dictionary responses are so ersely documented. 
  * Plus some of the responses contain <span> html elements, which makes them hard to read.
@@ -61,12 +76,21 @@ class PonsDictionary implements DictionaryInterface {
        */
        $obj = json_decode($contents)[0];
        
+       $results = array();
+       
+       /*
+        * The PONS results as so tersely documented that one is not certain how to best parse 
+        * and retreive the results.
+        */
        foreach ($obj->hits as $o) { // hits is an array. foreach hit in the array...
             
-           $roms = $o->roms; // access the toms property, whic his an array (stdClass objects)
+           foreach($o->roms as $rom) { // access the roms property, whic his an array (stdClass objects)
            
-           foreach ($roms as $r) {
-               
+             foreach($rom->arabs as $arab) {    
+                 
+                 foreach ($arab->translations as $translation) {
+                     
+                      $results[] = $translation->target;   
 /*
   [headword] => han·deln      <-- NOTE: The input word was "Handeln" not "handeln", yet translations for the verb handeln were returned?
 
@@ -79,28 +103,15 @@ class PonsDictionary implements DictionaryInterface {
           [target] with the definition or an example sentence.
  
 */ 
-               print_r($r);
+                  print_r($translation);
                
-               $debug = 10;
+                  $debug = 10;
                
-               ++$debug;
-           }
-           
-
+                  ++$debug;
+               }
+             }
+          }
        }
-       
-       /*
-        * 
-        * Alternat: object syntax:
-        *   $obj->hits
-        * 
-               
-        *  todo: 
-        * I. Get the translations
-        * 
-        * 1. remove html makrup
-        * 2. convert htmlentities
-        */
-       return "nonhing";   
+       return $results;   
    }
 }

@@ -5,7 +5,7 @@ namespace LanguageTools;
 /*
   Overriden when only the current(0 method needs to retrun part of an object (within an array of results)
  */
-abstract class ResultsIteratorBase implements  SeekableIterator, ArrayAccess, Countable {
+abstract class ResultsIteratorBase extends \ArrayIterator { /* SeekableIterator, ArrayAccess, Countable {*/
 
     private array $ojbs;
     private int $cnt;
@@ -16,6 +16,16 @@ abstract class ResultsIteratorBase implements  SeekableIterator, ArrayAccess, Co
        $this->objs = $objs;
        $this->cnt = count($objs);
        $this->current = 0; 
+    }
+
+    public function serialize() : string
+    {
+        return serialize($this->objs); 
+    }
+
+    public function unserialize(string $data) : void
+    {
+        unserialize($this->objs); 
     }
 
     public function offsetSet($offset, $value) : void
@@ -59,18 +69,12 @@ abstract class ResultsIteratorBase implements  SeekableIterator, ArrayAccess, Co
        $this->current = $offset;
     }
    
-    abstract protected function get_current();
-    /*
-    {
-        return $this->sents[$this->current]->sentence;
-    }
-    */
+    // overriden by derivec classes
+    abstract protected function get_current(mixed $current) : mixed; 
 
-    // todo: This is what is override 
     public function current(): mixed
     {
-        return $this->get_current();
- 
+        return $this->get_current($this->current);
     }
 
     public function key(): mixed
