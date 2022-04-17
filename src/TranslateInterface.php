@@ -4,5 +4,6 @@ namespace LanguageTools;
 
 interface TranslateInterface {
 
-   public function translate(string $str, string $dest_lang, string $src_lang="");
+    // todo: Should this return an \Iterator or \ArrayIterator?
+   public function translate(string $str, string $dest_lang, string $src_lang="") : string; 
 }
