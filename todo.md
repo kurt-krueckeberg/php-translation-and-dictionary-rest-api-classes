@@ -1,20 +1,7 @@
 1. Add a `getLangauges()` interface mthod to Translate- and or DicionaryInterface that returns the ISO codes and there respective countries.
 
-2. Have class Transaltor extend ApiBase, if this makes sense; that is, if the the reusable methods in class Translator can be put into a REST base class -- which currently is named `ApiBase` -- 
-that:
-
-  1. reads config.xml and finds the provider based on its abbreviation
-
-  2. Gets these common settings for all Rest APIs:
-  
-     - baseurl/endpoint
-     - route
-     - method
-  
-  3. Calls the abstract method `setOptions($provider)` that derived classes will implement to set their own $options member varialbe.
-  
-  4. It will have a base-bones `request(array $options)` method to issue the api call, which will call the abtract method `process_response(Guzzle\Ps7\Response $res)`
-     that derived class will implement to get the data they need.
+2. Pass the $options array by reference.
+   
 
 **Note:**
 

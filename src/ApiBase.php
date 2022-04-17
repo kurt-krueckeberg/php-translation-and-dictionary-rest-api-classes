@@ -36,7 +36,7 @@ abstract class ApiBase {
       Instantiate the ApiBase-derived class specified in <implementation>...</implementation>
       and pass it the apporpitate \SimpleXmlElement.
     */ 
-   static public function createFromXML(string $fxml, string $abbrev) : ApiBase
+   static public function createFromXML(string $fxml, string $abbrev) : mixed
    {
       $provider = self::get_provider($fxml, $abbrev); 
       
@@ -45,13 +45,15 @@ abstract class ApiBase {
       return $refl->newInstance($provider);
    }
 
-   abstract protected function process_response(Response $response) : mixed;
+   abstract protected function process_response(string $contents) : mixed; // todo: string | array?
 
-   protected function request(array $options)
+   protected function request(string $method, string $route, array $options)
    {
-       $response = $this->client->request($this->method, $this->route, $options);
+       $response = $this->client->request($method, $route, $options);
 
-       return $this->process_response($response);
+       $conents = $response->getBody()->getContents();
+
+       return $this->process_response($contents);
    } 
    
    /*
@@ -59,10 +61,6 @@ abstract class ApiBase {
     */
    public function __construct(protected \SimpleXMLElement $provider) 
    {      
-       $this->provider = $provider;
-       $this->route  = (string) $provider->requests->request['translation']->route;  
-       $this->method = (string) $provider->requests->request['translation']->method;
-
        $this->setConfigOptions($provider);
 
        $this->client = new Client(['base_uri' => (string) $this->provider->settings->baseurl]);
