@@ -11,11 +11,10 @@ abstract class ApiBase {
 
    private string $route;      
    private string $method;     // GET, POST, etc 
-   private array $options;    // [['headers' => [...], 'query' => [...], 'json' => [...]]
 
-   // private $provider; is defined and set on the constructor's argument list (PHP >=8.0 required).
+   // protected $provider; is defined and set on the constructor's argument list (PHP >=8.0 required).
    
-   private Client $client;  
+   protected Client $client;  
 
    static string $xpath =  "/providers/provider[@abbrev='%s']"; 
 
@@ -33,7 +32,10 @@ abstract class ApiBase {
       return $response[0];
    }
 
-   // Instantiates the ApiBase-derived class specified in <implementation>...</implementation>
+   /* 
+      Instantiate the ApiBase-derived class specified in <implementation>...</implementation>
+      and pass it the apporpitate \SimpleXmlElement.
+    */ 
    static public function createFromXML(string $fxml, string $abbrev) : ApiBase
    {
       $provider = self::get_provider($fxml, $abbrev); 
@@ -42,91 +44,33 @@ abstract class ApiBase {
       
       return $refl->newInstance($provider);
    }
-   
-   protected function getCredentials(\SimpleXMLElement $credentials) : string
-   {
-   }
 
-   // PHP 8.0 feature required: automatic member variable assignemnt syntax.
+   abstract protected function process_response(Response $response) : mixed;
+
+   protected function request(array $options)
+   {
+       $response = $this->client->request($this->method, $this->route, $options);
+
+       return $this->process_response($response);
+   } 
+   
+   /*
+    * PHP 8.0 feature: automatic member variable assignemnt syntax.
+    */
    public function __construct(protected \SimpleXMLElement $provider) 
    {      
        $this->provider = $provider;
+       $this->route  = (string) $provider->requests->request['translation']->route;  
+       $this->method = (string) $provider->requests->request['translation']->method;
 
        $this->setConfigOptions($provider);
 
        $this->client = new Client(['base_uri' => (string) $this->provider->settings->baseurl]);
    } 
 
-   private function setConfigOptions(\SimpleXMLElement $provider)
-   {
-      $headers = array();
-      
-      if ((string)$provider->settings->credentials["method"] == "custom") 
-      
-           $headers = $this->getCredentials($provider->settings->credentials);
-      
-      else {
-            
-          foreach($provider->settings->credentials->header as $header) 
-          
-               $headers[(string) $header['name']] = (string) $header;
-      }
+   // Overriden by derived classes
+   abstract protected function setConfigOptions(\SimpleXMLElement $provider);
 
-      $this->options['headers'] = $headers;
-
-      $this->route  = (string) $provider->requests->request['translation']->route;  
-      $this->method = (string) $provider->requests->request['translation']->method;
-
-      $this->setQueryOptions($provider->requests->request['translation']->query);
-   }  
-
-   // Assign xml <query> section settings in $this->options['query']
-   private function setQueryOptions(\SimpleXMLElement $query)
-   {
-      $query_array = array();
-
-      // set default destination language, if present
-      if ($query->to !== '') 
-
-            $query_array[$this->to_key] = (string) $query->to;
-
-      // Set other default query string settings
-      foreach($query->parm as $parm)  
-
-          $query_array[ (string) $parm["name"] ] = urlencode( (string) $parm );
-
-      $this->options['query'] = $query_array;
-   }
-
-   // Called by translate(string $text, string $dest_lang, $source_lang="")
-   private function setLanguages(string $dest_lang, $source_lang="")
-   {
-      if ($source_lang !== "")
-           $this->options['query'][$this->from_key] = $source_lang; 
-
-      $this->options['query'][$this->to_key] = $dest_lang; 
-   }
-
-   /* 'Template pattern' method that calls abstract protected methods overriden by derived classes (to prepare the input amd
-       to extract the translated text (as a string) from he reponse. */
-   final public function translate(string $text, string $dest_lang, $source_lang="")
-   {
-       $this->setLanguages($dest_lang, $source_lang);
-
-       $this->add_text($text); // Implemented by derived classes.
-
-       $response = $this->client->request($this->method, $this->route, $this->options); 
-
-       return $this->extract_translation($response);
-   }
-
-   // Overriden by derived classes to add input text to the HTTP Message that Guzzle\Client will send.
-   // IT will be added either as a query strng parameter or JSON set in the body of the message by Guzzle\Client.
-   abstract protected function add_text(string $text);
-    
-   // Overriden by derived classes to return translated text as a string.
-   abstract protected function extract_translation(Response $response) : string; 
-   
    protected function setQueryParm(string $key, string $value)
    {
        $this->options['query'][$key] = $value;
