@@ -1,31 +1,49 @@
 <?php
 declare(strict_types=1);
 namespace LanguageTools;
-use GuzzleHttp\Psr7\Response;
 
-// See documentation in Deepl-doc.md 
-class DeeplTranslator extends Translator {
+// SeeDeepl-doc.md 
+class DeeplTranslator extends RestApi implements TranslateInterface, LanguagesSupportedInterface {
+   
+   static private string $route = "v2/translate";     
+   static private string $method = "GET";    
+   static private string $from_key = "source_lang"; 
+   static private string $to_key = "target_lang";  
 
-   public function __construct(\SimpleXMLElement $provider) 
+   private $query = array();
+   private $headers = array();
+ 
+   public function __construct(protected \SimpleXMLElement $provider) 
    {
        parent::__construct($provider); 
+
+      $this->headers = [ ((string) $provider->settings->credentials->header['name']) => (string) $provider->settings->credentials->header]; 
    }
 
-   // Overriden to return the string in the the first element of the translations array. 
-   // Called by base Translator::translate method 
-   public function extract_translation(Response $response) : string
+   // If this is a translation request and there is no source language, the source langauge will be auto-detected.
+   protected function setLanguages(string $dest_lang, $source_lang="")
    {
-      $contents = $response->getBody()->getContents();
+      if ($source_lang !== "") 
+           $this->query[self::$from_key] = $source_lang; 
 
-      $obj = json_decode($contents);
-
-      return urldecode($obj->translations[0]->text); 
+      $this->query[self::$to_key] = $dest_lang; 
    }
 
-   // Overriden to add input to send with request
-   // Called by base Translator::translate method 
-   protected function add_text(string $text)
+   final public function getLanguages() : string
    {
-      $this->setQueryParm('text', urlencode($text));
+       return "a string";
+   }
+
+   final public function translate(string $text, string $dest_lang, $source_lang="") : string 
+   {
+       $this->setLanguages($dest_lang, $source_lang); 
+
+       $this->query['text'] = urlencode($text);
+
+       $contents = $this->request(self::$method, self::$route, ['headers' => $this->headers, 'query' => $this->query]); 
+
+       $obj = json_decode($contents);
+
+       return urldecode($obj->translations[0]->text); 
    }
 }

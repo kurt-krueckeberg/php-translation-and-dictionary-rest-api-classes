@@ -3,6 +3,7 @@ declare(strict_types=1);
 use \SplFileObject as File;
 use LanguageTools\SentenceFetcher;
 use LanguageTools\WebpageCreator;
+use LanguageTools\RestApi;
 use LanguageTools\Translator;
 
 include 'vendor/autoload.php';
@@ -29,7 +30,7 @@ function create_html_output(\SimpleXMLElement $xml, string  $fname)
 
    $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-   $translator = Translator::createfromXML($xml, "m"); 
+   $translator = RestApi::createfromXML($xml, "m"); 
 
    foreach ($file as $word) {
   

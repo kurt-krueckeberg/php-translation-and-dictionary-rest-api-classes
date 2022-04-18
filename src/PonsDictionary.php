@@ -5,7 +5,7 @@ namespace LanguageTools;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
-class PonsDictionary implements DictionaryInterface {
+class PonsDictionary extends  RestApi implements DictionaryInterface {
 
    static string  $base_url = "https://api.pons.com/baseurl";
    static string  $method = "GET";
@@ -19,20 +19,14 @@ class PonsDictionary implements DictionaryInterface {
    public const DICTIONARY = 'l';
    public const INPUT = 'q';
 
-   private array $options;    // [['headers' => [...], 'query' => [...], 'json' => [...]]
    private array $headers;
    private array $query;
 
-   private Client $client;  
-
-   public function __construct(\SimpleXMLElement $xml)
+   public function __construct(\SimpleXMLElement $provider)
    {   
+       parent::__construct($provider);
 
-       $pons = $xml->xpath(self::$xpath)[0];
-
-       $this->headers[self::$credential] = (string) $pons->settings->secret;
-
-       $this->client = new Client(['base_uri' =>self::$base_url]); 
+       $this->headers[ (string) $provider->settings->credentials->header['name'] ] = (string) $provider->settings->credentials->header; 
    } 
 
    public function lookup(string $text, string $src, string $dest) : array
@@ -44,18 +38,10 @@ class PonsDictionary implements DictionaryInterface {
 
        $this->query[PonsDictionary::DICTIONARY] = strtolower($src . $dest);  
 
-       $response = $this->client->request('GET', self::$route, ['query' => $this->query, 'headers' => $this->headers]);       
+       $contents = $this->request(self::$method, self::$route, ['headers' => $this->headers, 'query' => $this->query]); 
 
-       $contents = $response->getBody()->getContents();
- 
-       // todo: Is urlecode needed?
-       /*
-       $arr = json_decode($contents, true)[0];
-       
-       echo count( $arr["hits"] ) . "\n";
-       */
        $obj = json_decode($contents)[0];
-       
+
        $results = array();
        
        /*
@@ -70,8 +56,8 @@ class PonsDictionary implements DictionaryInterface {
                  
                  foreach ($arab->translations as $translation) {
                      
-                      $results[] = $translation->target;   
-                      // print_r($translation); debug
+                      $r = strip_tags($translation->target);   
+                      $results[] = urldecode($r);   
                }
              }
           }

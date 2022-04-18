@@ -32,10 +32,6 @@ abstract class Translator implements TranslateInterface {
       return $refl->newInstance($provider);
    }
    
-   protected function getCredentials(\SimpleXMLElement $credentials) : string
-   {
-   }
-
    // PHP 8.0 feature required: automatic member variable assignemnt syntax.
    public function __construct(protected \SimpleXMLElement $provider) 
    {      

@@ -64,12 +64,12 @@ class SentenceResultsIterator implements \Iterator, \Countable {
     }
 }
 
-class SentenceFetcher {
+class SentenceFetcher extends RestApi {
 
    private static $offset = 'offset';
    private static $limit = 'limit';
-   private $route;
-   private $client;
+   private static $route = ;
+   private static $method = ;
 
    static string $xpath =  "/providers/provider[@abbrev='%s']"; 
 
