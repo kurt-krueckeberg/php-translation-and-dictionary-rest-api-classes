@@ -17,7 +17,7 @@ class RestApi {
       Instantiate the RestApi-derived class specified in <implementation>...</implementation>
       and pass it the apporpitate \SimpleXmlElement.
     */ 
-   static public function createFromXML(\SimpleXMLElement $xml, string $abbrev) : mixed
+   static public function createRestClient(\SimpleXMLElement $xml, string $abbrev) : mixed
    {
       $query = sprintf(self::$xpath, $abbrev);
 

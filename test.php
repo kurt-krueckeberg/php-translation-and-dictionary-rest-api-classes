@@ -11,7 +11,7 @@ include "vendor/autoload.php";
 
     $xml = \simplexml_load_file("config.xml");
    
-    $s = RestApi::createFromXML($xml, "l");
+    $s = RestApi::createRestClient($xml, "l");
     
     $iter = $s->fetch("Anlagen", 3);
     
@@ -21,7 +21,7 @@ include "vendor/autoload.php";
     }
     return;
     
-    $trans = RestApi::createFromXML($xml, "d");
+    $trans = RestApi::createRestClient($xml, "d");
     
     
     

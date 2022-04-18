@@ -30,7 +30,7 @@ function create_html_output(\SimpleXMLElement $xml, string  $fname)
 
    $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-   $translator = RestApi::createfromXML($xml, "m"); 
+   $translator = RestApi::createRestClient($xml, "m"); 
 
    foreach ($file as $word) {
   

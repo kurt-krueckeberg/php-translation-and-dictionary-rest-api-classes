@@ -11,7 +11,7 @@ include "vendor/autoload.php";
 
     $xml = \simplexml_load_file("config.xml");
    
-    $trans = RestApi::createFromXML($xml, "d");
+    $trans = RestApi::createRestClient($xml, "d");
     
     $input = array("Guten Tag!", "Guten Morgen");
 
