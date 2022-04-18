@@ -4,7 +4,7 @@ use \SplFileObject as File;
 use LanguageTools\SentenceFetcher;
 use LanguageTools\WebpageCreator;
 use LanguageTools\RestClient;
-use LanguageTools\Translator;
+use LanguageTools\TranslateInterface;
 
 include 'vendor/autoload.php';
 
@@ -20,17 +20,15 @@ function check_args(int $argc, array $argv)
        die("config.xml not found in current directory.\n");
 }
 
-function create_html_output(\SimpleXMLElement $xml, string  $fname)
+function create_html_output(SentenceFetcher $fetcher, TranslateInterface $translator, string $fname)
 { 
-   $fetcher = RestClient::createRestClient($xml, "l"); 
-  
    $creator = new WebpageCreator();
   
    $file =  new File($fname);
 
    $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-   $translator = RestClient::createRestClient($xml, "m"); 
+   //--$translator = RestClient::createRestClient($xml, "m"); 
 
    foreach ($file as $word) {
   
@@ -58,7 +56,11 @@ function create_html_output(\SimpleXMLElement $xml, string  $fname)
 
     $xml = \simplexml_load_file("config.xml");
   
-    create_html_output($xml, $argv[1]);
+    $fetcher = RestClient::createRestClient($xml, "l"); 
+
+    $translator = RestClient::createRestClient($xml, "m"); 
+
+    create_html_output($fetcher, $translator, $argv[1]);
 
   } catch (Exception $e) {
 
