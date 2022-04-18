@@ -167,7 +167,8 @@ interface SentenceFetchInterface  {
 
    Use its static factory method `function createRestClient(\SimpleXMLElement $xml, string $abbrev)` to instantiate implementation classes.
 
-- abstract class `TranslatorWithDictionary` implements both `TranslateInterface` and `DictionaryInterface` and extends `RestClient1:
+- abstract class `TranslatorWithDictionary` implements both `TranslateInterface` and `DictionaryInterface`
+  and extends `RestClient`.
 
 ```php
 abstract class TranslatorWithDictionary extends RestClient implements TranslateInterface, DictionaryInterface { }
