@@ -1,12 +1,14 @@
 # Documentation 
 
-**Note:** The code is working but in beta. 
+Documentation is not complete or up to date. See [main.php](main.php) for example code.
 
 ## Overview
 
 This code generates German example sentences, using the University of [Leipzig Corpora Collection](https://wortschatz.uni-leipzig.de/en), and translates them into your target language. The input is file with a list of words ( one word per line). To use it you must have either a DEEPL account or a Microsoft Azure account.
 
 **Note:** The [Leipzig Corpora Collection](https://wortschatz.uni-leipzig.de/en) provides example sentences in other languages besides German.
+
+Dictionary classes are also available.
 
 ## Requirements
 
@@ -119,6 +121,6 @@ function create_html_output(SentenceFetchInterface $fetcher, TranslateInterface 
 
    If the source language (the 2nd paramter) is omitted, the input language will be detected.
 
-## PHP Classes
+## PHP Classes and Interfaces
 
 **todo:: complete this.
