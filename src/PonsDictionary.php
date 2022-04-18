@@ -57,7 +57,7 @@ class PonsDictionary extends  RestApi implements DictionaryInterface {
                  foreach ($arab->translations as $translation) {
                      
                       $r = strip_tags($translation->target);   
-                      $results[] = urldecode($r);   
+                      $results[] = $r; 
                }
              }
           }

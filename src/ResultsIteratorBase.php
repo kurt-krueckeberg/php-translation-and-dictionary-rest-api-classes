@@ -5,19 +5,19 @@ namespace LanguageTools;
 /*
   Overriden when only the current(0 method needs to retrun part of an object (within an array of results)
  */
-abstract class ResultsIteratorBase extends \ArrayIterator { /* SeekableIterator, ArrayAccess, Countable {*/
+abstract class ResultsIteratorBase implements  \SeekableIterator, \ArrayAccess, \Countable {
 
-    private array $ojbs;
+    private array $objs;
     private int $cnt;
     private int $current;
 
-    public function __construct(array $objs, callable $callback) 
+    public function __construct(array $objs) 
     {
        $this->objs = $objs;
        $this->cnt = count($objs);
        $this->current = 0; 
     }
-
+/*
     public function serialize() : string
     {
         return serialize($this->objs); 
@@ -27,7 +27,7 @@ abstract class ResultsIteratorBase extends \ArrayIterator { /* SeekableIterator,
     {
         unserialize($this->objs); 
     }
-
+*/
     public function offsetSet($offset, $value) : void
     {
         if (is_null($offset)) {
@@ -73,8 +73,8 @@ abstract class ResultsIteratorBase extends \ArrayIterator { /* SeekableIterator,
     abstract protected function get_current(mixed $current) : mixed; 
 
     public function current(): mixed
-    {
-        return $this->get_current($this->current);
+    {        
+        return $this->get_current($this->objs[$this->current]);
     }
 
     public function key(): mixed

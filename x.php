@@ -11,19 +11,7 @@ include "vendor/autoload.php";
 
     $xml = \simplexml_load_file("config.xml");
    
-    $s = RestApi::createFromXML($xml, "l");
-    
-    $iter = $s->fetch("Anlagen", 3);
-    
-    foreach ($iter as $x) {
-        
-        echo "Example Sentence for Anlagen: " . $x . "\n";
-    }
-    return;
-    
     $trans = RestApi::createFromXML($xml, "d");
-    
-    
     
     $input = array("Guten Tag!", "Guten Morgen");
 

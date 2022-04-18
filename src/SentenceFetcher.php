@@ -4,110 +4,35 @@ namespace LanguageTools;
 
 use GuzzleHttp\Client as Client;
 
-/* New code
 class SentenceResultsIterator  extends ResultsIteratorBase { 
  
     public function __construct(array $objs)
     {
-       $this->sents = $objs;
-       $this->cnt = count($objs);
-       $this->current = 0; 
-    }
-    protected function get_current()
-    {
-        return $this->objs->sentence;
-    }
-}
-*/
-
-class SentenceResultsIterator implements \Iterator, \Countable { 
-
-    private array $sents;
-    private int $cnt;
-    private int $current;
-
-    public function __construct(array $objs) 
-    {
-       $this->sents = $objs;
-       $this->cnt = count($objs);
-       $this->current = 0; 
-    }
-    
-    public function count(): int
-    {
-        return $this->cnt;
-    }
-    
-    public function current(): mixed
-    {
-        return $this->sents[$this->current]->sentence;
+       parent::__construct($objs); 
     }
 
-    public function key(): mixed
+    protected function get_current(mixed $current) : mixed
     {
-         return $this->current;
-    }
-
-    public function next(): void
-    {
-       ++$this->current;
-
-    }
-    public function rewind(): void
-    {
-       $this->current = 0; 
-    }
-
-    public function valid(): bool
-    {
-      return ($this->cnt !== $this->current); 
+        return $current->sentence;
     }
 }
 
 class SentenceFetcher extends RestApi {
 
-   private static $offset = 'offset';
-   private static $limit = 'limit';
-   private static $route = ;
-   private static $method = ;
+   private static $route = "sentences/deu_news_2012_1M/sentences" ;
+   private static $method = 'GET';
 
-   static string $xpath =  "/providers/provider[@abbrev='%s']"; 
-
-   private $uri; // Portion that will follow $base_uri, although it does not need to be catenated to it.
-
-   public function __construct(\SimpleXMLElement $xml)
+   public function __construct(\SimpleXMLElement $provider)
    {
-      $query = sprintf(self::$xpath, "l"); 
-     
-      $provider = $xml->xpath($query)[0];
-      
-      $this->setConfig($provider);
- 
-      $this->client = new Client(['base_uri' => (string) $provider->settings->baseurl]);
+       parent::__construct($provider); 
    }
    
-   private function setConfig(\SimpleXMLElement $p)
+   public function fetch(string $word, int $count=3) : SentenceResultsIterator
    {
-      $this->route = $p->requests->request->route;
-      $this->method = $p->requests->request->route;
+      $route = self::$route. '/' . urlencode($word);
 
-      $query = array();
-
-      foreach($p->settings->query->parm as $parm)  
-              $query_array[ (string) $parm["name"] ] = urlencode( (string) $parm );
-
-      $this->options['query'] = $query_array;
-   }
-
-   public function fetch(string $word, int $count=3) : SentenceResultsIterator 
-   {
-      $url = $this->route . '/' . urlencode($word);
-
-      $response = $this->client->request('GET', $url, ['query' => [self::$offset => 0, self::$limit => $count]]);
+      $contents = $this->request(self::$method, $route , ['query' => ['offset' => 0, 'limit' => $count]]);
       
-      $contents = $response->getBody()->getContents();
- 
-      // todo: urlecode needed?
       $obj = json_decode($contents);
 
      /*
