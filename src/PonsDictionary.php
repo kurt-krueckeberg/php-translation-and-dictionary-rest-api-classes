@@ -22,9 +22,9 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
    private array $headers;
    private array $query;
 
-   public function __construct(\SimpleXMLElement $provider)
+   public function __construct(\SimpleXMLElement $provider, string $abbrev)
    {   
-       parent::__construct($provider);
+       parent::__construct($provider, $abbrev);
 
        $this->headers[ (string) $provider->settings->credentials->header['name'] ] = (string) $provider->settings->credentials->header; 
    } 

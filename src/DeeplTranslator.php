@@ -13,9 +13,9 @@ class DeeplTranslator extends RestClient implements TranslateInterface, Language
    private $query = array();
    private $headers = array();
  
-   public function __construct(protected \SimpleXMLElement $provider) 
+   public function __construct(protected \SimpleXMLElement $provider, string $abbrev) 
    {
-       parent::__construct($provider); 
+       parent::__construct($provider, $abbrev); 
 
       $this->headers = [ ((string) $provider->settings->credentials->header['name']) => (string) $provider->settings->credentials->header]; 
    }

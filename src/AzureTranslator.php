@@ -32,10 +32,9 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
         );
    }
    
-   // PHP 8.0 required
-   public function __construct(protected \SimpleXMLElement $provider)
+   public function __construct(\SimpleXMLElement $provider, string $abbrev)
    {
-        parent::__construct($provider);        
+        parent::__construct($provider, $abbrev);        
 
         foreach($provider->settings->credentials->header as $header) 
           

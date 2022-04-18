@@ -25,7 +25,7 @@ class RestClient {
 
       $refl = new \ReflectionClass((string) $provider->settings->implementation); 
       
-      return $refl->newInstance($provider);
+      return $refl->newInstance($provider, $abbrev);
    }
 
    protected function request(string $method, string $route, array $options) : string
@@ -38,8 +38,12 @@ class RestClient {
    /*
     * PHP 8.0 feature: automatic member variable assignemnt syntax.
     */
-   protected function __construct(\SimpleXMLElement $provider) 
+   protected function __construct(\SimpleXMLElement $provider, string $abbrev) 
    {      
+       
+       if ( (string) $provider['abbrev']!== $abbrev) 
+             throw new \Exception("Wrong provider passed");
+              
        
        $this->client = new Client(['base_uri' => (string) $provider->settings->baseurl]);
    } 

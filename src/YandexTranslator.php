@@ -26,8 +26,11 @@ class YandexTranslator extends RestClient implements Translation, DictionaryInte
 
    private Client $client;  
 
-   public function __construct(\SimpleXMLElement $xml)
-   {   
+      
+   public function __construct(\SimpleXMLElement $provider, string $abbrev)
+   {
+        parent::__construct($provider, $abbrev);        
+
 
        $pons = $xml->xpath(self::$xpath)[0];
 

@@ -7,7 +7,7 @@ use GuzzleHttp\Client as Client;
 class SentenceResultsIterator  extends ResultsIteratorBase { 
  
     //public function __construct(array $objs)
-    protected function __construct(array $objs)
+    public function __construct(array $objs)
     {
        parent::__construct($objs); 
     }
@@ -23,9 +23,9 @@ class SentenceFetcher extends RestClient {
    private static $route = "sentences/deu_news_2012_1M/sentences" ;
    private static $method = 'GET';
 
-   public function __construct(\SimpleXMLElement $provider)
+   public function __construct(\SimpleXMLElement $provider, string $abbrev)
    {
-       parent::__construct($provider); 
+       parent::__construct($provider, $abbrev); 
    }
    
    public function fetch(string $word, int $count=3) : SentenceResultsIterator
