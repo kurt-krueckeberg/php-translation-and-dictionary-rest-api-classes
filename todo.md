@@ -1,4 +1,4 @@
-- Convert `SentenceFetcher` to extend `RestApi` and alter config.xml and sample-config.xml as needed.
+- Change sample-config.xml to match onfig.xml.
 
 1. What type should `lookup` return? 
 
