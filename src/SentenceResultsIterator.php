@@ -4,15 +4,13 @@ namespace LanguageTools;
 
 class SentenceResultsIterator extends ResultsIteratorBase { 
  
-    //public function __construct(array $objs)
     public function __construct(array $objs)
     {
        parent::__construct($objs); 
     }
 
-    protected function get_current(mixed $current) : mixed
+    protected function get_member(mixed $current) : mixed
     {
         return $current->sentence;
     }
 }
-

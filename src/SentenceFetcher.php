@@ -4,6 +4,14 @@ namespace LanguageTools;
 
 use GuzzleHttp\Client as Client;
 
+class GetSentence {
+
+   public function __invoke($obj)
+   {
+       return $obj->sentence;
+   }
+}
+
 class SentenceFetcher extends RestClient implements SentenceFetchInterface {
 
    private static $route = "sentences/deu_news_2012_1M/sentences" ;
@@ -14,7 +22,7 @@ class SentenceFetcher extends RestClient implements SentenceFetchInterface {
        parent::__construct($provider, $abbrev); 
    }
    
-   public function fetch(string $word, int $count=3) : SentenceResultsIterator
+   public function fetch(string $word, int $count=3) :  SentenceResultsIterator
    {
       $route = self::$route. '/' . urlencode($word);
 
@@ -47,6 +55,6 @@ class SentenceFetcher extends RestClient implements SentenceFetchInterface {
            3. source => ["daate" => ..., "id" => string, "url" => string]
         */
 
-      return new SentenceResultsIterator( $obj->sentences ); // Return the array of SentenceInformation objects  
+      return new SentenceResultsIterator( $obj->sentences); // Return the array of SentenceInformation objects  
    }
 }

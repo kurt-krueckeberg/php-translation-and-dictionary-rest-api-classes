@@ -182,4 +182,14 @@ abstract class TranslatorWithDictionary extends RestClient implements TranslateI
 
 #### Implementation Classes
 
+**todo:** Describe these classes
 
+- SentenceFetcher
+
+- SentenceResultsIterator
+
+- AzureTranslator
+
+- DeeplTranslator
+
+- PonsDictionary

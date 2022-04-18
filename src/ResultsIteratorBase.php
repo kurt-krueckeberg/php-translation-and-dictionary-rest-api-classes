@@ -2,9 +2,6 @@
 declare(strict_types=1);
 namespace LanguageTools;
 
-/*
-  Overriden when only the current(0 method needs to retrun part of an object (within an array of results)
- */
 abstract class ResultsIteratorBase implements  \SeekableIterator, \ArrayAccess, \Countable {
 
     private array $objs;
@@ -22,27 +19,27 @@ abstract class ResultsIteratorBase implements  \SeekableIterator, \ArrayAccess, 
     {
         if (is_null($offset)) {
 
-            $this->container[] = $value;
+            $this->objs[] = $value;
 
         } else {
 
-            $this->container[$offset] = $value;
+            $this->objs[$offset] = $value;
         }
     }
 
     public function offsetExists($offset) : bool
     {
-        return isset($this->container[$offset]);
+        return isset($this->objs[$offset]);
     }
 
     public function offsetUnset($offset) : void
     {
-        unset($this->container[$offset]);
+        unset($this->objs[$offset]);
     }
 
     public function offsetGet($offset) : mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return isset($this->objs[$offset]) ? $this->get_member($this->objs[$offset]) : null;
     }
   
     public function count(): int // Countable
@@ -60,11 +57,11 @@ abstract class ResultsIteratorBase implements  \SeekableIterator, \ArrayAccess, 
     }
    
     // overriden by derivec classes
-    abstract protected function get_current(mixed $current) : mixed; 
+    abstract protected function get_member(mixed $current) : mixed; 
 
     public function current(): mixed
     {        
-        return $this->get_current($this->objs[$this->current]);
+        return $this->get_member($this->objs[$this->current]);
     }
 
     public function key(): mixed
