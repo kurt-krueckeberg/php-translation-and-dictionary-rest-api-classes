@@ -48,17 +48,15 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
         * The PONS results as so tersely documented that one is not certain how to best parse 
         * and retreive the results.
         */
-       foreach ($obj->hits as $element) { // Iteratoe over hits
+       foreach ($obj->hits as $element) { // Iterate over hits
             
            foreach($element->roms as $rom) { // Iterate over roms, then arabs 
            
              foreach($rom->arabs as $arab) {    
                  
-                 foreach ($arab->translations as $translation) {
+                 foreach ($arab->translations as $translation) 
                      
-                      $r = strip_tags($translation->target);   
-                      $results[] = $r; 
-               }
+                      $results[] = strip_tags($translation->target);  
              }
           }
        }
