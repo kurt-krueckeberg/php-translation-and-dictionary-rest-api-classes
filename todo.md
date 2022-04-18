@@ -1,3 +1,5 @@
+- public constructors of rest client classes allows incorect SimpleXMLElemtns's to be passed to their constuctors.
+
 - Change sample-config.xml to match onfig.xml.
 
 1. What type should `lookup` return? 

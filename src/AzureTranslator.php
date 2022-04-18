@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace LanguageTools;
 
-class AzureTranslator extends RestApi implements DictionaryInterface, TranslateInterface, LanguagesSupportedInterface  {
+class AzureTranslator extends RestClient implements DictionaryInterface, TranslateInterface, LanguagesSupportedInterface  {
 
    static private string $dict_route = "dictionary/lookup";
    static private string $trans_route = "translate";

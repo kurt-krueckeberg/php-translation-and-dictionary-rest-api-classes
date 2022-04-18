@@ -7,14 +7,14 @@ use GuzzleHttp\Psr7\Response;
 
 // This class is not currently used.
 
-class RestApi {
+class RestClient {
 
    protected Client $client;  
 
    static string $xpath =  "/providers/provider[@abbrev='%s']"; 
 
    /* 
-      Instantiate the RestApi-derived class specified in <implementation>...</implementation>
+      Instantiate the RestClient-derived class specified in <implementation>...</implementation>
       and pass it the apporpitate \SimpleXmlElement.
     */ 
    static public function createRestClient(\SimpleXMLElement $xml, string $abbrev) : mixed
@@ -38,8 +38,9 @@ class RestApi {
    /*
     * PHP 8.0 feature: automatic member variable assignemnt syntax.
     */
-   public function __construct(\SimpleXMLElement $provider) 
+   protected function __construct(\SimpleXMLElement $provider) 
    {      
+       
        $this->client = new Client(['base_uri' => (string) $provider->settings->baseurl]);
    } 
 }

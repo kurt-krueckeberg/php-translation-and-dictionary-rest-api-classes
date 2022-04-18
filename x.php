@@ -3,7 +3,7 @@ declare(strict_types=1);
 use Guzzle\Exception\RequestException;
 use Guzzle\Exception\ClientException;
 use LanguageTools\Translator;
-use LanguageTools\RestApi;
+use LanguageTools\RestClient;
 
 include "vendor/autoload.php";
 
@@ -11,7 +11,7 @@ include "vendor/autoload.php";
 
     $xml = \simplexml_load_file("config.xml");
    
-    $trans = RestApi::createRestClient($xml, "d");
+    $trans = RestClient::createRestClient($xml, "d");
     
     $input = array("Guten Tag!", "Guten Morgen");
 

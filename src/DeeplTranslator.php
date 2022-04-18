@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace LanguageTools;
 
 // SeeDeepl-doc.md 
-class DeeplTranslator extends RestApi implements TranslateInterface, LanguagesSupportedInterface {
+class DeeplTranslator extends RestClient implements TranslateInterface, LanguagesSupportedInterface {
    
    static private string $route = "v2/translate";     
    static private string $method = "GET";    

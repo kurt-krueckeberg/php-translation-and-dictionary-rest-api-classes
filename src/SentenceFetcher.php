@@ -6,7 +6,8 @@ use GuzzleHttp\Client as Client;
 
 class SentenceResultsIterator  extends ResultsIteratorBase { 
  
-    public function __construct(array $objs)
+    //public function __construct(array $objs)
+    protected function __construct(array $objs)
     {
        parent::__construct($objs); 
     }
@@ -17,7 +18,7 @@ class SentenceResultsIterator  extends ResultsIteratorBase {
     }
 }
 
-class SentenceFetcher extends RestApi {
+class SentenceFetcher extends RestClient {
 
    private static $route = "sentences/deu_news_2012_1M/sentences" ;
    private static $method = 'GET';
