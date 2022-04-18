@@ -5,7 +5,7 @@ use LanguageTools\SentenceFetcher;
 use LanguageTools\WebpageCreator;
 use LanguageTools\RestClient;
 use LanguageTools\TranslateInterface;
-use LanguageTools\SentenceFetchInerface;
+use LanguageTools\SentenceFetchInterface;
 
 include 'vendor/autoload.php';
 
