@@ -17,17 +17,7 @@ abstract class ResultsIteratorBase implements  \SeekableIterator, \ArrayAccess, 
        $this->cnt = count($objs);
        $this->current = 0; 
     }
-/*
-    public function serialize() : string
-    {
-        return serialize($this->objs); 
-    }
 
-    public function unserialize(string $data) : void
-    {
-        unserialize($this->objs); 
-    }
-*/
     public function offsetSet($offset, $value) : void
     {
         if (is_null($offset)) {
@@ -97,5 +87,3 @@ abstract class ResultsIteratorBase implements  \SeekableIterator, \ArrayAccess, 
       return ($this->cnt !== $this->current); 
     }
 }
-
-

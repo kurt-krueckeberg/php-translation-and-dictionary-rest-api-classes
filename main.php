@@ -5,6 +5,7 @@ use LanguageTools\SentenceFetcher;
 use LanguageTools\WebpageCreator;
 use LanguageTools\RestClient;
 use LanguageTools\TranslateInterface;
+use LanguageTools\SentenceFetchInerface;
 
 include 'vendor/autoload.php';
 
@@ -20,7 +21,7 @@ function check_args(int $argc, array $argv)
        die("config.xml not found in current directory.\n");
 }
 
-function create_html_output(SentenceFetcher $fetcher, TranslateInterface $translator, string $fname)
+function create_html_output(SentenceFetchInterface $fetcher, TranslateInterface $translator, string $fname)
 { 
    $creator = new WebpageCreator();
   

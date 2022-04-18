@@ -4,21 +4,7 @@ namespace LanguageTools;
 
 use GuzzleHttp\Client as Client;
 
-class SentenceResultsIterator  extends ResultsIteratorBase { 
- 
-    //public function __construct(array $objs)
-    public function __construct(array $objs)
-    {
-       parent::__construct($objs); 
-    }
-
-    protected function get_current(mixed $current) : mixed
-    {
-        return $current->sentence;
-    }
-}
-
-class SentenceFetcher extends RestClient {
+class SentenceFetcher extends RestClient implements SentenceFetchInterface {
 
    private static $route = "sentences/deu_news_2012_1M/sentences" ;
    private static $method = 'GET';
