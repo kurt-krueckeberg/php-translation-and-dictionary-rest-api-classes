@@ -56,3 +56,5 @@ They offer a REST API for their **Concise German English Dictionary**. Apply for
 
 Their [Dictionary API](https://yandex.com/dev/dictionary/) offers ???#er??? requests per ???month. They also offer a translation service, which seems to require a separate key from the dictionary key?
 
+The Yandex translator seems to be part of the Yandex Cloud. See docs/yandex.md. 
+
