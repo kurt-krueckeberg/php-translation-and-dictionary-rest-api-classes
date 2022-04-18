@@ -1,4 +1,4 @@
-- Translator base abstract class
+- Add a interface that includes other interfaces?
 
 - public constructors of rest client classes allows incorect SimpleXMLElemtns's to be passed to their constuctors.
 
