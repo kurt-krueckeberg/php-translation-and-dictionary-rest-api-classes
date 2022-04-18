@@ -4,7 +4,6 @@
         <settings>
             <baseurl></baseurl>      
             <credentials method="header">
-             <!-- todo: Is this a dictionary-only key? Does translation require a different key? -->
                  <header name="????">???????????????????????????????????????????????????????????????????????????????????</header>
             </credentials>
         </settings>
@@ -31,12 +30,8 @@
     <provider name="leipzig" abbrev="l">
         <settings>      
            <credentials method="none"></credentials>
-           <baseurl>http://api.corpora.uni-leipzig.de/ws</baseurl> 
+           <baseurl>http://api.corpora.uni-leipzig.de/ws</baseurl> <!-- https?? -->
            <implementation>LanguageTools\SentenceFetcher</implementation>
-           <query> 
-               <parm name="offset">0</parm> 
-               <parm name="limit">10</parm> 
-           </query> 
         </settings>
         <requests>  <!-- hardcode this in SentenceFetcher -->
            <sentences> 
@@ -49,7 +44,7 @@
         <settings>   
            <baseurl>https://api-free.deepl.com/v2</baseurl>
            <credentials method="header">
-               <header name="Authorization">DeepL-Auth-Key 7482c761-0429-6c34-766e-fddd88c247f9:fx</header>
+               <header name="Authorization">DeepL-Auth-Key ???????????????????????????????????????</header>
            </credentials>
            <implementation>LanguageTools\DeeplTranslator</implementation>
            <query> 
@@ -62,11 +57,17 @@
         <settings> 
              <baseurl>https://api.cognitive.microsofttranslator.com</baseurl>
              <credentials method="header">              
-                <header name="Ocp-Apim-Subscription-Key">ef6e5b44c68d438c8d79cae2f8c020ba</header> 
+                <header name="Ocp-Apim-Subscription-Key">????????????????????????????????</header> 
                 <header name="Ocp-Apim-Subscription-Region">eastus2</header>
              </credentials>
              <Content-Type>application/json; charset=UTF-8</Content-Type>
              <implementation>LanguageTools\AzureTranslator</implementation>
+             <query> 
+                 <parm name="api-version">3.0</parm> 
+                 <parm name="textType">plain</parm>
+                 <from name="from" />
+                 <to name="to" />
+             </query>
         </settings>
         <requests>
           <translate>
@@ -83,12 +84,22 @@
         <settings>   
             <baseurl></baseurl>
             <credentials method="custom">
-               <header name="apikey">ApiKey-2c8264c6-168e-457a-a910-3be0f9177313</header>
+               <header name="apikey">ApiKey-????????????????????????????????????</header>
             </credentials>   
             <credentials method="token">
             </credentials>
             <Content-Type>application/json; charset=UTF-8</Content-Type>
             <implementation>LanguageTools\IbmTranslator</implementation>
+            <query> 
+               <parm name="????">DE</parm>
+               <parm name="???">to</parm>
+            </query>
         </settings>
-   </provider>
+        <requests>
+           <translate> 
+              <route>translate</route>
+              <method>GET/POST???</method>
+           </translate>
+        </requests>
+     </provider>
 </providers>
