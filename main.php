@@ -6,6 +6,7 @@ use LanguageTools\WebpageCreator;
 use LanguageTools\RestClient;
 use LanguageTools\TranslateInterface;
 use LanguageTools\SentenceFetchInterface;
+use LanguageTools\PonsDictionary;
 
 include 'vendor/autoload.php';
 
@@ -21,14 +22,10 @@ function check_args(int $argc, array $argv)
        die("config.xml not found in current directory.\n");
 }
 
-function create_html_output(SentenceFetchInterface $fetcher, TranslateInterface $translator, string $fname)
+function create_html_output(SentenceFetchInterface $fetcher, TranslateInterface $translator, File $file)
 { 
    $creator = new WebpageCreator();
   
-   $file =  new File($fname);
-
-   $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
-
    foreach ($file as $word) {
   
       $creator->write("<strong>$word</strong>", "<strong>No Definitions (yet)</strong>"); 
@@ -37,16 +34,33 @@ function create_html_output(SentenceFetchInterface $fetcher, TranslateInterface 
 
       foreach ( $fetcher->fetch($word, 3) as $sentence) {
 
-           echo "Translating: " . $sentence . "\n";
+           echo "Translation of: " . $sentence . "\n";
 
            // 2nd parameter is destination language. 3rd parameter is optional source language.
            // If 3rd parameter is ommited, source language is automatically detected.
            $translation = $translator->translate($sentence, "EN-US", "DE"); 
            
+           echo "is: " . $translation . "\n";
+           
            $creator->write($sentence, $translation); 
       }
       echo "\n";
    }
+}
+
+function pons_output(PonsDictionary $dict, File $file)
+{
+   foreach ($file as $word) {
+  
+        $iter = $dict->lookup($word, "DE", "EN"); 
+           
+        foreach($iter as $result) {
+               
+            echo $result . "\n";
+        }
+        
+        echo "\n";
+    }
 }
 
   check_args($argc, $argv);
@@ -58,8 +72,16 @@ function create_html_output(SentenceFetchInterface $fetcher, TranslateInterface 
     $fetcher = RestClient::createRestClient($xml, "l"); 
 
     $translator = RestClient::createRestClient($xml, "m"); 
+    
+    $file =  new File($argv[1]);
+    
+    $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-    create_html_output($fetcher, $translator, $argv[1]);
+    //create_html_output($fetcher, $translator, $file);
+    
+    $dict = RestClient::createRestClient($xml, "p");
+    
+    pons_output($dict, $file);
 
   } catch (Exception $e) {
 

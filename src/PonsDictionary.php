@@ -54,12 +54,18 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
            
              foreach($rom->arabs as $arab) {    
                  
-                 foreach ($arab->translations as $translation) 
-                     
+                 foreach ($arab->translations as $translation) {
+                      if (is_null($translation->target))
+                          continuee;
+                      
+                      print_r($translation);
                       $results[] = strip_tags($translation->target);  
+                 }
              }
           }
        }
+       
        return $results;   
+       //return ResultsIterator($results, )
    }
 }
