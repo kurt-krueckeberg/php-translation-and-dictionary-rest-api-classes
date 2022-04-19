@@ -6,14 +6,15 @@ class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
 
     private array $objs;
     private int $cnt;
-    private int $current;
-    private $f; 
+    private int $index;
+    private $f; // anonymous function for returning a specify member of the stdClass objecs
+                // in the array.
 
     public function __construct(array $objs, callable $func) 
     {
        $this->objs = $objs;
        $this->cnt = count($objs);
-       $this->current = 0; 
+       $this->index = 0; 
        $this->f = $func;
     }
 
@@ -55,31 +56,31 @@ class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
        if ($offset >= $count || 0 > $offset)
             throw new OutOfBoundsException("offset not in bounds");
 
-       $this->current = $offset;
+       $this->index = $offset;
     }
    
     public function current(): mixed
     {        
-        return ($this->f)($this->objs[$this->current]);
+        return ($this->f)($this->objs[$this->index]);
     }
 
     public function key(): mixed
     {
-         return $this->current;
+         return $this->index;
     }
 
     public function next(): void
     {
-       ++$this->current;
+       ++$this->index;
 
     }
     public function rewind(): void
     {
-       $this->current = 0; 
+       $this->index = 0; 
     }
 
     public function valid(): bool
     {
-      return ($this->cnt !== $this->current); 
+      return ($this->cnt !== $this->index); 
     }
 }
