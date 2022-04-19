@@ -20,14 +20,9 @@ class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
 
     public function offsetSet($offset, $value) : void
     {
-        if (is_null($offset)) {
+        if (is_null($offset)) $this->objs[] = $value;
 
-            $this->objs[] = $value;
-
-        } else {
-
-            $this->objs[$offset] = $value;
-        }
+        else $this->objs[$offset] = $value;
     }
 
     public function offsetExists($offset) : bool
