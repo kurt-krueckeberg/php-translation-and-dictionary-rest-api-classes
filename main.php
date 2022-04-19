@@ -29,8 +29,6 @@ function create_html_output(SentenceFetchInterface $fetcher, TranslateInterface 
 
    $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-   //--$translator = RestClient::createRestClient($xml, "m"); 
-
    foreach ($file as $word) {
   
       $creator->write("<strong>$word</strong>", "<strong>No Definitions (yet)</strong>"); 
