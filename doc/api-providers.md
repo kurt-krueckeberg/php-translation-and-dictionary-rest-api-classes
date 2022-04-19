@@ -1,20 +1,38 @@
 # Translators and Dcitionary APIS
 
-## Translators
+## Translators and Dictionaries
 
 - Azure/Microsoft $29/month.
 
+  - Dictionary has only one-word definitions. But has an example sentences lookup feature!
+
 - Deepl Translator 
+
+  - No Dictionary
 
 - IBM Watson Translator
 
-- Yandex Their price seems quite good.
+  - docs link?
 
-## Dictionaries
+- Yandex Their price seems quite good. Tehy are the Russian "Google", registerd in the Netherlands
 
-- Azure Translator
+Their [Dictionary API](https://yandex.com/dev/dictionary/) offers ???#er??? requests per ???month. They also offer a translation service, which seems to require a separate key from the dictionary key?
 
-Problems: Its `lookup` method only returns a one-word definition. 
+- Systran.net
+   
+  - They support tons of languages 
+
+  - Pricing: Lite Plan cost: $5.50/month
+
+  - [Systrans Translation API](https://docs.systran.net/translateAPI) 
+
+- Linguatools has DataPackages and a Language API.  Probably is using a 3rd-party translation service.
+
+  -  Free: 1,000 verbs/month? Conjugation API Docs
+
+- [Collins API](https://www.collinsdictionary.com/collins-api) allows 5,000 free calls per month. 
+
+They offer a REST API for their **Concise German English Dictionary**. Apply for an API key [here](https://blog.collinsdictionary.com/collins-api-apply-for-a-key/).
 
 - PONS Dictinary API
 
@@ -46,15 +64,4 @@ best parse it.
 
 - Oxford Dictionarys API
 
-[page](https://developer.oxforddictionaries.com/).  The REST API has a limited set of supported language for dictionary lookup. German is not one of them.
-
-- [Collins API](https://www.collinsdictionary.com/collins-api) allows 5,000 free calls per month. 
-
-They offer a REST API for their **Concise German English Dictionary**. Apply for an API key [here](https://blog.collinsdictionary.com/collins-api-apply-for-a-key/).
-
-- Yandex
-
-Their [Dictionary API](https://yandex.com/dev/dictionary/) offers ???#er??? requests per ???month. They also offer a translation service, which seems to require a separate key from the dictionary key?
-
-The Yandex translator seems to be part of the Yandex Cloud. See docs/yandex.md. 
-
+[page](https://developer.oxforddictionaries.com/).  The REST API has a *limited set of supported language*. **German is not supported.**
