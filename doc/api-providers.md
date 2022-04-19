@@ -18,7 +18,7 @@
 
 Their [Dictionary API](https://yandex.com/dev/dictionary/) offers ???#er??? requests per ???month. They also offer a translation service, which seems to require a separate key from the dictionary key?
 
-- Systran.net
+- [Systran.net](https://www.systran.net/en/translate/)
    
   - They support tons of languages 
 
