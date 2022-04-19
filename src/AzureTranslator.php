@@ -78,8 +78,8 @@ class AzureTranslator extends /*RestClient*/ TranslatorWithDictionary implements
        return $obj[0]->translations[0]->text; 
    }
 
-   // Azure Translator offers dictionary lookup service, too.
-   final public function lookup(string $word, string $src_lang, string $dest_lang) : string //todo: array?
+   // Azure Translator offers dictionary lookup service that returns a one-word definition.
+   final public function lookup(string $word, string $src_lang, string $dest_lang) : string 
    {
       // 1. Set the dictionary languages
       $this->setLanguages($dest_lang, $src_lang); 

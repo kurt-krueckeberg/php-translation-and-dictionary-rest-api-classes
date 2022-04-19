@@ -4,5 +4,5 @@ namespace LanguageTools;
 
 interface SentenceFetchInterface  { 
 
-   public function fetch(string $word, int $count=3) : SentenceResultsIterator;
+   public function fetch(string $word, int $count=3) : ResultsIterator;
 }

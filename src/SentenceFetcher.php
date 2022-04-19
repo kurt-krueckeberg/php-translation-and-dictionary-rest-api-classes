@@ -22,7 +22,7 @@ class SentenceFetcher extends RestClient implements SentenceFetchInterface {
        parent::__construct($provider, $abbrev); 
    }
    
-   public function fetch(string $word, int $count=3) :  SentenceResultsIterator
+   public function fetch(string $word, int $count=3) :  ResultsIterator
    {
       $route = self::$route. '/' . urlencode($word);
 
@@ -34,7 +34,7 @@ class SentenceFetcher extends RestClient implements SentenceFetchInterface {
        This is what is returned:
        
        {
-         "count": 0,
+         "count": some_number_her,
          "sentences": [ // SentenceInfomration json object.
            {
              "id": "string",
@@ -55,6 +55,11 @@ class SentenceFetcher extends RestClient implements SentenceFetchInterface {
            3. source => ["daate" => ..., "id" => string, "url" => string]
         */
 
-      return new SentenceResultsIterator( $obj->sentences); // Return the array of SentenceInformation objects  
+      // Return an iterator for the array of SentenceInformation objects. The iterator returns the 'sentence' member
+      // of the SentenceInformation objects.
+      return new ResultsIterator( $obj->sentences, function ($x) {
+                                   return $x->sentence;
+                                    }
+                                    ); 
    }
 }

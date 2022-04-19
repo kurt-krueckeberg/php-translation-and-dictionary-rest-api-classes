@@ -1,10 +1,11 @@
 # Documentation 
 
-Documentation is not complete or up to date. See [main.php](main.php) for example code.
+Code tested against PHP 8.1 only. See [main.php](main.php) for example code.
 
 ## Overview
 
-This code generates German example sentences, using the University of [Leipzig Corpora Collection](https://wortschatz.uni-leipzig.de/en), and translates them into your target language. The input is file with a list of words ( one word per line). To use it you must have either a DEEPL account or a Microsoft Azure account.
+This code generates German example sentences, using the University of [Leipzig Corpora Collection](https://wortschatz.uni-leipzig.de/en), and translates them into the target language. 
+The input is file with a list of words (one word per line). To use it, you must have either a DEEPL account or a Microsoft Azure account. Other cloud-base translators may be added later.
 
 **Note:** The [Leipzig Corpora Collection](https://wortschatz.uni-leipzig.de/en) provides example sentences in other languages besides German.
 
@@ -20,13 +21,15 @@ It uses:
 
 - [DEEPL](https://www.deepl.com/docs-apiD) Translator. There is a free version with a limited monthly quota and a Pro paid version.
 
+- PONS Dictionary API.
+
   Note: If you have the Pro paid version, you must change the DEEPL endpoint in the `<baseurl>` element of config.xml. It currently has the free endpoint.
 
 ## Installation
 
 After cloing the repository:
 
-1. Generate the autoloader using **composer**:
+1. Install the requirement and generate the autoloader using **composer**:
 
 ```bash
 $ composer update 
@@ -42,6 +45,8 @@ Add your **DEEPL** and/or **Azure Translator** keys to **sample-config.xml**, an
 | DEEPL| d | `<provider name="deepl" abbrev="d">` |          
 | Microsoft Azure Translator| m | `<provider name="Azure" abbrev="m">` |
 | IBM Watson Translator(not yet implemented)| i |  `<provider name="IBM" abbrev="i">` | 
+| PONS Dictionary| p |  `<provider name="PONS" abbrev="p">` | 
+| University of Leipzig| l |  `<provider name="Leipzig" abbrev="l">` | 
 
 3. Sample code is in [main.php](main.php):
 
@@ -59,14 +64,7 @@ include 'vendor/autoload.php';
 
 function check_args(int $argc, array $argv)
 {
-  if ($argc < 2)
-      die ("Enter file with the list of words.\n");
-
-  if (!file_exists($argv[1]))
-       die("Input file " . $argv[1] . " does not exist!\n");
-
-  if (!file_exists("config.xml"))
-       die("config.xml not found in current directory.\n");
+ // snip...
 }
 
 function create_html_output(SentenceFetchInterface $fetcher, TranslateInterface $translator, string $fname)
@@ -78,8 +76,6 @@ function create_html_output(SentenceFetchInterface $fetcher, TranslateInterface 
    $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | 
                    \SplFileObject::DROP_NEW_LINE);
 
-   //--$translator = RestClient::createRestClient($xml, "m"); 
-
    foreach ($file as $word) {
   
       $creator->write("<strong>$word</strong>", "<strong>No Definitions (yet)</strong>"); 
@@ -90,8 +86,10 @@ function create_html_output(SentenceFetchInterface $fetcher, TranslateInterface 
 
            echo "Translating: " . $sentence . "\n";
 
-           // 2nd parameter is destination language. 3rd parameter is optional source language.
-           // If 3rd parameter is ommited, source language is automatically detected.
+           // 2nd parameter is destination language. 3rd parameter is optional
+           // source language. If 3rd parameter is ommited, source language is
+           // automatically detected.
+`
            $translation = $translator->translate($sentence, "EN-US", "DE"); 
            
            $creator->write($sentence, $translation); 
@@ -99,7 +97,6 @@ function create_html_output(SentenceFetchInterface $fetcher, TranslateInterface 
       echo "\n";
    }
 }
-
   check_args($argc, $argv);
 
   try {
@@ -131,25 +128,11 @@ interface TranslateInterface {
    public function translate(string $str, string $dest_lang, string $src_lang="") : string; 
 }
 
-interface TranslateInterface {
-
-   // todo: Should this return an \Iterator instead of string?
-   public function translate(string $str, string $dest_lang, string $src_lang="") : string; 
-}
-
 interface DictionaryInterface {
    
    /*
     todo: 
-     What is the best retun type;
-
-     Should it return an array whose key is the head word ike this:
-           ["headword here" => ["dfinition 1", "dfinition 2", ...]]?                   
-
-     Should it return just an array of definitions:  
-           ["headword here" => ["dfinition 1", "dfinition 2", ...]]?                   
-
-     The Microsoft Azure api returns a one-word defiiniotn, a string.
+     What is the best retun type; ResultsIterator | array | string?
     */
    public function lookup(string $str, string $src_lang, string $dest_lang) : string |array; 
 }
@@ -162,7 +145,7 @@ interface LanguagesSupportedInterface {
 
 interface SentenceFetchInterface  { 
 
-   public function fetch(string $word, int $count=3) : SentenceResultsIterator;
+   public function fetch(string $word, int $count=3) : ResultsIterator;
 }
 ```
 
@@ -170,7 +153,8 @@ interface SentenceFetchInterface  {
 
 - `RestClient` is the base class of all the REST implementation classes
 
-   Use its static factory method `function createRestClient(\SimpleXMLElement $xml, string $abbrev)` to instantiate implementation classes.
+   Use its static factory method `function createRestClient(\SimpleXMLElement $xml, string $abbrev)` to instantiate
+   implementation classes.
 
 - abstract class `TranslatorWithDictionary` implements both `TranslateInterface` and `DictionaryInterface`
   and extends `RestClient`. It contains no implementations. It is an "interface" that clients can use.
@@ -186,7 +170,7 @@ abstract class TranslatorWithDictionary extends RestClient implements TranslateI
 
 - SentenceFetcher
 
-- SentenceResultsIterator
+- ResultsIterator
 
 - AzureTranslator
 
