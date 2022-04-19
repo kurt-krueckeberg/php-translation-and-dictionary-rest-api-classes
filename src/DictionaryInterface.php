@@ -2,14 +2,9 @@
 namespace LanguageTools;
 
 interface DictionaryInterface {
-   
-   /*
-    todo: 
-     What is the best retun type;
-
-     Try to return: ResultsIteratorBase | string | array
-
-     The Microsoft Azure api returns a one-word defiiniotn, a string.
+    /* 
+    Todo: 
+     What is the best retun type--ResultsIteratorBase | string | array?
     */
    public function lookup(string $str, string $src_lang, string $dest_lang) : string |array; 
 }
