@@ -2,6 +2,7 @@
 declare(strict_types=1);
 namespace LanguageTools;
 
+/* Derived class override get_member($x) to return object member */
 abstract class ResultsIteratorBase implements  \SeekableIterator, \ArrayAccess, \Countable {
 
     private array $objs;
