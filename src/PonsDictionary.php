@@ -5,6 +5,57 @@ namespace LanguageTools;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
+/*
+ Todo:
+
+ Still Debugging this class
+
+ Thoughts:
+
+ The PONS json repsonse object layout:
+
+   [lang] => 'de'
+   [hits] => Array of stdClass objects
+           [type]
+           [opendict]
+           [roms] => Array of stdClass objects 
+                [headword] => 
+                [headword_full] =>  
+                [wordclass] => 
+                [arabs] => Array of stdClass objects
+                                [header] => 1. Handeln <span class="sense">(Feilschen)</span>:
+                                [translations] => Array of stdClass objects
+                                                [source] => <strong class="headword">Handeln</strong>
+                                                [target] => haggling
+
+
+Questions:
+1. Does the response object itself always exist? Can it be null? Does its 'hits' property always exist. If so, can its count be zero?
+
+if (count($obj->hits)) 
+    continue;
+
+foreach ($obj->hits as $hit_array) {
+
+      if (count($hit_array->roms))
+          continue;
+
+      foreach($hit_array->roms as $rom_array) {
+
+           if (count($rom_array->arabs))
+               continue;
+        
+            foreach ($rom_array->arabs as $arab) {
+        
+                 foreach($arabs->translations as $translation) {
+        
+                      $results = strip_tags($translation);
+                 }  
+            }
+       }
+}
+
+*/
 class PonsDictionary extends  RestClient implements DictionaryInterface {
 
    static string  $base_url = "https://api.pons.com/baseurl";
@@ -42,29 +93,51 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
 
        $obj = json_decode($contents)[0];
 
+       // debug
+       $dbug = new \ArrayObject($obj);
+
+       echo "Response for '$text' iterating response:\n\n";
+
+       foreach ($dbug as $key => $value) {
+
+             $v = (!is_array($value)) ?  strip_tags($value) : $value;
+
+             echo $key . " = " . $v ."\nDoing print_r($v)\n";
+             print_r($v); 
+             echo "\n--------\n";
+        }
+       // debug end
+
        $results = array();
        
        /*
         * The PONS results as so tersely documented that one is not certain how to best parse 
         * and retreive the results.
         */
-       foreach ($obj->hits as $element) { // Iterate over hits
-            
-           foreach($element->roms as $rom) { // Iterate over roms, then arabs 
-           
-             foreach($rom->arabs as $arab) {    
-                 
-                 foreach ($arab->translations as $translation) {
-                      if (is_null($translation->target))
-                          continuee;
-                      
-                      print_r($translation);
-                      $results[] = strip_tags($translation->target);  
-                 }
-             }
-          }
-       }
-       
+
+        if (count($obj->hits) == 0) 
+            return $results;
+        
+        foreach ($obj->hits as $hit_array) {
+        
+              if (count($hit_array->roms) == 0)
+                  continue;
+        
+              foreach($hit_array->roms as $rom_array) {
+        
+                   if (count($rom_array->arabs) == 0)
+                       continue;
+                
+                    foreach ($rom_array->arabs as $arab) {
+                
+                         foreach($arabs->translations as $translation) {
+                
+                              $results = strip_tags($translation);
+                         }  
+                    }
+               }
+        }
+
        return $results;   
        //return ResultsIterator($results, )
    }
