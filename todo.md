@@ -1,4 +1,4 @@
-- Add a interface that includes other interfaces?
+- Add Deepl::getTranslationLanguages()
 
 - public constructors of rest client classes allows incorect SimpleXMLElemtns's to be passed to their constuctors.
 

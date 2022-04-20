@@ -55,22 +55,16 @@ class AzureTranslator extends /*RestClient*/ TranslatorWithDictionary implements
       $this->query[self::$to] = $dest_lang; 
    }
 
-   public function getTranslationLanguages()
+   public function getTranslationLanguages() : array
    {
       $this->query['scope'] = 'translation';
 
       $contents = $this->request(self::$languages['method'], self::$languages['route'],  ['headers' => $this->headers, 'query' => $this->query]);
              
-      $obj = json_decode($contents);
+      $arr = json_decode($contents, true);
     
-      print_r($obj->translation); 
- 
-      $str = "German";
- 
-      echo "In Test::getLanguages() " . self::$trans_route . "\n";
- 
-      return $str;
-   } 
+      return $arr["translation"]; 
+    } 
 
    final public function getDictionaryLanguages()
    {
