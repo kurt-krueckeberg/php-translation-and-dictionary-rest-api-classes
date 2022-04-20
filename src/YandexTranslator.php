@@ -5,7 +5,7 @@ namespace LanguageTools;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
-class YandexTranslator extends RestClient implements Translation, DictionaryInterface, LanguagesSupportedInterface {
+class YandexTranslator extends RestClient implements TranslateInterface, DictionaryInterface {
 
    static string  $base_url = "";
    static string  $method = "???";

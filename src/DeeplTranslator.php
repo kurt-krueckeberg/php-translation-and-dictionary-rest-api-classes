@@ -3,9 +3,11 @@ declare(strict_types=1);
 namespace LanguageTools;
 
 // SeeDeepl-doc.md 
-class DeeplTranslator extends RestClient implements TranslateInterface, LanguagesSupportedInterface {
+class DeeplTranslator extends RestClient implements TranslateInterface {
    
-   static private string $route = "v2/translate";     
+   static private string $trans_route = "v2/translate";     
+   static private string $languages_route = "v2/languages";     
+
    static private string $method = "GET";    
    static private string $from_key = "source_lang"; 
    static private string $to_key = "target_lang";  
@@ -34,13 +36,18 @@ class DeeplTranslator extends RestClient implements TranslateInterface, Language
        return "a string";
    }
 
+   public function getTranslationLanguages()
+   {
+
+   } 
+
    final public function translate(string $text, string $dest_lang, $source_lang="") : string 
    {
        $this->setLanguages($dest_lang, $source_lang); 
 
        $this->query['text'] = urlencode($text);
 
-       $contents = $this->request(self::$method, self::$route, ['headers' => $this->headers, 'query' => $this->query]); 
+       $contents = $this->request(self::$method, self::$trans_route, ['headers' => $this->headers, 'query' => $this->query]); 
 
        $obj = json_decode($contents);
 

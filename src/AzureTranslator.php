@@ -2,14 +2,13 @@
 declare(strict_types=1);
 namespace LanguageTools;
 
-class AzureTranslator extends /*RestClient*/ TranslatorWithDictionary implements DictionaryInterface, TranslateInterface, LanguagesSupportedInterface  {
+class AzureTranslator extends /*RestClient*/ TranslatorWithDictionary implements DictionaryInterface, TranslateInterface {
 
-   static private string $dict_route = "dictionary/lookup";
-   static private string $trans_route = "translate";
-   static private string $languages_route = "languages";
+   static private array  $lookup = array('method' => "POST", 'route' => "dictionary/lookup");
+   static private array  $trans = array('method' => "POST", 'route' => "translate");
+   static private array  $languages = array('method' => "GET", 'route' => "languages");
    static private string $from = "from";
    static private string $to = "to";
-   static private string $method = "POST";
 
    // rquired query parameter 
    private $query = array('api-version' => "3.0");
@@ -56,14 +55,39 @@ class AzureTranslator extends /*RestClient*/ TranslatorWithDictionary implements
       $this->query[self::$to] = $dest_lang; 
    }
 
-   // Interfaces implemented below
-
-   public function getLanguages() : string
+   public function getTranslationLanguages()
    {
-       $str = "German";
-       echo "In Test::getLanguages() " . self::$trans_route . "\n";
-       return $str;
-   }
+      $this->query['scope'] = 'translation';
+
+      $contents = $this->request(self::$languages['method'], self::$languages['route'],  ['headers' => $this->headers, 'query' => $this->query]);
+             
+      $obj = json_decode($contents);
+    
+      print_r($obj->translation); 
+ 
+      $str = "German";
+ 
+      echo "In Test::getLanguages() " . self::$trans_route . "\n";
+ 
+      return $str;
+   } 
+
+   final public function getDictionaryLanguages()
+   {
+      $this->query['scope'] = 'dictionary';
+
+      $contents = $this->request(self::$languages['method'], self::$languages['route'],  ['headers' => $this->headers, 'query' => $this->query]);
+             
+      $obj = json_decode($contents);
+    
+      print_r($obj); 
+ 
+      $str = "German";
+ 
+      echo "In Test::getLanguages() " . self::$trans_route . "\n";
+ 
+      return $str;
+   } 
 
    final public function translate(string $text, string $dest_lang, $source_lang="") : string 
    {
@@ -71,7 +95,7 @@ class AzureTranslator extends /*RestClient*/ TranslatorWithDictionary implements
 
        $this->add_input($text);
 
-       $contents = $this->request(self::$method, self::$trans_route, ['headers' => $this->headers, 'query' => $this->query, 'json' => $this->json]); 
+       $response = $this->request(self::$trans['method'], self::$trans['route'], ['headers' => $this->headers, 'query' => $this->query, 'json' => $this->json]); 
 
        $obj = json_decode($contents);
 
@@ -87,7 +111,7 @@ class AzureTranslator extends /*RestClient*/ TranslatorWithDictionary implements
       $this->add_input($word);
 
       // 3. Issue post request 
-      $contents = $this->request(self::$method, self::$dict_route,  ['headers' => $this->headers, 'query' => $this->query, 'json' => $this->json]);
+      $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['headers' => $this->headers, 'query' => $this->query, 'json' => $this->json]);
 
       $obj = json_decode($contents)[0]; 
       
