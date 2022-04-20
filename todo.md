@@ -1,16 +1,23 @@
-- Add Deepl::getTranslationLanguages()
+- Implement SystransTranslator after getting a trial 
 
-- public constructors of rest client classes allows incorect SimpleXMLElemtns's to be passed to their constuctors.
+- If needed, change sample-config.xml to match onfig.xml.
 
-- Change sample-config.xml to match onfig.xml.
+1. Decide what type should `lookup` return? 
 
-1. What type should `lookup` return? 
+2. Make ~/rest-translators a github respoistory-backed composer package.
 
-2. Implement `getLangauges()` interface method  returns the ISO codes and there respective countries as array of codes and Lanagues?
+See these articles:
 
-- Both deepl and Azure take mostly two-letter codes, but for some languages there take 4 letter, hyphenated codes. Pons seems to take only two-letter codes.
+- [composer: How to Use Git Repositories](https://www.daggerhartlab.com/composer-how-to-use-git-repositories/)
 
-3. Should `lookup` return an array with the heaqdword as the key and the value a subarrary of definitions?
+3. Make ~/e a github respoistory-backed composer package that usese the rest-tranlators pakckage.
+
+### PHP Links
+
+- [PHP Closuers](https://www.php.net/manual/en/functions.anonymous.php)
+
+- [PHP Callbacks](https://www.php.net/manual/en/language.types.callable.php)
+
 
 4.  Change examples_ file name to NOT have ':' and to have AM or PM:
 
@@ -23,19 +30,4 @@
 echo date("l jS \of F Y h:i:s A") . "\n";
 ```
 date("m-d-y:H:i:s")
-
-5. Make ~/rest-translators a github respoistory-backed composer package.
-
-See these articles:
-
-- [composer: How to Use Git Repositories](https://www.daggerhartlab.com/composer-how-to-use-git-repositories/)
-
-5. Make ~/e a github respoistory-backed composer package that usese the rest-tranlators pakckage.
-
-### PHP Links
-
-- [PHP Closuers](https://www.php.net/manual/en/functions.anonymous.php)
-
-- [PHP Callbacks](https://www.php.net/manual/en/language.types.callable.php)
-
 
