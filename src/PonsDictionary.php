@@ -6,13 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
 /*
- Todo:
-
- Still Debugging this class
-
- Thoughts:
-
- The PONS json repsonse object layout:
+  PONS json repsonse object layout:
 
    [lang] => 'de'
    [hits] => Array of stdClass objects
@@ -27,39 +21,12 @@ use GuzzleHttp\Psr7\Response;
                                 [translations] => Array of stdClass objects
                                                 [source] => <strong class="headword">Handeln</strong>
                                                 [target] => haggling
-
-
-1. QUESTION:
-
- The PONS results as so tersely documented that one is not certain how to best parse 
- and retreive the results.
-  
-2. QUESTION: Which of the if (count(....)) test are necessart?
-   Does PHP reqire them or can a foreach loop be used when an array is empty?
-
-if (count($obj->hits)) 
-    continue;
-
-foreach ($obj->hits as $hit_array) {
-
-      if (count($hit_array->roms))
-          continue;
-
-      foreach($hit_array->roms as $rom_array) {
-
-           if (count($rom_array->arabs))
-               continue;
-        
-            foreach ($rom_array->arabs as $arab) {
-        
-                 foreach($arabs->translations as $translation) {
-        
-                      $results = strip_tags($translation);
-                 }  
-            }
-       }
-}
-
+   
+Some of the returned 'translation' or definition objects are actually example sentence objects. There
+only way to know if such a 'translation' object is an example is to check if the html <span> tag has a 
+class of type: class='example'>.
+ 
+Question: How should such examples be returned along with the other results?
 */
 class PonsDictionary extends  RestClient implements DictionaryInterface {
 
@@ -85,7 +52,7 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
        $this->headers[ (string) $provider->settings->credentials->header['name'] ] = (string) $provider->settings->credentials->header; 
    } 
 
-   public function lookup(string $text, string $src, string $dest) : array
+   public function lookup(string $text, string $src, string $dest) : ResultsIterator//array
    {
        $this->query[PonsDictionary::INPUT] = urlencode($text); 
 
@@ -109,13 +76,13 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
         */
 
         if (count($obj->hits) == 0) 
-            return $results;
-        
+             return $results;
+            
         foreach ($obj->hits as $hit_array) {
         
-              if (count($hit_array->roms) == 0)
+              if (count($hit_array->roms) == 0) 
                   continue;
-        
+              
               foreach($hit_array->roms as $rom_array) {
         
                    if (count($rom_array->arabs) == 0)
@@ -128,13 +95,13 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
                 
                         foreach($arabs_array->translations as $translation) {
                 
-                              $results[] = strip_tags($translation->target);
+                              $results[] = $translation;//strip_tags($translation->target);
                          }  
                     }
                }
         }
 
-       return $results;   
-       //return ResultsIterator($results, )
+       //--return $results;   
+       return new ResultsIterator($results, function($x) { return $x;});              
    }
 }

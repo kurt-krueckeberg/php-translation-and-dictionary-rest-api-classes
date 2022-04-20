@@ -59,7 +59,7 @@ function pons_output(PonsDictionary $dict, File $file)
             echo $result . "\n";
         }
         
-        echo "\n";
+        echo "\n=============\n";
     }
 }
 

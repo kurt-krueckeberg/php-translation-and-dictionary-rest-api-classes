@@ -37,7 +37,8 @@ class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
 
     public function offsetGet($offset) : mixed
     {
-        return isset($this->objs[$offset]) ? ($this->f)($this->objs[$offset]) : null;
+        //return isset($this->objs[$offset]) ? ($this->f)($this->objs[$offset]) : null;
+        return isset($this->objs[$offset]) ? $this->objs[$offset] : null;
     }
   
     public function count(): int // Countable
