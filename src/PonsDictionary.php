@@ -29,8 +29,13 @@ use GuzzleHttp\Psr7\Response;
                                                 [target] => haggling
 
 
-Questions:
-1. Does the response object itself always exist? Can it be null? Does its 'hits' property always exist. If so, can its count be zero?
+1. QUESTION:
+
+ The PONS results as so tersely documented that one is not certain how to best parse 
+ and retreive the results.
+  
+2. QUESTION: Which of the if (count(....)) test are necessart?
+   Does PHP reqire them or can a foreach loop be used when an array is empty?
 
 if (count($obj->hits)) 
     continue;
@@ -93,26 +98,14 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
 
        $obj = json_decode($contents)[0];
 
-       // debug
-       $dbug = new \ArrayObject($obj);
-
-       echo "Response for '$text' iterating response:\n\n";
-
-       foreach ($dbug as $key => $value) {
-
-             $v = (!is_array($value)) ?  strip_tags($value) : $value;
-
-             echo $key . " = " . $v ."\nDoing print_r($v)\n";
-             print_r($v); 
-             echo "\n--------\n";
-        }
-       // debug end
-
        $results = array();
        
        /*
         * The PONS results as so tersely documented that one is not certain how to best parse 
         * and retreive the results.
+        * 
+        * QUESTION: Which of the if (count(....)) test are necessart?
+        * Does PHP reqire them or can a foreach loop be used when an array is empty?
         */
 
         if (count($obj->hits) == 0) 
@@ -128,11 +121,14 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
                    if (count($rom_array->arabs) == 0)
                        continue;
                 
-                    foreach ($rom_array->arabs as $arab) {
+                    foreach ($rom_array->arabs as $arabs_array) {
+                        
+                        if (count($arabs_array->translations) == 0)
+                           continue;
                 
-                         foreach($arabs->translations as $translation) {
+                        foreach($arabs_array->translations as $translation) {
                 
-                              $results = strip_tags($translation);
+                              $results[] = strip_tags($translation->target);
                          }  
                     }
                }
