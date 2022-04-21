@@ -29,13 +29,13 @@ enum ClassID implements ClassmapInterface
     public function get_config_name() : string
     {
         return match($this) {
-            ClassID::Leipzig  => "LeipzipConfig",
-            ClassID::Pons     => "PonsConfig",
-            ClassID::Deepl    => "DeeplConfig",
-            ClassID::Azure    => "AzureConfig",
-            ClassID::Ibm      => "IbmConfig",
-            ClassID::Yandex   => "YandexConfig",
-            ClassID::Systrans => "SystransConfig",
+            ClassID::Leipzig  => "LanguageTools\LeipzipConfig",
+            ClassID::Pons     => "LanguageTools\PonsConfig",
+            ClassID::Deepl    => "LanguageTools\DeeplConfig",
+            ClassID::Azure    => "LanguageTools\AzureConfig",
+            ClassID::Ibm      => "LanguageTools\IbmConfig",
+            ClassID::Yandex   => "LanguageTools\YandexConfig",
+            ClassID::Systrans => "LanguageTools\SystransConfig",
         };
      }
 }

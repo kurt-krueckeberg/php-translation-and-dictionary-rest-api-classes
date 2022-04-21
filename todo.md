@@ -2,9 +2,12 @@ See [PHP 8.1 Enums](https://stitcher.io/blog/php-enums)
 
 1. Each implemtation needs settings for authorization (which must be confidental) and the endpoint. Other settings could also be added. But why--since the implementation classes have that information--it's heir job!.
 
-   - Therefore convert the config.xml settings into derived-Config class settings
+   - Move the config.xml settings into derived-Config classes. (Add say member properties like: `array $header = array('Header vlaue here' => 'Key here');`
+
    - Have RestClient::createClient() instantiate and pass the derived-Config class.
+
    - Have implemntation constructor take their deived-config class.
+
    - Pass the endpoint to the RestClient
 
 According to  [PHP 8.1 Enums](https://stitcher.io/blog/php-enums) you can't use Enumerations as array keys, though there is an RFC to do this. However, check out [Getting values for an enum?](https://stackoverflow.com/questions/71235907/getting-values-for-an-enum)
