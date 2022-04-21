@@ -15,12 +15,9 @@ class DeeplTranslator extends RestClient implements TranslateInterface {
    private $query = array();
    private $headers = array();
  
-   public function __construct(\SimpleXMLElement $provider, ClassID $id) 
+   public function __construct(\SimpleXMLElement $provider, Deeplconfig $c) 
    {   
-      if ($id !== ClassID::DEEPL)
-           throw new \Exception("Wrong provider passed");
- 
-       parent::__construct($provider, $id); 
+      parent::__construct($c);
 
       $this->headers = [ ((string) $provider->settings->credentials->header['name']) => (string) $provider->settings->credentials->header]; 
    }

@@ -26,15 +26,9 @@ class YandexTranslator extends RestClient implements TranslateInterface, Diction
 
    private Client $client;  
 
-   public function __construct(\SimpleXMLElement $provider, ClassID $id) 
+   public function __construct(\SimpleXMLElement $provider, Yandexconfig $c) 
    {
-      if ($id != ClassID::YANDEX)
-           throw new \Exception("Wrong provider passed");
- 
-        parent::__construct($provider, $abbrev);        
-
-
-       $pons = $xml->xpath(self::$xpath)[0];
+       parent::__construct($c);
 
        $this->headers[self::$credential] = (string) $pons->settings->secret;
 

@@ -2,8 +2,9 @@
 declare(strict_types=1);
 namespace LanguageTools;
 
-class Config {
+abstract class Config {
 
+  abstract public function get_endpoint();
   
   public static function getConfg(ClassID $id)
   {

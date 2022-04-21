@@ -49,10 +49,7 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
 
    public function __construct(\SimpleXMLElement $provider, ClassID $id) 
    {   
-      if ($id !== ClassID::PONS)
-           throw new \Exception("Wrong provider passed");
- 
-       parent::__construct($provider, $abbrev);
+       parent::__construct($c);
 
        $this->headers[ (string) $provider->settings->credentials->header['name'] ] = (string) $provider->settings->credentials->header; 
    } 

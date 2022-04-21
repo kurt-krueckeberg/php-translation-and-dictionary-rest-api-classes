@@ -5,27 +5,37 @@ namespace LanguageTools;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
-// This class is not currently used.
-
 class RestClient {
 
    protected Client $client;  
 
    static string $xpath =  "/providers/provider[@abbrev='%s']"; 
 
+   static array $class_map = array(
+  ClassID::Leipzig  => ['class' => 'SentenceFetcher', 'config' => 'Leipzigconfig'  ],
+  ClassID::Pons     => ['class' => 'PonsDictionary',  'config' => 'Ponsconfig'     ],
+  ClassID::Systrans => ['class' => '           , 'config' => '                 ],
+  ClassID::Azure    => ['class' => '           , 'config' => '                 ],
+  ClassID::Ibm      => ['class' => '           , 'config' => '                 ],
+  ClassID::Yandex   => ['class' => '           , 'config' => '                 ],
+  ClassID::Deepl    => ['class' => '           , 'config' => '                 ],
+  );
+   /* 
+   todo: Put this in a hardcoedc file: 'config.php'
+  That will have keys that are of typoe ClasssID and subarrays with a subarray: [ClassID::Zaure  => ['class' => 'AzureTranslator', 'config' => 'Azureconfig']]
+    */ 
+
    /* 
       Instantiate the RestClient-derived class specified in <implementation>...</implementation>
       and pass it the apporpitate \SimpleXmlElement.
     */ 
-   static public function createRestClient(\SimpleXMLElement $xml, ClassID $id) : mixed
+   static public function createRestClient(ClassID $id) : mixed
    {
-      $query = sprintf(self::$xpath, (string) $id);
+      $arr = self::class_map[$id]; 
 
-      $provider = $xml->xpath($query)[0];
-
-      $refl = new \ReflectionClass((string) $provider->settings->implementation); 
+      $refl = new \ReflectionClass($arr['class']); 
       
-      return $refl->newInstance($provider, $abbrev);
+      return $refl->newInstance(new $arr['config']);
    }
 
    protected function request(string $method, string $route, array $options) : string
@@ -38,14 +48,8 @@ class RestClient {
    /*
     * PHP 8.0 feature: automatic member variable assignemnt syntax.
     */
-   protected function __construct(\SimpleXMLElement $provider, ClassID $id) 
+   protected function __construct(Config $c)
    {     
-       /* todo: Is this stil needed?
- 
-       if ( (string) $provider['abbrev']!== $abbrev) 
-             throw new \Exception("Wrong provider passed");
-       */
-       
-       $this->client = new Client(['base_uri' => (string) $provider->settings->baseurl]);
+       $this->client = new Client(['base_uri' => $c->get_endpoint()]);
    } 
 }

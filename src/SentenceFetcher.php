@@ -17,12 +17,9 @@ class SentenceFetcher extends RestClient implements SentenceFetchInterface {
    private static $route = "sentences/deu_news_2012_1M/sentences" ;
    private static $method = 'GET';
 
-   public function __construct(\SimpleXMLElement $provider, ClassID $id) 
+   public function __construct(\SimpleXMLElement $provider, SentenceFetcherconfig $c) 
    {
-      if ($id != ClassID::LEIPZIG)
-           throw new \Exception("Wrong provider passed");
-
-       parent::__construct($provider, $abbrev); 
+       parent::__construct($c);
    }
    
    public function fetch(string $word, int $count=3) :  ResultsIterator

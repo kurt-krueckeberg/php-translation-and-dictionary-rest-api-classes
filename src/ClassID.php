@@ -4,11 +4,11 @@ namespace LanguageTools;
 
 enum ClassID: string {
 
-   case   LEIPZIG = "l";
-   case   PONS = "p";
-   case   SYSTRANS = "s";
-   case   AZURE = "a";
-   case   IBM = "i";
-   case   YANDEX = "y";
-   case   DEEPL = "d";
+   case  Leipzig = "l";
+   case  Pons = "p";
+   case  Systrans = "s";
+   case  Azure = "a";
+   case  Ibm = "i";
+   case  Yandex = "y";
+   case  Deepl = "d";
 }

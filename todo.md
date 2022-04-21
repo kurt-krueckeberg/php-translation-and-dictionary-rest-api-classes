@@ -1,6 +1,4 @@
-- Change the const abbreviations in RestClient to be PHP 8.1 enums, which can be used as constructor arguments:
-
-  See [PHP 8.1 Enums](https://stitcher.io/blog/php-enums)
+See [PHP 8.1 Enums](https://stitcher.io/blog/php-enums)
 
 - Implement a `check_iso_code(string $lnag) : bool` in, say, a IsoCodes trait or in a base class for 
 

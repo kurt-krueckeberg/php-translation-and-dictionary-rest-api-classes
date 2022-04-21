@@ -28,9 +28,9 @@ class AzureTranslator extends /*RestClient*/ TranslatorWithDictionary implements
         );
    }
    
-   public function __construct(\SimpleXMLElement $provider, Azureconfig $config) 
+   public function __construct(\SimpleXMLElement $provider, Azureconfig $c) 
    {
-       parent::__construct($provider, $id); 
+       parent::__construct($c);
 
        foreach($provider->settings->credentials->header as $header) 
           

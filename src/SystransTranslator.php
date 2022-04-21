@@ -14,12 +14,9 @@ class SystransTranslator extends RestClient implements TranslateInterface, Dicti
    private $query = array();
    private $headers = array();
  
-   public function __construct(\SimpleXMLElement $provider, ClassID $id) 
+   public function __construct(\SimpleXMLElement $provider, Systransconfig  $c) 
    {
-      if ($id != ClassID::SYSTRANS)
-           throw new \Exception("Wrong provider passed");
- 
-       parent::__construct($provider,$id); 
+      parent::__construct($c);
 
       $this->headers = [ ((string) $provider->settings->credentials->header['name']) => (string) $provider->settings->credentials->header]; 
    }
