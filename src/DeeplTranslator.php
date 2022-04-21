@@ -15,12 +15,13 @@ class DeeplTranslator extends RestClient implements TranslateInterface {
    private $query = array();
    private $headers = array();
  
-   public function __construct(string $endpoint)
+   public function __construct(DeeplConfig $c)
    {   
-      parent::__construct($endpoint);
+      parent::__construct($c->get_endpoint());
 
-      // todo: change this:
-      $this->headers = [ ((string) $provider->settings->credentials->header['name']) => (string) $provider->settings->credentials->header]; 
+       foreach($$c->get_authorization() as $key => $value) 
+          
+            $this->headers[$key] = $value;
    }
 
    // If this is a translation request and there is no source language, the source langauge will be auto-detected.

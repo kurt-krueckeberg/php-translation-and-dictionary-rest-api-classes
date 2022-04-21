@@ -28,13 +28,13 @@ class AzureTranslator extends /*RestClient*/ TranslatorWithDictionary implements
         );
    }
    
-   public function __construct(string $endpoint)
+   public function __construct(AzureConfig $c)
    {
-       parent::__construct($endporint);
+       parent::__construct($c->get_endpoint());
 
-       foreach($provider->settings->credentials->header as $header) 
+       foreach($$c->get_authorization() as $key => $value) 
           
-            $this->headers[(string) $header['name']] = (string) $header;
+            $this->headers[$key] = $value;
    }     
 
    // Called by base Translator::translate method 

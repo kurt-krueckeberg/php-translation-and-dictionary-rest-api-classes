@@ -17,9 +17,9 @@ class SentenceFetcher extends RestClient implements SentenceFetchInterface {
    private static $route = "sentences/deu_news_2012_1M/sentences" ;
    private static $method = 'GET';
 
-   public function __construct(string $endpoint)
+   public function __construct(LeipzigConfig $c)
    {
-       parent::__construct($endpoint);
+       parent::__construct($c->get_endpoint());
    }
    
    public function fetch(string $word, int $count=3) :  ResultsIterator
