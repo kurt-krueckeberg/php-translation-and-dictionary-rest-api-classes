@@ -6,7 +6,16 @@ You could also dynamically build the static array once:
   `$class_map[ClassID::Leipzig->value] = ['class' => 'SentenceFetcher', 'config' => 'Leipzigconfig'];`
    ditto for each Enum::cases() type
 
+OR <----------
 
+  Just use it in a switch statement within the RestClient::createClient(ClassID $d) static method: <--------
+
+  switch ($id) {
+      case ClassID::Azure:
+
+          return new AzureTramslator(new Azureconfig);
+      break;
+  } 
 
 - Implement a `check_iso_code(string $lnag) : bool` in, say, a IsoCodes trait or in a base class for 
 

@@ -11,23 +11,67 @@ class RestClient {
 
    static string $xpath =  "/providers/provider[@abbrev='%s']"; 
 
+/* 
+Currently Enumerations can't  be used as array keys. So this array won't work:
+
    static array $class_map = array(
-  ClassID::Leipzig  => ['class' => 'SentenceFetcher',    'config' => 'Leipzigconfig'  ],
-  ClassID::Pons     => ['class' => 'PonsDictionary',     'config' => 'Ponsconfig'     ],
-  ClassID::Systrans => ['class' => 'SystransTranslator', 'config' => 'Systranconfig'  ],
-  ClassID::Azure    => ['class' => 'AzureTranslator',    'config' => 'Azureconfig'    ],
-  ClassID::Ibm      => ['class' => 'IbmTranslator',      'config' => 'Ivmconfig'      ],
-  ClassID::Yandex   => ['class' => 'YandexTranslator',   'config' => 'Yandexconfig'   ],
-  ClassID::Deepl    => ['class' => 'Deeplranslator',     'config' => 'Deeplconfig'    ],
+        ClassID::Leipzig  => ['class' => 'SentenceFetcher',    'config' => 'Leipzigconfig'  ],
+        ClassID::Pons     => ['class' => 'PonsDictionary',     'config' => 'Ponsconfig'     ],
+        ClassID::Systrans => ['class' => 'SystransTranslator', 'config' => 'Systranconfig'  ],
+        ClassID::Azure    => ['class' => 'AzureTranslator',    'config' => 'Azureconfig'    ],
+        ClassID::Ibm      => ['class' => 'IbmTranslator',      'config' => 'Ivmconfig'      ],
+        ClassID::Yandex   => ['class' => 'YandexTranslator',   'config' => 'Yandexconfig'   ],
+        ClassID::Deepl    => ['class' => 'Deeplranslator',     'config' => 'Deeplconfig'    ],
   );
+
+And we therfore can't do:
+
+     $arr = self::$class_map[$id]; 
+     $refl = new \ReflectionClass($arr['class']); 
+    
+     return $refl->newInstance(new $arr['config']);
+*/
 
    static public function createRestClient(ClassID $id) : mixed
    {
-      $arr = self::$class_map[$id]; 
+      switch($id) {
+  case  ClassID::Leipzig:
 
-      $refl = new \ReflectionClass($arr['class']); 
+        return new SentenceFetcher(new Leipzipconfig); // 
+        break;
+
+  case  ClassID::Pons:
+        return new PonsDictionary(new Ponsconfig);
+        break;
+
+  case  ClassID::Systrans:
+
+        break;
+
+  case  ClassID::Azure:
+
+        break;
+
+  case  ClassID::Ibm:
+
+        break;
+
+  case  ClassID::Yandex:
+
+        break;
+
+  case  ClassID::Deepl:
+
+        break;
+
+
+      /* Future code:
+
+       $arr = self::$class_map[$id]; 
+       $refl = new \ReflectionClass($arr['class']); 
       
-      return $refl->newInstance(new $arr['config']);
+       return $refl->newInstance(new $arr['config']);
+       */
    }
 
    protected function request(string $method, string $route, array $options) : string
