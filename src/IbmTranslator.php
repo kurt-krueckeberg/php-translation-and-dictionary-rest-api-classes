@@ -13,11 +13,8 @@ class IbmTranslator extends Translator {
    private $query = array();
    private $headers = array();
     
-   public function __construct(\SimpleXMLElement $provider, ClassID $id) 
+   public function __construct(\SimpleXMLElement $provider, Ibmconfig $c) 
    {
-      if ($id != ClassID::IBM)
-           throw new \Exception("Wrong provider passed");
- 
       parent::__construct($provider, $id);
    }
 

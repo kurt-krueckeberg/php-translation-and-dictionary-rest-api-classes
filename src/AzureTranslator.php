@@ -28,11 +28,8 @@ class AzureTranslator extends /*RestClient*/ TranslatorWithDictionary implements
         );
    }
    
-   public function __construct(\SimpleXMLElement $provider, ClassID $id) 
+   public function __construct(\SimpleXMLElement $provider, Azureconfig $config) 
    {
-      if ($id != ClassID::AZURE)
-           throw new \Exception("Wrong provider passed");
- 
        parent::__construct($provider, $id); 
 
        foreach($provider->settings->credentials->header as $header) 
