@@ -1,11 +1,6 @@
-- Change the const abbreviations in RestClient to be PHP 8.1 enums called ClassID, which can be used as constructor arguments:
+- Change the const abbreviations in RestClient to be PHP 8.1 enums, which can be used as constructor arguments:
 
-  - See [PHP 8.1 Enums](https://stitcher.io/blog/php-enums)
-
-  - Correct the compile errors I currently have that may be coming from the strings -- "i", "d", etc -- in the xml provider nodes like `<provider name="yandex" abbrev="y">`. In which case:
-
-    1. rid of the .xml file and just use basic config settings, or
-    2. Put ClassID::DEEP, etc in the .xml file.
+  See [PHP 8.1 Enums](https://stitcher.io/blog/php-enums)
 
 - Implement a `check_iso_code(string $lnag) : bool` in, say, a IsoCodes trait or in a base class for 
 
