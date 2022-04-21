@@ -7,6 +7,7 @@ use LanguageTools\RestClient;
 use LanguageTools\TranslateInterface;
 use LanguageTools\SentenceFetchInterface;
 use LanguageTools\PonsDictionary;
+use LanguageTools\ClassID;
 
 include 'vendor/autoload.php';
 
@@ -14,7 +15,7 @@ include 'vendor/autoload.php';
 
     $xml = \simplexml_load_file("config.xml");
   
-    $translator = RestClient::createRestClient($xml, RestClient::DEEPL); 
+    $translator = RestClient::createRestClient($xml, ClassID::DEEPL); 
     
     $pons = RestClient::createRestClient($xml, RestClient::PONS); 
 
@@ -26,7 +27,7 @@ include 'vendor/autoload.php';
     
     $dict = RestClient::createRestClient($xml, "p");
     
-    pons_output($dict, $file);
+    //--pons_output($dict, $file);
 
   } catch (Exception $e) {
 

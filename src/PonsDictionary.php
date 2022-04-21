@@ -47,9 +47,9 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
    private array $headers;
    private array $query;
 
-   public function __construct(\SimpleXMLElement $provider, string $abbrev)
+   public function __construct(\SimpleXMLElement $provider, ClassID $id) 
    {   
-      if ($abbrev != RestClient::PONS)
+      if ($id !== ClassID::PONS)
            throw new \Exception("Wrong provider passed");
  
        parent::__construct($provider, $abbrev);

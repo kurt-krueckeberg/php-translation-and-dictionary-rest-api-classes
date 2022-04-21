@@ -13,21 +13,13 @@ class RestClient {
 
    static string $xpath =  "/providers/provider[@abbrev='%s']"; 
 
-   public const  PONS = "p";
-   public const  SYSTRANS = "i";
-   public const  AZURE = "a";
-   public const  IBM = "i";
-   public const  YANDEX = "y";
-   const  DEEPL = "d";
-
-
    /* 
       Instantiate the RestClient-derived class specified in <implementation>...</implementation>
       and pass it the apporpitate \SimpleXmlElement.
     */ 
-   static public function createRestClient(\SimpleXMLElement $xml, string $abbrev) : mixed
+   static public function createRestClient(\SimpleXMLElement $xml, ClassID $id) : mixed
    {
-      $query = sprintf(self::$xpath, $abbrev);
+      $query = sprintf(self::$xpath, (string) $id);
 
       $provider = $xml->xpath($query)[0];
 
@@ -46,7 +38,7 @@ class RestClient {
    /*
     * PHP 8.0 feature: automatic member variable assignemnt syntax.
     */
-   protected function __construct(\SimpleXMLElement $provider, string $abbrev) 
+   protected function __construct(\SimpleXMLElement $provider, ClassID $id) 
    {     
        /* todo: Is this stil needed?
  

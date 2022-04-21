@@ -13,12 +13,12 @@ class IbmTranslator extends Translator {
    private $query = array();
    private $headers = array();
     
-   public function __construct(\SimpleXMLElelement $provider, string $abbrev) 
+   public function __construct(\SimpleXMLElement $provider, ClassID $id) 
    {
-      if ($abbrev != RestClient::IBM)
+      if ($id != ClassID::IBM)
            throw new \Exception("Wrong provider passed");
  
-      parent::__construct($provider, Rest::IBM_ABBREV);
+      parent::__construct($provider, $id);
    }
 
    protected function add_text(string $text, array $options)

@@ -71,7 +71,7 @@ function pons_output(PonsDictionary $dict, File $file)
   
     $fetcher = RestClient::createRestClient($xml, "l"); 
 
-    $translator = RestClient::createRestClient($xml, "m"); 
+    $translator = RestClient::createRestClient($xml, "a"); 
     
     $file =  new File($argv[1]);
     

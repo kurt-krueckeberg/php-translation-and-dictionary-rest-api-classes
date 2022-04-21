@@ -26,10 +26,9 @@ class YandexTranslator extends RestClient implements TranslateInterface, Diction
 
    private Client $client;  
 
-      
-   public function __construct(\SimpleXMLElement $provider, string $abbrev)
+   public function __construct(\SimpleXMLElement $provider, ClassID $id) 
    {
-       if ($abbrev != RestClient::YANDEX)
+      if ($id != ClassID::YANDEX)
            throw new \Exception("Wrong provider passed");
  
         parent::__construct($provider, $abbrev);        
