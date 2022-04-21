@@ -1,5 +1,7 @@
 See [PHP 8.1 Enums](https://stitcher.io/blog/php-enums)
 
+Debug t.php. Accoring to  [PHP 8.1 Enums](https://stitcher.io/blog/php-enums) you can't use Enum as an array key.
+
 - Implement a `check_iso_code(string $lnag) : bool` in, say, a IsoCodes trait or in a base class for 
 
   1. classes implementing from DictionaryInterface

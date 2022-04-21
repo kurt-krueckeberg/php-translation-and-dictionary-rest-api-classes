@@ -13,11 +13,9 @@ include 'vendor/autoload.php';
 
   try {
 
-    $xml = \simplexml_load_file("config.xml");
-  
-    $translator = RestClient::createRestClient($xml, ClassID::DEEPL); 
+    $translator = RestClient::createRestClient(ClassID::Deepl); 
     
-    $pons = RestClient::createRestClient($xml, RestClient::PONS); 
+    $pons = RestClient::createRestClient(ClassID::Pons); 
 
     $file =  new File($argv[1]);
     

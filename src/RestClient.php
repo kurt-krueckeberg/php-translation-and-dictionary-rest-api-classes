@@ -23,7 +23,7 @@ class RestClient {
 
    static public function createRestClient(ClassID $id) : mixed
    {
-      $arr = self::class_map[$id]; 
+      $arr = self::$class_map[$id]; 
 
       $refl = new \ReflectionClass($arr['class']); 
       

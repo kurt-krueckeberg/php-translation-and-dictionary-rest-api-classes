@@ -4,8 +4,8 @@ namespace LanguageTools;
 
 enum ClassID: string {
 
-   case  Leipzig = "l";
-   case  Pons = "p";
+   case  Leipzig = "l"; // ClassID::Leipzig->value == "l"
+   case  Pons = "p";    // etc
    case  Systrans = "s";
    case  Azure = "a";
    case  Ibm = "i";
