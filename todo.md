@@ -1,3 +1,10 @@
+- Implement a `check_iso_code(string $lnag) : bool` in, say, a IsoCodes trait or in a base class for 
+
+  1. classes implementing from DictionaryInterface
+  2.  classes implementing from TranslateInterface
+
+  What about classes that implement both? We don't have duplicate implementations.
+
 - Implement SystransTranslator after getting a trial 
 
 - If needed, change sample-config.xml to match onfig.xml.
