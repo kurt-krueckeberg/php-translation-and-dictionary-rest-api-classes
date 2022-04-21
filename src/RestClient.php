@@ -12,23 +12,15 @@ class RestClient {
    static string $xpath =  "/providers/provider[@abbrev='%s']"; 
 
    static array $class_map = array(
-  ClassID::Leipzig  => ['class' => 'SentenceFetcher', 'config' => 'Leipzigconfig'  ],
-  ClassID::Pons     => ['class' => 'PonsDictionary',  'config' => 'Ponsconfig'     ],
-  ClassID::Systrans => ['class' => '           , 'config' => '                 ],
-  ClassID::Azure    => ['class' => '           , 'config' => '                 ],
-  ClassID::Ibm      => ['class' => '           , 'config' => '                 ],
-  ClassID::Yandex   => ['class' => '           , 'config' => '                 ],
-  ClassID::Deepl    => ['class' => '           , 'config' => '                 ],
+  ClassID::Leipzig  => ['class' => 'SentenceFetcher',    'config' => 'Leipzigconfig'  ],
+  ClassID::Pons     => ['class' => 'PonsDictionary',     'config' => 'Ponsconfig'     ],
+  ClassID::Systrans => ['class' => 'SystransTranslator', 'config' => 'Systranconfig'  ],
+  ClassID::Azure    => ['class' => 'AzureTranslator',    'config' => 'Azureconfig'    ],
+  ClassID::Ibm      => ['class' => 'IbmTranslator',      'config' => 'Ivmconfig'      ],
+  ClassID::Yandex   => ['class' => 'YandexTranslator',   'config' => 'Yandexconfig'   ],
+  ClassID::Deepl    => ['class' => 'Deeplranslator',     'config' => 'Deeplconfig'    ],
   );
-   /* 
-   todo: Put this in a hardcoedc file: 'config.php'
-  That will have keys that are of typoe ClasssID and subarrays with a subarray: [ClassID::Zaure  => ['class' => 'AzureTranslator', 'config' => 'Azureconfig']]
-    */ 
 
-   /* 
-      Instantiate the RestClient-derived class specified in <implementation>...</implementation>
-      and pass it the apporpitate \SimpleXmlElement.
-    */ 
    static public function createRestClient(ClassID $id) : mixed
    {
       $arr = self::class_map[$id]; 
