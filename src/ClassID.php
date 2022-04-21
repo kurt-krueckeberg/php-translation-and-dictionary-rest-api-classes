@@ -29,44 +29,13 @@ enum ClassID implements ClassmapInterface
     public function get_config_name() : string
     {
         return match($this) {
-            ClassID::Leipzig  => "",
-            ClassID::Pons     => "",
-            ClassID::Deepl    => "",
-            ClassID::Azure    => "",
-            ClassID::Ibm      => "",
-            ClassID::Yandex   => "",
-            ClassID::Systrans => "",
+            ClassID::Leipzig  => "LeipzipConfig",
+            ClassID::Pons     => "PonsConfig",
+            ClassID::Deepl    => "DeeplConfig",
+            ClassID::Azure    => "AzureConfig",
+            ClassID::Ibm      => "IbmConfig",
+            ClassID::Yandex   => "YandexConfig",
+            ClassID::Systrans => "SystransConfig",
         };
      }
 }
-
-/*
-function test(ClassID $id)
-{
-  $x = $id->class_name();
-  echo "The ClassID's class_name is = " . $id->class_name() ."\n";
-}
-
-test(ClassID::Azure);
-
-enum ID  : string 
-{
-   case  Leipzig = "Leipzig"; 
-   case  Pons = "Pons";   
-   case  Systrans = "Systrans";
-   case  Azure = "Azure";
-   case  Ibm = "Ibm";
-   case  Yandex = "Yandex";
-   case  Deepl = "Deepl";
-
-}
-
-
-function t(ID $id)
-{
-  echo "The ID's ->value is = " . $id->value ."\n";
-}
-
-t(ID::Pons);
-return;
-*/

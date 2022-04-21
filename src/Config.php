@@ -5,5 +5,5 @@ namespace LanguageTools;
 abstract class Config {
 
   abstract public function get_endpoint();
-  abstract public function get_auth_settings();  
+  abstract public function get_authorization();  
 }
