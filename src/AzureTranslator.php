@@ -10,8 +10,6 @@ class AzureTranslator extends /*RestClient*/ TranslatorWithDictionary implements
    static private string $from = "from";
    static private string $to = "to";
 
-   const  AZURE_ABBREV = "a";
-
    // rquired query parameter 
    private $query = array('api-version' => "3.0");
    private $headers = array();
@@ -30,9 +28,12 @@ class AzureTranslator extends /*RestClient*/ TranslatorWithDictionary implements
         );
    }
    
-   public function __construct(\SimpleXMLElement $provider)
+   public function __construct(\SimpleXMLElement $provider, string $abbrev)
    {
-       parent::__construct($provider, self::AZURE_ABBREV);        
+      if ($abbrev != RestClient::AZURE)
+           throw new \Exception("Wrong provider passed");
+ 
+       parent::__construct($provider, $abbrev); 
 
        foreach($provider->settings->credentials->header as $header) 
           
@@ -65,21 +66,15 @@ class AzureTranslator extends /*RestClient*/ TranslatorWithDictionary implements
       return $arr["translation"]; 
     } 
 
-   final public function getDictionaryLanguages()
+   final public function getDictionaryLanguages() : array // todo: check the actual array to confirm it is what we want.
    {
       $this->query['scope'] = 'dictionary';
 
       $contents = $this->request(self::$languages['method'], self::$languages['route'],  ['headers' => $this->headers, 'query' => $this->query]);
              
-      $obj = json_decode($contents);
+      $obj = json_decode($contents, true);
     
-      print_r($obj); 
- 
-      $str = "German";
- 
-      echo "In Test::getLanguages() " . self::$trans_route . "\n";
- 
-      return $str;
+      return $obj;
    } 
 
    final public function translate(string $text, string $dest_lang, $source_lang="") : string 

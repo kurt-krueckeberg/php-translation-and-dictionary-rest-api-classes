@@ -13,5 +13,5 @@ interface DictionaryInterface {
     */
    public function lookup(string $str, string $src_lang, string $dest_lang) : string |array|ResultsIterator; 
 
-   public function getDictionaryLanguages();
+   public function getDictionaryLanguages() : array; // todo:: Is getSupportedDictionaries() a beeter method name?
 }

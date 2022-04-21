@@ -31,9 +31,11 @@ Question: How should such examples be returned along with the other results?
 class PonsDictionary extends  RestClient implements DictionaryInterface {
 
    static string  $base_url = "https://api.pons.com/baseurl";
-   static string  $method = "GET";
-   static string  $route = "v1/dictionary";
+   static string  $method   = "GET";
+   static array   $lookup   = array('method' => 'GET', 'route' => "v1/dictionary");
+   static array   $languages   = array('method' => 'GET', 'route' => "v1/dictionaries");
    static string  $credential = "X-Secret";
+   static string  $dictiony_language_parm = "language";
 
    static string $xpath =  "/providers/provider[@abbrev='p']"; 
 
@@ -42,17 +44,46 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
    public const DICTIONARY = 'l';
    public const INPUT = 'q';
 
-   const  PONS_ABBREV = "p";
-
    private array $headers;
    private array $query;
 
    public function __construct(\SimpleXMLElement $provider, string $abbrev)
    {   
-       parent::__construct($provider, PonsDictonary::PONS_ABBREV);
+      if ($abbrev != RestClient::PONS)
+           throw new \Exception("Wrong provider passed");
+ 
+       parent::__construct($provider, $abbrev);
 
        $this->headers[ (string) $provider->settings->credentials->header['name'] ] = (string) $provider->settings->credentials->header; 
    } 
+
+   final public function getDictionaryLanguages() : array // todo: check the actual array to confirm it is what we want.
+   {
+      $contents = $this->request(self::$languages['method'], self::$languages['route'],  ['headers' => $this->headers]);
+             
+      $arr = json_decode($contents, true);
+    
+      return $arr;
+   } 
+
+   final public function getDictionaryForLanguages(string $lang) : array // todo: check the actual array to confirm it is what we want.
+   {
+      /* 
+        todo: Implement in a base Dictionary class or -- better yet--DictionaryTrait -- the method `valid_iso_code($lang)` to confirm that the language is a valid ISO two-letter language code:
+
+      if (strlen($lang) !== 2 || !valid_iso_code($lang))
+           throw new \Exception("$lang is not a valid ISO two-leeter language code."); 
+     
+       */
+      $this->query[self::$dictionary_lanauge_parm] = $lang; 
+
+      $contents = $this->request(self::$languages['method'], self::$languages['route'],  ['headers' => $this->headers, 'query' => $this->query]);
+             
+      $arr = json_decode($contents, true);
+    
+      return $arr;
+   } 
+
 
    public function lookup(string $text, string $src, string $dest) : ResultsIterator//array
    {
@@ -63,7 +94,7 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
 
        $this->query[PonsDictionary::DICTIONARY] = strtolower($src . $dest);  
 
-       $contents = $this->request(self::$method, self::$route, ['headers' => $this->headers, 'query' => $this->query]); 
+       $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['headers' => $this->headers, 'query' => $this->query]); 
 
        $obj = json_decode($contents)[0];
 

@@ -10,14 +10,15 @@ class IbmTranslator extends Translator {
    static private string $from_key = "????"; 
    static private string $to_key = "????";  
 
-   const  IBM_ABBREV = "i";
-
    private $query = array();
    private $headers = array();
     
-   public function __construct(\SimpleXMLElelement $provider) 
+   public function __construct(\SimpleXMLElelement $provider, string $abbrev) 
    {
-      parent::__construct($provider, IbmTranslator::IBM_ABBREV);
+      if ($abbrev != RestClient::IBM)
+           throw new \Exception("Wrong provider passed");
+ 
+      parent::__construct($provider, Rest::IBM_ABBREV);
    }
 
    protected function add_text(string $text, array $options)

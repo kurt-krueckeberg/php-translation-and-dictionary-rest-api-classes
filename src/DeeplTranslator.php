@@ -12,14 +12,12 @@ class DeeplTranslator extends RestClient implements TranslateInterface {
    static private string $from_key = "source_lang"; 
    static private string $to_key = "target_lang";  
 
-   const  DEEPL_ABBREV = "d";
-
    private $query = array();
    private $headers = array();
  
    public function __construct(protected \SimpleXMLElement $provider)
    {
-       parent::__construct($provider, DeeplTranslator::DEEPL_ABBREV); 
+       parent::__construct($provider, DeeplTranslator::DEEPL); 
 
       $this->headers = [ ((string) $provider->settings->credentials->header['name']) => (string) $provider->settings->credentials->header]; 
    }
@@ -60,7 +58,7 @@ class DeeplTranslator extends RestClient implements TranslateInterface {
    public function getTranslationLanguages() : array
    {
        // $this->query['type'] = 'target' or 'source';
-       //$contents = $this->request(self::$method, self::$languages_route, ['headers' => $this->headers, 'query' => $this->query]); 
+
        $contents = $this->request(self::$method, self::$languages_route, ['headers' => $this->headers]);
 
        return json_decode($contents, true);

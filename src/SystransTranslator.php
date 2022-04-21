@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace LanguageTools;
 
 // SeeDeepl-doc.md 
-class SystranTranslator extends RestClient implements TranslateInterface, DictionaryInterface {
+class SystransTranslator extends RestClient implements TranslateInterface, DictionaryInterface {
    
    static private array  $trans_route = array('method' => 'POST', 'route' => "?????????????");     
    static private array $lookup__route = array('method' => 'GET', 'route' => "?????????????");     
@@ -11,14 +11,15 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
    static private string $from_key = "????"; 
    static private string $to_key = "????";  
 
-   const  SYSTRAN_ABBREV = "i";
-
    private $query = array();
    private $headers = array();
  
    public function __construct(protected \SimpleXMLElement $provider, string $abbrev) 
    {
-       parent::__construct($provider, SystranTranslator::SYSTRAN_ABBREV); 
+      if ($abbrev != RestClient::SYSTRANS)
+           throw new \Exception("Wrong provider passed");
+ 
+       parent::__construct($provider,$abbrev); 
 
       $this->headers = [ ((string) $provider->settings->credentials->header['name']) => (string) $provider->settings->credentials->header]; 
    }

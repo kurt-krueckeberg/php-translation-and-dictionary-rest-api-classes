@@ -13,6 +13,14 @@ class RestClient {
 
    static string $xpath =  "/providers/provider[@abbrev='%s']"; 
 
+   public const  PONS = "p";
+   public const  SYSTRANS = "i";
+   public const  AZURE = "a";
+   public const  IBM = "i";
+   public const  YANDEX = "y";
+   const  DEEPL = "d";
+
+
    /* 
       Instantiate the RestClient-derived class specified in <implementation>...</implementation>
       and pass it the apporpitate \SimpleXmlElement.
@@ -33,16 +41,18 @@ class RestClient {
        $response = $this->client->request($method, $route, $options);
 
        return $response->getBody()->getContents();
-   } 
-   
+   }
+ 
    /*
     * PHP 8.0 feature: automatic member variable assignemnt syntax.
     */
    protected function __construct(\SimpleXMLElement $provider, string $abbrev) 
-   {      
+   {     
+       /* todo: Is this stil needed?
+ 
        if ( (string) $provider['abbrev']!== $abbrev) 
              throw new \Exception("Wrong provider passed");
-              
+       */
        
        $this->client = new Client(['base_uri' => (string) $provider->settings->baseurl]);
    } 
