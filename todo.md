@@ -7,7 +7,7 @@
   1. classes implementing from DictionaryInterface
   2.  classes implementing from TranslateInterface
 
-  What about classes that implement both? We don't have duplicate implementations.
+- Change confiug.xml to be class `Configuration` with `static getConfig(ClassID $id)` that returns an array of settings.
 
 - Implement SystransTranslator after getting a trial 
 
