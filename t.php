@@ -3,8 +3,8 @@ declare(strict_types=1);
 namespace LanguageTools;
 
 $class_map = array(
-  ClassID::Leipzig->value  => ['class' => 'SentenceFetcher',    'config' => 'Leipzigconfig'  ],
 /*
+  ClassID::Leipzig->value  => ['class' => 'SentenceFetcher',    'config' => 'Leipzigconfig'  ],
   ClassID::Pons     => ['class' => 'PonsDictionary',     'config' => 'Ponsconfig'     ],
   ClassID::Systrans => ['class' => 'SystransTranslator', 'config' => 'Systranconfig'  ],
   ClassID::Azure    => ['class' => 'AzureTranslator',    'config' => 'Azureconfig'    ],
@@ -14,9 +14,11 @@ $class_map = array(
 */
   );
 
+
    function createRestClient(ClassID $id) : mixed
    {
-      $arr = $class_map[$id]; 
+     if (count($class_map) == 0) 
+       $class_map[ClassID::Leipzig->value] = 'def';
 
-      print_r( $arr['class'] ); 
+      print_r( $class_map['class'] ); 
    }
