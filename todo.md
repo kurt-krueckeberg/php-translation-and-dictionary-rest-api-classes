@@ -1,15 +1,12 @@
 See [PHP 8.1 Enums](https://stitcher.io/blog/php-enums)
 
-1. Decide what sort of settings each implemtation needs....mainly keys headers and the REST endpoints-- anything else?
+1. Each implemtation needs settings for authorization (which must be confidental) and the endpoint. Other settings could also be added. But why--since the implementation classes have that information--it's heir job!.
 
 2. Base on #1 above (which likely will require the ClassID to have an interface mthod that returns a configuration. Add to Classmapinterface a `get_config()` method.
+
 According to  [PHP 8.1 Enums](https://stitcher.io/blog/php-enums) you can't use Enumerations as array keys, though there is an RFC to do this. However, check out [Getting values for an enum?](https://stackoverflow.com/questions/71235907/getting-values-for-an-enum)
 You could also dynamically build the static array once:
 
-  `$class_map[ClassID::Leipzig->value] = ['class' => 'SentenceFetcher', 'config' => 'Leipzigconfig'];`
-   ditto for each Enum::cases() type
-
- 
 
 - Implement a `check_iso_code(string $lnag) : bool` in, say, a IsoCodes trait or in a base class for 
 
