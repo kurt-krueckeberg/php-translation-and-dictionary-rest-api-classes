@@ -11,12 +11,14 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
    static private string $from_key = "????"; 
    static private string $to_key = "????";  
 
+   const  SYSTRAN_ABBREV = "i";
+
    private $query = array();
    private $headers = array();
  
    public function __construct(protected \SimpleXMLElement $provider, string $abbrev) 
    {
-       parent::__construct($provider, $abbrev); 
+       parent::__construct($provider, SystranTranslator::SYSTRAN_ABBREV); 
 
       $this->headers = [ ((string) $provider->settings->credentials->header['name']) => (string) $provider->settings->credentials->header]; 
    }

@@ -42,12 +42,14 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
    public const DICTIONARY = 'l';
    public const INPUT = 'q';
 
+   const  PONS_ABBREV = "p";
+
    private array $headers;
    private array $query;
 
    public function __construct(\SimpleXMLElement $provider, string $abbrev)
    {   
-       parent::__construct($provider, $abbrev);
+       parent::__construct($provider, PonsDictonary::PONS_ABBREV);
 
        $this->headers[ (string) $provider->settings->credentials->header['name'] ] = (string) $provider->settings->credentials->header; 
    } 

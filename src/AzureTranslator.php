@@ -10,16 +10,15 @@ class AzureTranslator extends /*RestClient*/ TranslatorWithDictionary implements
    static private string $from = "from";
    static private string $to = "to";
 
+   const  AZURE_ABBREV = "a";
+
    // rquired query parameter 
    private $query = array('api-version' => "3.0");
    private $headers = array();
    private $json = array();
 
-   private $options = array(); /// todo: build during constructor call.
-
-   //protected \SimpleXMLElement $provider; // <---- set on constructor.
    
-    // Azure Translator REST calls can also accept a GUID
+   // Azure Translator REST calls can also accept a GUID
    static private function com_create_guid() 
    {
        return sprintf( '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
@@ -31,19 +30,19 @@ class AzureTranslator extends /*RestClient*/ TranslatorWithDictionary implements
         );
    }
    
-   public function __construct(\SimpleXMLElement $provider, string $abbrev)
+   public function __construct(\SimpleXMLElement $provider)
    {
-        parent::__construct($provider, $abbrev);        
+       parent::__construct($provider, self::AZURE_ABBREV);        
 
-        foreach($provider->settings->credentials->header as $header) 
+       foreach($provider->settings->credentials->header as $header) 
           
-               $this->headers[(string) $header['name']] = (string) $header;
+            $this->headers[(string) $header['name']] = (string) $header;
    }     
 
    // Called by base Translator::translate method 
    final protected function add_input(string $text)
    {
-      $this->json = [['Text' => $text]];       
+       $this->json = [['Text' => $text]];       
    }
 
    // If this is a translation request and there is no source language, the source langauge will be auto-detected.

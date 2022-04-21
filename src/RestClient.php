@@ -40,7 +40,6 @@ class RestClient {
     */
    protected function __construct(\SimpleXMLElement $provider, string $abbrev) 
    {      
-       
        if ( (string) $provider['abbrev']!== $abbrev) 
              throw new \Exception("Wrong provider passed");
               
