@@ -67,19 +67,15 @@ function pons_output(PonsDictionary $dict, File $file)
 
   try {
 
-    $xml = \simplexml_load_file("config.xml");
-  
-    $fetcher = RestClient::createRestClient($xml, "l"); 
+    $fetcher = RestClient::createRestClient(ClassID::Leipzig); 
 
-    $translator = RestClient::createRestClient($xml, "a"); 
+    $translator = RestClient::createRestClient(ClassID::Azure); 
     
     $file =  new File($argv[1]);
     
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-    //create_html_output($fetcher, $translator, $file);
-    
-    $dict = RestClient::createRestClient($xml, "p");
+    $dict = RestClient::createRestClient(ClassID::Pons);
     
     pons_output($dict, $file);
 
