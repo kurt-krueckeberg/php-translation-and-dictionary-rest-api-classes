@@ -13,9 +13,9 @@ class IbmTranslator extends Translator {
    private $query = array();
    private $headers = array();
     
-   public function __construct(\SimpleXMLElement $provider, Ibmconfig $c) 
+   public function __construct(string $endpoint)
    {
-      parent::__construct($provider, $id);
+       parent::__construct($endporint);
    }
 
    protected function add_text(string $text, array $options)

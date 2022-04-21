@@ -1,21 +1,15 @@
 See [PHP 8.1 Enums](https://stitcher.io/blog/php-enums)
 
+1. Decide what sort of settings each implemtation needs....mainly keys headers and the REST endpoints-- anything else?
+
+2. Base on #1 above (which likely will require the ClassID to have an interface mthod that returns a configuration. Add to Classmapinterface a `get_config()` method.
 According to  [PHP 8.1 Enums](https://stitcher.io/blog/php-enums) you can't use Enumerations as array keys, though there is an RFC to do this. However, check out [Getting values for an enum?](https://stackoverflow.com/questions/71235907/getting-values-for-an-enum)
 You could also dynamically build the static array once:
 
   `$class_map[ClassID::Leipzig->value] = ['class' => 'SentenceFetcher', 'config' => 'Leipzigconfig'];`
    ditto for each Enum::cases() type
 
-OR <----------
-
-  Just use it in a switch statement within the RestClient::createClient(ClassID $d) static method: <--------
-
-  switch ($id) {
-      case ClassID::Azure:
-
-          return new AzureTramslator(new Azureconfig);
-      break;
-  } 
+ 
 
 - Implement a `check_iso_code(string $lnag) : bool` in, say, a IsoCodes trait or in a base class for 
 

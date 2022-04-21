@@ -34,44 +34,11 @@ And we therfore can't do:
 
    static public function createRestClient(ClassID $id) : mixed
    {
-      switch($id) {
-  case  ClassID::Leipzig:
+      $class_name =  $id->class_name();
 
-        return new SentenceFetcher(new Leipzipconfig); // 
-        break;
-
-  case  ClassID::Pons:
-        return new PonsDictionary(new Ponsconfig);
-        break;
-
-  case  ClassID::Systrans:
-
-        break;
-
-  case  ClassID::Azure:
-
-        break;
-
-  case  ClassID::Ibm:
-
-        break;
-
-  case  ClassID::Yandex:
-
-        break;
-
-  case  ClassID::Deepl:
-
-        break;
-
-
-      /* Future code:
-
-       $arr = self::$class_map[$id]; 
-       $refl = new \ReflectionClass($arr['class']); 
+      $refl = new \ReflectionClass($class_name); 
       
-       return $refl->newInstance(new $arr['config']);
-       */
+      return $refl->newInstance($id->endpoint());
    }
 
    protected function request(string $method, string $route, array $options) : string
@@ -81,11 +48,8 @@ And we therfore can't do:
        return $response->getBody()->getContents();
    }
  
-   /*
-    * PHP 8.0 feature: automatic member variable assignemnt syntax.
-    */
-   protected function __construct(Config $c)
+   protected function __construct(string $endpoint)
    {     
-       $this->client = new Client(['base_uri' => $c->get_endpoint()]);
+       $this->client = new Client(['base_uri' => $endpoint]);
    } 
 }

@@ -17,9 +17,9 @@ class SentenceFetcher extends RestClient implements SentenceFetchInterface {
    private static $route = "sentences/deu_news_2012_1M/sentences" ;
    private static $method = 'GET';
 
-   public function __construct(\SimpleXMLElement $provider, SentenceFetcherconfig $c) 
+   public function __construct(string $endpoint)
    {
-       parent::__construct($c);
+       parent::__construct($endpoint);
    }
    
    public function fetch(string $word, int $count=3) :  ResultsIterator
