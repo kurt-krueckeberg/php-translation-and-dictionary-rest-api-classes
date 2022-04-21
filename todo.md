@@ -2,8 +2,10 @@
 
   - See [PHP 8.1 Enums](https://stitcher.io/blog/php-enums)
 
-  - Correct the compile errors I currently have that may be coming from the strings -- "i", "d", etc -- in the xml provider nodes like `<provider name="yandex" abbrev="y">`. In which case, it is best to get rid of the .xml file and just use
-    basic config settings in a .php file (or a straight-forward .xml file).
+  - Correct the compile errors I currently have that may be coming from the strings -- "i", "d", etc -- in the xml provider nodes like `<provider name="yandex" abbrev="y">`. In which case:
+
+    1. rid of the .xml file and just use basic config settings, or
+    2. Put ClassID::DEEP, etc in the .xml file.
 
 - Implement a `check_iso_code(string $lnag) : bool` in, say, a IsoCodes trait or in a base class for 
 
