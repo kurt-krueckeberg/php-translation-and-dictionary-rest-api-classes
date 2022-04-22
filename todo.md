@@ -35,6 +35,10 @@ See these articles:
 
 3. Make ~/e a github respoistory-backed composer package that usese the rest-tranlators pakckage.
 
+#### PlantUML
+
+Folder for plantuml diagram genearation.
+
 ### PHP Links
 
 - [PHP Closuers](https://www.php.net/manual/en/functions.anonymous.php)
