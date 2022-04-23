@@ -1,18 +1,4 @@
-See [PHP 8.1 Enums](https://stitcher.io/blog/php-enums)
-
-1. Each implemtation needs settings for authorization (which must be confidental) and the endpoint. Other settings could also be added. But why--since the implementation classes have that information--it's heir job!.
-
-   - Move the config.xml settings into derived-Config classes. (Add say member properties like: `array $header = array('Header vlaue here' => 'Key here');`
-
-   - Have RestClient::createClient() instantiate and pass the derived-Config class.
-
-   - Have implemntation constructor take their deived-config class.
-
-   - Pass the endpoint to the RestClient
-
-According to  [PHP 8.1 Enums](https://stitcher.io/blog/php-enums) you can't use Enumerations as array keys, though there is an RFC to do this. However, check out [Getting values for an enum?](https://stackoverflow.com/questions/71235907/getting-values-for-an-enum)
-You could also dynamically build the static array once:
-
+- [PHP 8.1 Enums](https://stitcher.io/blog/php-enums)
 
 - Implement a `check_iso_code(string $lnag) : bool` in, say, a IsoCodes trait or in a base class for 
 
@@ -23,17 +9,13 @@ You could also dynamically build the static array once:
 
 - Implement SystransTranslator after getting a trial 
 
-- If needed, change sample-config.xml to match onfig.xml.
-
-1. Decide what type should `lookup` return? 
-
-2. Make ~/rest-translators a github respoistory-backed composer package.
+- Make ~/rest-translators a github respoistory-backed composer package.
 
 See these articles:
 
 - [composer: How to Use Git Repositories](https://www.daggerhartlab.com/composer-how-to-use-git-repositories/)
 
-3. Make ~/e a github respoistory-backed composer package that usese the rest-tranlators pakckage.
+- Make ~/e a github respoistory-backed composer package that usese the rest-tranlators pakckage.
 
 #### PlantUML
 
@@ -46,11 +28,11 @@ Folder for plantuml diagram genearation.
 - [PHP Callbacks](https://www.php.net/manual/en/language.types.callable.php)
 
 
-4.  Change examples_ file name to NOT have ':' and to have AM or PM:
+- Change examples_ file name to NOT have ':' and to have AM or PM:
 
-- [date()](https://www.php.net/manual/en/function.date.php)
+  - [date()](https://www.php.net/manual/en/function.date.php)
 
-- `date()` [format options](https://www.w3schools.com/php/func_date_date.asp)
+  - `date()` [format options](https://www.w3schools.com/php/func_date_date.asp)
 
 ```php
 // Prints the day, date, month, year, time, AM or PM
