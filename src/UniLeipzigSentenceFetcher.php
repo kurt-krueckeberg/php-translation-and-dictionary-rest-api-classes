@@ -12,12 +12,12 @@ class GetSentence {
    }
 }
 
-class SentenceFetcher extends RestClient implements SentenceFetchInterface {
+class UniLeipzigSentenceFetcher extends RestClient implements SentenceFetchInterface {
 
    private static $route = "sentences/deu_news_2012_1M/sentences" ;
    private static $method = 'GET';
 
-   public function __construct(UnivLeipzigConfig $c)
+   public function __construct(UniLeipzigConfig $c)
    {
        parent::__construct($c->get_endpoint());
    }

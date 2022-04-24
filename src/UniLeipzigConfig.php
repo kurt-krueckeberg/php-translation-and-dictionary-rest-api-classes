@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace LanguageTools;
 
-class UnivLeipzigConfig implements ConfigInterface {
+class UniLeipzigConfig implements ConfigInterface {
 
    private string $endpoint = "http://api.corpora.uni-leipzig.de/ws";
 
