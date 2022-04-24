@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace LanguageTools;
 
-interface ClassmapInterface {
+interface ClassmapperInterface {
       public function class_name() : string;
-      public function get_config_name() : string;
+      public function config_name() : string;
 }

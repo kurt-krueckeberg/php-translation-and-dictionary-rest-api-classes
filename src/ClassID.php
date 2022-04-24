@@ -25,7 +25,7 @@ enum ClassID implements ClassmapperInterface
      }
    
     // Returns config class name for the above implementation classes.
-    public function get_config_name() : string
+    public function config_name() : string
     {
         return match($this) {
             ClassID::Leipzig  => "LanguageTools\LeipzipConfig",
