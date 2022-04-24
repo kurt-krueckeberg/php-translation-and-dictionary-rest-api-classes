@@ -36,13 +36,17 @@ And we therfore can't do:
    {
       $class_name =  $id->class_name();
 
-      $refl = new \ReflectionClass($class_name); 
-      
+      $refl_impl = new \ReflectionClass($class_name); 
       $x = $id->config_name();
       
       echo $x . "\n";
+      $z = new $x;
       
-      return $refl->newInstance(new $id->config_name());
+      $y = new $class_name;
+      
+      
+      
+      return $refl_impl->newInstance(new ($id->config_name()) );
    }
 
    protected function request(string $method, string $route, array $options) : string
