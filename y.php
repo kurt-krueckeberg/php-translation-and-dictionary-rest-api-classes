@@ -8,6 +8,7 @@ use LanguageTools\TranslateInterface;
 use LanguageTools\SentenceFetchInterface;
 use LanguageTools\PonsDictionary;
 use LanguageTools\ClassID;
+use LanguageTools\AzureConfig;
 
 include 'vendor/autoload.php';
 
