@@ -13,7 +13,7 @@ class LeipzigConfig implements ConfigInterface {
 
   public function get_authorization() : array | null
   {
-      return null;
+      return array("stuff");
   }
 }
 
