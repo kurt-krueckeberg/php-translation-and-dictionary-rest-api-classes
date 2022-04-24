@@ -49,36 +49,21 @@ function create_html_output(SentenceFetchInterface $fetcher, TranslateInterface 
    }
 }
 
-function pons_output(PonsDictionary $dict, File $file)
-{
-   foreach ($file as $word) {
-  
-        $iter = $dict->lookup($word, "DE", "EN"); 
-           
-        foreach($iter as $result) {
-               
-            echo $result->target . "\n";
-        }
-        
-        echo "\n=============\n";
-    }
-}
-
   check_args($argc, $argv);
 
   try {
-
+/*
     $fetcher = RestClient::createRestClient(ClassID::Leipzig); 
 
     $translator = RestClient::createRestClient(ClassID::Azure); 
-    
+ */   
     $file =  new File($argv[1]);
     
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-    $dict = RestClient::createRestClient(ClassID::Pons);
+    //$dict = RestClient::createRestClient(ClassID::Pons);
     
-    pons_output($dict, $file);
+    create_html_output(RestClient::createRestClient(ClassID::Leipzig), RestClient::createRestClient(ClassID::Azure), $file); 
 
   } catch (Exception $e) {
 

@@ -80,7 +80,7 @@ class AzureTranslator extends /*RestClient*/ TranslatorWithDictionary implements
 
        $this->add_input($text);
 
-       $response = $this->request(self::$trans['method'], self::$trans['route'], ['headers' => $this->headers, 'query' => $this->query, 'json' => $this->json]); 
+       $contents = $this->request(self::$trans['method'], self::$trans['route'], ['headers' => $this->headers, 'query' => $this->query, 'json' => $this->json]); 
 
        $obj = json_decode($contents);
 
