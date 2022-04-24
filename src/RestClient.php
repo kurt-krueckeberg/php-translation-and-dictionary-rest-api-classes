@@ -36,16 +36,9 @@ And we therfore can't do:
    {
       $class_name =  $id->class_name();
 
-      $refl_impl = new \ReflectionClass($class_name); 
-      $x = $id->config_name();
+      $refl_impl = new \ReflectionClass($class_name);            
       
-      echo $x . "\n";
-      $z = new $x;
-      
-      $y = new $class_name;
-      
-      
-      
+      // Note: The paranthesis around '($id->config_name())' are necessary
       return $refl_impl->newInstance(new ($id->config_name()) );
    }
 

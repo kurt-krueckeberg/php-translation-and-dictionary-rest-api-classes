@@ -2,9 +2,9 @@
 declare(strict_types=1);
 namespace LanguageTools;
 
-class LeipzigConfig implements ConfigInterface {
+class UnivLeipzigConfig implements ConfigInterface {
 
-     private string $endpoint = "http://api.corpora.uni-leipzig.de/ws";
+   private string $endpoint = "http://api.corpora.uni-leipzig.de/ws";
 
   public function get_endpoint() : string
   {
