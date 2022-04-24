@@ -3,30 +3,29 @@
 - Implement a `check_iso_code(string $lnag) : bool` in, say, a IsoCodes trait or in a base class for 
 
   1. classes implementing from DictionaryInterface
-  2.  classes implementing from TranslateInterface
-
-- Change confiug.xml to be class `Configuration` with `static getConfig(ClassID $id)` that returns an array of settings.
+  2. classes implementing from TranslateInterface
 
 - Implement SystransTranslator after getting a trial 
 
-- Make ~/rest-translators a github respoistory-backed composer package.
+- Chankge composer.json so that
+
+  - it is a github respoistory-backed composer package.
+
+  - autolaoding is generated automatically
 
 See these articles:
 
 - [composer: How to Use Git Repositories](https://www.daggerhartlab.com/composer-how-to-use-git-repositories/)
 
-- Make ~/e a github respoistory-backed composer package that usese the rest-tranlators pakckage.
-
 #### PlantUML
 
-Folder for plantuml diagram genearation.
+ Add plantuml-genearated diagrams.
 
 ### PHP Links
 
 - [PHP Closuers](https://www.php.net/manual/en/functions.anonymous.php)
 
 - [PHP Callbacks](https://www.php.net/manual/en/language.types.callable.php)
-
 
 - Change examples_ file name to NOT have ':' and to have AM or PM:
 
