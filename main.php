@@ -7,6 +7,7 @@ use LanguageTools\RestClient;
 use LanguageTools\TranslateInterface;
 use LanguageTools\SentenceFetchInterface;
 use LanguageTools\PonsDictionary;
+use LanguageTools\ClassID;
 
 include 'vendor/autoload.php';
 
@@ -56,7 +57,7 @@ function pons_output(PonsDictionary $dict, File $file)
            
         foreach($iter as $result) {
                
-            echo $result . "\n";
+            echo $result->target . "\n";
         }
         
         echo "\n=============\n";
