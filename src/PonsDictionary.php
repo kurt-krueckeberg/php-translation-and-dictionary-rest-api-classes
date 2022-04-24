@@ -47,11 +47,13 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
    private array $headers;
    private array $query;
 
-   public function __construct(\SimpleXMLElement $provider, ClassID $id) 
+   public function __construct(PonsConfig $c)
    {   
-       parent::__construct($c);
+       parent::__construct($c->get_endpoint());
 
-       $this->headers[ (string) $provider->settings->credentials->header['name'] ] = (string) $provider->settings->credentials->header; 
+       foreach($c->get_authorization() as $key => $value) 
+          
+            $this->headers[$key] = $value;
    } 
 
    final public function getDictionaryLanguages() : array // todo: check the actual array to confirm it is what we want.

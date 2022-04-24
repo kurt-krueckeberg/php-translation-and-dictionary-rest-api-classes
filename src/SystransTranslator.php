@@ -18,7 +18,9 @@ class SystransTranslator extends RestClient implements TranslateInterface, Dicti
    {
       parent::__construct($c);
 
-      $this->headers = [ ((string) $provider->settings->credentials->header['name']) => (string) $provider->settings->credentials->header]; 
+       foreach($c->get_authorization() as $key => $value) 
+          
+            $this->headers[$key] = $value;
    }
 
    // If this is a translation request and there is no source language, the source langauge will be auto-detected.

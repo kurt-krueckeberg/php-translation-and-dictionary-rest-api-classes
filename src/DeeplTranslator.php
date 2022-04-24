@@ -19,7 +19,7 @@ class DeeplTranslator extends RestClient implements TranslateInterface {
    {   
       parent::__construct($c->get_endpoint());
 
-       foreach($$c->get_authorization() as $key => $value) 
+       foreach($c->get_authorization() as $key => $value) 
           
             $this->headers[$key] = $value;
    }
