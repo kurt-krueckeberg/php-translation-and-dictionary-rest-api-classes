@@ -15,6 +15,6 @@ class AzureConfig implements ConfigInterface {
 
   public function get_authorization() : array | null
   {
-      return i$this->headers;
+      return $this->headers;
   }
 }
