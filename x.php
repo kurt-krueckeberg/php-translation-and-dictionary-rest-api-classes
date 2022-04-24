@@ -54,7 +54,7 @@ function pons_output(PonsDictionary $dict, File $file)
            
         foreach($iter as $result) {
                
-            echo $result . "\n";
+            print_r( $result );
         }
         
         echo "\n=============\n";
