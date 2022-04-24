@@ -30,7 +30,6 @@ Question: How should such examples be returned along with the other results?
 */
 class PonsDictionary extends  RestClient implements DictionaryInterface {
 
-   static string  $base_url = "https://api.pons.com/baseurl";
    static string  $method   = "GET";
    static array   $lookup   = array('method' => 'GET', 'route' => "v1/dictionary");
    static array   $languages   = array('method' => 'GET', 'route' => "v1/dictionaries");
