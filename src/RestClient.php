@@ -38,7 +38,7 @@ And we therfore can't do:
 
       $refl = new \ReflectionClass($class_name); 
       
-      return $refl->newInstance($id->confg_name());
+      return $refl->newInstance($id->config_name());
    }
 
    protected function request(string $method, string $route, array $options) : string
