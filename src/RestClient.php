@@ -9,36 +9,14 @@ class RestClient {
 
    protected Client $client;  
 
-   static string $xpath =  "/providers/provider[@abbrev='%s']"; 
-
-/* 
-Currently Enumerations can't  be used as array keys. So this array won't work:
-
-   static array $class_map = array(
-        ClassID::Leipzig  => ['class' => 'SentenceFetcher',    'config' => 'Leipzigconfig'  ],
-        ClassID::Pons     => ['class' => 'PonsDictionary',     'config' => 'Ponsconfig'     ],
-        ClassID::Systrans => ['class' => 'SystransTranslator', 'config' => 'Systranconfig'  ],
-        ClassID::Azure    => ['class' => 'AzureTranslator',    'config' => 'Azureconfig'    ],
-        ClassID::Ibm      => ['class' => 'IbmTranslator',      'config' => 'Ivmconfig'      ],
-        ClassID::Yandex   => ['class' => 'YandexTranslator',   'config' => 'Yandexconfig'   ],
-        ClassID::Deepl    => ['class' => 'Deeplranslator',     'config' => 'Deeplconfig'    ],
-  );
-
-And we therfore can't do:
-
-     $arr = self::$class_map[$id]; 
-     $refl = new \ReflectionClass($arr['class']); 
-    
-     return $refl->newInstance(new $arr['config']);
-*/
-
    static public function createRestClient(ClassID $id) : mixed
    {
       $class_name =  $id->class_name();
 
       $refl_impl = new \ReflectionClass($class_name);            
       
-      // Note: The paranthesis around '($id->config_name())' are necessary
+      // Note: The paranthesis around '($id->config_name())' are necessary; otherwise,
+      // PHP cannot parse it properly. 
       return $refl_impl->newInstance(new ($id->config_name()) );
    }
 
