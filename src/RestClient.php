@@ -38,7 +38,11 @@ And we therfore can't do:
 
       $refl = new \ReflectionClass($class_name); 
       
-      return $refl->newInstance($id->config_name());
+      $x = $id->config_name();
+      
+      echo $x . "\n";
+      
+      return $refl->newInstance(new $id->config_name());
    }
 
    protected function request(string $method, string $route, array $options) : string
