@@ -32,8 +32,16 @@ function check_args(int $argc, array $argv)
     
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
+   $pons = RestClient::createRestClient(ClassID::Pons); 
+
+
    foreach($file as $word) {
-      echo  "Translation of $word is: " .  $translator->translate($word, "EN", "DE") . "\n"; 
+       
+     echo  "Definition of $word is: ";
+     
+     print_r(  $pons->lookup($word, "DE", "EN") );
+     
+     echo  "\n"; 
    }
     
 
