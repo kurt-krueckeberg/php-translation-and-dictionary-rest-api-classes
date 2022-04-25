@@ -36,7 +36,7 @@ function create_html_output(SentenceFetchInterface $fetcher, TranslateInterface 
 
            // 2nd parameter is destination language. 3rd parameter is optional source language.
            // If 3rd parameter is ommited, source language is automatically detected.
-           $translation = $translator->translate($sentence, "EN-US", "DE"); 
+           $translation = $translator->translate($sentence, "EN", "DE"); 
            
            echo "is: " . $translation . "\n";
            
