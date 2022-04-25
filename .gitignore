@@ -3,5 +3,4 @@ nbproject/
 vendor/
 composer.lock
 corpus-db/
-examples_*.html
 .*.swp
