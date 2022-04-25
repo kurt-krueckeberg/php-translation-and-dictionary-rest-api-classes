@@ -10,10 +10,4 @@ function check_args(int $argc, array $argv)
 
   if (!file_exists($argv[1]))
        die("The input file does not exist!\n");
-/* 
-  This is a client coding option not a cmd line argument
-
-  if ( (strlen($argv[1]) !== 1) || ($argv[1] !== 'd' &&  $argv[1] !== 'm' && $argv[1] !== 'i' ) )
-      die ("First argument must be 'd', 'm' or 'i'");
-*/
 }

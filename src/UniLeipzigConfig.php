@@ -4,11 +4,11 @@ namespace LanguageTools;
 
 class UniLeipzigConfig implements ConfigInterface {
 
-   private string $endpoint = "http://api.corpora.uni-leipzig.de/ws";
+   private static string $endpoint = "http://api.corpora.uni-leipzig.de/ws";
 
   public function get_endpoint() : string
   {
-     return $this->endpoint;
+     return self::$endpoint;
   }
 
   public function get_authorization() : array | null

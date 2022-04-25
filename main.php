@@ -18,9 +18,6 @@ function check_args(int $argc, array $argv)
 
   if (!file_exists($argv[1]))
        die("Input file " . $argv[1] . " does not exist!\n");
-
-  if (!file_exists("config.xml"))
-       die("config.xml not found in current directory.\n");
 }
 
 function create_html_output(SentenceFetchInterface $fetcher, TranslateInterface $translator, File $file)
