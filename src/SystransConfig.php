@@ -2,19 +2,14 @@
 declare(strict_types=1);
 namespace LanguageTools;
 
-class SystransConfig implements ConfigInterface {
+class SystransConfig {
+ /*
+   These yet-to-be-defined readonly properties are assigned (and promoted to class member variables) on the constructor:
 
-
-
-  public function get_endpoint() : string
-  {
-
-  }
-
-
-  public function get_authorization() : array | null
-  {
-
-  }
+      public readonly string $endpoint = 
+      prublic readonly array $header = 
+  */
+  public function __construct(public readonly string $endpoint = "", 
+      public readonly array $header = array()) {}
 }
 

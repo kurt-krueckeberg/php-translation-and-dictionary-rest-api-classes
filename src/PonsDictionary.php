@@ -46,13 +46,11 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
    private array $headers;
    private array $query;
 
-   public function __construct(PonsConfig $c)
+   public function __construct(PonsConfig $c = new PonsConfig)
    {   
-       parent::__construct($c->get_endpoint());
+       parent::__construct($c->endpoint());
 
-       foreach($c->get_authorization() as $key => $value) 
-          
-            $this->headers[$key] = $value;
+       $this->header[array_key_first($c->header)] = $c->header[array_key_first($c->header)];
    } 
 
    final public function getDictionaryLanguages() : array // todo: check the actual array to confirm it is what we want.

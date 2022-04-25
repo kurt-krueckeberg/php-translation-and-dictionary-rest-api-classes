@@ -25,6 +25,7 @@ enum ClassID implements ClassmapperInterface
      }
    
     // Returns config class name for the above implementation classes.
+    /*
     public function config_name() : string
     {
         return match($this) {
@@ -36,4 +37,5 @@ enum ClassID implements ClassmapperInterface
             ClassID::Systrans => "LanguageTools\SystransConfig",
         };
      }
+     */
 }

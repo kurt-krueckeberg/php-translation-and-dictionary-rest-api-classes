@@ -25,6 +25,7 @@ function check_args(int $argc, array $argv)
 
 
   try {
+    check_args($argc, $argv);
 
     $translator = RestClient::createRestClient(ClassID::Azure); 
     $file =  new File($argv[1]);
@@ -32,7 +33,7 @@ function check_args(int $argc, array $argv)
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
    foreach($file as $word) {
-     echo  "Translation of $word is: " .  $translator->translate($word, "EN", "DE") . "\n"; 
+      echo  "Translation of $word is: " .  $translator->translate($word, "EN", "DE") . "\n"; 
    }
     
 

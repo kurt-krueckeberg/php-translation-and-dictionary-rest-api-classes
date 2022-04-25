@@ -2,18 +2,13 @@
 declare(strict_types=1);
 namespace LanguageTools;
 
-class UniLeipzigConfig implements ConfigInterface {
+class UniLeipzigConfig {
+  /* 
+  This property is promoted to a public readonly class members on the constructor:
 
-   private static string $endpoint = "http://api.corpora.uni-leipzig.de/ws";
+   public readonly string $endpoint = "http://api.corpora.uni-leipzig.de/ws";
+   */
 
-  public function get_endpoint() : string
-  {
-     return self::$endpoint;
-  }
-
-  public function get_authorization() : array | null
-  {
-      return array("stuff");
-  }
+  public function __construct(public readonly string $endpoint = "http://api.corpora.uni-leipzig.de/ws") {}
 }
 

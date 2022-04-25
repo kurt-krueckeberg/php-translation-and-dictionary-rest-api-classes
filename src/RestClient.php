@@ -17,7 +17,7 @@ class RestClient {
       
       // Note: The paranthesis around '($id->config_name())' are necessary; otherwise,
       // PHP cannot parse it properly. 
-      return $refl_impl->newInstance(new ($id->config_name()) );
+      return $refl_impl->newInstance();
    }
 
    protected function request(string $method, string $route, array $options) : string
