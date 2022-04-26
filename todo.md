@@ -1,6 +1,6 @@
 - WebPageCreatr currently creates its own file name that is quite long. Maybe shortened it somehow.. 
 
-- Add plantuml to documentation
+- Add plantuml to documentation using the PhUML tool that I have bookmarked. It seems very good.
 
 - Implement a `check_iso_code(string $lnag) : bool` in a IsoCodes trait (or in a base class):
 
