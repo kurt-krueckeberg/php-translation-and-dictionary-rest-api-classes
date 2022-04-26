@@ -1,8 +1,8 @@
 - WebPageCreatr currently creates its own file name that is quite long. Maybe shortened it somehow.. 
 
-- [PHP 8.1 Enums](https://stitcher.io/blog/php-enums)
+- Add plantuml to documentation
 
-- Implement a `check_iso_code(string $lnag) : bool` in, say, a IsoCodes trait or in a base class for 
+- Implement a `check_iso_code(string $lnag) : bool` in a IsoCodes trait (or in a base class):
 
   1. classes implementing from DictionaryInterface
   2. classes implementing from TranslateInterface
@@ -18,29 +18,3 @@
 See these articles:
 
 - [composer: How to Use Git Repositories](https://www.daggerhartlab.com/composer-how-to-use-git-repositories/)
-
-#### PlantUML
-
- Add plantuml-genearated diagrams.
-
-### PHP Links
-
-- [PHP Closuers](https://www.php.net/manual/en/functions.anonymous.php)
-
-- [PHP Callbacks](https://www.php.net/manual/en/language.types.callable.php)
-
-- Change examples_ file name to NOT have ':' and to have AM or PM:
-
-  - [date()](https://www.php.net/manual/en/function.date.php)
-
-  - `date()` [format options](https://www.w3schools.com/php/func_date_date.asp)
-
-```php
-// Prints the day, date, month, year, time, AM or PM
-echo date("l jS \of F Y h:i:s A") . "\n";
-```
-date("m-d-y:H:i:s")
-
-PHP 8.1 features:
-
-https://php.watch/versions/8.1
