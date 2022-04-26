@@ -5,4 +5,3 @@ namespace LanguageTools;
 abstract class TranslatorWithDictionary extends RestClient implements TranslateInterface, DictionaryInterface { 
    
 }
-
