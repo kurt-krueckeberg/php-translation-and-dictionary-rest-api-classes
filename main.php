@@ -20,7 +20,7 @@ function check_args(int $argc, array $argv)
        die("Input file " . $argv[1] . " does not exist!\n");
 }
 
-function php8_1_example(SentenceFetchInterface $fetcher, TranslateInterface & DictionaryInterface $translator, File $file)
+function php8_1_example(SentenceFetchInterface $fetcher, LanguageTools\TranslateInterface & LanguageTools\DictionaryInterface $translator, File $file)
 { 
    $creator = new WebpageCreator();
   
@@ -31,11 +31,11 @@ function php8_1_example(SentenceFetchInterface $fetcher, TranslateInterface & Di
       echo "Fetching '$word' examples:\n";
 
       // Use the DictionaryInterface of the translator
-      $defns =  $trans->lookup($word, "EN", "DE");
+      $defns =  $translator->lookup($word, "EN", "DE");
 
       echo "Definition(s):\n";
 
-      if (is_string($defns)) $creator->write("&nbsp;", $defn); 
+      if (is_string($defns)) $creator->write("&nbsp;", $defns); 
 
       else foreach ($defns as $def) $creator->write("&nbsp;", $defn); 
           

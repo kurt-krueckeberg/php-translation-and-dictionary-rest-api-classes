@@ -96,6 +96,9 @@ class AzureTranslator extends TranslatorWithDictionary implements DictionaryInte
 
       $obj = json_decode($contents)[0]; 
       
-      return $obj->translations[0]->displayTarget; 
+      if (count($obj->translations) == 0) 
+          return "no definition";
+      else 
+          return $obj->translations[0]->displayTarget; 
    }
 }
