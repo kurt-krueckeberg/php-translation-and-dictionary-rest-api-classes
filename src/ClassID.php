@@ -10,11 +10,10 @@ enum ClassID implements ClassmapperInterface
    case  Azure;
    case  Ibm;
    case  Deepl;
-
-    // Returns implementation class.
+    
     public function class_name() : string
     {
-        return match($this) {
+        return match($this) { // Returns implementation class
             ClassID::Leipzig  => "LanguageTools\UniLeipzigSentenceFetcher", 
             ClassID::Pons     => "LanguageTools\PonsDictionary",   
             ClassID::Systrans => "LanguageTools\SystransTranslator",
@@ -24,8 +23,9 @@ enum ClassID implements ClassmapperInterface
         };
      }
    
-    // Returns config class name for the above implementation classes.
-    /*
+    /* 
+    This method returns the configuration class name for the corresponding implementation class above.
+    However, PHP 8.1 now allows you to use 'new' to initialize default constructor parameters (or any other function's).
     public function config_name() : string
     {
         return match($this) {
