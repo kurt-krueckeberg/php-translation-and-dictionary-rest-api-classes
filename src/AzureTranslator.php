@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace LanguageTools;
 
-class AzureTranslator extends /*RestClient*/ TranslatorWithDictionary implements DictionaryInterface, TranslateInterface {
+class AzureTranslator extends TranslatorWithDictionary implements DictionaryInterface, TranslateInterface {
 
    static private array  $lookup = array('method' => "POST", 'route' => "dictionary/lookup");
    static private array  $trans = array('method' => "POST", 'route' => "translate");
@@ -69,9 +69,7 @@ class AzureTranslator extends /*RestClient*/ TranslatorWithDictionary implements
 
       $contents = $this->request(self::$languages['method'], self::$languages['route'],  ['headers' => $this->headers, 'query' => $this->query]);
              
-      $obj = json_decode($contents, true);
-    
-      return $obj;
+      return json_decode($contents, true);    
    } 
 
    final public function translate(string $text, string $dest_lang, $source_lang="") : string 
@@ -89,13 +87,11 @@ class AzureTranslator extends /*RestClient*/ TranslatorWithDictionary implements
 
    // Azure Translator offers dictionary lookup service that returns a one-word definition.
    final public function lookup(string $word, string $src_lang, string $dest_lang) : string 
-   {
-      // 1. Set the dictionary languages
+   {      
       $this->setLanguages($dest_lang, $src_lang); 
        
       $this->add_input($word);
-
-      // 3. Issue post request 
+    
       $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['headers' => $this->headers, 'query' => $this->query, 'json' => $this->json]);
 
       $obj = json_decode($contents)[0]; 
