@@ -15,8 +15,6 @@ class RestClient {
 
       $refl_impl = new \ReflectionClass($class_name);            
       
-      // Note: The paranthesis around '($id->config_name())' are necessary; otherwise,
-      // PHP cannot parse it properly. 
       return $refl_impl->newInstance();
    }
 
