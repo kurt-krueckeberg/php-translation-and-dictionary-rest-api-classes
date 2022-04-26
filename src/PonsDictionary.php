@@ -80,8 +80,7 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
       return $arr;
    } 
 
-
-   public function lookup(string $text, string $src, string $dest) : ResultsIterator//array
+   public function lookup(string $text, string $src, string $dest) : ResultsIterator
    {
        $this->query[PonsDictionary::INPUT] = urlencode($text); 
 

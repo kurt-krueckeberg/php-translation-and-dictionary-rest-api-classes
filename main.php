@@ -20,6 +20,40 @@ function check_args(int $argc, array $argv)
        die("Input file " . $argv[1] . " does not exist!\n");
 }
 
+function php8_1_example(SentenceFetchInterface $fetcher, TranslateInterface & DictionaryInterface $translator, File $file)
+{ 
+   $creator = new WebpageCreator();
+  
+   foreach ($file as $word) {
+  
+      $creator->write("<strong>$word</strong>", "<strong>Definitions:</strong>"); 
+
+      echo "Fetching '$word' examples:\n";
+
+      // Use the DictionaryInterface of the translator
+      $defns =  $trans->lookup($word, "EN", "DE");
+
+      echo "Definition(s):\n";
+
+      if (is_string($defns)) $creator->write("&nbsp;", $defn); 
+
+      else foreach ($defns as $def) $creator->write("&nbsp;", $defn); 
+          
+      foreach ( $fetcher->fetch($word, 3) as $sentence) {
+
+           echo "Translation of: " . $sentence . "\n";
+
+           // 2nd parameter is destination language. 3rd parameter is optional source language.
+           // If 3rd parameter is ommited, source language is automatically detected.
+           $translation = $translator->translate($sentence, "EN", "DE"); 
+           
+           echo "is: " . $translation . "\n";
+           
+           $creator->write($sentence, $translation); 
+      }
+      echo "\n";
+   }
+}
 function create_html_output(SentenceFetchInterface $fetcher, TranslateInterface $translator, File $file)
 { 
    $creator = new WebpageCreator();
@@ -59,8 +93,9 @@ function create_html_output(SentenceFetchInterface $fetcher, TranslateInterface 
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
     //$dict = RestClient::createRestClient(ClassID::Pons);
-    
-    create_html_output(RestClient::createRestClient(ClassID::Leipzig), RestClient::createRestClient(ClassID::Azure), $file);
+    php8_1_example(SentenceFetchInterface $fetcher, TranslateInterface & DictionaryInterface $translator, File $file)
+
+    //--create_html_output(RestClient::createRestClient(ClassID::Leipzig), RestClient::createRestClient(ClassID::Azure), $file);
 
   } catch (Exception $e) {
 
