@@ -43,7 +43,7 @@ class AzureTranslator extends TranslatorWithDictionary implements DictionaryInte
        $this->json = [['Text' => $text]];       
    }
 
-   // If this is a translation request and there is no source language, the source langauge will be auto-detected.
+   // If there is no source language, the source langauge will be auto-detected.
    protected function setLanguages(string $dest_lang, $source_lang="")
    {
       if ($source_lang !== "") 

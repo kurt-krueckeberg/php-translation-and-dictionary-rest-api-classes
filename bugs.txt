@@ -1,1 +1,0 @@
-AzureTranslator is not returning any definitions--why?

@@ -19,8 +19,10 @@ function check_args(int $argc, array $argv)
   if (!file_exists($argv[1]))
        die("Input file " . $argv[1] . " does not exist!\n");
 }
-
-function php8_1_example(SentenceFetchInterface $fetcher, LanguageTools\TranslateInterface & LanguageTools\DictionaryInterface $translator, File $file)
+/*
+ * PHP 8.1 feature: The 2nd parameter type is the intersection of two interface types. 
+ */
+function create_html_ouput(SentenceFetchInterface $fetcher, LanguageTools\TranslateInterface & LanguageTools\DictionaryInterface $translator, File $file)
 { 
    $creator = new WebpageCreator();
   
@@ -31,39 +33,21 @@ function php8_1_example(SentenceFetchInterface $fetcher, LanguageTools\Translate
       echo "Fetching '$word' examples:\n";
 
       // Use the DictionaryInterface of the translator
-      $defns =  $translator->lookup($word, "EN", "DE");
+      $defns =  $translator->lookup($word, "DE", "EN");
 
       echo "Definition(s):\n";
 
-      if (is_string($defns)) $creator->write("&nbsp;", $defns); 
+      if (is_string($defns)) { // If the definition is just a one-word string (and not iterable)
+          echo $defns . "\n";
+          $creator->write("&nbsp;", $defns); 
 
-      else foreach ($defns as $def) $creator->write("&nbsp;", $defn); 
-          
-      foreach ( $fetcher->fetch($word, 3) as $sentence) {
-
-           echo "Translation of: " . $sentence . "\n";
-
-           // 2nd parameter is destination language. 3rd parameter is optional source language.
-           // If 3rd parameter is ommited, source language is automatically detected.
-           $translation = $translator->translate($sentence, "EN", "DE"); 
-           
-           echo "is: " . $translation . "\n";
-           
-           $creator->write($sentence, $translation); 
+      } else {  // else: the definitinoos are iterables.
+          foreach ($defns as $def) {
+              echo "$def \n";
+              $creator->write("&nbsp;", $defn); 
+          }
       }
-      echo "\n";
-   }
-}
-function create_html_output(SentenceFetchInterface $fetcher, TranslateInterface $translator, File $file)
-{ 
-   $creator = new WebpageCreator();
-  
-   foreach ($file as $word) {
-  
-      $creator->write("<strong>$word</strong>", "<strong>No Definitions (yet)</strong>"); 
-
-      echo "Fetching '$word' examples:\n";
-
+          
       foreach ( $fetcher->fetch($word, 3) as $sentence) {
 
            echo "Translation of: " . $sentence . "\n";
