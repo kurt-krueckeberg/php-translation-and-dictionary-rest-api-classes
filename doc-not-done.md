@@ -1,11 +1,13 @@
 # Documentation 
 
+BEING REWRITTEN...
 Code tested against PHP 8.1 only. See [main.php](main.php) for example code.
 
 ## Overview
 
-This code generates German example sentences, using the University of [Leipzig Corpora Collection](https://wortschatz.uni-leipzig.de/en), and translates them into the target language. 
-The input is file with a list of words (one word per line). To use it, you must have either a DEEPL account or a Microsoft Azure account. Other cloud-base translators may be added later.
+This code generates German example sentences using the University of [Leipzig Corpora Collection](https://wortschatz.uni-leipzig.de/en), and translates them into the target language. The University of Leipzig's Corpora includes other languages (click on the [language](https://corpora.uni-leipzig.de/en#) with display other languages). 
+
+The input is a text file with a list of words (one word per line). 
 
 **Note:** The [Leipzig Corpora Collection](https://wortschatz.uni-leipzig.de/en) provides example sentences in other languages besides German.
 
