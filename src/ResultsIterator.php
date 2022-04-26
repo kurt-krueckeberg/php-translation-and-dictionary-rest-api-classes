@@ -7,8 +7,8 @@ class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
     private array $objs;
     private int $cnt;
     private int $index;
-    private $f; // anonymous function for returning a specify member of the stdClass objecs
-                // in the array.
+    private $f; // anonymous 'callable' used to return a specify property of the stdClass objecs
+                // in $objs.
 
     public function __construct(array $objs, callable $func) 
     {
@@ -37,7 +37,6 @@ class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
 
     public function offsetGet($offset) : mixed
     {
-        //return isset($this->objs[$offset]) ? ($this->f)($this->objs[$offset]) : null;
         return isset($this->objs[$offset]) ? $this->objs[$offset] : null;
     }
   
