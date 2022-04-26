@@ -4,4 +4,4 @@ vendor/
 composer.lock
 corpus-db/
 .*.swp
-examples*.html
+output*.html
