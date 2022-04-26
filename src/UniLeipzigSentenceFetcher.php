@@ -4,8 +4,7 @@ namespace LanguageTools;
 
 use GuzzleHttp\Client as Client;
 
-class GetSentence {
-
+class GetSentence { // type 'callable'. 
    public function __invoke($obj)
    {
        return $obj->sentence;
@@ -31,8 +30,7 @@ class UniLeipzigSentenceFetcher extends RestClient implements SentenceFetchInter
       $obj = json_decode($contents);
 
      /*
-       This is what is returned:
-       
+       $obj contains:
        {
          "count": some_number_her,
          "sentences": [ // SentenceInfomration json object.
@@ -47,19 +45,13 @@ class UniLeipzigSentenceFetcher extends RestClient implements SentenceFetchInter
            }
          ]
        }
-     
-         SentenceInformation is a PHP stdClass containing:
-   
+       SentenceInformation is a 'stdClass' containing:   
            1. id  => string
            2. sentence => the actual string text of the sample sentence
            3. source => ["daate" => ..., "id" => string, "url" => string]
         */
 
-      // Return an iterator for the array of SentenceInformation objects. The iterator returns the 'sentence' member
-      // of the SentenceInformation objects.
-      return new ResultsIterator( $obj->sentences, function ($x) {
-                                   return $x->sentence;
-                                    }
-                                    ); 
+      // The iterator returns the 'sentence' member (of the SentenceInformation objects).
+      return new ResultsIterator( $obj->sentences, function ($x) { return $x->sentence; } ); 
    }
 }
