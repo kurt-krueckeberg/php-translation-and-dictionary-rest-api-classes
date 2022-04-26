@@ -93,7 +93,7 @@ function create_html_output(SentenceFetchInterface $fetcher, TranslateInterface 
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
     //$dict = RestClient::createRestClient(ClassID::Pons);
-    php8_1_example(SentenceFetchInterface $fetcher, TranslateInterface & DictionaryInterface $translator, File $file)
+    php8_1_example($fetcher, $translator, $file);
 
     //--create_html_output(RestClient::createRestClient(ClassID::Leipzig), RestClient::createRestClient(ClassID::Azure), $file);
 
