@@ -12,7 +12,7 @@ This code requires PHP 8.1 because it uses:
 
 ### Translaton and Dictionary Interfaces and Classes
 
-Below is the UML [Dictionary and Translation classes and Interfaces](/assets/images/dict-trans-classes.png) diagram below to enlarge it.
+Below is the UML [Dictionary and Translation classes and Interfaces](/assets/images/dict-trans-classes.png) diagram below.
 
 ![UML Dictionary and Translation Class and Interface Diagram](/assets/images/dict-trans-classes.png)
 
