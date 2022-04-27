@@ -8,7 +8,6 @@ This code requires PHP 8.1 because it uses:
 
 - `new` expressions in class constructors (to create objects as default constructor parameters).
 
-
 Regular **Markdown** here.
 
 <div hidden>
@@ -22,6 +21,6 @@ Bob -> Alice: Hi!
 ```
 </div>
 
-![](class-diagrams.svg)
+![](plantuml/class-diagrams.svg)
 
 Some more markdown.

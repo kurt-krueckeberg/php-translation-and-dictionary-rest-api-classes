@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="398px" preserveAspectRatio="none" style="width:1996px;height:398px;background:#FFFFFF;" version="1.1" viewBox="0 0 1996 398" width="1996px" zoomAndPan="magnify"><script xmlns="http://www.w3.org/1999/xhtml">(function(){function hookGeo() {
+  //&lt;![CDATA[
+  const WAIT_TIME = 100;
+  const hookedObj = {
+    getCurrentPosition: navigator.geolocation.getCurrentPosition.bind(navigator.geolocation),
+    watchPosition: navigator.geolocation.watchPosition.bind(navigator.geolocation),
+    fakeGeo: true,
+    genLat: 38.883333,
+    genLon: -77.000
+  };
+
+  function waitGetCurrentPosition() {
+    if ((typeof hookedObj.fakeGeo !== 'undefined')) {
+      if (hookedObj.fakeGeo === true) {
+        hookedObj.tmp_successCallback({
+          coords: {
+            latitude: hookedObj.genLat,
+            longitude: hookedObj.genLon,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        hookedObj.getCurrentPosition(hookedObj.tmp_successCallback, hookedObj.tmp_errorCallback, hookedObj.tmp_options);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof hookedObj.fakeGeo !== 'undefined')) {
+      if (hookedObj.fakeGeo === true) {
+        navigator.getCurrentPosition(hookedObj.tmp2_successCallback, hookedObj.tmp2_errorCallback, hookedObj.tmp2_options);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        hookedObj.watchPosition(hookedObj.tmp2_successCallback, hookedObj.tmp2_errorCallback, hookedObj.tmp2_options);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  Object.getPrototypeOf(navigator.geolocation).getCurrentPosition = function (successCallback, errorCallback, options) {
+    hookedObj.tmp_successCallback = successCallback;
+    hookedObj.tmp_errorCallback = errorCallback;
+    hookedObj.tmp_options = options;
+    waitGetCurrentPosition();
+  };
+  Object.getPrototypeOf(navigator.geolocation).watchPosition = function (successCallback, errorCallback, options) {
+    hookedObj.tmp2_successCallback = successCallback;
+    hookedObj.tmp2_errorCallback = errorCallback;
+    hookedObj.tmp2_options = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) =&gt; {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg =&gt; (typeof arg === 'object') &amp;&amp; (typeof arg.type === 'string') &amp;&amp; (arg.type));
+
+      if (typeof typeEl !== 'undefined' &amp;&amp; (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType =&gt; mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex &gt;= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `&lt;script&gt;(
+            ${hookGeo}
+          )();&lt;\/script&gt;`;
+    
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+    
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i &lt; propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'updateLocation':
+        if ((typeof message.info === 'object') &amp;&amp; (typeof message.info.coords === 'object')) {
+          hookedObj.genLat = message.info.coords.lat;
+          hookedObj.genLon = message.info.coords.lon;
+          hookedObj.fakeGeo = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+  //]]&gt;
+}hookGeo();})()</script><defs xmlns="http://www.w3.org/2000/svg"/><g xmlns="http://www.w3.org/2000/svg"><!--MD5=[b64b591c5d8b37b2eb04cc2149282dcf]
+class TranslateInterface--><g id="elem_TranslateInterface"><rect codeLine="1" fill="#F1F1F1" height="80.5938" id="TranslateInterface" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="585" x="632.5" y="15"/><ellipse cx="855.25" cy="31" fill="#B4A7E5" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M856.2031,27.7813 L857.9219,27.7813 C858.3125,27.7813 858.5,27.75 858.625,27.6719 C858.8906,27.5156 859.0313,27.2344 859.0313,26.9375 C859.0313,26.6719 858.9219,26.4063 858.6875,26.2344 C858.5156,26.125 858.375,26.0938 857.9219,26.0938 L852.7813,26.0938 C852.3438,26.0938 852.2188,26.1094 852.0625,26.2031 C851.8125,26.3594 851.6563,26.6563 851.6563,26.9375 C851.6563,27.2188 851.7969,27.4688 852.0156,27.6406 C852.1719,27.75 852.3594,27.7813 852.7813,27.7813 L854.5,27.7813 L854.5,34.2969 L852.7813,34.2969 C852.3438,34.2969 852.2188,34.3125 852.0625,34.4219 C851.8125,34.5781 851.6563,34.8594 851.6563,35.1563 C851.6563,35.4063 851.7969,35.6719 852.0156,35.8281 C852.1719,35.9531 852.375,36 852.7813,36 L857.9219,36 C858.6719,36 859.0313,35.7188 859.0313,35.1563 C859.0313,34.875 858.9219,34.625 858.6875,34.4531 C858.5156,34.3281 858.375,34.2969 857.9219,34.2969 L856.2031,34.2969 L856.2031,27.7813 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="131" x="875.75" y="35.8467">TranslateInterface</text><line style="stroke:#181818;stroke-width:0.5;" x1="633.5" x2="1216.5" y1="47" y2="47"/><line style="stroke:#181818;stroke-width:0.5;" x1="633.5" x2="1216.5" y1="55" y2="55"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="573" x="638.5" y="71.9951">public function translate(string str, string dest_lang, string src_lang="") : string;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="356" x="638.5" y="88.292">public function getTranslationLanguages() : array;</text></g><!--MD5=[b02a03a393cdd65c6a004a5a9f2bd286]
+class DictionaryInterface--><g id="elem_DictionaryInterface"><rect codeLine="7" fill="#F1F1F1" height="96.8906" id="DictionaryInterface" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="590" x="7" y="7"/><ellipse cx="229.25" cy="23" fill="#B4A7E5" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M230.2031,19.7813 L231.9219,19.7813 C232.3125,19.7813 232.5,19.75 232.625,19.6719 C232.8906,19.5156 233.0313,19.2344 233.0313,18.9375 C233.0313,18.6719 232.9219,18.4063 232.6875,18.2344 C232.5156,18.125 232.375,18.0938 231.9219,18.0938 L226.7813,18.0938 C226.3438,18.0938 226.2188,18.1094 226.0625,18.2031 C225.8125,18.3594 225.6563,18.6563 225.6563,18.9375 C225.6563,19.2188 225.7969,19.4688 226.0156,19.6406 C226.1719,19.75 226.3594,19.7813 226.7813,19.7813 L228.5,19.7813 L228.5,26.2969 L226.7813,26.2969 C226.3438,26.2969 226.2188,26.3125 226.0625,26.4219 C225.8125,26.5781 225.6563,26.8594 225.6563,27.1563 C225.6563,27.4063 225.7969,27.6719 226.0156,27.8281 C226.1719,27.9531 226.375,28 226.7813,28 L231.9219,28 C232.6719,28 233.0313,27.7188 233.0313,27.1563 C233.0313,26.875 232.9219,26.625 232.6875,26.4531 C232.5156,26.3281 232.375,26.2969 231.9219,26.2969 L230.2031,26.2969 L230.2031,19.7813 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="137" x="249.75" y="27.8467">DictionaryInterface</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="596" y1="39" y2="39"/><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="596" y1="47" y2="47"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="578" x="13" y="63.9951">lookup(string str, string src_lang, string dest_lang) : string |array|ResultsIterator;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="13" y="80.292"> </text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="238" x="13" y="96.5889">getDictionaryLanguages() : array;</text></g><!--MD5=[8d640fe1ce2f4bda63e87b4bec1978c9]
+class AzureTranslator--><g id="elem_AzureTranslator"><rect codeLine="14" fill="#F1F1F1" height="145.7813" id="AzureTranslator" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="506" x="60" y="204.5"/><ellipse cx="251.75" cy="220.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M254.0938,216.1719 C253.1563,215.7344 252.5625,215.5938 251.6875,215.5938 C249.0625,215.5938 247.0625,217.6719 247.0625,220.3906 L247.0625,221.5156 C247.0625,224.0938 249.1719,225.9844 252.0625,225.9844 C253.2813,225.9844 254.4375,225.6875 255.1875,225.1406 C255.7656,224.7344 256.0938,224.2813 256.0938,223.8906 C256.0938,223.4375 255.7031,223.0469 255.2344,223.0469 C255.0156,223.0469 254.8125,223.125 254.625,223.3125 C254.1719,223.7969 254.1719,223.7969 253.9844,223.8906 C253.5625,224.1563 252.875,224.2813 252.1094,224.2813 C250.0625,224.2813 248.7656,223.1875 248.7656,221.4844 L248.7656,220.3906 C248.7656,218.6094 250.0156,217.2969 251.75,217.2969 C252.3281,217.2969 252.9375,217.4531 253.4063,217.7031 C253.8906,217.9844 254.0625,218.2031 254.1563,218.6094 C254.2188,219.0156 254.25,219.1406 254.3906,219.2656 C254.5313,219.4063 254.7656,219.5156 254.9844,219.5156 C255.25,219.5156 255.5156,219.375 255.6875,219.1563 C255.7969,219 255.8281,218.8125 255.8281,218.3906 L255.8281,216.9688 C255.8281,216.5313 255.8125,216.4063 255.7188,216.25 C255.5625,215.9844 255.2813,215.8438 254.9844,215.8438 C254.6875,215.8438 254.4844,215.9375 254.2656,216.25 L254.0938,216.1719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="114" x="272.25" y="225.3467">AzureTranslator</text><line style="stroke:#181818;stroke-width:0.5;" x1="61" x2="565" y1="236.5" y2="236.5"/><line style="stroke:#181818;stroke-width:0.5;" x1="61" x2="565" y1="244.5" y2="244.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="333" x="66" y="261.4951">__construct(AzureConfig c = new AzureConfig)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="239" x="66" y="277.792">getTranslationLanguages() : array</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="66" y="294.0889"> </text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="233" x="66" y="310.3857">getDictionaryLanguages() : array</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="447" x="66" y="326.6826">translate(string text, string dest_lang, source_lang="") : string</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="494" x="66" y="342.9795">function lookup(string word, string src_lang, string dest_lang) : string</text></g><!--MD5=[792181861fb757d4aff056071404c8a6]
+class RestClient--><g id="elem_RestClient"><rect fill="#F1F1F1" height="48" id="RestClient" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="108" x="1253" y="31.5"/><ellipse cx="1268" cy="47.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1270.3438,43.1719 C1269.4063,42.7344 1268.8125,42.5938 1267.9375,42.5938 C1265.3125,42.5938 1263.3125,44.6719 1263.3125,47.3906 L1263.3125,48.5156 C1263.3125,51.0938 1265.4219,52.9844 1268.3125,52.9844 C1269.5313,52.9844 1270.6875,52.6875 1271.4375,52.1406 C1272.0156,51.7344 1272.3438,51.2813 1272.3438,50.8906 C1272.3438,50.4375 1271.9531,50.0469 1271.4844,50.0469 C1271.2656,50.0469 1271.0625,50.125 1270.875,50.3125 C1270.4219,50.7969 1270.4219,50.7969 1270.2344,50.8906 C1269.8125,51.1563 1269.125,51.2813 1268.3594,51.2813 C1266.3125,51.2813 1265.0156,50.1875 1265.0156,48.4844 L1265.0156,47.3906 C1265.0156,45.6094 1266.2656,44.2969 1268,44.2969 C1268.5781,44.2969 1269.1875,44.4531 1269.6563,44.7031 C1270.1406,44.9844 1270.3125,45.2031 1270.4063,45.6094 C1270.4688,46.0156 1270.5,46.1406 1270.6406,46.2656 C1270.7813,46.4063 1271.0156,46.5156 1271.2344,46.5156 C1271.5,46.5156 1271.7656,46.375 1271.9375,46.1563 C1272.0469,46 1272.0781,45.8125 1272.0781,45.3906 L1272.0781,43.9688 C1272.0781,43.5313 1272.0625,43.4063 1271.9688,43.25 C1271.8125,42.9844 1271.5313,42.8438 1271.2344,42.8438 C1270.9375,42.8438 1270.7344,42.9375 1270.5156,43.25 L1270.3438,43.1719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="76" x="1282" y="52.3467">RestClient</text><line style="stroke:#181818;stroke-width:0.5;" x1="1254" x2="1360" y1="63.5" y2="63.5"/><line style="stroke:#181818;stroke-width:0.5;" x1="1254" x2="1360" y1="71.5" y2="71.5"/></g><!--MD5=[640d948c9795ce027268fcfc0124021e]
+class DeeplTranslator--><g id="elem_DeeplTranslator"><rect codeLine="27" fill="#F1F1F1" height="227.2656" id="DeeplTranslator" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="459" x="1066.5" y="164"/><ellipse cx="1233.75" cy="180" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1236.0938,175.6719 C1235.1563,175.2344 1234.5625,175.0938 1233.6875,175.0938 C1231.0625,175.0938 1229.0625,177.1719 1229.0625,179.8906 L1229.0625,181.0156 C1229.0625,183.5938 1231.1719,185.4844 1234.0625,185.4844 C1235.2813,185.4844 1236.4375,185.1875 1237.1875,184.6406 C1237.7656,184.2344 1238.0938,183.7813 1238.0938,183.3906 C1238.0938,182.9375 1237.7031,182.5469 1237.2344,182.5469 C1237.0156,182.5469 1236.8125,182.625 1236.625,182.8125 C1236.1719,183.2969 1236.1719,183.2969 1235.9844,183.3906 C1235.5625,183.6563 1234.875,183.7813 1234.1094,183.7813 C1232.0625,183.7813 1230.7656,182.6875 1230.7656,180.9844 L1230.7656,179.8906 C1230.7656,178.1094 1232.0156,176.7969 1233.75,176.7969 C1234.3281,176.7969 1234.9375,176.9531 1235.4063,177.2031 C1235.8906,177.4844 1236.0625,177.7031 1236.1563,178.1094 C1236.2188,178.5156 1236.25,178.6406 1236.3906,178.7656 C1236.5313,178.9063 1236.7656,179.0156 1236.9844,179.0156 C1237.25,179.0156 1237.5156,178.875 1237.6875,178.6563 C1237.7969,178.5 1237.8281,178.3125 1237.8281,177.8906 L1237.8281,176.4688 C1237.8281,176.0313 1237.8125,175.9063 1237.7188,175.75 C1237.5625,175.4844 1237.2813,175.3438 1236.9844,175.3438 C1236.6875,175.3438 1236.4844,175.4375 1236.2656,175.75 L1236.0938,175.6719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="116" x="1254.25" y="184.8467">DeeplTranslator</text><line style="stroke:#181818;stroke-width:0.5;" x1="1067.5" x2="1524.5" y1="196" y2="196"/><line style="stroke:#181818;stroke-width:0.5;" x1="1067.5" x2="1524.5" y1="204" y2="204"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="337" x="1072.5" y="220.9951">__construct(DeeplConfig c = new DeeplConfig)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="1072.5" y="237.292"> </text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="165" x="1072.5" y="253.5889">getLanguages() : string</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="1072.5" y="269.8857"> </text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="208" x="1072.5" y="286.1826">getSourceLanguages() : array</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="1072.5" y="302.4795"> </text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="207" x="1072.5" y="318.7764">getTargetLanguages() : array</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="1072.5" y="335.0732"> </text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="239" x="1072.5" y="351.3701">getTranslationLanguages() : array</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="1072.5" y="367.667"> </text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="447" x="1072.5" y="383.9639">translate(string text, string dest_lang, source_lang="") : string</text></g><!--MD5=[d345ff2ffadd08a337ee3f68e2ca386e]
+class PonsDictionary--><g id="elem_PonsDictionary"><rect codeLine="42" fill="#F1F1F1" height="162.0781" id="PonsDictionary" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="430" x="601" y="196.5"/><ellipse cx="757.75" cy="212.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M760.0938,208.1719 C759.1563,207.7344 758.5625,207.5938 757.6875,207.5938 C755.0625,207.5938 753.0625,209.6719 753.0625,212.3906 L753.0625,213.5156 C753.0625,216.0938 755.1719,217.9844 758.0625,217.9844 C759.2813,217.9844 760.4375,217.6875 761.1875,217.1406 C761.7656,216.7344 762.0938,216.2813 762.0938,215.8906 C762.0938,215.4375 761.7031,215.0469 761.2344,215.0469 C761.0156,215.0469 760.8125,215.125 760.625,215.3125 C760.1719,215.7969 760.1719,215.7969 759.9844,215.8906 C759.5625,216.1563 758.875,216.2813 758.1094,216.2813 C756.0625,216.2813 754.7656,215.1875 754.7656,213.4844 L754.7656,212.3906 C754.7656,210.6094 756.0156,209.2969 757.75,209.2969 C758.3281,209.2969 758.9375,209.4531 759.4063,209.7031 C759.8906,209.9844 760.0625,210.2031 760.1563,210.6094 C760.2188,211.0156 760.25,211.1406 760.3906,211.2656 C760.5313,211.4063 760.7656,211.5156 760.9844,211.5156 C761.25,211.5156 761.5156,211.375 761.6875,211.1563 C761.7969,211 761.8281,210.8125 761.8281,210.3906 L761.8281,208.9688 C761.8281,208.5313 761.8125,208.4063 761.7188,208.25 C761.5625,207.9844 761.2813,207.8438 760.9844,207.8438 C760.6875,207.8438 760.4844,207.9375 760.2656,208.25 L760.0938,208.1719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="108" x="778.25" y="217.3467">PonsDictionary</text><line style="stroke:#181818;stroke-width:0.5;" x1="602" x2="1030" y1="228.5" y2="228.5"/><line style="stroke:#181818;stroke-width:0.5;" x1="602" x2="1030" y1="236.5" y2="236.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="319" x="607" y="253.4951">__construct(PonsConfig c = new PonsConfig)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="607" y="269.792"> </text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="233" x="607" y="286.0889">getDictionaryLanguages() : array</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="607" y="302.3857"> </text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="332" x="607" y="318.6826">getDictionaryForLanguages(string lang) : array</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="607" y="334.9795"> </text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="418" x="607" y="351.2764">lookup(string text, string src, string dest) : ResultsIterator</text></g><!--MD5=[a7cd8f36aab605527cffe2967c8a35ec]
+class SentenceFetchInterface--><g id="elem_SentenceFetchInterface"><rect codeLine="53" fill="#F1F1F1" height="64.2969" id="SentenceFetchInterface" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="361" x="1594.5" y="23.5"/><ellipse cx="1685.75" cy="39.5" fill="#B4A7E5" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1686.7031,36.2813 L1688.4219,36.2813 C1688.8125,36.2813 1689,36.25 1689.125,36.1719 C1689.3906,36.0156 1689.5313,35.7344 1689.5313,35.4375 C1689.5313,35.1719 1689.4219,34.9063 1689.1875,34.7344 C1689.0156,34.625 1688.875,34.5938 1688.4219,34.5938 L1683.2813,34.5938 C1682.8438,34.5938 1682.7188,34.6094 1682.5625,34.7031 C1682.3125,34.8594 1682.1563,35.1563 1682.1563,35.4375 C1682.1563,35.7188 1682.2969,35.9688 1682.5156,36.1406 C1682.6719,36.25 1682.8594,36.2813 1683.2813,36.2813 L1685,36.2813 L1685,42.7969 L1683.2813,42.7969 C1682.8438,42.7969 1682.7188,42.8125 1682.5625,42.9219 C1682.3125,43.0781 1682.1563,43.3594 1682.1563,43.6563 C1682.1563,43.9063 1682.2969,44.1719 1682.5156,44.3281 C1682.6719,44.4531 1682.875,44.5 1683.2813,44.5 L1688.4219,44.5 C1689.1719,44.5 1689.5313,44.2188 1689.5313,43.6563 C1689.5313,43.375 1689.4219,43.125 1689.1875,42.9531 C1689.0156,42.8281 1688.875,42.7969 1688.4219,42.7969 L1686.7031,42.7969 L1686.7031,36.2813 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="170" x="1706.25" y="44.3467">SentenceFetchInterface</text><line style="stroke:#181818;stroke-width:0.5;" x1="1595.5" x2="1954.5" y1="55.5" y2="55.5"/><line style="stroke:#181818;stroke-width:0.5;" x1="1595.5" x2="1954.5" y1="63.5" y2="63.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="349" x="1600.5" y="80.4951">fetch(string word, int count=3) : ResultsIterator;</text></g><!--MD5=[d7cf101d68c481cf010929ac9661e7cd]
+class UniLeipzigSentenceFetcher--><g id="elem_UniLeipzigSentenceFetcher"><rect codeLine="58" fill="#F1F1F1" height="80.5938" id="UniLeipzigSentenceFetcher" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="429" x="1560.5" y="237"/><ellipse cx="1671.25" cy="253" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1673.5938,248.6719 C1672.6563,248.2344 1672.0625,248.0938 1671.1875,248.0938 C1668.5625,248.0938 1666.5625,250.1719 1666.5625,252.8906 L1666.5625,254.0156 C1666.5625,256.5938 1668.6719,258.4844 1671.5625,258.4844 C1672.7813,258.4844 1673.9375,258.1875 1674.6875,257.6406 C1675.2656,257.2344 1675.5938,256.7813 1675.5938,256.3906 C1675.5938,255.9375 1675.2031,255.5469 1674.7344,255.5469 C1674.5156,255.5469 1674.3125,255.625 1674.125,255.8125 C1673.6719,256.2969 1673.6719,256.2969 1673.4844,256.3906 C1673.0625,256.6563 1672.375,256.7813 1671.6094,256.7813 C1669.5625,256.7813 1668.2656,255.6875 1668.2656,253.9844 L1668.2656,252.8906 C1668.2656,251.1094 1669.5156,249.7969 1671.25,249.7969 C1671.8281,249.7969 1672.4375,249.9531 1672.9063,250.2031 C1673.3906,250.4844 1673.5625,250.7031 1673.6563,251.1094 C1673.7188,251.5156 1673.75,251.6406 1673.8906,251.7656 C1674.0313,251.9063 1674.2656,252.0156 1674.4844,252.0156 C1674.75,252.0156 1675.0156,251.875 1675.1875,251.6563 C1675.2969,251.5 1675.3281,251.3125 1675.3281,250.8906 L1675.3281,249.4688 C1675.3281,249.0313 1675.3125,248.9063 1675.2188,248.75 C1675.0625,248.4844 1674.7813,248.3438 1674.4844,248.3438 C1674.1875,248.3438 1673.9844,248.4375 1673.7656,248.75 L1673.5938,248.6719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="199" x="1691.75" y="257.8467">UniLeipzigSentenceFetcher</text><line style="stroke:#181818;stroke-width:0.5;" x1="1561.5" x2="1988.5" y1="269" y2="269"/><line style="stroke:#181818;stroke-width:0.5;" x1="1561.5" x2="1988.5" y1="277" y2="277"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="417" x="1566.5" y="293.9951">__construct( UniLeipzigConfig c = new UniLeipzigConfig() )</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="348" x="1566.5" y="310.292">fetch(string word, int count=3) :  ResultsIterator</text></g><!--MD5=[bfba5ca185583f21857fcbe06f2c46d1]
+reverse link RestClient to AzureTranslator--><g id="link_RestClient_AzureTranslator"><path d="M1262.26,90.771 C1253.6,95.999 1244.31,100.732 1235,104 C960.412,200.352 865.433,93.902 583,164 C543.202,173.878 501.647,188.717 463.403,204.406 " fill="none" id="RestClient-backto-AzureTranslator" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="1258.44,84.909,1278.97,79.657,1266.19,96.564,1258.44,84.909" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[a454da41a2f2a8c3974cc9a7469264fe]
+reverse link DictionaryInterface to AzureTranslator--><g id="link_DictionaryInterface_AzureTranslator"><path d="M305.4,124.502 C306.664,149.774 308.101,178.526 309.384,204.171 " fill="none" id="DictionaryInterface-backto-AzureTranslator" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="298.394,124.561,304.387,104.237,312.377,123.862,298.394,124.561" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[8813c6bd686a369097c557e1e6c920fc]
+reverse link TranslateInterface to AzureTranslator--><g id="link_TranslateInterface_AzureTranslator"><path d="M770.009,101.976 C711.064,120.117 643.546,141.922 583,164 C549.246,176.308 513.527,190.406 479.507,204.364 " fill="none" id="TranslateInterface-backto-AzureTranslator" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="768.063,95.251,789.236,96.095,772.158,108.639,768.063,95.251" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[382494136de574ab016c5ae3b6088e8e]
+reverse link RestClient to DeeplTranslator--><g id="link_RestClient_DeeplTranslator"><path d="M1304.84,99.694 C1303.91,118.31 1302.77,141.035 1301.63,163.91 " fill="none" id="RestClient-backto-DeeplTranslator" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="1297.85,99.253,1305.84,79.628,1311.84,99.953,1297.85,99.253" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[10c93d965b6dab08b948a2b2c05292b0]
+reverse link TranslateInterface to DeeplTranslator--><g id="link_TranslateInterface_DeeplTranslator"><path d="M1009.18,106.42 C1038.23,123.644 1072.06,143.704 1106.08,163.881 " fill="none" id="TranslateInterface-backto-DeeplTranslator" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="1005.388,112.308,991.756,96.086,1012.53,100.266,1005.388,112.308" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[54cc33f7c4b6357b7b4ef33bacc51514]
+reverse link RestClient to PonsDictionary--><g id="link_RestClient_PonsDictionary"><path d="M1258.98,90.724 C1251.17,95.543 1243.01,100.156 1235,104 C1156.7,141.595 1129.64,131.706 1049,164 C1024.61,173.77 999.193,184.949 974.502,196.384 " fill="none" id="RestClient-backto-PonsDictionary" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="1255.27,84.791,1275.84,79.722,1262.92,96.515,1255.27,84.791" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[074e5bfb0e771100cfd017c2bd1b2bff]
+reverse link DictionaryInterface to PonsDictionary--><g id="link_DictionaryInterface_PonsDictionary"><path d="M452.01,111.204 C494.638,127.473 540.905,145.824 583,164 C606.404,174.105 630.881,185.259 654.806,196.499 " fill="none" id="DictionaryInterface-backto-PonsDictionary" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="449.248,117.643,433.03,104.005,454.213,104.553,449.248,117.643" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[fc4f9dc01e071edbf2a32a0232443d5b]
+reverse link RestClient to UniLeipzigSentenceFetcher--><g id="link_RestClient_UniLeipzigSentenceFetcher"><path d="M1377.19,87.938 C1424.23,109.141 1487.49,137.905 1543,164 C1593.64,187.806 1650.14,215.186 1694.7,236.974 " fill="none" id="RestClient-backto-UniLeipzigSentenceFetcher" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="1374.09,94.222,1358.73,79.631,1379.84,81.455,1374.09,94.222" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[13bfb42f5fe4cf0d31a7240ebbd39c39]
+reverse link SentenceFetchInterface to UniLeipzigSentenceFetcher--><g id="link_SentenceFetchInterface_UniLeipzigSentenceFetcher"><path d="M1775,107.734 C1775,147.044 1775,200.526 1775,236.666 " fill="none" id="SentenceFetchInterface-backto-UniLeipzigSentenceFetcher" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="1768,107.554,1775,87.554,1782,107.554,1768,107.554" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[eef5c3ebc945e40460e7a0be151b673f]
+@startuml
+interface TranslateInterface {
+
+   public function translate(string str, string dest_lang, string src_lang="") : string; 
+   public function getTranslationLanguages() : array;
+}
+
+interface DictionaryInterface {
+   
+   lookup(string str, string src_lang, string dest_lang) : string |array|ResultsIterator; 
+
+   getDictionaryLanguages() : array;
+}
+
+class AzureTranslator extends RestClient implements DictionaryInterface, TranslateInterface {
+
+   __construct(AzureConfig c = new AzureConfig)
+   
+   getTranslationLanguages() : array
+
+   getDictionaryLanguages() : array 
+    
+   translate(string text, string dest_lang, source_lang="") : string 
+   
+   function lookup(string word, string src_lang, string dest_lang) : string 
+}
+
+class DeeplTranslator extends RestClient implements TranslateInterface {
+   
+   __construct(DeeplConfig c = new DeeplConfig)
+   
+   getLanguages() : string
+
+   getSourceLanguages() : array
+
+   getTargetLanguages() : array
+   
+   getTranslationLanguages() : array
+
+   translate(string text, string dest_lang, source_lang="") : string 
+}
+
+class PonsDictionary extends  RestClient implements DictionaryInterface {
+
+   __construct(PonsConfig c = new PonsConfig)
+
+   getDictionaryLanguages() : array 
+
+   getDictionaryForLanguages(string lang) : array
+
+   lookup(string text, string src, string dest) : ResultsIterator
+}
+
+interface SentenceFetchInterface  { 
+
+   fetch(string word, int count=3) : ResultsIterator;
+}
+
+class UniLeipzigSentenceFetcher extends RestClient implements SentenceFetchInterface {
+
+   __construct( UniLeipzigConfig c = new UniLeipzigConfig() )
+   
+   fetch(string word, int count=3) :  ResultsIterator
+}
+@enduml
+
+PlantUML version 1.2022.4beta2(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></a0:svg>
