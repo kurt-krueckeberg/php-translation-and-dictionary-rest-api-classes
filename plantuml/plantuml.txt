@@ -23,6 +23,7 @@ class AzureTranslator extends TranslatorWithDictionary implements DictionaryInte
    
    function lookup(string $word, string $src_lang, string $dest_lang) : string 
 }
+
 class DeeplTranslator extends RestClient implements TranslateInterface {
    
    __construct(DeeplConfig $c = new DeeplConfig)
@@ -37,6 +38,7 @@ class DeeplTranslator extends RestClient implements TranslateInterface {
 
    translate(string $text, string $dest_lang, $source_lang="") : string 
 }
+
 class PonsDictionary extends  RestClient implements DictionaryInterface {
 
    __construct(PonsConfig $c = new PonsConfig)
@@ -47,6 +49,7 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
 
    lookup(string $text, string $src, string $dest) : ResultsIterator
 }
+
 interface SentenceFetchInterface  { 
    fetch(string $word, int $count=3) : ResultsIterator;
 }
