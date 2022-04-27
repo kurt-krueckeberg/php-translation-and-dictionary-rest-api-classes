@@ -14,7 +14,7 @@ Click on the UML class and interface diagram below to enlarge it.
 
 ![UML Class and Interface Diagram](/assets/images/class-diagram.png)
 
-The Classes and Interfaces (in UML) are:
+The classes and interfaces (in UML) are:
 
 ```plantuml
 interface TranslateInterface {
@@ -82,3 +82,7 @@ class UniLeipzigSentenceFetcher extends RestClient implements SentenceFetchInter
 }
 
 ```
+
+## Usages
+
+todo: complete this.
