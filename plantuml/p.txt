@@ -1,6 +1,0 @@
-interface DictionaryInterface {
-   
-   lookup(string $str, string $src_lang, string $dest_lang) : string |array|ResultsIterator; 
-
-   getDictionaryLanguages() : array;
-}

@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace LanguageTools;
 
-class AzureTranslator extends TranslatorWithDictionary implements DictionaryInterface, TranslateInterface {
+class AzureTranslator extends RestClient implements DictionaryInterface, TranslateInterface {
 
    static private array  $lookup = array('method' => "POST", 'route' => "dictionary/lookup");
    static private array  $trans = array('method' => "POST", 'route' => "translate");

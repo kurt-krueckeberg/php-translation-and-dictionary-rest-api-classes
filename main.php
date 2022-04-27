@@ -19,8 +19,28 @@ function check_args(int $argc, array $argv)
   if (!file_exists($argv[1]))
        die("Input file " . $argv[1] . " does not exist!\n");
 }
+
+function write_definitions(WebPageCreator $creator, string |array|LanguageTools\ResultsIterator $defns)
+{
+    if (is_string($defns)) { 
+
+        echo $defns . "\n";
+
+        $creator->write("&nbsp;", $defns); 
+
+    } else {  // definitions are iterable and are stdClass objects with two members:
+              // source and target. target has the actual definition. 
+
+        foreach ($defns as $def) {
+
+            echo "$def->target \n";
+
+            $creator->write("&nbsp;", $defn->target); 
+        }
+    }
+}
 /*
- * PHP 8.1 feature: The 2nd parameter type is the intersection of two interface types. 
+ * PHP 8.1 required: The 2nd parameter type is the intersection of two interface types. 
  */
 function create_html_ouput(SentenceFetchInterface $fetcher, LanguageTools\TranslateInterface & LanguageTools\DictionaryInterface $translator, File $file)
 { 
@@ -32,28 +52,21 @@ function create_html_ouput(SentenceFetchInterface $fetcher, LanguageTools\Transl
 
       echo "Fetching '$word' examples:\n";
 
-      // Use the DictionaryInterface of the translator
+      // Get definitions 
       $defns =  $translator->lookup($word, "DE", "EN");
 
       echo "Definition(s):\n";
+ 
+      // If the definition is just a one-word string, it is not iterable.
+      write_definitions($creator, $defns);
 
-      if (is_string($defns)) { // If the definition is just a one-word string (and not iterable)
-          echo $defns . "\n";
-          $creator->write("&nbsp;", $defns); 
-
-      } else {  // else: the definitinoos are iterables.
-          foreach ($defns as $def) {
-              echo "$def \n";
-              $creator->write("&nbsp;", $defn); 
-          }
-      }
-          
+      // Fetch sentences and translate them.          
       foreach ( $fetcher->fetch($word, 3) as $sentence) {
 
            echo "Translation of: " . $sentence . "\n";
 
-           // 2nd parameter is destination language. 3rd parameter is optional source language.
-           // If 3rd parameter is ommited, source language is automatically detected.
+           // The 2nd parameter is destination language. iThe 3rd parameter is the optional
+           //  source language (if it is ommitted, the source language is automatically detected).
            $translation = $translator->translate($sentence, "EN", "DE"); 
            
            echo "is: " . $translation . "\n";
@@ -77,9 +90,7 @@ function create_html_ouput(SentenceFetchInterface $fetcher, LanguageTools\Transl
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
     //$dict = RestClient::createRestClient(ClassID::Pons);
-    php8_1_example($fetcher, $translator, $file);
-
-    //--create_html_output(RestClient::createRestClient(ClassID::Leipzig), RestClient::createRestClient(ClassID::Azure), $file);
+    create_html_output($fetcher, $translator, $file);
 
   } catch (Exception $e) {
 
