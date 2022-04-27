@@ -80,16 +80,12 @@ function create_html_ouput(SentenceFetchInterface $fetcher, LanguageTools\Transl
   check_args($argc, $argv);
 
   try {
-
-    $fetcher = RestClient::createRestClient(ClassID::Leipzig); 
-
-    $translator = RestClient::createRestClient(ClassID::Azure); 
-
+   
     $file =  new File($argv[1]);
     
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-    create_html_output($fetcher, $translator, $file);
+    create_html_output(RestClient::createRestClient(ClassID::Leipzig), RestClient::createRestClient(ClassID::Azure), $file);
 
   } catch (Exception $e) {
 
