@@ -94,6 +94,44 @@ class UniLeipzigSentenceFetcher extends RestClient implements SentenceFetchInter
 }
 ```
 
-## Usages
+### ResultsIterator Class
+
+Bewlos is the UML diagram of the [ResultsIterator class](/assets/images/results-iterator.png) below to enlarge it.
+
+![UML of ResultIterator](/assets/images/results-iterator.png)
+
+The example-sentences retrieval interfaces and classes (in UML) are:
+
+```plantuml
+
+class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
+
+     __construct(array $objs, callable $func) 
+    
+    offsetSet($offset, $value) : void
+
+    offsetExists($offset) : bool
+
+    offsetUnset($offset) : void
+
+    offsetGet($offset) : mixed
+
+    count(): int
+
+    seek(int $offset) : void 
+   
+    current(): mixed
+
+    key(): mixed
+
+    next(): void
+
+    rewind(): void
+
+    valid(): bool
+}
+```
+
+## Usage
 
 todo: complete this.
