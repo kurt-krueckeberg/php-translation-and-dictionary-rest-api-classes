@@ -11,6 +11,11 @@ interface DictionaryInterface {
    getDictionaryLanguages() : array;
 }
 
+class RestClient {
+
+   static createRestClient(ClassID $id) : mixed
+}
+
 class AzureTranslator extends RestClient implements DictionaryInterface, TranslateInterface {
 
    __construct(AzureConfig c = new AzureConfig)
