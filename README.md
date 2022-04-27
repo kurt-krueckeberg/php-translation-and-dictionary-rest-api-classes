@@ -11,7 +11,8 @@ This code requires PHP 8.1 because it uses:
 ## Usage
 
 todo: complete this.
-## UML Diagrams
+
+## Implementation
 
 ### Translaton and Dictionary Interfaces and Classes
 
