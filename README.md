@@ -8,7 +8,7 @@ This code requires PHP 8.1 because it uses:
 
 - `new` expressions in class constructors (to create objects as default constructor parameters).
 
-- intersection types function parameter declarations to accept `DictionaryInterface & TranslationInterface`. For us in the client code to accept classes that implement both of these interfaces.
+- **intersection type** function parameter declarations to allow `DictionaryInterface & TranslationInterface` parameters in client code. 
 
 ## Usage
 
