@@ -8,4 +8,4 @@ This code requires PHP 8.1 because it uses:
 
 - `new` expressions in class constructors (to create objects as default constructor parameters).
 
-[Class Diagrams](plantuml/class-diagrams.svg)
+![](https://github.com/kurt-krueckeberg/rest-language-learning-tools/tree/main/plantuml/class-diagrams.svg)
