@@ -12,7 +12,7 @@ Regular **Markdown** here.
 
 <div hidden>
 ```
-@startuml class-diagrams
+@startuml plantuml/class-diagrams
 
 Alice -> Bob: Hello
 Bob -> Alice: Hi!
