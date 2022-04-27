@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace LanguageTools;
 
 // SeeDeepl-doc.md 
-class SystransTranslator extends RestClient implements TranslateInterface, DictionaryInterface {
+class SystranTranslator extends RestClient implements TranslateInterface, DictionaryInterface {
    
    static private array  $trans_route = array('method' => 'POST', 'route' => "?????????????");     
    static private array $lookup__route = array('method' => 'GET', 'route' => "?????????????");     

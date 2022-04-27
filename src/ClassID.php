@@ -6,7 +6,7 @@ enum ClassID implements ClassmapperInterface
 {
    case  Leipzig;
    case  Pons;
-   case  Systrans;
+   case  Systran;
    case  Azure;
    case  Ibm;
    case  Deepl;
@@ -16,7 +16,7 @@ enum ClassID implements ClassmapperInterface
         return match($this) { // Returns implementation class
             ClassID::Leipzig  => "LanguageTools\UniLeipzigSentenceFetcher", 
             ClassID::Pons     => "LanguageTools\PonsDictionary",   
-            ClassID::Systrans => "LanguageTools\SystransTranslator",
+            ClassID::Systran  => "LanguageTools\SystranTranslator",
             ClassID::Azure    => "LanguageTools\AzureTranslator",
             ClassID::Ibm      => "LanguageTools\IbmTranslator",
             ClassID::Deepl    => "LanguageTools\DeeplTranslator",
@@ -34,7 +34,7 @@ enum ClassID implements ClassmapperInterface
             ClassID::Deepl    => "LanguageTools\DeeplConfig",
             ClassID::Azure    => "LanguageTools\AzureConfig",
             ClassID::Ibm      => "LanguageTools\IbmConfig",
-            ClassID::Systrans => "LanguageTools\SystransConfig",
+            ClassID::Systran  => "LanguageTools\SystranConfig",
         };
      }
      */
