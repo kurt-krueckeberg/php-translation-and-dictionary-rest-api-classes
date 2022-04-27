@@ -14,6 +14,7 @@ Click on the image below to see the classes and interfaces
 
 ![Class Diagram](/assets/images/class-diagram.png)
 
+The Classes and Interfaces (in UML) are:
 
 ```plantuml
 interface TranslateInterface {
