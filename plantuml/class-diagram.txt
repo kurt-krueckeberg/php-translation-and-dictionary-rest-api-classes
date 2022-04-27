@@ -1,3 +1,4 @@
+@startuml class-diagram
 interface TranslateInterface {
 
    public function translate(string str, string dest_lang, string src_lang="") : string; 
@@ -61,3 +62,4 @@ class UniLeipzigSentenceFetcher extends RestClient implements SentenceFetchInter
    
    fetch(string word, int count=3) :  ResultsIterator
 }
+@enduml
