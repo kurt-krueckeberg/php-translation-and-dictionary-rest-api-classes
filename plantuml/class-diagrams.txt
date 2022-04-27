@@ -1,4 +1,4 @@
-@startuml
+@startuml class-diagrams
 interface TranslateInterface {
 
    public function translate(string str, string dest_lang, string src_lang="") : string; 
