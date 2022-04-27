@@ -89,7 +89,6 @@ function create_html_ouput(SentenceFetchInterface $fetcher, LanguageTools\Transl
     
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-    //$dict = RestClient::createRestClient(ClassID::Pons);
     create_html_output($fetcher, $translator, $file);
 
   } catch (Exception $e) {
