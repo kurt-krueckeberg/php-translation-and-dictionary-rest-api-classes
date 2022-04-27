@@ -16,11 +16,11 @@ todo: complete this.
 
 ### Translaton and Dictionary Interfaces and Classes
 
-Below is the UML [Dictionary and Translation classes and Interfaces](/assets/images/dict-trans-classes.png) diagram below (click to enlarge).
+The UML [Dictionary and Translation classes and Interfaces](/assets/images/dict-trans-classes.png) diagram (click to enlarge).
 
 ![UML Dictionary and Translation Class and Interface Diagram](/assets/images/dict-trans-classes.png)
 
-The dictionary and translation classes and interfaces (in UML) are:
+The dictionary and translation classes and interfaces in UML are:
 
 ```plantuml
 interface TranslateInterface {
@@ -78,11 +78,11 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
 
 ### Example Sentences Retrieval Interface and Class
 
-Below is the UML [Example Sentences Interfaces and Classes](/assets/images/sentence-fetcher.png) diagram.
+The UML [Example Sentences Interfaces and Classes](/assets/images/sentence-fetcher.png) diagram.
 
 ![UML of Examples Sentence Retrieval Class and Interface Diagram](/assets/images/sentence-fetcher.png)
 
-The example-sentences retrieval interfaces and classes (in UML) are:
+The example sentences retrieval interfaces and classes in UML are:
 
 ```plantuml
 interface SentenceFetchInterface  { 
@@ -100,14 +100,14 @@ class UniLeipzigSentenceFetcher extends RestClient implements SentenceFetchInter
 
 ### ResultsIterator Class
 
-Below is the UML diagram of the [ResultsIterator class](/assets/images/results-iterator.png).
+The UML diagram of the [ResultsIterator class](/assets/images/results-iterator.png).
 
 ![UML of ResultIterator](/assets/images/results-iterator.png)
 
-The `ResultsIterator` constructor accepts a `callable` parameter that is invoked whenever an element (of the array it contains) is returned (as a result of 
-`current()` , `OffsetSet` or `OffsetGet` being called).
+The `ResultsIterator` constructor accepts a `callable` parameter that is invoked whenever an element (in the contained array) is returned as a result of 
+`current()` , `OffsetSet` or `OffsetGet` being called.
 
-The example sentences retrieval interfaces and classes (in UML) are:
+The example sentences retrieval interfaces and classes in UML are:
 
 ```plantuml
 
