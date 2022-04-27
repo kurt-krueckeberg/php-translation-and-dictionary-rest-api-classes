@@ -8,6 +8,9 @@ This code requires PHP 8.1 because it uses:
 
 - `new` expressions in class constructors (to create objects as default constructor parameters).
 
+## Usage
+
+todo: complete this.
 ## UML Diagrams
 
 ### Translaton and Dictionary Interfaces and Classes
@@ -134,7 +137,3 @@ class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
     valid(): bool
 }
 ```
-
-## Usage
-
-todo: complete this.
