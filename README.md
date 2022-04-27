@@ -10,7 +10,7 @@ This code requires PHP 8.1 because it uses:
 
 ## Interfaces and Classes
 
-Click on the UML Class and Interface Diagram below to enlarge it.
+Click on the UML class and interface diagram below to enlarge it.
 
 ![UML Class and Interface Diagram](/assets/images/class-diagram.png)
 
