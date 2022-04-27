@@ -5,6 +5,7 @@ use LanguageTools\SentenceFetcher;
 use LanguageTools\WebpageCreator;
 use LanguageTools\RestClient;
 use LanguageTools\TranslateInterface;
+use LanguageTools\DictionaryInterface;
 use LanguageTools\SentenceFetchInterface;
 use LanguageTools\PonsDictionary;
 use LanguageTools\ClassID;
@@ -44,7 +45,7 @@ function write_definitions(WebPageCreator $creator, string |array|LanguageTools\
 /*
  * PHP 8.1 required: The 2nd parameter type is the intersection of two interface types. 
  */
-function create_html_ouput(SentenceFetchInterface $fetcher, LanguageTools\TranslateInterface & LanguageTools\DictionaryInterface $translator, File $file)
+function create_html_output(SentenceFetchInterface $fetcher, LanguageTools\TranslateInterface & LanguageTools\DictionaryInterface $translator, File $file)
 { 
    $creator = new WebpageCreator();
   
