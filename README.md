@@ -8,13 +8,15 @@ This code requires PHP 8.1 because it uses:
 
 - `new` expressions in class constructors (to create objects as default constructor parameters).
 
-## Interfaces and Classes
+## UML Diagrams
 
-Click on the UML class and interface diagram below to enlarge it.
+### Translaton and Dictionary Interfaces and Classes
 
-![UML Class and Interface Diagram](/assets/images/class-diagram.png)
+Click on the UML [Dictionary and Translation classes and Interfaces](/assets/images/dict-trans-classes.png) diagram below to enlarge it.
 
-The classes and interfaces (in UML) are:
+![UML Dictionary and Translation Class and Interface Diagram](/assets/images/dict-trans-classes.png)
+
+The dictionary and translation classes and interfaces (in UML) are:
 
 ```plantuml
 interface TranslateInterface {
@@ -68,7 +70,17 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
 
    lookup(string text, string src, string dest) : ResultsIterator
 }
+```
 
+### Example Sentences Interfaces and Classes
+
+Click on the UML [Dictionary and Translation classes and Interfaces](/assets/images/sentence-fetcher.png) diagram below to enlarge it.
+
+![UML Examples Sentence Retrieval Class and Interface Diagram](/assets/images/sentence-fetcher.png)
+
+The dictionary and translation classes and interfaces (in UML) are:
+
+```plantuml
 interface SentenceFetchInterface  { 
 
    fetch(string word, int count=3) : ResultsIterator;
@@ -80,7 +92,6 @@ class UniLeipzigSentenceFetcher extends RestClient implements SentenceFetchInter
    
    fetch(string word, int count=3) :  ResultsIterator
 }
-
 ```
 
 ## Usages
