@@ -74,11 +74,11 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
 
 ### Example Sentences Interfaces and Classes
 
-Click on the UML [Dictionary and Translation classes and Interfaces](/assets/images/sentence-fetcher.png) diagram below to enlarge it.
+Click on the UML [Example Sentences Interfaces and Classes](/assets/images/sentence-fetcher.png) diagram below to enlarge it.
 
-![UML Examples Sentence Retrieval Class and Interface Diagram](/assets/images/sentence-fetcher.png)
+![UML of Examples Sentence Retrieval Class and Interface Diagram](/assets/images/sentence-fetcher.png)
 
-The dictionary and translation classes and interfaces (in UML) are:
+The example-sentences retrieval interfaces and classes (in UML) are:
 
 ```plantuml
 interface SentenceFetchInterface  { 
