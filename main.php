@@ -22,6 +22,8 @@ function check_args(int $argc, array $argv)
 
 function write_definitions(WebPageCreator $creator, string |array|LanguageTools\ResultsIterator $defns)
 {
+    echo "Definition(s):\n";
+
     if (is_string($defns)) { 
 
         echo $defns . "\n";
@@ -55,8 +57,6 @@ function create_html_ouput(SentenceFetchInterface $fetcher, LanguageTools\Transl
       // Get definitions 
       $defns =  $translator->lookup($word, "DE", "EN");
 
-      echo "Definition(s):\n";
- 
       // If the definition is just a one-word string, it is not iterable.
       write_definitions($creator, $defns);
 
