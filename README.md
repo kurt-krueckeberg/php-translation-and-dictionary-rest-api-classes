@@ -15,7 +15,7 @@ Click on the image below to see the classes and interfaces
 ![Class Diagram](/assets/images/class-diagram.png)
 
 
-```uml
+```plantuml
 interface TranslateInterface {
 
    public function translate(string str, string dest_lang, string src_lang="") : string; 
