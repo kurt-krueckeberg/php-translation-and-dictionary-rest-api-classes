@@ -72,7 +72,7 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
 }
 ```
 
-### Example-Sentences Interface and Class
+### Example Sentences Retrieval Interface and Class
 
 Below is the UML [Example Sentences Interfaces and Classes](/assets/images/sentence-fetcher.png) diagram.
 
