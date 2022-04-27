@@ -2,7 +2,6 @@
 interface TranslateInterface {
 
    public function translate(string str, string dest_lang, string src_lang="") : string; 
-
    public function getTranslationLanguages() : array;
 }
 
@@ -59,7 +58,7 @@ interface SentenceFetchInterface  {
 
 class UniLeipzigSentenceFetcher extends RestClient implements SentenceFetchInterface {
 
-   __construct(UniLeipzigConfig c = new UniLeipzigConfig())
+   __construct( UniLeipzigConfig c = new UniLeipzigConfig() )
    
    fetch(string word, int count=3) :  ResultsIterator
 }
