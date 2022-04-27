@@ -4,17 +4,17 @@ namespace LanguageTools;
 
 // Under development
 class SystranTranslator extends RestClient implements TranslateInterface, DictionaryInterface {
-   
 
    static private array  $trans = array('method' => "POST", 'route' => "/translation/text/translate");
-   static private array  $languages = array('method' => "GET", 'route' => "languages");
+   static private array  $languages = array('method' => "GET", 'route' => "/translation/supportedLanguages");
+   static private array  $lookup = array();
 
    static private $trans_input = 'input';
    static private string $from = "source";
    static private string $to = "target";
 
-   private $headers = array();
-   private $query = array('api-version' => "3.0");
+   private array $headers = array();
+   private array $query = array();
    
    public function __construct(AzureConfig $c = new SystranConfig)
    {
