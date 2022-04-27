@@ -10,17 +10,8 @@ This code requires PHP 8.1 because it uses:
 
 Regular **Markdown** here.
 
-<div hidden>
-```
-@startuml plantuml/class-diagrams
+Test of PlantUML rendering
 
-Alice -> Bob: Hello
-Bob -> Alice: Hi!
-		
-@enduml
-```
-</div>
-
-![](plantuml/class-diagrams.svg)
+![Class Diagrams](https://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/kurt-krueckeberg/plantuml/main/class-diagrams.uml)
 
 Some more markdown.
