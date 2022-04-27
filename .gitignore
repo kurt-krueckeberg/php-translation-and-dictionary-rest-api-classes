@@ -5,3 +5,4 @@ composer.lock
 corpus-db/
 .*.swp
 output*.html
+*Config.php
