@@ -14,7 +14,6 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
    private $query = array('api-version' => "3.0");
    private $headers = array();
    private $json = array();
-
    
    // Azure Translator REST calls can also accept a GUID
    static private function com_create_guid() 
