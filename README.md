@@ -103,7 +103,7 @@ Below is the UML diagram of the [ResultsIterator class](/assets/images/results-i
 The `ResultsIterator` constructor accepts a `callable` parameter that is invoked whenever an element (of the array it contains) is returned (as a result of 
 `current()` , `OffsetSet` or `OffsetGet` being called).
 
-The example-sentences retrieval interfaces and classes (in UML) are:
+The example sentences retrieval interfaces and classes (in UML) are:
 
 ```plantuml
 
