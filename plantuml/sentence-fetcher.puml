@@ -1,0 +1,11 @@
+interface SentenceFetchInterface  { 
+
+   fetch(string word, int count=3) : ResultsIterator;
+}
+
+class UniLeipzigSentenceFetcher extends RestClient implements SentenceFetchInterface {
+
+   __construct( UniLeipzigConfig c = new UniLeipzigConfig() )
+   
+   fetch(string word, int count=3) :  ResultsIterator
+}
