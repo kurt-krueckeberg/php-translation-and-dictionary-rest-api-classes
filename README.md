@@ -74,7 +74,7 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
 
 ### Example-Sentences Interface and Class
 
-Bewlos is the UML [Example Sentences Interfaces and Classes](/assets/images/sentence-fetcher.png) diagram.
+Below is the UML [Example Sentences Interfaces and Classes](/assets/images/sentence-fetcher.png) diagram.
 
 ![UML of Examples Sentence Retrieval Class and Interface Diagram](/assets/images/sentence-fetcher.png)
 
@@ -96,7 +96,7 @@ class UniLeipzigSentenceFetcher extends RestClient implements SentenceFetchInter
 
 ### ResultsIterator Class
 
-Bewlos is the UML diagram of the [ResultsIterator class](/assets/images/results-iterator.png).
+Below is the UML diagram of the [ResultsIterator class](/assets/images/results-iterator.png).
 
 ![UML of ResultIterator](/assets/images/results-iterator.png)
 
