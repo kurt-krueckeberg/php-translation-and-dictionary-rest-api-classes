@@ -86,7 +86,7 @@ function create_html_output(SentenceFetchInterface $fetcher, LanguageTools\Trans
     
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-    create_html_output(RestClient::createRestClient(ClassID::Leipzig), RestClient::createRestClient(ClassID::Azure), $file);
+    create_html_output(RestClient::createRestClient(ClassID::Leipzig), RestClient::createRestClient(ClassID::Systran), $file);
 
   } catch (Exception $e) {
 

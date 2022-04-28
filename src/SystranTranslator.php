@@ -21,7 +21,7 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
     I guess that would mean $thi->query['option'] = ['aaa', 'bbb', ... ];
     */
    
-   public function __construct(AzureConfig $c = new SystranConfig)
+   public function __construct(SystranConfig $c = new SystranConfig)
    {
        parent::__construct($c->endpoint);
 
@@ -29,7 +29,7 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
    }     
 
    // Called by base Translator::translate method 
-   final protected function add_text(string $text)
+   final protected function add_input(string $text)
    {
        $this->query[self::$input] = urlencode($text);  
    }
@@ -65,7 +65,7 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
    {
        $this->setLanguages($dest_lang, $source_lang); // If the language is not utf-8, then the 'options' query parameter must be used to sppecify the endocing.
 
-       $this->add_text($text);
+       $this->add_input($text);
 
        $contents = $this->request(self::$trans['method'], self::$trans['route'], ['headers' => $this->headers, 'query' => $this->query]); 
 
@@ -112,8 +112,8 @@ This is the response TranslationResponse object, according to https://docs.systr
 }
 
 */
-
-       return $obj?????//[0]->translations[0]->text; 
+       print_r($obj);  
+       return $obj;
    }
 
 
@@ -130,6 +130,6 @@ This is the response TranslationResponse object, according to https://docs.systr
 
       $obj = json_decode($contents)[0]; 
     
-      ??  
+      return $obj;
     }
 }
