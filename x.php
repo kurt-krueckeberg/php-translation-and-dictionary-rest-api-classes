@@ -18,7 +18,7 @@ include 'vendor/autoload.php';
 
     $translation = $systran->translate("Handeln", "EN", "DE"); 
        
-    echo "is: " . $translation . "\n";
+     print_r($translation); 
 
   } catch (Exception $e) {
 
