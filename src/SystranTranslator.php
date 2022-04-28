@@ -5,11 +5,11 @@ namespace LanguageTools;
 // Under development
 class SystranTranslator extends RestClient implements TranslateInterface, DictionaryInterface {
 
-   static private array  $trans = array('method' => "POST", 'route' => "/translation/text/translate");
+   static private array  $trans     = array('method' => "POST", 'route' => "/translation/text/translate");
    static private array  $languages = array('method' => "GET", 'route' => "/translation/supportedLanguages");
-   static private array  $lookup = array();
+   static private array  $lookup    = array('method' => "POST", 'route' => "/??????");
 
-   static private $trans_input = 'input';
+   static private $input = 'input'; // todo: Does lookup also use the pam 'input'?
    static private string $from = "source";
    static private string $to = "target";
 
@@ -126,7 +126,7 @@ This is the response TranslationResponse object, according to https://docs.systr
        
       $this->add_input($word);
     
-      $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['headers' => $this->headers, 'query' => $this->query, 'json' => $this->json]);
+      $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['headers' => $this->headers, 'query' => $this->query]);
 
       $obj = json_decode($contents)[0]; 
     
