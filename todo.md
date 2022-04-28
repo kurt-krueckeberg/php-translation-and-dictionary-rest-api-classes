@@ -1,4 +1,6 @@
-- WebPageCreatr currently creates its own file name that is quite long. Maybe shortened it somehow.. 
+- Can't get SystranTranslator is authenticate
+
+- WebPageCreator currently creates its own file name that is quite long. Maybe shortened it somehow.. 
 
 - Add plantuml to documentation using the PhUML tool that I have bookmarked. It seems very good.
 
