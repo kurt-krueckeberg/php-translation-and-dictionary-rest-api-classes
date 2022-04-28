@@ -14,11 +14,12 @@ include 'vendor/autoload.php';
 
 function check_args(int $argc, array $argv)
 {
-  if ($argc < 2)
-      die ("Enter file with the list of words follow by the name of the output html file.\n");
+  if ($argc < 3)
+      die ("Enter file with the list of words follow by the name of the output html file (omitting the .html extension).\n");
 
   if (!file_exists($argv[1]))
        die("Input file " . $argv[1] . " does not exist!\n");
+  
 }
 
 function write_definitions(WebPageCreator $creator, string |array|LanguageTools\ResultsIterator $defns)
@@ -42,12 +43,13 @@ function write_definitions(WebPageCreator $creator, string |array|LanguageTools\
         }
     }
 }
+
 /*
  * PHP 8.1 required: The 2nd parameter type is the intersection of two interface types. 
  */
-function create_html_output(SentenceFetchInterface $fetcher, LanguageTools\TranslateInterface & LanguageTools\DictionaryInterface $translator, File $file)
+function create_html_output(SentenceFetchInterface $fetcher, LanguageTools\TranslateInterface & LanguageTools\DictionaryInterface $translator, File $file, string $fname)
 { 
-   $creator = new WebpageCreator();
+   $creator = new WebpageCreator($fname);
   
    foreach ($file as $word) {
   
@@ -86,7 +88,7 @@ function create_html_output(SentenceFetchInterface $fetcher, LanguageTools\Trans
     
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-    create_html_output(RestClient::createRestClient(ClassID::Leipzig), RestClient::createRestClient(ClassID::Systran), $file);
+    create_html_output(RestClient::createRestClient(ClassID::Leipzig), RestClient::createRestClient(ClassID::Azure), $file, $argv[2]);
 
   } catch (Exception $e) {
 

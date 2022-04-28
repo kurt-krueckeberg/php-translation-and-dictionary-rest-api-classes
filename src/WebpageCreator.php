@@ -9,8 +9,8 @@ use \SplFileObject as File;
 
 class WebpageCreator {
 
-     private $file;
-//   private $is_closed; declared on constructor.
+     private string $file;
+     private bool $is_closed; 
 
 static private $header =<<<EOH
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
@@ -105,9 +105,13 @@ static private $footer =<<<EOF
 </html>
 EOF;
 
-   public function __construct(private $is_closed = false)
+   public function __construct(string $name)
    {
-      $fname = "output_" . date("F_j_Y_h_i_s_A") . ".html"; // date("m-d-y:H:i:s") 
+      //$fname = "output_" . date("F_j_Y_h_i_s_A") . ".html"; // date("m-d-y:H:i:s") 
+
+      $fname = $name . ".html"; 
+
+      $this->is_closed = false; 
 
       $this->file = new File($fname, "w");
 
