@@ -10,6 +10,7 @@
 
 - [Dictionary lookup]https://docs.systran.net/translateAPI/dictionary)
 
+- [User Console](https://trs.systran.net/user)
 
 API endpoint: https://api-translate.systran.net
 
