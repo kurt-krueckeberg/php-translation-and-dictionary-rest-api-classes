@@ -5,7 +5,7 @@ namespace LanguageTools;
 // Under development
 class SystranTranslator extends RestClient implements TranslateInterface, DictionaryInterface {
 
-   static private array  $trans     = array('method' => "POST", 'route' => "/translation/text/translate");
+   static private array  $trans     = array('method' => "POST", 'route' => "translation/text/translate");
    static private array  $languages = array('method' => "GET", 'route' => "/translation/supportedLanguages");
    static private array  $lookup    = array('method' => "POST", 'route' => "/??????");
 

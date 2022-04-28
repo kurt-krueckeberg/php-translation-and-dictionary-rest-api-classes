@@ -8,9 +8,9 @@
 
 - Main API [start page](https://docs.systran.net/translateAPI/)
 
-- [Systrans Translation API]https://docs.systran.net/translateAPI/translation)
+- [Systrans Translation API](https://docs.systran.net/translateAPI/translation)
 
-- [Dictionary lookup]https://docs.systran.net/translateAPI/dictionary)
+- [Dictionary lookup](https://docs.systran.net/translateAPI/dictionary)
 
 - [User Console](https://trs.systran.net/user)
 
