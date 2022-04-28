@@ -1,4 +1,4 @@
-- Can't get SystranTranslator to authenticate. 
+- Can't get SystranTranslator to authenticate. Do I need to urlencode() it? 
   Question: Do the other transaltors and dictionary-lookups authentical properly? Does the header key need to be 'Authorization' => "first-key actual-key-here"?
 
 - WebPageCreator currently creates its own file name that is quite long. Maybe shortened it somehow.. 

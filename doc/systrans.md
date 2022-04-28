@@ -9,3 +9,17 @@
 - [Systrans Translation API]https://docs.systran.net/translateAPI/translation)
 
 - [Dictionary lookup]https://docs.systran.net/translateAPI/dictionary)
+
+
+API endpoint: https://api-translate.systran.net
+
+translation route: translation/text/translate
+translation query parms:
+
+- input - the string to translation
+
+- source - the source language
+
+- target - the target language
+
+dictionary lookup route:
