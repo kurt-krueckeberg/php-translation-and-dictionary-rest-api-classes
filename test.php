@@ -3,18 +3,23 @@ declare(strict_types=1);
 use \SplFileObject as File;
 use LanguageTools\RestClient;
 use LanguageTools\TranslateInterface;
+use LanguageTools\DictionaryInterface;
 use LanguageTools\SentenceFetchInterface;
 use LanguageTools\ClassID;
 
 include 'vendor/autoload.php';
 
-function test(File $file, TranslateInterface $translator, SentenceFetchInterface $fetcher)
+function test(File $file, TranslateInterface & DictionaryInterface $translator, SentenceFetchInterface $fetcher)
 {
 
   foreach ($file as $word) {
   
+      echo "Definitions '$word' :\n";
+
+      $translator->lookup($word, "DE", "EN");
+ 
       echo "Fetching '$word' examples:\n";
-     
+
       // Fetch sentences and translate them.          
       foreach ( $fetcher->fetch($word, 3) as $sentence) {
 

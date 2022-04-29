@@ -6,8 +6,12 @@ namespace LanguageTools;
 class SystranTranslator extends RestClient implements TranslateInterface, DictionaryInterface {
 
    static private array  $trans     = array('method' => "POST", 'route' => "translation/text/translate");
-   static private array  $languages = array('method' => "GET", 'route' => "/translation/supportedLanguages");
-   static private array  $lookup    = array('method' => "POST", 'route' => "/??????");
+
+   static private array  $dict_languages = array('method' => "GET", 'route' => "resources/dictionary/supportedLanguages");
+
+   static private array  $trans_languages = array('method' => "???", 'route' => "???????????????????????????????????????");
+
+   static private array  $lookup  = array('method' => "GET", 'route' => "resources/dictionary/lookup");
 
    static private $input = 'input'; 
    static private string $from = "source";
@@ -45,7 +49,7 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
 
    final public function getDictionaryLanguages() : array
    {
-      $contents = $this->request(self::$languages['method'], self::$languages['route'],  ['headers' => $this->headers, 'query' => $this->query]);
+      $contents = $this->request(self::$dict_languages['method'], self::$dict_languages['route'],  ['headers' => $this->headers, 'query' => $this->query]);
              
       return json_decode($contents, true);    
    } 
@@ -124,7 +128,7 @@ This is the response TranslationResponse object, according to https://docs.systr
     */
    final public function lookup(string $word, string $src_lang, string $dest_lang) : string 
    {      
-      $this->setLanguages($dest_lang, $src_lang); 
+      $this->setLanguages(strtolower($dest_lang), strtolower($src_lang)); 
        
       $this->add_input($word);
     
@@ -132,6 +136,6 @@ This is the response TranslationResponse object, according to https://docs.systr
 
       $obj = json_decode($contents)[0]; 
     
-      return $obj;
+      print_r( $obj );
     }
 }
