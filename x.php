@@ -9,9 +9,9 @@ include 'vendor/autoload.php';
 
   try {
    
-    $trans = RestClient::createRestClient(ClassID::Deepl);
+    $trans = RestClient::createRestClient(ClassID::Systran);
 
-    $translation = $trans->translate("Handeln", "EN", "DE"); 
+    $translation = $trans->translate("ändern", "EN", "DE"); 
        
      print_r($translation); 
 
