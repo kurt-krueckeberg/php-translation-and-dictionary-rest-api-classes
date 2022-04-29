@@ -1,4 +1,4 @@
-- Systran require lanauge coew to be lowercase. What do the other classes require? Will both lowe- and uppercase work with them?
+- Systran's dictionary lookup gives a wealth of information. Instead the Azue one-word defintions, it gives full-blown difination entry0like reponses.
  
 - WebPageCreator currently creates its own file name that is quite long. Maybe shortened it somehow.. 
 

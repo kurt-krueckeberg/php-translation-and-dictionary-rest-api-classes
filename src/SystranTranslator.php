@@ -134,8 +134,27 @@ This is the response TranslationResponse object, according to https://docs.systr
     
       $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['headers' => $this->headers, 'query' => $this->query]);
 
-      $obj = json_decode($contents)[0]; 
+      $obj = json_decode($contents); 
+      //var_dump($obj);
+      
+      echo "\n=================\n";
+          
+      $output = $obj->outputs[0]->output;
+      
+      
+      //todo: Add this later: $this->process_definitions($output->matches)
+          
+      return "test";
+    }
     
-      print_r( $obj );
+    private function process_definitions(object $matches) // todo: Define return value later.
+    {
+       foreach($output->matches as $match) {
+          
+           print_r($match);
+          
+           echo "\n------------------\n";
+       }  
+       return "test";   
     }
 }
