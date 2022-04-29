@@ -204,7 +204,7 @@ Array
                                 (
                                     [0] => stdClass Object
                                         (
-                                            [source] => Handeln der EU
+                                            [source] => Handeln der EU  <-- 
                                             [target] => action of the eu
                                         )
 
@@ -230,7 +230,7 @@ Array
                                     [8] => Tätigkeit
                                 )
 
-                            [lemma] => action
+                            [lemma] => action  <-- definition
                             [rank] => 100
                             [synonym] => 
                             [variant] => 
@@ -349,7 +349,7 @@ Array
         (
             [auto_complete] => 
             [model_name] => mono-deen.mod
-            [source] => stdClass Object
+            [source] => stdClass Object <-- This is still a 'source'-related object.
                 (
                     [inflection] => 
                     [info] => 
@@ -377,7 +377,7 @@ Array
                                     [1] => aushandeln
                                 )
 
-                            [lemma] => to negotiate
+                            [lemma] => to negotiate <-- definition?
                             [rank] => 100
                             [synonym] => 
                             [variant] => 
@@ -391,7 +391,7 @@ Array
         (
             [auto_complete] => 
             [model_name] => mono-deen.mod
-            [other_expressions] => Array
+            [other_expressions] => Array  <-- Note 'other_expressions'. This is something other than standard definitions.
                 (
                     [0] => stdClass Object
                         (
@@ -440,7 +440,7 @@ Array
                             [context] => 
                             [domain] => 
                             [entry_id] => 44824
-                            [expressions] => Array
+                            [expressions] => Array  <-- Here are 'expressions', instances of, the 'other_expressions'
                                 (
                                     [0] => stdClass Object
                                         (
