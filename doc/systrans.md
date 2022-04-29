@@ -2,7 +2,7 @@
 
 [Systran.net](https://www.systran.net/en/translate/)
 
-[User Login](https://translate.systran.net/user)
+Use this [User Login](https://translate.systran.net/user) page. Do not sign in from www.systran.ent, which for reason unknown to md display incorrect and incomplete infomration.
 
 ## REST API Dcoumentation
 
