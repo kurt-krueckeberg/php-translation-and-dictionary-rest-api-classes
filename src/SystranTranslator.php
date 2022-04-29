@@ -115,11 +115,6 @@ This is the response TranslationResponse object, according to https://docs.systr
 }
 
 */
-       /*
-        * todo: Is the array outputs always only one element?
-        */
-       print_r ($obj);
-               
        return urldecode($obj->outputs[0]->output);
    }
 
