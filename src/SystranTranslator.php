@@ -89,7 +89,7 @@ https://docs.systran.net/translateAPI/translation/#tag-Translation shows the lay
 The laayout of: $obj->outputs[0]->output->matches, where $obj is: 'json_decode($contents)' is given in the documentation at 
 https://docs.systran.net/translateAPI/dictionary as:
 
-"matches": [   matches is an array of one or more elements. Each has these properties.
+"matches": [  <-- array of 1 to N elements.
   {
     "auto_complete": false,
     "model_name": "mono-enfr.mod",
@@ -115,7 +115,7 @@ https://docs.systran.net/translateAPI/dictionary as:
         "target": "grand chef"
       }
     ],
-    "source": {
+    "source": {    <-- This is not an array
       "inflection": "(pl:dogs)",
       "info": "",
       "lemma": "dog",
@@ -123,7 +123,7 @@ https://docs.systran.net/translateAPI/dictionary as:
       "pos": "noun",
       "term": "dog"
     },
-    "targets": [
+    "targets": [ <-- sub array of 1 to N elements
       {
         "context": "",
         "domain": "",
@@ -175,7 +175,7 @@ https://docs.systran.net/translateAPI/dictionary as:
   }
 ]
 
-Here is an acutal print_r($matches) for the word "Handeln". The $matches array size is: todo: finish comments
+`matches` response array returned for `lookup("Handeln", "de", "en")`:
 
 Array
 (
