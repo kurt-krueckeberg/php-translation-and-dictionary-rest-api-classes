@@ -5,12 +5,11 @@ namespace LanguageTools;
 // SeeDeepl-doc.md 
 class DeeplTranslator extends RestClient implements TranslateInterface {
    
-   static private string $trans_route = "v2/translate";     
-   static private string $languages_route = "v2/languages";     
-
    static private string $method = "GET";    
    static private string $from_key = "source_lang"; 
    static private string $to_key = "target_lang";  
+   static private string $trans_route = "v2/translate";     
+   static private string $languages_route = "v2/languages";     
 
    private $query = array();
    private $headers = array();

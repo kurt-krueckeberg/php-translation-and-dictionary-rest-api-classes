@@ -9,7 +9,7 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
    static private array  $languages = array('method' => "GET", 'route' => "/translation/supportedLanguages");
    static private array  $lookup    = array('method' => "POST", 'route' => "/??????");
 
-   static private $input = 'input'; // todo: Does lookup also use the pam 'input'?
+   static private $input = 'input'; 
    static private string $from = "source";
    static private string $to = "target";
 
@@ -51,8 +51,7 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
    } 
 
   // If there is no source language, the source langauge will be auto-detected.
-  // todo: 
-  // The default expected encoding is utf-8. IF it is not utf-8 the 'options' paramter must be used to supply the endocing.
+  // The default expected encoding is utf-8. If it is not utf-8, use the 'options' paramter to specify the endocing.
    protected function setLanguages(string $dest_lang, $source_lang="")
    {
       if ($source_lang !== "") 
@@ -61,9 +60,13 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
       $this->query[self::$to] = $dest_lang; 
    }
 
+   /*
+    *  Systran requires the language codes to be lowercase.
+    *  If the language is not utf-8, then you must speciy the encoding using the 'options' parameter.
+    */
    final public function translate(string $text, string $dest_lang, $source_lang="") : string 
    {
-       $this->setLanguages($dest_lang, $source_lang); // If the language is not utf-8, then the 'options' query parameter must be used to sppecify the endocing.
+       $this->setLanguages(strtolower($dest_lang), strtolower($source_lang)); 
 
        $this->add_input($text);
 

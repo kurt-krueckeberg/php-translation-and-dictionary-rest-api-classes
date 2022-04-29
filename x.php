@@ -1,22 +1,17 @@
 <?php
 declare(strict_types=1);
 use \SplFileObject as File;
-use LanguageTools\SentenceFetcher;
-use LanguageTools\WebpageCreator;
 use LanguageTools\RestClient;
 use LanguageTools\TranslateInterface;
-use LanguageTools\DictionaryInterface;
-use LanguageTools\SentenceFetchInterface;
-use LanguageTools\Systran;
 use LanguageTools\ClassID;
 
 include 'vendor/autoload.php';
 
   try {
    
-    $systran = RestClient::createRestClient(ClassID::Systran);
+    $trans = RestClient::createRestClient(ClassID::Deepl);
 
-    $translation = $systran->translate("Handeln", "EN", "DE"); 
+    $translation = $trans->translate("Handeln", "EN", "DE"); 
        
      print_r($translation); 
 
