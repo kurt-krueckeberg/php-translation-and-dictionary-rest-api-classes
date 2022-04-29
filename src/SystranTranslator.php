@@ -78,53 +78,627 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
 
        $obj = json_decode($contents);
 /*
-This is the response TranslationResponse object, according to https://docs.systran.net/translateAPI/translation/#tag-Translation
-
-{
-  "error": {
-    "message": "Internal error",
-    "statusCode": 500,
-    "info": "object"
-  },
-  "requestId": "55b753d87f2d682a607b8be1",
-  "outputs": [
-    {
-      "error": "Internal error",
-      "info": {
-        "lid": {
-          "language": "en",
-          "confidence": 0.9260174036026001
-        },
-        "selected_routes": [
-          {
-            "routes": [
-              {
-                "profileId": "6b80a3f5-aff2-41ba-a5ce-21603738432e",
-                "queue": "6b80a3f5-aff2-41ba-a5ce-21603738432e",
-                "service": "Translate_en_fr",
-                "version": 2,
-                "selectors": "object"
-              }
-            ],
-            "stepName": "filter-import"
-          }
-        ],
-        "stats": "object"
-      },
-      "output": "le chien",   <--------- Translation
-      "backTranslation": "the dog",
-      "source": "the dog"
-    }
-  ]
-}
-
-*/
+https://docs.systran.net/translateAPI/translation/#tag-Translation shows the layout of the translation response object
+ */
        return urldecode($obj->outputs[0]->output);
    }
 
 
    /*
-    *   Documentation at https://docs.systran.net/translateAPI/dictionary/
+
+The laayout of: $obj->outputs[0]->output->matches, where $obj is: 'json_decode($contents)' is given in the documentation at 
+https://docs.systran.net/translateAPI/dictionary as:
+
+"matches": [   matches is an array of one or more elements. Each has these properties.
+  {
+    "auto_complete": false,
+    "model_name": "mono-enfr.mod",
+    "other_expressions": [
+      {
+        "context": "",
+        "source": "borax dog",
+        "target": "borax chez le chien"
+      },
+      {
+        "context": "",
+        "source": "lucky dog",
+        "target": "veinard"
+      },
+      {
+        "context": "",
+        "source": "sea dog",
+        "target": "loup de mer"
+      },
+      {
+        "context": "",
+        "source": "top dog",
+        "target": "grand chef"
+      }
+    ],
+    "source": {
+      "inflection": "(pl:dogs)",
+      "info": "",
+      "lemma": "dog",
+      "phonetic": "[dɑɡ]",
+      "pos": "noun",
+      "term": "dog"
+    },
+    "targets": [
+      {
+        "context": "",
+        "domain": "",
+        "entry_id": 4987,
+        "expressions": [
+          {
+            "source": "small dog",
+            "target": "petit chien"
+          },
+          {
+            "source": "treated dogs",
+            "target": "chien traité"
+          },
+          {
+            "source": "large dog",
+            "target": "grand chien"
+          },
+          {
+            "source": "male dog",
+            "target": "chien mâle"
+          }
+        ],
+        "info": "",
+        "invmeanings": [
+          "dog"
+        ],
+        "lemma": "chien",
+        "rank": "95",
+        "synonym": "",
+        "variant": ""
+      },
+      {
+        "context": "",
+        "domain": "",
+        "entry_id": 4987,
+        "expressions": [],
+        "info": "",
+        "invmeanings": [
+          "bitch",
+          "dog",
+          "slut"
+        ],
+        "lemma": "chienne",
+        "rank": "1",
+        "synonym": "",
+        "variant": ""
+      }
+    ]
+  }
+]
+
+Here is an acutal print_r($matches) for the word "Handeln". The $matches array size is: todo: finish comments
+
+Array
+(
+    [0] => stdClass Object
+        (
+            [auto_complete] => 
+            [model_name] => mono-deen.mod
+            [source] => stdClass Object
+                (
+                    [inflection] => 
+                    [info] => 
+                    [lemma] => Handeln
+                    [phonetic] => 
+                    [pos] => noun
+                    [term] => Handeln
+                )
+
+            [targets] => Array
+                (
+                    [0] => stdClass Object
+                        (
+                            [context] => 
+                            [domain] => 
+                            [entry_id] => 13951
+                            [expressions] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [source] => Handeln der EU
+                                            [target] => action of the eu
+                                        )
+
+                                    [1] => stdClass Object
+                                        (
+                                            [source] => Handeln der Kommission
+                                            [target] => action of the commission
+                                        )
+
+                                )
+
+                            [info] => 
+                            [invmeanings] => Array
+                                (
+                                    [0] => Maßnahme
+                                    [1] => Aktion
+                                    [2] => Vorgehen
+                                    [3] => Tat
+                                    [4] => Klage
+                                    [5] => Handlung
+                                    [6] => Schritt
+                                    [7] => Aktivität
+                                    [8] => Tätigkeit
+                                )
+
+                            [lemma] => action
+                            [rank] => 100
+                            [synonym] => 
+                            [variant] => 
+                        )
+
+                )
+
+        )
+
+    [1] => stdClass Object
+        (
+            [auto_complete] => 
+            [model_name] => mono-deen.mod
+            [source] => stdClass Object
+                (
+                    [inflection] => (aushandelt/aushandelte/ausgehandelt)
+                    [info] => 
+                    [lemma] => aushandeln
+                    [phonetic] => 
+                    [pos] => verb
+                    [term] => Handeln
+                )
+
+            [targets] => Array
+                (
+                    [0] => stdClass Object
+                        (
+                            [context] => Abkommen, Fischerei_Abkommen, Kompromiss, Vertrag
+                            [domain] => 
+                            [entry_id] => 40406
+                            [expressions] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [source] => mit dem rat ausgehandelt
+                                            [target] => negotiated with the council
+                                        )
+
+                                    [1] => stdClass Object
+                                        (
+                                            [source] => Kompromiss aushandeln
+                                            [target] => to negotiate compromises
+                                        )
+
+                                )
+
+                            [info] => 
+                            [invmeanings] => Array
+                                (
+                                    [0] => verhandeln
+                                    [1] => aus~handeln
+                                )
+
+                            [lemma] => to negotiate
+                            [rank] => 96
+                            [synonym] => 
+                            [variant] => 
+                        )
+
+                    [1] => stdClass Object
+                        (
+                            [context] => 
+                            [domain] => 
+                            [entry_id] => 40406
+                            [expressions] => Array
+                                (
+                                )
+
+                            [info] => 
+                            [invmeanings] => Array
+                                (
+                                    [0] => vermitteln
+                                    [1] => herbeiführen
+                                    [2] => einfädeln
+                                )
+
+                            [lemma] => to broker
+                            [rank] => 2
+                            [synonym] => 
+                            [variant] => 
+                        )
+
+                    [2] => stdClass Object
+                        (
+                            [context] => 
+                            [domain] => 
+                            [entry_id] => 40406
+                            [expressions] => Array
+                                (
+                                )
+
+                            [info] => 
+                            [invmeanings] => Array
+                                (
+                                    [0] => ausarbeiten
+                                    [1] => erarbeiten
+                                    [2] => herausfinden
+                                    [3] => trainieren
+                                    [4] => herausarbeiten
+                                    [5] => funktionieren
+                                    [6] => klappen
+                                    [7] => draussen arbeiten
+                                )
+
+                            [lemma] => to work out
+                            [rank] => 1
+                            [synonym] => 
+                            [variant] => 
+                        )
+
+                )
+
+        )
+
+    [2] => stdClass Object
+        (
+            [auto_complete] => 
+            [model_name] => mono-deen.mod
+            [source] => stdClass Object
+                (
+                    [inflection] => 
+                    [info] => 
+                    [lemma] => aus~handeln
+                    [phonetic] => 
+                    [pos] => verb
+                    [term] => Handeln
+                )
+
+            [targets] => Array
+                (
+                    [0] => stdClass Object
+                        (
+                            [context] => Abkommen
+                            [domain] => 
+                            [entry_id] => 40556
+                            [expressions] => Array
+                                (
+                                )
+
+                            [info] => 
+                            [invmeanings] => Array
+                                (
+                                    [0] => verhandeln
+                                    [1] => aushandeln
+                                )
+
+                            [lemma] => to negotiate
+                            [rank] => 100
+                            [synonym] => 
+                            [variant] => 
+                        )
+
+                )
+
+        )
+
+    [3] => stdClass Object
+        (
+            [auto_complete] => 
+            [model_name] => mono-deen.mod
+            [other_expressions] => Array
+                (
+                    [0] => stdClass Object
+                        (
+                            [context] => 
+                            [source] => entschlossen handeln
+                            [target] => to take decisive action
+                        )
+
+                    [1] => stdClass Object
+                        (
+                            [context] => 
+                            [source] => richtig handeln
+                            [target] => to do well
+                        )
+
+                    [2] => stdClass Object
+                        (
+                            [context] => 
+                            [source] => sofort handeln
+                            [target] => to take action straight away
+                        )
+
+                    [3] => stdClass Object
+                        (
+                            [context] => 
+                            [source] => endlich handeln
+                            [target] => to finally take action
+                        )
+
+                )
+
+            [source] => stdClass Object
+                (
+                    [inflection] => (handelt/handelte/gehandelt)
+                    [info] => 
+                    [lemma] => handeln
+                    [phonetic] => 
+                    [pos] => verb
+                    [term] => Handeln
+                )
+
+            [targets] => Array
+                (
+                    [0] => stdClass Object
+                        (
+                            [context] => 
+                            [domain] => 
+                            [entry_id] => 44824
+                            [expressions] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [source] => gemeinsam handeln
+                                            [target] => to act together
+                                        )
+
+                                    [1] => stdClass Object
+                                        (
+                                            [source] => jetzt handeln
+                                            [target] => to act now
+                                        )
+
+                                    [2] => stdClass Object
+                                        (
+                                            [source] => schnell handeln
+                                            [target] => to act quickly
+                                        )
+
+                                    [3] => stdClass Object
+                                        (
+                                            [source] => entsprechend handeln
+                                            [target] => to act accordingly
+                                        )
+
+                                )
+
+                            [info] => 
+                            [invmeanings] => Array
+                                (
+                                    [0] => agieren
+                                    [1] => fungieren
+                                    [2] => wirken
+                                    [3] => auftreten
+                                    [4] => reagieren
+                                    [5] => vorgehen
+                                    [6] => sich verhalten
+                                    [7] => dienen
+                                )
+
+                            [lemma] => to act
+                            [rank] => 87
+                            [synonym] => 
+                            [variant] => 
+                        )
+
+                    [1] => stdClass Object
+                        (
+                            [context] => 
+                            [domain] => 
+                            [entry_id] => 44824
+                            [expressions] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [source] => international gehandelt
+                                            [target] => traded internationally
+                                        )
+
+                                    [1] => stdClass Object
+                                        (
+                                            [source] => weltweit gehandelt
+                                            [target] => traded worldwide
+                                        )
+
+                                )
+
+                            [info] => 
+                            [invmeanings] => Array
+                                (
+                                    [0] => austauschen
+                                    [1] => Handel treiben
+                                    [2] => tauschen
+                                    [3] => vermarkten
+                                    [4] => betreiben Handel
+                                )
+
+                            [lemma] => to trade
+                            [rank] => 4
+                            [synonym] => 
+                            [variant] => 
+                        )
+
+                    [2] => stdClass Object
+                        (
+                            [context] => 
+                            [domain] => 
+                            [entry_id] => 44824
+                            [expressions] => Array
+                                (
+                                )
+
+                            [info] => 
+                            [invmeanings] => Array
+                                (
+                                    [0] => 
+                                )
+
+                            [lemma] => to take action
+                            [rank] => 4
+                            [synonym] => 
+                            [variant] => 
+                        )
+
+                    [3] => stdClass Object
+                        (
+                            [context] => 
+                            [domain] => 
+                            [entry_id] => 44824
+                            [expressions] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [source] => unter normalen marktwirtschaftlichen Bedingungen handeln
+                                            [target] => to operate under normal market-economy conditions
+                                        )
+
+                                )
+
+                            [info] => 
+                            [invmeanings] => Array
+                                (
+                                    [0] => funktionieren
+                                    [1] => betreiben
+                                    [2] => arbeiten
+                                    [3] => operieren
+                                    [4] => agieren
+                                    [5] => bedienen
+                                    [6] => wirken
+                                    [7] => fungieren
+                                )
+
+                            [lemma] => to operate
+                            [rank] => 2
+                            [synonym] => 
+                            [variant] => 
+                        )
+
+                )
+
+        )
+
+    [4] => stdClass Object
+        (
+            [auto_complete] => 
+            [model_name] => mono-deen.mod
+            [other_expressions] => Array
+                (
+                    [0] => stdClass Object
+                        (
+                            [context] => 
+                            [source] => um staatliche Beihilfen sich handeln
+                            [target] => to constitute state aid
+                        )
+
+                )
+
+            [source] => stdClass Object
+                (
+                    [inflection] => (handelt/handelte/gehandelt)
+                    [info] => 
+                    [lemma] => sich handeln
+                    [phonetic] => 
+                    [pos] => verb
+                    [term] => Handeln
+                )
+
+            [targets] => Array
+                (
+                    [0] => stdClass Object
+                        (
+                            [context] => 
+                            [domain] => 
+                            [entry_id] => 44825
+                            [expressions] => Array
+                                (
+                                )
+
+                            [info] => 
+                            [invmeanings] => Array
+                                (
+                                    [0] => sich beziehen
+                                    [1] => betreffen
+                                    [2] => verbinden
+                                    [3] => zusammenhängen
+                                    [4] => beziehen
+                                    [5] => im Zusammenhang stehen
+                                    [6] => sich erstrecken
+                                    [7] => se befassen
+                                )
+
+                            [lemma] => to relate
+                            [rank] => 0
+                            [synonym] => 
+                            [variant] => 
+                        )
+
+                    [1] => stdClass Object
+                        (
+                            [context] => 
+                            [domain] => 
+                            [entry_id] => 44825
+                            [expressions] => Array
+                                (
+                                )
+
+                            [info] => 
+                            [invmeanings] => Array
+                                (
+                                    [0] => sich belaufen
+                                    [1] => betragen
+                                    [2] => ausmachen
+                                    [3] => hinaus~laufen
+                                    [4] => hinauslaufen
+                                    [5] => belaufen
+                                    [6] => aus~machen
+                                )
+
+                            [lemma] => to amount
+                            [rank] => 0
+                            [synonym] => 
+                            [variant] => 
+                        )
+
+                    [2] => stdClass Object
+                        (
+                            [context] => 
+                            [domain] => 
+                            [entry_id] => 44825
+                            [expressions] => Array
+                                (
+                                )
+
+                            [info] => 
+                            [invmeanings] => Array
+                                (
+                                    [0] => umfassen
+                                    [1] => bestehen
+                                    [2] => bestehen aus
+                                    [3] => sich erstrecken
+                                    [4] => zielen
+                                )
+
+                            [lemma] => to consist of
+                            [rank] => 0
+                            [synonym] => 
+                            [variant] => 
+                        )
+
+                )
+
+        )
+
+)
+
+*/
+
+
     */
    final public function lookup(string $word, string $src_lang, string $dest_lang) : string 
    {      
@@ -139,7 +713,8 @@ This is the response TranslationResponse object, according to https://docs.systr
       
       echo "\n=================\n";
           
-      $output = $obj->outputs[0]->output;
+      $matches = $obj->outputs[0]->output->matches;
+      print_r($matches);
       
       
       //todo: Add this later: $this->process_definitions($output->matches)
