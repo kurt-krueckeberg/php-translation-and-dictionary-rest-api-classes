@@ -29,7 +29,7 @@ todo: complete this.
 
 The UML [Dictionary and Translation classes and Interfaces](/assets/images/class-diagrams.png) diagram (click to enlarge).
 
-![UML Dictionary and Translation Class and Interface Diagram](/assets/images/dict-trans-classes.png)
+![UML Dictionary and Translation Class and Interface Diagram](/assets/images/class-diagrms.png)
 
 The dictionary and translation classes and interfaces in UML are:
 
