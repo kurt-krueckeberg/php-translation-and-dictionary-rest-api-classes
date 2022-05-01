@@ -198,7 +198,7 @@ Array
                                     [1] => aus~handeln
                                 )
 
-                            [lemma] => to negotiate   <-- $target->lemma is the definition as explained above.
+                            [lemma] => to negotiate   <-- $target->lemma as explained above $target->lemma' is the definition.
                             [rank] => 96
                             [synonym] => 
                             [variant] => 
@@ -259,21 +259,21 @@ Array
 
         )
 
-    [2] => stdClass Object
+    [2] => stdClass Object      $matches[2] which is current $match
         (
             [auto_complete] => 
             [model_name] => mono-deen.mod
-            [source] => stdClass Object <-- This is still a 'source'-related object.
+            [source] => stdClass Object 
                 (
                     [inflection] => 
                     [info] => 
-                    [lemma] => aus~handeln  <---
+                    [lemma] => aus~handeln  <--- as above
                     [phonetic] => 
-                    [pos] => verb           <----
+                    [pos] => verb           <---- as above
                     [term] => Handeln
                 )
 
-            [targets] => Array
+            [targets] => Array              <--- as above...  
                 (
                     [0] => stdClass Object
                         (
