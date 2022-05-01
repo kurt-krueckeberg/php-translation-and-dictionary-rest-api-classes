@@ -6,3 +6,4 @@ corpus-db/
 .*.swp
 output*.html
 *Config.php
+.*.swp
