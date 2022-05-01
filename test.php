@@ -9,7 +9,7 @@ use LanguageTools\ClassID;
 
 include 'vendor/autoload.php';
 
-function test(File $file, TranslateInterface & DictionaryInterface $translator, SentenceFetchInterface $fetcher)
+function test(File $file, DictionaryInterface $translator, SentenceFetchInterface $fetcher)
 {
 
   foreach ($file as $word) {
@@ -17,7 +17,9 @@ function test(File $file, TranslateInterface & DictionaryInterface $translator, 
       echo "Definitions '$word' :\n";
 
       $translator->lookup($word, "DE", "EN");
- 
+
+
+/* ************ 
       echo "Fetching '$word' examples:\n";
 
       // Fetch sentences and translate them.          
@@ -33,12 +35,13 @@ function test(File $file, TranslateInterface & DictionaryInterface $translator, 
            
       }
       echo "\n";
+*/
    }
 }
 
   try {
    
-    $trans = RestClient::createRestClient(ClassID::Systran);
+    $trans = RestClient::createRestClient(ClassID::Pons);
     $fetcher = RestClient::createRestClient(ClassID::Leipzig);
  
     $file =  new File("short-list.txt");

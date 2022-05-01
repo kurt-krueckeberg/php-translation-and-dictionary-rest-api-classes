@@ -1,0 +1,781 @@
+Definitions 'Handeln' :
+
+stdClass Object
+(
+    [lang] => de
+    [hits] => Array                    <-- foreach($opbj->hits as $hit) { //....
+        (
+            [0] => stdClass Object     <--- $hits[0] == $hit
+                (
+                    [type] => entry
+                    [opendict] => 
+                    [roms] => Array    <-- $hit->roms as $rom
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [headword] => Han·deln
+                                    [headword_full] => Han<span class="separator">·</span>deln <span class="flexion">&lt;-s&gt;</span> <span class="phonetics">[ˈhandl̩n]</span> <span class="wordclass"><acronym title="noun">N</acronym></span> <span class="genus"><acronym title="neuter">nt</acronym></span> <span class="info">kein <acronym title="plural">pl</acronym></span>
+                                    [wordclass] => noun
+                                    [arabs] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [header] => 1. Handeln <span class="sense">(Feilschen)</span>:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <strong class="headword">Handeln</strong>
+                                                                    [target] => haggling
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [header] => 2. Handeln <span class="sense">(das Handeltreiben)</span>:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <strong class="headword">Handeln</strong>
+                                                                    [target] => trading
+                                                                )
+
+                                                            [1] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction">das <strong class="tilde">Handeln</strong> mit <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span></span>
+                                                                    [target] => trading <acronym title="something">sth</acronym>
+                                                                )
+
+                                                            [2] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">das <strong class="tilde">Handeln</strong> mit Drogen ist verboten</span>
+                                                                    [target] => drug trafficking is against the law
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [2] => stdClass Object
+                                                (
+                                                    [header] => 3. Handeln <span class="sense">(Verhalten)</span>:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <strong class="headword">Handeln</strong>
+                                                                    [target] => behaviour <span class="target">[<span class="or"><acronym title="or">or</acronym></span> <span class="region"><acronym title="American English" class="Am">Am</acronym></span> -or]</span>
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [3] => stdClass Object
+                                                (
+                                                    [header] => 4. Handeln <span class="sense">(das Tätigwerden)</span>:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <strong class="headword">Handeln</strong>
+                                                                    [target] => action
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [4] => stdClass Object
+                                                (
+                                                    [header] => 5. Handeln <span class="topic"><acronym title="law">LAW</acronym></span> <span class="sense">(Tun)</span>:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <strong class="headword">Handeln</strong>
+                                                                    [target] => acting
+                                                                )
+
+                                                            [1] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation"> <strong class="tilde">Handeln</strong> auf eigene Gefahr</span>
+                                                                    [target] => acting at one&#39;s own risk
+                                                                )
+
+                                                            [2] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation"> <strong class="tilde">Handeln</strong> im eigenen Namen</span>
+                                                                    [target] => acting in one&#39;s own name
+                                                                )
+
+                                                            [3] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation"> <strong class="tilde">Handeln</strong> in fremdem Namen</span>
+                                                                    [target] => acting in the name of another
+                                                                )
+
+                                                            [4] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation"> <strong class="tilde">Handeln</strong> unter fremdem Namen</span>
+                                                                    [target] => acting under an assumed name
+                                                                )
+
+                                                            [5] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation"> <strong class="tilde">Handeln</strong> auf eigene Rechnung</span>
+                                                                    [target] => trading on one&#39;s own account
+                                                                )
+
+                                                            [6] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation"> <strong class="tilde">Handeln</strong> unter falschem Recht</span>
+                                                                    [target] => acting under false law
+                                                                )
+
+                                                            [7] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">fahrlässiges/gesetzeswidriges <strong class="tilde">Handeln</strong> </span>
+                                                                    [target] => acting negligently/unlawfully
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [1] => stdClass Object
+                (
+                    [type] => entry
+                    [opendict] => 1
+                    [roms] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [headword] => Handeln
+                                    [headword_full] => Handeln <span class="wordclass"><acronym title="noun">N</acronym></span>
+                                    [wordclass] => noun
+                                    [arabs] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [header] => 
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => kollektives <strong class="tilde">Handeln</strong> <span class="topic"><acronym title="sociology">SOCIOL</acronym></span>
+                                                                    [target] => collective action
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [2] => stdClass Object
+                (
+                    [type] => entry
+                    [opendict] => 
+                    [roms] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [headword] => han·deln
+                                    [headword_full] => han<span class="separator">·</span>deln <span class="phonetics">[ˈhandl̩n]</span> <span class="wordclass"><acronym title="verb">VB</acronym></span> <span class="verbclass"><acronym title="intransitive verb">intr</acronym></span>
+                                    [wordclass] => intransitive verb
+                                    [arabs] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [header] => 1. handeln <span class="sense">(kaufen und verkaufen)</span>:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction">mit <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span> [<span class="or"><acronym title="oder">o.</acronym></span> <span class="topic"><acronym title="economy">ECON</acronym></span> in <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>] <strong class="tilde">handeln </strong> </span>
+                                                                    [target] => to trade <span class="target">[<span class="or"><acronym title="or">or</acronym></span> deal]</span> in <acronym title="something">sth</acronym>
+                                                                )
+
+                                                            [1] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">in Dollar gehandelt werden</span>
+                                                                    [target] => to be traded in dollars
+                                                                )
+
+                                                            [2] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">zu drei Dollar gehandelt werden</span>
+                                                                    [target] => to be traded at <span class="target">[<span class="or"><acronym title="or">or</acronym></span> for]</span> three dollars
+                                                                )
+
+                                                            [3] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">er handelt mit [<span class="or"><acronym title="oder">o.</acronym></span> in] Gebrauchtwagen</span>
+                                                                    [target] => he trades <span class="target">[<span class="or"><acronym title="or">or</acronym></span> deals]</span> in second-hand cars
+                                                                )
+
+                                                            [4] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">er handelt mit [<span class="or"><acronym title="oder">o.</acronym></span> in] Gebrauchtwagen</span>
+                                                                    [target] => he&#39;s in the second-hand car trade
+                                                                )
+
+                                                            [5] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">sie hat einen Laden, in dem sie mit Bioprodukten handelt</span>
+                                                                    [target] => she owns a shop selling natural foods
+                                                                )
+
+                                                            [6] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">mit Drogen/Waffen <strong class="tilde">handeln </strong> </span>
+                                                                    [target] => to traffic in drugs/arms
+                                                                )
+
+                                                            [7] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">mit Frauen/Sklaven <strong class="tilde">handeln </strong> </span>
+                                                                    [target] => to trade in women/slaves
+                                                                )
+
+                                                            [8] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">en gros/en detail <strong class="tilde">handeln </strong> </span>
+                                                                    [target] => to be in the wholesale/retail trade
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [header] => 2. handeln <span class="restriction"><acronym title="rare">rare</acronym></span> <span class="sense">(mit <acronym title="jemandem">jdm</acronym> im Geschäftsverkehr stehen)</span>:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction">mit <acronym title="jemandem">jdm</acronym> <strong class="tilde">handeln </strong> </span>
+                                                                    [target] => to trade with <acronym title="somebody">sb</acronym>
+                                                                )
+
+                                                            [1] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">die alten Ägypter haben mit Ländern des gesamten Mittelmeerraumes gehandelt</span>
+                                                                    [target] => the ancient Egyptians traded with countries throughout the Mediterranean area
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [2] => stdClass Object
+                                                (
+                                                    [header] => 3. handeln <span class="sense">(feilschen)</span>:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction">[um <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span>] <strong class="tilde">handeln </strong> </span>
+                                                                    [target] => to haggle [over <acronym title="something">sth</acronym>]
+                                                                )
+
+                                                            [1] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">es ist immer peinlich, mit einem Verkäufer zu <strong class="tilde">handeln </strong> </span>
+                                                                    [target] => it&#39;s always embarrassing to haggle with a salesman
+                                                                )
+
+                                                            [2] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">um den Preis <strong class="tilde">handeln </strong> </span>
+                                                                    [target] => to haggle over the price
+                                                                )
+
+                                                            [3] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">auf dem Basar wird um den Preis der Ware lange gehandelt</span>
+                                                                    [target] => a lot of haggling goes on at the bazaar over the price of goods
+                                                                )
+
+                                                            [4] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">mit sich <span class="case"><acronym title="dative">dat</acronym></span> [über <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span>] <strong class="tilde">handeln</strong> lassen</span>
+                                                                    [target] => to be prepared to negotiate [<acronym title="something">sth</acronym>]
+                                                                )
+
+                                                            [5] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">wenn Sie alles nehmen, lasse ich auch noch mit mir über einen Rabatt <strong class="tilde">handeln
+
+                                                                    [target] => if you take everything I&#39;m prepared to negotiate a discount
+                                                                )
+
+                                                            [6] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">über den Preis lasse ich nicht mit mir <strong class="tilde">handeln
+
+                                                                    [target] => the price is not open to negotiation
+                                                                )
+
+                                                            [7] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">meine Entscheidung steht, da lasse ich nicht mit mir <strong class="tilde">handeln
+
+                                                                    [target] => my decision stands, I&#39;m not open to any suggestions
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [3] => stdClass Object
+                                                (
+                                                    [header] => 4. handeln <span class="sense">(tätig werden)</span>:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <strong class="headword">handeln</strong>
+                                                                    [target] => to act
+                                                                )
+
+                                                            [1] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">wir müssen <strong class="tilde">handeln</strong>, ehe es zu spät ist</span>
+                                                                    [target] => we must act before it is too late
+                                                                )
+
+                                                            [2] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">er ist ein schnell <strong class="tilde">handelnder</strong> Mensch</span>
+                                                                    [target] => he is a quick-acting person
+                                                                )
+
+                                                            [3] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">im Affekt/in Notwehr <strong class="tilde">handeln
+
+                                                                    [target] => to act in the heat of the moment/in self-defence
+                                                                )
+
+                                                            [4] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">auf Befehl <strong class="tilde">handeln
+
+                                                                    [target] => to act on orders
+                                                                )
+
+                                                            [5] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction">aus <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span> <strong class="tilde">handeln
+
+                                                                    [target] => to act out of <acronym title="something">sth</acronym>
+                                                                )
+
+                                                            [6] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">die Frau handelte aus purer Eifersucht</span>
+                                                                    [target] => the woman acted out of pure jealousy
+                                                                )
+
+                                                            [7] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">aus Überzeugung <strong class="tilde">handeln
+
+                                                                    [target] => to act out of conviction
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [4] => stdClass Object
+                                                (
+                                                    [header] => 5. handeln <span class="sense">(verfahren)</span>:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction">irgendwie <strong class="tilde">handeln
+
+                                                                    [target] => to act in a certain manner
+                                                                )
+
+                                                            [1] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">die Regierung hätte entschlossener <strong class="tilde">handeln</strong> müssen</span>
+                                                                    [target] => the government should have acted in a more decisive manner
+                                                                )
+
+                                                            [2] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">rechtswidrig <strong class="tilde">handeln
+
+                                                                    [target] => to act illegally
+                                                                )
+
+                                                            [3] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">eigenmächtig/richtig/fahrlässig <strong class="tilde">handeln
+
+                                                                    [target] => to act on one&#39;s own authority/correctly/carelessly
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [5] => stdClass Object
+                                                (
+                                                    [header] => 6. handeln <span class="style"><acronym title="formal language">form</acronym></span> <span class="sense">(sich verhalten)</span>:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction">irgendwie [an <acronym title="jemandem">jdm</acronym>/gegen <acronym title="jemanden">jdn</acronym>] <strong class="tilde">handeln
+
+                                                                    [target] => to act <span class="target">[<span class="or"><acronym title="or">or</acronym></span> behave]</span> [towards <acronym title="somebody">sb</acronym>] in a certain manner
+                                                                )
+
+                                                            [1] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">wie konntest du so übel an ihr <strong class="tilde">handeln?</strong></span>
+                                                                    [target] => how could you behave so badly towards her?
+                                                                )
+
+                                                            [2] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">sie hat barmherzig gegen ihn gehandelt</span>
+                                                                    [target] => she acted in a compassionate way towards him
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [6] => stdClass Object
+                                                (
+                                                    [header] => 7. handeln <span class="sense">(zum Thema haben)</span>:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction">von <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>/über <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span> <strong class="tilde">handeln
+
+                                                                    [target] => to be about <acronym title="something">sth</acronym>
+                                                                )
+
+                                                            [1] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction">von <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>/über <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span> <strong class="tilde">handeln
+
+                                                                    [target] => to deal with <acronym title="something">sth</acronym>
+                                                                )
+
+                                                            [2] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">der Zeitungsartikel handelte von dem Streik</span>
+                                                                    [target] => the newspaper article dealt with the strike
+                                                                )
+
+                                                            [3] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">ein neues Buch? von was handelt es?</span>
+                                                                    [target] => a new book? what&#39;s it about?
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                            [1] => stdClass Object
+                                (
+                                    [headword] => han·deln
+                                    [headword_full] => han<span class="separator">·</span>deln <span class="phonetics">[ˈhandl̩n]</span> <span class="wordclass"><acronym title="verb">VB</acronym></span> <span class="verbclass"><acronym title="reflexive verb">refl</acronym></span> <span class="info"><acronym title="impersonal verb">impers</acronym></span>
+                                    [wordclass] => reflexive verb
+                                    [arabs] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [header] => 1. handeln <span class="sense">(<acronym title="jemand">jd</acronym>/<acronym title="etwas">etw</acronym> Bestimmtes sein)</span>:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction">es handelt sich <span class="case"><acronym title="accusative">acc</acronym></span> um <acronym title="etwas">etw</acronym>/<acronym title="jemanden">jdn</acronym></span> <span class="example">es handelt sich hier um ein Verbrechen</span>
+                                                                    [target] => it&#39;s a crime we are dealing with here
+                                                                )
+
+                                                            [1] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">die Polizei vermutet, dass es sich nicht um Selbstmord handelt</span>
+                                                                    [target] => the police suspect that it was not suicide
+                                                                )
+
+                                                            [2] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">es handelt sich bei diesen angeblichen UFOs um optische Täuschungen</span>
+                                                                    [target] => these alleged UFOs are simply optical illusions
+                                                                )
+
+                                                            [3] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">bei den Gästen handelte es sich um entfernte Verwandte</span>
+                                                                    [target] => the guests were distant relatives
+                                                                )
+
+                                                            [4] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">bei den Tätern soll es sich um Angehörige einer Terrorgruppe <strong class="tilde">handeln
+
+                                                                    [target] => the culprits are said to be members of a terrorist group
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [header] => 2. handeln <span class="sense">(gehen um, betreffen)</span>:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> um <acronym title="jemanden">jdn</acronym>/<acronym title="etwas">etw</acronym> <strong class="tilde">handeln</strong></span>
+                                                                    [target] => to be about <acronym title="somebody">sb</acronym>/<acronym title="something">sth</acronym>
+                                                                )
+
+                                                            [1] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> um <acronym title="jemanden">jdn</acronym>/<acronym title="etwas">etw</acronym> <strong class="tilde">handeln</strong></span>
+                                                                    [target] => to concern <acronym title="somebody">sb</acronym>/<acronym title="something">sth</acronym>
+                                                                )
+
+                                                            [2] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">worum handelt es sich?</span>
+                                                                    [target] => what&#39;s it about?
+                                                                )
+
+                                                            [3] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">es handelt sich um einige Beobachtungen, die ich gemacht habe</span>
+                                                                    [target] => it&#39;s about some observations that I have made
+                                                                )
+
+                                                            [4] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> darum <strong class="tilde">handeln</strong>, dass ...</span>
+                                                                    [target] => to be a matter of ...
+                                                                )
+
+                                                            [5] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">es handelt sich jetzt darum, dass wir die veranschlagten Kosten reduzieren</span>
+                                                                    [target] => it&#39;s a matter now of reducing the estimated costs
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [2] => stdClass Object
+                                                (
+                                                    [header] => 3. handeln <span class="sense">(darauf ankommen)</span>:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction">es handelt sich <span class="case"><acronym title="accusative">acc</acronym></span> darum, <acronym title="etwas">etw</acronym> zu tun</span>
+                                                                    [target] => it is a question of doing <acronym title="something">sth</acronym>
+                                                                )
+
+                                                            [1] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">es handelt sich einzig und allein darum, über die Runden zu kommen</span>
+                                                                    [target] => it is purely and simply a question of getting by
+                                                                )
+
+                                                            [2] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">es kann sich jetzt nicht darum handeln, dass ...</span>
+                                                                    [target] => it is of no importance at the moment, that ...
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                            [2] => stdClass Object
+                                (
+                                    [headword] => han·deln
+                                    [headword_full] => han<span class="separator">·</span>deln <span class="phonetics">[ˈhandl̩n]</span> <span class="wordclass"><acronym title="verb">VB</acronym></span> <span class="verbclass"><acronym title="transitive verb">trans</acronym></span>
+                                    [wordclass] => transitive verb
+                                    [arabs] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [header] => 1. handeln <span class="sense">(angeboten und verkauft werden)</span>:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction">[für <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span>] gehandelt werden</span>
+                                                                    [target] => to be traded <span class="target">[<span class="or"><acronym title="or">or</acronym></span> to sell]</span> [at <acronym title="something">sth</acronym>]
+                                                                )
+
+                                                            [1] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">Silber wird für Euro 216 das Kilo gehandelt</span>
+                                                                    [target] => silver is trading at 216 euros a kilo
+                                                                )
+
+                                                            [2] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">an den Börsen werden Aktien gehandelt</span>
+                                                                    [target] => shares are traded on the stock exchanges
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [header] => 2. handeln <span class="sense">(im Gespräch sein)</span>:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction">als <acronym title="jemand">jd</acronym>/für <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span> gehandelt werden</span>
+                                                                    [target] => to be touted as <acronym title="somebody">sb</acronym>/for <acronym title="something">sth</acronym>
+                                                                )
+
+                                                            [1] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">er wird schon lange als Nachfolger für Dr. Alle gehandelt</span>
+                                                                    [target] => he has been touted for a long time as Dr. Alle&#39;s successor
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [3] => stdClass Object
+                (
+                    [type] => entry
+                    [opendict] => 
+                    [roms] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [headword] => handeln
+                                    [headword_full] => handeln <span class="wordclass"><acronym title="verb">VB</acronym></span> <span class="verbclass"><acronym title="transitive verb">trans</acronym></span> <span class="topic"><acronym title="financial markets">FINMKT</acronym></span>
+                                    [wordclass] => transitive verb
+                                    [arabs] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [header] => 
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <strong class="headword">handeln</strong> <span class="sense">(anbieten)</span>
+                                                                    [target] => trade
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [4] => stdClass Object
+                (
+                    [type] => entry
+                    [opendict] => 
+                    [roms] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [headword] => hän·deln
+                                    [headword_full] => hän<span class="separator">·</span>deln <span class="phonetics">[ˈhɛndl̩n]</span> <span class="wordclass"><acronym title="verb">VB</acronym></span> <span class="verbclass"><acronym title="transitive verb">trans</acronym></span> <span class="style"><acronym title="informal">inf</acronym></span>
+                                    [wordclass] => transitive verb
+                                    [arabs] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [header] => 
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction"><acronym title="jemanden">jdn</acronym>/<acronym title="etwas">etw</acronym> <strong class="tilde">händeln
+
+                                                                    [target] => to handle <acronym title="somebody">sb</acronym>/<acronym title="something">sth</acronym>
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+)
+
+--------------------
+Definitions 'verändern' :
+
+--------------------

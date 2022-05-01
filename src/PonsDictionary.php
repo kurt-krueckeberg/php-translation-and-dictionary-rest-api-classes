@@ -91,7 +91,10 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
 
        $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['headers' => $this->headers, 'query' => $this->query]); 
 
-       $obj = json_decode($contents)[0];
+       $obj = json_decode($contents)[0]; // todo: $contents can be 'null'--why?
+
+       print_r($obj);
+       echo "\n--------------------\n";
 
        $results = array();
        
@@ -103,7 +106,7 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
         * Does PHP reqire them or can a foreach loop be used when an array is empty?
         */
 
-        if (count($obj->hits) == 0) 
+        if (is_null($obj) || count($obj->hits) == 0) 
              return $results;
             
         foreach ($obj->hits as $hit_array) {
