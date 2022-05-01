@@ -9,7 +9,7 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
 
    static private array  $dict_languages = array('method' => "GET", 'route' => "resources/dictionary/supportedLanguages");
 
-   static private array  $trans_languages = array('method' => "???", 'route' => "???????????????????????????????????????");
+   static private array  $trans_languages = array('method' => "GET", 'route' => "translation/supportedLanguages";
 
    static private array  $lookup  = array('method' => "GET", 'route' => "resources/dictionary/lookup");
 
@@ -86,9 +86,11 @@ https://docs.systran.net/translateAPI/translation/#tag-Translation shows the lay
 
    /*
 
-The laayout of: $obj->outputs[0]->output->matches, where $obj is: 'json_decode($contents)' is given in the documentation at 
+The layout of: $obj->outputs[0]->output->matches, where $obj is: 'json_decode($contents)' is given in the documentation at 
 https://docs.systran.net/translateAPI/dictionary as:
 
+
+Move this block to the right of the print_r() output below
 "matches": [  <-- array of 1 to N elements.
   {
     "auto_complete": false,
@@ -181,89 +183,89 @@ Array
 (
     [0] => stdClass Object
         (
-            [auto_complete] => 
-            [model_name] => mono-deen.mod
-            [source] => stdClass Object
-                (
-                    [inflection] => 
-                    [info] => 
-                    [lemma] => Handeln
-                    [phonetic] => 
-                    [pos] => noun
-                    [term] => Handeln
-                )
-
-            [targets] => Array
-                (
-                    [0] => stdClass Object
-                        (
-                            [context] => 
-                            [domain] => 
-                            [entry_id] => 13951
-                            [expressions] => Array
-                                (
-                                    [0] => stdClass Object
-                                        (
-                                            [source] => Handeln der EU  <-- 
-                                            [target] => action of the eu
-                                        )
-
-                                    [1] => stdClass Object
-                                        (
-                                            [source] => Handeln der Kommission
-                                            [target] => action of the commission
-                                        )
-
-                                )
-
-                            [info] => 
-                            [invmeanings] => Array
-                                (
-                                    [0] => Maßnahme
-                                    [1] => Aktion
-                                    [2] => Vorgehen
-                                    [3] => Tat
-                                    [4] => Klage
-                                    [5] => Handlung
-                                    [6] => Schritt
-                                    [7] => Aktivität
-                                    [8] => Tätigkeit
-                                )
-
-                            [lemma] => action  <-- definition
-                            [rank] => 100
-                            [synonym] => 
-                            [variant] => 
-                        )
-
-                )
-
-        )
-
-    [1] => stdClass Object
-        (
-            [auto_complete] => 
-            [model_name] => mono-deen.mod
-            [source] => stdClass Object
-                (
-                    [inflection] => (aushandelt/aushandelte/ausgehandelt)
-                    [info] => 
-                    [lemma] => aushandeln
-                    [phonetic] => 
-                    [pos] => verb
-                    [term] => Handeln
-                )
-
-            [targets] => Array
-                (
-                    [0] => stdClass Object
-                        (
-                            [context] => Abkommen, Fischerei_Abkommen, Kompromiss, Vertrag
-                            [domain] => 
-                            [entry_id] => 40406
-                            [expressions] => Array
-                                (
-                                    [0] => stdClass Object
+            [auto_complete] =>                                                               
+            [model_name] => mono-deen.mod                                                    
+            [source] => stdClass Object                                                      
+                (                                                                            
+                    [inflection] =>                                                          
+                    [info] =>                                                                
+                    [lemma] => Handeln  <-- what this is a definition for                    
+                    [phonetic] =>                                                            
+                    [pos] => noun    <-- pos = Part Of Speech                                
+                    [term] => Handeln   <-- input term passeed                               
+                )                                                                            
+                                                                                             
+            [targets] => Array                                                               
+                (                                                                            
+                    [0] => stdClass Object                                                   
+                        (                                                                    
+                            [context] =>                                                     
+                            [domain] =>                                                      
+                            [entry_id] => 13951                                              
+                            [expressions] => Array    <-- expressions are short example example expressions using what is in the 'lemma' above.  
+                                (                                                            
+                                    [0] => stdClass Object                                   
+                                        (                                                    
+                                            [source] => Handeln der EU  <--                  
+                                            [target] => action of the eu                     
+                                        )                                                    
+                                                                                             
+                                    [1] => stdClass Object                                   
+                                        (                                                    
+                                            [source] => Handeln der Kommission               
+                                            [target] => action of the commission             
+                                        )                                                    
+                                                                                             
+                                )                                                            
+                                                                                             
+                            [info] =>                                                        
+                            [invmeanings] => Array  <--- this cab be ignored                                         
+                                (                                                            
+                                    [0] => Maßnahme                                          
+                                    [1] => Aktion                                            
+                                    [2] => Vorgehen                                          
+                                    [3] => Tat                                               
+                                    [4] => Klage                                             
+                                    [5] => Handlung                                          
+                                    [6] => Schritt                                           
+                                    [7] => Aktivität                                         
+                                    [8] => Tätigkeit                                         
+                                )                                                            
+                                                                                             
+                            [lemma] => action  <-- definition                                
+                            [rank] => 100                                                    
+                            [synonym] =>                                                     
+                            [variant] =>                                                     
+                        )                                                                    
+                                                                                             
+                )                                                                            
+                                                                                             
+        )                                                                                    
+                                                                                             
+    [1] => stdClass Object                                                                   
+        (                                                                                    
+            [auto_complete] =>                                                               
+            [model_name] => mono-deen.mod                                                    
+            [source] => stdClass Object                                                      
+                (                                                                            
+                    [inflection] => (aushandelt/aushandelte/ausgehandelt)                    
+                    [info] =>                                                                
+                    [lemma] => aushandeln  <-- What will be defined                          
+                    [phonetic] =>                                                            
+                    [pos] => verb                                                            
+                    [term] => Handeln                                                        
+                )                                                                            
+                                                                                             
+            [targets] => Array                                                               
+                (                                                                            
+                    [0] => stdClass Object                                                   
+                        (                                                                    
+                            [context] => Abkommen, Fischerei_Abkommen, Kompromiss, Vertrag   
+                            [domain] =>                                                      
+                            [entry_id] => 40406                                              
+                            [expressions] => Array                                           
+                                (                                                          
+                                    [0] => stdClass Object                               
                                         (
                                             [source] => mit dem rat ausgehandelt
                                             [target] => negotiated with the council
@@ -284,7 +286,7 @@ Array
                                     [1] => aus~handeln
                                 )
 
-                            [lemma] => to negotiate
+                            [lemma] => to negotiate   <-- This is the definition
                             [rank] => 96
                             [synonym] => 
                             [variant] => 
@@ -353,9 +355,9 @@ Array
                 (
                     [inflection] => 
                     [info] => 
-                    [lemma] => aus~handeln
+                    [lemma] => aus~handeln  <---
                     [phonetic] => 
-                    [pos] => verb
+                    [pos] => verb           <----
                     [term] => Handeln
                 )
 
@@ -427,9 +429,9 @@ Array
                 (
                     [inflection] => (handelt/handelte/gehandelt)
                     [info] => 
-                    [lemma] => handeln
+                    [lemma] => handeln     <--- what is being defined
                     [phonetic] => 
-                    [pos] => verb
+                    [pos] => verb          <-- verb 
                     [term] => Handeln
                 )
 
@@ -481,7 +483,7 @@ Array
                                     [7] => dienen
                                 )
 
-                            [lemma] => to act
+                            [lemma] => to act  <-- definition
                             [rank] => 87
                             [synonym] => 
                             [variant] => 
