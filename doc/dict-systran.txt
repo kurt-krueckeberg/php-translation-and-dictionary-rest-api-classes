@@ -1,5 +1,7 @@
 
-Move this block to the right of the print_r() output below
+
+This is from the online API doumentation. 
+
 "matches": [  <-- array of 1 to N elements.
   {
     "auto_complete": false,
@@ -86,8 +88,9 @@ Move this block to the right of the print_r() output below
   }
 ]
 
-`matches` response array returned for `lookup("Handeln", "de", "en")`:
+Compare the results below with the actual online (if it is available) of the dictionary lookup.
 
+`matches` response array returned for `lookup("Handeln", "de", "en")`:
 
 foreach($matches as $match) // prospective code:
 
