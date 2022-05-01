@@ -1,4 +1,6 @@
-- Systran's dictionary lookup gives a wealth of information. Instead the Azue one-word defintions, it gives full-blown difination entry0like reponses.
+- Call urlencode for PonsDictionray::lookup results in no dfinitions returned.
+
+Systran's dictionary lookup gives a wealth of information. Instead the Azue one-word defintions, it gives full-blown difination entry0like reponses.
  
 - WebPageCreator currently creates its own file name that is quite long. Maybe shortened it somehow.. 
 

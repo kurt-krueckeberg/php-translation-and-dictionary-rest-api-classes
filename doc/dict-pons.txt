@@ -8,7 +8,7 @@ The best way to undersatnd the output below is compare it with the actual Pons o
 
 - [reisen](https://en.pons.com/translate/german-english/Reise)
 
-As well as nouns and verbs that don't have an noun- or verb form.
+To this end, see doc/pons-output.txt
 
 Definitions for 'Handeln' :
 

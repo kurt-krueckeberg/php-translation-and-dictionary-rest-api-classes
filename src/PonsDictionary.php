@@ -79,10 +79,15 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
     
       return $arr;
    } 
+   
+   /*
+    * Calling urlencode() for German words with umlauts or sharp s, results in no definition returned.
+    * 
+    */
 
-   public function lookup(string $text, string $src, string $dest) : ResultsIterator
+   public function lookup(string $word, string $src, string $dest) : array | ResultsIterator
    {
-       $this->query[PonsDictionary::INPUT] = urlencode($text); 
+       $this->query[PonsDictionary::INPUT] = $word; // Note: Calling urlencode($word) results in an error for words with umlauts of sharp s.
 
        $this->query[PonsDictionary::SRC_LANG] = strtolower($src);   
        $this->query[PonsDictionary::DEST_LANG] = strtolower($dest); 
@@ -90,13 +95,20 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
        $this->query[PonsDictionary::DICTIONARY] = strtolower($src . $dest);  
 
        $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['headers' => $this->headers, 'query' => $this->query]); 
-
-       $obj = json_decode($contents)[0]; // todo: $contents can be 'null'--why?
-
-       print_r($obj);
-       echo "\n--------------------\n";
-
+       
        $results = array();
+              
+       if (empty($contents)) {
+           
+             echo "Response contenst for $word is empty.\n";
+             return $results;
+       }
+       
+       $obj = json_decode($contents)[0]; 
+  
+       print_r($obj);
+
+       echo "\n--------------------\n";
        
        /*
         * The PONS results as so tersely documented that one is not certain how to best parse 
@@ -105,7 +117,6 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
         * QUESTION: Which of the if (count(....)) test are necessart?
         * Does PHP reqire them or can a foreach loop be used when an array is empty?
         */
-
         if (is_null($obj) || count($obj->hits) == 0) 
              return $results;
             
@@ -133,6 +144,6 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
         }
 
        //--return $results;   
-       return new ResultsIterator($results, function($x) { return $x;});              
+       return $results; //new ResultsIterator($results, function($x) { return $x;});              
    }
 }
