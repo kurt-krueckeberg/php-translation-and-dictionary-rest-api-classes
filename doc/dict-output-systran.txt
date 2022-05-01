@@ -113,10 +113,10 @@ Array
                         (                                                                    
                             [context] =>                                                     
                             [domain] =>                                                      
-                            [entry_id] => 13951                                              
-                            [expressions] => Array    <-- if (isset($target->expression)) { // 'expressions' appear to be shortexample phrases illustrating the word in the 'lemma' property above.
-                                (                             foreach($target->expressions as $expression)... QUESTION: Is the if-test necessary?
-                                    [0] => stdClass Object                                   
+                            [entry_id] => 13951        'expressions' below appear to be shortexample phrases illustrating the word in the 'lemma' property above.                                       
+                            [expressions] => Array    <-- if (isset($target->expressions) OR count($target->expressions) !== 0) { 
+                                (                             foreach($target->expressions as $expression)... Question: Is the if-test necessary, or will there always be expression. NOTE: These 'expressions' will not necessarily be in this order
+                                    [0] => stdClass Object                                                                                                                                   in the output. 
                                         (                                                    
                                             [source] => Handeln der EU    <-- $expression->source is in the expression in the source language.
                                             [target] => action of the eu  <-- $expression->target is its translation.                    
@@ -131,7 +131,7 @@ Array
                                 )                                                            
                                                                                              
                             [info] =>                                                        
-                            [invmeanings] => Array  <--- this cab be ignored                                         
+                            [invmeanings] => Array  <--- $target->invmeanings can be ignored                                         
                                 (                                                            
                                     [0] => Maßnahme                                          
                                     [1] => Aktion                                            
@@ -175,7 +175,7 @@ Array
                             [context] => Abkommen, Fischerei_Abkommen, Kompromiss, Vertrag   
                             [domain] =>                                                      
                             [entry_id] => 40406                                              
-                            [expressions] => Array                           <-- $target->expressions                
+                            [expressions] => Array                           <-- $target->expressions...as above                
                                 (                                                          
                                     [0] => stdClass Object                               
                                         (
@@ -198,7 +198,7 @@ Array
                                     [1] => aus~handeln
                                 )
 
-                            [lemma] => to negotiate   <-- This is the definition
+                            [lemma] => to negotiate   <-- $target->lemma is the definition as explained above.
                             [rank] => 96
                             [synonym] => 
                             [variant] => 
@@ -209,7 +209,7 @@ Array
                             [context] => 
                             [domain] => 
                             [entry_id] => 40406
-                            [expressions] => Array
+                            [expressions] => Array  Comment: $target->expressions may always exist/be set, but may be empty.
                                 (
                                 )
 
