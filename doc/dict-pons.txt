@@ -1,4 +1,6 @@
-Definitions 'Handeln' :
+The best way to undersatnd the output below is compare it with the actual Pons online dieciontary results for [Handeln](https://en.pons.com/translate/german-english/Handeln):
+
+Definitions for 'Handeln' :
 
 stdClass Object
 (
