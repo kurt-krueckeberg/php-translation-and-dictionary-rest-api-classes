@@ -56,15 +56,3 @@ class SystranTranslator extends RestClient implements DictionaryInterface, Trans
    
    function lookup(string word, string src_lang, string dest_lang) : string 
 }
-
-
-class PonsDictionary extends  RestClient implements DictionaryInterface {
-
-   __construct(PonsConfig c = new PonsConfig)
-
-   getDictionaryLanguages() : array 
-
-   getDictionaryForLanguages(string lang) : array
-
-   lookup(string text, string src, string dest) : ResultsIterator
-}
