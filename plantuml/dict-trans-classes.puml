@@ -44,6 +44,20 @@ class DeeplTranslator extends RestClient implements TranslateInterface {
    translate(string text, string dest_lang, source_lang="") : string 
 }
 
+class SystranTranslator extends RestClient implements DictionaryInterface, TranslateInterface {
+
+   __construct(AzureConfig c = new SystranConfig)
+   
+   getTranslationLanguages() : array
+
+   getDictionaryLanguages() : array 
+    
+   translate(string text, string dest_lang, source_lang="") : string 
+   
+   function lookup(string word, string src_lang, string dest_lang) : string 
+}
+
+
 class PonsDictionary extends  RestClient implements DictionaryInterface {
 
    __construct(PonsConfig c = new PonsConfig)
