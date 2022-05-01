@@ -1,4 +1,14 @@
-The best way to undersatnd the output below is compare it with the actual Pons online dieciontary results for [Handeln](https://en.pons.com/translate/german-english/Handeln):
+The best way to undersatnd the output below is compare it with the actual Pons online dieciontary results for nouns that have verb forms--and verbs that ahve nouns forms--like:
+
+- [Handeln](https://en.pons.com/translate/german-english/Handeln)
+
+- [handeln](https://en.pons.com/translate/german-english/Handeln)
+
+- [Reise](https://en.pons.com/translate/german-english/Reise)
+
+- [reisen](https://en.pons.com/translate/german-english/Reise)
+
+As well as nouns and verbs that don't have an noun- or verb form.
 
 Definitions for 'Handeln' :
 
