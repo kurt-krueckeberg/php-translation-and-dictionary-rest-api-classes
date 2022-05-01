@@ -97,10 +97,7 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
 
       $obj = json_decode($contents); 
       
-      
-      //todo: return new ResultsIterator($obj->matches, new SystransDictCursor())
-          
-      return "test";
+      return new SystranResultsIterator($obj); 
     }
     
     private function process_definitions(object $matches) // todo: Define return value later.

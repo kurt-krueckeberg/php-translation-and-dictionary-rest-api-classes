@@ -2,29 +2,28 @@
 declare(strict_types=1);
 namespace LanguageTools;
 
-class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
+abstract class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
 
     private array $objs;
-    private int $cnt;
-    private int $index;
-    private $f; // anonymous 'callable' used to return a specify property of the stdClass objecs
-                // in $objs.
+    private int $count;
+    private int $current;
 
-    public function __construct(array $objs, callable $func) 
+    public function __construct(array $objs)
     {
        $this->objs = $objs;
        $this->cnt = count($objs);
-       $this->index = 0; 
-       $this->f = $func;
+       $this->current = 0; 
     }
 
-    public function offsetSet($offset, $value) : void
+    abstract protected function get_result(mixed $match);
+
+    // no-op todo: throw an execption
+    public function offsetSet(mixed $offset, mixed $value) : void
     {
-        if (is_null($offset)) $this->objs[] = $value;
-
-        else $this->objs[$offset] = $value;
+        return; 
     }
 
+    // no-op todo: throw an execption
     public function offsetExists($offset) : bool
     {
         return isset($this->objs[$offset]);
@@ -32,12 +31,12 @@ class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
 
     public function offsetUnset($offset) : void
     {
-        unset($this->objs[$offset]);
+        return; 
     }
 
     public function offsetGet($offset) : mixed
     {
-        return isset($this->objs[$offset]) ? $this->objs[$offset] : null;
+        return isset($this->objs[$offset]) ? $this->get_result( $this->objs[$offset] ) : null;
     }
   
     public function count(): int // Countable
@@ -51,31 +50,31 @@ class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
        if ($offset >= $count || 0 > $offset)
             throw new OutOfBoundsException("offset not in bounds");
 
-       $this->index = $offset;
+       $this->current = $offset;
     }
    
     public function current(): mixed
     {        
-        return ($this->f)($this->objs[$this->index]);
+        return $this->get_result( $this->objs[$this->current] );
     }
 
     public function key(): mixed
     {
-         return $this->index;
+         return $this->current;
     }
 
     public function next(): void
     {
-       ++$this->index;
+       ++$this->current;
 
     }
     public function rewind(): void
     {
-       $this->index = 0; 
+       $this->current = 0; 
     }
 
     public function valid(): bool
     {
-      return ($this->cnt !== $this->index); 
+      return ($this->cnt !== $this->current); 
     }
 }
