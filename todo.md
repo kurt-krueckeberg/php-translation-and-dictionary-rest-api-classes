@@ -1,4 +1,7 @@
-- Compare `print_r()` output -- once the Pons- and SystranResultsIterator's are working -- with the actual displayed output of defintions on their respective websites.
+- Compare the `print_r()` output of SystranResultsIterator in doc/systran-output with an actual dictionary definition, say, from (no kidding) that displayed by https://en.pons.com. 
+
+- Create PonsResultsIterator that does what SystranResultsIterator does: provide a `get_current(mixed $current)` method to return the truly relevant fields. To determine which fields are most important, do
+  print-screens of the defintion output for the words in short-list.txt.
 
   Maybe...create a `Definition` class. See ~/r/src/Definition
 
