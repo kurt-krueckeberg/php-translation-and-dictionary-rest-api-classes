@@ -6,35 +6,34 @@ class SystranResultsIterator extends ResultsIterator  {
 
     protected function get_result(mixed $match) : \stdClass //mixed
     { 
-      return new Definition($match->source->lemma,    
-                             $match->source->pos,  // = Part Of Speech                                
+       // See ../doc/dict-systran.txt for layout of results returned by Systran lookup call
 
-      // See ../doc/dict-systran.txt 
-      $efinitions = array();
+      $result = new \stdClass;
 
-      /*
-        There can be mulitple targets for '$match->srouce->lemma`.
-        Targets are definitions. So more than one target implies more than one definition.
-        And for each such target, while there will be one definition string, there could be an array
-        of expressions illustrating the use of this particular definition.
+      $result->term = $match->source->lemma;    
+      $result->pos = $match->source->pos;  // = Part Of Speech                                
 
-        todo: What is the layout of $target? Should be keep it, but only return:
-           $target->lemma as the definition
-           $target->expressions ... as an array of example expressions.   
+      $result->definitions = array();
 
-        */
-      foreach($match->targets as $target) {
-          /* todo:
+      $cnt = 0;
+
+      foreach($match->targets as $definition) {
+
+          /* 
+           * Each $results->term will have an array of definitions (with maybe only one dfinition in it) and...
            * 
-           * add the definition
-           * $result->definition
+           * ...with each defintion there can be an array of example expressions... 
            * 
-           * Loop over any expressions to get the 'source' and 'target' properties
-           * $results->expressions
+           * ... These expressions will have 'source' and 'target' properties.
            */
-          $definitions[] = $target->lemma;
+
+          $result->definitions[$cnt]['meaning']= $definition->lemma; 
           
-          if (isset($target->expressions)) $result->expressions = $target->expressions;
+          if (isset($target->expressions)) {
+
+               $result->definitions[$cnt]['expressions'] = $definition->expressions;
+               
+           }   
       }
       
       return $result;
