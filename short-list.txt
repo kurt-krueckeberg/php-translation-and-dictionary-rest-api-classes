@@ -4,6 +4,8 @@ Handeln
 handeln
 Reise
 reisen
+Stadt
+Wunder
 beweisen
 Herausforderung
 stets
