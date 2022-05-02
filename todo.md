@@ -1,3 +1,4 @@
+- Compare `print_r()` output -- once the Pons- and SystranResultsIterator's are working -- with the actual displayed output of defintions on their respective websites.
 - It is wrong to use `urlencode($input_text)` during `PonsDictionray::lookup()`. 
 
 - Create PonsResultsIterator. See the comments in `PonsDictionary::lookup()` on how to do this.
