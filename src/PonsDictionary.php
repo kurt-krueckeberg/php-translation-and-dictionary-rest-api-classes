@@ -111,11 +111,9 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
        echo "\n--------------------\n";
        
        /*
-        * The PONS results as so tersely documented that one is not certain how to best parse 
-        * and retreive the results.
+        * todo: Create PonsResultsIterator and put the logic below into its `get_current($current)`
+        * method. And return a PonsResultsIterator 
         * 
-        * QUESTION: Which of the if (count(....)) test are necessart?
-        * Does PHP reqire them or can a foreach loop be used when an array is empty?
         */
         if (is_null($obj) || count($obj->hits) == 0) 
              return $results;

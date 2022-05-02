@@ -1,10 +1,6 @@
-- Call urlencode for PonsDictionray::lookup results in no dfinitions returned.
+- It is wrong to use `urlencode($input_text)` during `PonsDictionray::lookup()`. 
 
-Systran's dictionary lookup gives a wealth of information. Instead the Azue one-word defintions, it gives full-blown difination entry0like reponses.
- 
-- WebPageCreator currently creates its own file name that is quite long. Maybe shortened it somehow.. 
-
-- Add plantuml to documentation using the PhUML tool that I have bookmarked. It seems very good.
+- Create PonsResultsIterator. See the comments in `PonsDictionary::lookup()` on how to do this.
 
 - Implement a `check_iso_code(string $lnag) : bool` in a IsoCodes trait (or in a base class):
 
