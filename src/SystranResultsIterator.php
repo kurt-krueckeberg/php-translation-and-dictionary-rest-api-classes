@@ -4,17 +4,33 @@ namespace LanguageTools;
 
 class SystranResultsIterator extends ResultsIterator  {
 
-    protected function get_result(mixed $match)
+    protected function get_result(mixed $match) : \stdClass //mixed
     { 
-
-      $cur_result['source_term'] = $match->lemma;    
-      $curs_reulst['pos'] = $match->source->pos;  // = Part Of Speech                                
+      $result = new \stdClass;
+      
+      $result->word = $match->source->lemma;    
+      $result->pos = $match->source->pos;  // = Part Of Speech                                
 
       // See ../doc/dict-systran-output.txt for what to reslut
 
       foreach($match->targets as $target) {
-          //...
+          /* todo:
+           * 
+           * add the definition
+           * $result->definition
+           * 
+           * Loop over any expressions to get the 'source' and 'target' properties
+           * $results->expressions
+           */
+          $result->word_definition = $target->lemma;
+          
+          if (isset($target->expressions)) 
+              
+              $result->expressions = $target->expressions;
+          
       }
+      
+      return $result;
       
    }
    

@@ -16,32 +16,23 @@ function test(File $file, DictionaryInterface $translator, SentenceFetchInterfac
   
       echo "Definitions '$word' :\n";
 
-      $translator->lookup($word, "DE", "EN");
-
-
-/* ************ 
-      echo "Fetching '$word' examples:\n";
-
-      // Fetch sentences and translate them.          
-      foreach ( $fetcher->fetch($word, 3) as $sentence) {
-
-           echo "Translation of: " . $sentence . "\n";
-
-           // The 2nd parameter is destination language. iThe 3rd parameter is the optional
-           //  source language (if it is ommitted, the source language is automatically detected).
-           $translation = $translator->translate($sentence, "EN", "DE"); 
-           
-           echo "is: " . $translation . "\n";
-           
+      $definitions = $translator->lookup($word, "DE", "EN");
+      
+      echo "print_f() of definitions for $word.\n";
+      
+      foreach ($definitions as $result) {
+          
+         $debug = 10;
+          print_r($result);
       }
-      echo "\n";
-*/
-   }
+   
+       echo "\n--------End of Definitions for $word ------------\n";
+    }
 }
 
   try {
    
-    $trans = RestClient::createRestClient(ClassID::Pons);
+    $trans = RestClient::createRestClient(ClassID::Systran);
     $fetcher = RestClient::createRestClient(ClassID::Leipzig);
  
     $file =  new File("short-list.txt");

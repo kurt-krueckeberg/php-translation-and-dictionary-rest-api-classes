@@ -9,7 +9,7 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
 
    static private array  $dict_languages = array('method' => "GET", 'route' => "resources/dictionary/supportedLanguages");
 
-   static private array  $trans_languages = array('method' => "GET", 'route' => "translation/supportedLanguages";
+   static private array  $trans_languages = array('method' => "GET", 'route' => "translation/supportedLanguages");
 
    static private array  $lookup  = array('method' => "GET", 'route' => "resources/dictionary/lookup");
 
@@ -35,7 +35,7 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
    // Called by base Translator::translate method 
    final protected function add_input(string $text)
    {
-       $this->query[self::$input] = urlencode($text);  
+       $this->query[self::$input] = $text;// urlencode($text);  
    }
 
    public function getTranslationLanguages() : array
@@ -95,9 +95,9 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
     
       $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['headers' => $this->headers, 'query' => $this->query]);
 
-      $obj = json_decode($contents); 
-      
-      return new SystranResultsIterator($obj); 
+      $obj = json_decode($contents);    
+           
+      return new SystranResultsIterator($obj->outputs[0]->output->matches); 
     }
     
     private function process_definitions(object $matches) // todo: Define return value later.

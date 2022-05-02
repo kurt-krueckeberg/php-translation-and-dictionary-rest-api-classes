@@ -1,347 +1,3 @@
-Definitions 'ändern' :
-stdClass Object
-(
-    [lang] => de
-    [hits] => Array
-        (
-            [0] => stdClass Object
-                (
-                    [type] => entry
-                    [opendict] => 
-                    [roms] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [headword] => än·dern
-                                    [headword_full] => än<span class="separator">·</span>dern <span class="phonetics">[ˈɛndɐn]</span> <span class="wordclass"><acronym title="verb">VB</acronym></span> <span class="verbclass"><acronym title="transitive verb">trans</acronym></span>
-                                    [wordclass] => transitive verb
-                                    [arabs] => Array
-                                        (
-                                            [0] => stdClass Object
-                                                (
-                                                    [header] => 1. ändern <span class="sense">(verändern)</span>:
-                                                    [translations] => Array
-                                                        (
-                                                            [0] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="grammatical_construction"><acronym title="etwas">etw</acronym> <strong class="tilde">ändern
-
-                                                                    [target] => to change <span class="target">[<span class="or"><acronym title="or">or</acronym></span> alter]</span> <acronym title="something">sth</acronym>
-                                                                )
-
-                                                            [1] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="example">ich kann es nicht <strong class="tilde">ändern
-
-                                                                    [target] => I can&#39;t do anything about it
-                                                                )
-
-                                                            [2] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="full_collocation">[s]eine Meinung <strong class="tilde">ändern
-
-                                                                    [target] => to change one&#39;s mind
-                                                                )
-
-                                                            [3] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="full_collocation">den Namen <strong class="tilde">ändern
-
-                                                                    [target] => to change one&#39;s name
-                                                                )
-
-                                                            [4] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="full_collocation">das ändert nichts daran, dass ...</span>
-                                                                    [target] => that doesn&#39;t change <span class="target">[<span class="or"><acronym title="or">or</acronym></span> alter]</span> the fact that
-                                                                )
-
-                                                            [5] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="example">das alles ändert nichts an der Tatsache, dass ...</span>
-                                                                    [target] => none of that changes <span class="target">[<span class="or"><acronym title="or">or</acronym></span> alters]</span> the fact that ...
-                                                                )
-
-                                                            [6] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="example">daran kann man nichts <strong class="tilde">ändern
-
-                                                                    [target] => there&#39;s nothing anyone/we/you can do about it
-                                                                )
-
-                                                        )
-
-                                                )
-
-                                            [1] => stdClass Object
-                                                (
-                                                    [header] => 2. ändern <span class="topic"><acronym title="fashion, sewing">FASHION</acronym></span>:
-                                                    [translations] => Array
-                                                        (
-                                                            [0] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="grammatical_construction">[<acronym title="jemandem">jdm</acronym>] <acronym title="etwas">etw</acronym> <strong class="tilde">ändern
-
-                                                                    [target] => to alter <acronym title="something">sth</acronym> [for <acronym title="somebody">sb</acronym>]
-                                                                )
-
-                                                            [1] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="grammatical_construction">[<acronym title="jemandem">jdm</acronym>] <acronym title="etwas">etw</acronym> <strong class="tilde">ändern
-
-                                                                    [target] => to take <acronym title="something">sth</acronym> in
-                                                                )
-
-                                                            [2] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="grammatical_construction">[<acronym title="jemandem">jdm</acronym>] <acronym title="etwas">etw</acronym> <strong class="tilde">ändern
-
-                                                                    [target] => to let <acronym title="something">sth</acronym> out
-                                                                )
-
-                                                        )
-
-                                                )
-
-                                        )
-
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [headword] => än·dern
-                                    [headword_full] => än<span class="separator">·</span>dern <span class="phonetics">[ˈɛndɐn]</span> <span class="wordclass"><acronym title="verb">VB</acronym></span> <span class="verbclass"><acronym title="reflexive verb">refl</acronym></span>
-                                    [wordclass] => reflexive verb
-                                    [arabs] => Array
-                                        (
-                                            [0] => stdClass Object
-                                                (
-                                                    [header] => 
-                                                    [translations] => Array
-                                                        (
-                                                            [0] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> <strong class="tilde">ändern
-
-                                                                    [target] => to change
-                                                                )
-
-                                                            [1] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="example">in meinem Leben muss sich einiges <strong class="tilde">ändern
-
-                                                                    [target] => there will have to be some changes in my life
-                                                                )
-
-                                                            [2] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="example">die Windrichtung hat sich geändert</span>
-                                                                    [target] => the wind has changed direction
-                                                                )
-
-                                                            [3] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="example">es hat sich nichts geändert</span>
-                                                                    [target] => nothing&#39;s changed
-                                                                )
-
-                                                            [4] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="full_collocation">das lässt sich nicht <strong class="tilde">ändern
-
-                                                                    [target] => there&#39;s nothing that can be done about it
-                                                                )
-
-                                                            [5] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="full_collocation">das lässt sich nicht <strong class="tilde">ändern
-
-                                                                    [target] => you can&#39;t do anything about it
-                                                                )
-
-                                                        )
-
-                                                )
-
-                                        )
-
-                                )
-
-                        )
-
-                )
-
-        )
-
-)
-
---------------------
-Definitions 'begrüßen' :
-stdClass Object
-(
-    [lang] => de
-    [hits] => Array
-        (
-            [0] => stdClass Object
-                (
-                    [type] => entry
-                    [opendict] => 
-                    [roms] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [headword] => be·grü·ßen
-                                    [headword_full] => <span class="headword_attributes" title="German past participle formed without ge-">be<span class="separator">·</span>grü<span class="separator">·</span>ßen*</span> <span class="wordclass"><acronym title="verb">VB</acronym></span> <span class="verbclass"><acronym title="transitive verb">trans</acronym></span>
-                                    [wordclass] => transitive verb
-                                    [arabs] => Array
-                                        (
-                                            [0] => stdClass Object
-                                                (
-                                                    [header] => 1. begrüßen <span class="sense">(willkommen heißen)</span>:
-                                                    [translations] => Array
-                                                        (
-                                                            [0] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="grammatical_construction"><acronym title="jemanden">jdn</acronym> [mit <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>] <strong class="tilde">begrüßen
-
-                                                                    [target] => to greet <span class="target">[<span class="or"><acronym title="or">or</acronym></span> welcome]</span> <acronym title="somebody">sb</acronym> [with <acronym title="something">sth</acronym>]
-                                                                )
-
-                                                            [1] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="example">ich begrüße Sie!</span>
-                                                                    [target] => welcome!
-                                                                )
-
-                                                            [2] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="grammatical_construction"><acronym title="jemanden">jdn</acronym> als <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span> <strong class="tilde">begrüßen
-
-                                                                    [target] => to greet <acronym title="somebody">sb</acronym> as <acronym title="something">sth</acronym>
-                                                                )
-
-                                                            [3] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="full_collocation"><acronym title="jemanden">jdn</acronym> bei sich <span class="case"><acronym title="dative">dat</acronym></span> zu Hause <strong class="tilde">begrüßen</strong> dürfen</span> <span class="style"><acronym title="formal language">form</acronym></span>
-                                                                    [target] => to have the pleasure of welcoming <acronym title="somebody">sb</acronym> into one&#39;s home <span class="style"><acronym title="formal language">form</acronym></span>
-                                                                )
-
-                                                            [4] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="example">wir würden uns freuen, Sie demnächst wieder bei uns <strong class="tilde">begrüßen</strong> zu dürfen</span>
-                                                                    [target] => we would be delighted to have the pleasure of your company again soon
-                                                                )
-
-                                                            [5] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="example">wir würden uns freuen, Sie demnächst wieder bei uns <strong class="tilde">begrüßen</strong> zu dürfen</span> <span class="sense">(im Geschäft)</span>
-                                                                    [target] => we would be delighted to be of service to you again soon
-                                                                )
-
-                                                            [6] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="example">wir würden uns freuen, Sie bald wieder an Bord <strong class="tilde">begrüßen</strong> zu dürfen</span>
-                                                                    [target] => we look forward to welcoming you on board again soon
-                                                                )
-
-                                                        )
-
-                                                )
-
-                                            [1] => stdClass Object
-                                                (
-                                                    [header] => 2. begrüßen <span class="sense">(gutheißen)</span>:
-                                                    [translations] => Array
-                                                        (
-                                                            [0] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="grammatical_construction"><acronym title="etwas">etw</acronym> <strong class="tilde">begrüßen
-
-                                                                    [target] => to welcome <acronym title="something">sth</acronym>
-                                                                )
-
-                                                            [1] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="full_collocation">einen Entschluss <strong class="tilde">begrüßen
-
-                                                                    [target] => to welcome a decision
-                                                                )
-
-                                                            [2] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="full_collocation">es ist zu <strong class="tilde">begrüßen</strong>, dass ...</span>
-                                                                    [target] => it is to be welcomed <span class="target">[<span class="or"><acronym title="or">or</acronym></span> a good thing]</span> that ...
-                                                                )
-
-                                                        )
-
-                                                )
-
-                                            [2] => stdClass Object
-                                                (
-                                                    [header] => 3. begrüßen <span class="region"><acronym title="Swiss" class="schweiz">CH</acronym></span> <span class="sense">(ansprechen)</span>:
-                                                    [translations] => Array
-                                                        (
-                                                            [0] => stdClass Object
-                                                                (
-                                                                    [source] => <span class="grammatical_construction"><acronym title="jemanden">jdn</acronym>/<acronym title="etwas">etw</acronym> [in <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>] <strong class="tilde">begrüßen
-
-                                                                    [target] => to approach <span class="target">[<span class="or"><acronym title="or">or</acronym></span> consult]</span> <acronym title="somebody">sb</acronym>/<acronym title="something">sth</acronym> [on <acronym title="something">sth</acronym>]
-                                                                )
-
-                                                        )
-
-                                                )
-
-                                        )
-
-                                )
-
-                        )
-
-                )
-
-            [1] => stdClass Object
-                (
-                    [type] => entry
-                    [opendict] => 1
-                    [roms] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [headword] => begrüßen
-                                    [headword_full] => begrüßen <span class="wordclass"><acronym title="verb">VB</acronym></span>
-                                    [wordclass] => verb
-                                    [arabs] => Array
-                                        (
-                                            [0] => stdClass Object
-                                                (
-                                                    [header] => 
-                                                    [translations] => Array
-                                                        (
-                                                            [0] => stdClass Object
-                                                                (
-                                                                    [source] => <acronym title="etwas">etw</acronym> <strong class="tilde">begrüßen</strong> <span class="sense">(Fortschritt, Vertrag)</span> <span class="style"><acronym title="figurative">fig</acronym></span>
-                                                                    [target] => to hail <acronym title="something">sth</acronym>
-                                                                )
-
-                                                        )
-
-                                                )
-
-                                        )
-
-                                )
-
-                        )
-
-                )
-
-        )
-
-)
-
---------------------
 Definitions 'Handeln' :
 stdClass Object
 (
@@ -483,7 +139,7 @@ stdClass Object
                                                             [7] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">fahrlässiges/gesetzeswidriges <strong class="tilde">Handeln
-
+</strong> </span>
                                                                     [target] => acting negligently/unlawfully
                                                                 )
 
@@ -556,7 +212,7 @@ stdClass Object
                                                             [0] => stdClass Object
                                                                 (
                                                                     [source] => <span class="grammatical_construction">mit <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span> [<span class="or"><acronym title="oder">o.</acronym></span> <span class="topic"><acronym title="economy">ECON</acronym></span> in <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>] <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to trade <span class="target">[<span class="or"><acronym title="or">or</acronym></span> deal]</span> in <acronym title="something">sth</acronym>
                                                                 )
 
@@ -593,21 +249,21 @@ stdClass Object
                                                             [6] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">mit Drogen/Waffen <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to traffic in drugs/arms
                                                                 )
 
                                                             [7] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">mit Frauen/Sklaven <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to trade in women/slaves
                                                                 )
 
                                                             [8] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">en gros/en detail <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to be in the wholesale/retail trade
                                                                 )
 
@@ -623,7 +279,7 @@ stdClass Object
                                                             [0] => stdClass Object
                                                                 (
                                                                     [source] => <span class="grammatical_construction">mit <acronym title="jemandem">jdm</acronym> <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to trade with <acronym title="somebody">sb</acronym>
                                                                 )
 
@@ -645,21 +301,21 @@ stdClass Object
                                                             [0] => stdClass Object
                                                                 (
                                                                     [source] => <span class="grammatical_construction">[um <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span>] <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to haggle [over <acronym title="something">sth</acronym>]
                                                                 )
 
                                                             [1] => stdClass Object
                                                                 (
                                                                     [source] => <span class="example">es ist immer peinlich, mit einem Verkäufer zu <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => it&#39;s always embarrassing to haggle with a salesman
                                                                 )
 
                                                             [2] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">um den Preis <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to haggle over the price
                                                                 )
 
@@ -678,21 +334,21 @@ stdClass Object
                                                             [5] => stdClass Object
                                                                 (
                                                                     [source] => <span class="example">wenn Sie alles nehmen, lasse ich auch noch mit mir über einen Rabatt <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => if you take everything I&#39;m prepared to negotiate a discount
                                                                 )
 
                                                             [6] => stdClass Object
                                                                 (
                                                                     [source] => <span class="example">über den Preis lasse ich nicht mit mir <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => the price is not open to negotiation
                                                                 )
 
                                                             [7] => stdClass Object
                                                                 (
                                                                     [source] => <span class="example">meine Entscheidung steht, da lasse ich nicht mit mir <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => my decision stands, I&#39;m not open to any suggestions
                                                                 )
 
@@ -726,21 +382,21 @@ stdClass Object
                                                             [3] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">im Affekt/in Notwehr <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to act in the heat of the moment/in self-defence
                                                                 )
 
                                                             [4] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">auf Befehl <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to act on orders
                                                                 )
 
                                                             [5] => stdClass Object
                                                                 (
                                                                     [source] => <span class="grammatical_construction">aus <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span> <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to act out of <acronym title="something">sth</acronym>
                                                                 )
 
@@ -753,7 +409,7 @@ stdClass Object
                                                             [7] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">aus Überzeugung <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to act out of conviction
                                                                 )
 
@@ -769,7 +425,7 @@ stdClass Object
                                                             [0] => stdClass Object
                                                                 (
                                                                     [source] => <span class="grammatical_construction">irgendwie <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to act in a certain manner
                                                                 )
 
@@ -782,14 +438,14 @@ stdClass Object
                                                             [2] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">rechtswidrig <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to act illegally
                                                                 )
 
                                                             [3] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">eigenmächtig/richtig/fahrlässig <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to act on one&#39;s own authority/correctly/carelessly
                                                                 )
 
@@ -805,7 +461,7 @@ stdClass Object
                                                             [0] => stdClass Object
                                                                 (
                                                                     [source] => <span class="grammatical_construction">irgendwie [an <acronym title="jemandem">jdm</acronym>/gegen <acronym title="jemanden">jdn</acronym>] <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to act <span class="target">[<span class="or"><acronym title="or">or</acronym></span> behave]</span> [towards <acronym title="somebody">sb</acronym>] in a certain manner
                                                                 )
 
@@ -833,14 +489,14 @@ stdClass Object
                                                             [0] => stdClass Object
                                                                 (
                                                                     [source] => <span class="grammatical_construction">von <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>/über <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span> <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to be about <acronym title="something">sth</acronym>
                                                                 )
 
                                                             [1] => stdClass Object
                                                                 (
                                                                     [source] => <span class="grammatical_construction">von <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>/über <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span> <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to deal with <acronym title="something">sth</acronym>
                                                                 )
 
@@ -903,7 +559,7 @@ stdClass Object
                                                             [4] => stdClass Object
                                                                 (
                                                                     [source] => <span class="example">bei den Tätern soll es sich um Angehörige einer Terrorgruppe <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => the culprits are said to be members of a terrorist group
                                                                 )
 
@@ -1107,7 +763,7 @@ stdClass Object
                                                             [0] => stdClass Object
                                                                 (
                                                                     [source] => <span class="grammatical_construction"><acronym title="jemanden">jdn</acronym>/<acronym title="etwas">etw</acronym> <strong class="tilde">händeln
-
+</strong> </span>
                                                                     [target] => to handle <acronym title="somebody">sb</acronym>/<acronym title="something">sth</acronym>
                                                                 )
 
@@ -1155,7 +811,7 @@ stdClass Object
                                                             [0] => stdClass Object
                                                                 (
                                                                     [source] => <span class="grammatical_construction">mit <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span> [<span class="or"><acronym title="oder">o.</acronym></span> <span class="topic"><acronym title="economy">ECON</acronym></span> in <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>] <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to trade <span class="target">[<span class="or"><acronym title="or">or</acronym></span> deal]</span> in <acronym title="something">sth</acronym>
                                                                 )
 
@@ -1192,21 +848,21 @@ stdClass Object
                                                             [6] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">mit Drogen/Waffen <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to traffic in drugs/arms
                                                                 )
 
                                                             [7] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">mit Frauen/Sklaven <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to trade in women/slaves
                                                                 )
 
                                                             [8] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">en gros/en detail <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to be in the wholesale/retail trade
                                                                 )
 
@@ -1222,7 +878,7 @@ stdClass Object
                                                             [0] => stdClass Object
                                                                 (
                                                                     [source] => <span class="grammatical_construction">mit <acronym title="jemandem">jdm</acronym> <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to trade with <acronym title="somebody">sb</acronym>
                                                                 )
 
@@ -1244,21 +900,21 @@ stdClass Object
                                                             [0] => stdClass Object
                                                                 (
                                                                     [source] => <span class="grammatical_construction">[um <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span>] <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to haggle [over <acronym title="something">sth</acronym>]
                                                                 )
 
                                                             [1] => stdClass Object
                                                                 (
                                                                     [source] => <span class="example">es ist immer peinlich, mit einem Verkäufer zu <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => it&#39;s always embarrassing to haggle with a salesman
                                                                 )
 
                                                             [2] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">um den Preis <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to haggle over the price
                                                                 )
 
@@ -1277,21 +933,21 @@ stdClass Object
                                                             [5] => stdClass Object
                                                                 (
                                                                     [source] => <span class="example">wenn Sie alles nehmen, lasse ich auch noch mit mir über einen Rabatt <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => if you take everything I&#39;m prepared to negotiate a discount
                                                                 )
 
                                                             [6] => stdClass Object
                                                                 (
                                                                     [source] => <span class="example">über den Preis lasse ich nicht mit mir <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => the price is not open to negotiation
                                                                 )
 
                                                             [7] => stdClass Object
                                                                 (
                                                                     [source] => <span class="example">meine Entscheidung steht, da lasse ich nicht mit mir <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => my decision stands, I&#39;m not open to any suggestions
                                                                 )
 
@@ -1325,21 +981,21 @@ stdClass Object
                                                             [3] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">im Affekt/in Notwehr <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to act in the heat of the moment/in self-defence
                                                                 )
 
                                                             [4] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">auf Befehl <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to act on orders
                                                                 )
 
                                                             [5] => stdClass Object
                                                                 (
                                                                     [source] => <span class="grammatical_construction">aus <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span> <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to act out of <acronym title="something">sth</acronym>
                                                                 )
 
@@ -1352,7 +1008,7 @@ stdClass Object
                                                             [7] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">aus Überzeugung <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to act out of conviction
                                                                 )
 
@@ -1368,7 +1024,7 @@ stdClass Object
                                                             [0] => stdClass Object
                                                                 (
                                                                     [source] => <span class="grammatical_construction">irgendwie <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to act in a certain manner
                                                                 )
 
@@ -1381,14 +1037,14 @@ stdClass Object
                                                             [2] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">rechtswidrig <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to act illegally
                                                                 )
 
                                                             [3] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">eigenmächtig/richtig/fahrlässig <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to act on one&#39;s own authority/correctly/carelessly
                                                                 )
 
@@ -1404,7 +1060,7 @@ stdClass Object
                                                             [0] => stdClass Object
                                                                 (
                                                                     [source] => <span class="grammatical_construction">irgendwie [an <acronym title="jemandem">jdm</acronym>/gegen <acronym title="jemanden">jdn</acronym>] <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to act <span class="target">[<span class="or"><acronym title="or">or</acronym></span> behave]</span> [towards <acronym title="somebody">sb</acronym>] in a certain manner
                                                                 )
 
@@ -1432,14 +1088,14 @@ stdClass Object
                                                             [0] => stdClass Object
                                                                 (
                                                                     [source] => <span class="grammatical_construction">von <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>/über <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span> <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to be about <acronym title="something">sth</acronym>
                                                                 )
 
                                                             [1] => stdClass Object
                                                                 (
                                                                     [source] => <span class="grammatical_construction">von <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>/über <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span> <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => to deal with <acronym title="something">sth</acronym>
                                                                 )
 
@@ -1502,7 +1158,7 @@ stdClass Object
                                                             [4] => stdClass Object
                                                                 (
                                                                     [source] => <span class="example">bei den Tätern soll es sich um Angehörige einer Terrorgruppe <strong class="tilde">handeln
-
+</strong> </span>
                                                                     [target] => the culprits are said to be members of a terrorist group
                                                                 )
 
@@ -1820,7 +1476,7 @@ stdClass Object
                                                             [7] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">fahrlässiges/gesetzeswidriges <strong class="tilde">Handeln
-
+</strong> </span>
                                                                     [target] => acting negligently/unlawfully
                                                                 )
 
@@ -1893,7 +1549,7 @@ stdClass Object
                                                             [0] => stdClass Object
                                                                 (
                                                                     [source] => <span class="grammatical_construction"><acronym title="jemanden">jdn</acronym>/<acronym title="etwas">etw</acronym> <strong class="tilde">händeln
-
+</strong> </span>
                                                                     [target] => to handle <acronym title="somebody">sb</acronym>/<acronym title="something">sth</acronym>
                                                                 )
 
@@ -2172,7 +1828,7 @@ stdClass Object
                                                             [1] => stdClass Object
                                                                 (
                                                                     [source] => <span class="example">im Mai wird unser Vertreter wieder <strong class="tilde">reisen
-
+</strong> </span>
                                                                     [target] => our representative will be on the road again in May
                                                                 )
 
@@ -2221,14 +1877,14 @@ stdClass Object
                                                             [1] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">geschälter/ungeschälter <strong class="tilde">Reis
-
+</strong> </span>
                                                                     [target] => husked/unhusked rice
                                                                 )
 
                                                             [2] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">grüner/roter/schwarzer <strong class="tilde">Reis
-
+</strong> </span>
                                                                     [target] => green/red/black rice
                                                                 )
 
@@ -2447,7 +2103,7 @@ stdClass Object
                                                             [1] => stdClass Object
                                                                 (
                                                                     [source] => <span class="example">im Mai wird unser Vertreter wieder <strong class="tilde">reisen
-
+</strong> </span>
                                                                     [target] => our representative will be on the road again in May
                                                                 )
 
@@ -2649,14 +2305,14 @@ stdClass Object
                                                             [1] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">geschälter/ungeschälter <strong class="tilde">Reis
-
+</strong> </span>
                                                                     [target] => husked/unhusked rice
                                                                 )
 
                                                             [2] => stdClass Object
                                                                 (
                                                                     [source] => <span class="full_collocation">grüner/roter/schwarzer <strong class="tilde">Reis
-
+</strong> </span>
                                                                     [target] => green/red/black rice
                                                                 )
 
@@ -2842,6 +2498,654 @@ stdClass Object
 )
 
 --------------------
+Definitions 'ändern' :
+stdClass Object
+(
+    [lang] => de
+    [hits] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [type] => entry
+                    [opendict] => 
+                    [roms] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [headword] => än·dern
+                                    [headword_full] => än<span class="separator">·</span>dern <span class="phonetics">[ˈɛndɐn]</span> <span class="wordclass"><acronym title="verb">VB</acronym></span> <span class="verbclass"><acronym title="transitive verb">trans</acronym></span>
+                                    [wordclass] => transitive verb
+                                    [arabs] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [header] => 1. ändern <span class="sense">(verändern)</span>:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction"><acronym title="etwas">etw</acronym> <strong class="tilde">ändern
+</strong> </span>
+                                                                    [target] => to change <span class="target">[<span class="or"><acronym title="or">or</acronym></span> alter]</span> <acronym title="something">sth</acronym>
+                                                                )
+
+                                                            [1] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">ich kann es nicht <strong class="tilde">ändern
+</strong> </span>
+                                                                    [target] => I can&#39;t do anything about it
+                                                                )
+
+                                                            [2] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">[s]eine Meinung <strong class="tilde">ändern
+</strong> </span>
+                                                                    [target] => to change one&#39;s mind
+                                                                )
+
+                                                            [3] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">den Namen <strong class="tilde">ändern
+</strong> </span>
+                                                                    [target] => to change one&#39;s name
+                                                                )
+
+                                                            [4] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">das ändert nichts daran, dass ...</span>
+                                                                    [target] => that doesn&#39;t change <span class="target">[<span class="or"><acronym title="or">or</acronym></span> alter]</span> the fact that
+                                                                )
+
+                                                            [5] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">das alles ändert nichts an der Tatsache, dass ...</span>
+                                                                    [target] => none of that changes <span class="target">[<span class="or"><acronym title="or">or</acronym></span> alters]</span> the fact that ...
+                                                                )
+
+                                                            [6] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">daran kann man nichts <strong class="tilde">ändern
+</strong> </span>
+                                                                    [target] => there&#39;s nothing anyone/we/you can do about it
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [header] => 2. ändern <span class="topic"><acronym title="fashion, sewing">FASHION</acronym></span>:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction">[<acronym title="jemandem">jdm</acronym>] <acronym title="etwas">etw</acronym> <strong class="tilde">ändern
+</strong> </span>
+                                                                    [target] => to alter <acronym title="something">sth</acronym> [for <acronym title="somebody">sb</acronym>]
+                                                                )
+
+                                                            [1] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction">[<acronym title="jemandem">jdm</acronym>] <acronym title="etwas">etw</acronym> <strong class="tilde">ändern
+</strong> </span> <span class="sense">(kleiner machen)</span>
+                                                                    [target] => to take <acronym title="something">sth</acronym> in
+                                                                )
+
+                                                            [2] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction">[<acronym title="jemandem">jdm</acronym>] <acronym title="etwas">etw</acronym> <strong class="tilde">ändern
+</strong> </span> <span class="sense">(die Naht auslassen)</span>
+                                                                    [target] => to let <acronym title="something">sth</acronym> out
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                            [1] => stdClass Object
+                                (
+                                    [headword] => än·dern
+                                    [headword_full] => än<span class="separator">·</span>dern <span class="phonetics">[ˈɛndɐn]</span> <span class="wordclass"><acronym title="verb">VB</acronym></span> <span class="verbclass"><acronym title="reflexive verb">refl</acronym></span>
+                                    [wordclass] => reflexive verb
+                                    [arabs] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [header] => 
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> <strong class="tilde">ändern
+</strong> </span>
+                                                                    [target] => to change
+                                                                )
+
+                                                            [1] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">in meinem Leben muss sich einiges <strong class="tilde">ändern
+</strong> </span>
+                                                                    [target] => there will have to be some changes in my life
+                                                                )
+
+                                                            [2] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">die Windrichtung hat sich geändert</span>
+                                                                    [target] => the wind has changed direction
+                                                                )
+
+                                                            [3] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">es hat sich nichts geändert</span>
+                                                                    [target] => nothing&#39;s changed
+                                                                )
+
+                                                            [4] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">das lässt sich nicht <strong class="tilde">ändern
+</strong> </span>
+                                                                    [target] => there&#39;s nothing that can be done about it
+                                                                )
+
+                                                            [5] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">das lässt sich nicht <strong class="tilde">ändern
+</strong> </span>
+                                                                    [target] => you can&#39;t do anything about it
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+)
+
+--------------------
+Definitions 'begrüßen' :
+stdClass Object
+(
+    [lang] => de
+    [hits] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [type] => entry
+                    [opendict] => 
+                    [roms] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [headword] => be·grü·ßen
+                                    [headword_full] => <span class="headword_attributes" title="German past participle formed without ge-">be<span class="separator">·</span>grü<span class="separator">·</span>ßen*</span> <span class="wordclass"><acronym title="verb">VB</acronym></span> <span class="verbclass"><acronym title="transitive verb">trans</acronym></span>
+                                    [wordclass] => transitive verb
+                                    [arabs] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [header] => 1. begrüßen <span class="sense">(willkommen heißen)</span>:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction"><acronym title="jemanden">jdn</acronym> [mit <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>] <strong class="tilde">begrüßen
+</strong> </span>
+                                                                    [target] => to greet <span class="target">[<span class="or"><acronym title="or">or</acronym></span> welcome]</span> <acronym title="somebody">sb</acronym> [with <acronym title="something">sth</acronym>]
+                                                                )
+
+                                                            [1] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">ich begrüße Sie!</span>
+                                                                    [target] => welcome!
+                                                                )
+
+                                                            [2] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction"><acronym title="jemanden">jdn</acronym> als <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span> <strong class="tilde">begrüßen
+</strong> </span>
+                                                                    [target] => to greet <acronym title="somebody">sb</acronym> as <acronym title="something">sth</acronym>
+                                                                )
+
+                                                            [3] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation"><acronym title="jemanden">jdn</acronym> bei sich <span class="case"><acronym title="dative">dat</acronym></span> zu Hause <strong class="tilde">begrüßen</strong> dürfen</span> <span class="style"><acronym title="formal language">form</acronym></span>
+                                                                    [target] => to have the pleasure of welcoming <acronym title="somebody">sb</acronym> into one&#39;s home <span class="style"><acronym title="formal language">form</acronym></span>
+                                                                )
+
+                                                            [4] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">wir würden uns freuen, Sie demnächst wieder bei uns <strong class="tilde">begrüßen</strong> zu dürfen</span>
+                                                                    [target] => we would be delighted to have the pleasure of your company again soon
+                                                                )
+
+                                                            [5] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">wir würden uns freuen, Sie demnächst wieder bei uns <strong class="tilde">begrüßen</strong> zu dürfen</span> <span class="sense">(im Geschäft)</span>
+                                                                    [target] => we would be delighted to be of service to you again soon
+                                                                )
+
+                                                            [6] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="example">wir würden uns freuen, Sie bald wieder an Bord <strong class="tilde">begrüßen</strong> zu dürfen</span>
+                                                                    [target] => we look forward to welcoming you on board again soon
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [header] => 2. begrüßen <span class="sense">(gutheißen)</span>:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction"><acronym title="etwas">etw</acronym> <strong class="tilde">begrüßen
+</strong> </span>
+                                                                    [target] => to welcome <acronym title="something">sth</acronym>
+                                                                )
+
+                                                            [1] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">einen Entschluss <strong class="tilde">begrüßen
+</strong> </span>
+                                                                    [target] => to welcome a decision
+                                                                )
+
+                                                            [2] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">es ist zu <strong class="tilde">begrüßen</strong>, dass ...</span>
+                                                                    [target] => it is to be welcomed <span class="target">[<span class="or"><acronym title="or">or</acronym></span> a good thing]</span> that ...
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [2] => stdClass Object
+                                                (
+                                                    [header] => 3. begrüßen <span class="region"><acronym title="Swiss" class="schweiz">CH</acronym></span> <span class="sense">(ansprechen)</span>:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="grammatical_construction"><acronym title="jemanden">jdn</acronym>/<acronym title="etwas">etw</acronym> [in <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>] <strong class="tilde">begrüßen
+</strong> </span>
+                                                                    [target] => to approach <span class="target">[<span class="or"><acronym title="or">or</acronym></span> consult]</span> <acronym title="somebody">sb</acronym>/<acronym title="something">sth</acronym> [on <acronym title="something">sth</acronym>]
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [1] => stdClass Object
+                (
+                    [type] => entry
+                    [opendict] => 1
+                    [roms] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [headword] => begrüßen
+                                    [headword_full] => begrüßen <span class="wordclass"><acronym title="verb">VB</acronym></span>
+                                    [wordclass] => verb
+                                    [arabs] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [header] => 
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <acronym title="etwas">etw</acronym> <strong class="tilde">begrüßen</strong> <span class="sense">(Fortschritt, Vertrag)</span> <span class="style"><acronym title="figurative">fig</acronym></span>
+                                                                    [target] => to hail <acronym title="something">sth</acronym>
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+)
+
+--------------------
+Definitions 'Stadt' :
+stdClass Object
+(
+    [lang] => de
+    [hits] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [type] => entry
+                    [opendict] => 
+                    [roms] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [headword] => Stadt
+                                    [headword_full] => Stadt <span class="flexion">&lt;-, Städte&gt;</span> <span class="phonetics">[ʃtat, <span class="info"><acronym title="plural">pl</acronym></span> ˈʃtɛ(:)tə]</span> <span class="wordclass"><acronym title="noun">N</acronym></span> <span class="genus"><acronym title="feminine">f</acronym></span>
+                                    [wordclass] => noun
+                                    [arabs] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [header] => 1. Stadt:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <strong class="headword">Stadt</strong> <span class="sense">(Ort)</span>
+                                                                    [target] => town
+                                                                )
+
+                                                            [1] => stdClass Object
+                                                                (
+                                                                    [source] => <strong class="headword">Stadt</strong> <span class="sense">(Großstadt)</span>
+                                                                    [target] => city
+                                                                )
+
+                                                            [2] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">am Rande der <strong class="tilde">Stadt
+</strong> </span>
+                                                                    [target] => on the edge of [the] town
+                                                                )
+
+                                                            [3] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">am Rande der <strong class="tilde">Stadt
+</strong> </span>
+                                                                    [target] => on the outskirts of the city
+                                                                )
+
+                                                            [4] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">im Zentrum der <strong class="tilde">Stadt
+</strong> </span>
+                                                                    [target] => in the centre <span class="target">[<span class="or"><acronym title="or">or</acronym></span> <span class="region"><acronym title="American English" class="Am">Am</acronym></span> -er]</span> of town
+                                                                )
+
+                                                            [5] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">im Zentrum der <strong class="tilde">Stadt
+</strong> </span>
+                                                                    [target] => in the city/town centre
+                                                                )
+
+                                                            [6] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">in <strong class="tilde">Stadt</strong> und Land</span> <span class="style"><acronym title="formal language">form</acronym></span>
+                                                                    [target] => throughout the land
+                                                                )
+
+                                                            [7] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">in <strong class="tilde">Stadt</strong> und Land</span> <span class="style"><acronym title="formal language">form</acronym></span>
+                                                                    [target] => the length and breadth of the land
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => stdClass Object
+                                                (
+                                                    [header] => 2. Stadt <span class="style"><acronym title="informal">inf</acronym></span> <span class="sense">(Stadtverwaltung)</span>:
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <strong class="headword">Stadt</strong>
+                                                                    [target] => [city/town] council
+                                                                )
+
+                                                            [1] => stdClass Object
+                                                                (
+                                                                    [source] => <strong class="headword">Stadt</strong> <span class="sense">(von Großstadt <acronym title="auch">a.</acronym>)</span>
+                                                                    [target] => corporation
+                                                                )
+
+                                                            [2] => stdClass Object
+                                                                (
+                                                                    [source] => <span class="full_collocation">bei der <strong class="tilde">Stadt</strong> arbeiten</span> <span class="full_collocation">[<span class="or"><acronym title="oder">o.</acronym></span> sein]</span>
+                                                                    [target] => to work for the council/corporation
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [1] => stdClass Object
+                (
+                    [type] => entry
+                    [opendict] => 
+                    [roms] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [headword] => städt.
+                                    [headword_full] => städt. 
+                                    [arabs] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [header] => städt. <span class="indirect_reference_ABK">abbreviation of städtisch</span>
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => 
+                                                                    [target] => 
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [2] => stdClass Object
+                (
+                    [type] => entry
+                    [opendict] => 
+                    [roms] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [headword] => Ba·sel-Stadt
+                                    [headword_full] => Ba<span class="separator">·</span>sel-Stadt <span class="flexion">&lt;-&gt;</span> <span class="wordclass"><acronym title="noun">N</acronym></span> <span class="genus"><acronym title="neuter">nt</acronym></span>
+                                    [wordclass] => noun
+                                    [arabs] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [header] => 
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <strong class="headword">Basel-Stadt</strong>
+                                                                    [target] => Basel City
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [3] => stdClass Object
+                (
+                    [type] => entry
+                    [opendict] => 
+                    [roms] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [headword] => Gu·a·te·ma·la-Stadt
+                                    [headword_full] => Gu<span class="separator">·</span>a<span class="separator">·</span>te<span class="separator">·</span>ma<span class="separator">·</span>la-Stadt <span class="flexion">&lt;-&gt;</span> <span class="wordclass"><acronym title="noun">N</acronym></span> <span class="genus"><acronym title="neuter">nt</acronym></span>
+                                    [wordclass] => noun
+                                    [arabs] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [header] => 
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <strong class="headword">Guatemala-Stadt</strong>
+                                                                    [target] => Guatemala City
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [4] => stdClass Object
+                (
+                    [type] => entry
+                    [opendict] => 
+                    [roms] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [headword] => Me·xi·ko-Stadt
+                                    [headword_full] => Me<span class="separator">·</span>xi<span class="separator">·</span>ko-Stadt <span class="flexion">&lt;-&gt;</span> <span class="wordclass"><acronym title="noun">N</acronym></span> <span class="genus"><acronym title="neuter">nt</acronym></span>
+                                    [wordclass] => noun
+                                    [arabs] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [header] => 
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <strong class="headword">Mexiko-Stadt</strong>
+                                                                    [target] => Mexico City
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [5] => stdClass Object
+                (
+                    [type] => entry
+                    [opendict] => 
+                    [roms] => Array
+                        (
+                            [0] => stdClass Object
+                                (
+                                    [headword] => Stadt-Schnellbahn
+                                    [headword_full] => Stadt-Schnellbahn <span class="topic"><acronym title="public transport">PUBL TRANS</acronym></span>
+                                    [arabs] => Array
+                                        (
+                                            [0] => stdClass Object
+                                                (
+                                                    [header] => 
+                                                    [translations] => Array
+                                                        (
+                                                            [0] => stdClass Object
+                                                                (
+                                                                    [source] => <strong class="headword">Stadt-Schnellbahn</strong>
+                                                                    [target] => rail rapid transit
+                                                                )
+
+                                                            [1] => stdClass Object
+                                                                (
+                                                                    [source] => <strong class="headword">Stadt-Schnellbahn</strong>
+                                                                    [target] => RRT
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+)
+
+--------------------
 Definitions 'beweisen' :
 stdClass Object
 (
@@ -2869,7 +3173,7 @@ stdClass Object
                                                             [0] => stdClass Object
                                                                 (
                                                                     [source] => <span class="grammatical_construction">[<acronym title="jemandem">jdm</acronym>] <acronym title="etwas">etw</acronym> <strong class="tilde">beweisen
-
+</strong> </span>
                                                                     [target] => to prove <acronym title="something">sth</acronym> [to <acronym title="somebody">sb</acronym>]
                                                                 )
 
@@ -2909,7 +3213,7 @@ stdClass Object
                                                             [0] => stdClass Object
                                                                 (
                                                                     [source] => <span class="grammatical_construction"><acronym title="etwas">etw</acronym> <strong class="tilde">beweisen
-
+</strong> </span>
                                                                     [target] => to display <span class="target">[<span class="or"><acronym title="or">or</acronym></span> show]</span> <acronym title="something">sth</acronym>
                                                                 )
 
@@ -2931,7 +3235,7 @@ stdClass Object
                                                             [0] => stdClass Object
                                                                 (
                                                                     [source] => <span class="grammatical_construction"><acronym title="etwas">etw</acronym> <strong class="tilde">beweisen
-
+</strong> </span>
                                                                     [target] => to demonstrate <acronym title="something">sth</acronym>
                                                                 )
 
@@ -2958,7 +3262,7 @@ stdClass Object
                                                             [0] => stdClass Object
                                                                 (
                                                                     [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> <strong class="tilde">beweisen
-
+</strong> </span>
                                                                     [target] => to show [itself]
                                                                 )
 
