@@ -9,7 +9,7 @@ use LanguageTools\ClassID;
 
 include 'vendor/autoload.php';
 
-function test(File $file, DictionaryInterface $translator, SentenceFetchInterface $fetcher)
+function test_systran(File $file, DictionaryInterface $translator, SentenceFetchInterface $fetcher)
 {
 
   foreach ($file as $word) {
@@ -22,8 +22,7 @@ function test(File $file, DictionaryInterface $translator, SentenceFetchInterfac
       
       foreach ($definitions as $result) {
           
-         $debug = 10;
-          print_r($result);
+            print_r($result);
       }
    
        echo "\n--------End of Definitions for $word ------------\n";
@@ -39,7 +38,7 @@ function test(File $file, DictionaryInterface $translator, SentenceFetchInterfac
     
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-    test($file, $trans, $fetcher);
+    test_systran($file, $trans, $fetcher);
 
   } catch (Exception $e) {
 
