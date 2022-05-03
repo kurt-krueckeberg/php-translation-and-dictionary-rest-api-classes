@@ -11,44 +11,43 @@ class PonsResultsIterator extends ResultsIterator  {
     { 
        $results = mew \stdClass;
 
+        foreach ($obj->hits as $hit) {
         
-        
-       if (is_null($obj) || count($obj->hits) == 0) 
-                   return $results;
-                  
-              foreach ($obj->hits as $hit_array) {
+              if (count($hit->roms) == 0) 
+                  continue;
               
-                    if (count($hit_array->roms) == 0) 
-                        continue;
-                    
-                    foreach($hit_array->roms as $rom_array) {
-              
-                         if (count($rom_array->arabs) == 0)
-                             continue;
-                      
-                          foreach ($rom_array->arabs as $arabs_array) {
-                              
-                              if (count($arabs_array->translations) == 0)
-                                 continue;
-                      
-                              foreach($arabs_array->translations as $translation) {
-                      
-                                    $results[] = $translation;//strip_tags($translation->target);
-                               }  
-                          }
-                     }
-              }
-       
-   }
+              foreach($hit->roms as $rom) {
+
+                   $rom->headword OR $rom->headword_full is he term bein defined
+         
+                   if (count($rom->arabs) == 0)
+                       continue;
+                
+                    foreach ($rom->arabs as $arab) {
+                        
+                        if (count($arab->translations) == 0)
+                           continue;
+                
+                        foreach($arab->translations as $translation) {
+                
+                              $results[] = $translation;//strip_tags($translation->target);
+                         }  
+                    }
+               }
+        }
+
    
    public function __construct(array $objs) 
    {
        parent::__construct($objs);
+
         /*
          * Does response have 'entries' (which seems to mean, iI guess, dicitonary entries. If not translationsa are searched.
          * 
-         */   
-       $this->has_entries = ($objs->type == self::$entry) ? true : false;
- 
+         */  
+      if (is_null($obj) || count($obj->hits) == 0) 
+             // Then there are no results.
+        
+       $this->has_entries = $obj->hits[0]->type == "entry" ? true : false;   
    }
 }

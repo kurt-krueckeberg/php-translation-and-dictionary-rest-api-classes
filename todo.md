@@ -1,5 +1,7 @@
 - Design PonsResultsIterator. Use the en.pons.com results for the word `Haus` and compare it with the response object.
 
+Emperically figure out what each field means by comparing it to the output of 'Haus'.
+
 - Compare the `print_r()` output of SystranResultsIterator in doc/systran-output with an actual dictionary definition, say, from (no kidding) that displayed by https://en.pons.com. 
 
 - Create PonsResultsIterator that does what SystranResultsIterator does: provide a `get_current(mixed $current)` method to return the truly relevant fields. To determine which fields are most important, do
