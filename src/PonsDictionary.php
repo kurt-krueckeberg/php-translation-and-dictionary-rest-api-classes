@@ -105,8 +105,11 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
        }
        
        $obj = json_decode($contents)[0]; 
-  
+
+       $has_entries = $obj->type == "entries" ? true : false;   
+
        print_r($obj);
+
 
        echo "\n--------------------\n";
        
