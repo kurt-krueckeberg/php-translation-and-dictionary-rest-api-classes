@@ -15,7 +15,7 @@ class SystranResultsIterator extends ResultsIterator  {
 
       $result->definitions = array();
 
-      foreach($match->targets as $key => $target) { // target == definition
+      foreach($match->targets as $index => $target) { // target == definition
 
           /* 
            * Each $results->term will have an array of definitions (with maybe only one dfinition in it) and...
@@ -24,13 +24,14 @@ class SystranResultsIterator extends ResultsIterator  {
            * 
            * ... These expressions will have 'source' and 'target' properties.
            */
-
-          $result->definitions[$key]['meaning']= $target->lemma; 
+          $result->definitions[$index] = new \stdClass;
+          
+          $result->definitions[$index]->meaning= $target->lemma; 
           
           
           if (isset($target->expressions)) {
 
-               $result->definitions[$key]['expressions'] = $target->expressions;
+               $result->definitions[$index]->expressions = $target->expressions;
                
            }   
            

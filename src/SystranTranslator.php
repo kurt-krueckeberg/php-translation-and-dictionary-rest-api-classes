@@ -99,15 +99,4 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
            
       return new SystranResultsIterator($obj->outputs[0]->output->matches); 
     }
-    
-    private function process_definitions(object $matches) // todo: Define return value later.
-    {
-       foreach($output->matches as $match) {
-          
-           print_r($match);
-          
-           echo "\n------------------\n";
-       }  
-       return "test";   
-    }
 }

@@ -9,39 +9,52 @@ use LanguageTools\ClassID;
 
 include 'vendor/autoload.php';
 
-function test_systran(File $file, DictionaryInterface $translator, SentenceFetchInterface $fetcher)
+function systran_test(File $file, DictionaryInterface & TranslateInterface $trans)
 {
-
   foreach ($file as $word) {
   
-      echo "Definitions '$word' :\n";
+      echo "Definitions for '$word' :\n";
 
-      $definitions = $translator->lookup($word, "DE", "EN");
+      $results = $trans->lookup($word, "DE", "EN");
      
-      echo "print_r() of definitions for $word.\n";
-      
-      foreach ($definitions as $result) {
+      foreach ($results as $result) {
           
-            print_r($result);
-      }
+          echo "Term:\t$result->term [$result->pos]\n";
+
+          echo "Definitions:\n";
+
+          foreach($result->definitions as $index => $definition) {
+              
+              $i = $index + 1;
+              
+              echo "$i. $definition->meaning\n";
+  
+              if (count($definition->expressions) != 0) echo "Expressions:\n";
+  
+              foreach ($definition->expressions as $index => $expression) {
+                  
+                  $i = $index + 1;
+                  
+                  echo "\t$i. $expression->source\t\t$expression->target\n";
+              }
+  
+                
+          }
    
        echo "\n--------End of Definitions for $word ------------\n";
     }
+  }
 }
 
   try {
    
     $trans = RestClient::createRestClient(ClassID::Systran);
 
-    $defns = $trans->lookup("Haus", "DE", "EN");
- 
-    $fetcher = RestClient::createRestClient(ClassID::Leipzig);
-
     $file =  new File("short-list.txt");
     
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-    test_systran($file, $trans, $fetcher);
+    systran_test($file, $trans);
 
   } catch (Exception $e) {
 
