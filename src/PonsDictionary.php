@@ -104,12 +104,9 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
              return $results;
        }
        
-       $obj = json_decode($contents)[0]; 
-
-       $has_entries = $obj->type == "entries" ? true : false;   
+       $obj = json_decode($contents)[0];
 
        print_r($obj);
-
 
        echo "\n--------------------\n";
        
@@ -120,23 +117,25 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
         */
         if (is_null($obj) || count($obj->hits) == 0) 
              return $results;
-            
-        foreach ($obj->hits as $hit_array) {
         
-              if (count($hit_array->roms) == 0) 
+       $has_entries = $obj->hits[0]->type == "entry" ? true : false;   
+            
+        foreach ($obj->hits as $hit) {
+        
+              if (count($hit->roms) == 0) 
                   continue;
               
-              foreach($hit_array->roms as $rom_array) {
+              foreach($hit->roms as $rom) {
         
-                   if (count($rom_array->arabs) == 0)
+                   if (count($rom->arabs) == 0)
                        continue;
                 
-                    foreach ($rom_array->arabs as $arabs_array) {
+                    foreach ($rom->arabs as $arab) {
                         
-                        if (count($arabs_array->translations) == 0)
+                        if (count($arab->translations) == 0)
                            continue;
                 
-                        foreach($arabs_array->translations as $translation) {
+                        foreach($arab->translations as $translation) {
                 
                               $results[] = $translation;//strip_tags($translation->target);
                          }  
