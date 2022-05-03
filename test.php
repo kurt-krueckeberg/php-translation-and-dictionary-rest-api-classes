@@ -34,13 +34,18 @@ function test_systran(File $file, DictionaryInterface $translator, SentenceFetch
   try {
    
     $trans = RestClient::createRestClient(ClassID::Pons);
-    $fetcher = RestClient::createRestClient(ClassID::Leipzig);
+
+    $defns = $trans->lookup("Haus", "DE", "EN");
  
+/* 
+    $fetcher = RestClient::createRestClient(ClassID::Leipzig);
+
     $file =  new File("short-list.txt");
     
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
     test_systran($file, $trans, $fetcher);
+*/
 
   } catch (Exception $e) {
 
