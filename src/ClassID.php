@@ -5,21 +5,21 @@ namespace LanguageTools;
 enum ClassID implements ClassmapperInterface 
 {
    case  Leipzig;
-   case  Pons;
    case  Systran;
    case  Azure;
    case  Ibm;
    case  Deepl;
+/* case  Pons; */
     
     public function class_name() : string
     {
         return match($this) { // Returns implementation class
             ClassID::Leipzig  => "LanguageTools\UniLeipzigSentenceFetcher", 
-            ClassID::Pons     => "LanguageTools\PonsDictionary",   
             ClassID::Systran  => "LanguageTools\SystranTranslator",
             ClassID::Azure    => "LanguageTools\AzureTranslator",
             ClassID::Ibm      => "LanguageTools\IbmTranslator",
             ClassID::Deepl    => "LanguageTools\DeeplTranslator",
+        /*  ClassID::Pons     => "LanguageTools\PonsDictionary",   */
         };
      }
    

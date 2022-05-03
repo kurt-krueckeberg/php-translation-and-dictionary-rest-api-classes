@@ -1,0 +1,73 @@
+<?php
+declare(strict_types=1);
+namespace LanguageTools;
+/* 
+ * Emprically it appears all actual defnitions are in the first 'rom' and subsequent roms contain example phrses.
+ * The problem is, there is no documentation explaining this. For example, arabs are 'definitions' but a 'definition' can simply an example phrase (and not an actual definition).       
+ * The first rom's arbas's header's being with an numeral, indicatingg the defnition number. They alkso have enbedded html.
+ *
+ * 
+ * Summarizing: The lack of documentation and the embedded html make the Pons API impractical to use.
+ *  
+ */
+class PonsResultsIterator extends ResultsIterator  {
+
+    private static string $entry = 'entries';
+    private bool has_entries;
+
+    protected function get_result(mixed $obj) : \stdClass //mixed
+    { 
+       $result = new \stdClass;
+       /* 
+        * Emprically it appears all actual defnitions are in the first 'rom' and subsequent roms contain example phrses.
+        * The problem is, there is no documentation explaining this.
+        * The first hits' rom's arbas's header's being with an numeral, indicatingg the defnition number. They alkso have enbedded html.
+        * 
+        * Summarizing: The lack of documentation and the embedded html make the Pons API impractical to use.
+        *  
+        * * arabs are 'definitions' but a 'definition' can be simply an example phrase.       
+        */
+       foreach ($obj->hits as $hit) {
+     
+           if (count($hit->roms) == 0) 
+               continue;
+           
+           foreach($hit->roms as $rom) {
+               
+                $result->term = $rom->headword; // Is the term being defined
+                $result->pos = rom->wordclass; // Is the part of speech
+                        
+                
+                if (count($rom->arabs) == 0)
+                    continue;
+             
+                 foreach ($rom->arabs as $arab) {
+                     
+                     if (count($arab->translations) == 0)
+                        continue;
+             
+                     foreach($arab->translations as $translation) {
+             
+                           $results[] = $translation;//strip_tags($translation->target);
+                      }  
+                 }
+            }
+        }
+       return $result; //new ResultsIterator($results, function($x) { return $x;});              
+    }
+
+   
+   public function __construct(array $objs) 
+   {
+       parent::__construct($objs);
+
+        /*
+         * Does response have 'entries' (which seems to mean, iI guess, dicitonary entries. If not translationsa are searched.
+         * 
+         */  
+      if (is_null($obj) || count($obj->hits) == 0) 
+             // Then there are no results.
+        
+       $this->has_entries = $obj->hits[0]->type == "entry" ? true : false;   
+   }
+}

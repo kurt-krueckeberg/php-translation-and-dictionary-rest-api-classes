@@ -18,7 +18,6 @@ function test_systran(File $file, DictionaryInterface $translator, SentenceFetch
 
       $definitions = $translator->lookup($word, "DE", "EN");
      
-/* 
       echo "print_r() of definitions for $word.\n";
       
       foreach ($definitions as $result) {
@@ -27,17 +26,15 @@ function test_systran(File $file, DictionaryInterface $translator, SentenceFetch
       }
    
        echo "\n--------End of Definitions for $word ------------\n";
-*/
     }
 }
 
   try {
    
-    $trans = RestClient::createRestClient(ClassID::Pons);
+    $trans = RestClient::createRestClient(ClassID::Systran);
 
     $defns = $trans->lookup("Haus", "DE", "EN");
  
-/* 
     $fetcher = RestClient::createRestClient(ClassID::Leipzig);
 
     $file =  new File("short-list.txt");
@@ -45,7 +42,6 @@ function test_systran(File $file, DictionaryInterface $translator, SentenceFetch
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
     test_systran($file, $trans, $fetcher);
-*/
 
   } catch (Exception $e) {
 

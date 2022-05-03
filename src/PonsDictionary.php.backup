@@ -126,7 +126,19 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
                   continue;
               
               foreach($hit->roms as $rom) {
-        
+                  
+                   $rom->headword // Is the term being defined
+                   $rom->wordclass // Is the part of speech
+                           
+                   /* 
+                    * Emprically it appears all actual defnitions are in the first 'rom' and subsequent roms contain example phrses.
+                    * The problem is, there is no documentation explaining this.
+                    * The first rom's arbas's header's being with an numeral, indicatingg the defnition number. They alkso have enbedded html.
+                    * 
+                    * Summarizing: The lack of documentation and the embedded html make the Pons API impractical to use.
+                    *  
+                    * * arabs are 'definitions' but a 'definition' can be simply an example phrase.       
+                    */
                    if (count($rom->arabs) == 0)
                        continue;
                 
