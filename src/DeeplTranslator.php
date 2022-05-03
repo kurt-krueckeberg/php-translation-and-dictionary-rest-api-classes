@@ -8,6 +8,7 @@ class DeeplTranslator extends RestClient implements TranslateInterface {
    static private string $method = "GET";    
    static private string $from_key = "source_lang"; 
    static private string $to_key = "target_lang";  
+   static private string $input = "text";  
    static private string $trans_route = "v2/translate";     
    static private string $languages_route = "v2/languages";     
 
@@ -18,7 +19,7 @@ class DeeplTranslator extends RestClient implements TranslateInterface {
    {   
       parent::__construct($c->endpoint);
 
-     $this->header[array_key_first($c->header)] = $c->header[array_key_first($c->header)];
+     $this->headers[array_key_first($c->header)] = $c->header[array_key_first($c->header)];
    }
 
    // If this is a translation request and there is no source language, the source langauge will be auto-detected.
@@ -67,12 +68,13 @@ class DeeplTranslator extends RestClient implements TranslateInterface {
    {
        $this->setLanguages($dest_lang, $source_lang); 
 
-       $this->query['text'] = urlencode($text);
+       $this->query[self::$input] = $text; //urlencode($text);
 
        $contents = $this->request(self::$method, self::$trans_route, ['headers' => $this->headers, 'query' => $this->query]); 
 
        $obj = json_decode($contents);
 
-       return urldecode($obj->translations[0]->text); 
+       //--return urldecode($obj->translations[0]->text); 
+       return $obj->translations[0]->text; 
    }
 }
