@@ -4,37 +4,39 @@ namespace LanguageTools;
 
 class SystranResultsIterator extends ResultsIterator  {
 
-    protected function get_result(mixed $match) : \stdClass //mixed
+   /*
+       Returns a stdClass with these properties:
+
+       term - being defined
+       pos  - part of speech
+       definitions - stdClass with properites:
+                           1. meaning | string
+                           2. Any associated example epxressions | array
+    */
+
+    protected function get_result(mixed $match) : \stdClass 
     { 
-       // See ../doc/dict-systran.txt for layout of results returned by Systran lookup call
+       // See doc/dict-systran.txt for result response details for lookup call.
 
       $result = new \stdClass;
 
-      $result->term = $match->source->lemma;    
-      $result->pos = $match->source->pos;  // = Part Of Speech                                
+      $result->term = $match->source->lemma; // word being defined   
+      $result->pos = $match->source->pos;    // pos == Part Of Speech                                
 
       $result->definitions = array();
 
-      foreach($match->targets as $index => $target) { // target == definition
+      /* 
+        targets == definitions, often with example expressions.
+       */
+      foreach($match->targets as $index => $target) { 
 
-          /* 
-           * Each $results->term will have an array of definitions (with maybe only one dfinition in it) and...
-           * 
-           * ...with each defintion there can be an array of example expressions... 
-           * 
-           * ... These expressions will have 'source' and 'target' properties.
-           */
           $result->definitions[$index] = new \stdClass;
           
           $result->definitions[$index]->meaning= $target->lemma; 
           
-          
-          if (isset($target->expressions)) {
+          if (isset($target->expressions)) // expressions is an array
 
-               $result->definitions[$index]->expressions = $target->expressions;
-               
-           }   
-           
+               $result->definitions[$index]->expressions = $target->expressions; 
       }
       
       return $result;
