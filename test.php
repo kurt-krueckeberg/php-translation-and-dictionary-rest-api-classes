@@ -6,56 +6,63 @@ use LanguageTools\TranslateInterface;
 use LanguageTools\DictionaryInterface;
 use LanguageTools\SentenceFetchInterface;
 use LanguageTools\ClassID;
+use LanguageTools\ResultsIterato;
 
 include 'vendor/autoload.php';
 
-function test(File $file, DictionaryInterface & TranslateInterface $trans)
+function display_defn(ResultsIterator $iter)
+{
+   foreach ($results as $result) {
+        
+       echo "Term:\t$result->term [$result->pos]\n";
+
+       echo "Definitions:\n";
+
+       foreach($result->definitions as $index => $definition) {
+           
+           $i = $index + 1;
+           
+           echo "$i. $definition->meaning\n";
+
+           if (count($definition->expressions) != 0) echo "Expressions:\n";
+
+           foreach ($definition->expressions as $index => $expression) {
+               
+               $i = $index + 1;
+               
+               echo "\t$i. $expression->source\t\t$expression->target\n";
+           }
+       }
+  }
+}
+
+function test(File $file, SentenceFetcheInterface $fetcher, TranslateInterface $trans, DictionaryInterface $dict)
 {
   foreach ($file as $word) {
   
       echo "Definitions for '$word' :\n";
 
-      $results = $trans->lookup($word, "DE", "EN");
-     
-      foreach ($results as $result) {
-          
-          echo "Term:\t$result->term [$result->pos]\n";
+      $resultsIter = $dict->lookup($word, "DE", "EN");
 
-          echo "Definitions:\n";
-
-          foreach($result->definitions as $index => $definition) {
-              
-              $i = $index + 1;
-              
-              echo "$i. $definition->meaning\n";
-  
-              if (count($definition->expressions) != 0) echo "Expressions:\n";
-  
-              foreach ($definition->expressions as $index => $expression) {
-                  
-                  $i = $index + 1;
-                  
-                  echo "\t$i. $expression->source\t\t$expression->target\n";
-              }
-  
-                
-          }
-   
-       echo "\n--------End of Definitions for $word ------------\n";
-    }
+      display_defn($resultsIter);
   }
+
+  $trans->translate(
 }
 
   try {
    
-    $trans = RestClient::createRestClient(ClassID::Deepl);
-    echo $trans->translate("Man findet in einem anderen Laden besseren Käse.", "DE", "EN");
+    $trans = RestClient::createRestClient(ClassID::Azure);
 
-    $file =  new File("short-list.txt");
+    $dict  = RestClient::createRestClient(ClassID::Systran);
+
+    $fetcher  = RestClient::createRestClient(ClassID::Leipzig);
+
+    $file =  new File("u5-words.txt");
     
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-//    test($file, $trans);
+    test($file, $fetcher, $trans, $dict);
 
   } catch (Exception $e) {
 

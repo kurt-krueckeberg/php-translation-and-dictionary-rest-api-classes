@@ -7,14 +7,14 @@ use LanguageTools\RestClient;
 use LanguageTools\TranslateInterface;
 use LanguageTools\DictionaryInterface;
 use LanguageTools\SentenceFetchInterface;
-use LanguageTools\PonsDictionary;
+use LanguageTools\ResultsIterator;
 use LanguageTools\ClassID;
 
 include 'vendor/autoload.php';
 
 function check_args(int $argc, array $argv)
 {
-  if ($argc < 3)
+  if ($argc < 2)
       die ("Enter file with the list of words follow by the name of the output html file (omitting the .html extension).\n");
 
   if (!file_exists($argv[1]))
@@ -80,6 +80,58 @@ function create_html_output(SentenceFetchInterface $fetcher, LanguageTools\Trans
    }
 }
 
+function display_defn(ResultsIterator $iter, string $word)
+{ 
+   "\nDefinitions for $word:\n";
+ 
+   foreach ($iter as $result) {
+        
+       echo "Term:\t$result->term [$result->pos]\n";
+
+       echo "Definitions:\n";
+
+       foreach($result->definitions as $index => $definition) {
+           
+           $i = $index + 1;
+           
+           echo "$i. $definition->meaning\n";
+
+           if (count($definition->expressions) != 0) echo "Expressions:\n";
+
+           foreach ($definition->expressions as $index => $expression) {
+               
+               $i = $index + 1;
+               
+               echo "\t$i. $expression->source\t\t$expression->target\n";
+           }
+       }
+  }
+}
+
+
+function create_txt_output(SentenceFetchInterface $fetcher, LanguageTools\TranslateInterface $translator, LanguageTools\DictionaryInterface $dict, File $file)
+{
+  foreach ($file as $word) {
+  
+      $resultsIter = $dict->lookup($word, "DE", "EN");
+
+      display_defn($resultsIter, $word);
+
+      // Fetch sentences and translate them.          
+      foreach ( $fetcher->fetch($word, 3) as $sentence) {
+
+           echo "Translation of: " . $sentence . "\n";
+
+           // The 2nd parameter is destination language. iThe 3rd parameter is the optional
+           //  source language (if it is ommitted, the source language is automatically detected).
+           $translation = $translator->translate($sentence, "EN", "DE"); 
+           
+           echo "is: " . $translation . "\n";
+      }
+      echo "\n";
+   }
+
+}
   check_args($argc, $argv);
 
   try {
@@ -88,8 +140,10 @@ function create_html_output(SentenceFetchInterface $fetcher, LanguageTools\Trans
     
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-    create_html_output(RestClient::createRestClient(ClassID::Leipzig), RestClient::createRestClient(ClassID::Azure), $file, $argv[2]);
+    create_txt_output(RestClient::createRestClient(ClassID::Leipzig), RestClient::createRestClient(ClassID::Azure),  RestClient::createRestClient(ClassID::Systran), $file);
 
+    //create_html_output(RestClient::createRestClient(ClassID::Leipzig), RestClient::createRestClient(ClassID::Azure),  RestClient::createRestClient(ClassID::Systran), "output.html");
+ 
   } catch (Exception $e) {
 
          echo "Exception: message = " . $e->getMessage() . "\n";

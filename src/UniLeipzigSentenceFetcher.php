@@ -52,6 +52,6 @@ class UniLeipzigSentenceFetcher extends RestClient implements SentenceFetchInter
         */
 
       // The iterator returns the 'sentence' member (of the SentenceInformation objects).
-      return new ResultsIterator( $obj->sentences, function ($x) { return $x->sentence; } ); 
+      return new LeipzigResultsIterator( $obj->sentences, function ($x) { return $x->sentence; } ); 
    }
 }
