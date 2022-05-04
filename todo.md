@@ -1,8 +1,11 @@
-- Abandon the Pons API since its returned content contains embedded html, including many `<span class="xyz">, which are tied to undocumented CSS. 
+## CSS sytling of definition results: 
 
-- Try using the CSS from these sites: 
+- [PONS DE -> EN](https://en.pons.com)
 
-  - [PONS DE -> EN](https://en.pons.com)
+Pons uses <dl>'s -- definition list? -- to markup its table-display of dictionary results. A <dt> is the left colum and a <dl> is the right column.
+You can use Chrome's inspector to copy the CSS styles. Just right click, then do  -> Copy CSS Styles.
+
+
 
   - [Collins DE -> EN diciionary](https://www.collinsdictionary.com/dictionary/german-english/handeln)
 
