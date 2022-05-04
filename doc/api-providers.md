@@ -16,7 +16,7 @@
 
 - Yandex Their price seems quite good. Tehy are the Russian "Google", registerd in the Netherlands
 
-Their [Dictionary API](https://yandex.com/dev/dictionary/) offers ???#er??? requests per ???month. They also offer a translation service, which seems to require a separate key from the dictionary key?
+  Their [Dictionary API](https://yandex.com/dev/dictionary/) offers ???#er??? requests per ???month. They also offer a translation service, which seems to require a separate key from the dictionary key?
 
 - [Systran.net](https://www.systran.net/en/translate/)
 
@@ -27,10 +27,6 @@ Their [Dictionary API](https://yandex.com/dev/dictionary/) offers ???#er??? requ
   - Pricing: Lite Plan cost: $5.50/month
 
   - [Systrans Translation API](https://docs.systran.net/translateAPI) 
-
-- Linguatools has DataPackages and a Language API.  Probably is using a 3rd-party translation service.
-
-  -  Free: 1,000 verbs/month? Conjugation API Docs
 
 - [Collins API](https://www.collinsdictionary.com/collins-api) allows 5,000 free calls per month. 
 

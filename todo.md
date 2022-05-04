@@ -1,6 +1,12 @@
 - Abandon the Pons API since its returned content contains embedded html, including many `<span class="xyz">, which are tied to undocumented CSS. 
 
-- Find CSS to style Systran dictionary definitions
+- Try using the CSS from these sites: 
+
+  - [PONS DE -> EN](https://en.pons.com)
+
+  - [Collins DE -> EN diciionary](https://www.collinsdictionary.com/dictionary/german-english/handeln)
+
+  - [Cambridge DE -> EN](https://dictionary.cambridge.org/dictionary/german-english/handeln?q=Handeln)
 
 - It is wrong to use `urlencode($input_text)` during `DictionrayInterface::lookup()`. 
 
