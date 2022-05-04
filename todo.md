@@ -2,6 +2,8 @@
 
 - [PONS DE -> EN](https://en.pons.com)
 
+See [doc/pons-html-output.png](doc/pons-html-output.png)
+
 Pons uses <dl>'s -- definition list? -- to markup its table-display of dictionary results. A <dt> is the left colum and a <dl> is the right column.
 You can use Chrome's inspector to copy the CSS styles. Just right click, then do  -> Copy CSS Styles.
 
