@@ -63,53 +63,56 @@ function create_html_output(SentenceFetchInterface $fetcher, LanguageTools\Trans
       // If the definition is just a one-word string, it is not iterable.
       write_definitions($creator, $defns);
 
-      // Fetch sentences and translate them.          
-      foreach ( $fetcher->fetch($word, 3) as $sentence) {
+      $sentIter = $fetcher->fetch($word, 3);
 
-           echo "Translation of: " . $sentence . "\n";
+      display_html_sentences($sentIter);
+  }
+}
 
-           // The 2nd parameter is destination language. iThe 3rd parameter is the optional
-           //  source language (if it is ommitted, the source language is automatically detected).
-           $translation = $translator->translate($sentence, "EN", "DE"); 
-           
-           echo "is: " . $translation . "\n";
-           
-           $creator->write($sentence, $translation); 
-      }
-      echo "\n";
-   }
+function display_sentences(ResultsIterator $iter, string $word, TranslateInterface $trans)
+{
+  echo "Example sentences for '$word':\n\n"; 
+
+  foreach ($iter as $sentence) {
+
+        $translation = $trans->translate($sentence, "EN", "DE"); 
+        
+        echo "$sentence \n$translation\n\n";
+  }
 }
 
 function display_defn(ResultsIterator $iter, string $word)
 { 
-   "\nDefinitions for $word:\n";
+   echo "Definition => $word:\n";
  
    foreach ($iter as $result) {
         
-       echo "Term:\t$result->term [$result->pos]\n";
+       echo "\tTerm:  $result->term [$result->pos]\n";
 
-       echo "Definitions:\n";
+       echo "\tMeanings:\n";
 
        foreach($result->definitions as $index => $definition) {
            
            $i = $index + 1;
            
-           echo "$i. $definition->meaning\n";
+           echo "\t$i. $definition->meaning\n";
 
-           if (count($definition->expressions) != 0) echo "Expressions:\n";
+           if (count($definition->expressions) != 0)
+               echo "\tExpressions:\n";
 
            foreach ($definition->expressions as $index => $expression) {
                
                $i = $index + 1;
                
-               echo "\t$i. $expression->source\t\t$expression->target\n";
+               echo "\t\t$i. $expression->source\t\t$expression->target\n";
            }
        }
   }
+  echo "\n";
 }
 
 
-function create_txt_output(SentenceFetchInterface $fetcher, LanguageTools\TranslateInterface $translator, LanguageTools\DictionaryInterface $dict, File $file)
+function create_txt_output(SentenceFetchInterface $fetcher, LanguageTools\TranslateInterface $trans, LanguageTools\DictionaryInterface $dict, File $file)
 {
   foreach ($file as $word) {
   
@@ -117,20 +120,10 @@ function create_txt_output(SentenceFetchInterface $fetcher, LanguageTools\Transl
 
       display_defn($resultsIter, $word);
 
-      // Fetch sentences and translate them.          
-      foreach ( $fetcher->fetch($word, 3) as $sentence) {
+      $sentIter = $fetcher->fetch($word, 3);
 
-           echo "Translation of: " . $sentence . "\n";
-
-           // The 2nd parameter is destination language. iThe 3rd parameter is the optional
-           //  source language (if it is ommitted, the source language is automatically detected).
-           $translation = $translator->translate($sentence, "EN", "DE"); 
-           
-           echo "is: " . $translation . "\n";
-      }
-      echo "\n";
-   }
-
+      display_sentences($sentIter, $word, $trans);
+  }
 }
   check_args($argc, $argv);
 
