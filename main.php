@@ -98,13 +98,14 @@ function display_defn(ResultsIterator $iter, string $word)
            echo "\t$i. $definition->meaning\n";
 
            if (count($definition->expressions) != 0)
-               echo "\tExpressions:\n";
+               echo "\t\tExpressions:\n";
 
-           foreach ($definition->expressions as $index => $expression) {
+           foreach ($definition->expressions as $key => $expression) {
                
-               $i = $index + 1;
+               $i = $key + 1;
                
-               echo "\t\t$i. $expression->source\t\t$expression->target\n";
+               //echo "\t\t$i. $expression->source\n";
+               echo "\t\t$i. $expression->source [$expression->target]\n";
            }
        }
   }
