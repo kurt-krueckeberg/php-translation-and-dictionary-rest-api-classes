@@ -7,7 +7,14 @@ See [doc/pons-html-output.png](doc/pons-html-output.png)
 Pons uses <dl>'s -- definition list? -- to markup its table-display of dictionary results. A <dt> is the left colum and a <dl> is the right column.
 You can use Chrome's inspector to copy the CSS styles. Just right click, then do  -> Copy CSS Styles.
 
+CSS styles for Deinition Lists:
+<BS>Style Definition show it looks like a table
 
+- [#1](https://www.geeksforgeeks.org/how-to-write-dt-and-dd-element-on-the-same-line-using-css/)
+
+- [Using Grid layout](https://stackoverflow.com/questions/1713048/how-to-style-dt-and-dd-so-they-are-on-the-same-line)
+
+- [Shows two techniques](https://www.w3docs.com/snippets/html/how-to-make-html-dt-and-dd-elements-stay-on-the-same-line.html)
 
   - [Collins DE -> EN diciionary](https://www.collinsdictionary.com/dictionary/german-english/handeln)
 
