@@ -15,7 +15,7 @@ abstract class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Cou
        $this->current = 0; 
     }
 
-    abstract protected function get_result(mixed $match) : \stdClass;
+    abstract protected function get_result(mixed $match) : string | \stdClass;
 
     // no-op todo: throw an execption
     public function offsetSet(mixed $offset, mixed $value) : void

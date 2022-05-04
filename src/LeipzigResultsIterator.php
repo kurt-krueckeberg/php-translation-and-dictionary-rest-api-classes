@@ -4,7 +4,7 @@ namespace LanguageTools;
 
 class LeipzigResultsIterator extends ResultsIterator { 
 
-   protected function get_result(mixed $x) : \stdClass 
+   protected function get_result(mixed $x) : string 
    { 
        return $x->sentence; 
    }
