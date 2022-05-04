@@ -84,6 +84,11 @@ function display_sentences(ResultsIterator $iter, string $word, TranslateInterfa
 function display_defn(ResultsIterator $iter, string $word)
 { 
    echo "Definition => $word:\n";
+
+   if (count($iter) == 0) {
+      echo "no definitions available.\n";
+      return;
+   }
  
    foreach ($iter as $result) {
         
