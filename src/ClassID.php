@@ -14,7 +14,7 @@ enum ClassID implements ClassmapperInterface
     public function class_name() : string
     {
         return match($this) { // Returns implementation class
-            ClassID::Leipzig  => "LanguageTools\UniLeipzigSentenceFetcher", 
+            ClassID::Leipzig  => "LanguageTools\LeipzigSentenceFetcher", 
             ClassID::Systran  => "LanguageTools\SystranTranslator",
             ClassID::Azure    => "LanguageTools\AzureTranslator",
             ClassID::Ibm      => "LanguageTools\IbmTranslator",
@@ -29,7 +29,7 @@ enum ClassID implements ClassmapperInterface
     public function config_name() : string
     {
         return match($this) {
-            ClassID::Leipzig  => "LanguageTools\UniLeipzigConfig", 
+            ClassID::Leipzig  => "LanguageTools\LeipzigConfig", 
             ClassID::Pons     => "LanguageTools\PonsConfig",
             ClassID::Deepl    => "LanguageTools\DeeplConfig",
             ClassID::Azure    => "LanguageTools\AzureConfig",

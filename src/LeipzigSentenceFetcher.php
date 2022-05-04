@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 namespace LanguageTools;
-
 use GuzzleHttp\Client as Client;
+
 
 class GetSentence { // type 'callable'. 
    public function __invoke($obj)
@@ -11,7 +11,7 @@ class GetSentence { // type 'callable'.
    }
 }
 
-class UniLeipzigSentenceFetcher extends RestClient implements SentenceFetchInterface {
+class LeipzigSentenceFetcher extends RestClient implements SentenceFetchInterface {
 
    private static $route = "sentences/deu_news_2012_1M/sentences" ;
    private static $method = 'GET';
@@ -21,7 +21,7 @@ class UniLeipzigSentenceFetcher extends RestClient implements SentenceFetchInter
        parent::__construct($c->endpoint);
    }
    
-   public function fetch(string $word, int $count=3) :  ResultsIterator
+   public function fetch(string $word, int $count=3) :  LeipzigResultsIterator
    {
       $route = self::$route. '/' . urlencode($word);
 

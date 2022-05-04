@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace LanguageTools;
 
-class UniLeipzigResultsIterator extends ResultsIterator { 
+class LeipzigResultsIterator extends ResultsIterator { 
 
    protected function get_result(mixed $x) : \stdClass 
    { 
