@@ -145,30 +145,33 @@ EOF;
        foreach ($iter as $result) {
 
            // todo: Compare this with PONS and Collins output and try to match it.
-           $this->file->fwrite("<dt>Definitions</dt>\n<dd>&nbsp;</dd>\n");
+           /*
+            $this->file->fwrite("<dt>Definitions</dt>\n<dd>&nbsp;</dd>\n"); // todo: is <dt> the best here?
+             */
 
-           $this->file->fwrite("<dt>Term: $result->term [$result->pos]</dt>\m<dd>Meanings</dd>\n");
+           $this->file->fwrite("<dt>" . $result->term . "</dt>\n<dd>" . $result->pos . "</dd>\n" );
     
            foreach($result->definitions as $index => $definition) {
                
                $i = $index + 1;
                
-               echo "\t$i. $definition->meaning\n";
+               $this->file->fwrite("$i. " . $result->term . "</dt>\n<dd>" . $definition->meaning . "</dd>\n");
     
+               /*
                if (count($definition->expressions) != 0)
                    echo "\t\tExpressions:\n";
+                */
     
                foreach ($definition->expressions as $key => $expression) {
                    
-                   $i = $key + 1;
+                   // $i = $key + 1;
                    
                    //echo "\t\t$i. $expression->source\n";
-                   echo "\t\t$i. $expression->source [$expression->target]\n";
+                   $this->file->fwrite( "<dt>" . $expression->source . "</dt><dd>" . $expression->target . "</dt>\n" );
                }
            }
-           echo "\n";
       }
-      echo $this->file->fwrite( "</dl>\n</section>\n");
+      $this->file->fwrite( "</dl>\n</section>\n");
    } 
  
    private function writeSentences(string $word)
@@ -179,9 +182,9 @@ EOF;
 
       foreach ($iter as $sentence) {
     
-            $translation = $trans->translate($sentence, $this->to_lang, $this->from_lang); 
+            $translation = $this->trans->translate($sentence, $this->to_lang, $this->from_lang); 
             
-            $this->file->fwrite('<p>' . $input . "</p>\n<p>" . $translation . "</p>\n");
+            $this->file->fwrite('<p>' . $sentence . "</p>\n<p>" . $translation . "</p>\n");
       }
 
       $this->file->fwrite("</section>");       
@@ -207,7 +210,7 @@ EOF;
     
           $sentIter = $this->fetcher->fetch($word, 3);
     
-          $this->writeSentences($sentIter, $word, $trans);
+          $this->writeSentences($word);
       }
   } 
 }
