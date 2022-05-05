@@ -26,6 +26,8 @@ body {
   color: #FFFFFF;  
   background-color: #002451;
 
+  font-family: 'Lato Medium', Arial, sans-serif;
+
   /* Alternate colors: 
   color: #FFFFFF;  
   background-color: #102450;
@@ -38,30 +40,23 @@ body {
   */
 }
 
-/*
-section dl {
+section.definitions dl { 
+  display: grid; 
+  width: 40%;  /* <-- 40% instead of the 60% for sentence paragraphs */
+  margin: auto;
+  grid-template-columns: auto auto;
+  column-gap: 10px;
+}
 
+section.sentences { 
   display: grid; 
   width: 60%;
   margin: auto;
   grid-template-columns: auto auto;
   column-gap: 10px;
- 
-}
-*/
-
-section.sentences, section.definitions dl { /* paragraph style: font and spacing within paragraph lines and between paragraphs */
-  display: grid; 
-  width: 60%;
-  margin: auto;
-  grid-template-columns: auto auto;
-  column-gap: 10px;
-
-  font-family: 'Lato Medium', Arial, sans-serif;
-
 }
 
-section.sentences p, section.definitions dt, section.definitions dd { ?* tod: This is not working for dt and dd */
+section.sentences p, section.defintions dl dt, section.defintions dl dd {
 
   padding-top: 3px;
   padding-bottom: 3px;
