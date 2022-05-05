@@ -38,34 +38,46 @@ body {
   */
 }
 
-section {
+/*
+section dl {
 
   display: grid; 
   width: 60%;
   margin: auto;
   grid-template-columns: auto auto;
   column-gap: 10px;
- /* padding-left: 2em; */
+ 
 }
+*/
 
-section.sentences p { /* paragraph style: font and spacing within paragraph lines and between paragraphs */
+section.sentences, section.definitions dl { /* paragraph style: font and spacing within paragraph lines and between paragraphs */
+  display: grid; 
+  width: 60%;
+  margin: auto;
+  grid-template-columns: auto auto;
+  column-gap: 10px;
 
   font-family: 'Lato Medium', Arial, sans-serif;
+
+}
+
+section.sentences p, section.definitions dt, section.definitions dd { ?* tod: This is not working for dt and dd */
 
   padding-top: 3px;
   padding-bottom: 3px;
   padding-right: 6px;
   line-height: 1.7em; /* <--- Spacing between lines in paragraph */ 
-  margin: 4px 0;      /* <--- Spacing between paragraphs. Equivalent to:
+  margin: 4px 0;      /* <--- Spacing between paragraphs. Equivalent to: 
     
-  margin-top: 7px;
-  margin-bottom: 7px;
-  margin-left: 0px;
-  margin-right: 0px;  
- */
+             margin-top: 7px;
+             margin-bottom: 7px;
+             margin-left: 0px;
+             margin-right: 0px;  
+            */
 }
 
 section.sentences p:hover {
+
 	background-color:  #1a346c; 
 }	
 
