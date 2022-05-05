@@ -10,7 +10,9 @@ use \SplFileObject as File;
 class WebpageCreator {
 
      private string $file;
-     private bool $is_closed; 
+     private bool   $is_closed; 
+
+    // Four properties are defined and promoted to member variables on the constructor
 
 static private $header =<<<EOH
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
@@ -36,7 +38,7 @@ body {
   */
 }
 
-section {
+section.grid {
 
   display: grid; 
   width: 60%;
@@ -46,7 +48,7 @@ section {
  /* padding-left: 2em; */
 }
 
-section p { /* paragraph style: font and spacing within paragraph lines and between paragraphs */
+section.grid p { /* paragraph style: font and spacing within paragraph lines and between paragraphs */
 
   font-family: 'Lato Medium', Arial, sans-serif;
 
@@ -63,7 +65,7 @@ section p { /* paragraph style: font and spacing within paragraph lines and betw
  */
 }
 
-section p:hover {
+section.grid p:hover {
 	background-color:  #1a346c; 
 }	
 
@@ -105,30 +107,75 @@ static private $footer =<<<EOF
 </html>
 EOF;
 
-   public function __construct(string $name)
+   public function __construct(private LanguageTools\SentenceFetchInterface $fetcher, private LanguageTools\TranslateInterface $trans, private LanguaeTools\Dictionary $dict, private string $from_lang, private string $to_lang, string $fname)
    {
-      //$fname = "output_" . date("F_j_Y_h_i_s_A") . ".html"; // date("m-d-y:H:i:s") 
-
-      $fname = $name . ".html"; 
-
       $this->is_closed = false; 
 
-      $this->file = new File($fname, "w");
+      $this->file = new File($fname + .'html', "w");
 
       $this->file->fwrite(self::$header);
    }
 
-   public function __destruct()
+   final private function __destruct()
    {
         $this->close();
    }
 
-   public function write(string $input, string $translation)
+   final private function writeDefinitions(ResultsIterator $iter, string $word)
    {
-      $this->file->fwrite('<p>' . $input . "</p>\n<p>" . $translation . "</p>\n");
+       // TOdo: Change to use <section class="definitions"> and  <dt><dl>, etc
+       if (count($iter) == 0) {
+
+          echo "no definitions available.\n";
+          return;
+       }
+     
+       foreach ($iter as $result) {
+            
+           echo "\tTerm:  $result->term [$result->pos]\n";
+    
+           echo "\tMeanings:\n";
+    
+           foreach($result->definitions as $index => $definition) {
+               
+               $i = $index + 1;
+               
+               echo "\t$i. $definition->meaning\n";
+    
+               if (count($definition->expressions) != 0)
+                   echo "\t\tExpressions:\n";
+    
+               foreach ($definition->expressions as $key => $expression) {
+                   
+                   $i = $key + 1;
+                   
+                   //echo "\t\t$i. $expression->source\n";
+                   echo "\t\t$i. $expression->source [$expression->target]\n";
+               }
+           }
+           echo "\n";
+      }
+      echo "\n";
+   } 
+ 
+   final private function writeSentences(string $word)
+   {
+      $this->file->fwrite("<section class="grid">\n");       
+
+      $iter = $this->fetcher->fetch($word, 3);
+
+      foreach ($iter as $sentence) {
+    
+            $translation = $trans->translate($sentence, $this->to_lang, $this->from_lang); 
+            
+            $this->file->fwrite('<p>' . $input . "</p>\n<p>" . $translation . "</p>\n");
+      }
+
+      $this->file->fwrite("</section>");       
    }
 
-   public function close()
+
+   final private function close()
    {
        if ($this->is_closed === false) {
 
@@ -136,4 +183,18 @@ EOF;
 	   $this->is_closed = true;
        } 
    }
+
+   final public function __invoke(File $file)
+   {
+      foreach ($file as $word) {
+      
+          $resultsIter = $dict->lookup($word, "DE", "EN");
+    
+          $this->writeDefinitions($resultsIter, $word);
+    
+          $sentIter = $fetcher->fetch($word, 3);
+    
+          $this->writeSentences($sentIter, $word, $trans);
+      }
+  } 
 }
