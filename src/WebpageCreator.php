@@ -38,17 +38,7 @@ body {
   */
 }
 
-section.definition dl {
-
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
- /* 
-  grid-template-columns: max-content auto;
-  */
-}
-
-
-section.sentences {
+section {
 
   display: grid; 
   width: 60%;
@@ -108,11 +98,9 @@ table th {
 </style>
 </head>
 <body>
-<section>\n
 EOH;
 
 static private $footer =<<<EOF
-</section>
 </body>
 </html>
 EOF;
@@ -187,7 +175,7 @@ EOF;
             $this->file->fwrite('<p>' . $sentence . "</p>\n<p>" . $translation . "</p>\n");
       }
 
-      $this->file->fwrite("</section>");       
+      $this->file->fwrite("</section>\n");       
    }
 
 
