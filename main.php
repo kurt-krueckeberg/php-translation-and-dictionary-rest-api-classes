@@ -113,6 +113,7 @@ function display_defn(ResultsIterator $iter, string $word)
                echo "\t\t$i. $expression->source [$expression->target]\n";
            }
        }
+       echo "\n";
   }
   echo "\n";
 }
