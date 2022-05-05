@@ -8,7 +8,6 @@ Pons uses <dl>'s -- definition list? -- to markup its table-display of dictionar
 You can use Chrome's inspector to copy the CSS styles. Just right click, then do  -> Copy CSS Styles.
 
 CSS styles for Deinition Lists:
-<BS>Style Definition show it looks like a table
 
 - [#1](https://www.geeksforgeeks.org/how-to-write-dt-and-dd-element-on-the-same-line-using-css/)
 
@@ -19,6 +18,8 @@ CSS styles for Deinition Lists:
   - [Collins DE -> EN diciionary](https://www.collinsdictionary.com/dictionary/german-english/handeln)
 
   - [Cambridge DE -> EN](https://dictionary.cambridge.org/dictionary/german-english/handeln?q=Handeln)
+
+See file [dt-styling.md](./dt-styling.md)
 
 See these links on howot:
 
@@ -31,8 +32,7 @@ See these links on howot:
 - [#3](https://daily-dev-tips.com/posts/chrome-copy-all-css-for-an-element/)
 
 
-
-- It is wrong to use `urlencode($input_text)` during `DictionrayInterface::lookup()`. 
+-  Using `urlencode($input_text)` during `DictionrayInterface::lookup()` causes failure. 
 
 - Create PonsResultsIterator. See the comments in `PonsDictionary::lookup()` on how to do this.
 
