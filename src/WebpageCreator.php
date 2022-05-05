@@ -147,7 +147,7 @@ EOF;
            // todo: Compare this with PONS and Collins output and try to match it.
            $this->file->fwrite("<dt>Definitions</dt>\n<dd>&nbsp;</dd>\n");
 
-           $this->file->fwrite("<dt>Term: $result->term [$result->pos]</dt>\m<dd>Meanings</dd>\n";
+           $this->file->fwrite("<dt>Term: $result->term [$result->pos]</dt>\m<dd>Meanings</dd>\n");
     
            foreach($result->definitions as $index => $definition) {
                
@@ -168,7 +168,7 @@ EOF;
            }
            echo "\n";
       }
-      echo $this->file->fwrite( "</dl>\n</section>\n";
+      echo $this->file->fwrite( "</dl>\n</section>\n");
    } 
  
    private function writeSentences(string $word)
