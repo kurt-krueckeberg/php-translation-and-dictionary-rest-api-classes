@@ -48,7 +48,7 @@ section.definition dl {
 }
 
 
-seciont.sentences {
+section.sentences {
 
   display: grid; 
   width: 60%;
@@ -58,7 +58,7 @@ seciont.sentences {
  /* padding-left: 2em; */
 }
 
-seciont.sentences p { /* paragraph style: font and spacing within paragraph lines and between paragraphs */
+section.sentences p { /* paragraph style: font and spacing within paragraph lines and between paragraphs */
 
   font-family: 'Lato Medium', Arial, sans-serif;
 
@@ -75,7 +75,7 @@ seciont.sentences p { /* paragraph style: font and spacing within paragraph line
  */
 }
 
-seciont.sentences p:hover {
+section.sentences p:hover {
 	background-color:  #1a346c; 
 }	
 
@@ -126,7 +126,7 @@ EOF;
       $this->file->fwrite(self::$header);
    }
 
-   private function __destruct()
+   public function __destruct()
    {
         $this->close();
    }
@@ -140,7 +140,7 @@ EOF;
           return;
        }
        
-       $this->file->fwrite("<sectionclass='definitions'>\n<dl>\n");
+       $this->file->fwrite("<section class='definitions'>\n<dl>\n");
    
        foreach ($iter as $result) {
 
@@ -155,7 +155,7 @@ EOF;
                
                $i = $index + 1;
                
-               $this->file->fwrite("$i. " . $result->term . "</dt>\n<dd>" . $definition->meaning . "</dd>\n");
+               $this->file->fwrite("<dt>$i. " . $result->term . "</dt>\n<dd>" . $definition->meaning . "</dd>\n");
     
                /*
                if (count($definition->expressions) != 0)
