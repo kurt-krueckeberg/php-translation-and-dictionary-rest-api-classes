@@ -131,7 +131,7 @@ EOF;
        // TOdo: Change to use <section class="definitions"> and  <dt><dl>, etc
        if (count($iter) == 0) {
 
-          echo "no definitions available.\n";
+          echo "no definitions available.\n";  // todo: move this below?
           return;
        }
        
