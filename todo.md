@@ -1,3 +1,5 @@
+- TranslateInterface::translte() currently returns a string. But Systran translate returns an iterator.
+
 ## CSS sytling of definition results: 
 
 - [PONS DE -> EN](https://en.pons.com)
