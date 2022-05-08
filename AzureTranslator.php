@@ -152,10 +152,9 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
        
       $input = array();
 
-      foreach($translations as $trans) { 
+      foreach($translations as $trans) 
               
-            $input[] == ['Text' => $word], 'Translation' => $trans->normalizeTarget]; //todo: use static member       
-      }
+            $input[] == ['Text' => $word], 'Translation' => $trans]; //todo: use static member       
 
       $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['headers' => $this->headers, 'query' => $this->query, 'json' => $input);
 
