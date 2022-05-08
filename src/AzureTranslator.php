@@ -71,7 +71,27 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
              
       return json_decode($contents, true);    
    } 
-
+   /*
+   Translation response contents:
+   [
+       {
+           "detectedLanguage": {
+               "language": "en",
+               "score": 1.0
+           },
+           "translations": [
+               {
+                   "text": "สวัสดี",
+                   "to": "th",
+                   "transliteration": {
+                       "script": "Latn",
+                       "text": "sawatdi"
+                   }
+               }
+           ]
+       }
+   ]
+   */
    final public function translate(string $text, string $dest_lang, $source_lang="") : string 
    {
        $this->setLanguages($dest_lang, $source_lang);
@@ -86,11 +106,11 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
    }
 
    /* Azure Translatore loolup response body:
-   [
+   [a      <-- array
     {
         "normalizedSource":"fly",
         "displaySource":"fly",
-        "translations":[
+        "translations":[        <-- array
             {
                 "normalizedTarget":"volar",
                 "displayTarget":"volar",
@@ -122,7 +142,6 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
         ]
     }
    ]
-
     */
    final public function lookup(string $word, string $src_lang, string $dest_lang) : array
    {      
@@ -145,6 +164,35 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
        */
    }
 
+   /* Repsonse body for input of [ {"Text":"fly", "Translation":"volar"} ]
+   [
+       {
+           "normalizedSource":"fly",
+           "normalizedTarget":"volar",
+           "examples":[
+               {
+                   "sourcePrefix":"They need machines to ",
+                   "sourceTerm":"fly",
+                   "sourceSuffix":".",
+                   "targetPrefix":"Necesitan máquinas para ",
+                   "targetTerm":"volar",
+                   "targetSuffix":"."
+               },      
+               {
+                   "sourcePrefix":"That should really ",
+                   "sourceTerm":"fly",
+                   "sourceSuffix":".",
+                   "targetPrefix":"Eso realmente debe ",
+                   "targetTerm":"volar",
+                   "targetSuffix":"."
+            },
+            //
+               // ...list abbreviated for documentation clarity
+               //
+           ]
+       }
+   ]
+   */
    final public function examples(string $word, array $translations) : array
    {
        if (count($translations) > 10) // input limt is 10
@@ -152,12 +200,11 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
        
       $input = array();
 
-      foreach($translations as $trans) { 
+      foreach($translations as $trans) 
               
-            $input[] == ['Text' => $word], 'Translation' => $trans->normalizeTarget]; //todo: use static member       
-      }
+            $input[] == ['Text' => $word, 'Translation' => $trans->normalizedTarget]; 
 
-      $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['headers' => $this->headers, 'query' => $this->query, 'json' => $input);
+      $contents = $this->request(self::$examples['method'], self::$examples['route'], ['headers' => $this->headers, 'query' => $this->query, 'json' => $input);
 
       $obj = json_decode($contents)[0]; 
       
