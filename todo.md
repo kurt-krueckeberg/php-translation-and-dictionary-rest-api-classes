@@ -1,5 +1,6 @@
-- Dictionary::lookup() returns eith `array|ResultsIterator`. However , the actual (properties of the) elements in the array or "in" the iterator differ. Systran returns different objects
-  than Azure. They both return a part-of-speech and a definition or meaning.
+- Return ResultsIterator--with a static class member as a callable: self::$filter_func(...) -- as return value for AzureTranslator::examples().
+  It will return a \stdClass that returns the complete target and source phrase, joining the three parts that examples() returns.
+  
 
 ## CSS sytling of definition results: 
 

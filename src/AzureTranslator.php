@@ -207,8 +207,7 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
       $contents = $this->request(self::$examples['method'], self::$examples['route'], ['headers' => $this->headers, 'query' => $this->query, 'json' => $input]);
 
       $obj = json_decode($contents); 
-      
-      print_r($obj[0]->examples);   // todo: Is $obj always just one element?
-      return $obj[0]->examples;  
+        
+      return $obj; //->examples;  // NEW 
    }
 }

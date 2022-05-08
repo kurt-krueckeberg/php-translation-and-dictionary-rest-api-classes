@@ -36,34 +36,29 @@ function display_defn(ResultsIterator $iter)
   }
 }
 
-function test(File $file, DictionaryInterface|TranslateInterface $trans1, DictionaryInterface|TranslateInterface  $trans2)
+function test(File $file, DictionaryInterface|TranslateInterface $trans)
 {
   foreach ($file as $word) {
   
       echo "Definitions for '$word' :\n";
 
-      $r1 = $trans1->lookup($word, "DE", "EN");
-      print_r($r1);
-      die();
-/*
-      $r2  = $trans2->lookup($word, "DE", "EN");
-      print_r($r2);
-      $debug = 10;
-*/
+      $r = $trans->lookup($word, "DE", "EN");
+      print_r($r);
+      echo "Examples for '$word' :\n";
+      $x  = $trans->examples($word, $r);
+      print_r($x);
   }
 }
 
   try {
    
-    $t1 = RestClient::createRestClient(ClassID::Azure);
-
-    $t2  = RestClient::createRestClient(ClassID::Systran);
+    $t = RestClient::createRestClient(ClassID::Azure);
 
     $file =  new File("short-list.txt");
     
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-    test($file, $t1, $t2);
+    test($file, $t);
 
   } catch (Exception $e) {
 
