@@ -21,7 +21,7 @@ class LeipzigSentenceFetcher extends RestClient implements SentenceFetchInterfac
        parent::__construct($c->endpoint);
    }
    
-   public function fetch(string $word, int $count=3) :  LeipzigResultsIterator
+   public function fetch(string $word, int $count=3) :  ResultsIterator
    {
       $route = self::$route. '/' . urlencode($word);
 
@@ -52,6 +52,6 @@ class LeipzigSentenceFetcher extends RestClient implements SentenceFetchInterfac
         */
 
       // The iterator returns the 'sentence' member (of the SentenceInformation objects).
-      return new LeipzigResultsIterator( $obj->sentences, function ($x) { return $x->sentence; } ); 
+      return new ResultsIterator( $obj->sentences, function ($x) { return $x->sentence; } ); 
    }
 }

@@ -1,4 +1,5 @@
-- TranslateInterface::translte() currently returns a string. But Systran translate returns an iterator.
+- Dictionary::lookup() returns eith `array|ResultsIterator`. However , the actual (properties of the) elements in the array or "in" the iterator differ. Systran returns different objects
+  than Azure. They both return a part-of-speech and a definition or meaning.
 
 ## CSS sytling of definition results: 
 

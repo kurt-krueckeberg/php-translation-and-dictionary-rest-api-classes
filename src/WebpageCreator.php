@@ -125,8 +125,11 @@ EOF;
    {
         $this->close();
    }
-
-   private function writeDefinitions(ResultsIterator $iter, string $word)
+   /*
+    * todo: The specific properties of he \stdClasws that $iter returns vary by translation/dictionary
+    * service. This method is for Systran's lookup results. 
+    */
+   private function writeDefinitions(array|ResultsIterator $iter, string $word)
    {
        // TOdo: Change to use <section class="definitions"> and  <dt><dl>, etc
        if (count($iter) == 0) {

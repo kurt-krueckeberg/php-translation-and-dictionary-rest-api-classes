@@ -71,7 +71,7 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
       return json_decode($contents, true);    
    } 
 
-   final public function translate(string $text, string $dest_lang, $source_lang="") : array 
+   final public function translate(string $text, string $dest_lang, $source_lang="") : string 
    {
        $this->setLanguages($dest_lang, $source_lang);
 
@@ -84,8 +84,46 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
        return arra($obj[0]->translations[0]->text); 
    }
 
-   // Azure Translator offers dictionary lookup service that returns a one-word definition.
-   final public function lookup(string $word, string $src_lang, string $dest_lang) : string 
+   /* Azure Translatore loolup response body:
+   [
+    {
+        "normalizedSource":"fly",
+        "displaySource":"fly",
+        "translations":[
+            {
+                "normalizedTarget":"volar",
+                "displayTarget":"volar",
+                "posTag":"VERB",
+                "confidence":0.4081,
+                "prefixWord":"",
+                "backTranslations":[
+                    {"normalizedText":"fly","displayText":"fly","numExamples":15,"frequencyCount":4637},
+                    {"normalizedText":"flying","displayText":"flying","numExamples":15,"frequencyCount":1365},
+                    {"normalizedText":"blow","displayText":"blow","numExamples":15,"frequencyCount":503},
+                    {"normalizedText":"flight","displayText":"flight","numExamples":15,"frequencyCount":135}
+                ]
+            },
+            {
+                "normalizedTarget":"mosca",
+                "displayTarget":"mosca",
+                "posTag":"NOUN",
+                "confidence":0.2668,
+                "prefixWord":"",
+                "backTranslations":[
+                    {"normalizedText":"fly","displayText":"fly","numExamples":15,"frequencyCount":1697},
+                    {"normalizedText":"flyweight","displayText":"flyweight","numExamples":0,"frequencyCount":48},
+                    {"normalizedText":"flies","displayText":"flies","numExamples":9,"frequencyCount":34}
+                ]
+            },
+            //
+            // ...list abbreviated for documentation clarity
+            //
+        ]
+    }
+   ]
+
+    */
+   final public function lookup(string $word, string $src_lang, string $dest_lang) : array
    {      
       $this->setLanguages($dest_lang, $src_lang); 
        
@@ -95,9 +133,23 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
 
       $obj = json_decode($contents)[0]; 
       
+      return $obj->translations;
+      /*
       if (count($obj->translations) == 0) 
-          return "no definition";
+          return array("no definition");
       else 
-          return $obj->translations[0]->displayTarget; 
+          //--return $obj->translations[0]->displayTarget; 
+          return new ResultsIterator($obj->translations, AzureTranslator::results_filter(...));
+       * 
+       */
    }
+
+   public static function results_filter(\stdClass $std) : mixed
+   {
+      // For noe, just return $std
+      $debug = 10;
+      ++$debug;  
+      return $std;
+   }
+
 }

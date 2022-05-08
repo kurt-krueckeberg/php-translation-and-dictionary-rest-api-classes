@@ -31,7 +31,10 @@ function check_args(int $argc, array $argv)
     
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-    $webpage = new WebpageCreator(RestClient::createRestClient(ClassID::Leipzig), RestClient::createRestClient(ClassID::Azure),  RestClient::createRestClient(ClassID::Systran), "DE", "EN", "output-test");
+    //--$webpage = new WebpageCreator(RestClient::createRestClient(ClassID::Leipzig), RestClient::createRestClient(ClassID::Azure),  RestClient::createRestClient(ClassID::Systran), "DE", "EN", "output-test");
+    $client = RestClient::createRestClient(ClassID::Azure);
+    
+    $webpage = new WebpageCreator(RestClient::createRestClient(ClassID::Leipzig), $client,  $client, "DE", "EN", "output-test");
 
     $webpage($file);
 

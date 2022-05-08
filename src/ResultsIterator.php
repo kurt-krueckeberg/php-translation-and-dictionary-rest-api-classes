@@ -2,20 +2,26 @@
 declare(strict_types=1);
 namespace LanguageTools;
 
-abstract class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
+class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
 
     private array $objs;
     private int $count;
     private int $current;
+    private $func_filter;
+    
 
-    public function __construct(array $objs)
+    public function __construct(array $objs, callable $func_filter)
     {
        $this->objs = $objs;
        $this->cnt = count($objs);
        $this->current = 0; 
+       $this->func_filter = $func_filter;
     }
 
-    abstract protected function get_result(mixed $match) : string | \stdClass;
+    protected function get_result(mixed $match) : mixed //todo: mixed???? or sth else???? string | \stdClass
+    {
+       return ($this->func_filter)($match);
+    }
 
     // no-op todo: throw an execption
     public function offsetSet(mixed $offset, mixed $value) : void

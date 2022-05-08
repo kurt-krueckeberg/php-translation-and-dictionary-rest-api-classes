@@ -36,33 +36,34 @@ function display_defn(ResultsIterator $iter)
   }
 }
 
-function test(File $file, SentenceFetcheInterface $fetcher, TranslateInterface $trans, DictionaryInterface $dict)
+function test(File $file, DictionaryInterface|TranslateInterface $trans1, DictionaryInterface|TranslateInterface  $trans2)
 {
   foreach ($file as $word) {
   
       echo "Definitions for '$word' :\n";
 
-      $resultsIter = $dict->lookup($word, "DE", "EN");
-
-      display_defn($resultsIter);
+      $r1 = $trans1->lookup($word, "DE", "EN");
+      print_r($r1);
+      die();
+/*
+      $r2  = $trans2->lookup($word, "DE", "EN");
+      print_r($r2);
+      $debug = 10;
+*/
   }
-
-  $trans->translate(
 }
 
   try {
    
-    $trans = RestClient::createRestClient(ClassID::Azure);
+    $t1 = RestClient::createRestClient(ClassID::Azure);
 
-    $dict  = RestClient::createRestClient(ClassID::Systran);
+    $t2  = RestClient::createRestClient(ClassID::Systran);
 
-    $fetcher  = RestClient::createRestClient(ClassID::Leipzig);
-
-    $file =  new File("u5-words.txt");
+    $file =  new File("short-list.txt");
     
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-    test($file, $fetcher, $trans, $dict);
+    test($file, $t1, $t2);
 
   } catch (Exception $e) {
 
