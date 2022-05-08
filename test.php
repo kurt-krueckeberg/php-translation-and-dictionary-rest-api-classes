@@ -43,8 +43,11 @@ function test(File $file, DictionaryInterface|TranslateInterface $trans)
       echo "Definitions for '$word' :\n";
 
       $r = $trans->lookup($word, "DE", "EN");
+      
       print_r($r);
+      
       echo "Examples for '$word' :\n";
+      
       $x  = $trans->examples($word, $r);
       print_r($x);
   }
