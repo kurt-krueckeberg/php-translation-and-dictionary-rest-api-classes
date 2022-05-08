@@ -71,7 +71,7 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
       return json_decode($contents, true);    
    } 
 
-   final public function translate(string $text, string $dest_lang, $source_lang="") : string 
+   final public function translate(string $text, string $dest_lang, $source_lang="") : array 
    {
        $this->setLanguages($dest_lang, $source_lang);
 
@@ -81,7 +81,7 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
 
        $obj = json_decode($contents);
 
-       return $obj[0]->translations[0]->text; 
+       return arra($obj[0]->translations[0]->text); 
    }
 
    // Azure Translator offers dictionary lookup service that returns a one-word definition.
