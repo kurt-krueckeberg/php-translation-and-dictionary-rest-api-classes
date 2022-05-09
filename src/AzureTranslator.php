@@ -208,7 +208,7 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
 
       $obj = json_decode($contents); 
         
-      return new ResultsIterator($obj, self::$get_result(...)); 
+      return new ResultsIterator($obj, AzureTranslator::get_result(...)); 
    }
 
    public static function get_result(\stdClass $x) : \stdClass
