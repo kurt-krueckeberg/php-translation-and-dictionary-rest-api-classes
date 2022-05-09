@@ -36,33 +36,44 @@ function display_defn(ResultsIterator $iter)
   }
 }
 
-function test(File $file, DictionaryInterface|TranslateInterface $trans)
+function azure_defns_And_examples(File $file, DictionaryInterface|TranslateInterface $trans)
 {
   foreach ($file as $word) {
   
       echo "Definitions for '$word' :\n";
+       
+      $outer_iter = $trans->lookup($word, "DE", "EN");
+      
+      echo "\tNumber of definitions is " . count($outer_iter) . "\n";
+      
+      foreach($outer_iter as $r) {
 
-      $r = $trans->lookup($word, "DE", "EN");
+           $defn = $r->normalizedTarget;
+
+           echo "Examples for '$word' with deinitions of '$defn': \n";
       
-      print_r($r);
-      
-      echo "Examples for '$word' :\n";
-      
-      $iter  = $trans->examples($word, $r);
-      foreach($iter as $ex)
-            print_r($ex);
+           $iter = $trans->examples($word, $outer_iter);
+           
+           echo "\tNumber of examples is " . count($iter) . "\n";
+
+           foreach($iter as $example) {
+               
+               foreach($example->sentences as $sentence)  {
+                  echo "{$sentence['source']}\n";   
+                  echo "{$sentence['target']}\n";   
+               }     
+           }    
+      } 
   }
 }
 
   try {
-   
-    $t = RestClient::createRestClient(ClassID::Azure);
 
     $file =  new File("short-list.txt");
     
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-    test($file, $t);
+    azure_defns_And_examples($file);
 
   } catch (Exception $e) {
 

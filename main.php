@@ -118,6 +118,58 @@ function display_defn(ResultsIterator $iter, string $word)
   echo "\n";
 }
 
+function azure_definitions_and_examples(File $file)
+{
+  $trans = RestClient::createRestClient(ClassID::Azure);
+
+  $file->rewind();
+
+  foreach ($file as $word) {
+  
+      echo "Definitions for '$word' :\n";
+       
+      $outer_iter = $trans->lookup($word, "DE", "EN");
+      
+      echo "\tNumber of definitions is " . count($outer_iter) . "\n";
+      
+      foreach($outer_iter as $r) {
+
+           $defn = $r->normalizedTarget;
+
+           echo "Examples for '$word' with deinitions of '$defn': \n";
+      
+           $iter = $trans->examples($word, $outer_iter);
+           
+           echo "\tNumber of examples is " . count($iter) . "\n";
+
+           foreach($iter as $example) {
+               
+               foreach($example->sentences as $sentence)  {
+                  echo "{$sentence['source']}\n";   
+                  echo "{$sentence['target']}\n";   
+               }     
+           }    
+      } 
+  }
+}
+
+function systran_definitions(File $file)
+{
+  $trans = RestClient::createRestClient(ClassID::Systran);
+
+  $file->rewind();
+
+  foreach ($file as $word) {
+  
+      echo "Definitions for '$word' :\n";
+       
+      $iter = $trans->lookup($word, "DE", "EN");
+      
+      echo "\tNumber of definitions is " . count($iter) . "\n";
+      
+      foreach($iter as $r) print_r($r);
+  }
+}
 
 function create_txt_output(SentenceFetchInterface $fetcher, LanguageTools\TranslateInterface $trans, LanguageTools\DictionaryInterface $dict, File $file)
 {
@@ -140,9 +192,15 @@ function create_txt_output(SentenceFetchInterface $fetcher, LanguageTools\Transl
     
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-    create_txt_output(RestClient::createRestClient(ClassID::Leipzig), RestClient::createRestClient(ClassID::Azure),  RestClient::createRestClient(ClassID::Systran), $file);
+    azure_definitions_and_examples($file);
+ 
+    systran_definitions($file);
 
-    //create_html_output(RestClient::createRestClient(ClassID::Leipzig), RestClient::createRestClient(ClassID::Azure),  RestClient::createRestClient(ClassID::Systran), "output.html");
+/*
+    leipzig_sentences($file);
+
+    create_txt_output(RestClient::createRestClient(ClassID::Leipzig), RestClient::createRestClient(ClassID::Azure),  RestClient::createRestClient(ClassID::Systran), $file);
+ */
  
   } catch (Exception $e) {
 
