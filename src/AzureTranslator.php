@@ -199,6 +199,14 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
       $contents = $this->request(self::$examples['method'], self::$examples['route'], ['headers' => $this->headers, 'query' => $this->query, 'json' => $input]);
 
       $obj = json_decode($contents); 
+      
+      /* todo: BUG
+       * $obj is an array of the same size as $input[] above. Each element has the properties:
+       * - examples an array of example phrases
+       * - normalizedSource, which has the foreign word
+       * - normalizedTarget, which has its definition
+       * However examples can be empty! So the number of examplee arrays would not be equal to the count($input), which is what ResultsIterator will return,
+       */
         
       return new ResultsIterator($obj, AzureTranslator::get_result(...)); 
    }

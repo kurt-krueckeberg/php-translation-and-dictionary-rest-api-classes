@@ -17,12 +17,12 @@ class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
        $this->current = 0; 
        $this->get_result_ = $func;
     }
-
+    /* 
     protected function get_result(mixed $match) : mixed 
     {
        return ($this->get_result_)($match);
     }
-
+    */
     // no-op todo: throw an execption
     public function offsetSet(mixed $offset, mixed $value) : void
     {
@@ -60,7 +60,7 @@ class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
    
     public function current(): mixed
     {        
-        return $this->get_result( $this->objs[$this->current] );
+        return ($this->get_result_)( $this->objs[$this->current] );
     }
 
     public function key(): mixed

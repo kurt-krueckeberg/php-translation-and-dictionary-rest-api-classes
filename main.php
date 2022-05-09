@@ -78,21 +78,19 @@ function azure_definitions_and_examples(File $file)
 
   foreach ($file as $word) {
   
-      echo "Definitions for '$word' :\n";
-       
       $outer_iter = $trans->lookup($word, "DE", "EN");
       
-      echo "\tNumber of definitions is " . count($outer_iter) . "\n";
+      echo "Number of definitions for '$word' is " . count($outer_iter) . "\n";
       
-      foreach($outer_iter as $r) {
+      foreach($outer_iter as $key => $r) {
 
            $defn = $r->normalizedTarget;
 
-           echo "Examples for '$word' with deinitions of '$defn': \n";
-      
+           echo "Definition #" . $key + 1 . " for '$word': '$defn'\n";
+           
            $iter = $trans->examples($word, $outer_iter);
            
-           echo "\tNumber of examples is " . count($iter) . "\n";
+           echo "Number of examples with this definition is " . count($iter) . "\n";
 
            foreach($iter as $example) {
                
@@ -124,7 +122,7 @@ function systran_definitions_and_expressions(File $file)
 }
 /*
  Univ. of Leipzig sentence corpora REST API
- returns example sentences in a given lanauge.
+ offers an example sentences service. 
 */
 
 function  leipzig_sentences_with_transations($file)
