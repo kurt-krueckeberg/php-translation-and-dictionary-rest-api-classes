@@ -1,4 +1,4 @@
-- Add to main.php a display of Leipzig sentences with their translation. 
+- Code is done. Add code to build web pages with good CSS 
   
 
 ## CSS sytling of definition results: 
