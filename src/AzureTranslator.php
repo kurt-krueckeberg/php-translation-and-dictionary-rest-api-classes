@@ -225,7 +225,7 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
 
       }
 
-      $results->sentences = $sentences;
+      $result->sentences = $sentences;
       return $result;          
    }
 }

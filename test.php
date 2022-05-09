@@ -48,8 +48,9 @@ function test(File $file, DictionaryInterface|TranslateInterface $trans)
       
       echo "Examples for '$word' :\n";
       
-      $x  = $trans->examples($word, $r);
-      print_r($x);
+      $iter  = $trans->examples($word, $r);
+      foreach($iter as $ex)
+            print_r($ex);
   }
 }
 
