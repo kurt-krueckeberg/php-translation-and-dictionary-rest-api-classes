@@ -56,7 +56,6 @@ function display_systran_definitions_and_expressions(ResultsIterator $iter, stri
            foreach ($definition['expressions'] as $key => $expression) {
                
                $i = $key + 1;
-               
                echo "\t\t$i. $expression->source [$expression->target]\n";
            }
        }
