@@ -219,7 +219,7 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
 
       if (count($x->examples) != 0) { 
 
-          forech ($x->examples as $ex) 
+          foreach ($x->examples as $ex) 
             // todo: OR new \stdClass    
              $sentences[] = ['source' => $ex->sourcePrefix . $ex->sourceTerm . $ex->sourceSuffix, 'target' => $target = $ex->targetPrefix . $ex->targetTerm . $ex->targetSuffix];
 

@@ -38,30 +38,35 @@ function display_defn(ResultsIterator $iter)
 
 function test(File $file, DictionaryInterface|TranslateInterface $trans)
 {
-  foreach ($file as $word) {
-  
-      echo "Definitions for '$word' :\n";
+ $a = new \stdClass;
+ $a->examples = array();
+ $a->examples[] = ['source' => 'Hello World', 'target' => 'Hallo Welt'];
 
-      $r = $trans->lookup($word, "DE", "EN");
-      
-      print_r($r);
-      
-      echo "Examples for '$word' :\n";
-      
-      $x  = $trans->examples($word, $r);
-      print_r($x);
-  }
+ $callable = $trans->get_result(...);
+
+ $iter = new LanguageTools\ResultsIterator($a, $callable);
+ $deub = 10;
 }
+
+function test1(File $file, DictionaryInterface|TranslateInterface $trans)
+{
+  $iter = $trans->lookup("Handeln", "DE", "EN");
+
+  foreach( $iter as $r) print_r($r); 
+}
+
 
   try {
    
-    $t = RestClient::createRestClient(ClassID::Azure);
+    //$t = RestClient::createRestClient(ClassID::Azure);
+
+    $t = RestClient::createRestClient(ClassID::Systran);
 
     $file =  new File("short-list.txt");
     
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-    test($file, $t);
+    test1($file, $t);
 
   } catch (Exception $e) {
 

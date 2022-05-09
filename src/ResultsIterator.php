@@ -7,20 +7,20 @@ class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
     private array $objs;
     private int $count;
     private int $current;
-    private $func_filter;
+    private $get_result_;
     
 
-    public function __construct(array $objs, callable $func_filter)
+    public function __construct(array $objs, callable $func)
     {
        $this->objs = $objs;
        $this->cnt = count($objs);
        $this->current = 0; 
-       $this->func_filter = $func_filter;
+       $this->get_result_ = $func;
     }
 
     protected function get_result(mixed $match) : mixed //todo: mixed???? or sth else???? string | \stdClass
     {
-       return ($this->func_filter)($match);
+       return ($this->get_result_)($match);
     }
 
     // no-op todo: throw an execption

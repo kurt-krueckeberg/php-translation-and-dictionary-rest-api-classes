@@ -100,7 +100,7 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
       return new ResultsIterator($obj->outputs[0]->output->matches, SystranTranslator::results_filter(...));
     }
 
-    public static function results_filter(mixed $m) : mixed // todo: used interface of claases
+    public static function results_filter(mixed $match) : mixed // todo: used interface of claases
     {
        // See doc/dict-systran.txt for result response details for lookup call.
        $result = new \stdClass;

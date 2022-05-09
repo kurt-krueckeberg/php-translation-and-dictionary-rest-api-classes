@@ -155,7 +155,6 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
                }
         }
 
-       //--return $results;   
-       return $results; //new ResultsIterator($results, function($x) { return $x;});              
+       return $results; 
    }
 }
