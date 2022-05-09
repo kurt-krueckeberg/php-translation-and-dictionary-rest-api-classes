@@ -27,7 +27,7 @@ function check_args(int $argc, array $argv)
  2. dictionary lookup
  */
 
-function display_systran_definitions(ResultsIterator $iter, string $word)
+function display_systran_definitions_and_expressions(ResultsIterator $iter, string $word)
 { 
    if (count($iter) == 0) {
       echo "no definitions available for '$word'.\n";
@@ -37,11 +37,13 @@ function display_systran_definitions(ResultsIterator $iter, string $word)
    echo "Definitions for '$word':\n";
 
    foreach ($iter as $result) {
-        
+
+       // Show which term is being defined and its part-of-speech (pos).        
        echo "\tTerm:  $result->term [$result->pos]\n";
 
        echo "\tMeanings:\n";
 
+       // Definitions can  have example expressions.
        foreach($result->definitions as $index => $definition) {
            
            $i = $index + 1;
@@ -109,7 +111,7 @@ function azure_definitions_and_examples(File $file)
  1. translation
  2. dictionary lookup
  */
-function systran_definitions(File $file)
+function systran_definitions_and_expressions(File $file)
 {
   $trans = RestClient::createRestClient(ClassID::Systran);
 
@@ -119,7 +121,7 @@ function systran_definitions(File $file)
   
       $iter = $trans->lookup($word, "DE", "EN");
 
-      display_systran_definitions($iter, $word);
+      display_systran_definitions_and_expressions($iter, $word);
   }
 }
 /*
@@ -174,7 +176,7 @@ function display_sentences(ResultsIterator $iter, string $word, TranslateInterfa
 
     azure_definitions_and_examples($file);
  
-    systran_definitions($file);
+    systran_definitions_and_expressions($file);
 
     leipzig_sentences_with_transations($file);
 
