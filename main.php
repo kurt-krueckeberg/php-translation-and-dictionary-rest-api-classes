@@ -22,7 +22,7 @@ function check_args(int $argc, array $argv)
   
 }
 /*
- Systran.net's Translator provide:
+ Systran.net's Translator provides:
  1. translation
  2. dictionary lookup
  */
