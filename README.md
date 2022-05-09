@@ -1,8 +1,30 @@
 # PHP Translation and Dictionary REST API Classes
 
+## Classes
+
+### Translation and Dictionary lookup 
+
+- `AzureTranslator`
+
+   Also contains an `examples` method to return example phrases for a definition.
+
+- `SystranTranslator`
+
+   Many definition are accompanied with example expressions.
+
+-  `RestClient`
+
+    Base class with static factory method 
+
+- `LeipzipSentenceFetcher`
+
+   Returns example sentences
+
+## PHP 8.1 Comments
+
 This code requires PHP 8.1 because it uses:
 
-- an Enumeration (that also implements an interface)
+- an Enumeration that also implements an interface
 
 - readonly class properties (that are assigned and promoted to class members on the constructor).
 
