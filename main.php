@@ -22,18 +22,6 @@ function check_args(int $argc, array $argv)
   
 }
 
-function display_sentences(ResultsIterator $iter, string $word, TranslateInterface $trans)
-{
-  echo "Example sentences for '$word':\n\n"; 
-
-  foreach ($iter as $sentence) {
-
-        $translation = $trans->translate($sentence, "EN", "DE"); 
-        
-        echo "$sentence \n$translation\n\n";
-  }
-}
-
 function display_systran_definitions(ResultsIterator $iter, string $word)
 { 
    if (count($iter) == 0) {
@@ -71,19 +59,6 @@ function display_systran_definitions(ResultsIterator $iter, string $word)
   echo "\n";
 }
 
-function create_txt_output(SentenceFetchInterface $fetcher, LanguageTools\TranslateInterface $trans, LanguageTools\DictionaryInterface $dict, File $file)
-{
-  foreach ($file as $word) {
-  
-      $resultsIter = $dict->lookup($word, "DE", "EN");
-
-      display_defn($resultsIter, $word);
-
-      $sentIter = $fetcher->fetch($word, 3);
-
-      display_sentences($sentIter, $word, $trans);
-  }
-}
 /*
  Mrircorsoft's Azure Translator provide:
  1. translation
@@ -144,6 +119,44 @@ function systran_definitions(File $file)
 }
 
 
+function  leipzig_sentences_with_transations($file)
+{
+  $fetcher = RestClient::createRestClient(ClassID::Leipzig);
+  $trans = RestClient::createRestClient(ClassID::Azure);
+
+  $file->rewind();
+
+  foreach ($file as $word) {
+
+      echo "Example sentences for word '$word':\n";  
+
+      $sentences_iter = $fetcher->fetch($word, 3);
+
+      foreach($sentences_iter as $sentence) {
+
+           echo "Target sentence: $sentence\n"; 
+
+           $t = $trans->translate($sentence, "DE", "EN"); 
+
+           echo "Target translation: $sentence $t\n"; 
+      }
+  }
+
+}
+
+function display_sentences(ResultsIterator $iter, string $word, TranslateInterface $trans)
+{
+  echo "Example sentences for '$word':\n\n"; 
+
+  foreach ($iter as $sentence) {
+
+        $translation = $trans->translate($sentence, "EN", "DE"); 
+        
+        echo "$sentence \n$translation\n\n";
+  }
+}
+
+
   check_args($argc, $argv);
 
   try {
@@ -155,6 +168,8 @@ function systran_definitions(File $file)
     azure_definitions_and_examples($file);
  
     systran_definitions($file);
+
+    leipzig_sentences_with_transations($file);
 
     //leipzig_sentences($file);
 
