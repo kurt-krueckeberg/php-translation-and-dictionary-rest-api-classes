@@ -159,7 +159,6 @@ The `ResultsIterator` constructor accepts a `callable` parameter that is invoked
 The example sentences retrieval interfaces and classes in UML are:
 
 ```plantuml
-
 class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
 
      __construct(array $objs, callable $func) 
@@ -185,5 +184,12 @@ class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
     rewind(): void
 
     valid(): bool
+}
+class  SystranDictResult {
+
+ __construct(public readonly string term,
+              public readonly string pos,
+              public readonly array definitions) 
+	      
 }
 ```
