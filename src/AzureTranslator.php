@@ -102,7 +102,7 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
 
        $obj = json_decode($contents);
 
-       return arra($obj[0]->translations[0]->text); 
+       return array($obj[0]->translations[0]->text); 
    }
 
    /* Azure Translatore loolup response body:
@@ -154,6 +154,7 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
       $obj = json_decode($contents)[0]; 
       
       return $obj->translations;
+
       /*
       if (count($obj->translations) == 0) 
           return array("no definition");
