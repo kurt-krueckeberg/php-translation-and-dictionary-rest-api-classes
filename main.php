@@ -21,6 +21,11 @@ function check_args(int $argc, array $argv)
        die("Input file " . $argv[1] . " does not exist!\n");
   
 }
+/*
+ Systran.net's Translator provide:
+ 1. translation
+ 2. dictionary lookup
+ */
 
 function display_systran_definitions(ResultsIterator $iter, string $word)
 { 
@@ -60,7 +65,7 @@ function display_systran_definitions(ResultsIterator $iter, string $word)
 }
 
 /*
- Mrircorsoft's Azure Translator provide:
+ Microsoft's Azure Translator provide:
  1. translation
  2. dictionary lookup
  3. example sentences based on a dfiinition
@@ -117,7 +122,10 @@ function systran_definitions(File $file)
       display_systran_definitions($iter, $word);
   }
 }
-
+/*
+ Univ. of Leipzig sentence corpora REST API
+ returns example sentences in a given lanauge.
+*/
 
 function  leipzig_sentences_with_transations($file)
 {
@@ -141,7 +149,6 @@ function  leipzig_sentences_with_transations($file)
            echo "Target translation: $sentence $t\n"; 
       }
   }
-
 }
 
 function display_sentences(ResultsIterator $iter, string $word, TranslateInterface $trans)
