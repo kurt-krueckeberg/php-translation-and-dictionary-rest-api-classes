@@ -156,6 +156,8 @@ function systran_definitions(File $file)
  
     systran_definitions($file);
 
+    //leipzig_sentences($file);
+
 /*
     leipzig_sentences($file);
 
