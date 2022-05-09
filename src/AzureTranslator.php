@@ -193,7 +193,7 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
        }
    ]
    */
-   final public function examples(string $word, array $translations) : array
+   final public function examples(string $word, array $translations) : ResultsIterator
    {
        if (count($translations) > 10) // input limt is 10
           die(); // todo: change
