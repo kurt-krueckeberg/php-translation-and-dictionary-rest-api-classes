@@ -21,7 +21,7 @@ $ composer dump-autoload
 
 ## Usage
 
-todo: complete this.
+See [main.php](main.php) 
 
 ## Implementation
 
