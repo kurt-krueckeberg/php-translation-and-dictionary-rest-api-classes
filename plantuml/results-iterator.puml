@@ -26,5 +26,8 @@ class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
 }
 class  SystranDictResult {
 
- __construct(public readonly string term, public readonly string pos, public readonly array definitions) 
+ __construct(public readonly string term,
+              public readonly string pos,
+              public readonly array definitions) 
+	      
 }
