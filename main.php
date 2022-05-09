@@ -57,7 +57,6 @@ function display_systran_definitions_and_expressions(ResultsIterator $iter, stri
                
                $i = $key + 1;
                
-               //echo "\t\t$i. $expression->source\n";
                echo "\t\t$i. $expression->source [$expression->target]\n";
            }
        }
@@ -179,14 +178,6 @@ function display_sentences(ResultsIterator $iter, string $word, TranslateInterfa
     systran_definitions_and_expressions($file);
 
     leipzig_sentences_with_transations($file);
-
-    //leipzig_sentences($file);
-
-/*
-    leipzig_sentences($file);
-
-    create_txt_output(RestClient::createRestClient(ClassID::Leipzig), RestClient::createRestClient(ClassID::Azure),  RestClient::createRestClient(ClassID::Systran), $file);
- */
  
   } catch (Exception $e) {
 
