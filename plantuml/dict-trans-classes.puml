@@ -58,9 +58,3 @@ class SystranTranslator extends RestClient implements DictionaryInterface, Trans
    
    lookup(string $word, string $src_lang, string $dest_lang) : ResultsIterator
 }
-
-
-class  SystranDictResult {
-
-   __construct(public readonly string term, public readonly string pos, public readonly array definitions) 
-}
