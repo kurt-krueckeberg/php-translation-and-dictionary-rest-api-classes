@@ -45,7 +45,9 @@ function test(File $file, DictionaryInterface|TranslateInterface $trans)
  $callable = $trans->get_result(...);
 
  $iter = new LanguageTools\ResultsIterator($a, $callable);
- $deub = 10;
+
+ foreach($iter as $r) 
+         print_r($r); 
 }
 
 function test1(File $file, DictionaryInterface|TranslateInterface $trans)
@@ -58,15 +60,13 @@ function test1(File $file, DictionaryInterface|TranslateInterface $trans)
 
   try {
    
-    //$t = RestClient::createRestClient(ClassID::Azure);
-
-    $t = RestClient::createRestClient(ClassID::Systran);
+    $t = RestClient::createRestClient(ClassID::Azure);
 
     $file =  new File("short-list.txt");
     
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-    test1($file, $t);
+    test($file, $t);
 
   } catch (Exception $e) {
 
