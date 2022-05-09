@@ -1,5 +1,4 @@
-- Return ResultsIterator--with a static class member as a callable: self::$filter_func(...) -- as return value for AzureTranslator::examples().
-  It will return a \stdClass that returns the complete target and source phrase, joining the three parts that examples() returns.
+- Add to main.php a display of Leipzig sentences with their translation. 
   
 
 ## CSS sytling of definition results: 
