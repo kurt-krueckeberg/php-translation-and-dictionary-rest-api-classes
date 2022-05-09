@@ -18,7 +18,7 @@ class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
        $this->get_result_ = $func;
     }
 
-    protected function get_result(mixed $match) : mixed //todo: mixed???? or sth else???? string | \stdClass
+    protected function get_result(mixed $match) : mixed 
     {
        return ($this->get_result_)($match);
     }
@@ -29,7 +29,6 @@ class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
         return; 
     }
 
-    // no-op todo: throw an execption
     public function offsetExists($offset) : bool
     {
         return isset($this->objs[$offset]);

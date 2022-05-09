@@ -63,7 +63,7 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
       return $arr["translation"]; 
     } 
 
-   final public function getDictionaryLanguages() : array // todo: check the actual array to confirm it is what we want.
+   final public function getDictionaryLanguages() : array 
    {
       $this->query['scope'] = 'dictionary';
 
@@ -195,14 +195,14 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
    */
    final public function examples(string $word, array $translations) : ResultsIterator
    {
-       if (count($translations) > 10) // input limt is 10
-          die(); // todo: change
-       
       $input = array();
 
-      foreach($translations as $trans) 
+      foreach($translations as $index => $trans)  {
               
+            if ($index == 10) break; // There is a limit of 10 in the input array
+ 
             $input[] = ['Text' => $word, 'Translation' => $trans->normalizedTarget]; 
+      }
 
       $contents = $this->request(self::$examples['method'], self::$examples['route'], ['headers' => $this->headers, 'query' => $this->query, 'json' => $input]);
 
@@ -220,7 +220,6 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
       if (count($x->examples) != 0) { 
 
           foreach ($x->examples as $ex) 
-            // todo: OR new \stdClass    
              $sentences[] = ['source' => $ex->sourcePrefix . $ex->sourceTerm . $ex->sourceSuffix, 'target' => $target = $ex->targetPrefix . $ex->targetTerm . $ex->targetSuffix];
 
       }

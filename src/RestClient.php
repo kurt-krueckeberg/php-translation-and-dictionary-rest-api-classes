@@ -9,9 +9,6 @@ class RestClient {
 
    protected Client $client;  
 
-   // todo: Add this array based on https://www.loc.gov/standards/iso639-2/php/code_list.php
-   private static array $isocodes = array();
-
    protected static function is_code_valid($code) // IS $code a valid ISO 639-1 Code?
    {
       return  isset(self::$isocode[$code]) ? true : false;  
