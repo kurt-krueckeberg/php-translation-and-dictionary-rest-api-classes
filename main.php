@@ -161,13 +161,17 @@ function systran_definitions(File $file)
 
   foreach ($file as $word) {
   
-      echo "Definitions for '$word' :\n";
-       
+            
       $iter = $trans->lookup($word, "DE", "EN");
       
-      echo "\tNumber of definitions is " . count($iter) . "\n";
+      echo "Definitions for '$word'\n"; // <-- WRONG
       
-      foreach($iter as $r) print_r($r);
+      foreach($iter as $defn) { // TODO <-- Is this always count($iter) == 1??
+          $term = $defn->term;
+          
+          "Part of speech for '$term' is $defn->pos.\n";
+          "Definition for '$ex->term': $defn->d"
+      }
   }
 }
 
