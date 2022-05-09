@@ -8,9 +8,9 @@ class RestClient {
    static createRestClient(ClassID $id) : mixed
 }
 
-class UniLeipzigSentenceFetcher extends RestClient implements SentenceFetchInterface {
+class LeipzigSentenceFetcher extends RestClient implements SentenceFetchInterface {
 
-   __construct( UniLeipzigConfig c = new UniLeipzigConfig() )
+   __construct( UniLeipzigConfig c = new LeipzigConfig() )
    
    fetch(string word, int count=3) :  ResultsIterator
 }
