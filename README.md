@@ -27,10 +27,6 @@ todo: complete this.
 
 ### Translaton and Dictionary Interfaces and Classes
 
-The UML [Dictionary classes and Interfaces](/assets/images/dict-classes.png) diagram (click to enlarge).
-
-![UML Dictionary Classes and Interface Diagram](/assets/images/dict-classes.png)
-
 The UML [Dictionary and Translation classes and Interfaces](/assets/images/dict-trans-classes.png) diagram (click to enlarge).
 
 ![UML Dictionary and Translation Classes and Interface Diagram](/assets/images/dict-trans-classes.png)
@@ -40,15 +36,20 @@ The dictionary and translation classes and interfaces in UML are:
 ```plantuml
 interface TranslateInterface {
 
-   public function translate(string str, string dest_lang, string src_lang="") : string; 
+   public function translate(string $str, string $dest_lang, string $src_lang="") : string;
    public function getTranslationLanguages() : array;
 }
 
 interface DictionaryInterface {
    
-   lookup(string str, string src_lang, string dest_lang) : string |array|ResultsIterator; 
+   public function lookup(string $str, string $src_lang, string $dest_lang) : array|ResultsIterator; 
+   public function getDictionaryLanguages() : array; 
+}
 
-   getDictionaryLanguages() : array;
+
+class RestClient {
+
+   static createRestClient(ClassID $id) : mixed
 }
 
 class AzureTranslator extends RestClient implements DictionaryInterface, TranslateInterface {
@@ -61,7 +62,9 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
     
    translate(string text, string dest_lang, source_lang="") : string 
    
-   function lookup(string word, string src_lang, string dest_lang) : string 
+   lookup(string word, string src_lang, string dest_lang) : array 
+
+   examples(string word, array translations) : ResultsIterator
 }
 
 class DeeplTranslator extends RestClient implements TranslateInterface {
@@ -79,15 +82,17 @@ class DeeplTranslator extends RestClient implements TranslateInterface {
    translate(string text, string dest_lang, source_lang="") : string 
 }
 
-class PonsDictionary extends  RestClient implements DictionaryInterface {
+class SystranTranslator extends RestClient implements DictionaryInterface, TranslateInterface {
 
-   __construct(PonsConfig c = new PonsConfig)
+   __construct(AzureConfig c = new SystranConfig)
+   
+   getTranslationLanguages() : array
 
    getDictionaryLanguages() : array 
-
-   getDictionaryForLanguages(string lang) : array
-
-   lookup(string text, string src, string dest) : ResultsIterator
+    
+   translate(string text, string dest_lang, source_lang="") : string 
+   
+   lookup(string $word, string $src_lang, string $dest_lang) : ResultsIterator
 }
 ```
 
@@ -105,9 +110,14 @@ interface SentenceFetchInterface  {
    fetch(string word, int count=3) : ResultsIterator;
 }
 
-class UniLeipzigSentenceFetcher extends RestClient implements SentenceFetchInterface {
+class RestClient {
 
-   __construct( UniLeipzigConfig c = new UniLeipzigConfig() )
+   static createRestClient(ClassID $id) : mixed
+}
+
+class LeipzigSentenceFetcher extends RestClient implements SentenceFetchInterface {
+
+   __construct( UniLeipzigConfig c = new LeipzigConfig() )
    
    fetch(string word, int count=3) :  ResultsIterator
 }
