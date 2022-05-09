@@ -26,11 +26,13 @@ This code requires PHP 8.1 because it uses:
 
 - an Enumeration that also implements an interface
 
-- readonly class properties (that are assigned and promoted to class members on the constructor).
+- readonly class properties that are promoted to class members on the constructor.
 
-- `new` expressions in class constructors (to create objects as default constructor parameters).
+- `new` expressions in class constructors to create objects as default constructor parameters.
 
 - **intersection type** function parameter declarations to allow `DictionaryInterface & TranslationInterface` parameters in client code. 
+
+- fist-class `callable` syntax
 
 ## Installion
 
