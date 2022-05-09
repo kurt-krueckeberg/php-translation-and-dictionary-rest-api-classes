@@ -154,15 +154,6 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
       $obj = json_decode($contents)[0]; 
       
       return $obj->translations;
-
-      /*
-      if (count($obj->translations) == 0) 
-          return array("no definition");
-      else 
-          //--return $obj->translations[0]->displayTarget; 
-          return new ResultsIterator($obj->translations, AzureTranslator::results_filter(...));
-       * 
-       */
    }
 
    /* Repsonse body for input of [ {"Text":"fly", "Translation":"volar"} ]
@@ -212,10 +203,8 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
       return new ResultsIterator($obj, AzureTranslator::get_result(...)); 
    }
 
-   public static function get_result(\stdClass $x) : \stdClass
+   public static function get_result(\stdClass $x) : array 
    {
-      $result = new \stdClass();
-
       $sentences = array();
 
       if (count($x->examples) != 0) { 
@@ -224,8 +213,7 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
              $sentences[] = ['source' => $ex->sourcePrefix . $ex->sourceTerm . $ex->sourceSuffix, 'target' => $target = $ex->targetPrefix . $ex->targetTerm . $ex->targetSuffix];
 
       }
-
-      $result->sentences = $sentences;
-      return $result;          
+      
+      return $sentences;          
    }
 }

@@ -42,18 +42,18 @@ function display_systran_definitions_and_expressions(ResultsIterator $iter, stri
        echo "\tTerm:  $result->term [$result->pos]\n";
 
        echo "\tMeanings:\n";
-
+       
        // Definitions can  have example expressions.
        foreach($result->definitions as $index => $definition) {
            
            $i = $index + 1;
            
-           echo "\t$i. $definition->meaning\n";
+           echo "\t$i. {$definition['meaning']}\n";
 
-           if (count($definition->expressions) != 0)
+           if (count($definition['expressions']) != 0)
                echo "\t\tExpressions:\n";
 
-           foreach ($definition->expressions as $key => $expression) {
+           foreach ($definition['expressions'] as $key => $expression) {
                
                $i = $key + 1;
                
@@ -97,7 +97,7 @@ function azure_definitions_and_examples(File $file)
 
            foreach($iter as $example) {
                
-               foreach($example->sentences as $sentence)  {
+               foreach($example as $sentence)  {
                   echo "{$sentence['source']}\n";   
                   echo "{$sentence['target']}\n";   
                }     

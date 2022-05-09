@@ -100,30 +100,22 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
       return new ResultsIterator($obj->outputs[0]->output->matches, SystranTranslator::results_filter(...));
     }
 
-    public static function results_filter(mixed $match) :  \stdClass
+    public static function results_filter(mixed $match) :  SystranDictResult
     {
-       // See doc/dict-systran.txt for result response details for lookup call.
-       $result = new \stdClass;
-  
-       $result->term = $match->source->lemma; // word being defined   
-       $result->pos = $match->source->pos;    // pos == Part Of Speech                                
-  
-       $result->definitions = array();
-  
        /* 
          targets == definitions, often with example expressions.
         */
+       $definitions = array();
+
        foreach($match->targets as $index => $target) { 
-  
-           $result->definitions[$index] = new \stdClass;
          
-           $result->definitions[$index]->meaning= $target->lemma; 
+           $definitions[$index]['meaning'] = $target->lemma; 
            
            if (isset($target->expressions)) // expressions is an array that may be empty.
   
-                $result->definitions[$index]->expressions = $target->expressions; 
+                $definitions[$index]['expressions'] = $target->expressions; 
        }
        
-       return $result;
+       return new SystranDictResult($match->source->lemma, $match->source->pos, $definitions);
     }
 }
