@@ -92,9 +92,9 @@ function azure_definitions_and_examples(File $file)
            
            echo "Number of examples with this definition is " . count($iter) . "\n";
 
-           foreach($iter as $example) {
+           foreach($iter as $result) { // todo: What should be returned
                
-               foreach($example as $sentence)  {
+               foreach($result['examples'] as $sentence)  { // todo: Is this loop correct?
                   echo "{$sentence['source']}\n";   
                   echo "{$sentence['target']}\n";   
                }     

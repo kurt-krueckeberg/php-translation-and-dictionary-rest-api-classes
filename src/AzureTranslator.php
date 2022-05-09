@@ -210,18 +210,27 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
         
       return new ResultsIterator($obj, AzureTranslator::get_result(...)); 
    }
+   /*
+    * Returns one of the results in the Results
+    *
+    *
+    */
 
    public static function get_result(\stdClass $x) : array 
    {
-      $sentences = array();
-
+      $result = array();
+      
+      $result['count'] = count($x->examples);
+      
+      $result['sentences'] = array();
+      
       if (count($x->examples) != 0) { 
 
           foreach ($x->examples as $ex) 
-             $sentences[] = ['source' => $ex->sourcePrefix . $ex->sourceTerm . $ex->sourceSuffix, 'target' => $target = $ex->targetPrefix . $ex->targetTerm . $ex->targetSuffix];
+             $result['sentences'][] = ['source' => $ex->sourcePrefix . $ex->sourceTerm . $ex->sourceSuffix, 'target' => $target = $ex->targetPrefix . $ex->targetTerm . $ex->targetSuffix];
 
       }
       
-      return $sentences;          
+      return $result;          
    }
 }
