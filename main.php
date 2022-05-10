@@ -86,9 +86,8 @@ function azure_definitions_and_examples(File $file)
            echo "There are no definitions for '$word'.\n";
            continue;
       } 
-       
      
-      $examples_array = $trans->examples($word, $definitions); // BUG 
+      $examples = $trans->examples($word, $definitions); // BUG 
             
       echo "Number of definitions for '$word' is " . count($definitions) . "\n";
       
@@ -98,7 +97,7 @@ function azure_definitions_and_examples(File $file)
 
            echo "Definition #" . $index + 1 . " for '$word' is '$defn'. "; // ????
                
-           if (count($examples_array[$index]['examples']) == 0) {
+           if (count($examples[$index]['examples']) == 0) {
 
                    echo "There are no examples available for '$word' with the definition of '$defn'.\n";
 

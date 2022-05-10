@@ -1,3 +1,47 @@
+Number of definitions for 'anbeten' is 2
+Definition #1 for 'anbeten' is 'worship'. There are no examples available for 'anbeten' with the definition of 'worship'.
+Definition #2 for 'anbeten' is 'adore'. There are no examples available for 'anbeten' with the definition of 'adore'.
+Number of definitions for 'beistehen' is 1
+Definition #1 for 'beistehen' is 'assist'. There are no examples available for 'beistehen' with the definition of 'assist'.
+There are no definitions for 'durchleben'.
+Number of definitions for 'überlegen' is 3
+Definition #1 for 'überlegen' is 'superior'. 	... einen Grund, sich überlegen zu fühlen.
+	... any reason to feel superior.
+	wir sind den Bakterien irgendwie überlegen, wir sind viel weiter ...
+	somehow we're superior or we're more ...
+Definition #2 for 'überlegen' is 'consider'. 	Laßt uns doch mal überlegen: Wo sind wir?
+	Let us just consider where we are.
+	Deshalb sollten wir auch überlegen, ob wir in der Entwicklung ...
+	We should therefore also consider whether the development of ...
+	... , dann sollte man im Bundestag überlegen, ob das Volk ...
+	... , then one should consider in the Bundestag whether the people ...
+Definition #3 for 'überlegen' is 'ponder'. There are no examples available for 'überlegen' with the definition of 'ponder'.
+Number of definitions for 'bemühen' is 5
+Definition #1 for 'bemühen' is 'effort'. 	Er markiert einen Wendepunkt in dem Bemühen um die Behandlung der ...
+	It marks a watershed in the effort to deal with the ...
+	In ihrem Bemühen, alle nicht-nachhaltigen Trends zu unterdrücken ...
+	In an effort to suppress all non-sustainable trends ...
+	... , sondern auch das Bemühen um eine gute Verwaltung muß unbedingt ...
+	... , but also the effort for a good administration must always ...
+	... diplomatischen Leistung, mit dem ehrlichen Bemühen um Vermittlung in akuten ...
+	... diplomatic performance, with an honest effort at mediation in acute ...
+	... war das äußerst intensive Bemühen, die Parteien zusammenzubringen ...
+	... was the very intensive effort to bring the parties together ...
+	... große Sorgfalt, gewissenhaftes Bemühen und gesunden Menschenverstand an ...
+	... devoted much care, conscientious effort and good sense to ...
+	... ein ehrenvolles und lobenswertes Bemühen dar, er hat aber auch ...
+	... an honest and praiseworthy effort, but it too has ...
+Definition #2 for 'bemühen' is 'endeavor'. There are no examples available for 'bemühen' with the definition of 'endeavor'.
+Definition #3 for 'bemühen' is 'strive'. 	... und wir werden uns dringlich weiter um seine Lösung bemühen.
+	... and we will continue to strive urgently to resolve it.
+Definition #4 for 'bemühen' is 'make every effort'. There are no examples available for 'bemühen' with the definition of 'make every effort'.
+Definition #5 for 'bemühen' is 'seek'. 	... aber wir sollten uns stets um mehr bemühen.
+	... but we should always seek more.
+	... anerkannten Gruppierungen, sich um eine offizielle Anerkennung zu bemühen.
+	... -recognised groups to seek official recognition.
+There are no definitions for 'sich verfahren'.
+Number of definitions for 'sich verpflichten' is 1
+Definition #1 for 'sich verpflichten' is 'undertake'. There are no examples available for 'sich verpflichten' with the definition of 'undertake'.
 Definitions for 'anbeten':
 	Term:  Anbetung [noun]
 	Meanings:
@@ -118,38 +162,3 @@ Definitions for 'sich verpflichten':
 		1. Sie stellen sich vor. [They introduced themselves.]
 
 
-Example sentences for word 'anbeten':
-Target sentence: Es kratzt mich nicht, wenn du den Großen Poobah im Himmel anbeten willst, so lange du nicht von mir erwartest, dasselbe zu tun. Und bislang hat mir auf dieser Tour keiner eine Predigt gehalten, also geht das schon klar.
-Target translation: Es kratzt mich nicht, wenn du den Großen Poobah im Himmel anbeten willst, so lange du nicht von mir erwartest, dasselbe zu tun. Und bislang hat mir auf dieser Tour keiner eine Predigt gehalten, also geht das schon klar. Es kratzt mich nicht, wenn du den Großen Poobah im Himmel anbeten willst, so lange du nicht von mir erwartest, dasselbe zu tun. Und bislang hat mir auf dieser Tour keiner eine Predigt gehalten, also geht das schon klar.
-Target sentence: Montaigne, um ihn ein letztes Mal zu zitieren, sah darin den Grund für den „Brauch mancher Völker, die den aus ihrer Mitte erwählten König für heilig erklären und erst zufrieden sind, wenn sie den, dem sie ihre Verehrung darbringen, auch anbeten können“.
-Target translation: Montaigne, um ihn ein letztes Mal zu zitieren, sah darin den Grund für den „Brauch mancher Völker, die den aus ihrer Mitte erwählten König für heilig erklären und erst zufrieden sind, wenn sie den, dem sie ihre Verehrung darbringen, auch anbeten können“. Montaigne, um ihn ein letztes Mal zu zitieren, sah darin den Grund für den "Brauch mancher Völker, die den aus ihrer Mitte erwählten König für heilig erklären und erst zufrieden sind, wenn sie den, dem sie ihre Verehrung darbringen, auch anbeten können".
-Example sentences for word 'beistehen':
-Target sentence: Und Romney sage zwar, dass er Israel beistehen würde, aber ob er den Worten wirklich Taten folgen lassen würde, sei unklar.
-Target translation: Und Romney sage zwar, dass er Israel beistehen würde, aber ob er den Worten wirklich Taten folgen lassen würde, sei unklar. Und Romney sage zwar, dass er Israel beistehen würde, aber ob er den Worten wirklich Taten folgen lassen würde, sei unklar.
-Target sentence: Sinken die Zinsen für Griechenland auf 0,9 Prozent, müsste Deutschland den anderen beistehen, schreibt das Blatt.
-Target translation: Sinken die Zinsen für Griechenland auf 0,9 Prozent, müsste Deutschland den anderen beistehen, schreibt das Blatt. Sinken die Zinsen für Griechenland auf 0,9 Prozent, müsste Deutschland den anderen beistehen, schreibt das Blatt.
-Target sentence: Die Euro-Staaten wollen dem Land mit bis zu 100 Milliarden Euro beistehen.
-Target translation: Die Euro-Staaten wollen dem Land mit bis zu 100 Milliarden Euro beistehen. Die Euro-Staaten wollen dem Land mit bis zu 100 Milliarden Euro beistehen.
-Example sentences for word 'durchleben':
-Target sentence: In einem Videospiel können wir unsere Fantasie ausleben, einer dieser Jungs sein, diese Situation durchleben und die Lücke in der Geschichte füllen, die man nach Aliens hätte füllen sollen.
-Target translation: In einem Videospiel können wir unsere Fantasie ausleben, einer dieser Jungs sein, diese Situation durchleben und die Lücke in der Geschichte füllen, die man nach Aliens hätte füllen sollen. In einem Videospiel können wir unsere Fantasie ausleben, einer dieser Jungs sein, diese Situation durchleben und die Lücke in der Geschichte füllen, die man nach Aliens hätte füllen sollen.
-Target sentence: Wir durchleben noch immer eine schwierige Zeit, auch wenn die Lage besser ist als vor zwei Jahren.
-Target translation: Wir durchleben noch immer eine schwierige Zeit, auch wenn die Lage besser ist als vor zwei Jahren. Wir durchleben noch immer eine schwierige Zeit, auch wenn die Lage besser ist als vor zwei Jahren.
-Target sentence: Um einen psychischen Schaden zu verhindern muss er Erinnerungen von Ezio und teilweise auch von Altair durchleben.
-Target translation: Um einen psychischen Schaden zu verhindern muss er Erinnerungen von Ezio und teilweise auch von Altair durchleben. Um einen psychischen Schaden zu verhindern muss er Erinnerungen von Ezio und teilweise auch von Altair durchleben.
-Example sentences for word 'überlegen':
-Target sentence: Der GAK war in Graz über weite Teile spielerisch überlegen, Chancen waren aber auf beiden Seiten Mangelware.
-Target translation: Der GAK war in Graz über weite Teile spielerisch überlegen, Chancen waren aber auf beiden Seiten Mangelware. Der GAK war in Graz über weite Teile spielerisch überlegen, Chancen waren aber auf beiden Seiten Mangelware.
-Target sentence: Eine Inspektion von Parchin wäre freiwillig und auch das würde ich mir an iranischer Stelle gut überlegen.
-Target translation: Eine Inspektion von Parchin wäre freiwillig und auch das würde ich mir an iranischer Stelle gut überlegen. Eine Inspektion von Parchin wäre freiwillig und auch das würde ich mir an iranischer Stelle gut überlegen.
-Target sentence: Karl solle sich überlegen einen Psychologen aufzusuchen.
-Target translation: Karl solle sich überlegen einen Psychologen aufzusuchen. Karl solle sich überlegen einen Psychologen aufzusuchen.
-Example sentences for word 'bemühen':
-Target sentence: Wir haben uns verpflichtet, uns nicht aktiv um den Erwerb gestohlener Daten aus Schweizer Banken zu bemühen.
-Target translation: Wir haben uns verpflichtet, uns nicht aktiv um den Erwerb gestohlener Daten aus Schweizer Banken zu bemühen. Wir haben uns verpflichtet, uns nicht aktiv um den Erwerb gestohlener Daten aus Schweizer Banken zu bemühen.
-Target sentence: Wir werden uns um eine soziale Staffelung bemühen.
-Target translation: Wir werden uns um eine soziale Staffelung bemühen. Wir werden uns um eine soziale Staffelung bemühen.
-Target sentence: Die Schweizer bemühen sich, aber ihre Aktionen sind zu langsam, zu ungenau.
-Target translation: Die Schweizer bemühen sich, aber ihre Aktionen sind zu langsam, zu ungenau. Die Schweizer bemühen sich, aber ihre Aktionen sind zu langsam, zu ungenau.
-Example sentences for word 'sich verfahren':
-Example sentences for word 'sich verpflichten':
