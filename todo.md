@@ -1,12 +1,3 @@
-- BUG in AzureTranslator::eamples()
- 
-       * $obj is an array of the same size as $input[] above. Each element has the properties:
-       * - examples an array of example phrases
-       * - normalizedSource, which has the foreign word
-       * - normalizedTarget, which has its definition
-       * However examples can be empty! So the number of examplee arrays would not be equal to the count($input), which is what ResultsIterator will return,
-  
-
 ## CSS sytling of definition results: 
 
 - [PONS DE -> EN](https://en.pons.com)

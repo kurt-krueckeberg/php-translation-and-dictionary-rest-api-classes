@@ -78,38 +78,38 @@ function azure_definitions_and_examples(File $file)
 
   foreach ($file as $word) {
   
-      $definitions_iter = $trans->lookup($word, "DE", "EN");
+      // The size of $examples_array will be the same as the $definitions.
+      $definitions = $trans->lookup($word, "DE", "EN"); // BUG???: Do some words return NO definitions????
+
+      if (count($definitions) == 0) {
+
+           echo "There are no definitions for '$word'.\n";
+           continue;
+      } 
+       
+     
+      $examples_array = $trans->examples($word, $definitions); // BUG 
+            
+      echo "Number of definitions for '$word' is " . count($definitions) . "\n";
       
-      echo "Number of definitions for '$word' is " . count($outer_iter) . "\n";
-      
-      foreach($definitinos_iter as $defn_index => $r) {
+      foreach($definitions as $index => $result) {
 
-           $defn = $r->normalizedTarget;
+           $defn = $result->normalizedTarget;
 
-           echo "Definition #" . $defn_index + 1 . " for '$word' is '$defn'. "; // ????
-           
-           $examples_iter = $trans->examples($word, $outer_iter);
-           
-           foreach($examples_iter as $ex_index => $examples) { 
-
-              // BUG: We are printing the wrong $defn. 
+           echo "Definition #" . $index + 1 . " for '$word' is '$defn'. "; // ????
                
-               if (count($examples['examples']) == 0) {
-
+           if (count($examples_array[$index]['examples']) == 0) {
 
                    echo "There are no examples available for '$word' with the definition of '$defn'.\n";
 
                    continue;
-               } 
+           } 
                
-               echo "These examples are availble for the definition of '$defn':\n";
-               
-               foreach($examples['examples'] as $sentence)  { // todo: Is this loop correct?
+           foreach($examples[$index]['examples'] as $sentence)  { // todo: Is this loop correct?
 
                   echo "\t{$sentence['source']}\n";   
                   echo "\t{$sentence['target']}\n";   
-               }     
-           }    
+           }     
       } 
   }
 }
@@ -185,7 +185,7 @@ function display_sentences(ResultsIterator $iter, string $word, TranslateInterfa
  
     systran_definitions_and_expressions($file);
 
-    leipzig_sentences_with_transations($file);
+   // leipzig_sentences_with_transations($file);
  
   } catch (Exception $e) {
 

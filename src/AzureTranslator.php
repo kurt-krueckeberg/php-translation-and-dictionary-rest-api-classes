@@ -151,9 +151,9 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
     
       $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['headers' => $this->headers, 'query' => $this->query, 'json' => $this->json]);
 
-      $obj = json_decode($contents)[0]; 
+      $obj = json_decode($contents); 
       
-      return $obj->translations;
+      return $obj[0]->translations;
    }
 
    /* Repsonse body for input of [ {"Text":"fly", "Translation":"volar"} ]
@@ -185,15 +185,18 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
        }
    ]
    */
-   final public function examples(string $word, array $translations) : ResultsIterator
+   final public function examples(string $word, array $definitions) : ResultsIterator
    {
+      if (count($definitions) == 0) 
+          throw new \Exception("AzureTranslotor::example(word, definitions) cannot be called with empty definitions array.");
+      
       $input = array();
 
-      foreach($translations as $index => $trans)  {
+      foreach($definitions as $index => $definition)  {
               
             if ($index == 10) break; // There is a limit of 10 in the input array
  
-            $input[] = ['Text' => $word, 'Translation' => $trans->normalizedTarget]; 
+            $input[] = ['Text' => $word, 'Translation' => $definition->normalizedTarget]; 
       }
 
       $contents = $this->request(self::$examples['method'], self::$examples['route'], ['headers' => $this->headers, 'query' => $this->query, 'json' => $input]);
