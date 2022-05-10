@@ -5,7 +5,7 @@ namespace LanguageTools;
 // Under development
 class SystranTranslator extends RestClient implements TranslateInterface, DictionaryInterface {
 
-   static private array  $trans     = array('method' => "POST", 'route' => "translation/text/translate");
+   static private array  $trans = array('method' => "POST", 'route' => "translation/text/translate");
 
    static private array  $dict_languages = array('method' => "GET", 'route' => "resources/dictionary/supportedLanguages");
 
@@ -21,8 +21,8 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
    private array $query = array(); 
 
    /*
-    There can be more than one query 'option' set; ii.e., the 'options' query paramter can occur more than one. 
-    I guess that would mean $thi->query['option'] = ['aaa', 'bbb', ... ];
+    The Systranr 'option' query paramter can occur more than one. NOt sure how to specify this for Guzzle:
+    I guess that would mean $thi->query['option'] = ['aaa', 'bbb', ... ];?
     */
    
    public function __construct(SystranConfig $c = new SystranConfig)
@@ -31,8 +31,6 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
 
        $this->headers[array_key_first($c->header)] = $c->header[array_key_first($c->header)];
    }     
-
-   // Called by base Translator::translate method 
 
    public function getTranslationLanguages() : array
    {
