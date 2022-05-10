@@ -220,14 +220,12 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
    {
       $result = array();
       
-      $result['count'] = count($x->examples);
-      
-      $result['sentences'] = array();
+      $result['examples'] = array();
       
       if (count($x->examples) != 0) { 
 
           foreach ($x->examples as $ex) 
-             $result['sentences'][] = ['source' => $ex->sourcePrefix . $ex->sourceTerm . $ex->sourceSuffix, 'target' => $target = $ex->targetPrefix . $ex->targetTerm . $ex->targetSuffix];
+             $result['examples'][] = ['source' => $ex->sourcePrefix . $ex->sourceTerm . $ex->sourceSuffix, 'target' => $target = $ex->targetPrefix . $ex->targetTerm . $ex->targetSuffix];
 
       }
       

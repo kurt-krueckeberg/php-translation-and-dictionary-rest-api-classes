@@ -78,25 +78,36 @@ function azure_definitions_and_examples(File $file)
 
   foreach ($file as $word) {
   
-      $outer_iter = $trans->lookup($word, "DE", "EN");
+      $definitions_iter = $trans->lookup($word, "DE", "EN");
       
       echo "Number of definitions for '$word' is " . count($outer_iter) . "\n";
       
-      foreach($outer_iter as $key => $r) {
+      foreach($definitinos_iter as $defn_index => $r) {
 
            $defn = $r->normalizedTarget;
 
-           echo "Definition #" . $key + 1 . " for '$word': '$defn'\n";
+           echo "Definition #" . $defn_index + 1 . " for '$word' is '$defn'. "; // ????
            
-           $iter = $trans->examples($word, $outer_iter);
+           $examples_iter = $trans->examples($word, $outer_iter);
            
-           echo "Number of examples with this definition is " . count($iter) . "\n";
+           foreach($examples_iter as $ex_index => $examples) { 
 
-           foreach($iter as $result) { // todo: What should be returned
+              // BUG: We are printing the wrong $defn. 
                
-               foreach($result['examples'] as $sentence)  { // todo: Is this loop correct?
-                  echo "{$sentence['source']}\n";   
-                  echo "{$sentence['target']}\n";   
+               if (count($examples['examples']) == 0) {
+
+
+                   echo "There are no examples available for '$word' with the definition of '$defn'.\n";
+
+                   continue;
+               } 
+               
+               echo "These examples are availble for the definition of '$defn':\n";
+               
+               foreach($examples['examples'] as $sentence)  { // todo: Is this loop correct?
+
+                  echo "\t{$sentence['source']}\n";   
+                  echo "\t{$sentence['target']}\n";   
                }     
            }    
       } 
