@@ -1,3 +1,6 @@
+## Bugs
+
+Fix bugs
 ## Comparison of Azure vs Systran
 
 After compare sid-by-side Azure definitions (with examples) vs Systran definitions (with expressions), the Systran definitions are much more extensive. This outweights the examples that Azure is able to return for specific

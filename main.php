@@ -97,13 +97,11 @@ function azure_definitions_and_examples(File $file)
       
       foreach($definitions as $index => $result) {
 
-           $defn = $result->normalizedTarget;
-
-           echo "Definition #" . $index + 1 . " for '$word' is '$defn'. "; // ????
+           echo "Definition #" . $index + 1 . " for '$word' is '{$result['definition']}'. "; // ????
                
            if (count($examples[$index]['examples']) == 0) {
 
-                   echo "There are no examples available for '$word' with the definition of '$defn'.\n";
+                   echo "There are no examples available for '$word' with the definition of '{$result['definition']}'.\n";
 
                    continue;
            } 

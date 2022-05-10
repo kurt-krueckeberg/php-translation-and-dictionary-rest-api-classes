@@ -101,7 +101,7 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
        return $obj[0]->translations[0]->text; 
    }
 
-   /* Azure Translatore lookup response body:
+   /* Azure Translator lookup response body:
      [ 
       {
           "normalizedSource":"fly",
@@ -139,7 +139,7 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
       }
      ]
    */
-   final public function lookup(string $word, string $src_lang, string $dest_lang) : array
+   final public function lookup(string $word, string $src_lang, string $dest_lang) : ResultsIterator
    {      
       $this->setLanguages($dest_lang, $src_lang); 
        
@@ -148,8 +148,20 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
       $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['headers' => $this->headers, 'query' => $this->query, 'json' => $this->json]);
 
       $obj = json_decode($contents); 
+
+      return new ResultsIterator($obj, AzureTranslator::get_lookup_result(...));
+      //--return $obj[0]->translations; // todo: ResultIterator and have 'definition' and pos'
+   }
+
+   public static function get_lookup_result(\stdClass $x) : array 
+   {
+      $result = array();
       
-      return $obj[0]->translations;
+      $result['term'] = $x->normalizedSource; 
+      $result['definition'] = $x->translations->normalizedTarget; 
+      $result['pos'] = $x->translations->posTag; 
+
+      return $result;          
    }
 
    /* 
@@ -187,7 +199,7 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
        }
     ]
    */
-   final public function examples(string $word, array $definitions) : ResultsIterator
+   final public function examples(string $word, ResultsIterator $definitions) : ResultsIterator
    {
       if (count($definitions) == 0) 
           throw new \Exception("AzureTranslotor::example(word, definitions) cannot be called with empty definitions array.");
@@ -198,7 +210,7 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
               
             if ($index == 10) break; // There is a limit of 10 in the input array
  
-            $input[] = ['Text' => $word, 'Translation' => $definition->normalizedTarget]; 
+            $input[] = ['Text' => $word, 'Translation' => $definition['definition']]; 
       }
 
       $contents = $this->request(self::$examples['method'], self::$examples['route'], ['headers' => $this->headers, 'query' => $this->query, 'json' => $input]);
@@ -213,7 +225,7 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
        * However examples can be empty! So the number of examplee arrays would not be equal to the count($input), which is what ResultsIterator will return,
        */
         
-      return new ResultsIterator($obj, AzureTranslator::get_result(...)); 
+      return new ResultsIterator($obj, AzureTranslator::get_example_result(...)); 
    }
    /*
     * Returns one of the results in the Results
@@ -221,7 +233,7 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
     *
     */
 
-   public static function get_result(\stdClass $x) : array 
+   public static function get_example_result(\stdClass $x) : array 
    {
       $result = array();
       
