@@ -30,7 +30,7 @@ function check_args(int $argc, array $argv)
 function display_systran_definitions_and_expressions(ResultsIterator $iter, string $word)
 { 
    if (count($iter) == 0) {
-      echo "no definitions available for '$word'.\n";
+      echo "No definitions available for '$word'.\n";
       return;
    }
  
@@ -79,15 +79,21 @@ function azure_definitions_and_examples(File $file)
   foreach ($file as $word) {
   
       // The size of $examples_array will be the same as the $definitions.
-      $definitions = $trans->lookup($word, "DE", "EN"); // BUG???: Do some words return NO definitions????
+      $definitions = $trans->lookup($word, "DE", "EN"); 
 
       if (count($definitions) == 0) {
 
            echo "There are no definitions for '$word'.\n";
            continue;
       } 
-     
-      $examples = $trans->examples($word, $definitions); // BUG 
+    
+      /*
+         Get any example phrases for each of the definition of $wword. 
+         $examples[0]['examples'] will be the examples array (possibly empty) for the definition in $defintions[0]     
+         $examples[1]['examples'] will be the examples array (possibly empty) for the definition in $defintions[1]     
+         and so on...
+       */ 
+      $examples = $trans->examples($word, $definitions); 
             
       echo "Number of definitions for '$word' is " . count($definitions) . "\n";
       

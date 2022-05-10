@@ -156,34 +156,41 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
       return $obj[0]->translations;
    }
 
-   /* Repsonse body for input of [ {"Text":"fly", "Translation":"volar"} ]
-   [
+   /* 
+     Input: $word and its associated $definitions array. 
+     Output: Array of examples where $examples[$index]['examples'] has the example phrases for 
+             $defintions[$index].
+
+
+    The returned Azure Tranbslator repsonse body for example input of [ {"Text":"fly", "Translation":"volar"} ] is:
+
+    [
        {
            "normalizedSource":"fly",
            "normalizedTarget":"volar",
-           "examples":[
+            "examples":[
                {
-                   "sourcePrefix":"They need machines to ",
+                    "sourcePrefix":"They need machines to ",
                    "sourceTerm":"fly",
-                   "sourceSuffix":".",
+                    "sourceSuffix":".",
                    "targetPrefix":"Necesitan máquinas para ",
-                   "targetTerm":"volar",
+                    "targetTerm":"volar",
                    "targetSuffix":"."
-               },      
+                },      
                {
-                   "sourcePrefix":"That should really ",
+                    "sourcePrefix":"That should really ",
                    "sourceTerm":"fly",
-                   "sourceSuffix":".",
+                    "sourceSuffix":".",
                    "targetPrefix":"Eso realmente debe ",
-                   "targetTerm":"volar",
+                    "targetTerm":"volar",
                    "targetSuffix":"."
-            },
+             },
             //
-               // ...list abbreviated for documentation clarity
+                // ...list abbreviated for documentation clarity
                //
-           ]
+            ]
        }
-   ]
+    ]
    */
    final public function examples(string $word, array $definitions) : ResultsIterator
    {
