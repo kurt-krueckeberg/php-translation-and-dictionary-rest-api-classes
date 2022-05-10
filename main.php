@@ -123,6 +123,7 @@ function azure_definitions_and_examples(File $file)
  */
 function systran_definitions_and_expressions(File $file)
 {
+
   $trans = RestClient::createRestClient(ClassID::Systran);
 
   $file->rewind();
@@ -184,8 +185,11 @@ function display_sentences(ResultsIterator $iter, string $word, TranslateInterfa
     
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
+
     azure_definitions_and_examples($file);
- 
+
+    echo "End of Azure Ouput. Start of Systran Output.\n";
+
     systran_definitions_and_expressions($file);
 
    // leipzig_sentences_with_transations($file);
