@@ -59,9 +59,7 @@ function display_systran_definitions_and_expressions(ResultsIterator $iter, stri
                echo "\t\t$i. $expression->source [$expression->target]\n";
            }
        }
-       echo "\n";
   }
-  echo "\n";
 }
 
 /*

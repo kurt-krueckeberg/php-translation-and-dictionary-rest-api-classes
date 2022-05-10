@@ -33,10 +33,6 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
    }     
 
    // Called by base Translator::translate method 
-   final protected function add_input(string $text)
-   {
-       $this->query[self::$input] = $text;// urlencode($text);  
-   }
 
    public function getTranslationLanguages() : array
    {
@@ -72,7 +68,7 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
    {
        $this->setLanguages(strtolower($dest_lang), strtolower($source_lang)); 
 
-       $this->add_input($text);
+       $this->query[self::$input] = $text;// urlencode($text);  
 
        $contents = $this->request(self::$trans['method'], self::$trans['route'], ['headers' => $this->headers, 'query' => $this->query]); 
 
@@ -91,8 +87,8 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
    {      
       $this->setLanguages(strtolower($dest_lang), strtolower($src_lang)); 
        
-      $this->add_input($word);
-    
+      $this->query[self::$input] = $word;// urlencode($text);  
+
       $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['headers' => $this->headers, 'query' => $this->query]);
 
       $obj = json_decode($contents);    
