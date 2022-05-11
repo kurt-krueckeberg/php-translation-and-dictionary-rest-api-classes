@@ -34,7 +34,58 @@ The header key should be:
 
 ### Requests
 
-The basic usage of the API is composed as (for JSON format):
+You first have to search for the word like so
+
+- endpoint:  https://api.collinsdictionary.com/api/v1
+- dict code: german-english     
+- request: search -- Q: What is the route?
+- max resulst: 10
+- results list page index: 1:w
+
+This will return this:
+
+```json
+{
+    "resultNumber": 6,
+    "results": [
+        {
+            "entryLabel": "Handeln",
+            "entryUrl": "http://api.collinsdictionary.com/api/v1/dictionaries/german-english/entries/handeln_2",
+            "entryId": "handeln_2"
+        },
+        {
+            "entryLabel": "handeln",
+            "entryUrl": "http://api.collinsdictionary.com/api/v1/dictionaries/german-english/entries/handeln_1",
+            "entryId": "handeln_1"
+        },
+        {
+            "entryLabel": "abhandeln",
+            "entryUrl": "http://api.collinsdictionary.com/api/v1/dictionaries/german-english/entries/abhandeln_1",
+            "entryId": "abhandeln_1"
+        },
+        {
+            "entryLabel": "aushandeln",
+            "entryUrl": "http://api.collinsdictionary.com/api/v1/dictionaries/german-english/entries/aushandeln_1",
+            "entryId": "aushandeln_1"
+        },
+        {
+            "entryLabel": "einhandeln",
+            "entryUrl": "http://api.collinsdictionary.com/api/v1/dictionaries/german-english/entries/einhandeln_1",
+            "entryId": "einhandeln_1"
+        },
+        {
+            "entryLabel": "herunterhandeln",
+            "entryUrl": "http://api.collinsdictionary.com/api/v1/dictionaries/german-english/entries/herunterhandeln_1",
+            "entryId": "herunterhandeln_1"
+        }
+    ],
+    "dictionaryCode": "german-english",
+    "currentPageIndex": 1,
+    "pageNumber": 1
+}
+```
+
+You then search the entryLable for your input string and use the entryID, to look up the definitions, like so:
 
 ```bash
 GET /dictionaries/{dictCode}/entries/{entryId}?format={format} HTTP/1.0
@@ -43,6 +94,6 @@ GET /dictionaries/{dictCode}/entries/{entryId}?format={format} HTTP/1.0
 The parameters are:
 
 - `{dictCode}`: the dictionary code. (eg. british)
-- `{entryId}`: the entry ID. (eg. car)
+- `{entryId}`: the entry ID.
 - `{format}`: the output format of the entry. (html or xml)
 - `{hostname}`: the web site name (the full domain name).

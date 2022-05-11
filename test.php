@@ -3,7 +3,7 @@ declare(strict_types=1);
 use \SplFileObject as File;
 use LanguageTools\RestClient;
 use LanguageTools\DictionaryInterface;
-use LanuageTools\CollinsGermanDictionary;
+use LanguageTools\CollinsGermanDictionary;
 use LanguageTools\ResultsIterator;
 use LanguageTools\ClassID;
 
@@ -13,7 +13,7 @@ include 'vendor/autoload.php';
    
     $dict = new CollinsGermanDictionary();
 
-    $obj = $dict->lookup("Handeln"); 
+    $obj = $dict->lookup("handeln"); 
 
     print_r($obj);
 

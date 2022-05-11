@@ -2,21 +2,15 @@
 declare(strict_types=1);
 namespace LanguageTools;
 
-/*
-  Test. Then convert to Guzzle.
- */
+class CollinsGermanDictionary extends RestClient implements DictionaryInterface {
 
-class CollinsGermanDictionary extends RestApi implements DictionaryInterface {
-
-    static private $route = "api/v1/dictionaries/german-english/entries";
+    static private array $lookup = array('method' => "GET", 'route' =>"api/v1/dictionaries/german-english/entries");
+    static private string $german_dict_code  = "german-english"; 
 
     private string $accessKey;
     private string $baseUrl;
     private array  $query;
 
-    function private make_route(string $word)
-    {
- 
     function __construct($c = new CollinsConfig)
     {
        parent::__construct($c->endpoint);
@@ -26,27 +20,68 @@ class CollinsGermanDictionary extends RestApi implements DictionaryInterface {
             $this->headers[$key] = $value;
     }
 
-    /*
-        $format is xml or html -- or is the documentation wrong, and this should be json or xml?
-          Q: Is format even required?
-     */ 
-    //public function getEntry($dictionaryCode, string $entryId, $format)  : mixed
-    public function lookup(string $word)  : mixed
+    public function getDictionaryLanguages() : array
     {
-        $route = self::$route . urlencode($word);
+         return array("DE", "EN"); // todo ???
+    } 
 
-        // query paramters
-        /* Is  reallyformat neeeded????
- 
-        if ($format) { // Original code
-            if (!$this->isValidEntryFormat($format))
-                return null;
-         */
-        //$this->query['format'] = $format;
 
-        $contents = $this->request(self::$entry['method'], $route, ['headers' => $this->headers]);
+    public function lookup(string $word, string $src="DE", string $target="EN") : array
+    {
+       /*
+          This is wrong. You first need to do API search request. This will return the entryIDs and the headword. For example:,
 
-        $obj = json_decode($contents);
+           endpoint:  https://api.collinsdictionary.com/api/v1
+           request: search
+           max resulst: 10
+           results list page index: 1:w
+           {
+               "resultNumber": 6,
+               "results": [
+                   {
+                       "entryLabel": "Handeln",
+                       "entryUrl": "http://api.collinsdictionary.com/api/v1/dictionaries/german-english/entries/handeln_2",
+                       "entryId": "handeln_2"
+                   },
+                   {
+                       "entryLabel": "handeln",
+                       "entryUrl": "http://api.collinsdictionary.com/api/v1/dictionaries/german-english/entries/handeln_1",
+                       "entryId": "handeln_1"
+                   },
+                   {
+                       "entryLabel": "abhandeln",
+                       "entryUrl": "http://api.collinsdictionary.com/api/v1/dictionaries/german-english/entries/abhandeln_1",
+                       "entryId": "abhandeln_1"
+                   },
+                   {
+                       "entryLabel": "aushandeln",
+                       "entryUrl": "http://api.collinsdictionary.com/api/v1/dictionaries/german-english/entries/aushandeln_1",
+                       "entryId": "aushandeln_1"
+                   },
+                   {
+                       "entryLabel": "einhandeln",
+                       "entryUrl": "http://api.collinsdictionary.com/api/v1/dictionaries/german-english/entries/einhandeln_1",
+                       "entryId": "einhandeln_1"
+                   },
+                   {
+                       "entryLabel": "herunterhandeln",
+                       "entryUrl": "http://api.collinsdictionary.com/api/v1/dictionaries/german-english/entries/herunterhandeln_1",
+                       "entryId": "herunterhandeln_1"
+                   }
+               ],
+               "dictionaryCode": "german-english",
+               "currentPageIndex": 1,
+               "pageNumber": 1
+           }  
+        */
+
+        $route = self::$lookup['route'] . '/' . urlencode($word);
+
+        $this->query['format'] = 'xml'; 
+
+        $contents = $this->request(self::$lookup['method'], $route, ['headers' => $this->headers, 'query' => $this->query]);
+
+        $obj = json_decode($contents, true);
         return $obj;
     }
 /*
