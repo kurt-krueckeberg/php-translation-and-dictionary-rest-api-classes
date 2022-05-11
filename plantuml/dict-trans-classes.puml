@@ -26,7 +26,7 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
     
    translate(string text, string dest_lang, source_lang="") : string 
    
-   lookup(string word, string src_lang, string dest_lang) : array 
+   lookup(string word, string src_lang, string dest_lang) : ResultsIterator
 
    examples(string word, array translations) : ResultsIterator
 }
