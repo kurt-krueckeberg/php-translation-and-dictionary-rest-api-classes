@@ -4,6 +4,9 @@
 
 - PDF [documentation](./collins-api-documentation.pdf)
 
+Comment: It seems to have a number of errors in it. The endpoint given is wrong. `https://api.collins.com` does not exist but `https://api.collinsdictionary.com` does. The get-entry call returns json or xml, so why does the `format` 
+query parameter say xml or hml instead?
+
 ### API Client Libraries
 
 - Client libraries in [several programming languages](http://dps.api-lib.idm.fr/) including PHP.

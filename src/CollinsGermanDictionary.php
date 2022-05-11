@@ -6,11 +6,18 @@ namespace LanguageTools;
   Test. Then convert to Guzzle.
  */
 
-class CollinsDictionary extends RestApi implements DictionaryInterface {
+class CollinsGermanDictionary extends RestApi implements DictionaryInterface {
 
-    static private array $dictionaries = array('method' => 'GET', 'route' => 'dictionaries'); 
+    static private $route = "api/v1/dictionaries/german-english/entries";
 
-    function __construct($c
+    private string $accessKey;
+    private string $baseUrl;
+    private array  $query;
+
+    function private make_route(string $word)
+    {
+ 
+    function __construct($c = new CollinsConfig)
     {
        parent::__construct($c->endpoint);
 
@@ -19,57 +26,30 @@ class CollinsDictionary extends RestApi implements DictionaryInterface {
             $this->headers[$key] = $value;
     }
 
-
-    public function getDictionaries() : array // todo: change later?
+    /*
+        $format is xml or html -- or is the documentation wrong, and this should be json or xml?
+          Q: Is format even required?
+     */ 
+    //public function getEntry($dictionaryCode, string $entryId, $format)  : mixed
+    public function lookup(string $word)  : mixed
     {
+        $route = self::$route . urlencode($word);
 
-       $contents = $this->request(self::$dictionaries['method'], self::$dictionaries['route'],  ['headers' => $this->headers, 'query' => $this->query]);
-             
-       return json_decode($contents, true);    
-    }
-
-    public function getDictionary($dictionaryCode) : mixed // todo: return actual value later 
-    {
-        if (!$this->isValidDictionaryCode($dictionaryCode))
-            return null;
-
-        $curl = $this->prepareGetRequest($this->baseUrl."dictionaries/".$dictionaryCode);
-
-        $response = curl_exec($curl);
-
-        return $response;
-
-    }
-
-    public function getEntry($dictionaryCode, $entryId, $format)  : mixed
-    {
-        $uri = $this->baseUrl;
-
-        if (!$this->isValidDictionaryCode($dictionaryCode))
-            return null;
-
-        $uri .= 'dictionaries/'.$dictionaryCode.'/entries/';
-
-        $uri .= urlencode($entryId);
-
-        $c = '?';
-
-        if ($format) {
+        // query paramters
+        /* Is  reallyformat neeeded????
+ 
+        if ($format) { // Original code
             if (!$this->isValidEntryFormat($format))
                 return null;
+         */
+        //$this->query['format'] = $format;
 
-            $uri .= $c.'format='.$format;
+        $contents = $this->request(self::$entry['method'], $route, ['headers' => $this->headers]);
 
-            $c = '&';
-
-        }
-        $curl = $this->prepareGetRequest($uri);
-
-        $response = curl_exec($curl);
-
-        return $response;
+        $obj = json_decode($contents);
+        return $obj;
     }
-
+/*
     public function getEntryPronunciations($dictionaryCode, $entryId, $lang = null) : mixed 
     {
         $uri = $this->baseUrl;
@@ -190,7 +170,6 @@ class CollinsDictionary extends RestApi implements DictionaryInterface {
         return $response;
 
     }
-
     private function isValidDictionaryCode($code)
      {
 
@@ -257,95 +236,5 @@ class CollinsDictionary extends RestApi implements DictionaryInterface {
         return true;
 
     }
-
-    public function search($dictionaryCode, $searchWord, $pageSize = null, $pageIndex = null) 
-    {
-        $uri = $this->baseUrl;
-
-        if (!$this->isValidDictionaryCode($dictionaryCode))
-            return null;
-
-        $uri .= 'dictionaries/'.$dictionaryCode.'/search?q=';
-
-        $uri .= urlencode($searchWord);
-
-        $c = '&';
-
-        if ($pageSize) {
-
-            $uri .= $c.'pagesize='.$pageSize;
-
-            $c = '&';
-
-        }
-        if ($pageIndex) {
-            $uri .= $c.'pageindex='.$pageIndex;
-
-            $c = '&';
-
-        }
-        $curl = $this->prepareGetRequest($uri);
-
-        $response = curl_exec($curl);
-
-        return $response;
-
-    }
-
-    public function searchFirst($dictionaryCode, $searchWord, $format = null) 
-    {
-        $uri = $this->baseUrl;
-
-        if (!$this->isValidDictionaryCode($dictionaryCode))
-            return null;
-
-        $uri .= 'dictionaries/'.$dictionaryCode.'/search/first?q=';
-
-        $uri .= urlencode($searchWord);
-
-        $c = '&';
-
-        if ($format) {
-            if (!$this->isValidEntryFormat($format))
-                return null;
-
-            $uri .= $c.'format='.$format;
-
-            $c = '&';
-        }
-
-        $curl = $this->prepareGetRequest($uri);
-
-        $response = curl_exec($curl);
-
-        return $response;
-
-    }
-
-    public function didYouMean($dictionaryCode, $searchWord, $entryNumber = null) 
-    {
-        $uri = $this->baseUrl;
-
-        if (!$this->isValidDictionaryCode($dictionaryCode))
-            return null;
-
-        $uri .= 'dictionaries/'.$dictionaryCode.'/search/didyoumean?q=';
-
-        $uri .= urlencode($searchWord);
-
-        $c = '&';
-
-        if ($entryNumber) {
-            $uri .= $c.'entrynumber='.$entryNumber;
-
-            $c = '&';
-
-        }
-        $curl = $this->prepareGetRequest($uri);
-
-        $response = curl_exec($curl);
-
-        return $response;
-
-    }
+*/
 }

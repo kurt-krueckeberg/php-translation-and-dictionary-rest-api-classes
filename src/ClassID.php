@@ -17,7 +17,8 @@ enum ClassID implements ClassmapperInterface
             ClassID::Systran  => "LanguageTools\SystranTranslator",
             ClassID::Azure    => "LanguageTools\AzureTranslator",
             ClassID::Ibm      => "LanguageTools\IbmTranslator",
-            ClassID::Deepl    => "LanguageTools\DeeplTranslator"
+            ClassID::Deepl    => "LanguageTools\DeeplTranslator",
+            ClassID::Collins  => "LanguageTools\CollinsDictonary"
         };
      }
 }
