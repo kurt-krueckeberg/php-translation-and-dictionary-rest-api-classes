@@ -5,12 +5,36 @@ namespace LanguageTools;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
-class CollinsDictionary implements DictionaryInterface {
+/*
+  PONS json repsonse object layout:
 
-   static string  $base_url = "https://api.pons.com/baseurl";
-   static string  $method = "GET";
-   static string  $route = "v1/dictionary";
+   [lang] => 'de'
+   [hits] => Array of stdClass objects
+           [type]
+           [opendict]
+           [roms] => Array of stdClass objects 
+                [headword] => 
+                [headword_full] =>  
+                [wordclass] => 
+                [arabs] => Array of stdClass objects
+                                [header] => 1. Handeln <span class="sense">(Feilschen)</span>:
+                                [translations] => Array of stdClass objects
+                                                [source] => <strong class="headword">Handeln</strong>
+                                                [target] => haggling
+   
+Some of the returned 'translation' or definition objects are actually example sentence objects. There
+only way to know if such a 'translation' object is an example is to check if the html <span> tag has a 
+class of type: class='example'>.
+ 
+Question: How should such examples be returned along with the other results?
+*/
+class PonsDictionary extends  RestClient implements DictionaryInterface {
+
+   static string  $method   = "GET";
+   static array   $lookup   = array('method' => 'GET', 'route' => "v1/dictionary");
+   static array   $languages   = array('method' => 'GET', 'route' => "v1/dictionaries");
    static string  $credential = "X-Secret";
+   static string  $dictiony_language_parm = "language";
 
    static string $xpath =  "/providers/provider[@abbrev='p']"; 
 
@@ -19,83 +43,118 @@ class CollinsDictionary implements DictionaryInterface {
    public const DICTIONARY = 'l';
    public const INPUT = 'q';
 
-   private array $options;    // [['headers' => [...], 'query' => [...], 'json' => [...]]
    private array $headers;
    private array $query;
 
-   private Client $client;  
-
-   public function __construct(\SimpleXMLElement $xml)
+   public function __construct(PonsConfig $c = new PonsConfig)
    {   
+       parent::__construct($c->endpoint);
 
-       $pons = $xml->xpath(self::$xpath)[0];
-
-       $this->headers[self::$credential] = (string) $pons->settings->secret;
-
-       $this->client = new Client(['base_uri' =>self::$base_url]); 
+       $this->headers[array_key_first($c->header)] = $c->header[array_key_first($c->header)];
    } 
 
-   public function lookup(string $text, string $src, string $dest) : string
+   final public function getDictionaryLanguages() : array // todo: check the actual array to confirm it is what we want.
    {
-       $this->query[PonsDictionary::INPUT] = urlencode($text); 
+      $contents = $this->request(self::$languages['method'], self::$languages['route'],  ['headers' => $this->headers]);
+             
+      $arr = json_decode($contents, true);
+    
+      return $arr;
+   } 
+
+   final public function getDictionaryForLanguages(string $lang) : array // todo: check the actual array to confirm it is what we want.
+   {
+      /* 
+        todo: Implement in a base Dictionary class or -- better yet--DictionaryTrait -- the method `valid_iso_code($lang)` to confirm that the language is a valid ISO two-letter language code:
+
+      if (strlen($lang) !== 2 || !valid_iso_code($lang))
+           throw new \Exception("$lang is not a valid ISO two-leeter language code."); 
+     
+       */
+      $this->query[self::$dictionary_lanauge_parm] = $lang; 
+
+      $contents = $this->request(self::$languages['method'], self::$languages['route'],  ['headers' => $this->headers, 'query' => $this->query]);
+             
+      $arr = json_decode($contents, true);
+    
+      return $arr;
+   } 
+   
+   /*
+    * Calling urlencode() for German words with umlauts or sharp s, results in no definition returned.
+    * 
+    */
+
+   public function lookup(string $word, string $src, string $dest) : array | ResultsIterator
+   {
+       $this->query[PonsDictionary::INPUT] = $word; // Note: Calling urlencode($word) results in an error for words with umlauts of sharp s.
 
        $this->query[PonsDictionary::SRC_LANG] = strtolower($src);   
        $this->query[PonsDictionary::DEST_LANG] = strtolower($dest); 
 
        $this->query[PonsDictionary::DICTIONARY] = strtolower($src . $dest);  
 
-       $response = $this->client->request('GET', self::$route, ['query' => $this->query, 'headers' => $this->headers]);       
-
-       $contents = $response->getBody()->getContents();
- 
-       // todo: urlecode needed?
-       /*
-       $arr = json_decode($contents, true)[0];
+       $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['headers' => $this->headers, 'query' => $this->query]); 
        
-       echo count( $arr["hits"] ) . "\n";
-       */
-       $obj = json_decode($contents)[0];
-       
-       foreach ($obj->hits as $o) { // hits is an array. foreach hit in the array...
-            
-           $roms = $o->roms; // access the toms property, whic his an array (stdClass objects)
+       $results = array();
+              
+       if (empty($contents)) {
            
-           foreach ($roms as $r) {
-               
-/*
-  [headword] => han·deln      <-- NOTE: The input word was "Handeln" not "handeln", yet translations for the verb handeln were returned?
-
-  [headword_full] (html version) => han<span class="separator">·</span>deln <span class="phonetics">[ˈhandl̩n]</span> <span class="wordclass"><acronym title="verb">VB</acronym></span> <span class="verbclass"><acronym title="intransitive verb">intr</acronym></span>
-  [wordclass] => intransitive verb
-  [arabs] is an array of objects with the keys:
-       [header] => string with the German word, followd by an explanation of some sort. 
-       [translations] is an array with the keys:
-          [source] with the definition in html or an example sentence
-          [target] with the definition or an example sentence.
- 
-*/ 
-               print_r($r);
-               
-               $debug = 10;
-               
-               ++$debug;
-           }
-           
-
+             echo "Response contenst for $word is empty.\n";
+             return $results;
        }
        
+       $obj = json_decode($contents)[0];
+
+       print_r($obj);
+
+       echo "\n--------------------\n";
+       
        /*
+        * todo: Create PonsResultsIterator and put the logic below into its `get_current($current)`
+        * method. And return a PonsResultsIterator 
         * 
-        * Alternat: object syntax:
-        *   $obj->hits
-        * 
-               
-        *  todo: 
-        * I. Get the translations
-        * 
-        * 1. remove html makrup
-        * 2. convert htmlentities
         */
-       return "nonhing";   
+        if (is_null($obj) || count($obj->hits) == 0) 
+             return $results;
+        
+       $has_entries = $obj->hits[0]->type == "entry" ? true : false;   
+            
+        foreach ($obj->hits as $hit) {
+        
+              if (count($hit->roms) == 0) 
+                  continue;
+              
+              foreach($hit->roms as $rom) {
+                  
+                   $rom->headword // Is the term being defined
+                   $rom->wordclass // Is the part of speech
+                           
+                   /* 
+                    * Emprically it appears all actual defnitions are in the first 'rom' and subsequent roms contain example phrses.
+                    * The problem is, there is no documentation explaining this.
+                    * The first rom's arbas's header's being with an numeral, indicatingg the defnition number. They alkso have enbedded html.
+                    * 
+                    * Summarizing: The lack of documentation and the embedded html make the Pons API impractical to use.
+                    *  
+                    * * arabs are 'definitions' but a 'definition' can be simply an example phrase.       
+                    */
+                   if (count($rom->arabs) == 0)
+                       continue;
+                
+                    foreach ($rom->arabs as $arab) {
+                        
+                        if (count($arab->translations) == 0)
+                           continue;
+                
+                        foreach($arab->translations as $translation) {
+                
+                              $results[] = $translation;//strip_tags($translation->target);
+                         }  
+                    }
+               }
+        }
+
+       return $results; 
    }
 }
