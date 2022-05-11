@@ -2,159 +2,350 @@
 declare(strict_types=1);
 namespace LanguageTools;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Response;
-
 /*
-  PONS json repsonse object layout:
+  Test. Then convert to Guzzle.
+ */
 
-   [lang] => 'de'
-   [hits] => Array of stdClass objects
-           [type]
-           [opendict]
-           [roms] => Array of stdClass objects 
-                [headword] => 
-                [headword_full] =>  
-                [wordclass] => 
-                [arabs] => Array of stdClass objects
-                                [header] => 1. Handeln <span class="sense">(Feilschen)</span>:
-                                [translations] => Array of stdClass objects
-                                                [source] => <strong class="headword">Handeln</strong>
-                                                [target] => haggling
-   
-Some of the returned 'translation' or definition objects are actually example sentence objects. There
-only way to know if such a 'translation' object is an example is to check if the html <span> tag has a 
-class of type: class='example'>.
- 
-Question: How should such examples be returned along with the other results?
-*/
-class PonsDictionary extends  RestClient implements DictionaryInterface {
+class CollinsDictionary extends RestApi implements DictionaryInterface {
 
-   static string  $method   = "GET";
-   static array   $lookup   = array('method' => 'GET', 'route' => "v1/dictionary");
-   static array   $languages   = array('method' => 'GET', 'route' => "v1/dictionaries");
-   static string  $credential = "X-Secret";
-   static string  $dictiony_language_parm = "language";
+    static private array $dictionaries = array('method' => 'GET', 'route' => 'dictionaries'); 
 
-   static string $xpath =  "/providers/provider[@abbrev='p']"; 
-
-   public const SRC_LANG = 'in';
-   public const DEST_LANG = 'language';
-   public const DICTIONARY = 'l';
-   public const INPUT = 'q';
-
-   private array $headers;
-   private array $query;
-
-   public function __construct(PonsConfig $c = new PonsConfig)
-   {   
+    function __construct($c
+    {
        parent::__construct($c->endpoint);
 
-       $this->headers[array_key_first($c->header)] = $c->header[array_key_first($c->header)];
-   } 
+       foreach($c->headers as $key => $value) 
+          
+            $this->headers[$key] = $value;
+    }
 
-   final public function getDictionaryLanguages() : array // todo: check the actual array to confirm it is what we want.
-   {
-      $contents = $this->request(self::$languages['method'], self::$languages['route'],  ['headers' => $this->headers]);
+
+    public function getDictionaries() : array // todo: change later?
+    {
+
+       $contents = $this->request(self::$dictionaries['method'], self::$dictionaries['route'],  ['headers' => $this->headers, 'query' => $this->query]);
              
-      $arr = json_decode($contents, true);
-    
-      return $arr;
-   } 
+       return json_decode($contents, true);    
+    }
 
-   final public function getDictionaryForLanguages(string $lang) : array // todo: check the actual array to confirm it is what we want.
-   {
-      /* 
-        todo: Implement in a base Dictionary class or -- better yet--DictionaryTrait -- the method `valid_iso_code($lang)` to confirm that the language is a valid ISO two-letter language code:
+    public function getDictionary($dictionaryCode) : mixed // todo: return actual value later 
+    {
+        if (!$this->isValidDictionaryCode($dictionaryCode))
+            return null;
 
-      if (strlen($lang) !== 2 || !valid_iso_code($lang))
-           throw new \Exception("$lang is not a valid ISO two-leeter language code."); 
-     
-       */
-      $this->query[self::$dictionary_lanauge_parm] = $lang; 
+        $curl = $this->prepareGetRequest($this->baseUrl."dictionaries/".$dictionaryCode);
 
-      $contents = $this->request(self::$languages['method'], self::$languages['route'],  ['headers' => $this->headers, 'query' => $this->query]);
-             
-      $arr = json_decode($contents, true);
-    
-      return $arr;
-   } 
-   
-   /*
-    * Calling urlencode() for German words with umlauts or sharp s, results in no definition returned.
-    * 
-    */
+        $response = curl_exec($curl);
 
-   public function lookup(string $word, string $src, string $dest) : array | ResultsIterator
-   {
-       $this->query[PonsDictionary::INPUT] = $word; // Note: Calling urlencode($word) results in an error for words with umlauts of sharp s.
+        return $response;
 
-       $this->query[PonsDictionary::SRC_LANG] = strtolower($src);   
-       $this->query[PonsDictionary::DEST_LANG] = strtolower($dest); 
+    }
 
-       $this->query[PonsDictionary::DICTIONARY] = strtolower($src . $dest);  
+    public function getEntry($dictionaryCode, $entryId, $format)  : mixed
+    {
+        $uri = $this->baseUrl;
 
-       $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['headers' => $this->headers, 'query' => $this->query]); 
-       
-       $results = array();
-              
-       if (empty($contents)) {
-           
-             echo "Response contenst for $word is empty.\n";
-             return $results;
-       }
-       
-       $obj = json_decode($contents)[0];
+        if (!$this->isValidDictionaryCode($dictionaryCode))
+            return null;
 
-       print_r($obj);
+        $uri .= 'dictionaries/'.$dictionaryCode.'/entries/';
 
-       echo "\n--------------------\n";
-       
-       /*
-        * todo: Create PonsResultsIterator and put the logic below into its `get_current($current)`
-        * method. And return a PonsResultsIterator 
-        * 
-        */
-        if (is_null($obj) || count($obj->hits) == 0) 
-             return $results;
-        
-       $has_entries = $obj->hits[0]->type == "entry" ? true : false;   
-            
-        foreach ($obj->hits as $hit) {
-        
-              if (count($hit->roms) == 0) 
-                  continue;
-              
-              foreach($hit->roms as $rom) {
-                  
-                   $rom->headword // Is the term being defined
-                   $rom->wordclass // Is the part of speech
-                           
-                   /* 
-                    * Emprically it appears all actual defnitions are in the first 'rom' and subsequent roms contain example phrses.
-                    * The problem is, there is no documentation explaining this.
-                    * The first rom's arbas's header's being with an numeral, indicatingg the defnition number. They alkso have enbedded html.
-                    * 
-                    * Summarizing: The lack of documentation and the embedded html make the Pons API impractical to use.
-                    *  
-                    * * arabs are 'definitions' but a 'definition' can be simply an example phrase.       
-                    */
-                   if (count($rom->arabs) == 0)
-                       continue;
-                
-                    foreach ($rom->arabs as $arab) {
-                        
-                        if (count($arab->translations) == 0)
-                           continue;
-                
-                        foreach($arab->translations as $translation) {
-                
-                              $results[] = $translation;//strip_tags($translation->target);
-                         }  
-                    }
-               }
+        $uri .= urlencode($entryId);
+
+        $c = '?';
+
+        if ($format) {
+            if (!$this->isValidEntryFormat($format))
+                return null;
+
+            $uri .= $c.'format='.$format;
+
+            $c = '&';
+
+        }
+        $curl = $this->prepareGetRequest($uri);
+
+        $response = curl_exec($curl);
+
+        return $response;
+    }
+
+    public function getEntryPronunciations($dictionaryCode, $entryId, $lang = null) : mixed 
+    {
+        $uri = $this->baseUrl;
+
+        if (!$this->isValidDictionaryCode($dictionaryCode))
+            return null;
+
+        $uri .= 'dictionaries/'.$dictionaryCode.'/entries/';
+
+        $uri .= urlencode($entryId);
+
+        $uri .= '/pronunciations';
+
+        $c = '?';
+
+        if ($lang) {
+            if (!$this->isValidEntryLang($lang))
+                return null;
+
+            $uri .= $c.'lang='.$lang;
+
+            $c = '&';
+
+        }
+        $curl = $this->prepareGetRequest($uri);
+
+        $response = curl_exec($curl);
+
+        return $response;
+    }
+
+    public function getNearbyEntries($dictionaryCode, $entryId, $entryNumber = null) 
+    {
+        $uri = $this->baseUrl;
+
+        if (!$this->isValidDictionaryCode($dictionaryCode))
+            return null;
+
+        $uri .= 'dictionaries/'.$dictionaryCode.'/entries/';
+
+        $uri .= urlencode($entryId);
+
+        $uri .= '/nearbyentries';
+
+        $c = '?';
+
+        if ($entryNumber) {
+            $uri .= $c.'entrynumber='.$entryNumber;
+
+            $c = '&';
+
+        }
+        $curl = $this->prepareGetRequest($uri);
+
+        $response = curl_exec($curl);
+
+        return $response;
+
+    }
+
+    public function getRelatedEntries($dictionaryCode, $entryId) 
+    {
+        $uri = $this->baseUrl;
+
+        if (!$this->isValidDictionaryCode($dictionaryCode))
+            return null;
+
+        $uri .= 'dictionaries/'.$dictionaryCode.'/entries/';
+
+        $uri .= urlencode($entryId);
+
+        $uri .= '/relatedentries';
+
+        $curl = $this->prepareGetRequest($uri);
+
+        $response = curl_exec($curl);
+
+        return $response;
+
+    }
+
+    public function getThesaurusList($dictionaryCode) 
+    {
+        $uri = $this->baseUrl;
+
+        if (!$this->isValidDictionaryCode($dictionaryCode))
+            return null;
+
+        $uri .= 'dictionaries/'.$dictionaryCode.'/topics/';
+
+        $curl = $this->prepareGetRequest($uri);
+
+        $response = curl_exec($curl);
+
+        return $response;
+
+    }
+
+    public function getTopic($dictionaryCode, $thesName, $topicId) 
+    {
+        $uri = $this->baseUrl;
+
+        if (!$this->isValidDictionaryCode($dictionaryCode))
+            return null;
+
+        $uri .= 'dictionaries/'.$dictionaryCode.'/topics/';
+
+        $uri .= urlencode($thesName);
+
+        $uri .= '/';
+
+        $uri .= urlencode($topicId);
+
+        $curl = $this->prepareGetRequest($uri);
+
+        $response = curl_exec($curl);
+
+        return $response;
+
+    }
+
+    private function isValidDictionaryCode($code)
+     {
+
+        if (strlen($code) < 1)
+            return false;
+
+        for($i = 0; $i < strlen($code); ++$i) {
+
+            $c = substr($code, $i, 1);
+
+            // Make sure no param are injected
+            if ($c == '/' || $c == '%')
+                return false;
+
+            if ($c == '*' || $c == '$')
+                return false;
+
+        }
+        return true;
+
+    }
+
+    private function isValidEntryFormat($format) 
+    {
+        for($i = 0; $i < strlen($format); ++$i) {
+
+            $c = substr($format, $i, 1);
+
+            # Make sure no param are injected
+            if ($c == '/' || $c == '%')
+                return false;
+
+        }
+        return true;
+
+    }
+
+    private function isValidEntryLang($lang) 
+    {
+        for($i = 0; $i < strlen($lang); ++$i) {
+
+            $c = substr($lang, $i, 1);
+
+            # Make sure no param are injected
+            if ($c == '/' || $c == '%')
+                return false;
+
+        }
+        return true;
+
+    }
+
+    private function isValidWotdDay($day) 
+    {
+        for($i = 0; $i < strlen($day); ++$i) {
+
+            $c = substr($day, $i, 1);
+
+            # Make sure no param are injected
+            if ($c == '/' || $c == '%')
+                return false;
+
+        }
+        return true;
+
+    }
+
+    public function search($dictionaryCode, $searchWord, $pageSize = null, $pageIndex = null) 
+    {
+        $uri = $this->baseUrl;
+
+        if (!$this->isValidDictionaryCode($dictionaryCode))
+            return null;
+
+        $uri .= 'dictionaries/'.$dictionaryCode.'/search?q=';
+
+        $uri .= urlencode($searchWord);
+
+        $c = '&';
+
+        if ($pageSize) {
+
+            $uri .= $c.'pagesize='.$pageSize;
+
+            $c = '&';
+
+        }
+        if ($pageIndex) {
+            $uri .= $c.'pageindex='.$pageIndex;
+
+            $c = '&';
+
+        }
+        $curl = $this->prepareGetRequest($uri);
+
+        $response = curl_exec($curl);
+
+        return $response;
+
+    }
+
+    public function searchFirst($dictionaryCode, $searchWord, $format = null) 
+    {
+        $uri = $this->baseUrl;
+
+        if (!$this->isValidDictionaryCode($dictionaryCode))
+            return null;
+
+        $uri .= 'dictionaries/'.$dictionaryCode.'/search/first?q=';
+
+        $uri .= urlencode($searchWord);
+
+        $c = '&';
+
+        if ($format) {
+            if (!$this->isValidEntryFormat($format))
+                return null;
+
+            $uri .= $c.'format='.$format;
+
+            $c = '&';
         }
 
-       return $results; 
-   }
+        $curl = $this->prepareGetRequest($uri);
+
+        $response = curl_exec($curl);
+
+        return $response;
+
+    }
+
+    public function didYouMean($dictionaryCode, $searchWord, $entryNumber = null) 
+    {
+        $uri = $this->baseUrl;
+
+        if (!$this->isValidDictionaryCode($dictionaryCode))
+            return null;
+
+        $uri .= 'dictionaries/'.$dictionaryCode.'/search/didyoumean?q=';
+
+        $uri .= urlencode($searchWord);
+
+        $c = '&';
+
+        if ($entryNumber) {
+            $uri .= $c.'entrynumber='.$entryNumber;
+
+            $c = '&';
+
+        }
+        $curl = $this->prepareGetRequest($uri);
+
+        $response = curl_exec($curl);
+
+        return $response;
+
+    }
 }
