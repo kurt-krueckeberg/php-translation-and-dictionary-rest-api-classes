@@ -5,6 +5,7 @@ namespace LanguageTools;
 enum ClassID implements ClassmapperInterface 
 {
    case  Leipzig;
+   case  Collins;
    case  Systran;
    case  Azure;
    case  Ibm;
@@ -18,7 +19,7 @@ enum ClassID implements ClassmapperInterface
             ClassID::Azure    => "LanguageTools\AzureTranslator",
             ClassID::Ibm      => "LanguageTools\IbmTranslator",
             ClassID::Deepl    => "LanguageTools\DeeplTranslator",
-            ClassID::Collins  => "LanguageTools\CollinsDictonary"
+            ClassID::Collins  => "LanguageTools\CollinsGermanDictonary"
         };
-     }
+    }
 }

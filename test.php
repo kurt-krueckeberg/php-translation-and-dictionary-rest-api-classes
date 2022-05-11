@@ -11,9 +11,10 @@ include 'vendor/autoload.php';
 
   try {
    
-    $dict = new CollinsGermanDictionary();
+    $adict = RestClient::createRestClient(ClassID::Azure);   
+    $cdict = RestClient::createRestClient(ClassID::Collins);
 
-    $obj = $dict->lookup("handeln"); 
+    $obj = $cdict->lookup("handeln"); 
 
     print_r($obj);
 

@@ -4,14 +4,14 @@ namespace LanguageTools;
 
 class CollinsGermanDictionary extends RestClient implements DictionaryInterface {
 
-    static private array $lookup = array('method' => "GET", 'route' =>"api/v1/dictionaries/german-english/entries");
+    static private array $lookup = array('method' => "GET", 'route' => "api/v1/dictionaries/german-english/entries");
     static private string $german_dict_code  = "german-english"; 
 
     private string $accessKey;
     private string $baseUrl;
     private array  $query;
 
-    function __construct($c = new CollinsConfig)
+    function __construct(CollinsConfig $c = new CollinsConfig)
     {
        parent::__construct($c->endpoint);
 
