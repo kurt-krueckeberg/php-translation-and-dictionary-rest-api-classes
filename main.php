@@ -73,12 +73,12 @@ function azure_definitions_and_examples(File $file)
   $trans = RestClient::createRestClient(ClassID::Azure);
 
   $file->rewind();
-
+  
   foreach ($file as $word) {
   
       // The size of $examples_array will be the same as the $definitions.
       $definitions = $trans->lookup($word, "DE", "EN"); 
-
+      
       if (count($definitions) == 0) {
 
            echo "There are no definitions for '$word'.\n";
@@ -97,7 +97,7 @@ function azure_definitions_and_examples(File $file)
       
       foreach($definitions as $index => $result) {
 
-           echo "Definition #" . $index + 1 . " for '$word' is '{$result['definition']}'. "; // ????
+           echo "Definition #" . $index + 1 . " for '$word' is '{$result['definition']}' [{$result['pos']}].\n";
                
            if (count($examples[$index]['examples']) == 0) {
 

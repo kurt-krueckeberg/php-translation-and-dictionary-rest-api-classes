@@ -1,10 +1,7 @@
-## Bugs
-
-Fix bugs
 ## Comparison of Azure vs Systran
 
-After compare sid-by-side Azure definitions (with examples) vs Systran definitions (with expressions), the Systran definitions are much more extensive. This outweights the examples that Azure is able to return for specific
-definitions of a word. 
+When you compare Azure definitions (with examples) to Systran definitions (with expressions), it is obvious the Systran definitions are more extensive. Systran outweighs the example phrases that Azure sometimes
+provided for a definition. 
 
 ## CSS sytling of definition results: 
 

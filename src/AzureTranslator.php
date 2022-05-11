@@ -149,17 +149,15 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
 
       $obj = json_decode($contents); 
 
-      return new ResultsIterator($obj, AzureTranslator::get_lookup_result(...));
-      //--return $obj[0]->translations; // todo: ResultIterator and have 'definition' and pos'
+      return new ResultsIterator($obj[0]->translations, AzureTranslator::get_lookup_result(...));
    }
 
    public static function get_lookup_result(\stdClass $x) : array 
    {
       $result = array();
       
-      $result['term'] = $x->normalizedSource; 
-      $result['definition'] = $x->translations->normalizedTarget; 
-      $result['pos'] = $x->translations->posTag; 
+      $result['definition'] = $x->normalizedTarget; 
+      $result['pos'] = $x->posTag; 
 
       return $result;          
    }
@@ -217,15 +215,7 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
 
       $obj = json_decode($contents); 
       
-      /* todo: BUG
-       * $obj is an array of the same size as $input[] above. Each element has the properties:
-       * - examples an array of example phrases
-       * - normalizedSource, which has the foreign word
-       * - normalizedTarget, which has its definition
-       * However examples can be empty! So the number of examplee arrays would not be equal to the count($input), which is what ResultsIterator will return,
-       */
-        
-      return new ResultsIterator($obj, AzureTranslator::get_example_result(...)); 
+       return new ResultsIterator($obj, AzureTranslator::get_example_result(...)); 
    }
    /*
     * Returns one of the results in the Results
