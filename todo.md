@@ -1,6 +1,6 @@
 ## Comparison of Azure vs Systran
 
-When you compare Azure definitions (with examples) to Systran definitions (with expressions), it is obvious the Systran definitions are more extensive. Systran outweighs the example phrases that Azure sometimes
+Systran is preferred ove Azure. When you compare Azure definitions (with examples) to Systran definitions (with expressions), it is obvious the Systran definitions are more extensive. Systran outweighs the example phrases that Azure sometimes
 provided for a definition. 
 
 ## CSS sytling of definition results: 
@@ -13,8 +13,6 @@ Pons uses <dl>'s -- definition list? -- to markup its table-display of dictionar
 You can use Chrome's inspector to copy the CSS styles. Just right click, then do  -> Copy CSS Styles.
 
 CSS Grid layout:
-
-[#1](https://stackoverflow.com/questions/44134262/create-a-table-using-definition-list-and-grid-layout)
 
 [#2](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout)
 
@@ -39,10 +37,6 @@ See these links on howot:
 
 - [#3](https://daily-dev-tips.com/posts/chrome-copy-all-css-for-an-element/)
 
-
--  Using `urlencode($input_text)` during `DictionrayInterface::lookup()` causes failure. 
-
-- Create PonsResultsIterator. See the comments in `PonsDictionary::lookup()` on how to do this.
 
 - Implement a `check_iso_code(string $lang) : bool`
 
