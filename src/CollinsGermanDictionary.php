@@ -5,6 +5,19 @@ namespace LanguageTools;
 class CollinsGermanDictionary extends RestClient implements DictionaryInterface {
 
     static private array $lookup = array('method' => "GET", 'route' => "api/v1/dictionaries/german-english/entries");
+
+/*
+Search
+REST request = /api/v1/dictionaries/{dictionaryCode}/search/?q={searchWord}&pagesize={pageSize}&pageindex={pa
+geIndex}
+*/
+
+    static private array $search = array('method' => "GET", 'route' => "api/v1/dictionaries/german-english/search");
+    static private string $qs_search = 'q';
+    static private string $qs_pagesize = 'pagesize';
+    static private string $qs_pageindex = 'pageindex';
+    static private string $qs_format = 'format';
+
     static private string $german_dict_code  = "german-english"; 
 
     private string $accessKey;
@@ -25,6 +38,27 @@ class CollinsGermanDictionary extends RestClient implements DictionaryInterface 
          return array("DE", "EN"); // todo ???
     } 
 
+    private function search($word, int $pageSize=10, int $pageIndex=1) : string | null
+    {
+        $this->query[self::$qs_search] = $word; // urlencode(??)
+        $this->query[self::$qs_pagesize] = $pageSize; 
+        $this->query[self::$qs_pageindex] = $pageIndex; 
+
+        $contents = $this->request(self::$search['method'], self::$search['route'], ['headers' => $this->headers, 'query' => $this->query]);
+
+        $obj = json_decode($contents);
+
+        foreach($obj->results as $result) 
+
+            if ($result->entryLabel == $word) return $result->entryId;
+
+        return null; 
+    } 
+
+    /*
+     * Unfortunetly, the Collins API returns html results that contains CSS styles that are used (but not documented) on the Collins dictionary results webpage.
+     *
+     */
 
     public function lookup(string $word, string $src="DE", string $target="EN") : array
     {
@@ -75,201 +109,18 @@ class CollinsGermanDictionary extends RestClient implements DictionaryInterface 
            }  
         */
 
-        $route = self::$lookup['route'] . '/' . urlencode($word);
+        $entryId = $this->search($word);
+ 
+        if (is_null($entryId)) return array(); // no definitions
 
-        $this->query['format'] = 'xml'; 
+        $route = self::$lookup["route"] . '/' . urlencode($entryId);
+
+        $this->query[self:$qs_format'] = 'html'; 
 
         $contents = $this->request(self::$lookup['method'], $route, ['headers' => $this->headers, 'query' => $this->query]);
 
         $obj = json_decode($contents, true);
+
         return $obj;
     }
-/*
-    public function getEntryPronunciations($dictionaryCode, $entryId, $lang = null) : mixed 
-    {
-        $uri = $this->baseUrl;
-
-        if (!$this->isValidDictionaryCode($dictionaryCode))
-            return null;
-
-        $uri .= 'dictionaries/'.$dictionaryCode.'/entries/';
-
-        $uri .= urlencode($entryId);
-
-        $uri .= '/pronunciations';
-
-        $c = '?';
-
-        if ($lang) {
-            if (!$this->isValidEntryLang($lang))
-                return null;
-
-            $uri .= $c.'lang='.$lang;
-
-            $c = '&';
-
-        }
-        $curl = $this->prepareGetRequest($uri);
-
-        $response = curl_exec($curl);
-
-        return $response;
-    }
-
-    public function getNearbyEntries($dictionaryCode, $entryId, $entryNumber = null) 
-    {
-        $uri = $this->baseUrl;
-
-        if (!$this->isValidDictionaryCode($dictionaryCode))
-            return null;
-
-        $uri .= 'dictionaries/'.$dictionaryCode.'/entries/';
-
-        $uri .= urlencode($entryId);
-
-        $uri .= '/nearbyentries';
-
-        $c = '?';
-
-        if ($entryNumber) {
-            $uri .= $c.'entrynumber='.$entryNumber;
-
-            $c = '&';
-
-        }
-        $curl = $this->prepareGetRequest($uri);
-
-        $response = curl_exec($curl);
-
-        return $response;
-
-    }
-
-    public function getRelatedEntries($dictionaryCode, $entryId) 
-    {
-        $uri = $this->baseUrl;
-
-        if (!$this->isValidDictionaryCode($dictionaryCode))
-            return null;
-
-        $uri .= 'dictionaries/'.$dictionaryCode.'/entries/';
-
-        $uri .= urlencode($entryId);
-
-        $uri .= '/relatedentries';
-
-        $curl = $this->prepareGetRequest($uri);
-
-        $response = curl_exec($curl);
-
-        return $response;
-
-    }
-
-    public function getThesaurusList($dictionaryCode) 
-    {
-        $uri = $this->baseUrl;
-
-        if (!$this->isValidDictionaryCode($dictionaryCode))
-            return null;
-
-        $uri .= 'dictionaries/'.$dictionaryCode.'/topics/';
-
-        $curl = $this->prepareGetRequest($uri);
-
-        $response = curl_exec($curl);
-
-        return $response;
-
-    }
-
-    public function getTopic($dictionaryCode, $thesName, $topicId) 
-    {
-        $uri = $this->baseUrl;
-
-        if (!$this->isValidDictionaryCode($dictionaryCode))
-            return null;
-
-        $uri .= 'dictionaries/'.$dictionaryCode.'/topics/';
-
-        $uri .= urlencode($thesName);
-
-        $uri .= '/';
-
-        $uri .= urlencode($topicId);
-
-        $curl = $this->prepareGetRequest($uri);
-
-        $response = curl_exec($curl);
-
-        return $response;
-
-    }
-    private function isValidDictionaryCode($code)
-     {
-
-        if (strlen($code) < 1)
-            return false;
-
-        for($i = 0; $i < strlen($code); ++$i) {
-
-            $c = substr($code, $i, 1);
-
-            // Make sure no param are injected
-            if ($c == '/' || $c == '%')
-                return false;
-
-            if ($c == '*' || $c == '$')
-                return false;
-
-        }
-        return true;
-
-    }
-
-    private function isValidEntryFormat($format) 
-    {
-        for($i = 0; $i < strlen($format); ++$i) {
-
-            $c = substr($format, $i, 1);
-
-            # Make sure no param are injected
-            if ($c == '/' || $c == '%')
-                return false;
-
-        }
-        return true;
-
-    }
-
-    private function isValidEntryLang($lang) 
-    {
-        for($i = 0; $i < strlen($lang); ++$i) {
-
-            $c = substr($lang, $i, 1);
-
-            # Make sure no param are injected
-            if ($c == '/' || $c == '%')
-                return false;
-
-        }
-        return true;
-
-    }
-
-    private function isValidWotdDay($day) 
-    {
-        for($i = 0; $i < strlen($day); ++$i) {
-
-            $c = substr($day, $i, 1);
-
-            # Make sure no param are injected
-            if ($c == '/' || $c == '%')
-                return false;
-
-        }
-        return true;
-
-    }
-*/
 }
