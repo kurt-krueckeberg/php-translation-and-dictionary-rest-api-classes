@@ -60,15 +60,15 @@ interface DictionaryInterface {
    public function getDictionaryLanguages() : array; 
 }
 
-
 class RestClient {
 
    static createRestClient(ClassID $id) : mixed
+   __construct(ClassID id)
 }
 
 class AzureTranslator extends RestClient implements DictionaryInterface, TranslateInterface {
 
-   __construct(AzureConfig c = new AzureConfig)
+   __construct(ClassID id)
    
    getTranslationLanguages() : array
 
@@ -76,14 +76,14 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
     
    translate(string text, string dest_lang, source_lang="") : string 
    
-   lookup(string word, string src_lang, string dest_lang) :  ResultsIterator
+   lookup(string word, string src_lang, string dest_lang) : ResultsIterator
 
    examples(string word, array translations) : ResultsIterator
 }
 
 class DeeplTranslator extends RestClient implements TranslateInterface {
    
-   __construct(DeeplConfig c = new DeeplConfig)
+   __construct(ClassID id)
    
    getLanguages() : string
 
@@ -98,7 +98,7 @@ class DeeplTranslator extends RestClient implements TranslateInterface {
 
 class SystranTranslator extends RestClient implements DictionaryInterface, TranslateInterface {
 
-   __construct(AzureConfig c = new SystranConfig)
+   __construct(ClassID id)
    
    getTranslationLanguages() : array
 
