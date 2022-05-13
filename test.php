@@ -11,9 +11,9 @@ include 'vendor/autoload.php';
 
   try {
    
-    $cdict = RestClient::createRestClient(ClassID::Collins);
+    $x = RestClient::createRestClient(ClassID::Azure);
 
-    $obj = $cdict->lookup("handeln"); 
+    $obj = $x->lookup("handeln", "DE", "EN"); 
 
     print_r($obj);
 

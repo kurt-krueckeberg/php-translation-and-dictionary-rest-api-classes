@@ -2,11 +2,11 @@
 
 [Systran.net](https://www.systran.net/en/translate/)
 
-Use the Systran Pro [translate.systran.net/user](https://translate.systran.net/user) login. Do not sign in from www.systran.net (which for reason unknown to md display incorrect and incomplete infomration).
+Login for Systran Pro is at [translate.systran.net/user](https://translate.systran.net/user). **note:** Do not sign in at `www.systran.net` (which for reason unknown to md display incorrect and incomplete infomration).
 
-## REST API Dcoumentation
+## Systran API Dcoumentation
 
-- Main API [start page](https://docs.systran.net/translateAPI/)
+- [Documentionat Main Page](https://docs.systran.net/translateAPI/)
 
 - [Systrans Translation API](https://docs.systran.net/translateAPI/translation)
 
@@ -14,15 +14,18 @@ Use the Systran Pro [translate.systran.net/user](https://translate.systran.net/u
 
 - [User Console](https://trs.systran.net/user)
 
-API endpoint: https://api-translate.systran.net
+## Endpoint and Routes
 
-translation route: translation/text/translate
-translation query parms:
+- Endpoint: `https://api-translate.systran.net`
 
-- input - the string to translation
+  - translation route: `translation/text/translate`
 
-- source - the source language
+    - query parms:
 
-- target - the target language
+      - input - the string to translation
 
-dictionary lookup route:
+     - source - the source language
+
+     - target - the target language
+
+    - dictionary lookup route: 
