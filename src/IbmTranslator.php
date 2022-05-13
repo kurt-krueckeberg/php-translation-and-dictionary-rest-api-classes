@@ -13,9 +13,9 @@ class IbmTranslator extends Translator {
    private $query = array();
    private $headers = array();
     
-   public function __construct(string $endpoint)
+   public function __construct(ClassID $id)
    {
-       parent::__construct($endporint);
+       parent::__construct($id);
    }
 
    protected function add_text(string $text, array $options)

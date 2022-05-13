@@ -6,12 +6,13 @@ use LanguageTools\DictionaryInterface;
 use LanguageTools\CollinsGermanDictionary;
 use LanguageTools\ResultsIterator;
 use LanguageTools\ClassID;
+use LanguageTools\Config;
 
 include 'vendor/autoload.php';
 
+
   try {
-   
-    $x = RestClient::createRestClient(ClassID::Azure);
+    $x = RestClient::createRestClient(ClassID::Systran);
 
     $obj = $x->lookup("handeln", "DE", "EN"); 
 

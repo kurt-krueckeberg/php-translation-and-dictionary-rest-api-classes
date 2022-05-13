@@ -24,14 +24,10 @@ geIndex}
     private string $baseUrl;
     private array  $query;
 
-    function __construct(CollinsConfig $c = new CollinsConfig)
-    {
-       parent::__construct($c->endpoint);
-
-       foreach($c->headers as $key => $value) 
-          
-            $this->headers[$key] = $value;
-    }
+   public function __construct(ClassID $id)
+   {   
+       parent::__construct($id);
+   } 
 
     public function getDictionaryLanguages() : array
     {
@@ -44,7 +40,7 @@ geIndex}
         $this->query[self::$qs_pagesize] = $pageSize; 
         $this->query[self::$qs_pageindex] = $pageIndex; 
 
-        $contents = $this->request(self::$search['method'], self::$search['route'], ['headers' => $this->headers, 'query' => $this->query]);
+        $contents = $this->request(self::$search['method'], self::$search['route'], ['query' => $this->query]);
 
         $obj = json_decode($contents);
 
@@ -117,7 +113,7 @@ geIndex}
 
         $this->query[self:$qs_format'] = 'html'; 
 
-        $contents = $this->request(self::$lookup['method'], $route, ['headers' => $this->headers, 'query' => $this->query]);
+        $contents = $this->request(self::$lookup['method'], $route, ['query' => $this->query]);
 
         $obj = json_decode($contents, true);
 

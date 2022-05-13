@@ -15,11 +15,9 @@ class DeeplTranslator extends RestClient implements TranslateInterface {
    private $query = array();
    private $headers = array();
  
-   public function __construct(DeeplConfig $c = new DeeplConfig)
+   public function __construct(ClassID $id)
    {   
-      parent::__construct($c->endpoint);
-
-     $this->headers[array_key_first($c->header)] = $c->header[array_key_first($c->header)];
+      parent::__construct($id);
    }
 
    // If this is a translation request and there is no source language, the source langauge will be auto-detected.
@@ -40,7 +38,7 @@ class DeeplTranslator extends RestClient implements TranslateInterface {
    {
        $this->query['type'] = 'source';
 
-       $contents = $this->request(self::$method, self::$languages_route, ['headers' => $this->headers, 'query' => $this->query]); 
+       $contents = $this->request(self::$method, self::$languages_route, ['query' => $this->query]); 
 
        return json_decode($contents, true);
    } 
@@ -49,7 +47,7 @@ class DeeplTranslator extends RestClient implements TranslateInterface {
    {
        $this->query['type'] = 'target';
 
-       $contents = $this->request(self::$method, self::$languages_route, ['headers' => $this->headers, 'query' => $this->query]); 
+       $contents = $this->request(self::$method, self::$languages_route, ['query' => $this->query]); 
 
        return json_decode($contents, true);
    } 
@@ -59,7 +57,7 @@ class DeeplTranslator extends RestClient implements TranslateInterface {
    {
        // $this->query['type'] = 'target' or 'source';
 
-       $contents = $this->request(self::$method, self::$languages_route, ['headers' => $this->headers]);
+       $contents = $this->request(self::$method, self::$languages_route);
 
        return json_decode($contents, true);
    } 
@@ -70,7 +68,7 @@ class DeeplTranslator extends RestClient implements TranslateInterface {
 
        $this->query[self::$input] = $text; //urlencode($text);
 
-       $contents = $this->request(self::$method, self::$trans_route, ['headers' => $this->headers, 'query' => $this->query]); 
+       $contents = $this->request(self::$method, self::$trans_route, ['query' => $this->query]); 
 
        $obj = json_decode($contents);
 

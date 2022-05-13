@@ -1,3 +1,11 @@
+## Design
+
+Use a single confg.php file, and put all the settings in it. Then in each constructor just specify the keys. So for the SystranTranlstor call to the base `Restclinet::__constcut(....)` do:
+
+```php
+__construct($config['systran']['endpoint'], $config['systran']['headers']);
+```
+
 ## Comparison of Azure vs Systran
 
 Systran is preferred ove Azure. When you compare Azure definitions (with examples) to Systran definitions (with expressions), it is obvious the Systran definitions are more extensive. Systran outweighs the example phrases that Azure sometimes

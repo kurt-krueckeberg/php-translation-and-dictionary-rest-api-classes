@@ -48,14 +48,12 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
 
    public function __construct(PonsConfig $c = new PonsConfig)
    {   
-       parent::__construct($c->endpoint);
-
-       $this->headers[array_key_first($c->header)] = $c->header[array_key_first($c->header)];
+       parent::__construct($c);
    } 
 
    final public function getDictionaryLanguages() : array // todo: check the actual array to confirm it is what we want.
    {
-      $contents = $this->request(self::$languages['method'], self::$languages['route'],  ['headers' => $this->headers]);
+      $contents = $this->request(self::$languages['method'], self::$languages['route']);
              
       $arr = json_decode($contents, true);
     
@@ -73,7 +71,7 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
        */
       $this->query[self::$dictionary_lanauge_parm] = $lang; 
 
-      $contents = $this->request(self::$languages['method'], self::$languages['route'],  ['headers' => $this->headers, 'query' => $this->query]);
+      $contents = $this->request(self::$languages['method'], self::$languages['route'],  ['query' => $this->query]);
              
       $arr = json_decode($contents, true);
     
@@ -94,7 +92,7 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
 
        $this->query[PonsDictionary::DICTIONARY] = strtolower($src . $dest);  
 
-       $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['headers' => $this->headers, 'query' => $this->query]); 
+       $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['query' => $this->query]); 
        
        $results = array();
               

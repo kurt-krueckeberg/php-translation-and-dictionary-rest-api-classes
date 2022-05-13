@@ -28,13 +28,9 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
         );
    }
    
-   public function __construct(AzureConfig $c = new AzureConfig)
+   public function __construct(ClassID $id)
    {
-       parent::__construct($c->endpoint);
-
-       foreach($c->headers as $key => $value) 
-          
-            $this->headers[$key] = $value;
+       parent::__construct($id);//"https://api.cognitive.microsofttranslator.com",  ["Ocp-Apim-Subscription-Key" => "ef6e5b44c68d438c8d79cae2f8c020ba", "Ocp-Apim-Subscription-Region" => "eastus2"]);
    }     
 
    // If no source language is given, it will be auto-detected.
@@ -94,7 +90,7 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
 
        $this->json = [['Text' => $text]];       
 
-       $contents = $this->request(self::$trans['method'], self::$trans['route'], ['headers' => $this->headers, 'query' => $this->query, 'json' => $this->json]); 
+       $contents = $this->request(self::$trans['method'], self::$trans['route'], ['query' => $this->query, 'json' => $this->json]); 
 
        $obj = json_decode($contents);
 

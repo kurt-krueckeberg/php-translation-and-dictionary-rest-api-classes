@@ -25,16 +25,14 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
     I guess that would mean $thi->query['option'] = ['aaa', 'bbb', ... ];?
     */
    
-   public function __construct(SystranConfig $c = new SystranConfig)
+   public function __construct(ClassID $id)
    {
-       parent::__construct($c->endpoint);
-
-       $this->headers[array_key_first($c->header)] = $c->header[array_key_first($c->header)];
-   }     
+       parent::__construct($id); // "https://api-translate.systran.net", array('Authorization' => 'Key bf31a6fd-f202-4eef-bc0e-1236f7e33be4')); 
+   }
 
    public function getTranslationLanguages() : array
    {
-      $contents = $this->request(self::$languages['method'], self::$languages['route'],  ['headers' => $this->headers, 'query' => $this->query]);
+      $contents = $this->request(self::$languages['method'], self::$languages['route'],  ['query' => $this->query]);
              
       $arr = json_decode($contents, true);
     

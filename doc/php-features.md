@@ -1,3 +1,15 @@
+## PHP 8
+
+### Enumerations
+
+- [#1](https://medium.com/geekculture/php-8-1-welcome-enumeration-5b9ed1063ec0)
+
+- {Enums in Symfony](https://alex-daubois.medium.com/using-php-8-1-enumerations-in-symfony-af5ba761135d)
+
+- [PHP Enumeration classes vs fake enumerations what to use](https://akashicseer.com/software-development/php-enumeration-classes-vs-fake-enumerations-what-to-use/)
+
+- [Quick Intro](https://www.thisprogrammingthing.com/2021/enums-in-php-8-1/)
+
 ## PHP and Design Patterns
 
 - [PHP8.1 Design Patterns Code](https://github.com/gabrielanhaia/php-design-patterns) has several DP but not all.

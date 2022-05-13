@@ -2,7 +2,7 @@
 
 [Systran.net](https://www.systran.net/en/translate/)
 
-Login for Systran Pro is at [translate.systran.net/user](https://translate.systran.net/user). **note:** Do not sign in at `www.systran.net` (which for reason unknown to md display incorrect and incomplete infomration).
+[Login for Systran Pro: translate.systran.net/user](https://translate.systran.net/user). **note:** Do not sign in at `www.systran.net` (which for reason unknown to md display incorrect and incomplete infomration).
 
 ## Systran API Dcoumentation
 
