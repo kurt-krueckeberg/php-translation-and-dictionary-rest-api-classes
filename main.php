@@ -141,6 +141,7 @@ function systran_definitions_and_expressions(File $file)
 function  leipzig_sentences_with_transations($file)
 {
   $fetcher = RestClient::createRestClient(ClassID::Leipzig);
+
   $trans = RestClient::createRestClient(ClassID::Azure);
 
   $file->rewind();
@@ -183,7 +184,6 @@ function display_sentences(ResultsIterator $iter, string $word, TranslateInterfa
     
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-
     azure_definitions_and_examples($file);
 
     echo "End of Azure Ouput. Start of Systran Output.\n";
@@ -194,5 +194,5 @@ function display_sentences(ResultsIterator $iter, string $word, TranslateInterfa
  
   } catch (Exception $e) {
 
-         echo "Exception: message = " . $e->getMessage() . "\n";
+      echo "Exception: message = " . $e->getMessage() . "\n";
   } 
