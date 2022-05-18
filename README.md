@@ -30,10 +30,9 @@ This code requires PHP 8.1 because it uses:
 
 - First-class callable syntax
 
-
 ## Installion
 
-After cloing the repository:
+After cloning the repository:
 
 ```bash
 $ composer update 

@@ -23,7 +23,7 @@ enum ClassID implements ClassmapperInterface {
 
    public function get_provider() : string
    {
-       return match($this) { // Returns implementation class
+       return match($this) { // Returns implementation class's abbreviation used in 'config.xml'
            ClassID::Leipzig  => "l",
            ClassID::Systran  => "s",
            ClassID::Azure    => "a",
