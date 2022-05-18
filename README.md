@@ -6,23 +6,30 @@
 
 - `AzureTranslator`
 
-   Also contains an `examples` method to return example phrases for a definition.
+   Implements `TranlateInterface` and `DictionaryInterface` and also contains an `examples` method to return example phrases (for a given definition)
 
 - `SystranTranslator`
 
-   Many definition are accompanied with example expressions.
+   Implements `TranlateInterface` and `DictionaryInterface`. Its `DiciontaryIntrface::lookup` method  often returns example phrases.
 
 -  `RestClient`
 
-    Base class with static factory method 
+    Base class with static factory method `RestClient::createClient(ClassID id)`. 
 
 - `LeipzipSentenceFetcher`
 
-   Returns example sentences
+   Implements 'SentenceFetchInerface` whose 'fetch` method Returns example sentences
 
 ## PHP 8.1 Comments
 
 This code requires PHP 8.1 because it uses:
+
+- enumerations (that implement interfaces).
+
+- function methods paramters that take Intersction Types of `DiciontaryInterface|TranslateInterface`
+
+- First-class callable sybtax
+
 
 ## Installion
 
@@ -35,7 +42,7 @@ $ composer dump-autoload
 
 ## Usage
 
-See [main.php](main.php) 
+For usage see [main.php](main.php) 
 
 ## Implementation
 
