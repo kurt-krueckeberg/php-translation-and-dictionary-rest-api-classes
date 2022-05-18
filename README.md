@@ -6,7 +6,7 @@
 
 - `AzureTranslator`
 
-   Implements `TranlateInterface` and `DictionaryInterface` and also contains an `examples` method to return example phrases (for a given definition)
+   Implements `TranlateInterface` and `DictionaryInterface` and also contains the `examples(string $word, ResultsIterator $definitions)` method that return example phrases (for each given definition)
 
 - `SystranTranslator`
 
@@ -28,7 +28,7 @@ This code requires PHP 8.1 because it uses:
 
 - function methods paramters that take Intersction Types of `DiciontaryInterface|TranslateInterface`
 
-- First-class callable sybtax
+- First-class callable syntax
 
 
 ## Installion
