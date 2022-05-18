@@ -1,18 +1,11 @@
 # Comparison of Azure vs Systran
 
-Systran is preferred ove Azure. When you compare Azure definitions (with examples) to Systran definitions (with expressions), it is obvious the Systran definitions are more extensive. Systran outweighs the example phrases that Azure sometimes
-provided for a definition. 
+Systran is to be preferred ove Azure. When you compare Azure definitions (with its examples) to the Systran definitions (with its expressions), it is obvious the Systran definitions are more extensive. Systran outweighs the example phrases that Azure
+sometimes provides for a definition. 
 
-## CSS sytling of definition results: 
+## Style the definition results: 
 
-- [PONS DE -> EN](https://en.pons.com)
-
-See [doc/pons-html-output.png](doc/pons-html-output.png)
-
-Pons uses <dl>'s -- definition list? -- to markup its table-display of dictionary results. A <dt> is the left colum and a <dl> is the right column.
-You can use Chrome's inspector to copy the CSS styles. Just right click, then do  -> Copy CSS Styles.
-
-CSS Grid layout:
+How to Use CSS Grid layout:
 
 [#2](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout)
 
@@ -20,14 +13,9 @@ CSS Grid layout:
 
 [#4](https://css-tricks.com/snippets/css/complete-guide-grid/)
 	
-
-  - [Collins DE -> EN diciionary](https://www.collinsdictionary.com/dictionary/german-english/handeln)
-
-  - [Cambridge DE -> EN](https://dictionary.cambridge.org/dictionary/german-english/handeln?q=Handeln)
-
 See file [dt-styling.md](./dt-styling.md)
 
-See these links on howot:
+See these links on howto extragin CSS:
 
 **Extracting CSS for an element**:
 
@@ -38,7 +26,7 @@ See these links on howot:
 - [#3](https://daily-dev-tips.com/posts/chrome-copy-all-css-for-an-element/)
 
 
-- Implement a `check_iso_code(string $lang) : bool`
+- Have drived classes implement `check_iso_code(string $lang) : bool`  which can be made abstract in RestClient.
 
   1. classes implementing from DictionaryInterface
   2. classes implementing from TranslateInterface
