@@ -11,7 +11,7 @@ class RestClient {
 
    private array $headers = array();
 
-   protected static function is_code_valid($code) // IS $code a valid ISO 639-1 Code?
+   protected static function is_code_valid($code) // <-- Not yet implemented
    {
       return  isset(self::$isocode[$code]) ? true : false;  
    }
@@ -36,11 +36,11 @@ class RestClient {
  
    protected function __construct(ClassID $id)
    {     
-       $simple = Config::get_config($id);
+       $simplexml = Config::get_config($id);
 
-       $this->client = new Client( ['base_uri' => (string) $simple->endpoint] );
+       $this->client = new Client( ['base_uri' => (string) $simplexml->endpoint] );
 
-       foreach($simple->headers->header as $header) {
+       foreach($simplexml->headers->header as $header) {
 
              $key = (string) $header['key'];
 
