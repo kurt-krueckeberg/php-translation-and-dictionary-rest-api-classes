@@ -86,7 +86,8 @@ function azure_definitions_and_examples(File $file)
       } 
     
       /*
-         Get any example phrases for each of the definition of $wword. 
+         examples($word, $definitions) will get any example phrases for eacho of the definitions of $wword. 
+
          $examples[0]['examples'] will be the examples array (possibly empty) for the definition in $defintions[0]     
          $examples[1]['examples'] will be the examples array (possibly empty) for the definition in $defintions[1]     
          and so on...
