@@ -70,7 +70,7 @@ function display_systran_definitions_and_expressions(ResultsIterator $iter, stri
  */
 function azure_definitions_and_examples(File $file)
 {
-  $trans = RestClient::createRestClient(ClassID::Azure);
+  $trans = RestClient::createClient(ClassID::Azure);
 
   $file->rewind();
   
@@ -122,7 +122,7 @@ function azure_definitions_and_examples(File $file)
 function systran_definitions_and_expressions(File $file)
 {
 
-  $trans = RestClient::createRestClient(ClassID::Systran);
+  $trans = RestClient::createClient(ClassID::Systran);
 
   $file->rewind();
 
@@ -140,9 +140,9 @@ function systran_definitions_and_expressions(File $file)
 
 function  leipzig_sentences_with_transations($file)
 {
-  $fetcher = RestClient::createRestClient(ClassID::Leipzig);
+  $fetcher = RestClient::createClient(ClassID::Leipzig);
 
-  $trans = RestClient::createRestClient(ClassID::Azure);
+  $trans = RestClient::createClient(ClassID::Azure);
 
   $file->rewind();
 

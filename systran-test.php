@@ -48,7 +48,7 @@ function systran_test(File $file, DictionaryInterface & TranslateInterface $tran
 
   try {
    
-    $trans = RestClient::createRestClient(ClassID::Systran);
+    $trans = RestClient::createClient(ClassID::Systran);
 
     $file =  new File("short-list.txt");
     

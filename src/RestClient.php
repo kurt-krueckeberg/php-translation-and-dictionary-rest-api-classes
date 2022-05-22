@@ -16,7 +16,7 @@ class RestClient {
       return  isset(self::$isocode[$code]) ? true : false;  
    }
 
-   static public function createRestClient(ClassID $id) : mixed
+   static public function createClient(ClassID $id) : mixed
    {
       $class_name =  $id->class_name();
 
