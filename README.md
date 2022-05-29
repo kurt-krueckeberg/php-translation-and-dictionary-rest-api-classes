@@ -1,5 +1,22 @@
 # PHP Translation and Dictionary REST API Classes
 
+This is a collection of PHP client classes and interfaces that implement the REST APIs of a number of REST APIs:
+
+- University of Leipzig Natural Language Processing Group's [REST API of the Leipzig Corpora Collection / Projekt Deutscher Wortschatz](http://api.corpora.uni-leipzig.de/ws/swagger-ui.html)
+
+- Microsot's [Azure Translator REST API]() that provides a Translation and Dictionary Lookup REST API
+
+ TODO: Add links for these APIS
+
+- DEEPL Transaltor translation API
+
+- Systran Translation and Dictionary Lookup REST API
+
+- Collins Dictionary REST API
+
+- PONS Dictionary REST API
+
+
 ## Classes
 
 ### Translation and Dictionary lookup 

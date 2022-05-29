@@ -1,4 +1,8 @@
-# Comparison of Azure vs Systran
+#  Todo
+
+Add links to README.md 
+
+## Comparison of Azure vs Systran
 
 Systran is to be preferred ove Azure. When you compare Azure definitions (with its examples) to the Systran definitions (with its expressions), it is obvious the Systran definitions are more extensive. Systran outweighs the example phrases that Azure
 sometimes provides for a definition. 
