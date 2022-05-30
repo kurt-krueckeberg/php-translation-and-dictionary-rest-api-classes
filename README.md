@@ -6,15 +6,13 @@ This is a collection of PHP client classes and interfaces that implement the RES
 
 - Microsot's [Azure Translator REST API]() that provides a Translation and Dictionary Lookup REST API
 
- TODO: Add links for these APIS
+- DEEPL [Transaltor translation API](https://www.deepl.com/docs-api)
 
-- DEEPL Transaltor translation API
+- Systran ]Translation and Dictionary Lookup REST API]()
 
-- Systran Translation and Dictionary Lookup REST API
+- [Collins Dictionary REST API](https://www.collinsdictionary.com/collins-api)
 
-- Collins Dictionary REST API
-
-- PONS Dictionary REST API
+- PONS [Dictionary REST API](https://en.pons.com/p/online-dictionary/developers/api)
 
 
 ## Classes
