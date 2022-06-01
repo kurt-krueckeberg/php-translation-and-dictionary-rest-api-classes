@@ -1,5 +1,7 @@
 #  Todo
 
+Config and RestClient are working right. See x.php sample code.
+
 Add links to README.md 
 
 ## Comparison of Azure vs Systran
