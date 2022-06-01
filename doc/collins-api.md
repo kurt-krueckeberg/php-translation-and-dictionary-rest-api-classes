@@ -1,3 +1,5 @@
+<section>
+
 # Collins API
 
 ## Documentation
@@ -18,7 +20,6 @@ query parameter say xml or hml instead?
 ### Demo
 
 - Online [Demo of API](https://api.collinsdictionary.com/apidemo/). You only supply your API key.
-
 
 ## Basic Usage
 
@@ -97,3 +98,5 @@ The parameters are:
 - `{entryId}`: the entry ID.
 - `{format}`: the output format of the entry. (html or xml)
 - `{hostname}`: the web site name (the full domain name).
+
+</section>

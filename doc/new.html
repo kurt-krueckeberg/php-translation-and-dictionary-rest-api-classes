@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>azure</title>
+  <title>collins-api</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -79,333 +79,88 @@
 </head>
 <body>
 <section>
-<h1 id="azure-translator-3.0-rest-services-documentation">Azure Translator 3.0 REST Services Documentation</h1>
-<h2 id="important-payment-and-subscription-links">Important Payment and Subscription Links</h2>
+<h1 id="collins-api">Collins API</h1>
+<h2 id="documentation">Documentation</h2>
 <ul>
-<li><p><a href="https://portal.azure.com/#home">Azure Portal</a></p></li>
-<li><p><a href="https://azure.microsoft.com/en-us/offers/ms-azr-0003p/">Pay-as-you-go rates</a></p></li>
-<li><p><a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits">Limits, Quotas and Restratins</a></p></li>
-<li><p>Howto <a href="https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/cancel-azure-subscription">Cancel subscription</a></p></li>
+<li>PDF <a href="./collins-api-documentation.pdf">documentation</a></li>
 </ul>
-<h2 id="documentation-links">Documentation Links:</h2>
+<p>Comment: It seems to have a number of errors in it. The endpoint given is wrong. <code>https://api.collins.com</code> does not exist but <code>https://api.collinsdictionary.com</code> does. The get-entry call returns json or xml, so why does the <code>format</code> query parameter say xml or hml instead?</p>
+<h3 id="api-client-libraries">API Client Libraries</h3>
 <ul>
-<li><p>Translator Documentation <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/">home page</a> (which is excellent)</p></li>
-<li><p><a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/quickstart-translator?tabs=csharp">Quick Start Guide</a></p></li>
-<li><p>Documentation on <a href="https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/cognitive-services/Translator/reference/v3-0-translate.md">github</a>.</p></li>
+<li><p>Client libraries in <a href="http://dps.api-lib.idm.fr/">several programming languages</a> including PHP.</p></li>
+<li><p>Documentation for using the <a href="http://dps.api-lib.idm.fr/libraries.html#php">PHP client library</a>.</p></li>
+<li><p><a href="http://dps.api-lib.idm.fr/download.html#php">Sample PHP code</a> that uses the PHP client library.</p></li>
 </ul>
-<h3 id="list-of-supported-languages">List of Supported Languages</h3>
-<p>Do this query:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">https</span>://api.cognitive.microsofttranslator.com//Languages?api-version=3.0</span></code></pre></div>
-<h3 id="endpoint-for-all-translator-version-3.0-requests">Endpoint for All Translator Version 3.0 Requests</h3>
-<p>The endpoint for Translator 3.0 requests is:</p>
-<table style="width:94%;">
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 72%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;"><strong>Country</strong></th>
-<th style="text-align: left;"><strong>Endpoint</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">United States</td>
-<td style="text-align: left;"><strong>https://api.cognitive.microsofttranslator.com</strong></td>
-</tr>
-</tbody>
-</table>
-<p>The version of Translator we will use will be 3.0, which is specified as a query string parameter. For example, to request tranlation of input text, we append “/translate” to the endpoint and then supply the version number: <code>https://api.cognitive.microsofttranslator.com/translate?api-version=3.0</code></p>
-<h3 id="the-five-azure-translator-3.0-rest-api-request-types">The Five Azure Translator 3.0 (REST API) Request Types</h3>
-<p>Azure Translator 3.0 supports the five types of services. Each uses a different URL “route” that is appened to the endpoint. The REST requests types are listed below.</p>
-<table style="width:100%;">
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 6%" />
-<col style="width: 2%" />
-<col style="width: 75%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Request Type</th>
-<th style="text-align: left;">URL “route”</th>
-<th style="text-align: left;">Method</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-languages">languages</a></td>
-<td style="text-align: left;">/languages</td>
-<td style="text-align: left;">GET</td>
-<td style="text-align: left;">Returns the set of languages currently supported by the translation, transliteration, and dictionary methods. This request does not require authentication headers and you do not need a Translator resource to view the supported language set.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-translate">translate</a></td>
-<td style="text-align: left;">/translate</td>
-<td style="text-align: left;">POST</td>
-<td style="text-align: left;">Translate specified source language text into the target language text.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-break-sentence">breakSentence</a></td>
-<td style="text-align: left;">/breaksentence</td>
-<td style="text-align: left;">POST</td>
-<td style="text-align: left;">Returns an array of integers representing the length of sentences in a source text.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup">dictionary/lookup</a></td>
-<td style="text-align: left;">/dictionary/lookup</td>
-<td style="text-align: left;">POST</td>
-<td style="text-align: left;">Returns alternatives for single word translations.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-dictionary-examples">dictionary/examples</a></td>
-<td style="text-align: left;">/dictionary/examples</td>
-<td style="text-align: left;">POST</td>
-<td style="text-align: left;">Returns how a term is used in context.</td>
-</tr>
-</tbody>
-</table>
-<p>Since version 3.0 of Translator will always be used, the five request types will begin with these extended URLs:</p>
-<table style="width:100%;">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 34%" />
-<col style="width: 9%" />
-<col style="width: 34%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Request Type</th>
-<th style="text-align: left;">URL</th>
-<th style="text-align: left;">“route”</th>
-<th style="text-align: left;">Endpoint + route + API Version</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-languages">languages</a></td>
-<td style="text-align: left;"><a href="https://api.cognitive.microsofttranslator.com/languages?api-version=3.0" class="uri">https://api.cognitive.microsofttranslator.com/languages?api-version=3.0</a></td>
-<td style="text-align: left;">/languages</td>
-<td style="text-align: left;"><a href="https://api.cognitive.microsofttranslator.com/languages?api-version=3.0" class="uri">https://api.cognitive.microsofttranslator.com/languages?api-version=3.0</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-translate">translate</a></td>
-<td style="text-align: left;"><a href="https://api.cognitive.microsofttranslator.com/translate?api-version=3.0" class="uri">https://api.cognitive.microsofttranslator.com/translate?api-version=3.0</a></td>
-<td style="text-align: left;">/translate</td>
-<td style="text-align: left;"><a href="https://api.cognitive.microsofttranslator.com/translate?api-version=3.0" class="uri">https://api.cognitive.microsofttranslator.com/translate?api-version=3.0</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-break-sentence">breakSentence</a></td>
-<td style="text-align: left;"><a href="https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0" class="uri">https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0</a></td>
-<td style="text-align: left;">/breaksentence</td>
-<td style="text-align: left;"><a href="https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0" class="uri">https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup">dictionary/lookup</a></td>
-<td style="text-align: left;"><a href="https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0" class="uri">https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0</a></td>
-<td style="text-align: left;">/dictionary/lookup</td>
-<td style="text-align: left;"><a href="https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0" class="uri">https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-dictionary-examples">dictionary/examples</a></td>
-<td style="text-align: left;"><a href="https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0" class="uri">https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0</a></td>
-<td style="text-align: left;">/dictionary/examples</td>
-<td style="text-align: left;"><a href="https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0" class="uri">https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0</a></td>
-</tr>
-</tbody>
-</table>
-<p>Supposedly <strong>api-verions=3.0</strong> must be the first query string parameter.</p>
-<h3 id="translator-3.0-translate-requests">Translator 3.0 Translate Requests</h3>
-<p>Translate input <a href="https://docs.microsoft.com/en-us/rest/api/cognitiveservices/translator/translator/translate#request-body">Request Body</a>.</p>
-<h3 id="translator-3.0-required-headers">Translator 3.0 Required Headers</h3>
-<h3 class="list-paragraph" id="autehtication-headers">Autehtication Headers</h3>
-<p>Azure Translator supports <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-reference">several methods of authentication</a> including authentication with a regional resource (which does not require the a header with “Authorization” to be sent). The table below shows</p>
-<h4 id="aauthorizaion-with-a-regional-resource.">Aauthorizaion with a regional resource.</h4>
-<table style="width:99%;">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 47%" />
-<col style="width: 29%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Headers</th>
-<th style="text-align: left;">Description</th>
-<th style="text-align: left;">My Values</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>Ocp-Apim-Subscription-Key</strong></td>
-<td style="text-align: left;">The value is the Azure <strong>secret key</strong> for your subscription to Translator.</td>
-<td style="text-align: left;">See your Azure portal account for your keys.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Ocp-Apim-Subscription-Region</strong></td>
-<td style="text-align: left;">The value is the <strong>region</strong> of the translator resource.</td>
-<td style="text-align: left;"><strong>eastus2</strong> is an example region.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="header-for-content-and-length">Header for Content and Length</h4>
-<table>
-<colgroup>
-<col style="width: 42%" />
-<col style="width: 57%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>Headers</td>
-<td>Description</td>
-</tr>
-<tr class="even">
-<td>Content-Type</td>
-<td><p>Specifies the content type of the payload.</p>
-<p>Accepted value is <code>application/json;charset=UTF-8</code></p></td>
-</tr>
-<tr class="odd">
-<td>Content-Length (See comments below)</td>
-<td>The length of the request body. This is NOT Needed for <em>translation</em> requests</td>
-</tr>
-</tbody>
-</table>
-<p>The <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/quickstart-translator?tabs=csharp#get-sentence-length-during-translation">Get Sentence Length</a> section of the <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/quickstart-translator?tabs=csharp">Quick Start guide</a> explains if you set (when requesting <strong>translation?api-version=3.0</strong> ) the query parameter "<strong>includeSentenceLength=true"</strong>, the input and output sentence lengths will be also returned in the response.</p>
-<h4 id="optional-headers">Optional Headers</h4>
-<table style="width:99%;">
-<colgroup>
-<col style="width: 8%" />
-<col style="width: 90%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Headers</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">X-ClientTraceId</td>
-<td style="text-align: left;">A <strong>client-generated GUID</strong> to uniquely identify the request. You can omit this header if you include the trace ID in the query string using a query parameter named ClientTraceId.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="translate-request-body">Translate Request Body</h4>
-<p>See <a href="https://docs.microsoft.com/en-us/rest/api/cognitiveservices/translator/translator/translate#request-body">Request Body</a></p>
-<p>The body of the request is a JSON array. Each array element is a JSON object with a string property named Text, which represents the string to translate. The following limitations apply:</p>
+<h3 id="demo">Demo</h3>
 <ul>
-<li><p>The array can have at most 25 elements.</p></li>
-<li><p>The entire text included in the request cannot exceed 5,000 characters (including spaces).</p></li>
+<li>Online <a href="https://api.collinsdictionary.com/apidemo/">Demo of API</a>. You only supply your API key.</li>
 </ul>
-<p>Example input JSON array of two JSON objects:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ot">[</span> <span class="fu">{</span><span class="dt">&quot;Text&quot;</span><span class="fu">:</span><span class="st">&quot;Freitag&quot;</span><span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span><span class="dt">&quot;Text&quot;</span><span class="fu">:</span><span class="st">&quot;Montag\} ];</span></span></code></pre></div>
-<h4 id="translator-3.0-optional-query-parameters">Translator 3.0 Optional Query Parameters</h4>
-<h4 class="list-paragraph" id="required-parameters">Required Parameters</h4>
-<table>
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 89%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>Query parameter</td>
-<td>Description</td>
-</tr>
-<tr class="even">
-<td><strong>api-version</strong></td>
-<td><em>Required parameter</em>.<br />
-Version of the API requested by the client. Value must be <strong>3.0</strong>.</td>
-</tr>
-<tr class="odd">
-<td><strong>to</strong></td>
-<td><p><em>Required parameter</em>.</p>
-<p>Specifies the language of the output text. The target language must be one of the <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-languages">supported languages</a> included in the translation scope. For example, use to=de to translate to German.<br />
-It's possible to translate to multiple languages simultaneously by repeating the parameter in the query string. For example, use to=de&amp;to=it to translate to German and Italian.</p></td>
-</tr>
-</tbody>
-</table>
-<h4 id="optional-parameters-1">Optional Parameters</h4>
-<p>These query paramters apply (TODO: double check) to all five Tranaslor requst types above.</p>
-<table>
-<colgroup>
-<col style="width: 18%" />
-<col style="width: 81%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>Query parameter</td>
-<td>Description</td>
-</tr>
-<tr class="even">
-<td><strong>from</strong></td>
-<td><p><em>Optional parameter</em>.</p>
-<p>Specifies the language of the input text. Find which languages are available to translate from by looking up <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-languages">supported languages</a> using the translation scope. If the from parameter is not specified, automatic language detection is applied to determine the source language.</p>
-<p>You must use the from parameter rather than autodetection when using the <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/dynamic-dictionary">dynamic dictionary</a> feature.</p></td>
-</tr>
-<tr class="odd">
-<td><strong>textType</strong></td>
-<td><p><em>Optional parameter</em>.</p>
-<p>Defines whether the text being translated is plain text or HTML text. Any HTML needs to be a well-formed, complete element. Possible values are: <strong>plain</strong> (default) or <strong>html</strong>.</p></td>
-</tr>
-<tr class="even">
-<td>category</td>
-<td><p><em>Optional parameter</em>.</p>
-<p>A string specifying the category (domain) of the translation. This parameter is used to get translations from a customized system built with <a href="https:%20//docs.microsoft.com/en-us/azure/cognit%20ive-services/translator/customization"><span class="underline">Custom Translator</span></a>. Add the Category ID from your Custom Translator <a href="https://docs.%20microsoft.com/en-us/azure/cognitive-ser%20vices/translator/custom-translator/how-%20to-create-project#view-project-details"><span class="underline">project details</span></a> to this parameter to use your deployed customized system. Default value is: general.</p></td>
-</tr>
-<tr class="odd">
-<td>profanityAction</td>
-<td><p><em>Optional parameter</em>.</p>
-<p>Specifies how profanities should be treated in translations. Possible values are: NoAction (default), Marked or Deleted. To understand ways to treat profanity <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-translate#handle-%20profanity">Profanity handling</a>.</p></td>
-</tr>
-<tr class="even">
-<td>profanityMarker</td>
-<td><p><em>Optional parameter</em>.</p>
-<p>Specifies how profanities should be marked in translations. Possible values are: Asterisk (default) or Tag. To understand ways to treat profanity, see <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-translate#handle-%20profanity">Profanity handling</a>.</p></td>
-</tr>
-<tr class="odd">
-<td>includeAlignment</td>
-<td><p><em>Optional parameter</em>.</p>
-<p>Specifies whether to include alignment projection from source text to translated text. Possible values are: true or false (default).</p></td>
-</tr>
-<tr class="even">
-<td><strong>includeSentenceLength</strong></td>
-<td><p><em>Optional parameter</em>.</p>
-<p>Specifies whether to include sentence boundaries for the input text and the translated text. Possible values are: true or false (default).</p></td>
-</tr>
-<tr class="odd">
-<td>suggestedFrom</td>
-<td><p><em>Optional parameter</em>.</p>
-<p>Specifies a fallback language if the language of the input text can't be identified. Language autodetection is applied when the from parameter is omitted. If detection fails, the suggestedFrom language will be assumed.</p></td>
-</tr>
-<tr class="even">
-<td>fromScript</td>
-<td><p><em>Optional parameter</em>.</p>
-<p>Specifies the script of the input text.</p></td>
-</tr>
-<tr class="odd">
-<td>toScript</td>
-<td><p><em>Optional parameter</em>.</p>
-<p>Specifies the script of the translated text.</p></td>
-</tr>
-<tr class="even">
-<td>allowFallback</td>
-<td><p><em>Optional parameter</em>.</p>
-<p>Specifies that the service is allowed to fall back to a general system when a custom system does not exist. Possible values are: true (default) or false.<br />
-<br />
-allowFallback=false specifies that the translation should only use systems trained for the category specified by the request. If a translation for language X to language Y requires chaining through a pivot language E, then all the systems in the chain (X-&gt;E and E-&gt;Y) will need to be custom and have the same category. If no system is found with the specific category, the request will return a 400 status code. allowFallback=true specifies that the service is allowed to fall back to a general system when a custom system does not exist.</p></td>
-</tr>
-</tbody>
-</table>
-<h4 id="example-response-object">Example Response Object</h4>
-<p><strong>Input Request Body</strong></p>
-<p>The input is an json array of two json objects:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ot">[</span> <span class="fu">{</span><span class="dt">&quot;text&quot;</span><span class="fu">:</span><span class="st">&quot;Freitag&quot;</span><span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span><span class="dt">&quot;text&quot;</span><span class="fu">:</span><span class="st">&quot;Montag&quot;</span><span class="fu">}</span> <span class="ot">]</span><span class="er">;</span></span></code></pre></div>
-<p><strong>Response Object</strong></p>
-<p>This is the joson response object:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ot">[</span> <span class="fu">{</span><span class="dt">&quot;translations&quot;</span><span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span><span class="dt">&quot;text&quot;</span><span class="fu">:</span> <span class="st">&quot;Friday&quot;</span><span class="fu">,</span> <span class="dt">&quot;to&quot;</span><span class="fu">:</span> <span class="st">&quot;en&quot;</span><span class="fu">,</span> <span class="dt">&quot;sentLen&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;srcSentLen&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">7</span><span class="ot">]</span><span class="fu">,</span> <span class="dt">&quot;transSentLen&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">6</span><span class="ot">]</span> <span class="fu">}</span> <span class="fu">}</span> <span class="ot">]</span> <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>  <span class="fu">{</span><span class="dt">&quot;translations&quot;</span><span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span><span class="dt">&quot;text&quot;</span><span class="fu">:</span> <span class="st">&quot;Monday&quot;</span><span class="fu">,</span> <span class="dt">&quot;to&quot;</span><span class="fu">:</span> <span class="st">&quot;en&quot;</span><span class="fu">,</span> <span class="dt">&quot;sentLen&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;srcSentLen&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">6</span><span class="ot">]</span><span class="fu">,</span> <span class="dt">&quot;transSentLen&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">6</span><span class="ot">]</span> <span class="fu">}</span> <span class="fu">}</span> <span class="ot">]</span> <span class="fu">}</span> </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="ot">]</span></span></code></pre></div>
+<h2 id="basic-usage">Basic Usage</h2>
+<h3 id="base-endpoint">Base endpoint</h3>
+<p>The base URL is <code>https://api.collins.com/api/v1</code></p>
+<h3 id="authorization">Authorization</h3>
+<p>The header key should be:</p>
+<ul>
+<li><code>{accessKey}</code>: the user access key (a 64 characters text provided for the targetting API)</li>
+</ul>
+<h3 id="requests">Requests</h3>
+<p>You first have to search for the word like so</p>
+<ul>
+<li>endpoint: https://api.collinsdictionary.com/api/v1</li>
+<li>dict code: german-english<br />
+</li>
+<li>request: search – Q: What is the route?</li>
+<li>max resulst: 10</li>
+<li>results list page index: 1:w</li>
+</ul>
+<p>This will return this:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>    <span class="dt">&quot;resultNumber&quot;</span><span class="fu">:</span> <span class="dv">6</span><span class="fu">,</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>    <span class="dt">&quot;results&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>        <span class="fu">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>            <span class="dt">&quot;entryLabel&quot;</span><span class="fu">:</span> <span class="st">&quot;Handeln&quot;</span><span class="fu">,</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>            <span class="dt">&quot;entryUrl&quot;</span><span class="fu">:</span> <span class="st">&quot;http://api.collinsdictionary.com/api/v1/dictionaries/german-english/entries/handeln_2&quot;</span><span class="fu">,</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>            <span class="dt">&quot;entryId&quot;</span><span class="fu">:</span> <span class="st">&quot;handeln_2&quot;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>        <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>        <span class="fu">{</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>            <span class="dt">&quot;entryLabel&quot;</span><span class="fu">:</span> <span class="st">&quot;handeln&quot;</span><span class="fu">,</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>            <span class="dt">&quot;entryUrl&quot;</span><span class="fu">:</span> <span class="st">&quot;http://api.collinsdictionary.com/api/v1/dictionaries/german-english/entries/handeln_1&quot;</span><span class="fu">,</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a>            <span class="dt">&quot;entryId&quot;</span><span class="fu">:</span> <span class="st">&quot;handeln_1&quot;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a>        <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a>        <span class="fu">{</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a>            <span class="dt">&quot;entryLabel&quot;</span><span class="fu">:</span> <span class="st">&quot;abhandeln&quot;</span><span class="fu">,</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true"></a>            <span class="dt">&quot;entryUrl&quot;</span><span class="fu">:</span> <span class="st">&quot;http://api.collinsdictionary.com/api/v1/dictionaries/german-english/entries/abhandeln_1&quot;</span><span class="fu">,</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true"></a>            <span class="dt">&quot;entryId&quot;</span><span class="fu">:</span> <span class="st">&quot;abhandeln_1&quot;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true"></a>        <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true"></a>        <span class="fu">{</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true"></a>            <span class="dt">&quot;entryLabel&quot;</span><span class="fu">:</span> <span class="st">&quot;aushandeln&quot;</span><span class="fu">,</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true"></a>            <span class="dt">&quot;entryUrl&quot;</span><span class="fu">:</span> <span class="st">&quot;http://api.collinsdictionary.com/api/v1/dictionaries/german-english/entries/aushandeln_1&quot;</span><span class="fu">,</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true"></a>            <span class="dt">&quot;entryId&quot;</span><span class="fu">:</span> <span class="st">&quot;aushandeln_1&quot;</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true"></a>        <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true"></a>        <span class="fu">{</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true"></a>            <span class="dt">&quot;entryLabel&quot;</span><span class="fu">:</span> <span class="st">&quot;einhandeln&quot;</span><span class="fu">,</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true"></a>            <span class="dt">&quot;entryUrl&quot;</span><span class="fu">:</span> <span class="st">&quot;http://api.collinsdictionary.com/api/v1/dictionaries/german-english/entries/einhandeln_1&quot;</span><span class="fu">,</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true"></a>            <span class="dt">&quot;entryId&quot;</span><span class="fu">:</span> <span class="st">&quot;einhandeln_1&quot;</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true"></a>        <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true"></a>        <span class="fu">{</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true"></a>            <span class="dt">&quot;entryLabel&quot;</span><span class="fu">:</span> <span class="st">&quot;herunterhandeln&quot;</span><span class="fu">,</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true"></a>            <span class="dt">&quot;entryUrl&quot;</span><span class="fu">:</span> <span class="st">&quot;http://api.collinsdictionary.com/api/v1/dictionaries/german-english/entries/herunterhandeln_1&quot;</span><span class="fu">,</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true"></a>            <span class="dt">&quot;entryId&quot;</span><span class="fu">:</span> <span class="st">&quot;herunterhandeln_1&quot;</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true"></a>        <span class="fu">}</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true"></a>    <span class="dt">&quot;dictionaryCode&quot;</span><span class="fu">:</span> <span class="st">&quot;german-english&quot;</span><span class="fu">,</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true"></a>    <span class="dt">&quot;currentPageIndex&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true"></a>    <span class="dt">&quot;pageNumber&quot;</span><span class="fu">:</span> <span class="dv">1</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<p>You then search the entryLable for your input string and use the entryID, to look up the definitions, like so:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">GET</span> /dictionaries/<span class="dt">{dictCode}</span>/entries/<span class="dt">{entryId}</span>?format=<span class="dt">{format}</span> HTTP/1.0</span></code></pre></div>
+<p>The parameters are:</p>
+<ul>
+<li><code>{dictCode}</code>: the dictionary code. (eg. british)</li>
+<li><code>{entryId}</code>: the entry ID.</li>
+<li><code>{format}</code>: the output format of the entry. (html or xml)</li>
+<li><code>{hostname}</code>: the web site name (the full domain name).</li>
+</ul>
 </section>
 </body>
 </html>
