@@ -22,7 +22,7 @@ class Config {
     
        $query = sprintf(self::$xpath, $abbrev); 
     
-       $response = $simp->xpath($query);
+       $response = self::$xml->xpath($query);
     
        return $response[0];
    }
