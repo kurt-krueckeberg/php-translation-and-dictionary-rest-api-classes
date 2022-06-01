@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 namespace LanguageTools;
+use LanguageTools\ClassID;
 
 class NewCollinsDictionary extends RestClient implements DictionaryInterface {
 
@@ -20,7 +21,7 @@ geIndex}
     private string $baseUrl;
     private array  $query;
 
-   public function __construct(ClassID $id)
+   public function __construct()
    {   
        parent::__construct(ClassID::Collins);
    } 
