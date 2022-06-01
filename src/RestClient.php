@@ -9,7 +9,7 @@ class RestClient {
 
    protected Client $client;  
 
-   private array $headers = array();
+   private $headers = array();
 
    protected static function is_code_valid($code) // <-- Not yet implemented
    {
@@ -44,7 +44,7 @@ class RestClient {
 
              $key = (string) $header['key'];
 
-             $this->headers[$key] =  (string) $header; 
+             $this->headers[$key] =  (string) $header;              
        }
    }
 }

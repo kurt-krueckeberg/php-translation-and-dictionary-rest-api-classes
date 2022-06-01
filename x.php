@@ -22,6 +22,7 @@ include 'vendor/autoload.php';
   
       // The size of $examples_array will be the same as the $definitions.
       $definitions = $trans->lookup($word, "DE", "EN"); 
+      print_r($definitions);
       
       if (count($definitions) == 0) {
 
