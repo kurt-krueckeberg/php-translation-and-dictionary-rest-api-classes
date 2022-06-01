@@ -9,6 +9,7 @@ enum ClassID implements ClassmapperInterface {
    case  Azure;
    case  Ibm;
    case  Deepl;
+   case  Collins;
     
    public function class_name() : string
    {
