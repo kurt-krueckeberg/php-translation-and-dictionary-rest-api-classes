@@ -23,7 +23,7 @@ geIndex}
 
    public function __construct(ClassID $id)
    {   
-       parent::__construct($id);
+       parent::__construct(ClassID::Collins);
    } 
 
     public function getDictionaryLanguages() : array
