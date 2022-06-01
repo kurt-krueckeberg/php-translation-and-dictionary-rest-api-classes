@@ -7,7 +7,7 @@ namespace LanguageTools;
  */
 class Config {
 
-   static SimpleXMLElement $xml;
+   static \SimpleXMLElement $xml;
    static bool $is_loaded = false;
 
    static string $xpath =  "/providers/provider[@abbrev='%s']"; 
