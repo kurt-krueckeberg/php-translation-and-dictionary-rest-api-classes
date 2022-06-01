@@ -18,6 +18,7 @@ enum ClassID implements ClassmapperInterface {
            ClassID::Azure    => "LanguageTools\AzureTranslator",
            ClassID::Ibm      => "LanguageTools\IbmTranslator",
            ClassID::Deepl    => "LanguageTools\DeeplTranslator"
+           ClassID::Collins  => "LanguageTools\CollinsGermanDictionary"
        };
    }
 
@@ -29,6 +30,7 @@ enum ClassID implements ClassmapperInterface {
            ClassID::Azure    => "a",
            ClassID::Ibm      => "i",
            ClassID::Deepl    => "d"
+           ClassID::Collins  => "c"
        };
    }
 }
