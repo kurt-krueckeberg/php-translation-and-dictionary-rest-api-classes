@@ -36,7 +36,7 @@ class RestClient {
  
    protected function __construct(ClassID $id)
    {     
-       $simplexml = Config::get_config($id);
+       $simplexml = Config::get_config($id->get_provider());
 
        $this->client = new Client( ['base_uri' => (string) $simplexml->endpoint] );
 
