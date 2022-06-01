@@ -12,7 +12,7 @@ class Config {
 
    static string $xpath =  "/providers/provider[@abbrev='%s']"; 
 
-   static function get_config(string $abbrev) : array
+   static function get_config(string $abbrev) : \SimpleXMLElement
    {
        if (self::$is_loaded == false) {
 
