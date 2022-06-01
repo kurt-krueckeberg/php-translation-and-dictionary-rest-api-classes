@@ -13,7 +13,6 @@ geIndex}
 */
 
     static private array $search = array('method' => "GET", 'route' => "api/v1/dictionaries/german-english/search");
-    static private string $qs_format = 'format';
 
     static private string $german_dict_code  = "german-english"; 
 
@@ -33,18 +32,17 @@ geIndex}
 
     private function search($word, int $pageSize=10, int $pageIndex=1) : string | null
     {
-    static private array $search = array('method' => "GET", 'route' => "api/v1/dictionaries/german-english/search");
-    static private string $qs_search = 'q';
-    static private string $qs_pagesize = 'pagesize';
-    static private string $qs_pageindex = 'pageindex';
-    
+    static $search = array('method' => "GET", 'route' => "api/v1/dictionaries/german-english/search");
+    static $qs_search = 'q';
+    static $qs_pagesize = 'pagesize';
+    static $qs_pageindex = 'pageindex';
 
 
-        $this->query[self::$qs_search] = $word; // urlencode(??)
-        $this->query[self::$qs_pagesize] = $pageSize; 
-        $this->query[self::$qs_pageindex] = $pageIndex; 
+        $this->query[$qs_search] = $word; // urlencode(??)
+        $this->query[$qs_pagesize] = $pageSize; 
+        $this->query[$qs_pageindex] = $pageIndex; 
 
-        $contents = $this->request(self::$search['method'], self::$search['route'], ['query' => $this->query]);
+        $contents = $this->request($search['method'], self::$search['route'], ['query' => $this->query]);
 
         $obj = json_decode($contents);
 
@@ -62,6 +60,7 @@ geIndex}
 
     public function lookup(string $word, string $src="DE", string $target="EN") : array
     {
+    static $qs_format = 'format';
        /*
           This is wrong. You first need to do API search request. This will return the entryIDs and the headword. For example:,
 
@@ -115,7 +114,7 @@ geIndex}
 
         $route = self::$lookup["route"] . '/' . urlencode($entryId);
 
-        $this->query[self:$qs_format'] = 'html'; 
+        $this->query[$qs_format] = 'html'; 
 
         $contents = $this->request(self::$lookup['method'], $route, ['query' => $this->query]);
 

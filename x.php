@@ -5,15 +5,16 @@ use LanguageTools\RestClient;
 use LanguageTools\TranslateInterface;
 use LanguageTools\DictionaryInterface;
 use LanguageTools\ResultsIterator;
+use LanguageTools\NewCollinsDictionary;
 use LanguageTools\ClassID;
 
 include 'vendor/autoload.php';
 
   try {
    
-    $file =  new File("test.txt", "r");
+  $file =  new File("test.txt", "r");
     
-    $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
+  $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
   $trans = new NewCollinsDictionary();
 
