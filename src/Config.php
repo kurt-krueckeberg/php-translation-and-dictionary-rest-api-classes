@@ -12,7 +12,7 @@ class Config {
 
    static string $xpath =  "/providers/provider[@abbrev='%s']"; 
 
-   static function get_config(string $provider) : array
+   static function get_config(string $abbrev) : array
    {
        if (self::$is_loaded == false) {
 
