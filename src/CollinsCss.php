@@ -1,3 +1,7 @@
+<?php
+class CollinsCss {
+
+static $css <<<EOS
 *{word-wrap:break-word;margin:0;padding:0;border:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;font-weight:inherit;font-family:inherit;font-size:inherit}
 body{color:#000;background:white;font:16px/1.6em 'Open Sans',serif;line-height:1.6em}[lang="ko"]:not(html),[lang="ko"]:not(html) *,[lang="ja"]:not(html),[lang="ja"]:not(html) *,[lang="hi"]:not(html),[lang="hi"]:not(html) *{font-family:auto}
 .small_text{padding-top:.3em;display:block;font-size:.8em;padding-right:2px}.small_text>a{border-bottom:dashed 1px rgba(0,0,0,.6)!important}h1{font-size:2em;line-height:1.4em}h2{font-size:1.2em}.h1{font-size:38px}
@@ -605,3 +609,9 @@ label.openerBig,.page span.sensenum+.def,.page .biling .re.inline,.headerSense .
 #miniTranslate .select_input,#miniTranslate .recaptcha-text,.recaptcha-text>div:first-child{margin-bottom:10px}#miniTranslate label.submit button{font-family:"Open Sans",sans-serif}
 #miniTranslate .recaptcha-text a{text-decoration:underline}.pB.s-b{background:black;color:white}.pB.s-b .pB-t{line-height:1.3em;margin-bottom:0;font-family:'Zilla Slab';font-weight:400}.pB.s-b .pB-rM{padding-top:15px;display:flex}.pB.s-b .pB-rM a{flex:1}
 .pB.s-b .pB-rM a:first-child{text-align:left;padding-right:3px}.pB.s-b .time{font-style:italic} 
+EOS;
+ static public function get_css() : string
+ {
+    return self::$css;
+ }
+}
