@@ -10,9 +10,9 @@ class CollinsGermanDictionary extends RestClient implements DictionaryInterface 
        parent::__construct(ClassID::Collins);
    } 
 
-   public function get_css() : string
+   static public function get_css() : string
    {
-      return CollinsCsss:get_css();
+      return CollinsCss::get_css();
    }
    
    /* Returns an array whose elements have these properties:

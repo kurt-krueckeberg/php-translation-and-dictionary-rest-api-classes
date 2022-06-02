@@ -1,7 +1,10 @@
 <?php
+declare(strict_types=1);
+namespace LanguageTools;
+
 class CollinsCss {
 
-static $css <<<EOS
+static private string $css = <<<EOS
 *{word-wrap:break-word;margin:0;padding:0;border:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;font-weight:inherit;font-family:inherit;font-size:inherit}
 body{color:#000;background:white;font:16px/1.6em 'Open Sans',serif;line-height:1.6em}[lang="ko"]:not(html),[lang="ko"]:not(html) *,[lang="ja"]:not(html),[lang="ja"]:not(html) *,[lang="hi"]:not(html),[lang="hi"]:not(html) *{font-family:auto}
 .small_text{padding-top:.3em;display:block;font-size:.8em;padding-right:2px}.small_text>a{border-bottom:dashed 1px rgba(0,0,0,.6)!important}h1{font-size:2em;line-height:1.4em}h2{font-size:1.2em}.h1{font-size:38px}

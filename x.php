@@ -10,37 +10,30 @@ use LanguageTools\ClassID;
 
 include 'vendor/autoload.php';
 
-  try {
+try {
    
   $file =  new File("test.txt", "r");
     
   $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
   $trans = new CollinsGermanDictionary();
-  
-  $x = $trans->getDictionaryLanguages();
-  
-  $debug = 10;
 
-  //foreach ($file as $word) {
+  foreach ($file as $word) {
   
       // The size of $examples_array will be the same as the $definitions.
       //$definitions = $trans->lookup($word, "DE", "EN"); 
-     $definitions = $trans->lookup('Handeln', "DE", "EN"); 
-     
-      print_r($definitions);
+      $definitions = $trans->lookup('Handeln', "DE", "EN"); 
       
       if (count($definitions) == 0) {
 
            echo "There are no definitions for '$word'.\n";
-          
       } 
-   //}  
 
-    test($file);
+      print_r($definitions);
+  }  
 
  
-  } catch (Exception $e) {
+} catch (Exception $e) {
 
       echo "Exception: message = " . $e->getMessage() . "\n";
-  } 
+} 
