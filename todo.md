@@ -2,6 +2,8 @@
 
 The `CollinsGermanDictionary.php` results are html (containing CSS ids and classes). I copied and pasted what I think is the collins style sheet. It is in [../src/collins.css](../src/collins.css). 
 
+Create a `pons.css`, too.
+
 ## Comparison of Azure vs Systran
 
 Systran is to be preferred ove Azure. When you compare Azure definitions (with its examples) to the Systran definitions (with its expressions), it is obvious the Systran definitions are more extensive. Systran outweighs the example phrases that Azure
