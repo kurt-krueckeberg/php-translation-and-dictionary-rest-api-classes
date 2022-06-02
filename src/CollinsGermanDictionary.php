@@ -31,17 +31,13 @@ a. dictionaryCode - the code of the dictionary
 b. dictionaryName - the user-friendly name of the dictionary
 c. dictionaryUrl - the URL of the dictionary's browse list.
  */
-    public function getDictionaryLanguages() : ResultsIterator
+    public function getDictionaryLanguages() : array
     {
          $json = $this->request(self::$dictionaries['method'], self::$dictionaries['route']);
          
-         $objs= json_decode($json);
+         $objs = json_decode($json);
          
-         return new ResultsIterator($objs, function ($current) {
-             $debug = 10;
-             return $current;
-             
-         });//array("DE", "EN"); // todo ???
+         return $objs;             
     } 
 
     private function search($word, int $pageSize=10, int $pageIndex=1) : string | null
