@@ -11,7 +11,7 @@ class CollinsGermanDictionary extends RestClient implements DictionaryInterface 
    } 
    
    /* Returns an array whose elements have these properties:
-    *
+
      a. dictionaryCode - the code of the dictionary
      b. dictionaryName - the user-friendly name of the dictionary
      c. dictionaryUrl - the URL of the dictionary's browse list.
@@ -29,9 +29,9 @@ class CollinsGermanDictionary extends RestClient implements DictionaryInterface 
     } 
     
     /*
-     Input: word to search for. Returns all the matches. For example, search for 'Handeln' will return this Json object wuithsix results:
+     Input: word to search. 
+     Results Returns all the matches. For example, searching for 'Handeln' returns this Json object of six results:
       
-     Example returned Json object for 'Handeln':
      {
     "resultNumber": 6,
     "results": [
@@ -70,6 +70,7 @@ class CollinsGermanDictionary extends RestClient implements DictionaryInterface 
     "currentPageIndex": 1,
     "pageNumber": 1
     }
+
    */
     public function search($word, int $pageSize=10, int $pageIndex=1) : \stdClass
     {
@@ -91,7 +92,7 @@ class CollinsGermanDictionary extends RestClient implements DictionaryInterface 
      } 
 
 /*
-Get the first/best matching entry
+Gets the first/best matching entry
      
 API call = `/api/v1/dictionaries/{dictionaryCode}/search/first/?q={searchWord}&format={format}`
     
@@ -126,49 +127,62 @@ JSON Output:
   - topicUrl - the direct url to the topic page on the main
   
 */
-    public function search_best_matching(string $word, string $src="DE", string $target="EN") : \stdClass
+    public function get_best_matching(string $word, string $src="DE", string $target="EN") : \stdClass | null
     {
-        static $method  ="GET";
-        static $route = 'api/v1/dictionaries/german-english/search/first';
-        static $format ='html';
+        static $method = "GET";                         
+        static $route  = "api/v1/dictionaries/german-english/search/first/";
+        static $format = 'HTML';
 
         $query = array();
         $query['format'] = $format;
-        $query['searchWord'] = $word;
+        $query['q'] = $word;
   
-        $json = $this->request($method, $route, ['query' => $query]);       
+        // If a word if not found, an exception is thrown and tyepicalling $e->getCode == 404
+        try {
+            
+           $json = $this->request($method, $route, ['query' => $query]);       
+           
+        } catch (\Exception $e) {
+            
+            return null;
+        }
 
-        $obj = json_decode($json);
+        return json_decode($json);
+    }
+    
+    public function get_entry(string $entryId, string $src="DE", string $target="EN") : \stdClass | null
+    {
+        static $method = "GET";                         
+        static $route  = "api/v1/dictionaries/german-english/entries/";
+        static $format = 'HTML';
 
-        return $obj;
+        $query = array();
+        $query['format'] = $format;
+        
+        $route .= $entryId;  // The entryId is appened to the route.
+  
+        try {
+            
+           $json = $this->request($method, $route, ['query' => $query]);       
+           
+           
+        } catch (\Exception $e) {
+            
+            return null;
+        }
+
+        return json_decode($json);
     }
     
     public function lookup(string $word, string $src="DE", string $target="EN") : array
     {
-       static $qs_format = 'format';
-
        
-        $stdClass= $this->search_best_matching($word);
- 
-        /*
-        if (count($stdClass->results) == 0) return array(); 
+       $best_matching = $this->get_best_matching($word);
       
-        foreach($stdClass->results as $result) {
-            
-                 if ($result->entryLabel == $word)
-                     break;
-        }
+       /*
+        Note: $this->get_entry($best_matching->entryId) will return exactly same content as $this->get_best_matching($word).
         */
-        
-        $route = self::$lookup["route"] . '/' . urlencode($result->entryId);
-
-        $query = array();
-        $quer['format'] = 'html'; 
-
-        $contents = $this->request($method, $route, ['query' => $query]);
-
-        $obj = json_decode($contents, true);
-
-        return $obj;
+       
+       return array($best_matching); 
     }
 }

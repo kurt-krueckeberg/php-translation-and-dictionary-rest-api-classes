@@ -1,8 +1,7 @@
 #  Todo
 
-Config and RestClient are working right. See x.php sample code.
-
-Add links to README.md 
+The CollinsGermanDictionary sucessfully will return best matching content. But it contains embedded html with style information. While the style information can theoretically be scrapped from the collins website. An entry
+can return information on several topics. These topics are not documented and therefore the correpsonding CSS peculiar to them is unkown. Itseems like a lot of emprical trial and error would be need to get all the CSS we would need.
 
 ## Comparison of Azure vs Systran
 
