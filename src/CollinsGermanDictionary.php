@@ -71,7 +71,7 @@ class CollinsGermanDictionary extends RestClient implements DictionaryInterface 
     "pageNumber": 1
     }
    */
-    private function search($word, int $pageSize=10, int $pageIndex=1) : \stdClass
+    public function search($word, int $pageSize=10, int $pageIndex=1) : \stdClass
     {
         static $method  ="GET";
         static $route = 'api/v1/dictionaries/german-english/search';
@@ -90,42 +90,63 @@ class CollinsGermanDictionary extends RestClient implements DictionaryInterface 
         return $obj;
      } 
 
-    /*
+/*
 Get the first/best matching entry
-     * 
+     
 API call = `/api/v1/dictionaries/{dictionaryCode}/search/first/?q={searchWord}&format={format}`
-     * 
+    
 Input:
-     * 
+
 1. dictionaryCode - the dictionary code
       
 2. searchWord - the word we are searching for
      
 3. format - the format of the entry, either "html" or "xml" [optional; default = html]
      
-JSON Ooutput:
+JSON Output:
      
 1. dictionaryCode
+
 2. format
+
 3. entryContent
+
 4. entryId - the id of the entry
+
 5. entryLabel - the label of the entry (headword)
+
 6. entryUrl - the direct url to this entry on the main website
+
 7. topics - an array containing the topics linked to the entry (if any):
-a. topicId - the id of the topic
-b. topicLabel - the label of the topic
-c.
-topicUrl - the direct url to the topic page on the main
-     *
-     */
-    public function search_best_matching(string $word, string $src="DE", string $target="EN") : array
+
+  - topicId - the id of the topic
+
+  - topicLabel - the label of the topic
+
+  - topicUrl - the direct url to the topic page on the main
+  
+*/
+    public function search_best_matching(string $word, string $src="DE", string $target="EN") : \stdClass
     {
-        
+        static $method  ="GET";
+        static $route = 'api/v1/dictionaries/german-english/search/first';
+        static $format ='html';
+
+        $query = array();
+        $query['format'] = $format;
+        $query['searchWord'] = $word;
+  
+        $json = $this->request($method, $route, ['query' => $query]);       
+
+        $obj = json_decode($json);
+
+        return $obj;
     }
     
     public function lookup(string $word, string $src="DE", string $target="EN") : array
     {
        static $qs_format = 'format';
+
        
         $stdClass= $this->search_best_matching($word);
  
@@ -141,9 +162,10 @@ topicUrl - the direct url to the topic page on the main
         
         $route = self::$lookup["route"] . '/' . urlencode($result->entryId);
 
-        $this->query[$qs_format] = 'html'; 
+        $query = array();
+        $quer['format'] = 'html'; 
 
-        $contents = $this->request(self::$lookup['method'], $route, ['query' => $this->query]);
+        $contents = $this->request($method, $route, ['query' => $query]);
 
         $obj = json_decode($contents, true);
 
