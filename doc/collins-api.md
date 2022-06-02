@@ -4,22 +4,22 @@
 
 ## Documentation
 
-- PDF [documentation](./collins-api-documentation.pdf)
+The PDF documentation seems to have a number of errors in it; for example, the endpoint `https://api.collins.com` does not exist (while `https://api.collinsdictionary.com` does). The get-entry call returns json or xml: therfore what use is the `format` 
+query parameter, which supposely can be `xml` or 'html`?
 
-Comment: It seems to have a number of errors in it. The endpoint given is wrong. `https://api.collins.com` does not exist but `https://api.collinsdictionary.com` does. The get-entry call returns json or xml, so why does the `format` 
-query parameter say xml or hml instead?
+- [API PDF documentation](./collins-api-documentation.pdf)
 
 ### API Client Libraries
 
-- Client libraries in [several programming languages](http://dps.api-lib.idm.fr/) including PHP.
+- Client libraries are provided in [several programming languages](http://dps.api-lib.idm.fr/) including PHP,.
 
-- Documentation for using the [PHP client library](http://dps.api-lib.idm.fr/libraries.html#php).
+- The documentation for [how to use PHP client library](http://dps.api-lib.idm.fr/libraries.html#php).
 
 - [Sample PHP code](http://dps.api-lib.idm.fr/download.html#php) that uses the PHP client library. 
 
 ### Demo
 
-- Online [Demo of API](https://api.collinsdictionary.com/apidemo/). You only supply your API key.
+- Online [Demo of API](https://api.collinsdictionary.com/apidemo/). You must supply your API key.
 
 ## Basic Usage
 
@@ -35,15 +35,49 @@ The header key should be:
 
 ### Requests
 
-You first have to search for the word like so
+For determing whethera word is in the dictionary, there is more than one search method. You can  
 
-- endpoint:  https://api.collinsdictionary.com/api/v1
-- dict code: german-english     
-- request: search -- Q: What is the route?
-- max resulst: 10
-- results list page index: 1:w
+#### Search for a word
 
-This will return this:
+`search` finds all entries in the dictionary that contain the word the input word. For example, if you search for the German word `Handeln`:
+
+API: `/api/v1/dictionaries/{dictionaryCode}/search/?q={searchWord}&pagesize={pageSize}&pageindex={pageIndex}`
+
+Input:
+
+1. dictionaryCode - the dictionary code.
+
+2. searchWord - the word we are searching for.
+
+3. pageSize - the number of results per result page [optional, 10 by default, maximum allowed 100]
+
+4. pageIndex – the index of the result page to return [optional, default = 1 (the first page)]
+
+Returns:
+
+1. dictionaryCode
+
+2. resultNumber – the total number of results
+
+3. pageNumber – the index of the last result page
+
+4. currentPageIndex – the index of the current result page
+
+5. results - an array of entries sorted the same way as in the main dictionary (empty if no results are found):
+
+   - entryId - the id of the entry used to look up the actual definition.
+
+   - entryLabel - the headword, the actual word in the dictionary 
+
+   - entryUrl - the direct url to the entry page on the main Collins website
+
+Example:
+
+```html
+/api/v1/dictionaries/german-english/search/?q=Handeln&pagesize=10&pageindex=1
+```
+
+will return this json object:
 
 ```json
 {
@@ -86,17 +120,20 @@ This will return this:
 }
 ```
 
-You then search the entryLable for your input string and use the entryID, to look up the definitions, like so:
+You then search the `entryLabel` for your input string and use its `entryID` to look up the definitions:
 
 ```bash
 GET /dictionaries/{dictCode}/entries/{entryId}?format={format} HTTP/1.0
 ```
 
-The parameters are:
+Input:
 
 - `{dictCode}`: the dictionary code. (eg. british)
+
 - `{entryId}`: the entry ID.
+
 - `{format}`: the output format of the entry. (html or xml)
+
 - `{hostname}`: the web site name (the full domain name).
 
 </section>
