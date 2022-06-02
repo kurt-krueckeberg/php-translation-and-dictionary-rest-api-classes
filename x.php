@@ -5,7 +5,7 @@ use LanguageTools\RestClient;
 use LanguageTools\TranslateInterface;
 use LanguageTools\DictionaryInterface;
 use LanguageTools\ResultsIterator;
-use LanguageTools\NewCollinsDictionary;
+use LanguageTools\CollinsDictionary;
 use LanguageTools\ClassID;
 
 include 'vendor/autoload.php';
@@ -16,7 +16,11 @@ include 'vendor/autoload.php';
     
   $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-  $trans = new NewCollinsDictionary();
+  $trans = new CollinsGermanDictionary();
+  
+  $x = $trans->getDictionaryLanguages();
+  
+  $debug = 10;
 
   foreach ($file as $word) {
   

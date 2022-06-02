@@ -1,10 +1,12 @@
 <?php
 declare(strict_types=1);
 namespace LanguageTools;
+use LanguageTools\ClassID;
 
 class CollinsGermanDictionary extends RestClient implements DictionaryInterface {
 
     static private array $lookup = array('method' => "GET", 'route' => "api/v1/dictionaries/german-english/entries");
+    static private array $dictionaries = array('method' => "GET", 'route' => "api/v1/dictionaries");
 
 /*
 Search
@@ -13,10 +15,6 @@ geIndex}
 */
 
     static private array $search = array('method' => "GET", 'route' => "api/v1/dictionaries/german-english/search");
-    static private string $qs_search = 'q';
-    static private string $qs_pagesize = 'pagesize';
-    static private string $qs_pageindex = 'pageindex';
-    static private string $qs_format = 'format';
 
     static private string $german_dict_code  = "german-english"; 
 
@@ -24,23 +22,41 @@ geIndex}
     private string $baseUrl;
     private array  $query;
 
-   public function __construct(ClassID $id)
+   public function __construct()
    {   
-       parent::__construct($id);
+       parent::__construct(ClassID::Collins);
    } 
-
-    public function getDictionaryLanguages() : array
+/*
+a. dictionaryCode - the code of the dictionary
+b. dictionaryName - the user-friendly name of the dictionary
+c. dictionaryUrl - the URL of the dictionary's browse list.
+ */
+    public function getDictionaryLanguages() : ResultsIterator
     {
-         return array("DE", "EN"); // todo ???
+         $json = $this->request(self::$dictionaries['method'], self::$dictionaries['route']);
+         
+         $objs= json_decode($json);
+         
+         return new ResultsIterator($objs, function ($current) {
+             $debug = 10;
+             return $current;
+             
+         });//array("DE", "EN"); // todo ???
     } 
 
     private function search($word, int $pageSize=10, int $pageIndex=1) : string | null
     {
-        $this->query[self::$qs_search] = $word; // urlencode(??)
-        $this->query[self::$qs_pagesize] = $pageSize; 
-        $this->query[self::$qs_pageindex] = $pageIndex; 
+    static $search = array('method' => "GET", 'route' => "api/v1/dictionaries/german-english/search");
+    static $qs_search = 'q';
+    static $qs_pagesize = 'pagesize';
+    static $qs_pageindex = 'pageindex';
 
-        $contents = $this->request(self::$search['method'], self::$search['route'], ['query' => $this->query]);
+
+        $this->query[$qs_search] = $word; // urlencode(??)
+        $this->query[$qs_pagesize] = $pageSize; 
+        $this->query[$qs_pageindex] = $pageIndex; 
+
+        $contents = $this->request($search['method'], self::$search['route'], ['query' => $this->query]);
 
         $obj = json_decode($contents);
 
@@ -58,6 +74,7 @@ geIndex}
 
     public function lookup(string $word, string $src="DE", string $target="EN") : array
     {
+    static $qs_format = 'format';
        /*
           This is wrong. You first need to do API search request. This will return the entryIDs and the headword. For example:,
 
@@ -111,7 +128,7 @@ geIndex}
 
         $route = self::$lookup["route"] . '/' . urlencode($entryId);
 
-        $this->query[self:$qs_format'] = 'html'; 
+        $this->query[$qs_format] = 'html'; 
 
         $contents = $this->request(self::$lookup['method'], $route, ['query' => $this->query]);
 
