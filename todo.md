@@ -1,7 +1,6 @@
 #  Todo
 
-The CollinsGermanDictionary sucessfully will return best matching content. But it contains embedded html with style information. While the style information can theoretically be scrapped from the collins website. An entry
-can return information on several topics. These topics are not documented and therefore the correpsonding CSS peculiar to them is unkown. Itseems like a lot of emprical trial and error would be need to get all the CSS we would need.
+The `CollinsGermanDictionary.php` results are html (containing CSS ids and classes). I copied and pasted what I think is the collins style sheet. It is in [../src/collins.css](../src/collins.css). 
 
 ## Comparison of Azure vs Systran
 
