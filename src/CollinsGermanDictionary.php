@@ -34,8 +34,13 @@ class CollinsGermanDictionary extends RestClient {
     } 
     
     /*
+
+      
      Input: word to search. 
-     Results Returns all the matches. For example, searching for 'Handeln' returns this Json object of six results:
+     Output: All words in the dictionary that contain the string along with their entryId. To get an actual definition, you must pass the entryId to
+     get_entry(string $entryId).
+
+     Results Returns all words in the dictionary that contain the string. For example, searching for 'Handeln' returns this Json object of six results:
       
      {
     "resultNumber": 6,
@@ -96,7 +101,7 @@ class CollinsGermanDictionary extends RestClient {
         return $obj;
     } 
 
-    public function get_entry(string $entryId, string $src="DE", string $target="EN") : \stdClass | null
+    public function get_entry(string $entryId) : \stdClass | null
     {
         static $method = "GET";                         
         static $route  = "api/v1/dictionaries/german-english/entries/";
@@ -156,7 +161,7 @@ class CollinsGermanDictionary extends RestClient {
                 - topicUrl - the direct url to the topic page on the main
        
      */
-    public function get_best_matching(string $word, string $src="DE", string $target="EN") : \stdClass | null
+    public function get_best_matching(string $word) : \stdClass | null
     {
         static $method = "GET";                         
         static $route  = "api/v1/dictionaries/german-english/search/first/";
@@ -180,4 +185,22 @@ class CollinsGermanDictionary extends RestClient {
 
         return $obj->entryContent;
     }
+
+    public function get_did_you_mean(string $word) : array 
+    {
+        static $method = "GET";                         
+        static $route  = "api/v1/dictionaries/german-english/didyoumean/";
+
+        $query = array();
+        $query['q'] = $word;
+  
+        // If a word if not found in the dictionary, an exception is thrown and  $e->getCode is typically equal to 404.
+            
+        $json = $this->request($method, $route, ['query' => $query]);       
+           
+        $obj = json_decode($json);
+
+        return $obj->suggestions;
+    }
+
 }

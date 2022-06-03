@@ -1,6 +1,8 @@
 #  Todo
 
-Pons and Collins APIs don't conform to DictionaryInterface. Pons results are iterable. Collins are not. All its definitions are returned in one html string. I'm not sure thir results are similar. 
+Pons and Collins APIs don't conform to the DictionaryInterface::lookup method. While Pons results are iterable, Collins are not. All the Collins definitions are returned in a single html string. The Pons definitions are iterable, but
+also contained within html. The documentation for Pons's results is also inadequate and very terse.
+
 Trying to understand Pons results is also time consuming due to insufficient doumentation.
 
 ## Comparison of Azure vs Systran
