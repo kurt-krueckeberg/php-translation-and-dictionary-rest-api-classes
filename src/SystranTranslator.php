@@ -77,7 +77,7 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
    }
 
    /*
-    * The layout of the results json object is described in /doc/dict-output-systrans.txt
+    * The layout of the results json object is described in /doc/dict-systrans.txt
     */
    final public function lookup(string $word, string $src_lang, string $dest_lang) : ResultsIterator
    {      

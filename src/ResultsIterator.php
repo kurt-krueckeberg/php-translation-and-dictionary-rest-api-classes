@@ -4,7 +4,7 @@ namespace LanguageTools;
 
 class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
 
-    private array $objs;
+    private array|\stdClass $objs;
     private int $count;
     private int $current;
     private $get_result;

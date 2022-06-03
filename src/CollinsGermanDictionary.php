@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace LanguageTools;
 use LanguageTools\ClassID;
 
-class CollinsGermanDictionary extends RestClient implements DictionaryInterface {
+class CollinsGermanDictionary extends RestClient {
 
    public function __construct()
    {   
@@ -94,67 +94,8 @@ class CollinsGermanDictionary extends RestClient implements DictionaryInterface 
         $obj = json_decode($contents);
       
         return $obj;
-     } 
+    } 
 
-/*
-Gets the first/best matching entry
-     
-API call = `/api/v1/dictionaries/{dictionaryCode}/search/first/?q={searchWord}&format={format}`
-    
-Input:
-
-1. dictionaryCode - the dictionary code
-      
-2. searchWord - the word we are searching for
-     
-3. format - the format of the entry, either "html" or "xml" [optional; default = html]
-     
-JSON object properties:
-     
-   1. dictionaryCode
-   
-   2. format
-   
-   3. entryContent
-   
-   4. entryId - the id of the entry
-   
-   5. entryLabel - the label of the entry (headword)
-   
-   6. entryUrl - the direct url to this entry on the main website
-   
-   7. topics - an array containing the topics linked to the entry (if any):
-   
-      - topicId - the id of the topic
-      
-      - topicLabel - the label of the topic
-      
-      - topicUrl - the direct url to the topic page on the main
-  
-*/
-    public function get_best_matching(string $word, string $src="DE", string $target="EN") : \stdClass | null
-    {
-        static $method = "GET";                         
-        static $route  = "api/v1/dictionaries/german-english/search/first/";
-        static $format = 'html';
-
-        $query = array();
-        $query['format'] = $format;
-        $query['q'] = $word;
-  
-        // If a word if not found in the dictionary, an exception is thrown and  $e->getCode is typically equal to 404.
-        try {
-            
-           $json = $this->request($method, $route, ['query' => $query]);       
-           
-        } catch (\Exception $e) {
-            
-            return null;
-        }
-
-        return json_decode($json);
-    }
-    
     public function get_entry(string $entryId, string $src="DE", string $target="EN") : \stdClass | null
     {
         static $method = "GET";                         
@@ -176,18 +117,67 @@ JSON object properties:
             return null;
         }
 
-        return json_decode($json);
+        return json_decode($json);        
     }
-    
-    public function lookup(string $word, string $src="DE", string $target="EN") : array
+
+     /*
+        Gets the first/best matching entry
+               
+        API call = `/api/v1/dictionaries/{dictionaryCode}/search/first/?q={searchWord}&format={format}`
+              
+        Input:
+          
+          1. dictionaryCode - the dictionary code
+                
+          2. searchWord - the word we are searching for
+               
+          3. format - the format of the entry, either "html" or "xml" [optional; default = html]
+               
+        Output JSON object properties:
+               
+             1. dictionaryCode
+             
+             2. format
+             
+             3. entryContent
+             
+             4. entryId - the id of the entry
+             
+             5. entryLabel - the label of the entry (headword)
+             
+             6. entryUrl - the direct url to this entry on the main website
+             
+             7. topics - an array containing the topics linked to the entry (if any):
+             
+                - topicId - the id of the topic
+                
+                - topicLabel - the label of the topic
+                
+                - topicUrl - the direct url to the topic page on the main
+       
+     */
+    public function get_best_matching(string $word, string $src="DE", string $target="EN") : \stdClass | null
     {
-       
-       $best_matching = $this->get_best_matching($word);
-      
-       /*
-        Note: $this->get_entry($best_matching->entryId) will return exactly same content as $this->get_best_matching($word).
-        */
-       
-       return array($best_matching); 
+        static $method = "GET";                         
+        static $route  = "api/v1/dictionaries/german-english/search/first/";
+        static $format = 'html';
+
+        $query = array();
+        $query['format'] = $format;
+        $query['q'] = $word;
+  
+        // If a word if not found in the dictionary, an exception is thrown and  $e->getCode is typically equal to 404.
+        try {
+            
+           $json = $this->request($method, $route, ['query' => $query]);       
+           
+        } catch (\Exception $e) {
+            
+            return null;
+        }
+
+        $obj = json_decode($json);
+
+        return $obj->entryContent;
     }
 }

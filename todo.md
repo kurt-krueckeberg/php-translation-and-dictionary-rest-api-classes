@@ -1,8 +1,7 @@
 #  Todo
 
-The `CollinsGermanDictionary.php` results are html (containing CSS ids and classes). I copied and pasted what I think is the collins style sheet. It is in [../src/collins.css](../src/collins.css). 
-
-Create a `pons.css`, too.
+Pons and Collins APIs don't conform to DictionaryInterface. Pons results are iterable. Collins are not. All its definitions are returned in one html string. I'm not sure thir results are similar. 
+Trying to understand Pons results is also time consuming due to insufficient doumentation.
 
 ## Comparison of Azure vs Systran
 
