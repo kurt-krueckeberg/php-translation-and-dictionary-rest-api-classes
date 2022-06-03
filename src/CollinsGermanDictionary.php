@@ -34,8 +34,6 @@ class CollinsGermanDictionary extends RestClient {
     } 
     
     /*
-
-      
      Input: word to search. 
      Output: All words in the dictionary that contain the string along with their entryId. To get an actual definition, you must pass the entryId to
      get_entry(string $entryId).

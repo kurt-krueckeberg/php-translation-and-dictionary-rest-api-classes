@@ -28,7 +28,7 @@ class of type: class='example'>.
  
 Question: How should such examples be returned along with the other results?
 */
-class PonsDictionary extends  RestClient implements DictionaryInterface {
+class PonsDictionary extends  RestClient {
 
    static string  $method   = "GET";
    static array   $lookup   = array('method' => 'GET', 'route' => "v1/dictionary");
@@ -51,7 +51,7 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
        parent::__construct($c);
    } 
 
-   final public function getDictionaryLanguages() : array // todo: check the actual array to confirm it is what we want.
+   final public function getDictionaryLanguages() : array 
    {
       $contents = $this->request(self::$languages['method'], self::$languages['route']);
              
@@ -62,13 +62,6 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
 
    final public function getDictionaryForLanguages(string $lang) : array // todo: check the actual array to confirm it is what we want.
    {
-      /* 
-        todo: Implement in a base Dictionary class or -- better yet--DictionaryTrait -- the method `valid_iso_code($lang)` to confirm that the language is a valid ISO two-letter language code:
-
-      if (strlen($lang) !== 2 || !valid_iso_code($lang))
-           throw new \Exception("$lang is not a valid ISO two-leeter language code."); 
-     
-       */
       $this->query[self::$dictionary_lanauge_parm] = $lang; 
 
       $contents = $this->request(self::$languages['method'], self::$languages['route'],  ['query' => $this->query]);
@@ -83,7 +76,7 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
     * 
     */
 
-   public function lookup(string $word, string $src, string $dest) : array | ResultsIterator
+   public function search(string $word, string $src, string $dest) : array | ResultsIterator
    {
        $this->query[PonsDictionary::INPUT] = $word; // Note: Calling urlencode($word) results in an error for words with umlauts of sharp s.
 
@@ -108,17 +101,13 @@ class PonsDictionary extends  RestClient implements DictionaryInterface {
 
        echo "\n--------------------\n";
        
-       /*
-        * todo: Create PonsResultsIterator and put the logic below into its `get_current($current)`
-        * method. And return a PonsResultsIterator 
-        * 
-        */
-        if (is_null($obj) || count($obj->hits) == 0) 
+      /*
+       * todo: Create ResultsIterator($results, PonsDieciontary::get_result(...)); 
+       */
+      if (is_null($obj) || count($obj->hits) == 0) 
              return $results;
         
-       $has_entries = $obj->hits[0]->type == "entry" ? true : false;   
-            
-        foreach ($obj->hits as $hit) {
+       foreach ($obj->hits as $hit) {
         
               if (count($hit->roms) == 0) 
                   continue;
