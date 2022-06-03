@@ -30,6 +30,7 @@ try {
       } 
 
       print_r($definitions);
+      echo "---------------\n";
   }  
 
  

@@ -136,13 +136,13 @@ JSON Output:
     {
         static $method = "GET";                         
         static $route  = "api/v1/dictionaries/german-english/search/first/";
-        static $format = 'HTML';
+        static $format = 'html';
 
         $query = array();
         $query['format'] = $format;
         $query['q'] = $word;
   
-        // If a word if not found, an exception is thrown and tyepicalling $e->getCode == 404
+        // If a word if not found in the dictionary, an exception is thrown and  $e->getCode is typically equal to 404.
         try {
             
            $json = $this->request($method, $route, ['query' => $query]);       

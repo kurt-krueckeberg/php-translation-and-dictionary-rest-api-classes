@@ -148,14 +148,12 @@ class AzureTranslator extends RestClient implements DictionaryInterface, Transla
       return new ResultsIterator($obj[0]->translations, AzureTranslator::get_lookup_result(...));
    }
 
-   public static function get_lookup_result(\stdClass $x) : array 
+   public static function get_lookup_result(\stdClass $x) : AzureDictResult 
    {
-      $result = array();
-      
-      $result['definition'] = $x->normalizedTarget; 
-      $result['pos'] = $x->posTag; 
-
-      return $result;          
+       /*
+        * normalizedTarget is the/a definition
+        */
+      return new AzureDictResult($x->posTag, $x->normalizedTarget);
    }
 
    /* 

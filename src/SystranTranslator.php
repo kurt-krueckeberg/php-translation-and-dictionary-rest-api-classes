@@ -107,7 +107,7 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
   
                 $definitions[$index]['expressions'] = $target->expressions; 
        }
-       
+
        return new SystranDictResult($match->source->lemma, $match->source->pos, $definitions);
     }
 }
