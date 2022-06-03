@@ -109,27 +109,27 @@ Input:
      
 3. format - the format of the entry, either "html" or "xml" [optional; default = html]
      
-JSON Output:
+JSON object properties:
      
-1. dictionaryCode
-
-2. format
-
-3. entryContent
-
-4. entryId - the id of the entry
-
-5. entryLabel - the label of the entry (headword)
-
-6. entryUrl - the direct url to this entry on the main website
-
-7. topics - an array containing the topics linked to the entry (if any):
-
-  - topicId - the id of the topic
-
-  - topicLabel - the label of the topic
-
-  - topicUrl - the direct url to the topic page on the main
+   1. dictionaryCode
+   
+   2. format
+   
+   3. entryContent
+   
+   4. entryId - the id of the entry
+   
+   5. entryLabel - the label of the entry (headword)
+   
+   6. entryUrl - the direct url to this entry on the main website
+   
+   7. topics - an array containing the topics linked to the entry (if any):
+   
+      - topicId - the id of the topic
+      
+      - topicLabel - the label of the topic
+      
+      - topicUrl - the direct url to the topic page on the main
   
 */
     public function get_best_matching(string $word, string $src="DE", string $target="EN") : \stdClass | null
