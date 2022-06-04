@@ -5,6 +5,8 @@ also contained within html. The documentation for Pons's results is also inadequ
 
 Trying to understand Pons results is also time consuming due to insufficient doumentation.
 
+Simplify CollinsCsss.php style content used to style Collins definitions.
+
 ## Comparison of Azure vs Systran
 
 Systran is to be preferred ove Azure. When you compare Azure definitions (with its examples) to the Systran definitions (with its expressions), it is obvious the Systran definitions are more extensive. Systran outweighs the example phrases that Azure
