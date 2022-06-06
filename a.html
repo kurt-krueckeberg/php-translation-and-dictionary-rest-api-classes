@@ -1,10 +1,9 @@
-<?php
-declare(strict_types=1);
-namespace LanguageTools;
-
-class CollinsCss {
-
-static private string $css = <<<EOS
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+   <meta http-equiv="content-type" content="text/html" charset="UTF-8"/>
+   <title></title>
+<style>
 *{word-wrap:break-word;margin:0;padding:0;border:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;font-weight:inherit;font-family:inherit;font-size:inherit}
 body{color:#000;background:white;font:16px/1.6em 'Open Sans',serif;line-height:1.6em}[lang="ko"]:not(html),[lang="ko"]:not(html) *,[lang="ja"]:not(html),[lang="ja"]:not(html) *,[lang="hi"]:not(html),[lang="hi"]:not(html) *{font-family:auto}
 .small_text{padding-top:.3em;display:block;font-size:.8em;padding-right:2px}.small_text>a{border-bottom:dashed 1px rgba(0,0,0,.6)!important}h1{font-size:2em;line-height:1.4em}h2{font-size:1.2em}.h1{font-size:38px}
@@ -29,13 +28,11 @@ body.quiz_homepage header.sticky ~ main{padding-top:144px}.quiz_page{background:
 body.translator header.sticky ~ main{padding-top:104px}.seoBox_ad{max-width:310px;max-height:250px;overflow:hidden}.seoBox.pB{min-height:0}.seoBox.pB .pB-d,.seoBox.pB .pB-rM{text-align:justify}.seoBox.pB .pB-t{margin-bottom:20px;text-align:center;padding:0 20px;font-size:1.5em}
 .seoBox.pB.number-2 .pB-d ul{list-style-type:disc;padding-inline-start:25px;padding-left:25px;text-align:left}.seoBox.pB .pB-c{display:block}.scientificVocabulary{padding-top:1em}.dc .scientificVocabulary>a{border-bottom:0}
 .scientificVocabulary>.text{font-variant-caps:small-caps;font-weight:bold;color:#c12d30;font-size:1.2em;text-align:right}.sense_list_item .orth>.pron,.h2_entry+div>.pron,.sentences .translation{display:inline;font-weight:bold}
-.sentences .example{margin-top:1em;padding-bottom:.5em;border-bottom:1px solid rgb(0 0 0 / 16%)}.translation_list .translation,.mini_h2 .pron{font-family:arial}
-@media screen and (max-width:761px){.cdet .headerThes .entry_title+div{padding-left:15px}
+.sentences .example{margin-top:1em;padding-bottom:.5em;border-bottom:1px solid rgb(0 0 0 / 16%)}.translation_list .translation,.mini_h2 .pron{font-family:arial}@media screen and (max-width:761px){.cdet .headerThes .entry_title+div{padding-left:15px}
 .dc .cB{padding-top:0;padding-left:15px}div.menuDd .w-c{width:100%}body.quiz_homepage .dD_d_l.special,div.major-links-container:not(.special),.dD_d_l:not(.special){display:none}.menuDd[data-name="school"] .dD_d_l:not(.special),.dD_d_l.special{display:flex}
 .menuMobile{display:block}.header-top.header-top{flex-direction:row}.header-complete-top.header-complete-top{flex-direction:column}.header-top>label.menuPanelOpenButton,.header-top>label.menuPanelCloseButton{margin-right:.5em}
 .major-links-container{padding-left:1em}body:not(.headerMinimized) header.sticky ~ .padding-pub .menuDd.menuDd{top:138px}body:not(.headerMinimized) header.sticky ~ .padding-pub .menuDd.menuDd[data-name="school"]{top:155px}
-.padding-pub .dD_d_l{padding-left:.3em}}
-@media screen and (min-width:1240px){body.quiz_homepage .search-desktop,body.definition .search-desktop,body.translator .search-desktop,body.homepage .search-desktop{width:700px;margin:0 auto;margin-left:1em}
+.padding-pub .dD_d_l{padding-left:.3em}}@media screen and (min-width:1240px){body.quiz_homepage .search-desktop,body.definition .search-desktop,body.translator .search-desktop,body.homepage .search-desktop{width:700px;margin:0 auto;margin-left:1em}
 body.quiz_homepage .main-content,body.definition .main-content,body.translator .main-content,body.homepage .main-content{width:calc(100% - 50px - 50px);max-width:1580px}.padding-pub .dD_d_l{width:calc(100% - 100px);padding-left:calc(165px - -1em);max-width:1580px;margin:auto}
 .scientificVocabulary>.text{float:right}} 
 body.quiz_homepage header .main-content,body.definition header .main-content,body.translator header .main-content,body.homepage header .main-content{background-position:calc(100% - 34px) calc(10px);background-repeat:no-repeat;background-size:200px;display:block;padding-top:1px}
@@ -60,7 +57,6 @@ img.img_user.school{width:35px;height:35px;margin-top:3px}.logo-reseaux_img.logi
 .login .text-login a{opacity:.8}.login .text-login a:hover{opacity:1}.logo-reseaux_img.login{padding-top:1em;margin-right:1.5em;margin-left:1.5em}.major-links-container a{color:white;text-decoration:none}
 .home_logo_link{height:64px;overflow:hidden;align-self:center}.home_logo_link.school.school{height:64px;padding-top:10px;margin:10px 0}.header-top .home_logo{max-width:165px;width:100%;vertical-align:middle}
 .padding-pub{display:none}#searchPanelButton:checked ~ .padding-pub{display:block}main{padding-top:226px}.translator main{padding-top:104px}main.content-main{padding-top:0}.header-top.header-top.header-top .logo-reseaux_img{font-size:27px;width:40px}
-
 @media screen and (max-width:761px){.home_logo_link.school.school{margin:0}.sticky .searchButtOpenForm{position:absolute;right:0}.main-content{position:relative}.desktopOnly,span.desktopOnly.desktopOnly.desktopOnly,a.desktopOnly.desktopOnly.desktopOnly{position:absolute;right:10px}
 .translator_inputContainer .desktopOnly{display:none}.header-top.header-top.header-top .logo-reseaux_img{position:relative;top:10px;font-size:25px;width:20px}.logo-reseaux_img.login{padding-top:.5em;margin:0}
 a.desktopOnly.icon-instagram.logo-reseaux_img.inst{margin-right:1em}}input#menuPanelInputOpen,
@@ -233,8 +229,7 @@ a.h:hover img{transform:scale(1.15)}a.h .hook-img{width:100%;transform:scale(1.0
 .hook-label .top_text{font-size:.8em;margin-top:auto}.hook-label .sub_text{font-size:1.3em;font-weight:bold;height:1.3em}.hook-label .sub_text.wordlist{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:.9em}
 .carousel-arrow{width:65px;height:65px;background:#1c4b8b;cursor:pointer;transition:opacity .1s;border-radius:50%;text-align:center;box-shadow:0 0 20px rgba(50,50,50,.3);opacity:.7;position:absolute}.carousel-arrow i{font-size:2.3em;color:white;line-height:65px}
 .cB.cB-hook .cB-h{padding:10px 0 0}.carousel-arrow:hover{opacity:1}.he .grammar .cB-hook h2{text-decoration:none;line-height:1.1em}@keyframes animateOpacity{0%{opacity:1}50%{opacity:.7}100%{opacity:1}
-}.rootStyle{overflow:hidden;position:relative}.containerStyle{white-space:nowrap;font-size:0}
-@media screen and (max-width:761px){.hooksTransitions .containerStyle{overflow-x:scroll}}.arrowStyle{top:50%;transform:translateY(-50%)}
+}.rootStyle{overflow:hidden;position:relative}.containerStyle{white-space:nowrap;font-size:0}@media screen and (max-width:761px){.hooksTransitions .containerStyle{overflow-x:scroll}}.arrowStyle{top:50%;transform:translateY(-50%)}
 .itemStyle{display:inline-block;font-size:1rem}button.search-submit{background:white;border:0}.search-desktop{font-size:22px;height:47px;display:flex;background:#fff;margin-left:0}.search-desktop>div:first-child{flex-grow:1;width:0;transition:300ms}
 .search-desktop input,.search-desktop button{padding:.3em;vertical-align:middle;line-height:1.5em}.sticky .major-links-container,.search-desktop{position:relative;text-align:left;vertical-align:middle;transform:translateY(0)}
 .sticky .major-links-container{overflow:hidden}.sticky .major-links-container{max-width:690px}.search-desktop{width:610px}.search-desktop .search-input-container{overflow:hidden;vertical-align:middle;display:flex;align-items:center;width:-moz-available;width:-webkit-fill-available}
@@ -288,9 +283,7 @@ label.labelLessL2,label.labelLessL1,label.labelMoreL2,label.labelMoreL1{text-ali
 .bulletBox.bulletBox{bottom:0;left:0;height:50px;display:block;text-align:center}.bullet.bullet{border:2px solid black;display:inline-block;border-radius:50%;width:13px;min-width:0;height:13px;margin:18.5px 3px;cursor:pointer}
 .bullet.selected{background:black;cursor:auto}div.rightArrow .path1:before,div.leftArrow .path1:before{color:rgba(0,0,0,0.4);transition:color .3s}div.rightArrow:hover .path1:before,div.leftArrow:hover .path1:before{color:#000}
 .leftArrow,.rightArrow{width:auto;left:0;min-width:auto;min-height:auto;height:auto;padding:0;top:1em;cursor:pointer}.rightArrow{left:auto;right:0}.leftArrow>*,.rightArrow>*{font-size:2.5em;position:absolute;left:0;top:0;margin:0}
-.leftArrow>.path2{margin-left:1em}.rightArrow>.path1{margin-left:-1em}.h2.carousel-title{line-height:1;margin-bottom:20px}
-@media screen and (max-width:599px){.carousel>*>*{margin:0}}
-@media screen and (max-width:420px){.carousel-title{font-size:25px}
+.leftArrow>.path2{margin-left:1em}.rightArrow>.path1{margin-left:-1em}.h2.carousel-title{line-height:1;margin-bottom:20px}@media screen and (max-width:599px){.carousel>*>*{margin:0}}@media screen and (max-width:420px){.carousel-title{font-size:25px}
 }.selectorOpernerBig{display:none}.cB.register_social>h2{line-height:inherit}.cB .benefits h2{line-height:inherit}.menuDd{background:#717273;color:#fff;text-align:center}.padding-pub .menuDd[data-name='english']{background:#c32c30}body:not(.headerMinimized) header.sticky ~ .padding-pub .menuDd{position:fixed;top:152px;right:0;left:0;z-index:9998;overflow:auto;white-space:nowrap}
 body:not(.headerMinimized) header.sticky ~ .padding-pub .menuDd[data-name='school']{top:85px}body header.sticky ~ main{padding-top:192px}body.quiz_homepage header.sticky ~ .padding-pub .menuDd{top:104px}
 .menuDd .w-c{width:700px;display:inline-block}.menuDd .w-c.IE{margin-bottom:-6px}.menuDd .m_l{display:inline-block;color:inherit;padding:.5em 0;text-decoration:none}.menuDd .dD_d_l .dD_h_l{display:flex;flex:auto}
@@ -307,11 +300,9 @@ body:not(.headerMinimized) header.sticky ~ .padding-pub .menuDd[data-name='schoo
 .exercise-gapfill-drag>span{vertical-align:middle}.pB-rM button{background:white;color:#007db3;text-decoration:none;text-transform:uppercase;font-weight:normal;margin-left:10px}.pB-rM button.exercise-replay,.pB-rM button.exercise-show,.pB-rM button.exercise-correct,.pB-rM button.exercise-check{display:none}
 .pB-rM button.exercise-replay.inline,.pB-rM button.exercise-show.inline{display:inline-block}.pB-quiz .pB-d .exercise-mc .exercise-choices .exercise-choice.error,.exercise-gap-item.error{background:#c12d30;color:white}
 .pB-quiz .pB-d .exercise-mc .exercise-choices .exercise-choice.correct,.exercise-gap-item.correct{background:#108605;color:white}.container{overflow:hidden;white-space:nowrap}.container>*{display:inline-block}
-.finalResult{text-align:center;width:100%}.pB-quiz.quiz-review{overflow-y:auto}.pB-quiz.quiz-review .quizBlock{height:auto}.pB-quiz.quiz-review .container{overflow:visible}[class*="res_cell"]{float:left;display:block;width:100%}.res_cell_left{width:160px;text-align:right;min-height:1px}.res_cell_center{width:calc(100% - 300px)}
-@media screen and (max-width:948px){body.translator .res_cell_center{width:calc(100%)}
+.finalResult{text-align:center;width:100%}.pB-quiz.quiz-review{overflow-y:auto}.pB-quiz.quiz-review .quizBlock{height:auto}.pB-quiz.quiz-review .container{overflow:visible}[class*="res_cell"]{float:left;display:block;width:100%}.res_cell_left{width:160px;text-align:right;min-height:1px}.res_cell_center{width:calc(100% - 300px)}@media screen and (max-width:948px){body.translator .res_cell_center{width:calc(100%)}
 }.res_cell_center_content{padding:0 10px}.res_cell_right{width:300px}.res_cell_2_3{width:66%}.res_cell_2_3_content{padding:0 20px 0 0}.res_cell_1_3{width:34%}main,.main-content{margin:0 auto;width:980px}
-.clear:before,.clear:after{content:" ";display:block;height:0;overflow:hidden}.clear:after{clear:both}
-@media screen and (min-width:932px){main{min-height:628px}}main>div#main_content{width:calc(100% - 300px);float:left}
+.clear:before,.clear:after{content:" ";display:block;height:0;overflow:hidden}.clear:after{clear:both}@media screen and (min-width:932px){main{min-height:628px}}main>div#main_content{width:calc(100% - 300px);float:left}
 .mpuslot_b-container{min-width:320px;text-align:center;padding:0}.navigation{position:relative;z-index:9996;width:100%;background-color:#fff}.navigation:before{content:"\a0";position:absolute;width:100%;height:100%;top:0;background-color:inherit}
 .navigation a.tab,.navigation span.tab>a,.he .grammar a.previous,.he .grammar a.next{font-size:.9em;display:inline-block;line-height:26px;padding:4px 8px;background-color:#c6cfdb;margin:6px 2px 10px 2px;border:0;border-radius:2px}
 a.page.next,a.page.prev{min-width:24px}.navigation .expo{position:relative;top:-4px;font-size:.8em;margin-left:2px}.navigation[data-position="fixed"]{position:fixed}.navigation a.nav:hover{background-color:#b71533;color:white}
@@ -324,7 +315,6 @@ a.share-button.share-button span{position:absolute;left:0;width:38px;height:38px
 .pron-sound-popup{width:auto;display:inline-block}#popup-frequency>.popup-popup{width:210px;white-space:nowrap}.popup-popup{width:50%}.popup-popup .popup-close-frequency,.popup-popup .popup-close,.share-popup .share-close,.pron-sound-close{position:absolute;top:10px;right:10px;font-size:2.5em;line-height:.5em;text-decoration:none;color:black;border:none!important}
 .pron-sound-popup .pron-sound-content,.share-popup .share-content,.popup-popup .popup-content{max-height:30%;overflow:auto}.share-popup .socialButtons{display:block;float:none;position:initial;margin:0;text-align:center}
 .share-popup .socialButtons>a{display:inline-block;margin:10px}.popup-popup .popup-title,.share-popup .share-title,.pron-sound-popup .pron-sound-title{font-size:1.2em;font-weight:bold}.pron-sound-popup .pron-sound-title{margin-bottom:1em;padding-right:1.5em;text-align:left}
-
 @media screen and (max-width:761px){.popup-popup{width:90%;margin:200px auto}}.pB-g .entry_container ul,.pB-g{overflow:hidden}.pB-g .entry_container{box-shadow:none;background-color:white;overflow-y:auto;max-height:400px}.pB.tocB[data-dictcode="grammar-usage"]{max-height:800px;overflow:auto}
 .pB.tocB .entry_container{padding:20px 0}.pB.tocB .entry_container ul{line-height:155%}.pB.tocB .pB-t{padding:0 20px}.pB.tocB a{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;padding:0 20px}
 .pB.tocB a.current{background:#b71533;color:white}.pB.tocB .tB{font-weight:bold;font-size:1.8em;width:20px;text-align:center;float:left;padding:0;color:inherit}.homepage .pB.tocB li.current>ul,.pB.tocB ul ul{display:none}
@@ -336,14 +326,11 @@ a.share-button.share-button span{position:absolute;left:0;width:38px;height:38px
 .inputContainer a,.outputContainer a{border-bottom:0}#translate{padding:0 1em}.video-wrapper{position:relative;overflow:hidden;cursor:pointer;max-width:640px;height:360px}iframe.youtube-video{height:320px}iframe.youtube-video,.youtube-video img{width:100%}.youtube-video .play-button{width:90px;height:60px;background-color:#333;box-shadow:0 0 30px rgba(0,0,0,.6);opacity:.8;border-radius:15px;transition:background-color .15s}
 .youtube-video:hover .play-button{background-color:#f00}.youtube-video .play-button:before{content:"";border-style:solid;border-width:15px 0 15px 26px;border-color:transparent transparent transparent #fff}
 .youtube-video img,.youtube-video .play-button{cursor:pointer}.video-wrapper img,.youtube-video .play-button,.youtube-video .play-button:before{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)} 
-
 @media screen and (max-width:320px){
 .amp-container.mpuslot{margin:15px 0 15px -26px}.thesbase .amp-container.mpuslot{margin:15px 0}.cB-e .amp-container.mpuslot{margin:15px 0 15px -4px}.mpuslot_b-container,.parallax-container.mpuslot_b-container,.cB.biling .mpuslot_b-container,.cB-e .mpuslot_b-container,.cB .thesbase .sense .mpuslot_b-container{margin:0 0 0 -15px}
 .cB .cobuild .hom .sense .mpuslot_b-container{margin:0 0 0 -63px}.cB .american .sense .mpuslot_b-container,.cB .biling .sense .mpuslot_b-container,.cB .ced .sense .mpuslot_b-container,.cB .cobuild .sense.inline .mpuslot_b-container{margin:0 0 0 -39px}}
-
 @media screen and (min-width:321px) and (max-width:761px){
 .mpuslot_b-container{margin:0 0 0 -24px}.cdet .mpuslot_b-container{margin:0}.cB-e .mpuslot_b-container{margin:0 0 0 -14px}}
-
 @media screen and (max-width:761px){
 header{padding:10px 1em}header .main-content .header-top .img-reseaux{position:absolute}header .header-top .home_logo{max-width:150px;margin:6px 0}header .home_logo_link.woty .home_logo{max-width:78px}
 body.definition .search-desktop{width:100%}.logo-reseaux_img>.text-login{display:none}body.homepage header .main-content{padding:0;background-position:100% 10px;background-size:40px 40px}.container_seoBox{display:inline;max-height:none}body #searchPanelButton ~ main{padding-top:180px}body.quiz_homepage #searchPanelButton ~ main{padding-top:137px}main>div#main_content{width:100%}[class*="res_cell"]{clear:both;width:100%;margin:0 0 10px 0}
@@ -362,70 +349,64 @@ form#translate{margin:0}form#translate .inputContainer{height:35vh}form#translat
 .first_links:before{margin-right:5px;position:absolute;left:-15px;top:9px}.first_links.img-reseaux{opacity:1}.first_links.img-reseaux:before{opacity:0}.second_links:before{display:none}.first_links,.second_links{line-height:1.5;margin-bottom:30px;position:relative}
 .img-reseaux .logo-reseaux_img{vertical-align:middle;display:inline-block;margin-right:10px;width:29px;height:29px;font-size:29px}.img-reseaux .logo-reseaux_img.login{margin-right:0}header .searchButtOpenForm{transform:translateX(0);transition:transform .2s}
 #menuPanelInputOpen:checked ~ header .searchButtOpenForm{transform:translateX(200%)}}
-
 @media screen and (min-width:762px){
 header .header-top .home_logo_link{width:165px;display:block;height:52px}header .header-top .home_logo_link.scrabble{width:250px;height:65px}.header-top .img-reseaux{min-height:25px;display:flex;padding-bottom:8px}
 .header-top .img-reseaux .fb{margin-right:9px}.header-top .img-reseaux>a,.header-top .img-reseaux>a *{display:block}.header-top .img-reseaux>a *{display:inline-block;position:absolute;top:0}.header-top .img-reseaux>.login{position:absolute;top:0;right:-45px}header .header-top .home_logo_link.woty{width:160px;height:107px}body.homepage .scrabble .home_logo{max-width:250px;height:auto} .first_links:hover:before,.first_links:hover,.second_links:hover,.second_links:hover:before{opacity:1}header.sticky+.menuPanel{top:67px}}
-
 @media screen and (min-width:762px) and (max-width:948px){
 .sticky div.major-links-container{padding-left:.1em}.sticky .major-links-container a{font-size:.7em}.sticky .major-links .icon-Carrousel-Bullet-Full,.sticky .major-links-container .icon-Carrousel-Bullet-Full{margin:0 3px}
 body.definition .search-desktop{width:480px;margin:0 auto;margin-left:1em}.topslot_container{height:90px;margin:10px auto;display:flex;align-items:center;overflow:hidden}main>div#main_content{width:100%}.res_hot{display:none}.res_cell_center_content{padding-left:0}main,.main-content{width:calc(100% - 15px - 15px)}
 .columns .columns_item{width:100%}body.homepage header .main-content{background-position:calc(100% - 5px) calc(5px);background-size:25%}#searchPanelButton:checked+.sticky .main-content>form.search-form.search-desktop,.search-desktop{overflow:initial;width:510px}}
-
 @media screen and (min-width:762px) and (max-width:1239px){
 .menuPanel_firstCol{width:50%}.menuPanel_second_container{flex:2}}
-
 @media screen and (min-width:949px) and (max-width:1239px){
 .sticky .major-links-container a{font-size:.9em}.sticky .major-links-container .icon-Carrousel-Bullet-Full{margin:0 5px}.topslot_container{height:90px;margin:10px auto;display:flex;align-items:center;overflow:hidden}.res_hod{display:none}main>div#main_content{width:calc(100% - 160px)}body.translator #main_content{min-height:650px}
 .res_cell_left,#ad_leftslot_a{width:160px;overflow:hidden}main,.main-content{width:calc(100% - 15px - 15px)}.columns .columns_item{width:100%}body.homepage body.context-CHINESE header>div{background-size:280px}}
-
 @media screen and (min-width:1240px){
 .sticky .major-links-container{overflow:hidden;width:auto;margin-left:0;max-width:none}.topslot_container{height:90px;margin:10px auto;display:flex;align-items:center;overflow:hidden}.res_hoh{display:none}main>div#main_content{width:calc(100% - 300px)}.res_cell_left,#ad_leftslot_a{width:300px}
 main,.main-content{width:calc(100% - 30px - 30px);max-width:1480px}.columns2{-webkit-column-count:2;-moz-column-count:2;column-count:2}.columns2>*{-webkit-column-break-inside:avoid;page-break-inside:avoid;break-inside:avoid;display:table}body.homepage.context-CHINESE header>div{background-size:280px}#searchPanelButton:checked+.sticky .main-content>form.search-form.search-desktop,.search-desktop{overflow:visible;width:850px;margin-left:2em}}
-
 @media screen and (min-width:1596px){
 .columns .columns_item{width:33%}}
 @font-face{font-family:'icomoon';src:url('/external/fonts/icomoon.eot?1pqdoj&version=4.0.259');src:url('/external/fonts/icomoon.eot?1pqdoj#iefix&version=4.0.259') format('embedded-opentype'),url('/external/fonts/icomoon.ttf?1pqdoj&version=4.0.259') format('truetype'),url('/external/fonts/icomoon.woff?1pqdoj&version=4.0.259') format('woff'),url('/external/fonts/icomoon.svg?1pqdoj#icomoon&version=4.0.259') format('svg');font-weight:normal;font-style:normal;font-display:swap}
 [class^="icon-"],[class*=" icon-"]{font-family:'icomoon';speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;display:inline-block;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-.icon-instagram:before{content:"\e958"}.icon-Footer-Facebook .path1:before{content:"\e924";color:#fff}.icon-Footer-Facebook .path2:before{content:"\e925";margin-left:-1em;color:#000}
-.icon-Footer-Twitter .path1:before{content:"\e926";color:#fff}.icon-Footer-Twitter .path2:before{content:"\e938";margin-left:-1em;color:#000}.icon-Next .path1:before{content:"\e939";color:#000}
-.icon-Next .path2:before{content:"\e93a";margin-left:-1em;color:#fff}.icon-Prev .path1:before{content:"\e93b";color:#000}.icon-Prev .path2:before{content:"\e93c";margin-left:-1em;color:#fff}
-.icon-Share .path1:before{content:"\e93d";color:#000}.icon-Share .path2:before{content:"\e93e";margin-left:-1em;color:#fff}.icon-Share .path3:before{content:"\e93f";margin-left:-1em;color:#fff}
-.icon-Share .path4:before{content:"\e940";margin-left:-1em;color:#fff}.icon-Share .path5:before{content:"\e941";margin-left:-1em;color:#fff}.icon-Share .path6:before{content:"\e942";margin-left:-1em;color:#fff}
-.icon-Star-Empty:before{content:"\e943"}.icon-Star-Full:before{content:"\e944"}.icon-Translator-Keyboard .path1:before{content:"\e945";color:#000}
-.icon-Translator-Keyboard .path2:before{content:"\e946";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path3:before{content:"\e947";margin-left:-1em;color:#fff}
-.icon-Translator-Keyboard .path4:before{content:"\e948";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path5:before{content:"\e949";margin-left:-1em;color:#fff}
-.icon-Translator-Keyboard .path6:before{content:"\e94a";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path7:before{content:"\e94b";margin-left:-1em;color:#fff}
-.icon-Translator-Keyboard .path8:before{content:"\e94c";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path9:before{content:"\e94d";margin-left:-1em;color:#fff}
-.icon-Translator-Keyboard .path10:before{content:"\e94e";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path11:before{content:"\e94f";margin-left:-1em;color:#fff}
-.icon-Translator-Keyboard .path12:before{content:"\e950";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path13:before{content:"\e951";margin-left:-1em;color:#fff}
-.icon-Translator-Keyboard .path14:before{content:"\e952";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path15:before{content:"\e953";margin-left:-1em;color:#fff}
-.icon-Translator-Keyboard .path16:before{content:"\e954";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path17:before{content:"\e956";margin-left:-1em;color:#fff}
-.icon-Translator-Microphone .path1:before{content:"\e910";color:#000}.icon-Translator-Microphone .path2:before{content:"\e913";margin-left:-1em;color:#fff}
-.icon-Translator-Microphone .path3:before{content:"\e914";margin-left:-1em;color:none}.icon-Translator-Microphone .path4:before{content:"\e922";margin-left:-1em;color:none}
-.icon-Translator-Microphone .path5:before{content:"\e923";margin-left:-1em;color:#fff}.icon-fiber_new:before{content:"\e05e"}.icon-trending_down:before{content:"\e8e3"}
-.icon-trending_flat:before{content:"\e8e4"}.icon-trending_up:before{content:"\e8e5"}.icon-chat:before{content:"\e900"}
-.icon-community:before{content:"\e902"}.icon-read:before{content:"\e903"}.icon-chevron-down:before{content:"\e904"}
-.icon-chevron-up:before{content:"\e905"}.icon-chevron-thin-left:before{content:"\e906"}.icon-chevron-thin-right:before{content:"\e907"}
-.icon-warning:before{content:"\e908"}.icon-copy:before{content:"\e909"}.icon-exchange:before{content:"\e90a"}.icon-search:before{content:"\e90b"}
-.icon-bars:before{content:"\e90c"}.icon-Carrousel-Bullet-Empty:before{content:"\e90d"}.icon-Carrousel-Bullet-Full:before{content:"\e90e"}
-.icon-uniE90E:before{content:"\e90f"}.icon-uniE90F:before{content:"\e911"}.icon-uniE911:before{content:"\e912"}.icon-uniE912:before{content:"\e915"}
-.icon-uniE915:before{content:"\e916"}.icon-uniE916:before{content:"\e918"}.icon-uniE917:before{content:"\e917"}.icon-uniE918:before{content:"\e919"}
-.icon-uniE919:before{content:"\e91a"}.icon-uniE91A:before{content:"\e91b"}.icon-uniE91B:before{content:"\e91c"}.icon-uniE91C:before{content:"\e930"}
-.icon-uniE91D:before{content:"\e91d"}.icon-uniE91E:before{content:"\e91e"}.icon-Star-Empty1:before{content:"\e91f"}
-.icon-books:before{content:"\e920"}.icon-Star-Full1:before{content:"\e921"}.icon-uniE927:before{content:"\e927"}.icon-uniE928:before{content:"\e928"}
-.icon-uniE929:before{content:"\e929"}.icon-uniE92A:before{content:"\e92a"}.icon-uniE92B:before{content:"\e92b"}.icon-uniE92C:before{content:"\e92c"}
-.icon-uniE92D:before{content:"\e92d"}.icon-uniE92E:before{content:"\e92e"}.icon-uniE92F:before{content:"\e92f"}.icon-uniE930:before{content:"\e957"}
-.icon-uniE931:before{content:"\e931"}.icon-uniE932:before{content:"\e932"}.icon-uniE933:before{content:"\e933"}
-.icon-uniE934:before{content:"\e934"}.icon-uniE935:before{content:"\e935"}.icon-uniE936:before{content:"\e936"}
-.icon-uniE937:before{content:"\e937"}.icon-keyboard:before{content:"\e955"}.icon-sphere:before{content:"\e9c9"}
-.icon-eye-plus:before{content:"\e9cf"}.icon-eye-minus:before{content:"\e9d0"}.icon-share2:before{content:"\ea82"}
-.icon-user:before{content:"\f007"}.icon-times:before{content:"\f00d"}.icon-volume-up:before{content:"\f028"}.icon-twitter-square:before{content:"\f081"}
-.icon-twitter:before{content:"\f099"}.icon-facebook:before{content:"\f09a"}.icon-caret-down:before{content:"\f0d7"}
-.icon-caret-up:before{content:"\f0d8"}.icon-caret-left:before{content:"\f0d9"}.icon-caret-right:before{content:"\f0da"}
-.icon-sort:before{content:"\f0dc"}.icon-copyright:before{content:"\f1f9"}.icon-facebook-official:before{content:"\f230"}
-.icon-bar-graph:before{content:"\e901"}.icon-arrow-up-right2:before{content:"\ea3b"}.icon-arrow-right2:before{content:"\ea3c"}
-.icon-arrow-down-right2:before{content:"\ea3d"}.icon-checkmark:before{content:"\ea10"}.icon-headphones:before{content:"\e959"}
+.icon-instagram:before{content:"958"}.icon-Footer-Facebook .path1:before{content:"924";color:#fff}.icon-Footer-Facebook .path2:before{content:"925";margin-left:-1em;color:#000}
+.icon-Footer-Twitter .path1:before{content:"926";color:#fff}.icon-Footer-Twitter .path2:before{content:"938";margin-left:-1em;color:#000}.icon-Next .path1:before{content:"939";color:#000}
+.icon-Next .path2:before{content:"93a";margin-left:-1em;color:#fff}.icon-Prev .path1:before{content:"93b";color:#000}.icon-Prev .path2:before{content:"93c";margin-left:-1em;color:#fff}
+.icon-Share .path1:before{content:"93d";color:#000}.icon-Share .path2:before{content:"93e";margin-left:-1em;color:#fff}.icon-Share .path3:before{content:"93f";margin-left:-1em;color:#fff}
+.icon-Share .path4:before{content:"940";margin-left:-1em;color:#fff}.icon-Share .path5:before{content:"941";margin-left:-1em;color:#fff}.icon-Share .path6:before{content:"942";margin-left:-1em;color:#fff}
+.icon-Star-Empty:before{content:"943"}.icon-Star-Full:before{content:"944"}.icon-Translator-Keyboard .path1:before{content:"945";color:#000}
+.icon-Translator-Keyboard .path2:before{content:"946";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path3:before{content:"947";margin-left:-1em;color:#fff}
+.icon-Translator-Keyboard .path4:before{content:"948";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path5:before{content:"949";margin-left:-1em;color:#fff}
+.icon-Translator-Keyboard .path6:before{content:"94a";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path7:before{content:"94b";margin-left:-1em;color:#fff}
+.icon-Translator-Keyboard .path8:before{content:"94c";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path9:before{content:"94d";margin-left:-1em;color:#fff}
+.icon-Translator-Keyboard .path10:before{content:"94e";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path11:before{content:"94f";margin-left:-1em;color:#fff}
+.icon-Translator-Keyboard .path12:before{content:"950";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path13:before{content:"951";margin-left:-1em;color:#fff}
+.icon-Translator-Keyboard .path14:before{content:"952";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path15:before{content:"953";margin-left:-1em;color:#fff}
+.icon-Translator-Keyboard .path16:before{content:"954";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path17:before{content:"956";margin-left:-1em;color:#fff}
+.icon-Translator-Microphone .path1:before{content:"910";color:#000}.icon-Translator-Microphone .path2:before{content:"913";margin-left:-1em;color:#fff}
+.icon-Translator-Microphone .path3:before{content:"914";margin-left:-1em;color:none}.icon-Translator-Microphone .path4:before{content:"922";margin-left:-1em;color:none}
+.icon-Translator-Microphone .path5:before{content:"923";margin-left:-1em;color:#fff}.icon-fiber_new:before{content:"05e"}.icon-trending_down:before{content:"8e3"}
+.icon-trending_flat:before{content:"8e4"}.icon-trending_up:before{content:"8e5"}.icon-chat:before{content:"900"}
+.icon-community:before{content:"902"}.icon-read:before{content:"903"}.icon-chevron-down:before{content:"904"}
+.icon-chevron-up:before{content:"905"}.icon-chevron-thin-left:before{content:"906"}.icon-chevron-thin-right:before{content:"907"}
+.icon-warning:before{content:"908"}.icon-copy:before{content:"909"}.icon-exchange:before{content:"90a"}.icon-search:before{content:"90b"}
+.icon-bars:before{content:"90c"}.icon-Carrousel-Bullet-Empty:before{content:"90d"}.icon-Carrousel-Bullet-Full:before{content:"90e"}
+.icon-uniE90E:before{content:"90f"}.icon-uniE90F:before{content:"911"}.icon-uniE911:before{content:"912"}.icon-uniE912:before{content:"915"}
+.icon-uniE915:before{content:"916"}.icon-uniE916:before{content:"918"}.icon-uniE917:before{content:"917"}.icon-uniE918:before{content:"919"}
+.icon-uniE919:before{content:"91a"}.icon-uniE91A:before{content:"91b"}.icon-uniE91B:before{content:"91c"}.icon-uniE91C:before{content:"930"}
+.icon-uniE91D:before{content:"91d"}.icon-uniE91E:before{content:"91e"}.icon-Star-Empty1:before{content:"91f"}
+.icon-books:before{content:"920"}.icon-Star-Full1:before{content:"921"}.icon-uniE927:before{content:"927"}.icon-uniE928:before{content:"928"}
+.icon-uniE929:before{content:"929"}.icon-uniE92A:before{content:"92a"}.icon-uniE92B:before{content:"92b"}.icon-uniE92C:before{content:"92c"}
+.icon-uniE92D:before{content:"92d"}.icon-uniE92E:before{content:"92e"}.icon-uniE92F:before{content:"92f"}.icon-uniE930:before{content:"957"}
+.icon-uniE931:before{content:"931"}.icon-uniE932:before{content:"932"}.icon-uniE933:before{content:"933"}
+.icon-uniE934:before{content:"934"}.icon-uniE935:before{content:"935"}.icon-uniE936:before{content:"936"}
+.icon-uniE937:before{content:"937"}.icon-keyboard:before{content:"955"}.icon-sphere:before{content:"9c9"}
+.icon-eye-plus:before{content:"9cf"}.icon-eye-minus:before{content:"9d0"}.icon-share2:before{content:"a82"}
+.icon-user:before{content:"007"}.icon-times:before{content:"00d"}.icon-volume-up:before{content:"028"}.icon-twitter-square:before{content:"081"}
+.icon-twitter:before{content:"099"}.icon-facebook:before{content:"09a"}.icon-caret-down:before{content:"0d7"}
+.icon-caret-up:before{content:"0d8"}.icon-caret-left:before{content:"0d9"}.icon-caret-right:before{content:"0da"}
+.icon-sort:before{content:"0dc"}.icon-copyright:before{content:"1f9"}.icon-facebook-official:before{content:"230"}
+.icon-bar-graph:before{content:"901"}.icon-arrow-up-right2:before{content:"a3b"}.icon-arrow-right2:before{content:"a3c"}
+.icon-arrow-down-right2:before{content:"a3d"}.icon-checkmark:before{content:"a10"}.icon-headphones:before{content:"959"}
 .icon-2x{font-size:2em;height:32px;width:32px}.icon-fw{display:inline-block;text-align:center;width:1.55em}@font-face{font-family:'Open Sans';font-style:normal;font-weight:400;font-display:swap;src:local('Open Sans Regular'),local('OpenSans-Regular'),url(https://fonts.gstatic.com/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0b.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Zilla Slab';font-style:normal;font-weight:400;font-display:swap;src:local('Zilla Slab'),local('ZillaSlab-Regular'),url(https://fonts.gstatic.com/s/zillaslab/v5/dFa6ZfeM_74wlPZtksIFajo6_Q.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Zilla Slab';font-style:normal;font-weight:700;font-display:swap;src:local('Zilla Slab Bold'),local('ZillaSlab-Bold'),url(https://fonts.gstatic.com/s/zillaslab/v5/dFa5ZfeM_74wlPZtksIFYoEf6HOpWw.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -435,7 +416,6 @@ label:not(.inline){display:block}button{cursor:pointer}.center{display:table;mar
 .mb20{margin-bottom:20px}.icon-Carrousel-Bullet-Full{font-size:8px;vertical-align:middle;margin:0 6px}.cB h2,.cB .h2{margin-bottom:.5em;line-height:.8em}.opensearch #stickyslot_container{z-index:1}#ad_topslot{margin:auto}
 .res_cell_right #ad_rightslot,.res_cell_right #ad_rightslot2{margin-top:10px;margin-bottom:10px;max-width:300px}.ac_leftslot_a{min-height:600px}.leftslot_b_container{width:300px}.rightslot_container{width:300px}
 #ad_btmslot_a{margin-bottom:10px;text-align:center}.btmslot_a-container{margin-top:10px;width:100%}body.definition #ad_btmslot_a,body.submission #ad_btmslot_a{margin:0 auto 20px auto}.contentslot,.mpuslot_b{margin-top:20px;text-align:center}
-
 @media only screen and (min-width:1503px){.contentslot{display:inline;max-height:90px;max-width:728px}}.lazy-background{background:rgba(0,0,0,0)}.lazy.lazy.lazy{width:auto}.slideDown{height:0;overflow:hidden;transition-property:height}
 .slideUp{overflow:hidden}.cssTransitions{transition:all .5s}.headerTransitions{transition:background-position,.5s}.hooksTransitions{transition:all .2s}.res_cell_center_content>.wnv{margin-top:50px}.res_cell_center_content>.navigation+.wnv{margin-top:0}.desktop,.t-p-i_amp-list,#t-p-i_checkbox{display:none}.f-b.contact-us.contact-us{display:flex;white-space:nowrap;flex-wrap:wrap}.f-b.contact-us>div{margin-right:2em}.related_links{margin:1em 0}.related_links>ul>li{margin-left:1.5em}
 .related_links>ul>.first{margin-left:0;transition:all .2s ease-in;cursor:pointer}.related_links>ul>.first>a{margin-right:25px}.related_links>ul>.first>.icon-caret-down{transform:rotateX(180deg)}.related_links>ul>.first.closed>.icon-caret-down{transform:rotateX(0deg)}
@@ -595,10 +575,8 @@ label.openerBig,.page span.sensenum+.def,.page .biling .re.inline,.headerSense .
 .grammar .right{text-align:right}.grammar .small{font-size:78%}.grammar td{vertical-align:top}.he .grammar .links{margin-top:30px}.he .grammar .quote{margin-left:3em;margin-bottom:1em}.he .grammar .mini{font-size:.7em}
 .context-dataset-grammar-el-en-sp .he .grammar .ul,.context-dataset-elt-grammar .he .grammar .ul{list-style-type:circle;margin-top:2em;padding-left:1em;margin-bottom:1.5em}.he .grammar .intro .ul{list-style-type:disc}
 .grammar .intro{background-color:#e1e4ee;padding:1em;display:block}.grammar td.filet_b,.grammar td.filet_t,.grammar td.filet_l,.grammar td.filet_r{border-right:1px solid black}.grammar .tab1{margin-left:5em}
-.grammar .strike{text-decoration:line-through}.navigation .tab.current .ref>.pos{color:white}.cdet .ref>.pos{font-style:italic;font-size:.9em;color:#777772}
-@media screen and (min-width:321px){.cdet .page .dictionary .sense,.cdet .sense.moreSyn,.cdet .dictionary .hom,.cdet .dictionary .syn_of_syns{overflow:hidden}
-}
-@media screen and (max-width:761px){.cdet .navigation .nav{display:none}.cdet .more{margin:10px auto 10px auto;width:50%}.selectorOpernerBig:checked+.sense.sense.opened:before,.selectorOpernerBig:checked+.sense.sense.opened{width:100%;left:0}
+.grammar .strike{text-decoration:line-through}.navigation .tab.current .ref>.pos{color:white}.cdet .ref>.pos{font-style:italic;font-size:.9em;color:#777772}@media screen and (min-width:321px){.cdet .page .dictionary .sense,.cdet .sense.moreSyn,.cdet .dictionary .hom,.cdet .dictionary .syn_of_syns{overflow:hidden}
+}@media screen and (max-width:761px){.cdet .navigation .nav{display:none}.cdet .more{margin:10px auto 10px auto;width:50%}.selectorOpernerBig:checked+.sense.sense.opened:before,.selectorOpernerBig:checked+.sense.sense.opened{width:100%;left:0}
 .selectorOpernerBig ~ label.menuPanelCloseButton{right:0}.he .grammar th,.he .grammar td{padding:.5em .5em}.he .grammar table{border-style:none;display:block;overflow:auto;white-space:nowrap}}.pB.image{min-height:300px;text-align:center;background:0;border:0;display:inline-block}.pB.image .pB-c{height:100%;padding:4px}.pB.image .pB-d img{height:100%;max-width:100%;width:auto;vertical-align:middle}
 .pB.image .pB-rM{color:#c12d30;text-transform:inherit;font-style:italic;font-size:.8em;padding:0 5px}.usageEntry .hom{margin-top:20px}.usageEntry .copyright{color:#c12d30;font-size:small;margin-top:10px;font-style:italic}.usageEntry .rend-u{text-decoration:underline}.usageEntry .rend-strike{text-decoration:line-through}
 .usageEntry .title{font-weight:bold}.usageEntry .title_container .h2_entry{text-decoration:none}.usageEntry .h2_entry .orth{display:inline-block}.usageEntry .h2_entry .orth.type-main{text-decoration:underline}
@@ -633,9 +611,17 @@ label.openerBig,.page span.sensenum+.def,.page .biling .re.inline,.headerSense .
 #miniTranslate .select_input,#miniTranslate .recaptcha-text,.recaptcha-text>div:first-child{margin-bottom:10px}#miniTranslate label.submit button{font-family:"Open Sans",sans-serif}
 #miniTranslate .recaptcha-text a{text-decoration:underline}.pB.s-b{background:black;color:white}.pB.s-b .pB-t{line-height:1.3em;margin-bottom:0;font-family:'Zilla Slab';font-weight:400}.pB.s-b .pB-rM{padding-top:15px;display:flex}.pB.s-b .pB-rM a{flex:1}
 .pB.s-b .pB-rM a:first-child{text-align:left;padding-right:3px}.pB.s-b .time{font-style:italic} 
-EOS;
- static public function get_css() : string
- {
-    return self::$css;
- }
-}
+</style>
+</head>
+<body>
+<div class="entry_container"><div class="entry lang_de" id="handeln_2"><span class="inline"><h1 class="hwd">Handeln</h1></span><div class="hom" id="handeln_2.1"><span>   </span><span class="gramGrp"><span class="pos">neuter noun</span></span><span class="inline"><span class="orth"><span class="bluebold">, </span>Handelns</span><span class="lbl"><span> </span>genitive</span><span class="gramGrp"><span class="subc"><span>, </span>no plural</span></span></span><div class="sense"><span>   </span><span class="bold">1 </span><span class="lbl"><span>(= </span>Feilschen<span>)</span></span><span> </span><span class="cit lang_en-gb"><span class="quote">bargaining</span></span><span>, </span><span class="cit lang_en-gb"><span class="quote">haggling</span></span></div><!-- End of DIV sense--><div class="sense"><span> <br/></span><span class="bold">2 </span><span class="lbl"><span>(= </span>das Handeltreiben<span>)</span></span><span> </span><span class="cit lang_en-gb"><span class="quote">trading</span></span><span class="cit" id="handeln_2.2"><span>;   </span><span class="quote">das Handeln mit Antiquitäten</span><span> </span><span class="cit lang_en-gb"><span class="quote">trading in antiques</span></span></span></div><!-- End of DIV sense--><div class="sense"><span> <br/></span><span class="bold">3 </span><span class="lbl"><span>(= </span>Verhalten<span>)</span></span><span> </span><span class="cit lang_en-gb"><span class="quote">behaviour <span class="lbl"><span>(</span>Brit<span>)</span></span></span></span><span>, </span><span class="cit lang_en-gb"><span class="quote">behavior <span class="lbl"><span>(</span>US<span>)</span></span></span></span></div><!-- End of DIV sense--><div class="sense"><span> <br/></span><span class="bold">4 </span><span class="lbl"><span>(= </span>das Tätigwerden<span>)</span></span><span> </span><span class="cit lang_en-gb"><span class="quote">action</span></span></div><!-- End of DIV sense--></div><!-- End of DIV hom--></div><!-- End of DIV entry lang_de--></div><!-- End of DIV entry_container-->
+
+<div class="entry_container"><div class="entry lang_de" id="handeln_2"><span class="inline"><h1 class="hwd">Handeln</h1></span><div class="hom" id="handeln_2.1"><span>   </span><span class="gramGrp"><span class="pos">neuter noun</span></span><span class="inline"><span class="orth"><span class="bluebold">, </span>Handelns</span><span class="lbl"><span> </span>genitive</span><span class="gramGrp"><span class="subc"><span>, </span>no plural</span></span></span><div class="sense"><span>   </span><span class="bold">1 </span><span class="lbl"><span>(= </span>Feilschen<span>)</span></span><span> </span><span class="cit lang_en-gb"><span class="quote">bargaining</span></span><span>, </span><span class="cit lang_en-gb"><span class="quote">haggling</span></span></div><!-- End of DIV sense--><div class="sense"><span> <br/></span><span class="bold">2 </span><span class="lbl"><span>(= </span>das Handeltreiben<span>)</span></span><span> </span><span class="cit lang_en-gb"><span class="quote">trading</span></span><span class="cit" id="handeln_2.2"><span>;   </span><span class="quote">das Handeln mit Antiquitäten</span><span> </span><span class="cit lang_en-gb"><span class="quote">trading in antiques</span></span></span></div><!-- End of DIV sense--><div class="sense"><span> <br/></span><span class="bold">3 </span><span class="lbl"><span>(= </span>Verhalten<span>)</span></span><span> </span><span class="cit lang_en-gb"><span class="quote">behaviour <span class="lbl"><span>(</span>Brit<span>)</span></span></span></span><span>, </span><span class="cit lang_en-gb"><span class="quote">behavior <span class="lbl"><span>(</span>US<span>)</span></span></span></span></div><!-- End of DIV sense--><div class="sense"><span> <br/></span><span class="bold">4 </span><span class="lbl"><span>(= </span>das Tätigwerden<span>)</span></span><span> </span><span class="cit lang_en-gb"><span class="quote">action</span></span></div><!-- End of DIV sense--></div><!-- End of DIV hom--></div><!-- End of DIV entry lang_de--></div><!-- End of DIV entry_container-->
+
+<div class="entry_container"><div class="entry lang_de" id="handeln_2"><span class="inline"><h1 class="hwd">Handeln</h1></span><div class="hom" id="handeln_2.1"><span>   </span><span class="gramGrp"><span class="pos">neuter noun</span></span><span class="inline"><span class="orth"><span class="bluebold">, </span>Handelns</span><span class="lbl"><span> </span>genitive</span><span class="gramGrp"><span class="subc"><span>, </span>no plural</span></span></span><div class="sense"><span>   </span><span class="bold">1 </span><span class="lbl"><span>(= </span>Feilschen<span>)</span></span><span> </span><span class="cit lang_en-gb"><span class="quote">bargaining</span></span><span>, </span><span class="cit lang_en-gb"><span class="quote">haggling</span></span></div><!-- End of DIV sense--><div class="sense"><span> <br/></span><span class="bold">2 </span><span class="lbl"><span>(= </span>das Handeltreiben<span>)</span></span><span> </span><span class="cit lang_en-gb"><span class="quote">trading</span></span><span class="cit" id="handeln_2.2"><span>;   </span><span class="quote">das Handeln mit Antiquitäten</span><span> </span><span class="cit lang_en-gb"><span class="quote">trading in antiques</span></span></span></div><!-- End of DIV sense--><div class="sense"><span> <br/></span><span class="bold">3 </span><span class="lbl"><span>(= </span>Verhalten<span>)</span></span><span> </span><span class="cit lang_en-gb"><span class="quote">behaviour <span class="lbl"><span>(</span>Brit<span>)</span></span></span></span><span>, </span><span class="cit lang_en-gb"><span class="quote">behavior <span class="lbl"><span>(</span>US<span>)</span></span></span></span></div><!-- End of DIV sense--><div class="sense"><span> <br/></span><span class="bold">4 </span><span class="lbl"><span>(= </span>das Tätigwerden<span>)</span></span><span> </span><span class="cit lang_en-gb"><span class="quote">action</span></span></div><!-- End of DIV sense--></div><!-- End of DIV hom--></div><!-- End of DIV entry lang_de--></div><!-- End of DIV entry_container-->
+
+<div class="entry_container"><div class="entry lang_de" id="handeln_2"><span class="inline"><h1 class="hwd">Handeln</h1></span><div class="hom" id="handeln_2.1"><span>   </span><span class="gramGrp"><span class="pos">neuter noun</span></span><span class="inline"><span class="orth"><span class="bluebold">, </span>Handelns</span><span class="lbl"><span> </span>genitive</span><span class="gramGrp"><span class="subc"><span>, </span>no plural</span></span></span><div class="sense"><span>   </span><span class="bold">1 </span><span class="lbl"><span>(= </span>Feilschen<span>)</span></span><span> </span><span class="cit lang_en-gb"><span class="quote">bargaining</span></span><span>, </span><span class="cit lang_en-gb"><span class="quote">haggling</span></span></div><!-- End of DIV sense--><div class="sense"><span> <br/></span><span class="bold">2 </span><span class="lbl"><span>(= </span>das Handeltreiben<span>)</span></span><span> </span><span class="cit lang_en-gb"><span class="quote">trading</span></span><span class="cit" id="handeln_2.2"><span>;   </span><span class="quote">das Handeln mit Antiquitäten</span><span> </span><span class="cit lang_en-gb"><span class="quote">trading in antiques</span></span></span></div><!-- End of DIV sense--><div class="sense"><span> <br/></span><span class="bold">3 </span><span class="lbl"><span>(= </span>Verhalten<span>)</span></span><span> </span><span class="cit lang_en-gb"><span class="quote">behaviour <span class="lbl"><span>(</span>Brit<span>)</span></span></span></span><span>, </span><span class="cit lang_en-gb"><span class="quote">behavior <span class="lbl"><span>(</span>US<span>)</span></span></span></span></div><!-- End of DIV sense--><div class="sense"><span> <br/></span><span class="bold">4 </span><span class="lbl"><span>(= </span>das Tätigwerden<span>)</span></span><span> </span><span class="cit lang_en-gb"><span class="quote">action</span></span></div><!-- End of DIV sense--></div><!-- End of DIV hom--></div><!-- End of DIV entry lang_de--></div><!-- End of DIV entry_container-->
+
+<div class="entry_container"><div class="entry lang_de" id="handeln_2"><span class="inline"><h1 class="hwd">Handeln</h1></span><div class="hom" id="handeln_2.1"><span>   </span><span class="gramGrp"><span class="pos">neuter noun</span></span><span class="inline"><span class="orth"><span class="bluebold">, </span>Handelns</span><span class="lbl"><span> </span>genitive</span><span class="gramGrp"><span class="subc"><span>, </span>no plural</span></span></span><div class="sense"><span>   </span><span class="bold">1 </span><span class="lbl"><span>(= </span>Feilschen<span>)</span></span><span> </span><span class="cit lang_en-gb"><span class="quote">bargaining</span></span><span>, </span><span class="cit lang_en-gb"><span class="quote">haggling</span></span></div><!-- End of DIV sense--><div class="sense"><span> <br/></span><span class="bold">2 </span><span class="lbl"><span>(= </span>das Handeltreiben<span>)</span></span><span> </span><span class="cit lang_en-gb"><span class="quote">trading</span></span><span class="cit" id="handeln_2.2"><span>;   </span><span class="quote">das Handeln mit Antiquitäten</span><span> </span><span class="cit lang_en-gb"><span class="quote">trading in antiques</span></span></span></div><!-- End of DIV sense--><div class="sense"><span> <br/></span><span class="bold">3 </span><span class="lbl"><span>(= </span>Verhalten<span>)</span></span><span> </span><span class="cit lang_en-gb"><span class="quote">behaviour <span class="lbl"><span>(</span>Brit<span>)</span></span></span></span><span>, </span><span class="cit lang_en-gb"><span class="quote">behavior <span class="lbl"><span>(</span>US<span>)</span></span></span></span></div><!-- End of DIV sense--><div class="sense"><span> <br/></span><span class="bold">4 </span><span class="lbl"><span>(= </span>das Tätigwerden<span>)</span></span><span> </span><span class="cit lang_en-gb"><span class="quote">action</span></span></div><!-- End of DIV sense--></div><!-- End of DIV hom--></div><!-- End of DIV entry lang_de--></div><!-- End of DIV entry_container-->
+</body>
+</html>

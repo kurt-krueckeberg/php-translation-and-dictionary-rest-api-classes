@@ -19,18 +19,19 @@ try {
   $trans = new CollinsGermanDictionary();
 
   foreach ($file as $word) {
+      
+      echo "$word\n------------\n";
   
       // The size of $examples_array will be the same as the $definitions.
       //$definitions = $trans->lookup($word, "DE", "EN"); 
-      $definitions = $trans->lookup('Handeln', "DE", "EN"); 
-      
-      if (count($definitions) == 0) {
+      $def = $trans->get_best_matching('Handeln');
 
-           echo "There are no definitions for '$word'.\n";
-      } 
-
-      print_r($definitions);
-      echo "---------------\n";
+      if (is_null($def))       
+         echo "is null\n";
+      /*  
+      else
+         echo "$def\n";
+       */   
   }  
 
  

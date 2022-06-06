@@ -159,7 +159,7 @@ class CollinsGermanDictionary extends RestClient {
                 - topicUrl - the direct url to the topic page on the main
        
      */
-    public function get_best_matching(string $word) : \stdClass | null
+    public function get_best_matching(string $word) : null | string 
     {
         static $method = "GET";                         
         static $route  = "api/v1/dictionaries/german-english/search/first/";
