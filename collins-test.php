@@ -16,22 +16,19 @@ try {
     
   $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
+  echo CollinsGermanDictionary::get_css();
+
   $trans = new CollinsGermanDictionary();
 
   foreach ($file as $word) {
       
-      echo "$word\n------------\n";
-  
-      // The size of $examples_array will be the same as the $definitions.
-      //$definitions = $trans->lookup($word, "DE", "EN"); 
-      $def = $trans->get_best_matching('Handeln');
+      $def = $trans->get_best_matching($word);
 
       if (is_null($def))       
          echo "is null\n";
-      /*  
+      
       else
          echo "$def\n";
-       */   
   }  
 
  
