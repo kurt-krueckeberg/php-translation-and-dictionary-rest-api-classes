@@ -25,7 +25,7 @@ function test_collins(string $fname)
         if (is_null($html))
             continue;
   
-        $html = preg_replace($regex, $rep, $html);
+        //$html = preg_replace($regex, $rep, $html);
 
         echo "$html\n"; 
     }
