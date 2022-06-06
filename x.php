@@ -3,31 +3,36 @@ declare(strict_types=1);
 use \SplFileObject as File;
 use LanguageTools\CollinsGermanDictionary;
 
-include "vendor/autoload.php";
+include 'vendor/autoload.php';
 
-function test_collins(string $fname)
+function pretty(string $h) : string
+{
+  $dom = new DOMDocument();
+
+  $dom->preserveWhiteSpace = false;
+  
+  @$dom->loadHTML($h,LIBXML_HTML_NOIMPLIED);
+  
+  $dom->formatOutput = true;
+
+  return $dom->saveXML($dom->documentElement);
+}
+
+function test_collins(File $file)
 {
   try {
    
-    $file =  new File("new-words.txt");
-    
-    $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
+    $file->rewind();
 
     $t = new CollinsGermanDictionary();
 
-    $regex = "(</[^>]\+>)";
-    $rep = "\n$1";
-
     foreach ($file as $word) {
 
-        $html = $t->get_best_matching($word);
+        $d = $t->get_best_matching($word);
 
-        if (is_null($html))
-            continue;
-  
-        //$html = preg_replace($regex, $rep, $html);
-
-        echo "$html\n"; 
+        if (!is_null($d)) {
+            echo pretty($d);
+        }
     }
  
   } catch (Exception $e) {
@@ -36,4 +41,15 @@ function test_collins(string $fname)
   } 
 }
 
-test_collins("new-words.txt");
+    try {
+
+      $file = new File("x.txt");
+ 
+      test_collins($file);
+
+   // leipzig_sentences_with_transations($file);
+ 
+  } catch (Exception $e) {
+
+      echo "Exception: message = " . $e->getMessage() . "\n";
+  } 
