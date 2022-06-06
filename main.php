@@ -7,6 +7,7 @@ use LanguageTools\RestClient;
 use LanguageTools\TranslateInterface;
 use LanguageTools\DictionaryInterface;
 use LanguageTools\SentenceFetchInterface;
+use LanguageTools\CollinsGermanDictionary;
 use LanguageTools\ResultsIterator;
 use LanguageTools\ClassID;
 
@@ -176,6 +177,49 @@ function display_sentences(ResultsIterator $iter, string $word, TranslateInterfa
   }
 }
 
+function test_collins(string $fname)
+{
+  try {
+   
+    $file =  new File($fname);
+    
+    $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
+
+    $t = new CollinsGermanDictionary();
+
+    foreach ($file as $word) {
+
+        $d = $t->get_best_matching($word);
+
+        echo "$d\n"; 
+    }
+ 
+  } catch (Exception $e) {
+
+      echo "Exception: message = " . $e->getMessage() . "\n";
+  } 
+}
+
+function test_collins(File $file)
+{
+  try {
+   
+    $file->rewind();
+
+    $t = new CollinsGermanDictionary();
+
+    foreach ($file as $word) {
+
+        $d = $t->get_best_matching($word);
+
+        echo "$d\n"; 
+    }
+ 
+  } catch (Exception $e) {
+
+      echo "Exception: message = " . $e->getMessage() . "\n";
+  } 
+}
 
   check_args($argc, $argv);
 
@@ -190,6 +234,8 @@ function display_sentences(ResultsIterator $iter, string $word, TranslateInterfa
     echo "End of Azure Ouput. Start of Systran Output.\n";
 
     systran_definitions_and_expressions($file);
+
+    test_collins($file);
 
    // leipzig_sentences_with_transations($file);
  
