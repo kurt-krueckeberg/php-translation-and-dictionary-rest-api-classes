@@ -1,5 +1,7 @@
 #  Todo
 
+Put tidy code in CollinsGermanDictionary in a separate function.
+
 Pons and Collins APIs don't conform to the DictionaryInterface::lookup method. While Pons results are iterable, Collins are not. All the Collins definitions are returned in a single html string. The Pons definitions are iterable, but
 also contained within html. The documentation for Pons's results is also inadequate and very terse.
 

@@ -31,7 +31,7 @@ function test_collins(File $file)
         $d = $t->get_best_matching($word);
 
         if (!is_null($d)) {
-            echo pretty($d);
+            echo "$d\n";
         }
     }
  

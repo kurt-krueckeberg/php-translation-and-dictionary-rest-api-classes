@@ -5,6 +5,21 @@ use LanguageTools\ClassID;
 
 class CollinsGermanDictionary extends RestClient {
 
+   static private function tidy(string $html) : string
+   {
+       static $config = array(
+           'indent'         => true,
+           'output-xhtml'   => true);
+
+       static $tidy = new \tidy; 
+
+       $tidy->parseString($html, $config, 'utf8');
+
+       $tidy->cleanRepair();
+
+       return (string) $tidy;
+   }
+ 
    public function __construct()
    {   
        parent::__construct(ClassID::Collins);
@@ -98,6 +113,7 @@ class CollinsGermanDictionary extends RestClient {
       
         return $obj;
     } 
+    
 
     public function get_entry(string $entryId) : \stdClass | null
     {
@@ -120,7 +136,9 @@ class CollinsGermanDictionary extends RestClient {
             return null;
         }
 
-        return json_decode($json);        
+        $obj = json_decode($json);        
+
+        $obj->entryContent = $this->tidy($obj->entryContent); 
     }
 
      /*
@@ -181,7 +199,7 @@ class CollinsGermanDictionary extends RestClient {
 
         $obj = json_decode($json);
 
-        return $obj->entryContent;
+        return $this->tidy($obj->entryContent);
     }
 
     public function get_did_you_mean(string $word) : array 
