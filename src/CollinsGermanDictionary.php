@@ -5,24 +5,22 @@ use LanguageTools\ClassID;
 
 class CollinsGermanDictionary extends RestClient {
 
-   static private function tidy(string $html) : string
+   private function tidy(string $html) : string
    {
-       static $config = array(
-           'indent'         => true,
-           'output-xhtml'   => true);
-
-       static $tidy = new \tidy; 
-
-       $tidy->parseString($html, $config, 'utf8');
-
-       $tidy->cleanRepair();
-
-       return (string) $tidy;
+      @$this->dom->loadHTML($html ,LIBXML_HTML_NOIMPLIED);
+       
+      return $this->dom->saveXML($this->dom->documentElement);
    }
  
    public function __construct()
    {   
-       parent::__construct(ClassID::Collins);
+      parent::__construct(ClassID::Collins);
+
+      $this->dom = new \DOMDocument();
+
+      $this->dom->preserveWhiteSpace = false;
+ 
+      $this->dom->formatOutput = true;
    } 
 
    static public function get_css() : string

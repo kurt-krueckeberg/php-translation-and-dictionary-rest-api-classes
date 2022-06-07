@@ -5,18 +5,6 @@ use LanguageTools\CollinsGermanDictionary;
 
 include 'vendor/autoload.php';
 
-function pretty(string $h) : string
-{
-  $dom = new DOMDocument();
-
-  $dom->preserveWhiteSpace = false;
-  
-  @$dom->loadHTML($h,LIBXML_HTML_NOIMPLIED);
-  
-  $dom->formatOutput = true;
-
-  return $dom->saveXML($dom->documentElement);
-}
 
 function test_collins(File $file)
 {
