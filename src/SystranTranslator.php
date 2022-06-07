@@ -32,7 +32,7 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
 
    public function getTranslationLanguages() : array
    {
-      $contents = $this->request(self::$languages['method'], self::$languages['route'],  ['query' => $this->query]);
+      $contents = $this->request(self::$languages['method'], self::$languages['route'],  ['headers' => $this->headers]);
              
       $arr = json_decode($contents, true);
     
@@ -41,7 +41,7 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
 
    final public function getDictionaryLanguages() : array
    {
-      $contents = $this->request(self::$dict_languages['method'], self::$dict_languages['route'],  ['headers' => $this->headers, 'query' => $this->query]);
+      $contents = $this->request(self::$dict_languages['method'], self::$dict_languages['route'],  ['headers' => $this->headers]);
              
       return json_decode($contents, true);    
    } 

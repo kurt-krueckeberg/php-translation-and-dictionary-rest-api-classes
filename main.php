@@ -200,19 +200,6 @@ function test_collins(string $fname)
   } 
 }
 
-function pretty(string $h) : string
-{
-  $dom = new DOMDocument();
-
-  $dom->preserveWhiteSpace = false;
-  
-  @$dom->loadHTML($h,LIBXML_HTML_NOIMPLIED);
-  
-  $dom->formatOutput = true;
-
-  return $dom->saveXML($dom->documentElement);
-}
-
 function test_collins(File $file)
 {
   try {
@@ -226,7 +213,7 @@ function test_collins(File $file)
         $d = $t->get_best_matching($word);
 
         if (!is_null($d)) {
-            echo pretty($d);
+            echo "$d\n";
         }
     }
  
