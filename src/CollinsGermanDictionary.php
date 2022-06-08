@@ -100,7 +100,7 @@ class CollinsGermanDictionary extends RestClient {
         static $pagesize = 'pagesize';
         static $pageindex = 'pageindex';
 
-        $contents = $this->request($search['method'], $search['route'], ['query' => ['q' => $word, 'pagesize' = $pageSize, 'pageindex' = $pageIndex]]);
+        $contents = $this->request($search['method'], $search['route'], ['query' => ['q' => $word, 'pagesize' => $pageSize, 'pageindex' => $pageIndex]]);
 
         $obj = json_decode($contents);
       
