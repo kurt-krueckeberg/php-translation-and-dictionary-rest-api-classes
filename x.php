@@ -11,14 +11,35 @@ function test_collins(File $file)
    
     $t = new CollinsGermanDictionary();
 
+$html = <<< EOS
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+-->
+<html lang='de'>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+EOS;
+
+    echo  $html . "\n";
+    echo CollinsGermanDictionary::get_css() . "\n";
+    echo "</style>\n</head>";
+
     foreach ($file as $word) {
 
+        
         $d = $t->get_best_matching($word);
 
         if (!is_null($d)) {
             echo "$d\n";
         }
     }
+
+     echo "</body>\n</html>\n";
  
   } catch (Exception $e) {
 
@@ -28,7 +49,7 @@ function test_collins(File $file)
 
   try {
    
-    $file =  new File("test.txt");
+    $file =  new File("vocab.txt");
     
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
