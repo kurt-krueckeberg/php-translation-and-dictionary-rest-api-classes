@@ -1,10 +1,14 @@
-<?php
-declare(strict_types=1);
-namespace LanguageTools;
-
-class CollinsCss {
-
-static private string $css = <<<EOS
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+-->
+<html lang='de'>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
 *{word-wrap:break-word;margin:0;padding:0;border:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;font-weight:inherit;font-family:inherit;font-size:inherit}
 body{color:#000;background:white;font:16px/1.6em 'Open Sans',serif;line-height:1.6em}[lang="ko"]:not(html),[lang="ko"]:not(html) *,[lang="ja"]:not(html),[lang="ja"]:not(html) *,[lang="hi"]:not(html),[lang="hi"]:not(html) *{font-family:auto}
 .small_text{padding-top:.3em;display:block;font-size:.8em;padding-right:2px}.small_text>a{border-bottom:dashed 1px rgba(0,0,0,.6)!important}h1 {font-size:1.3em;line-height:1.4em}
@@ -388,45 +392,45 @@ main,.main-content{width:calc(100% - 30px - 30px);max-width:1480px}.columns2{-we
 .columns .columns_item{width:33%}}
 @font-face{font-family:'icomoon';src:url('/external/fonts/icomoon.eot?1pqdoj&version=4.0.259');src:url('/external/fonts/icomoon.eot?1pqdoj#iefix&version=4.0.259') format('embedded-opentype'),url('/external/fonts/icomoon.ttf?1pqdoj&version=4.0.259') format('truetype'),url('/external/fonts/icomoon.woff?1pqdoj&version=4.0.259') format('woff'),url('/external/fonts/icomoon.svg?1pqdoj#icomoon&version=4.0.259') format('svg');font-weight:normal;font-style:normal;font-display:swap}
 [class^="icon-"],[class*=" icon-"]{font-family:'icomoon';speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;display:inline-block;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-.icon-instagram:before{content:"\e958"}.icon-Footer-Facebook .path1:before{content:"\e924";color:#fff}.icon-Footer-Facebook .path2:before{content:"\e925";margin-left:-1em;color:#000}
-.icon-Footer-Twitter .path1:before{content:"\e926";color:#fff}.icon-Footer-Twitter .path2:before{content:"\e938";margin-left:-1em;color:#000}.icon-Next .path1:before{content:"\e939";color:#000}
-.icon-Next .path2:before{content:"\e93a";margin-left:-1em;color:#fff}.icon-Prev .path1:before{content:"\e93b";color:#000}.icon-Prev .path2:before{content:"\e93c";margin-left:-1em;color:#fff}
-.icon-Share .path1:before{content:"\e93d";color:#000}.icon-Share .path2:before{content:"\e93e";margin-left:-1em;color:#fff}.icon-Share .path3:before{content:"\e93f";margin-left:-1em;color:#fff}
-.icon-Share .path4:before{content:"\e940";margin-left:-1em;color:#fff}.icon-Share .path5:before{content:"\e941";margin-left:-1em;color:#fff}.icon-Share .path6:before{content:"\e942";margin-left:-1em;color:#fff}
-.icon-Star-Empty:before{content:"\e943"}.icon-Star-Full:before{content:"\e944"}.icon-Translator-Keyboard .path1:before{content:"\e945";color:#000}
-.icon-Translator-Keyboard .path2:before{content:"\e946";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path3:before{content:"\e947";margin-left:-1em;color:#fff}
-.icon-Translator-Keyboard .path4:before{content:"\e948";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path5:before{content:"\e949";margin-left:-1em;color:#fff}
-.icon-Translator-Keyboard .path6:before{content:"\e94a";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path7:before{content:"\e94b";margin-left:-1em;color:#fff}
-.icon-Translator-Keyboard .path8:before{content:"\e94c";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path9:before{content:"\e94d";margin-left:-1em;color:#fff}
-.icon-Translator-Keyboard .path10:before{content:"\e94e";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path11:before{content:"\e94f";margin-left:-1em;color:#fff}
-.icon-Translator-Keyboard .path12:before{content:"\e950";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path13:before{content:"\e951";margin-left:-1em;color:#fff}
-.icon-Translator-Keyboard .path14:before{content:"\e952";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path15:before{content:"\e953";margin-left:-1em;color:#fff}
-.icon-Translator-Keyboard .path16:before{content:"\e954";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path17:before{content:"\e956";margin-left:-1em;color:#fff}
-.icon-Translator-Microphone .path1:before{content:"\e910";color:#000}.icon-Translator-Microphone .path2:before{content:"\e913";margin-left:-1em;color:#fff}
-.icon-Translator-Microphone .path3:before{content:"\e914";margin-left:-1em;color:none}.icon-Translator-Microphone .path4:before{content:"\e922";margin-left:-1em;color:none}
-.icon-Translator-Microphone .path5:before{content:"\e923";margin-left:-1em;color:#fff}.icon-fiber_new:before{content:"\e05e"}.icon-trending_down:before{content:"\e8e3"}
-.icon-trending_flat:before{content:"\e8e4"}.icon-trending_up:before{content:"\e8e5"}.icon-chat:before{content:"\e900"}
-.icon-community:before{content:"\e902"}.icon-read:before{content:"\e903"}.icon-chevron-down:before{content:"\e904"}
-.icon-chevron-up:before{content:"\e905"}.icon-chevron-thin-left:before{content:"\e906"}.icon-chevron-thin-right:before{content:"\e907"}
-.icon-warning:before{content:"\e908"}.icon-copy:before{content:"\e909"}.icon-exchange:before{content:"\e90a"}.icon-search:before{content:"\e90b"}
-.icon-bars:before{content:"\e90c"}.icon-Carrousel-Bullet-Empty:before{content:"\e90d"}.icon-Carrousel-Bullet-Full:before{content:"\e90e"}
-.icon-uniE90E:before{content:"\e90f"}.icon-uniE90F:before{content:"\e911"}.icon-uniE911:before{content:"\e912"}.icon-uniE912:before{content:"\e915"}
-.icon-uniE915:before{content:"\e916"}.icon-uniE916:before{content:"\e918"}.icon-uniE917:before{content:"\e917"}.icon-uniE918:before{content:"\e919"}
-.icon-uniE919:before{content:"\e91a"}.icon-uniE91A:before{content:"\e91b"}.icon-uniE91B:before{content:"\e91c"}.icon-uniE91C:before{content:"\e930"}
-.icon-uniE91D:before{content:"\e91d"}.icon-uniE91E:before{content:"\e91e"}.icon-Star-Empty1:before{content:"\e91f"}
-.icon-books:before{content:"\e920"}.icon-Star-Full1:before{content:"\e921"}.icon-uniE927:before{content:"\e927"}.icon-uniE928:before{content:"\e928"}
-.icon-uniE929:before{content:"\e929"}.icon-uniE92A:before{content:"\e92a"}.icon-uniE92B:before{content:"\e92b"}.icon-uniE92C:before{content:"\e92c"}
-.icon-uniE92D:before{content:"\e92d"}.icon-uniE92E:before{content:"\e92e"}.icon-uniE92F:before{content:"\e92f"}.icon-uniE930:before{content:"\e957"}
-.icon-uniE931:before{content:"\e931"}.icon-uniE932:before{content:"\e932"}.icon-uniE933:before{content:"\e933"}
-.icon-uniE934:before{content:"\e934"}.icon-uniE935:before{content:"\e935"}.icon-uniE936:before{content:"\e936"}
-.icon-uniE937:before{content:"\e937"}.icon-keyboard:before{content:"\e955"}.icon-sphere:before{content:"\e9c9"}
-.icon-eye-plus:before{content:"\e9cf"}.icon-eye-minus:before{content:"\e9d0"}.icon-share2:before{content:"\ea82"}
-.icon-user:before{content:"\f007"}.icon-times:before{content:"\f00d"}.icon-volume-up:before{content:"\f028"}.icon-twitter-square:before{content:"\f081"}
-.icon-twitter:before{content:"\f099"}.icon-facebook:before{content:"\f09a"}.icon-caret-down:before{content:"\f0d7"}
-.icon-caret-up:before{content:"\f0d8"}.icon-caret-left:before{content:"\f0d9"}.icon-caret-right:before{content:"\f0da"}
-.icon-sort:before{content:"\f0dc"}.icon-copyright:before{content:"\f1f9"}.icon-facebook-official:before{content:"\f230"}
-.icon-bar-graph:before{content:"\e901"}.icon-arrow-up-right2:before{content:"\ea3b"}.icon-arrow-right2:before{content:"\ea3c"}
-.icon-arrow-down-right2:before{content:"\ea3d"}.icon-checkmark:before{content:"\ea10"}.icon-headphones:before{content:"\e959"}
+.icon-instagram:before{content:"958"}.icon-Footer-Facebook .path1:before{content:"924";color:#fff}.icon-Footer-Facebook .path2:before{content:"925";margin-left:-1em;color:#000}
+.icon-Footer-Twitter .path1:before{content:"926";color:#fff}.icon-Footer-Twitter .path2:before{content:"938";margin-left:-1em;color:#000}.icon-Next .path1:before{content:"939";color:#000}
+.icon-Next .path2:before{content:"93a";margin-left:-1em;color:#fff}.icon-Prev .path1:before{content:"93b";color:#000}.icon-Prev .path2:before{content:"93c";margin-left:-1em;color:#fff}
+.icon-Share .path1:before{content:"93d";color:#000}.icon-Share .path2:before{content:"93e";margin-left:-1em;color:#fff}.icon-Share .path3:before{content:"93f";margin-left:-1em;color:#fff}
+.icon-Share .path4:before{content:"940";margin-left:-1em;color:#fff}.icon-Share .path5:before{content:"941";margin-left:-1em;color:#fff}.icon-Share .path6:before{content:"942";margin-left:-1em;color:#fff}
+.icon-Star-Empty:before{content:"943"}.icon-Star-Full:before{content:"944"}.icon-Translator-Keyboard .path1:before{content:"945";color:#000}
+.icon-Translator-Keyboard .path2:before{content:"946";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path3:before{content:"947";margin-left:-1em;color:#fff}
+.icon-Translator-Keyboard .path4:before{content:"948";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path5:before{content:"949";margin-left:-1em;color:#fff}
+.icon-Translator-Keyboard .path6:before{content:"94a";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path7:before{content:"94b";margin-left:-1em;color:#fff}
+.icon-Translator-Keyboard .path8:before{content:"94c";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path9:before{content:"94d";margin-left:-1em;color:#fff}
+.icon-Translator-Keyboard .path10:before{content:"94e";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path11:before{content:"94f";margin-left:-1em;color:#fff}
+.icon-Translator-Keyboard .path12:before{content:"950";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path13:before{content:"951";margin-left:-1em;color:#fff}
+.icon-Translator-Keyboard .path14:before{content:"952";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path15:before{content:"953";margin-left:-1em;color:#fff}
+.icon-Translator-Keyboard .path16:before{content:"954";margin-left:-1em;color:#fff}.icon-Translator-Keyboard .path17:before{content:"956";margin-left:-1em;color:#fff}
+.icon-Translator-Microphone .path1:before{content:"910";color:#000}.icon-Translator-Microphone .path2:before{content:"913";margin-left:-1em;color:#fff}
+.icon-Translator-Microphone .path3:before{content:"914";margin-left:-1em;color:none}.icon-Translator-Microphone .path4:before{content:"922";margin-left:-1em;color:none}
+.icon-Translator-Microphone .path5:before{content:"923";margin-left:-1em;color:#fff}.icon-fiber_new:before{content:"05e"}.icon-trending_down:before{content:"8e3"}
+.icon-trending_flat:before{content:"8e4"}.icon-trending_up:before{content:"8e5"}.icon-chat:before{content:"900"}
+.icon-community:before{content:"902"}.icon-read:before{content:"903"}.icon-chevron-down:before{content:"904"}
+.icon-chevron-up:before{content:"905"}.icon-chevron-thin-left:before{content:"906"}.icon-chevron-thin-right:before{content:"907"}
+.icon-warning:before{content:"908"}.icon-copy:before{content:"909"}.icon-exchange:before{content:"90a"}.icon-search:before{content:"90b"}
+.icon-bars:before{content:"90c"}.icon-Carrousel-Bullet-Empty:before{content:"90d"}.icon-Carrousel-Bullet-Full:before{content:"90e"}
+.icon-uniE90E:before{content:"90f"}.icon-uniE90F:before{content:"911"}.icon-uniE911:before{content:"912"}.icon-uniE912:before{content:"915"}
+.icon-uniE915:before{content:"916"}.icon-uniE916:before{content:"918"}.icon-uniE917:before{content:"917"}.icon-uniE918:before{content:"919"}
+.icon-uniE919:before{content:"91a"}.icon-uniE91A:before{content:"91b"}.icon-uniE91B:before{content:"91c"}.icon-uniE91C:before{content:"930"}
+.icon-uniE91D:before{content:"91d"}.icon-uniE91E:before{content:"91e"}.icon-Star-Empty1:before{content:"91f"}
+.icon-books:before{content:"920"}.icon-Star-Full1:before{content:"921"}.icon-uniE927:before{content:"927"}.icon-uniE928:before{content:"928"}
+.icon-uniE929:before{content:"929"}.icon-uniE92A:before{content:"92a"}.icon-uniE92B:before{content:"92b"}.icon-uniE92C:before{content:"92c"}
+.icon-uniE92D:before{content:"92d"}.icon-uniE92E:before{content:"92e"}.icon-uniE92F:before{content:"92f"}.icon-uniE930:before{content:"957"}
+.icon-uniE931:before{content:"931"}.icon-uniE932:before{content:"932"}.icon-uniE933:before{content:"933"}
+.icon-uniE934:before{content:"934"}.icon-uniE935:before{content:"935"}.icon-uniE936:before{content:"936"}
+.icon-uniE937:before{content:"937"}.icon-keyboard:before{content:"955"}.icon-sphere:before{content:"9c9"}
+.icon-eye-plus:before{content:"9cf"}.icon-eye-minus:before{content:"9d0"}.icon-share2:before{content:"a82"}
+.icon-user:before{content:"007"}.icon-times:before{content:"00d"}.icon-volume-up:before{content:"028"}.icon-twitter-square:before{content:"081"}
+.icon-twitter:before{content:"099"}.icon-facebook:before{content:"09a"}.icon-caret-down:before{content:"0d7"}
+.icon-caret-up:before{content:"0d8"}.icon-caret-left:before{content:"0d9"}.icon-caret-right:before{content:"0da"}
+.icon-sort:before{content:"0dc"}.icon-copyright:before{content:"1f9"}.icon-facebook-official:before{content:"230"}
+.icon-bar-graph:before{content:"901"}.icon-arrow-up-right2:before{content:"a3b"}.icon-arrow-right2:before{content:"a3c"}
+.icon-arrow-down-right2:before{content:"a3d"}.icon-checkmark:before{content:"a10"}.icon-headphones:before{content:"959"}
 .icon-2x{font-size:2em;height:32px;width:32px}.icon-fw{display:inline-block;text-align:center;width:1.55em}@font-face{font-family:'Open Sans';font-style:normal;font-weight:400;font-display:swap;src:local('Open Sans Regular'),local('OpenSans-Regular'),url(https://fonts.gstatic.com/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0b.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Zilla Slab';font-style:normal;font-weight:400;font-display:swap;src:local('Zilla Slab'),local('ZillaSlab-Regular'),url(https://fonts.gstatic.com/s/zillaslab/v5/dFa6ZfeM_74wlPZtksIFajo6_Q.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Zilla Slab';font-style:normal;font-weight:700;font-display:swap;src:local('Zilla Slab Bold'),local('ZillaSlab-Bold'),url(https://fonts.gstatic.com/s/zillaslab/v5/dFa5ZfeM_74wlPZtksIFYoEf6HOpWw.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -634,9 +638,2437 @@ label.openerBig,.page span.sensenum+.def,.page .biling .re.inline,.headerSense .
 #miniTranslate .select_input,#miniTranslate .recaptcha-text,.recaptcha-text>div:first-child{margin-bottom:10px}#miniTranslate label.submit button{font-family:"Open Sans",sans-serif}
 #miniTranslate .recaptcha-text a{text-decoration:underline}.pB.s-b{background:black;color:white}.pB.s-b .pB-t{line-height:1.3em;margin-bottom:0;font-family:'Zilla Slab';font-weight:400}.pB.s-b .pB-rM{padding-top:15px;display:flex}.pB.s-b .pB-rM a{flex:1}
 .pB.s-b .pB-rM a:first-child{text-align:left;padding-right:3px}.pB.s-b .time{font-style:italic} 
-EOS;
- static public function get_css() : string
- {
-    return self::$css;
- }
-}
+</style>
+</head>
+<body>
+<div class="entry_container">
+  <div class="entry lang_de" id="einsetzen_1">
+    <span class="inline">
+      <h1 class="hwd">einsetzen</h1>
+      <span class="lbl"><span> </span>separable</span>
+    </span>
+    <div class="hom" id="einsetzen_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">transitive verb</span>
+      </span>
+      <div class="sense">
+        <span> Â  </span>
+        <span class="bold">1Â </span>
+        <div class="sense">
+          <span class="bold"> Â  aÂ </span>
+          <span class="lbl"><span>(=Â </span>einfÃ¼gen<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to put in (<em class="hi">in</em><span class="lbl"> acc</span> -to)</span>
+          </span>
+          <div class="sense">
+            <span class="gramGrp">
+              <span class="colloc"><span>[</span>StÃ¼ck Stoff<span>]</span></span>
+            </span>
+            <span> </span>
+            <span class="cit lang_en-gb">
+              <span class="quote">to let in (<em class="hi">in</em><span class="lbl"> acc</span> -to)</span>
+            </span>
+          </div>
+          <!-- End of DIV sense-->
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  bÂ </span>
+          <span class="lbl"><span>(=Â </span>einschreiben<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to enter (<em class="hi">in</em><span class="lbl"> acc</span> in)</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">2Â </span>
+        <span class="lbl"><span>(=Â </span>ernennen, bestimmen<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">to appoint</span>
+        </span>
+        <div class="sense">
+          <span class="bold"> Â  aÂ </span>
+          <span class="gramGrp">
+            <span class="colloc"><span>[</span>Ausschuss<span>]</span></span>
+          </span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to set up</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  bÂ </span>
+          <span class="gramGrp">
+            <span class="colloc"><span>[</span>Erben, Nachfolger<span>]</span></span>
+          </span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to name</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <span class="cit" id="einsetzen_1.2">
+          <span>; Â  </span>
+          <span class="quote">jdn in ein Amt einsetzen</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to appoint sb to an office</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">3Â </span>
+        <span class="lbl"><span>(=Â </span>verwenden<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">to use <span>(</span><span class="lbl">also <span> </span>sport<span>)</span></span></span>
+        </span>
+        <div class="sense">
+          <span class="bold"> Â  aÂ </span>
+          <span class="gramGrp">
+            <span class="colloc"><span>[</span>Truppen, Polizei, Feuerwehr<span>]</span></span>
+          </span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to deploy</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  bÂ </span>
+          <span class="gramGrp">
+            <span class="colloc"><span>[</span>Busse, SonderzÃ¼ge<span>]</span></span>
+          </span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to put on</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">4Â </span>
+        <span class="lbl"><span>(</span>beim GlÃ¼cksspiel<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">to stake</span>
+        </span>
+        <span class="cit" id="einsetzen_1.3">
+          <span>; Â  </span>
+          <span class="quote">seine ganze Kraft fÃ¼r etw einsetzen</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to devote all one's energies to sth</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+    <div class="hom" id="einsetzen_1.4">
+      <span> <br/>â¶ </span>
+      <span class="gramGrp">
+        <span class="pos">intransitive verb</span>
+      </span>
+      <div class="sense">
+        <span class="lbl"><span>(=Â </span>beginnen<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">to start</span>
+        </span>
+        <div class="sense">
+          <span class="lbl"><span>(</span>music<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to come in</span>
+          </span>
+          <div class="sense">
+            <span class="lbl"><span>(</span>am Anfang<span>)</span></span>
+            <span> </span>
+            <span class="cit lang_en-gb">
+              <span class="quote">to start to play/sing</span>
+            </span>
+          </div>
+          <!-- End of DIV sense-->
+        </div>
+        <!-- End of DIV sense-->
+        <span class="cit" id="einsetzen_1.5">
+          <span>; Â  </span>
+          <span class="quote">die Ebbe/Flut setzt um 3 Uhr ein</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">the tide turns at 3 o'clock</span>
+          </span>
+        </span>
+        <span class="cit" id="einsetzen_1.6">
+          <span>; Â  </span>
+          <span class="quote">gegen Abend setzte stÃ¤rkeres Fieber ein</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">the fever increased toward(s) evening</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+    <div class="hom" id="einsetzen_1.7">
+      <span> <br/>â¶ </span>
+      <span class="gramGrp">
+        <span class="pos">reflexive verb</span>
+      </span>
+      <div class="sense">
+        <span class="re" id="einsetzen_1.8">
+          <span>: </span>
+          <span class="inline">
+            <span class="orth">sich (voll) einsetzen</span>
+          </span>
+          <div class="sense">
+            <span> </span>
+            <span class="cit lang_en-gb">
+              <span class="quote">to show (complete) commitment (<em class="hi">in</em><span class="lbl"> dat</span> to)</span>
+            </span>
+          </div>
+          <!-- End of DIV sense-->
+        </span>
+        <span class="cit" id="einsetzen_1.9">
+          <span>; Â  </span>
+          <span class="quote">die Mannschaft setzte sich bis an den Rand ihrer Kraft ein</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">the team did their absolute utmost</span>
+          </span>
+        </span>
+        <span class="cit" id="einsetzen_1.10">
+          <span>; Â  </span>
+          <span class="quote">sich fÃ¼r jdn einsetzen</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to fight for sb</span>
+          </span>
+          <span class="lbl"><span>(=Â </span>sich verwenden fÃ¼r<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to give sb one's support</span>
+          </span>
+        </span>
+        <span class="cit" id="einsetzen_1.11">
+          <span>; Â  </span>
+          <span class="quote">sie hat sich so sehr fÃ¼r ihn eingesetzt</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">she did so much for him</span>
+          </span>
+        </span>
+        <span class="cit" id="einsetzen_1.12">
+          <span>; Â  </span>
+          <span class="quote">sich fÃ¼r etw einsetzen</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to support sth</span>
+          </span>
+        </span>
+        <span class="cit" id="einsetzen_1.13">
+          <span>; Â  </span>
+          <span class="quote">ich werde mich dafÃ¼r einsetzen, dass ...</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">I will do what I can to see that ...</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="anh&#xC3;&#xB6;ren_1">
+    <span class="inline">
+      <h1 class="hwd">anhÃ¶ren</h1>
+      <span class="lbl"><span> </span>separable</span>
+    </span>
+    <div class="hom" id="anh&#xC3;&#xB6;ren_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">transitive verb</span>
+      </span>
+      <div class="sense">
+        <span> Â  </span>
+        <span class="bold">1Â </span>
+        <span class="lbl"><span>(=Â </span>GehÃ¶r schenken<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">to hear</span>
+        </span>
+        <div class="sense">
+          <span class="gramGrp">
+            <span class="colloc"><span>[</span>Schallplatten, Konzert<span>]</span></span>
+          </span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to listen to</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <span class="cit" id="anh&#xC3;&#xB6;ren_1.2">
+          <span>; Â  </span>
+          <span class="quote">jdn ganz anhÃ¶ren</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to hear sb out</span>
+          </span>
+        </span>
+        <span class="cit" id="anh&#xC3;&#xB6;ren_1.3">
+          <span>; Â  </span>
+          <span class="quote">sich <span class="lbl">dative</span> etw anhÃ¶ren</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to listen to sth</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">2Â </span>
+        <span class="lbl"><span>(=Â </span>zufÃ¤llig mithÃ¶ren<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">to overhear</span>
+        </span>
+        <span class="cit" id="anh&#xC3;&#xB6;ren_1.4">
+          <span>; Â  </span>
+          <span class="quote">ich kann das nicht mehr mit anhÃ¶ren</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">I can't listen to that any longer</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">3Â </span>
+        <span class="lbl"><span>(=Â </span>anmerken<span>)</span></span>
+        <span class="re" id="anh&#xC3;&#xB6;ren_1.5">
+          <span>: </span>
+          <span class="inline">
+            <span class="orth">man konnte ihr <em class="hi">or</em> ihrer Stimme die Verzweiflung anhÃ¶ren</span>
+          </span>
+          <div class="sense">
+            <span> </span>
+            <span class="cit lang_en-gb">
+              <span class="quote">one could hear the despair in her voice</span>
+            </span>
+          </div>
+          <!-- End of DIV sense-->
+        </span>
+        <span class="cit" id="anh&#xC3;&#xB6;ren_1.6">
+          <span>; Â  </span>
+          <span class="quote">das hÃ¶rt man ihm aber nicht an!</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">you can't tell that from hearing him speak</span>
+          </span>
+        </span>
+        <span class="cit" id="anh&#xC3;&#xB6;ren_1.7">
+          <span>; Â  </span>
+          <span class="quote">man hÃ¶rt ihm sofort den AuslÃ¤nder an</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">you can hear at once that he's a foreigner</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+    <div class="hom" id="anh&#xC3;&#xB6;ren_1.8">
+      <span> <br/>â¶ </span>
+      <span class="gramGrp">
+        <span class="pos">reflexive verb</span>
+      </span>
+      <div class="sense">
+        <span class="lbl"><span>(=Â </span>klingen<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">to sound</span>
+        </span>
+        <span class="cit" id="anh&#xC3;&#xB6;ren_1.9">
+          <span>; Â  </span>
+          <span class="quote">das hÃ¶rt sich ja gut an</span>
+          <span class="lbl"><span> (</span>informal<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">that sounds good</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="anlage_1">
+    <span class="inline">
+      <h1 class="hwd">Anlage</h1>
+    </span>
+    <div class="hom" id="anlage_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">feminine noun</span>
+      </span>
+      <div class="sense">
+        <span> Â  </span>
+        <span class="bold">1Â </span>
+        <span class="lbl"><span>(=Â </span>Fabrikanlage<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">plant</span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">2Â </span>
+        <span class="lbl"><span>(=Â </span>GrÃ¼nanlage, Parkanlage<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">(public) park</span>
+        </span>
+        <div class="sense">
+          <span class="lbl"><span>(</span>um ein GebÃ¤ude herum<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">grounds <em class="hi">pl</em></span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">3Â </span>
+        <div class="sense">
+          <span class="bold"> Â  aÂ </span>
+          <span class="lbl"><span>(=Â </span>Einrichtung<span>)</span></span>
+          <span class="lbl"><span> (</span>military</span>
+          <span class="lbl"><span>, </span>electricity<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">installation(s <em class="hi">pl</em>)</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  bÂ </span>
+          <span class="lbl"><span>(=Â </span>sanitÃ¤re Anlagen<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">sanitary installations <em class="hi">pl</em><span class="lbl"><span>(</span>form<span>)</span></span></span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  cÂ </span>
+          <span class="lbl"><span>(=Â </span>Sportanlage etc<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">facilities <em class="hi">pl</em></span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">4Â </span>
+        <span class="lbl"><span>(</span>informal<span>)</span></span>
+        <span class="lbl"><span> (=Â </span>Stereoanlage<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">(stereo) system <em class="hi">or</em> equipment</span>
+        </span>
+        <div class="sense">
+          <span class="lbl"><span>(=Â </span>EDV-Anlage<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">system</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">5Â </span>
+        <span class="lbl">usually <span> </span>plural</span>
+        <span class="lbl"><span> (=Â </span>Veranlagung<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">aptitude</span>
+        </span>
+        <span>, </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">talent (<em class="hi">zu</em> for)</span>
+        </span>
+        <div class="sense">
+          <span class="lbl"><span>(=Â </span>Neigung<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">tendency (<em class="hi">zu</em> to)</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">6Â </span>
+        <span class="lbl"><span>(=Â </span>das Anlegen<span>)</span></span>
+        <div class="sense">
+          <span class="bold"> Â  aÂ </span>
+          <span class="gramGrp">
+            <span class="colloc"><span>[</span>von Park<span>]</span></span>
+          </span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">laying out</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  bÂ </span>
+          <span class="gramGrp">
+            <span class="colloc"><span>[</span>von Stausee etc<span>]</span></span>
+          </span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">construction</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <span class="cit" id="anlage_1.2">
+          <span>; Â  </span>
+          <span class="quote">die Anlage einer Kartei veranlassen</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to start a file</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">7Â </span>
+        <span class="lbl"><span>(=Â </span>Kapitalanlage<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">investment</span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">8Â </span>
+        <span class="lbl"><span>(=Â </span>Beilage zu einem Schreiben<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">enclosure</span>
+        </span>
+        <span class="cit" id="anlage_1.3">
+          <span>; Â  </span>
+          <span class="quote">als Anlage <em class="hi">or</em> in der Anlage erhalten Sie ...</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">please find enclosed ...</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="stoff_1">
+    <span class="inline">
+      <h1 class="hwd">Stoff</h1>
+      <span> [</span>
+      <span class="pron" type="">ÊtÉf<a href="#" class="playback"><img src="https://api.collinsdictionary.com/external/images/redspeaker.gif?version=2016-11-09-0913" alt="Pronunciation for Stoff" class="sound" title="Pronunciation for Stoff" style="cursor: pointer"/></a><audio type="pronunciation" title="Stoff"><source type="audio/mpeg" src="https://api.collinsdictionary.com/media/sounds/sounds/d/de_/de_w0/de_w0016850.mp3"/>Your browser does not support HTML5 audio.</audio></span>
+      <span>]</span>
+    </span>
+    <div class="hom" id="stoff_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">masculine noun</span>
+      </span>
+      <span class="inline">
+        <span class="orth"><span class="bluebold">, </span>Stoff(e)s</span>
+        <span class="lbl"><span> </span>genitive</span>
+      </span>
+      <span class="inline">
+        <span class="orth"><span class="bluebold">, </span>Stoffe</span>
+        <span class="lbl"><span> </span>plural</span>
+      </span>
+      <div class="sense">
+        <span> Â  </span>
+        <span class="bold">1Â </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">material</span>
+        </span>
+        <div class="sense">
+          <span class="lbl"><span>(</span>als Materialart<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">cloth</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">2Â </span>
+        <span class="gramGrp">
+          <span class="subc">no plural</span>
+        </span>
+        <span class="lbl"><span> (=Â </span>Materie<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">matter</span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">3Â </span>
+        <span class="lbl"><span>(=Â </span>Substanz<span>)</span></span>
+        <span class="lbl"><span> (</span>chemistry<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">substance</span>
+        </span>
+        <span class="cit" id="stoff_1.2">
+          <span>; Â  </span>
+          <span class="quote">tierische Stoffe</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">animal substance</span>
+          </span>
+        </span>
+        <span class="cit" id="stoff_1.3">
+          <span>; Â  </span>
+          <span class="quote">pflanzliche Stoffe</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">vegetable matter</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">4Â </span>
+        <div class="sense">
+          <span class="bold"> Â  aÂ </span>
+          <span class="lbl"><span>(=Â </span>Gegenstand, Thema<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">subject (matter)</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  bÂ </span>
+          <span class="lbl"><span>(=Â </span>Unterhaltungsstoff, Diskussionsstoff<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">topic</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  cÂ </span>
+          <span class="lbl"><span>(=Â </span>Material<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">material</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <span class="cit" id="stoff_1.4">
+          <span>; Â  </span>
+          <span class="quote">Stoff fÃ¼r ein <em class="hi">or</em> zu einem Buch sammeln</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to collect material for a book</span>
+          </span>
+        </span>
+        <span class="cit" id="stoff_1.5">
+          <span>; Â  </span>
+          <span class="quote">Stoff zum Lesen</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">reading matter</span>
+          </span>
+        </span>
+        <span class="cit" id="stoff_1.6">
+          <span>; Â  </span>
+          <span class="quote">Stoff zum Nachdenken</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">food for thought</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">5Â </span>
+        <span class="lbl"><span>(</span>informal<span>)</span></span>
+        <span class="lbl"><span> (=Â </span>Rauschgift<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">dope <span class="lbl"><span>(</span>inf<span>)</span></span></span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="schlucken_1">
+    <span class="inline">
+      <h1 class="hwd">schlucken</h1>
+      <span> [</span>
+      <span class="pron" type="">ËÊlÊkn<a href="#" class="playback"><img src="https://api.collinsdictionary.com/external/images/redspeaker.gif?version=2016-11-09-0913" alt="Pronunciation for schlucken" class="sound" title="Pronunciation for schlucken" style="cursor: pointer"/></a><audio type="pronunciation" title="schlucken"><source type="audio/mpeg" src="https://api.collinsdictionary.com/media/sounds/sounds/d/de_/de_w0/de_w0088065.mp3"/>Your browser does not support HTML5 audio.</audio></span>
+      <span>]</span>
+    </span>
+    <div class="hom" id="schlucken_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">transitive verb</span>
+      </span>
+      <div class="sense">
+        <span> Â  </span>
+        <span class="bold">1Â </span>
+        <span class="lbl"><span>(=Â </span>hinunterschlucken<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">to swallow</span>
+        </span>
+        <div class="sense">
+          <span class="lbl"><span>(</span>hastig<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to gulp down</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <span class="cit" id="schlucken_1.2">
+          <span>; Â  </span>
+          <span class="quote">Alkohol schlucken</span>
+          <span class="lbl"><span> (</span>slang<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to booze <span class="lbl"><span>(</span>inf<span>)</span></span></span>
+          </span>
+        </span>
+        <span class="cit" id="schlucken_1.3">
+          <span>; Â  </span>
+          <span class="quote">Pillen schlucken</span>
+          <span class="lbl"><span> (</span>slang<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to pop pills <span class="lbl"><span>(</span>inf<span>)</span></span></span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">2Â </span>
+        <span class="lbl"><span>(</span>business</span>
+        <span class="lbl"><span> </span>informal<span>)</span></span>
+        <div class="sense">
+          <span class="lbl"><span>(=Â </span>absorbieren<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to swallow up</span>
+          </span>
+          <div class="sense">
+            <span class="gramGrp">
+              <span class="colloc"><span>[</span>Benzin, Ãl<span>]</span></span>
+            </span>
+            <span> </span>
+            <span class="cit lang_en-gb">
+              <span class="quote">to guzzle</span>
+            </span>
+          </div>
+          <!-- End of DIV sense-->
+        </div>
+        <!-- End of DIV sense-->
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">3Â </span>
+        <span class="lbl"><span>(</span>informal<span>)</span></span>
+        <span class="lbl"><span> (=Â </span>hinnehmen, glauben<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">to swallow</span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+    <div class="hom" id="schlucken_1.4">
+      <span> <br/>â¶ </span>
+      <span class="gramGrp">
+        <span class="pos">intransitive verb</span>
+      </span>
+      <div class="sense">
+        <span class="cit lang_en-gb">
+          <span class="quote">to swallow</span>
+        </span>
+        <div class="sense">
+          <span class="lbl"><span>(</span>hastig<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to gulp</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <span class="cit" id="schlucken_1.5">
+          <span>; Â  </span>
+          <span class="quote">da musste ich erst mal (trocken <em class="hi">or</em> dreimal) schlucken</span>
+          <span class="lbl"><span> (</span>informal<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">I had to take a deep breath</span>
+          </span>
+        </span>
+        <span class="cit" id="schlucken_1.6">
+          <span>; Â  </span>
+          <span class="quote">daran hatte er schwer zu schlucken</span>
+          <span> </span>
+          <span class="lbl"><span>(</span>figurative<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">he found that difficult to swallow</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="&#xC3;&#xBC;berrest_1">
+    <span class="inline">
+      <h1 class="hwd">Ãberrest</h1>
+    </span>
+    <div class="hom" id="&#xC3;&#xBC;berrest_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">masculine noun</span>
+      </span>
+      <div class="sense">
+        <span class="cit lang_en-gb">
+          <span class="quote">remains <em class="hi">pl</em></span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="k&#xC3;&#xB6;rper_1">
+    <span class="inline">
+      <h1 class="hwd">KÃ¶rper</h1>
+      <span> [</span>
+      <span class="pron" type="">ËkÅrpÉ<a href="#" class="playback"><img src="https://api.collinsdictionary.com/external/images/redspeaker.gif?version=2016-11-09-0913" alt="Pronunciation for K&#xC3;&#xB6;rper" class="sound" title="Pronunciation for K&#xC3;&#xB6;rper" style="cursor: pointer"/></a><audio type="pronunciation" title="K&#xC3;&#xB6;rper"><source type="audio/mpeg" src="https://api.collinsdictionary.com/media/sounds/sounds/d/de_/de_w0/de_w0009640.mp3"/>Your browser does not support HTML5 audio.</audio></span>
+      <span>]</span>
+    </span>
+    <div class="hom" id="k&#xC3;&#xB6;rper_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">masculine noun</span>
+      </span>
+      <span class="inline">
+        <span class="orth"><span class="bluebold">, </span>KÃ¶rpers</span>
+        <span class="lbl"><span> </span>genitive</span>
+      </span>
+      <span class="inline">
+        <span class="orth"><span class="bluebold">, </span>KÃ¶rper</span>
+        <span class="lbl"><span> </span>plural</span>
+      </span>
+      <div class="sense">
+        <span class="lbl"><span>(</span>alle Bedeutungen<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">body</span>
+        </span>
+        <span class="cit" id="k&#xC3;&#xB6;rper_1.2">
+          <span>; Â  </span>
+          <span class="quote">KÃ¶rper und Geist</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">mind and body</span>
+          </span>
+        </span>
+        <span class="cit" id="k&#xC3;&#xB6;rper_1.3">
+          <span>; Â  </span>
+          <span class="quote">am ganzen KÃ¶rper beben <em class="hi">or</em> zittern/frieren</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to tremble/to be cold all over</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="wirkstoff_1">
+    <span class="inline">
+      <h1 class="hwd">Wirkstoff</h1>
+    </span>
+    <div class="hom" id="wirkstoff_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">masculine noun</span>
+      </span>
+      <div class="sense">
+        <span>(</span>
+        <span class="lbl">especially <span> </span>physiology<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">active substance</span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="spulen_1">
+    <span class="inline">
+      <h1 class="hwd">spulen</h1>
+      <span> [</span>
+      <span class="pron" type="">ËÊpuËlÉn<a href="#" class="playback"><img src="https://api.collinsdictionary.com/external/images/redspeaker.gif?version=2016-11-09-0913" alt="Pronunciation for spulen" class="sound" title="Pronunciation for spulen" style="cursor: pointer"/></a><audio type="pronunciation" title="spulen"><source type="audio/mpeg" src="https://api.collinsdictionary.com/media/sounds/sounds/d/de_/de_sp/de_spulen.mp3"/>Your browser does not support HTML5 audio.</audio></span>
+      <span>]</span>
+    </span>
+    <div class="hom" id="spulen_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">transitive verb</span>
+      </span>
+      <div class="sense">
+        <span class="cit lang_en-gb">
+          <span class="quote">to spool <span>(</span><span class="lbl">also <span> </span>computing<span>)</span></span></span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="r&#xC3;&#xBC;ckstand_1">
+    <span class="inline">
+      <h1 class="hwd">RÃ¼ckstand</h1>
+      <span> [</span>
+      <span class="pron" type="">ËrÊkÊtant<a href="#" class="playback"><img src="https://api.collinsdictionary.com/external/images/redspeaker.gif?version=2016-11-09-0913" alt="Pronunciation for R&#xC3;&#xBC;ckstand" class="sound" title="Pronunciation for R&#xC3;&#xBC;ckstand" style="cursor: pointer"/></a><audio type="pronunciation" title="R&#xC3;&#xBC;ckstand"><source type="audio/mpeg" src="https://api.collinsdictionary.com/media/sounds/sounds/d/de_/de_ru/de_ruckstand.mp3"/>Your browser does not support HTML5 audio.</audio></span>
+      <span>]</span>
+    </span>
+    <div class="hom" id="r&#xC3;&#xBC;ckstand_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">masculine noun</span>
+      </span>
+      <div class="sense">
+        <span> Â  </span>
+        <span class="bold">1Â </span>
+        <div class="sense">
+          <span class="lbl"><span>(=Â </span>Ãberrest<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">remains <em class="hi">pl</em></span>
+          </span>
+          <div class="sense">
+            <span class="lbl"><span>(</span>bei Verbrennung<span>)</span></span>
+            <span class="lbl"><span> (=Â </span>Bodensatz<span>)</span></span>
+            <span> </span>
+            <span class="cit lang_en-gb">
+              <span class="quote">residue</span>
+            </span>
+          </div>
+          <!-- End of DIV sense-->
+        </div>
+        <!-- End of DIV sense-->
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">2Â </span>
+        <span class="lbl"><span>(=Â </span>Verzug<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">delay</span>
+        </span>
+        <div class="sense">
+          <span class="bold"> Â  aÂ </span>
+          <span class="lbl"><span>(</span>bei AuftrÃ¤gen<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">backlog</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  bÂ </span>
+          <span class="lbl"><span>(</span>bei Entwicklung<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">slow progress</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <span class="cit" id="r&#xC3;&#xBC;ckstand_1.2">
+          <span>; Â  </span>
+          <span class="quote">im RÃ¼ckstand sein</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to be behind</span>
+          </span>
+        </span>
+        <span class="cit" id="r&#xC3;&#xBC;ckstand_1.3">
+          <span>; Â  </span>
+          <span class="quote">seinen RÃ¼ckstand aufholen</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to make up for one's delay</span>
+          </span>
+          <span class="lbl"><span>(</span>bei AuftrÃ¤gen<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to catch up on a backlog</span>
+          </span>
+          <span class="lbl"><span>(</span>bei Zahlungen<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to catch up on one's payments</span>
+          </span>
+          <span class="lbl"><span>(</span>in Leistungen<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to catch up</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">3Â </span>
+        <span class="lbl"><span>(=Â </span>AuÃenstÃ¤nde<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">arrears <em class="hi">pl</em></span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">4Â </span>
+        <span class="lbl"><span>(</span>sport<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">amount by which one is behind</span>
+        </span>
+        <span class="cit" id="r&#xC3;&#xBC;ckstand_1.4">
+          <span>; Â  </span>
+          <span class="quote">mit 0:2 (Toren) im RÃ¼ckstand sein</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to be 2-0 down</span>
+          </span>
+        </span>
+        <span class="cit" id="r&#xC3;&#xBC;ckstand_1.5">
+          <span>; Â  </span>
+          <span class="quote">ihr RÃ¼ckstand auf den TabellenfÃ¼hrer betrÃ¤gt 4 Punkte</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">they are 4 points behind the leader</span>
+          </span>
+        </span>
+        <span class="cit" id="r&#xC3;&#xBC;ckstand_1.6">
+          <span>; Â  </span>
+          <span class="quote">seinen RÃ¼ckstand aufholen</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to catch up</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="nachweisen_1">
+    <span class="inline">
+      <h1 class="hwd">nachweisen</h1>
+      <span> [</span>
+      <span class="pron" type="">ËnaËxvaizn<a href="#" class="playback"><img src="https://api.collinsdictionary.com/external/images/redspeaker.gif?version=2016-11-09-0913" alt="Pronunciation for nachweisen" class="sound" title="Pronunciation for nachweisen" style="cursor: pointer"/></a><audio type="pronunciation" title="nachweisen"><source type="audio/mpeg" src="https://api.collinsdictionary.com/media/sounds/sounds/d/de_/de_na/de_nachweisen.mp3"/>Your browser does not support HTML5 audio.</audio></span>
+      <span>]</span>
+    </span>
+    <div class="hom" id="nachweisen_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">transitive verb</span>
+        <span class="lbl"><span> </span>separable</span>
+        <span class="lbl"><span>, </span>irregular</span>
+      </span>
+      <div class="sense">
+        <span class="lbl"><span>(=Â </span>beweisen, aufzeigen<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">to prove</span>
+        </span>
+        <div class="sense">
+          <span class="lbl"><span>(</span>technical</span>
+          <span class="lbl"><span>, </span>medicine<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to detect</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <span class="cit" id="nachweisen_1.2">
+          <span>; Â  </span>
+          <span class="quote">die Polizei konnte ihm nichts nachweisen</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">the police could not prove anything against him</span>
+          </span>
+        </span>
+        <span class="cit" id="nachweisen_1.3">
+          <span>; Â  </span>
+          <span class="quote">dem Angeklagten konnte seine Schuld nicht nachgewiesen werden</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">the accused's guilt could not be proved <span class="lbl"><span>(</span>Brit<span>)</span></span><em class="hi">or</em> proven</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="umweltverschmutzung_1">
+    <span class="inline">
+      <h1 class="hwd">Umweltverschmutzung</h1>
+    </span>
+    <div class="hom" id="umweltverschmutzung_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">feminine noun</span>
+      </span>
+      <div class="sense">
+        <span class="cit lang_en-gb">
+          <span class="quote">pollution (of the environment)</span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="umweltbelastung_1">
+    <span class="inline">
+      <h1 class="hwd">Umweltbelastung</h1>
+    </span>
+    <div class="hom" id="umweltbelastung_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">feminine noun</span>
+      </span>
+      <div class="sense">
+        <span class="cit lang_en-gb">
+          <span class="quote">damage to the environment</span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="spur_1">
+    <span class="inline">
+      <h1 class="hwd">Spur</h1>
+      <span> [</span>
+      <span class="pron" type="">ÊpuËÉ<a href="#" class="playback"><img src="https://api.collinsdictionary.com/external/images/redspeaker.gif?version=2016-11-09-0913" alt="Pronunciation for Spur" class="sound" title="Pronunciation for Spur" style="cursor: pointer"/></a><audio type="pronunciation" title="Spur"><source type="audio/mpeg" src="https://api.collinsdictionary.com/media/sounds/sounds/d/de_/de_w0/de_w0092980.mp3"/>Your browser does not support HTML5 audio.</audio></span>
+      <span>]</span>
+    </span>
+    <div class="hom" id="spur_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">feminine noun</span>
+      </span>
+      <span class="inline">
+        <span class="orth"><span class="bluebold">, </span>Spur</span>
+        <span class="lbl"><span> </span>genitive</span>
+      </span>
+      <span class="inline">
+        <span class="orth"><span class="bluebold">, </span>Spuren</span>
+        <span class="lbl"><span> </span>plural</span>
+      </span>
+      <div class="sense">
+        <span> Â  </span>
+        <span class="bold">1Â </span>
+        <div class="sense">
+          <span class="bold"> Â  aÂ </span>
+          <span class="lbl"><span>(=Â </span>Abdruck im Boden etc<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">track</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  bÂ </span>
+          <span class="lbl"><span>(=Â </span>hinterlassenes Zeichen<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">trace</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  cÂ </span>
+          <span class="lbl"><span>(=Â </span>Bremsspur<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">skidmarks <em class="hi">pl</em></span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  dÂ </span>
+          <span class="lbl"><span>(=Â </span>Blutspur etc, FÃ¤hrte<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">trail</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <span class="cit" id="spur_1.2">
+          <span>; Â  </span>
+          <span class="quote">von den TÃ¤tern fehlt jede Spur</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">there is no clue as to the whereabouts of the persons responsible</span>
+          </span>
+        </span>
+        <span class="cit" id="spur_1.3">
+          <span>; Â  </span>
+          <span class="quote">der TÃ¤ter hat keine Spuren hinterlassen</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">the culprit left no traces</span>
+          </span>
+        </span>
+        <span class="cit" id="spur_1.4">
+          <span>; Â  </span>
+          <span class="quote">auf der richtigen/falschen Spur sein</span>
+          <span> </span>
+          <span class="lbl"><span>(</span>literal</span>
+          <span class="lbl"><span>, </span>figurative<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to be on the right/wrong track</span>
+          </span>
+        </span>
+        <span class="cit" id="spur_1.5">
+          <span>; Â  </span>
+          <span class="quote">jdm/einer Sache auf der Spur sein/auf die Spur kommen</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to be/get onto sb/sth</span>
+          </span>
+        </span>
+        <span class="cit" id="spur_1.6">
+          <span>; Â  </span>
+          <span class="quote">Spuren hinterlassen</span>
+          <span> </span>
+          <span class="lbl"><span>(</span>figurative<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to leave one's/its mark</span>
+          </span>
+        </span>
+        <span class="cit" id="spur_1.7">
+          <span>; Â  </span>
+          <span class="quote">nicht ohne Spur(en) an jdm vorÃ¼bergehen</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to leave its mark on sb</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">2Â </span>
+        <span class="lbl"><span>(</span>figurative<span>)</span></span>
+        <div class="sense">
+          <span class="lbl"><span>(=Â </span>kleine Menge<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">trace</span>
+          </span>
+          <div class="sense">
+            <span class="gramGrp">
+              <span class="colloc"><span>[</span>von Vernunft, Talent etc<span>]</span></span>
+            </span>
+            <span> </span>
+            <span class="cit lang_en-gb">
+              <span class="quote">scrap</span>
+            </span>
+          </div>
+          <!-- End of DIV sense-->
+        </div>
+        <!-- End of DIV sense-->
+        <span class="cit" id="spur_1.8">
+          <span>; Â  </span>
+          <span class="quote">von Anstand/Takt keine Spur</span>
+          <span class="lbl"><span> (</span>informal<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">no decency/tact at all</span>
+          </span>
+        </span>
+        <span class="cit" id="spur_1.9">
+          <span>; Â  </span>
+          <span class="quote">von Liebe keine Spur</span>
+          <span class="lbl"><span> (</span>informal<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">love doesn't/didn't come into it</span>
+          </span>
+        </span>
+        <span class="cit" id="spur_1.10">
+          <span>; Â  </span>
+          <span class="quote">keine Spur!</span>
+          <span class="lbl"><span> (</span>informal<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">not at all</span>
+          </span>
+        </span>
+        <span class="cit" id="spur_1.11">
+          <span>; Â  </span>
+          <span class="quote">keine Spur davon ist wahr</span>
+          <span class="lbl"><span> (</span>informal<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">there's not a scrap of truth in it</span>
+          </span>
+        </span>
+        <span class="cit" id="spur_1.12">
+          <span>; Â  </span>
+          <span class="quote">wir hatten nicht die Spur einer Chance</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">we didn't have a ghost of a chance <span class="lbl"><span>(</span>inf<span>)</span></span></span>
+          </span>
+        </span>
+        <span class="cit" id="spur_1.13">
+          <span>; Â  </span>
+          <span class="quote">eine Spur zu laut/grell</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">a touch too loud/garish</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">3Â </span>
+        <span class="lbl"><span>(=Â </span>Fahrbahn<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">lane</span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">4Â </span>
+        <span class="lbl"><span>(</span>computing<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">track</span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="absch&#xC3;&#xA4;tzen_1">
+    <span class="inline">
+      <h1 class="hwd">abschÃ¤tzen</h1>
+    </span>
+    <div class="hom" id="absch&#xC3;&#xA4;tzen_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">transitive verb</span>
+        <span class="lbl"><span> </span>separable</span>
+      </span>
+      <div class="sense">
+        <span class="cit lang_en-gb">
+          <span class="quote">to assess</span>
+        </span>
+        <span class="cit" id="absch&#xC3;&#xA4;tzen_1.2">
+          <span>; Â  </span>
+          <span class="quote">ein abschÃ¤tzender Blick</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">an appraising look</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="aufgrund_1">
+    <span class="inline">
+      <h1 class="hwd">aufgrund</h1>
+      <span> [</span>
+      <span class="pron" type="">aufËÉ¡rÊnt<a href="#" class="playback"><img src="https://api.collinsdictionary.com/external/images/redspeaker.gif?version=2016-11-09-0913" alt="Pronunciation for aufgrund" class="sound" title="Pronunciation for aufgrund" style="cursor: pointer"/></a><audio type="pronunciation" title="aufgrund"><source type="audio/mpeg" src="https://api.collinsdictionary.com/media/sounds/sounds/d/de_/de_w0/de_w0027100.mp3"/>Your browser does not support HTML5 audio.</audio></span>
+      <span>]</span>
+    </span>
+    <div class="hom" id="aufgrund_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">preposition</span>
+        <span class="gramGrp">
+          <span class="subc"><span> </span>  genitive</span>
+        </span>
+      </span>
+      <div class="sense">
+        <span class="cit lang_en-gb">
+          <span class="quote">on the basis of</span>
+        </span>
+        <span class="cit" id="aufgrund_1.2">
+          <span>; Â  </span>
+          <span class="quote">aufgrund einer Verwechslung/seiner Eifersucht</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">because of a mistake/his jealousy</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="vornehmen_1">
+    <span class="inline">
+      <h1 class="hwd">vornehmen</h1>
+    </span>
+    <div class="hom" id="vornehmen_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">transitive verb</span>
+        <span class="lbl"><span> </span>separable</span>
+        <span class="lbl"><span>, </span>irregular</span>
+      </span>
+      <div class="sense">
+        <span> Â  </span>
+        <span class="bold">1Â </span>
+        <span class="lbl"><span>(=Â </span>ausfÃ¼hren<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">to carry out</span>
+        </span>
+        <div class="sense">
+          <span class="bold"> Â  aÂ </span>
+          <span class="gramGrp">
+            <span class="colloc"><span>[</span>Umfrage, Ãnderungen<span>]</span></span>
+          </span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to do</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  bÂ </span>
+          <span class="gramGrp">
+            <span class="colloc"><span>[</span>Messungen<span>]</span></span>
+          </span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to take</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  cÂ </span>
+          <span class="gramGrp">
+            <span class="colloc"><span>[</span>Einsparungen<span>]</span></span>
+          </span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to make</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <span class="cit" id="vornehmen_1.2">
+          <span>; Â  </span>
+          <span class="quote">(sich <span class="lbl">dative</span>) etw vornehmen</span>
+          <span> </span>
+          <span class="lbl"><span>(=Â </span>in Angriff nehmen<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to get to work on sth</span>
+          </span>
+          <span class="lbl"><span>(=Â </span>planen, vorhaben<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to intend to do sth</span>
+          </span>
+          <span class="lbl"><span>(=Â </span>Vorsatz fassen<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to have resolved to do sth</span>
+          </span>
+        </span>
+        <span class="cit" id="vornehmen_1.3">
+          <span>; Â  </span>
+          <span class="quote">ich habe mir vorgenommen, das nÃ¤chste Woche zu tun</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">I intend to do that next week</span>
+          </span>
+        </span>
+        <span class="cit" id="vornehmen_1.4">
+          <span>; Â  </span>
+          <span class="quote">ich habe mir zu viel vorgenommen</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">I've taken on too much</span>
+          </span>
+        </span>
+        <span class="cit" id="vornehmen_1.5">
+          <span>; Â  </span>
+          <span class="quote">sich <span class="lbl">dative</span> jdn vornehmen</span>
+          <span class="lbl"><span> (</span>informal<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to have a word with sb</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">2Â </span>
+        <span class="lbl"><span>(=Â </span>frÃ¼her drannehmen<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">to attend to first</span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="dosis_1">
+    <span class="inline">
+      <h1 class="hwd">Dosis</h1>
+      <span> [</span>
+      <span class="pron" type="">ËdoËzÉªs<a href="#" class="playback"><img src="https://api.collinsdictionary.com/external/images/redspeaker.gif?version=2016-11-09-0913" alt="Pronunciation for Dosis" class="sound" title="Pronunciation for Dosis" style="cursor: pointer"/></a><audio type="pronunciation" title="Dosis"><source type="audio/mpeg" src="https://api.collinsdictionary.com/media/sounds/sounds/d/de_/de_w0/de_w0026080.mp3"/>Your browser does not support HTML5 audio.</audio></span>
+      <span>]</span>
+    </span>
+    <div class="hom" id="dosis_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">feminine noun</span>
+      </span>
+      <span class="inline">
+        <span class="orth"><span class="bluebold">, </span>Dosis</span>
+        <span class="lbl"><span> </span>genitive</span>
+      </span>
+      <span class="inline">
+        <span class="orth"><span class="bluebold">, </span>Dosen</span>
+        <span class="inline">
+          <span> [</span>
+          <span class="pron" type="">ËdoËzn<a href="#" class="playback"><img src="https://api.collinsdictionary.com/external/images/redspeaker.gif?version=2016-11-09-0913" alt="Pronunciation for , Dosen" class="sound" title="Pronunciation for , Dosen" style="cursor: pointer"/></a><audio type="pronunciation" title=""><source type="audio/mpeg" src="https://api.collinsdictionary.com/media/sounds/sounds/d/de_/de_do/de_dosen_1.mp3"/>Your browser does not support HTML5 audio.</audio></span>
+          <span>]</span>
+        </span>
+        <span class="lbl"><span> </span>plural</span>
+      </span>
+      <div class="sense">
+        <span class="cit lang_en-gb">
+          <span class="quote">dose</span>
+        </span>
+        <span class="cit" id="dosis_1.2">
+          <span>; Â  </span>
+          <span class="quote">in kleinen Dosen</span>
+          <span> </span>
+          <span class="lbl"><span>(</span>literal</span>
+          <span class="lbl"><span>, </span>figurative<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">in small doses</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="abwasser_1">
+    <span class="inline">
+      <h1 class="hwd">Abwasser</h1>
+    </span>
+    <div class="hom" id="abwasser_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">neuter noun</span>
+      </span>
+      <span class="inline">
+        <span class="orth"><span class="bluebold">, </span>AbwÃ¤sser</span>
+        <span class="lbl"><span> </span>plural</span>
+      </span>
+      <div class="sense">
+        <span class="cit lang_en-gb">
+          <span class="quote">sewage <span class="lbl">no pl</span></span>
+        </span>
+        <span class="cit" id="abwasser_1.2">
+          <span>; Â  </span>
+          <span class="quote">industrielle AbwÃ¤sser</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">industrial effluents <em class="hi">pl</em><em class="hi">or</em> waste <span>, </span><em class="hi">sing</em></span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="folge_1">
+    <span class="inline">
+      <h1 class="hwd">Folge</h1>
+      <span> [</span>
+      <span class="pron" type="">ËfÉlÉ¡É<a href="#" class="playback"><img src="https://api.collinsdictionary.com/external/images/redspeaker.gif?version=2016-11-09-0913" alt="Pronunciation for Folge" class="sound" title="Pronunciation for Folge" style="cursor: pointer"/></a><audio type="pronunciation" title="Folge"><source type="audio/mpeg" src="https://api.collinsdictionary.com/media/sounds/sounds/d/de_/de_w0/de_w0019060.mp3"/>Your browser does not support HTML5 audio.</audio></span>
+      <span>]</span>
+    </span>
+    <div class="hom" id="folge_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">feminine noun</span>
+      </span>
+      <span class="inline">
+        <span class="orth"><span class="bluebold">, </span>Folge</span>
+        <span class="lbl"><span> </span>genitive</span>
+      </span>
+      <span class="inline">
+        <span class="orth"><span class="bluebold">, </span>Folgen</span>
+        <span class="lbl"><span> </span>plural</span>
+      </span>
+      <div class="sense">
+        <span> Â  </span>
+        <span class="bold">1Â </span>
+        <div class="sense">
+          <span class="bold"> Â  aÂ </span>
+          <span class="lbl"><span>(=Â </span>Reihenfolge<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">order</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  bÂ </span>
+          <span class="lbl"><span>(=Â </span>Aufeinanderfolge<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">succession</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  cÂ </span>
+          <span class="lbl"><span>(=Â </span>zusammengehÃ¶rige Reihe<span>)</span></span>
+          <span class="lbl"><span> (</span>mathematics<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">sequence</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  dÂ </span>
+          <span class="lbl"><span>(=Â </span>Lieferung einer Zeitschrift<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">issue</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  eÂ </span>
+          <span class="lbl"><span>(=Â </span>Fortsetzung<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">instalment <span class="lbl"><span>(</span>Brit<span>)</span></span></span>
+          </span>
+          <span>, </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">installment <span class="lbl"><span>(</span>US<span>)</span></span></span>
+          </span>
+          <div class="sense">
+            <span class="lbl"><span>(</span>television</span>
+            <span class="lbl"><span>, </span>radio<span>)</span></span>
+            <span> </span>
+            <span class="cit lang_en-gb">
+              <span class="quote">episode</span>
+            </span>
+          </div>
+          <!-- End of DIV sense-->
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  fÂ </span>
+          <span class="lbl"><span>(=Â </span>Serie<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">series</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">2Â </span>
+        <div class="sense">
+          <span class="bold"> Â  aÂ </span>
+          <span class="lbl"><span>(=Â </span>Ergebnis<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">consequence</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  bÂ </span>
+          <span class="lbl"><span>(=Â </span>unmittelbare Folge<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">result</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  cÂ </span>
+          <span class="lbl"><span>(=Â </span>Auswirkung<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">effect</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <span class="cit" id="folge_1.2">
+          <span>; Â  </span>
+          <span class="quote">als Folge davon</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">as a result (of that)</span>
+          </span>
+        </span>
+        <span class="cit" id="folge_1.3">
+          <span>; Â  </span>
+          <span class="quote">dies hatte zur Folge, dass ...</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">the consequence <em class="hi">or</em> result of this was that ...</span>
+          </span>
+        </span>
+        <span class="cit" id="folge_1.4">
+          <span>; Â  </span>
+          <span class="quote">dies hatte seine Entlassung zur Folge</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">this resulted in his dismissal</span>
+          </span>
+        </span>
+        <span class="cit" id="folge_1.5">
+          <span>; Â  </span>
+          <span class="quote">die Folgen fÃ¼r den Tourismus</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">the effect on tourism</span>
+          </span>
+        </span>
+        <span class="cit" id="folge_1.6">
+          <span>; Â  </span>
+          <span class="quote">fÃ¼r die Folgen aufkommen</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to take the consequences</span>
+          </span>
+        </span>
+        <span class="cit" id="folge_1.7">
+          <span>; Â  </span>
+          <span class="quote">an den Folgen eines Unfalls/einer Krankheit sterben</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to die as a result of an accident/illness</span>
+          </span>
+        </span>
+        <span class="cit" id="folge_1.8">
+          <span>; Â  </span>
+          <span class="quote">das wird Folgen haben</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">that will have serious consequences</span>
+          </span>
+        </span>
+        <span class="cit" id="folge_1.9">
+          <span>; Â  </span>
+          <span class="quote">ohne Folgen bleiben</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to have no consequences</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+      <div class="sense">
+        <span> <br/></span>
+        <span class="bold">3Â </span>
+        <span class="lbl"><span>(</span>formal<span>)</span></span>
+        <span class="re" id="folge_1.10">
+          <span>: </span>
+          <span class="inline">
+            <span class="orth">einem Befehl Folge leisten</span>
+          </span>
+          <div class="sense">
+            <span> </span>
+            <span class="cit lang_en-gb">
+              <span class="quote">to comply with an order</span>
+            </span>
+          </div>
+          <!-- End of DIV sense-->
+        </span>
+        <span class="cit" id="folge_1.11">
+          <span>; Â  </span>
+          <span class="quote">einer Einladung <span class="lbl">dative</span> Folge leisten</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to accept an invitation</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="verfahren_4">
+    <span class="inline">
+      <h1 class="hwd">Verfahren</h1>
+      <span> [</span>
+      <span class="pron" type="">fÉÉËfaËrÉn<a href="#" class="playback"><img src="https://api.collinsdictionary.com/external/images/redspeaker.gif?version=2016-11-09-0913" alt="Pronunciation for Verfahren" class="sound" title="Pronunciation for Verfahren" style="cursor: pointer"/></a><audio type="pronunciation" title="Verfahren"><source type="audio/mpeg" src="https://api.collinsdictionary.com/media/sounds/sounds/d/de_/de_w0/de_w0067930.mp3"/>Your browser does not support HTML5 audio.</audio></span>
+      <span>]</span>
+    </span>
+    <div class="hom" id="verfahren_4.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">neuter noun</span>
+      </span>
+      <span class="inline">
+        <span class="orth"><span class="bluebold">, </span>Verfahrens</span>
+        <span class="lbl"><span> </span>genitive</span>
+      </span>
+      <span class="inline">
+        <span class="orth"><span class="bluebold">, </span>Verfahren</span>
+        <span class="lbl"><span> </span>plural</span>
+      </span>
+      <div class="sense">
+        <div class="sense">
+          <span class="bold"> Â  aÂ </span>
+          <span class="lbl"><span>(=Â </span>Vorgehen<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">actions <em class="hi">pl</em></span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  bÂ </span>
+          <span class="lbl"><span>(=Â </span>Verfahrensweise<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">procedure</span>
+          </span>
+          <div class="sense">
+            <span class="lbl"><span>(</span>technical<span>)</span></span>
+            <span> </span>
+            <span class="cit lang_en-gb">
+              <span class="quote">process</span>
+            </span>
+          </div>
+          <!-- End of DIV sense-->
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  cÂ </span>
+          <span class="lbl"><span>(=Â </span>Methode<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">method</span>
+          </span>
+          <div class="sense">
+            <span class="lbl"><span>(</span>law<span>)</span></span>
+            <span> </span>
+            <span class="cit lang_en-gb">
+              <span class="quote">proceedings <em class="hi">pl</em></span>
+            </span>
+          </div>
+          <!-- End of DIV sense-->
+        </div>
+        <!-- End of DIV sense-->
+        <span class="cit" id="verfahren_4.2">
+          <span>; Â  </span>
+          <span class="quote">ein Verfahren gegen jdn anhÃ¤ngig machen <em class="hi">or</em> einleiten</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to take <em class="hi">or</em> initiate legal proceedings against sb</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="erzeugen_1">
+    <span class="inline">
+      <h1 class="hwd">erzeugen</h1>
+      <span> [</span>
+      <span class="pron" type="">ÉÉËtsÉyÉ¡n<a href="#" class="playback"><img src="https://api.collinsdictionary.com/external/images/redspeaker.gif?version=2016-11-09-0913" alt="Pronunciation for erzeugen" class="sound" title="Pronunciation for erzeugen" style="cursor: pointer"/></a><audio type="pronunciation" title="erzeugen"><source type="audio/mpeg" src="https://api.collinsdictionary.com/media/sounds/sounds/d/de_/de_er/de_erzeugen.mp3"/>Your browser does not support HTML5 audio.</audio></span>
+      <span>]</span>
+    </span>
+    <span class="inline">
+      <span class="orth"><span class="bluebold">, </span>erzeugt</span>
+      <span class="lbl"><span> </span>past participle</span>
+    </span>
+    <div class="hom" id="erzeugen_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">transitive verb</span>
+      </span>
+      <div class="sense">
+        <div class="sense">
+          <span class="bold"> Â  aÂ </span>
+          <span class="lbl"><span>(</span>chemistry</span>
+          <span class="lbl"><span>, </span>electricity</span>
+          <span class="lbl"><span>, </span>physics<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to generate</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  bÂ </span>
+          <span class="lbl"><span>(</span>business<span>)</span></span>
+          <div class="sense">
+            <span class="bold"> Â  aÂ </span>
+            <span class="gramGrp">
+              <span class="colloc"><span>[</span>Produkt<span>]</span></span>
+            </span>
+            <span> </span>
+            <span class="cit lang_en-gb">
+              <span class="quote">to manufacture</span>
+            </span>
+          </div>
+          <!-- End of DIV sense-->
+          <div class="sense">
+            <span class="bold"> Â  bÂ </span>
+            <span class="gramGrp">
+              <span class="colloc"><span>[</span>Wein, Butter etc<span>]</span></span>
+            </span>
+            <span> </span>
+            <span class="cit lang_en-gb">
+              <span class="quote">to produce</span>
+            </span>
+          </div>
+          <!-- End of DIV sense-->
+          <div class="sense">
+            <span class="bold"> Â  cÂ </span>
+            <span class="lbl"><span>(</span>figurative<span>)</span></span>
+            <span class="lbl"><span> (=Â </span>bewirken<span>)</span></span>
+            <span> </span>
+            <span class="cit lang_en-gb">
+              <span class="quote">to cause</span>
+            </span>
+          </div>
+          <!-- End of DIV sense-->
+        </div>
+        <!-- End of DIV sense-->
+        <span class="cit" id="erzeugen_1.2">
+          <span>; Â  </span>
+          <span class="quote">der Autor versteht es, Spannung zu erzeugen</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">the author knows how to create tension</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="eigenschaft_1">
+    <span class="inline">
+      <h1 class="hwd">Eigenschaft</h1>
+      <span> [</span>
+      <span class="pron" type="">ËaiÉ¡nÊaft<a href="#" class="playback"><img src="https://api.collinsdictionary.com/external/images/redspeaker.gif?version=2016-11-09-0913" alt="Pronunciation for Eigenschaft" class="sound" title="Pronunciation for Eigenschaft" style="cursor: pointer"/></a><audio type="pronunciation" title="Eigenschaft"><source type="audio/mpeg" src="https://api.collinsdictionary.com/media/sounds/sounds/d/de_/de_ei/de_eigenschaft.mp3"/>Your browser does not support HTML5 audio.</audio></span>
+      <span>]</span>
+    </span>
+    <div class="hom" id="eigenschaft_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">feminine noun</span>
+      </span>
+      <span class="inline">
+        <span class="orth"><span class="bluebold">, </span>Eigenschaft</span>
+        <span class="lbl"><span> </span>genitive</span>
+      </span>
+      <span class="inline">
+        <span class="orth"><span class="bluebold">, </span>Eigenschaften</span>
+        <span class="lbl"><span> </span>plural</span>
+      </span>
+      <div class="sense">
+        <div class="sense">
+          <span class="bold"> Â  aÂ </span>
+          <span class="lbl"><span>(=Â </span>Attribut<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">quality</span>
+          </span>
+          <div class="sense">
+            <span class="lbl"><span>(</span>chemistry</span>
+            <span class="lbl"><span>, </span>physics </span>
+            <span> </span>
+            <span>)</span>
+            <span> </span>
+            <span class="cit lang_en-gb">
+              <span class="quote">property</span>
+            </span>
+          </div>
+          <!-- End of DIV sense-->
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  bÂ </span>
+          <span class="lbl"><span>(=Â </span>Merkmal<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">characteristic</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  cÂ </span>
+          <span class="lbl"><span>(=Â </span>Funktion<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">capacity</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="krebserregend_1">
+    <span class="inline">
+      <h1 class="hwd">krebserregend</h1>
+    </span>
+    <div class="hom" id="krebserregend_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">adjective</span>
+      </span>
+      <div class="sense">
+        <span class="cit lang_en-gb">
+          <span class="quote">carcinogenic</span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="erfolgen_1">
+    <span class="inline">
+      <h1 class="hwd">erfolgen</h1>
+      <span> [</span>
+      <span class="pron" type="">ÉÉËfÉlÉ¡n<a href="#" class="playback"><img src="https://api.collinsdictionary.com/external/images/redspeaker.gif?version=2016-11-09-0913" alt="Pronunciation for erfolgen" class="sound" title="Pronunciation for erfolgen" style="cursor: pointer"/></a><audio type="pronunciation" title="erfolgen"><source type="audio/mpeg" src="https://api.collinsdictionary.com/media/sounds/sounds/d/de_/de_er/de_erfolgen.mp3"/>Your browser does not support HTML5 audio.</audio></span>
+      <span>]</span>
+    </span>
+    <span class="inline">
+      <span class="orth"><span class="bluebold">, </span>erfolgt</span>
+      <span class="lbl"><span> </span>past participle</span>
+    </span>
+    <div class="hom" id="erfolgen_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">intransitive verb</span>
+        <span class="lbl"><span> </span>auxiliary 'sein'</span>
+      </span>
+      <span class="lbl"><span> (</span>formal<span>)</span></span>
+      <div class="sense">
+        <div class="sense">
+          <span class="bold"> Â  aÂ </span>
+          <span class="lbl"><span>(=Â </span>folgen<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to follow</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  bÂ </span>
+          <span class="lbl"><span>(=Â </span>sich ergeben<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to result</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  cÂ </span>
+          <span class="lbl"><span>(=Â </span>vollzogen werden<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to be carried out</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <div class="sense">
+          <span class="bold"> Â  dÂ </span>
+          <span class="lbl"><span>(=Â </span>stattfinden<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to take place</span>
+          </span>
+          <div class="sense">
+            <span class="gramGrp">
+              <span class="colloc"><span>[</span>Zahlung<span>]</span></span>
+            </span>
+            <span> </span>
+            <span class="cit lang_en-gb">
+              <span class="quote">to be made</span>
+            </span>
+          </div>
+          <!-- End of DIV sense-->
+        </div>
+        <!-- End of DIV sense-->
+        <span class="cit" id="erfolgen_1.2">
+          <span>; Â  </span>
+          <span class="quote">nach erfolgter Zahlung</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">after payment has been made</span>
+          </span>
+        </span>
+        <span class="cit" id="erfolgen_1.3">
+          <span>; Â  </span>
+          <span class="quote">es erfolgte keine Antwort</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">no answer was forthcoming</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="abbaubar_1">
+    <span class="inline">
+      <h1 class="hwd">abbaubar</h1>
+    </span>
+    <div class="hom" id="abbaubar_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">adjective</span>
+      </span>
+      <div class="sense">
+        <span class="lbl"><span>(</span>chemistry<span>)</span></span>
+        <span> </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">degradable</span>
+        </span>
+        <span class="cit" id="abbaubar_1.2">
+          <span>; Â  </span>
+          <span class="quote">schwer abbaubare Chemikalien</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">chemicals that are difficult to break down</span>
+          </span>
+        </span>
+        <span class="cit" id="abbaubar_1.3">
+          <span>; Â  </span>
+          <span class="quote">biologisch abbaubar</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">biodegradable</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="zersetzen_1">
+    <span class="inline">
+      <h1 class="hwd">zersetzen</h1>
+    </span>
+    <span class="inline">
+      <span class="orth"><span class="bluebold">, </span>zersetzt</span>
+      <span class="lbl"><span> </span>past participle</span>
+    </span>
+    <div class="hom" id="zersetzen_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">transitive verb</span>
+      </span>
+      <div class="sense">
+        <span class="cit lang_en-gb">
+          <span class="quote">to decompose</span>
+        </span>
+        <div class="sense">
+          <span class="gramGrp">
+            <span class="colloc"><span>[</span>SÃ¤ure<span>]</span></span>
+          </span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to corrode</span>
+          </span>
+          <div class="sense">
+            <span class="lbl"><span>(</span>figurative<span>)</span></span>
+            <span> </span>
+            <span class="cit lang_en-gb">
+              <span class="quote">to undermine</span>
+            </span>
+          </div>
+          <!-- End of DIV sense-->
+        </div>
+        <!-- End of DIV sense-->
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+    <div class="hom" id="zersetzen_1.2">
+      <span> <br/>â¶ </span>
+      <span class="gramGrp">
+        <span class="pos">reflexive verb</span>
+      </span>
+      <div class="sense">
+        <span class="cit lang_en-gb">
+          <span class="quote">to decompose</span>
+        </span>
+        <div class="sense">
+          <span class="lbl"><span>(</span>durch SÃ¤ure<span>)</span></span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to corrode</span>
+          </span>
+          <div class="sense">
+            <span class="lbl"><span>(</span>figurative<span>)</span></span>
+            <span> </span>
+            <span class="cit lang_en-gb">
+              <span class="quote">to become undermined <em class="hi">or</em> subverted</span>
+            </span>
+          </div>
+          <!-- End of DIV sense-->
+        </div>
+        <!-- End of DIV sense-->
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="vertretbar_1">
+    <span class="inline">
+      <h1 class="hwd">vertretbar</h1>
+    </span>
+    <div class="hom" id="vertretbar_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">adjective</span>
+      </span>
+      <div class="sense">
+        <span class="cit lang_en-gb">
+          <span class="quote">justifiable</span>
+        </span>
+        <div class="sense">
+          <span class="gramGrp">
+            <span class="colloc"><span>[</span>Theorie, Argument<span>]</span></span>
+          </span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">tenable</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+<div class="entry_container">
+  <div class="entry lang_de" id="gegen&#xC3;&#xBC;berstehen_1">
+    <span class="inline">
+      <h1 class="hwd">gegenÃ¼berstehen</h1>
+    </span>
+    <div class="hom" id="gegen&#xC3;&#xBC;berstehen_1.1">
+      <span> Â  </span>
+      <span class="gramGrp">
+        <span class="pos">intransitive verb</span>
+        <span class="gramGrp">
+          <span class="subc"><span> </span>  dative</span>
+        </span>
+        <span class="lbl"><span> </span>separable</span>
+        <span class="lbl"><span>, </span>irregular</span>
+      </span>
+      <div class="sense">
+        <span class="cit lang_en-gb">
+          <span class="quote">to be opposite</span>
+        </span>
+        <span>, </span>
+        <span class="cit lang_en-gb">
+          <span class="quote">to face</span>
+        </span>
+        <div class="sense">
+          <span class="gramGrp">
+            <span class="colloc"><span>[</span>jdm<span>]</span></span>
+          </span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to stand opposite</span>
+          </span>
+        </div>
+        <!-- End of DIV sense-->
+        <span class="cit" id="gegen&#xC3;&#xBC;berstehen_1.2">
+          <span>; Â  </span>
+          <span class="quote">jdm feindlich/freundlich/desinteressiert gegenÃ¼berstehen</span>
+          <span> </span>
+          <span class="cit lang_en-gb">
+            <span class="quote">to have a hostile/friendly/disinterested attitude toward(s) sb</span>
+          </span>
+        </span>
+      </div>
+      <!-- End of DIV sense-->
+    </div>
+    <!-- End of DIV hom-->
+  </div>
+  <!-- End of DIV entry lang_de-->
+</div>
+</body>
+</html>

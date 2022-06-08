@@ -49,7 +49,7 @@ EOS;
 
   try {
    
-    $file =  new File("vocab.txt");
+    $file =  new File($argv[1]);
     
     $file->setFlags(\SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 

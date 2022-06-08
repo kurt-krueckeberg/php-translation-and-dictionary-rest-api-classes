@@ -2,6 +2,7 @@
 declare(strict_types=1);
 namespace LanguageTools;
 use LanguageTools\ClassID;
+use LanguageTools\CssCollins;
 
 class CollinsGermanDictionary extends RestClient {
 
@@ -25,7 +26,7 @@ class CollinsGermanDictionary extends RestClient {
 
    static public function get_css() : string
    {
-      return CollinsCss::get_css();
+      return CssCollins::get_css();
    }
    
    /* Returns an array whose elements have these properties:
@@ -174,9 +175,7 @@ class CollinsGermanDictionary extends RestClient {
         }
 
         $obj = json_decode($json);
-        $res = urldecode($obj->entryContent);
-
-        return $this->tidy($res);
+        return  urldecode($obj->entryContent); // Calling tidy() on the result corrupts German characters. 
     }
 
     /*
