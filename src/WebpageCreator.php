@@ -21,90 +21,6 @@ static private $header =<<<EOH
    <meta http-equiv="content-type" content="text/html" charset="UTF-8"/>
    <title></title>
 <style>
-body {
-  margin-left: 3em;
-  color: #FFFFFF;  
-  background-color: #002451;
-
-  font-family: 'Lato Medium', Arial, sans-serif;
-
-  /* Alternate colors: 
-  color: #FFFFFF;  
-  background-color: #102450;
-
-  color: black;        
-  background-color: white;   
-
-  color: #D0CFCC;              
-  background-color: #171421;  
-  */
-}
-
-section.definitions dl { 
-  display: grid; 
-  width: 40%;  /* <-- 40% instead of the 60% for sentence paragraphs */
-  margin: auto;
-  grid-template-columns: auto auto;
-  column-gap: 10px;
-}
-
-section.sentences { 
-  display: grid; 
-  width: 60%;
-  margin: auto;
-  grid-template-columns: auto auto;
-  column-gap: 10px;
-}
-
-section.sentences p, section.defintions dl dt, section.defintions dl dd {
-
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-right: 6px;
-  line-height: 1.7em; /* <--- Spacing between lines in paragraph */ 
-  margin: 4px 0;      /* <--- Spacing between paragraphs. Equivalent to: 
-    
-             margin-top: 7px;
-             margin-bottom: 7px;
-             margin-left: 0px;
-             margin-right: 0px;  
-            */
-}
-
-section.sentences p:hover {
-
-	background-color:  #1a346c; 
-}	
-
-h1, h2, h3, h4, h5 {
-
-  font-family: 'Karla Semibold', 'Open Sans', Arial, sans-serif;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-table td, table th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-table tr:nth-child(even){background-color: #f2f2f2;}
-
-table tr:hover {background-color: #ddd;}
-
-table th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04AA6D;
-  color: white;
-}
-</style>
-</head>
-<body>
 EOH;
 
 static private $footer =<<<EOF
@@ -112,24 +28,33 @@ static private $footer =<<<EOF
 </html>
 EOF;
 
-   public function __construct(private SentenceFetchInterface $fetcher, private TranslateInterface $trans, private DictionaryInterface $dict, private string $from_lang, private string $to_lang, string $fname)
-   {
-      $this->is_closed = false; 
+   private bool $is_closed;
 
+   public function __construct(string $fname, string $css)
+   {
       $this->file = new File($fname . '.html', "w");
+     
+      $this->is_closed = ($this->file !== false) ? false : true; 
 
       $this->file->fwrite(self::$header);
+
+      $this->file->fwrite($css);
+
+      $this->fwrite("</style>\n</head>\n<body>\n");
+
+      // todo: add <section>??
    }
 
    public function __destruct()
    {
         $this->close();
    }
+
    /*
     * todo: The specific properties of he \stdClasws that $iter returns vary by translation/dictionary
     * service. This method is for Systran's lookup results. 
     */
-   private function writeDefinitions(array|ResultsIterator $iter, string $word)
+   private function write(string $input
    {
        // TOdo: Change to use <section class="definitions"> and  <dt><dl>, etc
        if (count($iter) == 0) {
