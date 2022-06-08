@@ -7,7 +7,8 @@ class CollinsCss {
 static private string $css = <<<EOS
 *{word-wrap:break-word;margin:0;padding:0;border:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;font-weight:inherit;font-family:inherit;font-size:inherit}
 body{color:#000;background:white;font:16px/1.6em 'Open Sans',serif;line-height:1.6em}[lang="ko"]:not(html),[lang="ko"]:not(html) *,[lang="ja"]:not(html),[lang="ja"]:not(html) *,[lang="hi"]:not(html),[lang="hi"]:not(html) *{font-family:auto}
-.small_text{padding-top:.3em;display:block;font-size:.8em;padding-right:2px}.small_text>a{border-bottom:dashed 1px rgba(0,0,0,.6)!important}h1{font-size:2em;line-height:1.4em}h2{font-size:1.2em}.h1{font-size:38px}
+.small_text{padding-top:.3em;display:block;font-size:.8em;padding-right:2px}.small_text>a{border-bottom:dashed 1px rgba(0,0,0,.6)!important}h1 {font-size:1.3em;line-height:1.4em}
+h2{font-size:1.2em}.h1{font-size:38px}
 .h2{font-size:28px}.h3{font-family:"Open Sans";font-size:22px}ol,ul{list-style-type:none}.selectorOpernerBig:checked ~ label[for="default"]{display:none}
 .title_container{position:relative}.title_frequency_container{position:absolute;right:0}.cB{padding:15px;background:#fff;margin-bottom:20px;-webkit-column-break-inside:avoid;page-break-inside:avoid;break-inside:avoid}
 .dc .entry_title{font-weight:bold;color:#c12d30;padding:0 15px;line-height:2em;font-size:18px}.dc .entry_title.transex{color:#000}.dc a{color:inherit;text-decoration:none;border-bottom:dashed 1px rgba(0,0,0,.6)}
