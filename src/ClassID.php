@@ -10,6 +10,7 @@ enum ClassID implements ClassmapperInterface {
    case  Ibm;
    case  Deepl;
    case  Collins;
+   case  Pons;
     
    public function class_name() : string
    {
@@ -19,7 +20,8 @@ enum ClassID implements ClassmapperInterface {
            ClassID::Azure    => "LanguageTools\AzureTranslator",
            ClassID::Ibm      => "LanguageTools\IbmTranslator",
            ClassID::Deepl    => "LanguageTools\DeeplTranslator",
-           ClassID::Collins  => "LanguageTools\CollinsGermanDictionary"
+           ClassID::Collins  => "LanguageTools\CollinsGermanDictionary",
+           ClassID::Collins  => "LanguageTools\PonsDictionary"
        };
    }
 
@@ -31,7 +33,8 @@ enum ClassID implements ClassmapperInterface {
            ClassID::Azure    => "a",
            ClassID::Ibm      => "i",
            ClassID::Deepl    => "d",
-           ClassID::Collins  => "c"
+           ClassID::Collins  => "c",
+           ClassID::Pons  => "p"
        };
    }
 }

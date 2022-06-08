@@ -95,17 +95,12 @@ class CollinsGermanDictionary extends RestClient {
    */
     public function search($word, int $pageSize=10, int $pageIndex=1) : \stdClass
     {
-        static $method  ="GET";
-        static $route = 'api/v1/dictionaries/german-english/search';
+        static $search = array('method' => 'GET', 'route' =>  'api/v1/dictionaries/german-english/search');
         static $search ='q';
         static $pagesize = 'pagesize';
         static $pageindex = 'pageindex';
 
-        $this->query[$search] = $word; 
-        $this->query[$pagesize] = $pageSize; 
-        $this->query[$pageindex] = $pageIndex; 
-
-        $contents = $this->request($method, $route, ['query' => $this->query]);
+        $contents = $this->request($search['method'], $search['route'], ['query' => ['q' => $word, 'pagesize' = $pageSize, 'pageindex' = $pageIndex]]);
 
         $obj = json_decode($contents);
       
@@ -117,22 +112,10 @@ class CollinsGermanDictionary extends RestClient {
     {
         static $method = "GET";                         
         static $route  = "api/v1/dictionaries/german-english/entries/";
-        static $format = 'HTML';
-
-        $query = array();
-        $query['format'] = $format;
         
-        $route .= $entryId;  // The entryId is appened to the route.
+        $route .= $entryId;  // entryId gets appened to the route
   
-        try {
-            
-           $json = $this->request($method, $route, ['query' => $query]);       
-           
-           
-        } catch (\Exception $e) {
-            
-            return null;
-        }
+        $json = $this->request($method, $route, ['query' => ['format' => 'HTML']]);       
 
         $obj = json_decode($json);        
 
@@ -179,16 +162,11 @@ class CollinsGermanDictionary extends RestClient {
     {
         static $method = "GET";                         
         static $route  = "api/v1/dictionaries/german-english/search/first/";
-        static $format = 'html';
 
-        $query = array();
-        $query['format'] = $format;
-        $query['q'] = $word;
-  
         // If a word if not found in the dictionary, an exception is thrown and  $e->getCode is typically equal to 404.
         try {
             
-           $json = $this->request($method, $route, ['query' => $query]);       
+           $json = $this->request($method, $route, ['query' => ['q' => $word, 'format' => 'html']]);       
            
         } catch (\Exception $e) {
             
@@ -200,21 +178,20 @@ class CollinsGermanDictionary extends RestClient {
         return $this->tidy($obj->entryContent);
     }
 
+    /*
+     * Returns suggestions
+     */
+
     public function get_did_you_mean(string $word) : array 
     {
         static $method = "GET";                         
         static $route  = "api/v1/dictionaries/german-english/didyoumean/";
 
-        $query = array();
-        $query['q'] = $word;
-  
         // If a word if not found in the dictionary, an exception is thrown and  $e->getCode is typically equal to 404.
-            
-        $json = $this->request($method, $route, ['query' => $query]);       
+        $json = $this->request($method, $route, ['query' => ['q' => $word]]);       
            
         $obj = json_decode($json);
 
         return $obj->suggestions;
     }
-
 }

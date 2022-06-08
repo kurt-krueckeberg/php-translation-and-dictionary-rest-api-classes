@@ -12,7 +12,7 @@
         "guzzlehttp/guzzle": "^7.4",
         "ext-intl": "^8.1",
         "ext-curl": "^8.1",
-        "ext-json": "^8.1"
+        "ext-json": "^8.1",
         "ext-tidy": "^8.1"
     },
     "license": "MIT",
