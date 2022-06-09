@@ -6,18 +6,26 @@ use LanguageTools\CssCollins;
 
 class CollinsGermanDictionary extends RestClient {
 
-   private function tidy(string $html) : string
-   {
-      @$this->dom->loadHTML($html ,LIBXML_HTML_NOIMPLIED);
-       
-      return $this->dom->saveXML($this->dom->documentElement);
+   private function tidy(string $html)
+   { 
+    static $tidy_config = array(
+                     'clean' => true,
+                     'output-xhtml' => true,
+                     'show-body-only' => true,
+                     'wrap' => 0,
+                     'indent' => true
+                     ); 
+                     
+      $tidy = tidy_parse_string($html, $tidy_config, 'UTF8');
+      $tidy->cleanRepair();
+      return (string) $tidy;  
    }
- 
+
    public function __construct()
    {   
       parent::__construct(ClassID::Collins);
 
-      $this->dom = new \DOMDocument();
+      $this->dom = new \DOMDocument("1.0", 'utf8');
 
       $this->dom->preserveWhiteSpace = false;
  
@@ -175,7 +183,7 @@ class CollinsGermanDictionary extends RestClient {
         }
 
         $obj = json_decode($json);
-        return  urldecode($obj->entryContent); // Calling tidy() on the result corrupts German characters. 
+        return  $this->tidy( urldecode($obj->entryContent) ); // Calling tidy() on the result corrupts German characters. 
     }
 
     /*
