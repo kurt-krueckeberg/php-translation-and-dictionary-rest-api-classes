@@ -128,7 +128,7 @@ class CollinsGermanDictionary extends RestClient {
 
         $obj = json_decode($json);        
 
-        $obj->entryContent = $this->tidy($obj->entryContent); 
+        $obj->entryContent = $this->tidy( urldecode($obj->entryContent)); 
     }
 
      /*
