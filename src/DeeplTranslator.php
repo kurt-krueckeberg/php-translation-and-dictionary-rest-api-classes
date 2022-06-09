@@ -29,11 +29,6 @@ class DeeplTranslator extends RestClient implements TranslateInterface {
       $this->query[self::$to_key] = $dest_lang; 
    }
 
-   final public function getLanguages() : string
-   {
-       return "a string";
-   }
-
    public function getSourceLanguages() : array
    {
        $this->query['type'] = 'source';
@@ -52,11 +47,8 @@ class DeeplTranslator extends RestClient implements TranslateInterface {
        return json_decode($contents, true);
    } 
 
-
    public function getTranslationLanguages() : array
    {
-       // $this->query['type'] = 'target' or 'source';
-
        $contents = $this->request(self::$method, self::$languages_route);
 
        return json_decode($contents, true);

@@ -11,6 +11,7 @@ enum ClassID implements ClassmapperInterface {
    case  Deepl;
    case  Collins;
    case  Pons;
+   case  iTranslate;
     
    public function class_name() : string
    {
@@ -22,7 +23,7 @@ enum ClassID implements ClassmapperInterface {
            ClassID::Deepl    => "LanguageTools\DeeplTranslator",
            ClassID::Collins  => "LanguageTools\CollinsGermanDictionary",
            ClassID::Pons     => "LanguageTools\PonsDictionary",
-           ClassID::iTranslate  => "LanguageTools\iTranslateTranslator"
+           ClassID::iTranslate  => "LanguageTools\iTransTranslator"
        };
    }
 
