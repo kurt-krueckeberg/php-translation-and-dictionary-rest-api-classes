@@ -2,17 +2,16 @@
 declare(strict_types=1);
 namespace LanguageTools;
 
-// Under development
 class SystranTranslator extends RestClient implements TranslateInterface, DictionaryInterface {
 
    /*
-    The Systranr 'option' query paramter can occur more than one. NOt sure how to specify this for Guzzle:
+    The Systranr 'option' query paramter can occur more than once. But I'm not sure how to specify this for Guzzle:
     I guess that would mean $thi->query['option'] = ['aaa', 'bbb', ... ];?
     */
    
    public function __construct(ClassID $id)
    {
-       parent::__construct($id); // "https://api-translate.systran.net", array('Authorization' => 'Key bf31a6fd-f202-4eef-bc0e-1236f7e33be4')); 
+       parent::__construct($id); 
    }
 
    public function getTranslationLanguages() : array
@@ -34,8 +33,8 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
    } 
 
    /*
-    *  Systran requires the language codes to be lowercase.
-    *  If the language is not utf-8, then you must speciy the encoding using the 'options' parameter.
+    *  NOTE: Systran requires the language codes to be lowercase.
+    *  If the language is not utf-8, the default, then you must speciy the encoding using the 'options' parameter.
     */
    final public function translate(string $text, string $dest, $src="") : string 
    {
@@ -54,15 +53,9 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
 
        $obj = json_decode($contents);
 
-      /*
-       * The layout of the results is documented at https://docs.systran.net/translateAPI/translation/#tag-Translation
-       */
        return urldecode($obj->outputs[0]->output);
    }
 
-   /*
-    * The layout of the results json object is described in /doc/dict-systrans.txt
-    */
    final public function lookup(string $word, string $src_lang, string $dest_lang) : ResultsIterator
    {      
       static $lookup = array('method' => "GET", 'route' => "resources/dictionary/lookup");
@@ -86,7 +79,7 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
     public static function results_filter(mixed $match) :  SystranDictResult
     {
        /* 
-         targets == definitions, often with example expressions.
+        * $matches->targets has the definitions, often with example expressions.
         */
        $definitions = array();
 
@@ -94,7 +87,7 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
          
            $definitions[$index]['meaning'] = $target->lemma; 
            
-           if (isset($target->expressions)) // expressions is an array that may be empty.
+           if (isset($target->expressions)) 
   
                 $definitions[$index]['expressions'] = $target->expressions; 
        }
