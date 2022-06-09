@@ -56,7 +56,7 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
        return urldecode($obj->outputs[0]->output);
    }
 
-   final public function lookup(string $word, string $src_lang, string $dest_lang) : ResultsIterator
+   final public function lookup(string $word, string $src, string $dest) : ResultsIterator
    {      
       static $lookup = array('method' => "GET", 'route' => "resources/dictionary/lookup");
 

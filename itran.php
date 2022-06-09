@@ -11,11 +11,10 @@ try {
    
     $t = RestClient::createClient(ClassID::iTranslate); 
 
-    $in = ['Guten Morgen', 'Guten Abend'];
 
     foreach ($in as $de) {
         
-        $en = $t->translate($de, 'en', 'de');
+        $en = $t->translate($de, 'de', 'en');
 
         echo "$en\n";
     }
