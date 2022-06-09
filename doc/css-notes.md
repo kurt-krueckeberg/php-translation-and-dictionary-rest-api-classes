@@ -7,7 +7,9 @@
 - CSS [column properties](https://www.w3schools.com/Css/css3_multiple_columns.asp)
 
 
-## Example Two-column Definition List Grid Layout
+## Styling deinition lists
+
+[CSS: Formatting a Definition List](https://www.the-art-of-web.com/css/format-dl/)
 
 ``html
 <!DOCTYPE html>
