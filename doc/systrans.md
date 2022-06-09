@@ -1,8 +1,8 @@
-# Systran
+# Systran PRO - API 
 
-[Systran.net](https://www.systran.net/en/translate/)
+- [Pricing](https://www.systran.net/en/plans-pricing/). See "for Developers API" a bottom of page.
 
-[Login for Systran Pro: translate.systran.net/user](https://translate.systran.net/user). **note:** Do not sign in at `www.systran.net` (which for reason unknown to md display incorrect and incomplete infomration).
+- [Login for Systran Pro: translate.systran.net/user](https://translate.systran.net/user). **note:** Do not sign in at `www.systran.net` (which for reason unknown to md display incorrect and incomplete infomration).
 
 ## Systran API Dcoumentation
 
