@@ -87,7 +87,7 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
          
            $definitions[$index]['definition'] = $target->lemma; 
            
-           if (isset($target->expressions)) 
+           if (isset($target->expressions))  // todo: <-- Is this always set--even when empty?
   
                 $definitions[$index]['expressions'] = $target->expressions; 
        }
