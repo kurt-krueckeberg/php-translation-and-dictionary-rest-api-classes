@@ -1,20 +1,21 @@
 <?php
 declare(strict_types=1);
 use \SplFileObject as File;
-use LanguageTools\TranTranslator;
 use LanguageTools\RestClient;
 use LanguageTools\ClassID;
+use LanguageTools\FileReader;
 
 include 'vendor/autoload.php';
 
 try {
    
-    $t = RestClient::createClient(ClassID::iTranslate); 
+    $t = RestClient::createClient(ClassID::Systran); 
+    
+    $f = new FileReader("vocab.txt");
 
-
-    foreach ($in as $de) {
+    foreach ($f as $word) {
         
-        $en = $t->translate($de, 'de', 'en');
+        $en = $t->lookup($word, 'de', 'en');
 
         echo "$en\n";
     }
