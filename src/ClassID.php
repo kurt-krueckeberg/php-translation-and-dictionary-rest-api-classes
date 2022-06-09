@@ -21,20 +21,22 @@ enum ClassID implements ClassmapperInterface {
            ClassID::Ibm      => "LanguageTools\IbmTranslator",
            ClassID::Deepl    => "LanguageTools\DeeplTranslator",
            ClassID::Collins  => "LanguageTools\CollinsGermanDictionary",
-           ClassID::Collins  => "LanguageTools\PonsDictionary"
+           ClassID::Pons     => "LanguageTools\PonsDictionary",
+           ClassID::iTranslate  => "LanguageTools\iTranslateTranslator"
        };
    }
 
    public function get_provider() : string
    {
        return match($this) { // Returns implementation class's abbreviation used in 'config.xml'
-           ClassID::Leipzig  => "l",
-           ClassID::Systran  => "s",
-           ClassID::Azure    => "a",
-           ClassID::Ibm      => "i",
-           ClassID::Deepl    => "d",
-           ClassID::Collins  => "c",
-           ClassID::Pons  => "p"
+           ClassID::Leipzig  => "leipzig",
+           ClassID::Systran  => "systran",
+           ClassID::Azure    => "azure",
+           ClassID::Ibm      => "ibm",
+           ClassID::Deepl    => "deepl",
+           ClassID::Collins  => "collins",
+           ClassID::Pons     => "pons",
+           ClassID::iTranslate  => "itranslate"
        };
    }
 }

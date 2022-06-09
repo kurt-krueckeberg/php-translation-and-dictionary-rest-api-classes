@@ -10,9 +10,9 @@ class Config {
    static \SimpleXMLElement $xml;
    static bool $is_loaded = false;
 
-   static string $xpath =  "/providers/provider[@abbrev='%s']"; 
+   static string $xpath =  "/providers/provider[@name='%s']"; 
 
-   static function get_config(string $abbrev) : \SimpleXMLElement
+   static function get_config(string $name) : \SimpleXMLElement
    {
        if (self::$is_loaded == false) {
 
@@ -20,7 +20,7 @@ class Config {
             self::$is_loaded = true; 
        }
     
-       $query = sprintf(self::$xpath, $abbrev); 
+       $query = sprintf(self::$xpath, $name); 
     
        $response = self::$xml->xpath($query);
     
