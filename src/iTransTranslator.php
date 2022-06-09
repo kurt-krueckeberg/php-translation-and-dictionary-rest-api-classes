@@ -75,7 +75,6 @@ class iTransTranslator extends RestClient implements TranslateInterface {
        return self::$languages;
    } 
 
-
    final public function translate(string $input, string $dest, $src="") : string 
    {
        $json = [ 'source' => ['dialect' => $src, 'text' => $input], 'target' => ['dialect' => $dest] ];
