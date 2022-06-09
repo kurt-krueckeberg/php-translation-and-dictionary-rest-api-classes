@@ -85,7 +85,7 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
 
        foreach($match->targets as $index => $target) { 
          
-           $definitions[$index]['meaning'] = $target->lemma; 
+           $definitions[$index]['definition'] = $target->lemma; 
            
            if (isset($target->expressions)) 
   

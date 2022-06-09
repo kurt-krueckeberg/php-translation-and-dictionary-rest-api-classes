@@ -12,12 +12,19 @@ try {
     $t = RestClient::createClient(ClassID::Systran); 
     
     $f = new FileReader("vocab.txt");
+    $cnt = 3;
 
     foreach ($f as $word) {
         
-        $en = $t->lookup($word, 'de', 'en');
+        $defns = $t->lookup($word, 'de', 'en');
+        
+        foreach($defns as $def)  {
 
-        echo "$en\n";
+             print_r($def);
+        }
+
+        if ($cnt-- == 0 ) break; 
+         
     }
  
   } catch (Exception $e) {
