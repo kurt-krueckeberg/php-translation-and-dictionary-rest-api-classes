@@ -12,7 +12,6 @@ try {
     $t = RestClient::createClient(ClassID::Systran); 
     
     $f = new FileReader("vocab.txt");
-    $cnt = 3;
 
     foreach ($f as $word) {
         
@@ -25,23 +24,18 @@ try {
  
             foreach ($defns->definitions as $defn) {
 
-                   echo "\tdefinition = " . $defn['definition'] . "\n";
+                 echo "\tdefinition = " . $defn['definition'] . "\n";
 
-                   if (isset($defn['expressions'])) {
-                       
-                      echo "\t\texpressions:\n"; 
+                 if (isset($defn['expressions'])) {
+                     
+                    echo "\t\texpressions:\n"; 
 
-                      foreach ($defn['expressions'] as $expression) {
+                    foreach ($defn['expressions'] as $expression) 
 
-                              echo "\t\t\t". $expression->source  . " (" . $expression->target . ") \n";
-
-                      }                     
+                            echo "\t\t\t". $expression->source  . " - ". $expression->target . "\n";
                    }  
             } 
         }
-
-        if ($cnt-- == 0 ) break; 
-         
     }
  
   } catch (Exception $e) {
