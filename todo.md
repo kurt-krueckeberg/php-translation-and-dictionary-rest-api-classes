@@ -1,11 +1,6 @@
 #  Todo
 
-1. `Systran::lookup()` returns the definitions. Does ResultsIterator/SystranDictRestuls match documentated result type; that is, does the code match all the \stdClasses and array returned by the lookup API call?
-
-2. Is 'expressions' always set, even when it isempty?
-
-3. Redo sys-test.php when 1 and 2 above are done.
-
+Compare Collins and Pomns display output. Create <dl> output.
 
 ## Comparison of Azure vs Systran
 
