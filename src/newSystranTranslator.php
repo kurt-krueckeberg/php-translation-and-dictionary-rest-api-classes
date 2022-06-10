@@ -88,7 +88,7 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
            $definitions[$index]['definition'] = $target->lemma; 
 
            // todo: <-- Is $target->expreesions always set--even when empty?
-           if (isset($target->expressions) && count($target->expressions) > 0)  
+           if (isset($target->expressions) && count($target->expression) > 0)  
   
                 // expression is an array of a \stdClass with two properties: source and target.
                 $definitions[$index]['expressions'] = $target->expressions; 

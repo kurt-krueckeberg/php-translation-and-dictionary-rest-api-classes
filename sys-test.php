@@ -20,8 +20,8 @@ try {
         
         foreach($iter as $defns)  {
 
-            echo 'term = ' . $defns->term . "\n";
-            echo 'pos = '  . $defns->pos . "\n";
+            echo 'word: ' . $defns->term . "\n";
+            echo "\tpart-of-speech: "  . $defns->pos . "\n";
  
             foreach ($defns->definitions as $defn) {
 
@@ -29,11 +29,11 @@ try {
 
                    if (isset($defn['expressions'])) {
                        
-                      echo "\texpressions:\n"; 
+                      echo "\t\texpressions:\n"; 
 
                       foreach ($defn['expressions'] as $expression) {
 
-                              echo "\t". $expression->source  . " (" . $expression->target . ") \n";
+                              echo "\t\t\t". $expression->source  . " (" . $expression->target . ") \n";
 
                       }                     
                    }  
