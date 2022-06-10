@@ -16,25 +16,35 @@ try {
     foreach ($f as $word) {
         
         $iter = $t->lookup($word, 'de', 'en');
-        
+
+        if (count($iter) == 0) continue;
+
+        echo "<div class="defn"><h1 class="hwd">$word</h1>...pos
+         
         foreach($iter as $defns)  {
 
             echo 'word: ' . $defns->term . "\n";                 // ignore
             echo "\tpart-of-speech: "  . $defns->pos . "\n";    // display
  
+            echo "<ul>\n"; 
+
             foreach ($defns->definitions as $defn) {
 
-                 echo "\tdefinition = " . $defn['definition'] . "\n";
+                 echo "<li>" . $defn['definition'] . "</li>\n";
 
                  if (isset($defn['expressions'])) {
                      
-                    echo "\t\texpressions:\n"; 
+                    echo "<ul>\n"; 
 
                     foreach ($defn['expressions'] as $expression) 
 
-                            echo "\t\t\t". $expression->source  . " - ". $expression->target . "\n";
-                   }  
+                            echo "<li>". $expression->source  . " - ". $expression->target . "</li>\n";
+
+                    echo "</ul>\n";
+                 }  
             } 
+
+            echo "</ul>\n";
         }
     }
  
