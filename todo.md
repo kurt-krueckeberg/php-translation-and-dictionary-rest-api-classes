@@ -1,6 +1,10 @@
 #  Todo
 
-Compare Collins and Pomns display output. Create <dl> output.
+[DOM Tutorial](https://www.w3schools.com/xml/dom_intro.asp)
+
+[DOM Documents](https://www.w3schools.com/jsref/dom_obj_document.asp)
+
+[Definition Lists](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl)
 
 ## Comparison of Azure vs Systran
 
