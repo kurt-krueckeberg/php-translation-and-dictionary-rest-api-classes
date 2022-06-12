@@ -27,74 +27,49 @@ defn;
 
    private \DOMDocument $dom;   
 
-/*
-   public function build_lookup_node(\DOMDocument $dom, ResultsIterator $iter) : \DOMDocument
+   public function get_dom() : \DOMDocument
    {
-       $freg = $dom->createDocumentFragment();
-
-       $dom = new \DOMDocument("1.0", "UTF8");
-
-       $dom->preserveWhiteSpace = false;
-
-       $dom->loadHTML(self::$defn);
-
-       foreach($iter as $defns)  {
-
-           $term = $dom->createTextNode( $defns->term );    
-
-           $h1 = $dom->getElementsByTagName('h1')->item(0); 
-           
-           $h1->appendChild($term);
- 
-           $pos = $dom->createTextNode( "<span class='pos'>"  . $defns->pos . "</span>" );    
-           // todo: $pos -- append where?
-
-           $ul = $this->build_defns_fragment($dom, $defns->definitions);
-
-           $dom->getElementsByTagName('div')->item(0)->appendChild($ul);
-     }
-     return $dom;
-   }
-*/
-   public function add_lookup_results(ResultsIterator $iter) : \DOMDocument
-   {
-       $frag = $this->dom->createDocumentFragment();
-
-       $frag = $this->build_lookup_frag($frag, $iter);
-       
-       $this->dom->appendChild($frag);
+       return $this->dom;       
    }
    
-   public function build_lookup_frag(\DOMDocumentFragment $frag, ResultsIterator $iter) : \DOMDocumentFragment
+   public function add_lookup_results(ResultsIterator $iter) 
+   {
+       $frag = $this->dom->createDocumentFragment();
+       
+       $str = $this->build_lookup_str($iter);
+       
+       $frag->appendXML($str); // todo: Bug
+       
+       $this->dom->getElementsByTagName('body')->item(0)->appendChild($frag);
+   }
+   
+   public function build_lookup_str(ResultsIterator $iter) : string
    {       
-       $frag->appendXML('<div class="defn">\n<h1 class="hwd">');
-
+       $str = '<div class="defn"><h1 class="hwd">';
+       
        foreach($iter as $defns)  {
 
-           $frag->appendXML($defns->term);
- 
-           $pos = "<span class='pos'>"  . $defns->pos . "</span>" );    
+           $str .= $defns->term ."</h1><h2 class='pos'>[ {$defns->pos} ]</h2>\n";    
 
-           $ul_defns = $this->build_defns_fragment($defns->definitions);
-
-           $frag->getElementsByTagName('div')->item(0)->appendChild($ul_defns);
+           $ul_str = $this->build_defns($defns->definitions);
+           
+           $str .= $ul_str;
      }
-     "</div>";
-     return $frag;
+     
+     $str .= "</div>";
+     return $str;
    }
 
     // New prospective code  
-    private function build_defns_fragment(array $definitions) : \DOMDocumentFragment 
-    {
-       $frag = $this->dom->createDocumentFragment();
+    private function build_defns(array $definitions) : string
+    {       
+        $ul = '<ul class="definitions">';
 
-       $ul = '<ul class="definitions">';
-
-       $lis = '';
+        $lis = '';
 
         foreach ($definitions as $defn) {
 
-             $lis .= "<li>" . $defn["definition"] . "</li>\n"; 
+             $lis .= "<li>" . $defn["definition"] . "</li>"; 
 
              if (isset($defn["expressions"]) && count($defn['expressions']) > 0) {
                  
@@ -102,29 +77,24 @@ defn;
 
                 foreach ($defn['expressions'] as $expression) 
 
-                        $lis .= "<li>". $expression->source  . " - ". $expression->target . "</li>\n";
+                        $lis .= "<li>". $expression->source  . " - ". $expression->target . "</li>";
 
-                $lis .= "</ul>\n";
+                $lis .= "</ul>";
              }  
         } 
 
-       $frag->appendXML($ul . $lis);       
+        $ul .= $lis . "</ul>";     
  
-       return $frag;
+        return $ul;
     }
 
     public function __construct()
     { 
        $this->dom = new \DOMDocument("1.0", "UTF8");
        $this->format = true; 
-       $dom = new \DOMDocument("1.0", "UTF8");
+      
+       $this->dom->preserveWhiteSpace = false;
 
-       $dom->preserveWhiteSpace = false;
-
-       $dom->loadHTML(self::$defn);
-
-
+       $this->dom->loadHTML(self::$html);
     }
-
-
 }

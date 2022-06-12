@@ -40,9 +40,11 @@ try {
             } 
         }         
         */
-        $node = $b->add_lookup_results($iter);
-        echo $node->saveHTML();
-        $debug = 10;
+        $b->add_lookup_results($iter);
+        $dom = $b->get_dom();
+        echo $dom->saveHTML();
+        echo "\n";
+        
     }
  
   } catch (Exception $e) {
