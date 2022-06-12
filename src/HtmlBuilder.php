@@ -56,7 +56,6 @@ defn;
      return $dom;
    }
 */
-
    public function add_lookup_results(ResultsIterator $iter) : \DOMDocument
    {
        $frag = $this->dom->createDocumentFragment();
@@ -68,29 +67,26 @@ defn;
    
    public function build_lookup_frag(\DOMDocumentFragment $frag, ResultsIterator $iter) : \DOMDocumentFragment
    {       
-       $frag->appendXML(self::$defn);
+       $frag->appendXML('<div class="defn">\n<h1 class="hwd">');
 
        foreach($iter as $defns)  {
 
-           $term = $this->dom->createTextNode( $defns->term );    
-
-           $h1 = $frag->getElementsByTagName('h1')->item(0); 
-           
-           $h1->appendChild($term);
+           $frag->appendXML($defns->term);
  
-           $pos = $this->dom->createTextNode( "<span class='pos'>"  . $defns->pos . "</span>" );    
+           $pos = "<span class='pos'>"  . $defns->pos . "</span>" );    
 
-           $ul_defns = $this->build_defns_fragment($this->dom->createDocumentFragment(), $defns->definitions);
+           $ul_defns = $this->build_defns_fragment($defns->definitions);
 
            $frag->getElementsByTagName('div')->item(0)->appendChild($ul_defns);
      }
+     "</div>";
      return $frag;
    }
 
     // New prospective code  
-    private function build_defns_fragment(\DOMDocument $dom, array $definitions) : \DOMDocumentFragment 
+    private function build_defns_fragment(array $definitions) : \DOMDocumentFragment 
     {
-       $frag = $dom->createDocumentFragment();
+       $frag = $this->dom->createDocumentFragment();
 
        $ul = '<ul class="definitions">';
 
