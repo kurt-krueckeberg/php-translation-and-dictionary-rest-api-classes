@@ -6,20 +6,19 @@ use LanguageTools\SystranDictResult;
 class HtmlBuilder {
 
    private readonly static string $html = <<<html
-<?xml version="1.0" standalone="yes"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"
-<meta charset="UTF-8"> >
-<title>Deutsche Wortschatz</title>
+<!DOCTYPE html>
 <html lang="de">
-<body>
-<header>
-  <h1>German Vocabulary</h1>
-</header>
-</body>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+    </body>
 </html>
 html;
 
-    private readonly static string $defn_html = <<<defn
+    private readonly static string $defn = <<<defn
 <div class="defn">
   <h1 class="hwd"></h1>
   <ul>
@@ -27,98 +26,74 @@ html;
 </div>
 defn;
 
-    private \DOMDocument $dom;
-     
-    private function create_defn(ResultsIter $iter) : \DOMDocument // or DOMNoide
-    {
-      /*
-  DocumentFragements
-The DocumentFragment interface represents a minimal document object that has no parent.
+   private \DOMDocument $dom;
+   
 
-It is used as a lightweight version of Document that stores a segment of a document structure comprised of nodes just
-like a standard document. The key difference is due to the fact that the document fragment isn't part of the active document
-tree structure. Changes made to the fragment don't affect the document (even on reflow) or incur any performance impact when changes are made.
-
-Javascript Example:
-
-const element  = document.getElementById('ul'); // assuming ul exists
-const fragment = document.createDocumentFragment();
-const browsers = ['Firefox', 'Chrome', 'Opera',
-    'Safari', 'Internet Explorer'];
-
-browsers.forEach(function(browser) {
-    const li = document.createElement('li');
-    li.textContent = browser;
-    fragment.appendChild(li);
-});
-
-element.appendChild(fragment);
-
- */
+   private function build_lookup_node(ResultsIterator $iter) 
+   {
        $dom = new DOMDocument("1.0", "UTF8");
 
        $dom->preserveWhiteSpace = false;
 
        $dom->loadHTML(self::$defn);
 
-       $xpath = new DOMXPath($dom);
-
-       $doc->getElementsByTagName("h1")->item(0)->appendChild($doc->createTextNode($iter->term)); 
-
-       /*
-         XPath queries along with the DOMXPath::query method can be used to return the list of elements that are searched for by the user.
-
-       $h1_tag = $xpath->query('//div[@class="defn"]/h1[@class="hwd"]');
-       */ 
-
-       /*
-       foreach ($tags as $tag) {
-
-          var_dump(trim($tag->nodeValue));
-
-       }
-       */
-
        foreach($iter as $defns)  {
 
-           $dom->createTextNode( $defns->pos ); 
+           $term = $dom->createTextNode( $defns->term );    
 
-           $h1_tag
-
-           echo "<span class='pos'>"  . $defns->pos . "</span>";    // addNode
+           $h1 = $dom->getElementByTagName('h1'); 
+           $h1->appendChild($tern);
  
-           echo "<ul>\n"; // addNode
+           $pos = $dom->createTextNode( "<span class='pos'>"  . $defns->pos . "</span>" );    
+           // todo: $pos -- append where?
 
-           /*
+           $ul = $this->build_defns_node($defns->definitions);
 
-              todo:
-              1. Add <li>Node and associated text
-              2. If expressions add nested <unorderd list of expressions:
+           $dom->appendChild($ul);
+     }
 
+    /* 
+      Get <ul> of defintions and any expressions
+     */
+    private function build_defns_node(array $definitions) : \DOMDocument 
+    {
+       $dom = new DOMDocument("1.0", "UTF8");
 
+       $dom->preserveWhiteSpace = false;
 
-             Q: What does $dom->createDocumentFragment(...) do?
-            */
+       $dom->loadHTML("<ul>\n</ul>");
 
-           foreach ($defns->definitions as $defn) {
+       $frag = $dom->createDocumentFragment();
+  
+       $lis = '';
 
-                echo "<li>" . $defn["definition"] . "</li>\n"; 
+        foreach ($definitions as $defn) {
 
-                if (isset($defn["expressions"])) {
-                    
-                   echo "<ul>\n"; 
+             $lis .= "<li>" . $defn["definition"] . "</li>\n"; 
 
-                   foreach ($defn['expressions'] as $expression) 
+             if (isset($defn["expressions"])) {
+                 
+                $lis .=o "<ul>\n"; 
 
-                           echo "<li>". $expression->source  . " - ". $expression->target . "</li>\n";
+                foreach ($defn['expressions'] as $expression) 
 
-                   echo "</ul>\n";
-                }  
-           } 
-       } 
+                        $lis .= "<li>". $expression->source  . " - ". $expression->target . "</li>\n";
+
+                $lis .= "</ul>\n";
+             }  
+        } 
+       
+       // Append the XML
+       $frag->appendXML($lis);
+ 
        /*
-         todo: Return this dom node, so it can be insert into overall documentI
-        */
+       $ul = $dom->getElementsByTagName('ul')->item(0);
+         
+       // Append the fragment
+       $ul->appendChild($frag);
+       */
+       $dom->appendChild($frag);
+ 
        return $dom;
     }
 
