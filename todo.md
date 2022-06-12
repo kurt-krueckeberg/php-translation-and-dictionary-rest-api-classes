@@ -1,17 +1,16 @@
 #  Todo
 
-[DOM Documents](https://www.w3schools.com/jsref/dom_obj_document.asp)
+[DOM Tutorial](https://www.w3schools.com/xml/dom_intro.asp)
 
 [PHP DOM Tutorial](https://www.bitdegree.org/learn/php-domdocument)
 
-iPHP [XPath Examples](https://www.bitbook.io/domdocument-php-tutorial)
+PHP [XPath Examples](https://www.bitbook.io/domdocument-php-tutorial)
 
 PHP [DOMDocument Examples](https://eecs.blog/php-using-domdocument-to-work-with-html/)
 
 PHP [DOMDocument::createTextNode](https://www.php.net/manual/en/domdocument.createtextnode.php)
-
-[DOM Tutorial](https://www.w3schools.com/xml/dom_intro.asp)
-
+o
+Q: Try using `createelement`. Can it be used with a fragement?
 
 Definition Lists
 

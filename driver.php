@@ -40,7 +40,7 @@ try {
             } 
         }         
         */
-        $node = $b->build_lookup_node($iter);
+        $node = $b->add_lookup_results($iter);
         echo $node->saveHTML();
         $debug = 10;
     }

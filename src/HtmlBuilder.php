@@ -57,33 +57,43 @@ defn;
    }
 */
 
-   public function build_lookup_node(\DOMDocument $dom, ResultsIterator $iter) : \DOMDocument
+   public function add_lookup_results(ResultsIterator $iter) : \DOMDocument
    {
-       $frag = $dom->createDocumentFragment();
+       $frag = $this->dom->createDocumentFragment();
+
+       $frag = $this->build_lookup_frag($frag, $iter);
+       
+       $this->dom->appendChild($frag);
+   }
+   
+   public function build_lookup_frag(\DOMDocumentFragment $frag, ResultsIterator $iter) : \DOMDocumentFragment
+   {       
+       $frag->appendXML(self::$defn);
 
        foreach($iter as $defns)  {
 
-           $term = $dom->createTextNode( $defns->term );    
+           $term = $this->dom->createTextNode( $defns->term );    
 
-           $h1 = $dom->getElementsByTagName('h1')->item(0); 
+           $h1 = $frag->getElementsByTagName('h1')->item(0); 
            
            $h1->appendChild($term);
  
-           $pos = $dom->createTextNode( "<span class='pos'>"  . $defns->pos . "</span>" );    
-           // todo: $pos -- append where?
+           $pos = $this->dom->createTextNode( "<span class='pos'>"  . $defns->pos . "</span>" );    
 
-           $ul = $this->build_defns_fragment($dom, $defns->definitions);
+           $ul_defns = $this->build_defns_fragment($this->dom->createDocumentFragment(), $defns->definitions);
 
-           $dom->getElementsByTagName('div')->item(0)->appendChild($ul);
+           $frag->getElementsByTagName('div')->item(0)->appendChild($ul_defns);
      }
-     return $dom;
+     return $frag;
    }
 
     // New prospective code  
     private function build_defns_fragment(\DOMDocument $dom, array $definitions) : \DOMDocumentFragment 
     {
        $frag = $dom->createDocumentFragment();
-  
+
+       $ul = '<ul class="definitions">';
+
        $lis = '';
 
         foreach ($definitions as $defn) {
@@ -101,9 +111,8 @@ defn;
                 $lis .= "</ul>\n";
              }  
         } 
-       
-       // Append the XML
-       $frag->appendXML($lis);
+
+       $frag->appendXML($ul . $lis);       
  
        return $frag;
     }
