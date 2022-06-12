@@ -29,7 +29,7 @@ defn;
 
     private \DOMDocument $dom;
      
-    private function insert_defn(ResultsIter $iter)
+    private function create_defn(ResultsIter $iter) : \DOMDocument // or DOMNoide
     {
        $dom = new DOMDocument("1.0", "UTF8");
 
@@ -37,19 +37,19 @@ defn;
 
        $xpath = new DOMXPath($dom);
 
-       XPath queries along with the DOMXPath::query method can be used to return the list of elements that are searched for by the user.
+      //  XPath queries along with the DOMXPath::query method can be used to return the list of elements that are searched for by the user.
 
        $tags = $xpath->query('//div[@class="defn"]/h1[@class="hwd"]');
 
        /*
        $doc->getElementsByTagName("h1")->item(0)->appendChild($doc->createTextNode($iter->term)); 
-        */
 
        foreach ($tags as $tag) {
 
           var_dump(trim($tag->nodeValue));
 
        }
+       */
 
        foreach($iter as $defns)  {
 
@@ -57,9 +57,16 @@ defn;
  
            echo "<ul>\n"; // addNode
 
+           /*
+
+              todo:
+              1. Add <li>Node and associated text
+              2. If expressions add nested <unorderd list of expressions:
+            */
+
            foreach ($defns->definitions as $defn) {
 
-                echo "<li>" . $defn["definition"] . "</li>\n";
+                echo "<li>" . $defn["definition"] . "</li>\n"; 
 
                 if (isset($defn["expressions"])) {
                     
@@ -72,8 +79,10 @@ defn;
                    echo "</ul>\n";
                 }  
            } 
-
-       }
+       } 
+       /*
+         todo: Return this dom node, so it can be insert into overall documentI
+        */
     }
 
     public function __construct()
