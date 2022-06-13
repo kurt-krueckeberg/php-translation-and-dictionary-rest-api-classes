@@ -49,22 +49,8 @@ PHP Warning:  DOMDocumentFragment::appendXML(): Entity: line 5: parser error : c
 PHP Warning:  DOMDocumentFragment::appendXML(): great deal</li></ul><li>to alter</li><li>to transform</li><li>to shift</li></ul> in /home/kurt/php-translation-and-dictionary-rest-api-classes/src/HtmlBuilder.php on line 41
 PHP Warning:  DOMDocumentFragment::appendXML():                                                                                ^ in /home/kurt/php-translation-and-dictionary-rest-api-classes/src/HtmlBuilder.php on line 41
 
-
-should return
-
-  1. term
-  2. pos
-  3. iterator for the defintions
-
-instead of an iterator that returns the asmeterm and pos each time it is advanced.
-
-PHP Warning:  DOMDocumentFragment::appendXML(): Entity: line 3: parser error : Opening and ending tag mismatch: div line 1 and h1 in /home/kurt/php-translation-and-dictionary-rest-api-classes/src/HtmlBuilder.php on line 70
-PHP Warning:  DOMDocumentFragment::appendXML(): li><li>to amend</li><li>to shift</li><li>to evolve</li></ul>sich verändern</h1> in /home/kurt/php-translation-and-dictionary-rest-api-classes/src/HtmlBuilder.php on line 70
-PHP Warning:  DOMDocumentFragment::appendXML():                                                                                ^ in /home/kurt/php-translation-and-dictionary-rest-api-classes/src/HtmlBuilder.php on line 70
-PHP Warning:  DOMDocumentFragment::appendXML(): Entity: line 5: parser error : chunk is not well balanced in /home/kurt/php-translation-and-dictionary-rest-api-classes/src/HtmlBuilder.php on line 70
-PHP Warning:  DOMDocumentFragment::appendXML(): great deal</li></ul><li>to alter</li><li>to transform</li><li>to shift</li></ul> in /home/kurt/php-translation-and-dictionary-rest-api-classes/src/HtmlBuilder.php on line 70
-PHP Warning:  DOMDocumentFragment::appendXML():            
-
+because 'sich verändern' is a new rod. See how Collins handles this and Pons. Ceate the html accordingly.
+ 
 
 [DOM Tutorial](https://www.w3schools.com/xml/dom_intro.asp)
 
