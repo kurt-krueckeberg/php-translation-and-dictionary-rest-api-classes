@@ -2,8 +2,8 @@
 declare(strict_types=1);
 
 namespace LanguageTools;
+use LanguageTools\SystranDictResult;
 use \SplFileObject as File; 
-use LanguageTools\{DictionaryInterface, TranslationInterface,SystranDictResult};
 
 class HtmlBuilder {
 
@@ -26,9 +26,6 @@ static private string $html_end = <<<html_end
 </html>
 html_end;
 
-   private DictionaryInterface $dict;
-   private TranslationInterface $trans;
-
    private function tidy(string $html)
    { 
      static $tidy_config = array(
@@ -46,10 +43,8 @@ html_end;
       return (string) $tidy;  
    }
    
-   public function add_definitions($word, string $src, string $dest)
+   public function add_definitions(ResultsIterator $iter) 
    {
-       $iter = $this->dict->lookup($word, $src, $dest);
-
        $str = "<section>";
        
        foreach($iter as $defns)  {
@@ -71,8 +66,8 @@ html_end;
      $this->html->fwrite($str); 
    }
 
-   private function build_defns(array $definitions) : string
-   {       
+    private function build_defns(array $definitions) : string
+    {       
         $ul = "<ul class='definitionsr'>";
 
         $lis = '';
@@ -98,12 +93,7 @@ html_end;
         return $ul;
     }
 
-    public function add_samples(string $word, int $cnt) 
-    {
-        $
-    } 
-
-    private function add_sample(string $src, string $dest) 
+    public function add_samples(string $src, string $dest) 
     {
         $out = "<p>$src</p><p>$dest</p>";
         
@@ -124,7 +114,7 @@ html_end;
         } 
     }
     
-    public function __construct(string $fname, DictionaryInterface, TranslationInterface, SentenceFetcher)
+    public function __construct(string $fname)
     { 
        $this->b_saved = false;
 

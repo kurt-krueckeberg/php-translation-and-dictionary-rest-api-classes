@@ -11,18 +11,18 @@ include 'vendor/autoload.php';
 try {
    
     $trans = RestClient::createClient(ClassID::Systran); 
-
-    $leipzig = RestClient::createClient(ClassID::Leipzig); 
     
     $file = new FileReader("vocab.txt");
     
-    $html = new HtmlBuilder("german.html", $trans, $trans); 
+    $html = new HtmlBuilder("german.html");
    
     foreach ($file as $word) {
         
-        $html->add_definitions($word, "de", "en");
+        $iter = $trans->lookup($word, 'de', 'en');
 
-        $html->add_samples($leipzig, $word, 3); 
+        $html->add_definitions($iter);
+
+        // todo: Add leipzig sample sentences
     }
  
   } catch (Exception $e) {
