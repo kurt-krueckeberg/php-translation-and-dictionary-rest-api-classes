@@ -46,7 +46,7 @@
     "source": {    <-- This is not an array
       "inflection": "(pl:dogs)",
       "info": "",
-      "lemma": "dog",
+      "lemma": "dog",    <--- This is the input word being defined, whose definitions are given in the "targets" below. NOTE: 'lemma' in "targets" is a definition.
       "phonetic": "[dɑɡ]",
       "pos": "noun",
       "term": "dog"
@@ -78,7 +78,7 @@
         "invmeanings": [
           "dog"
         ],
-        "lemma": "chien",
+        "lemma": "chien", 
         "rank": "95",
         "synonym": "",
         "variant": ""

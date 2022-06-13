@@ -6,6 +6,46 @@ Definition Lists
 
 [Definition Lists](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl)
 
+A definition lists may also contain a order- or unorder-list as below, which is a definition list that contains an unordered list (the ingredients) and an ordered list (the procedure):
+
+```html
+<dl>
+<dt><strong>The ingredients:</strong></dt>
+
+<dd>
+<ul>
+<li>100 g. flour</li>
+
+<li>10 g. sugar</li>
+
+<li>1 cup water</li>
+
+<li>2 eggs</li>
+
+<li>salt, pepper</li>
+</ul>
+</dd>
+
+<dt><strong>The procedure:</strong></dt>
+
+<dd>
+<ol>
+<li>Mix dry ingredients thoroughly.</li>
+
+<li>Pour in wet ingredients.</li>
+
+<li>Mix for 10 minutes.</li>
+
+<li>Bake for one hour at 300 degrees.</li>
+</ol>
+</dd>
+
+<dt><strong>Notes:</strong></dt>
+
+<dd>The recipe may be improved by adding raisins.</dd>
+</dl>
+```
+
 ## Comparison of Azure vs Systran
 
 Systran is to be preferred ove Azure. When you compare Azure definitions (with its examples) to the Systran definitions (with its expressions), it is obvious the Systran definitions are more extensive. Systran outweighs the example phrases that Azure

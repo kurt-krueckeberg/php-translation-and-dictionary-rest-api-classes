@@ -5,7 +5,7 @@ namespace LanguageTools;
 use LanguageTools\{DictionaryInterface, TranslateInterface, SentenceFetchInterface};
 use \SplFileObject as File; 
 
-class HtmlBuilder implements ResultfileInterface {
+class DlBuilder implements ResultfileInterface {
 
 static private string $html_start = <<<html_eos
 <?xml version="1.0" encoding="UTF-8"?>
@@ -54,19 +54,18 @@ html_end;
        
        foreach($iter as $defns)  {
 
-           $str .= '<div class="defn"><h3 class="hwd">';
+           $str .= '<dl class="defn" class="hwd">';
 
-           $str .= $defns->term ." <span class='pos'>[{$defns->pos}]</span></h3>";    
+           $str .= "<dt>{$defns->term} <span class='pos'>[{$defns->pos}]</span></dt>";    
 
-           // todo: Should the <ul> be within a <p>?    
-           $ul_str = $this->build_defns($defns->definitions);
+           $dd = $this->build_defns($defns->definitions);
            
-           $str .= $ul_str . "</div>";
+           $str .= $dd . "</dl>";
      }
      
      $str .= "</section>";
      
-     $str = $this->tidy( $str ); 
+     $str = $this->tidy($str); 
 
      $this->html->fwrite($str);
 
@@ -75,29 +74,25 @@ html_end;
 
    private function build_defns(array $definitions) : string
    {       
-        $ul = "<ol class='definitions'>";
-
-        $lis = '';
+        $dd = '';
 
         foreach ($definitions as $defn) {
 
-             $lis .= "<li>" . $defn["definition"] . "</li>"; 
+             $dd .= "<dd>" . $defn["definition"] . "</dd>";
 
              if (count($defn['expressions']) > 0) {
                  
-                $lis .= "<ul class='expressions'>"; 
+                $dd .= "<dd><ul class='expressions'>"; 
 
                 foreach ($defn['expressions'] as $expression) 
 
-                        $lis .= "<li>". $expression->source  . " - ". $expression->target . "</li>";
+                        $dd .= "<li>". $expression->source  . " - ". $expression->target . "</li>";
 
-                $lis .= "</ul>";
+                $dd .= '</ul></dd>';
              }  
         } 
 
-        $ul .= $lis . "</ol>";     
- 
-        return $ul;
+        return $dd;
     }
 
     public function add_samples(string $word, int $cnt) : int 

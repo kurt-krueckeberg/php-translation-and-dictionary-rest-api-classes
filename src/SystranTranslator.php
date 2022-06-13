@@ -78,22 +78,22 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
 
     public static function results_filter(mixed $match) :  SystranDictResult
     {
-       /* 
-        * $matches->targets has the definitions, often with example expressions.
-        */
+       // First we build the $defintions array
+       // The definitions array will be the 3rd propery of the returned SystranDictResult.
        $definitions = array();
 
+       // $match->targets[] holds the definitions. Individual defintions are in the 'lemma' property. A definition can also have example expressions.
        foreach($match->targets as $index => $target) { 
          
-           $definitions[$index]['definition'] = $target->lemma; 
+           $definitions[$index]['definition'] = $target->lemma; // 'lemma' is one single definition (with possible associated expressions)  
 
-           // todo: <-- Is $target->expreesions always set--even when empty? <-------------------------------------
-           if (isset($target->expressions) && count($target->expressions) > 0)  
+           if (count($target->expressions) > 0)  
   
-                // expression is an array of a \stdClass with two properties: source and target.// <--------------------------------
-                $definitions[$index]['expressions'] = $target->expressions; // <--------------------------------
+              // expression is an array of a \stdClass with two properties: source and target.
+              $definitions[$index]['expressions'] = $target->expressions;
        }
 
+       // We return: 1. a definition, the part-of-speech, an array (possibly empty) of associated definitions 
        return new SystranDictResult($match->source->lemma, $match->source->pos, $definitions);
     }
 }
