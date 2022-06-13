@@ -6,11 +6,29 @@ use LanguageTools\SystranDictResult;
 
 class HtmlBuilder {
 
+   private function tidy(string $html)
+   { 
+    static $tidy_config = array(
+                     'clean' => true,
+                     'output-xhtml' => true,
+                     'show-body-only' => true,
+                     'wrap' => 0,
+                     'indent' => true
+                     ); 
+                     
+      $tidy = tidy_parse_string($html, $tidy_config, 'UTF8');
+
+      $tidy->cleanRepair();
+
+      return (string) $tidy;  
+   }
+
+
 static private string $html = <<<html_start
 <!DOCTYPE html>
 <html lang="de">
     <head>
-        <title>TODO supply a title</title>
+        <title>German Words</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
          <link rel="stylesheet" href="screen.css"> 
@@ -25,7 +43,7 @@ static private string $html = <<<html_end
 html_end;
 
    
-   public function add_lookup_results(string $word, ResultsIterator $iter) 
+   public function add_lookup_results(ResultsIterator $iter) 
    {
        $str = "<section>";
        
@@ -43,8 +61,9 @@ html_end;
      
      $str .= "</section>";
      
-     // todo: $this->tidy($str). See other .php file that uses tidy.   
-     return $str;
+     $str = $this->tidy( $str ); 
+
+     $this->html->fwrite($str); 
    }
 
     private function build_defns(array $definitions) : string
@@ -74,6 +93,8 @@ html_end;
         return $ul;
     }
 
+
+    public function saveHTML
     public function __construct(string $fname)
     { 
        $this->html = new File($fname, "w"); 

@@ -24,12 +24,6 @@ class CollinsGermanDictionary extends RestClient {
    public function __construct()
    {   
       parent::__construct(ClassID::Collins);
-
-      $this->dom = new \DOMDocument("1.0", 'utf8');
-
-      $this->dom->preserveWhiteSpace = false;
- 
-      $this->dom->formatOutput = true;
    } 
 
    static public function get_css() : string

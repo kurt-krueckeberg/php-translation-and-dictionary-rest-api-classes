@@ -73,7 +73,7 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
 
       $obj = json_decode($contents);    
            
-      return new ResultsIterator($obj->outputs[0]->output->matches, SystranTranslator::results_filter(...));
+      return new ResultsIterator(urldecode($obj->outputs[0]->output->matches), SystranTranslator::results_filter(...));
     }
 
     public static function results_filter(mixed $match) :  SystranDictResult
