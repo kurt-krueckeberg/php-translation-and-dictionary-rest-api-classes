@@ -103,7 +103,7 @@ html_end;
 
        foreach ($iter as $src) {
 
-           $dest = $this->trans->translate($src, $this->src, $this->dest);
+           $dest = $this->trans->translate($src, $this->dest, $this->src);
 
            $str .= "<p>$src</p><p>$dest</p>";
        } 
