@@ -15,7 +15,8 @@ try {
     $f = new FileReader("vocab.txt");
     
     $b = new HtmlBuilder();
-
+   
+    $cnt = 0;
     foreach ($f as $word) {
         
         $iter = $t->lookup($word, 'de', 'en');
@@ -43,7 +44,8 @@ try {
         $b->add_lookup_results($iter);
         $dom = $b->get_dom();
         echo $dom->saveHTML();
-        echo "\n";
+        echo "\n------------------\n";
+        if (++$cnt == 3) return;
         
     }
  

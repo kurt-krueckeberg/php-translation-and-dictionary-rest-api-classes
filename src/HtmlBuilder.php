@@ -40,7 +40,9 @@ defn;
        
        $frag->appendXML($str); // todo: Bug
        
-       $this->dom->getElementsByTagName('body')->item(0)->appendChild($frag);
+       //$this->dom->getElementsByTagName('body')->item(0)->appendChild($frag);
+       $list = $this->dom->getElementsByTagName('body');
+       $list->item($list->length - 1)->appendChild($frag);;
    }
    
    public function build_lookup_str(ResultsIterator $iter) : string
