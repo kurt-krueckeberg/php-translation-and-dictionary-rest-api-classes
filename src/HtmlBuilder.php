@@ -75,7 +75,7 @@ html_end;
 
    private function build_defns(array $definitions) : string
    {       
-        $ul = "<ol class='definitionsr'>";
+        $ul = "<ol class='definitions'>";
 
         $lis = '';
 
