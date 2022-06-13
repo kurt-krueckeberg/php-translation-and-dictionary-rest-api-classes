@@ -41,10 +41,14 @@ try {
             } 
         }         
         */
-        $b->add_lookup_results($iter);
+        $b->add_lookup_results($word, $iter);
+
         $dom = $b->get_dom();
+
         echo $dom->saveHTML();
+
         echo "\n------------------\n";
+
         if (++$cnt == 3) return;
         
     }

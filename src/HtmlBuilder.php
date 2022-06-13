@@ -19,7 +19,7 @@ static private string $html = <<<html
 </html>
 html;
 
-i  private \DOMNode $body;
+   private \DOMNode $body;
 
    private \DOMDocument $dom;   
 
@@ -28,31 +28,34 @@ i  private \DOMNode $body;
        return $this->dom;       
    }
    
-   public function add_lookup_results(ResultsIterator $iter) 
+   public function add_lookup_results(string $word, ResultsIterator $iter) 
    {
+       $str = $this->build_lookup_str($word, $iter);
+       
        $frag = $this->dom->createDocumentFragment();
        
-       $str = $this->build_lookup_str($iter);
-       
-       $frag->appendXML($str); // todo: Bug
+       $frag->appendXML($str); 
        
        $this->body->appendChild($frag);;
    }
    
-   public function build_lookup_str(ResultsIterator $iter) : string
+   public function build_lookup_str(string $word, ResultsIterator $iter) : string
    {       
-       $str = '<div class="defn"><h1 class="hwd">';
+       $str = "<section>";
        
        foreach($iter as $defns)  {
 
-           $str .= $defns->term ."</h1><h2 class='pos'>[ {$defns->pos} ]</h2>\n";    
+           $str .= '<div class="defn"><h1 class="hwd">';
 
+           $str .= $defns->term ."<span class='pos'>[ {$defns->pos} ]</span></h1>\n";    
+
+           // todo: Should the <ul> be within a <p>?    
            $ul_str = $this->build_defns($defns->definitions);
            
-           $str .= $ul_str;
+           $str .= $ul_str . '</div>';
      }
      
-     $str .= "</div>";
+     $str .= "</section>";
      return $str;
    }
 
