@@ -1,8 +1,6 @@
 <?php
 declare(strict_types=1);
 use \SplFileObject as File;
-use LanguageTools\SentenceFetcher;
-use LanguageTools\WebpageCreator;
 use LanguageTools\RestClient;
 use LanguageTools\TranslateInterface;
 use LanguageTools\DictionaryInterface;

@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
-
 namespace LanguageTools;
-use \SplFileObject as File; 
-use LanguageTools\{DictionaryInterface, TranslationInterface,SystranDictResult};
 
-class HtmlBuilder {
+use LanguageTools\{DictionaryInterface, TranslateInterface, SentenceFetchInterface};
+use \SplFileObject as File; 
+
+class HtmlBuilder implements ResultfileInterface {
 
 static private string $html_start = <<<html_eos
 <?xml version="1.0" encoding="UTF-8"?>
@@ -25,9 +25,6 @@ static private string $html_end = <<<html_end
     </body>
 </html>
 html_end;
-
-   private DictionaryInterface $dict;
-   private TranslationInterface $trans;
 
    private function tidy(string $html)
    { 
@@ -100,7 +97,7 @@ html_end;
 
     public function add_samples(string $word, int $cnt) 
     {
-        $
+        
     } 
 
     private function add_sample(string $src, string $dest) 
@@ -124,12 +121,16 @@ html_end;
         } 
     }
     
-    public function __construct(string $fname, DictionaryInterface, TranslationInterface, SentenceFetcher)
+    public function __construct(string $fname, private readonly DictionaryInterface $dict, private readonly TranslateInterface $trans, private readonly SentenceFetcherInterface $fetcher)
     { 
        $this->b_saved = false;
 
        $this->html = new File($fname, "w"); 
 
        $this->html->fwrite(self::$html_start);
+
+       var_dump($this);
+
+       die();
     }
 }

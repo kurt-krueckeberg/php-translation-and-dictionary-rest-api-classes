@@ -4,7 +4,8 @@ use \SplFileObject as File;
 use LanguageTools\RestClient;
 use LanguageTools\ClassID;
 use LanguageTools\FileReader;
-use LanguageTools\HtmlBuilder;
+use LanguageTools\ResultfileInterface;
+use LanguageTools\SentenceFetchInterface;
 
 include 'vendor/autoload.php';
 
@@ -16,7 +17,7 @@ try {
     
     $file = new FileReader("vocab.txt");
     
-    $html = new HtmlBuilder("german.html", $trans, $trans); 
+    $html = new HtmlBuilder("german.html", $trans, $trans, $leipzig); 
    
     foreach ($file as $word) {
         
