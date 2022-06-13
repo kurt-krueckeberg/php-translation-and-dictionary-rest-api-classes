@@ -8,25 +8,38 @@ use LanguageTools\HtmlBuilder;
 
 include 'vendor/autoload.php';
 
+if ($argc != 2) {
+
+  echo "Enter the vocabulary words input file.\n";
+  return;
+
+} else if (!file_exists($argv[1])) {
+
+
+  echo "Input file does not exist.\n";
+  return;
+}
+
 try {
-   
+    $fname = $argv[1];
+ 
     $trans = RestClient::createClient(ClassID::Systran); 
 
     $leipzig = RestClient::createClient(ClassID::Leipzig); 
     
-    $file = new FileReader("vocab.txt");
+    $file = new FileReader($fname);
     
     $html = new HtmlBuilder("german.html", "de", "en", $trans, $trans, $leipzig);
    
     foreach ($file as $word) {
-
-        echo "Adding definitions for $word.\n";
         
-        $html->add_definitions($word, "de", "en");
+        $cnt = $html->add_definitions($word, "de", "en");
 
-        echo "Adding samples sentences.\n";
+        echo "Added $cnt definitions for $word.\n";
 
-        $html->add_samples($word, 3); 
+        $cnt = $html->add_samples($word, 3); 
+
+        echo "Added $cnt samples sentences for $word.\n";
     }
  
   } catch (Exception $e) {

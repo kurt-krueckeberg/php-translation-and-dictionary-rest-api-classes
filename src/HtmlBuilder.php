@@ -17,8 +17,6 @@ static private string $html_start = <<<html_eos
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-    </body>
-</html>
 html_eos;
 
 static private string $html_end = <<<html_end
@@ -43,11 +41,16 @@ html_end;
       return (string) $tidy;  
    }
    
-   public function add_definitions($word, string $src, string $dest)
+   public function add_definitions($word, string $src, string $dest) : int
    {
        $iter = $this->dict->lookup($word, $src, $dest);
 
-       $str = "<section>";
+       if (count($iter) == 0) {
+
+           return count($iter);
+       } 
+
+       $str = "\n<section>";
        
        foreach($iter as $defns)  {
 
@@ -65,7 +68,9 @@ html_end;
      
      $str = $this->tidy( $str ); 
 
-     $this->html->fwrite($str); 
+     $this->html->fwrite($str);
+
+     return count($iter); 
    }
 
    private function build_defns(array $definitions) : string
@@ -95,11 +100,16 @@ html_end;
         return $ul;
     }
 
-    public function add_samples(string $word, int $cnt) 
+    public function add_samples(string $word, int $cnt) : int 
     {
-       $str = "<section class='samples'>\n";
-
        $iter = $this->fetcher->fetch($word, $cnt); 
+
+       if (count($iter) == 0) {
+
+           return count($iter);
+       }
+
+       $str = "\n<section class='samples'>\n";
 
        foreach ($iter as $src) {
 
@@ -110,7 +120,9 @@ html_end;
 
        $str .= "</section>\n";
 
-        $this->html->fwrite($this->tidy($str));
+       $this->html->fwrite($this->tidy($str));
+
+       return count($iter);
     } 
 
     public function __destruct()
