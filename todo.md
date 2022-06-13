@@ -20,7 +20,7 @@ We we trz to appendChild)= the fragement of results for 'veräadern', which is t
 </li><li>to shift
 </li><li>to evolve
 </li>
-</ul>sich verändern
+</ul>sich verändern             <----- This is an entirely new "word" and defintion. IT should have an <h1> -- maybe <div ...><h1>...</h1>
 </h1><h2 class='pos'>[ verb ]
 </h2>
 <ul class="definitions"><li>to change
