@@ -26,7 +26,7 @@ section {
 
   font-family: 'Lato Medium', Arial, sans-serif;
   display: grid; 
-  width: 60%;
+  width: 70%;
   margin: auto;
   grid-template-columns: auto auto; /* grid-template-columns: 40% 40%;  */
   column-gap: 10px;
@@ -40,8 +40,10 @@ section p { /* paragraph style--font, text color, background color, spacig with 
   padding-top: 3px;
   padding-bottom: 3px;
   padding-right: 6px;
-  line-height: 1.7em; /* <--- Spacing between line within paragraph */ 
-  margin: 4px 0;      /* <--- Spacing between paragraphs. It is equivalent to the statements
+  line-height: 1.6em; 
+  margin: 3px 0;     
+/*  line-height: 1.7em;  <--- Spacing between line within paragraph */ 
+/*  margin: 4px 0;       <--- Spacing between paragraphs. It is equivalent to the statements
     
   below: 
   margin-top: 7px;
