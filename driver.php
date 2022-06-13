@@ -10,44 +10,20 @@ include 'vendor/autoload.php';
 
 try {
    
-    $t = RestClient::createClient(ClassID::Systran); 
+    $trans = RestClient::createClient(ClassID::Systran); 
     
-    $f = new FileReader("vocab.txt");
+    $file = new FileReader("vocab.txt");
     
-    $b = new HtmlBuilder("german.html");
+    $html = new HtmlBuilder("german.html");
    
-    $cnt = 0;
-    foreach ($f as $word) {
+    foreach ($file as $word) {
         
-        $iter = $t->lookup($word, 'de', 'en');
-        /*
-        foreach($iter as $defns)  {
+        $iter = $trans->lookup($word, 'de', 'en');
 
-            echo 'word: ' . $defns->term . "\n";                 // ignore
-            echo "\tpart-of-speech: "  . $defns->pos . "\n";    // display
- 
-            foreach ($defns->definitions as $defn) {
+        $html->add_definitions($iter);
 
-                 echo "\tdefinition = " . $defn['definition'] . "\n";
-
-                 if (isset($defn['expressions'])) {
-                     
-                    echo "\t\texpressions:\n"; 
-
-                    foreach ($defn['expressions'] as $expression) 
-
-                            echo "\t\t\t". $expression->source  . " - ". $expression->target . "\n";
-                   }  
-            } 
-        }         
-        */
-        $b->add_lookup_results($iter);
-
-
-        if (++$cnt == 3) return;
-        
+        // todo: Add leipzig sample sentences
     }
-    $b->save();
  
   } catch (Exception $e) {
 

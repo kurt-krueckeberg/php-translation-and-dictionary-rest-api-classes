@@ -43,7 +43,7 @@ html_end;
       return (string) $tidy;  
    }
    
-   public function add_lookup_results(ResultsIterator $iter) 
+   public function add_definitions(ResultsIterator $iter) 
    {
        $str = "<section>";
        
@@ -91,6 +91,13 @@ html_end;
         $ul .= $lis . "</ul>";     
  
         return $ul;
+    }
+
+    public function add_samples(string $src, string $dest) 
+    {
+        $out = "<p>$src</p><p>$dest</p>";
+        
+        $this->fwrite($this->tidy($out));
     }
 
     public function __destruct()
