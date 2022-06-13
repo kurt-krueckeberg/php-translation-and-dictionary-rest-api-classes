@@ -3,12 +3,32 @@ declare(strict_types=1);
 
 namespace LanguageTools;
 use LanguageTools\SystranDictResult;
+use \SplFileObject as File; 
 
 class HtmlBuilder {
 
+static private string $html_start = <<<html_eos
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+    </body>
+</html>
+html_eos;
+
+static private string $html_end = <<<html_end
+    </body>
+</html>
+html_end;
+
    private function tidy(string $html)
    { 
-    static $tidy_config = array(
+     static $tidy_config = array(
                      'clean' => true,
                      'output-xhtml' => true,
                      'show-body-only' => true,
@@ -22,26 +42,6 @@ class HtmlBuilder {
 
       return (string) $tidy;  
    }
-
-
-static private string $html = <<<html_start
-<!DOCTYPE html>
-<html lang="de">
-    <head>
-        <title>German Words</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <link rel="stylesheet" href="screen.css"> 
-    </head>
-    <body>
-html_start;
-
-
-static private string $html = <<<html_end
-    </body>
-</html>
-html_end;
-
    
    public function add_lookup_results(ResultsIterator $iter) 
    {
@@ -51,12 +51,12 @@ html_end;
 
            $str .= '<div class="defn"><h1 class="hwd">';
 
-           $str .= $defns->term ."<span class='pos'>[ {$defns->pos} ]</span></h1>\n";    
+           $str .= $defns->term ."<span class='pos'>[ {$defns->pos} ]</span></h1>";    
 
            // todo: Should the <ul> be within a <p>?    
            $ul_str = $this->build_defns($defns->definitions);
            
-           $str .= $ul_str . '</div>';
+           $str .= $ul_str . "</div>";
      }
      
      $str .= "</section>";
@@ -68,7 +68,7 @@ html_end;
 
     private function build_defns(array $definitions) : string
     {       
-        $ul = '<ul class="definitions">';
+        $ul = "<ul class='definitionsr'>";
 
         $lis = '';
 
@@ -78,7 +78,7 @@ html_end;
 
              if (isset($defn["expressions"]) && count($defn['expressions']) > 0) {
                  
-                $lis .= "<ul class='expressions'>\n"; 
+                $lis .= "<ul class='expressions'>"; 
 
                 foreach ($defn['expressions'] as $expression) 
 
@@ -93,10 +93,26 @@ html_end;
         return $ul;
     }
 
+    public function __destruct()
+    {
+       $this->save();        
+    } 
 
-    public function saveHTML
+    public function save()
+    {
+       if (!$this->b_saved) {
+
+             $this->html->fwrite(self::$html_end);
+             $this->b_saved = true;
+        } 
+    }
+    
     public function __construct(string $fname)
     { 
+       $this->b_saved = false;
+
        $this->html = new File($fname, "w"); 
+
+       $this->html->fwrite(self::$html_start);
     }
 }

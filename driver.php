@@ -14,7 +14,7 @@ try {
     
     $f = new FileReader("vocab.txt");
     
-    $b = new HtmlBuilder();
+    $b = new HtmlBuilder("german.html");
    
     $cnt = 0;
     foreach ($f as $word) {
@@ -41,17 +41,13 @@ try {
             } 
         }         
         */
-        $b->add_lookup_results($word, $iter);
+        $b->add_lookup_results($iter);
 
-        $dom = $b->get_dom();
-
-        echo $dom->saveHTML();
-
-        echo "\n------------------\n";
 
         if (++$cnt == 3) return;
         
     }
+    $b->save();
  
   } catch (Exception $e) {
 
