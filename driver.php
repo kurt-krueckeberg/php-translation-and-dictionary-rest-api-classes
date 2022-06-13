@@ -4,8 +4,7 @@ use \SplFileObject as File;
 use LanguageTools\RestClient;
 use LanguageTools\ClassID;
 use LanguageTools\FileReader;
-use LanguageTools\ResultfileInterface;
-use LanguageTools\SentenceFetchInterface;
+use LanguageTools\HtmlBuilder;
 
 include 'vendor/autoload.php';
 
@@ -17,13 +16,17 @@ try {
     
     $file = new FileReader("vocab.txt");
     
-    $html = new HtmlBuilder("german.html", $trans, $trans, $leipzig); 
+    $html = new HtmlBuilder("german.html", "de", "en", $trans, $trans, $leipzig);
    
     foreach ($file as $word) {
+
+        echo "Adding definitions for $word.\n";
         
         $html->add_definitions($word, "de", "en");
 
-        $html->add_samples($leipzig, $word, 3); 
+        echo "Adding samples sentences.\n";
+
+        $html->add_samples($word, 3); 
     }
  
   } catch (Exception $e) {

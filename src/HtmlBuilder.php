@@ -97,15 +97,21 @@ html_end;
 
     public function add_samples(string $word, int $cnt) 
     {
-        
-    } 
+       $str = "<section class='samples'>\n";
 
-    private function add_sample(string $src, string $dest) 
-    {
-        $out = "<p>$src</p><p>$dest</p>";
-        
-        $this->fwrite($this->tidy($out));
-    }
+       $iter = $this->fetcher->fetch($word, $cnt); 
+
+       foreach ($iter as $src) {
+
+           $dest = $this->trans->translate($src, $this->src, $this->dest);
+
+           $str .= "<p>$src</p><p>$dest</p>";
+       } 
+
+       $str .= "</section>\n";
+
+        $this->html->fwrite($this->tidy($str));
+    } 
 
     public function __destruct()
     {
@@ -116,21 +122,17 @@ html_end;
     {
        if (!$this->b_saved) {
 
-             $this->html->fwrite(self::$html_end);
-             $this->b_saved = true;
+            $this->html->fwrite(self::$html_end);
+            $this->b_saved = true;
         } 
     }
     
-    public function __construct(string $fname, private readonly DictionaryInterface $dict, private readonly TranslateInterface $trans, private readonly SentenceFetcherInterface $fetcher)
+    public function __construct(string $fname, private readonly string $src, private readonly string $dest, private readonly DictionaryInterface $dict, private readonly TranslateInterface $trans, private readonly SentenceFetchInterface $fetcher)
     { 
        $this->b_saved = false;
 
        $this->html = new File($fname, "w"); 
 
        $this->html->fwrite(self::$html_start);
-
-       var_dump($this);
-
-       die();
     }
 }
