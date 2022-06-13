@@ -5,7 +5,7 @@ namespace LanguageTools;
 use LanguageTools\{DictionaryInterface, TranslateInterface, SentenceFetchInterface};
 use \SplFileObject as File; 
 
-class DlBuilder implements ResultfileInterface {
+class DlHtmlBuilder implements ResultfileInterface {
 
 static private string $html_start = <<<html_eos
 <?xml version="1.0" encoding="UTF-8"?>
@@ -81,7 +81,8 @@ html_end;
              $dd .= "<dd>" . $defn["definition"] . "</dd>";
 
              if (count($defn['expressions']) > 0) {
-                 
+                
+                /* We use a nested <ul> for the expressions.
                 $dd .= "<dd><ul class='expressions'>"; 
 
                 foreach ($defn['expressions'] as $expression) 
@@ -89,6 +90,17 @@ html_end;
                         $dd .= "<li>". $expression->source  . " - ". $expression->target . "</li>";
 
                 $dd .= '</ul></dd>';
+               */
+
+               // We use a nested <dl> for the expressions.
+               $dd .= "<dd><dl class='expressions'>"; 
+
+                foreach ($defn['expressions'] as $expression) 
+
+                        $dd .= "<dt>{$expression->source}</dt><dd>{$expression->target}</dd>";
+
+                $dd .= '</dl></dd>';
+
              }  
         } 
 

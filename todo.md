@@ -46,6 +46,16 @@ A definition lists may also contain a order- or unorder-list as below, which is 
 </dl>
 ```
 
+NOTE: A <dd> can apparently contain a nested deinition list: 
+
+```html
+<dd>
+  <dl>
+    <dt>...</dt>
+    <dd>...</dd>
+  </dl>
+</dd>
+
 ## Comparison of Azure vs Systran
 
 Systran is to be preferred ove Azure. When you compare Azure definitions (with its examples) to the Systran definitions (with its expressions), it is obvious the Systran definitions are more extensive. Systran outweighs the example phrases that Azure

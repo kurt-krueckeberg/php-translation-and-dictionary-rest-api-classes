@@ -87,11 +87,11 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
          
            $definitions[$index]['definition'] = $target->lemma; // 'lemma' is one single definition (with possible associated expressions)  
 
-           if (count($target->expressions) > 0)  
+           //--if (count($target->expressions) > 0)  
   
-              // expression is an array of a \stdClass with two properties: source and target.
-              $definitions[$index]['expressions'] = $target->expressions;
-       }
+           // expression is an array of a \stdClass with two properties: source and target.
+           $definitions[$index]['expressions'] = (count($target->expressions) > 0) ? $target->expressions : array();
+        }
 
        // We return: 1. a definition, the part-of-speech, an array (possibly empty) of associated definitions 
        return new SystranDictResult($match->source->lemma, $match->source->pos, $definitions);
