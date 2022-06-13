@@ -19,11 +19,7 @@ static private string $html = <<<html
 </html>
 html;
 
-    static private string $defn = <<<defn
-<div class="defn">
-  <h1 class="hwd"></h1>
-</div>
-defn;
+i  private \DOMNode $body;
 
    private \DOMDocument $dom;   
 
@@ -40,9 +36,7 @@ defn;
        
        $frag->appendXML($str); // todo: Bug
        
-       //$this->dom->getElementsByTagName('body')->item(0)->appendChild($frag);
-       $list = $this->dom->getElementsByTagName('body');
-       $list->item($list->length - 1)->appendChild($frag);;
+       $this->body->appendChild($frag);;
    }
    
    public function build_lookup_str(ResultsIterator $iter) : string
@@ -98,5 +92,7 @@ defn;
        $this->dom->preserveWhiteSpace = false;
 
        $this->dom->loadHTML(self::$html);
+
+       $this->body = $this->dom->getElementsByTagName('body')->item(0);
     }
 }
