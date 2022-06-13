@@ -54,9 +54,9 @@ html_end;
        
        foreach($iter as $defns)  {
 
-           $str .= '<div class="defn"><h1 class="hwd">';
+           $str .= '<div class="defn"><h3 class="hwd">';
 
-           $str .= $defns->term ."<span class='pos'>[ {$defns->pos} ]</span></h1>";    
+           $str .= $defns->term ." <span class='pos'>[{$defns->pos}]</span></h3>";    
 
            // todo: Should the <ul> be within a <p>?    
            $ul_str = $this->build_defns($defns->definitions);
@@ -75,7 +75,7 @@ html_end;
 
    private function build_defns(array $definitions) : string
    {       
-        $ul = "<ul class='definitionsr'>";
+        $ul = "<ol class='definitionsr'>";
 
         $lis = '';
 
@@ -95,7 +95,7 @@ html_end;
              }  
         } 
 
-        $ul .= $lis . "</ul>";     
+        $ul .= $lis . "</ol>";     
  
         return $ul;
     }

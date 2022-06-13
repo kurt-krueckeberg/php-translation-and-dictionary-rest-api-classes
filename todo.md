@@ -1,68 +1,6 @@
 #  Todo
 
-We we trz to appendChild)= the fragement of results for 'veräadern', which is this
-
-```html
-<div class="defn"><h1 class="hwd">verändern
-</h1><h2 class='pos'>[ verb ]
-</h2>
-<ul class="definitions"><li>to change
-</li><ul class='expressions'>
-<li>verändern mein Leben - to change my life
-</li><li>wesentlich verändern - to change significantly
-</li><li>verändern mein Leben ganz und gar - to utterly change my life
-</li><li>verändern die Anreize für Politiker - to change the politicians' incentives
-</li>
-</ul><li>to alter
-</li><li>to modify
-</li><li>to transform
-</li><li>to amend
-</li><li>to shift
-</li><li>to evolve
-</li>
-</ul>sich verändern             <----- This is an entirely new "word" and defintion. IT should have an <h1> -- maybe <div ...><h1>...</h1>
-</h1><h2 class='pos'>[ verb ]
-</h2>
-<ul class="definitions"><li>to change
-</li><ul class='expressions'>
-<li>dramatisch sich verändern - to change dramatically
-</li><li>erheblich sich verändern - to change significantly
-</li><li>radikal sich verändern - to change radically
-</li><li>sehr sich verändern - to change a great deal
-</li>
-</ul><li>to alter
-</li><li>to transform
-</li><li>to shift
-</li>
-</ul>
-</div>
-```
-We get this error:
-
-PHP Warning:  DOMDocumentFragment::appendXML(): Entity: line 3: parser error : Opening and ending tag mismatch: div line 1 and h1 in /home/kurt/php-translation-and-dictionary-rest-api-classes/src/HtmlBuilder.php on line 41
-PHP Warning:  DOMDocumentFragment::appendXML(): li><li>to amend</li><li>to shift</li><li>to evolve</li></ul>sich verändern</h1> in /home/kurt/php-translation-and-dictionary-rest-api-classes/src/HtmlBuilder.php on line 41
-PHP Warning:  DOMDocumentFragment::appendXML():                                                                                ^ in /home/kurt/php-translation-and-dictionary-rest-api-classes/src/HtmlBuilder.php on line 41
-PHP Warning:  DOMDocumentFragment::appendXML(): Entity: line 5: parser error : chunk is not well balanced in /home/kurt/php-translation-and-dictionary-rest-api-classes/src/HtmlBuilder.php on line 41
-PHP Warning:  DOMDocumentFragment::appendXML(): great deal</li></ul><li>to alter</li><li>to transform</li><li>to shift</li></ul> in /home/kurt/php-translation-and-dictionary-rest-api-classes/src/HtmlBuilder.php on line 41
-PHP Warning:  DOMDocumentFragment::appendXML():                                                                                ^ in /home/kurt/php-translation-and-dictionary-rest-api-classes/src/HtmlBuilder.php on line 41
-PHP Warning:  DOMDocumentFragment::appendXML(): Entity: line 5: parser error : chunk is not well balanced in /home/kurt/php-translation-and-dictionary-rest-api-classes/src/HtmlBuilder.php on line 41
-PHP Warning:  DOMDocumentFragment::appendXML(): great deal</li></ul><li>to alter</li><li>to transform</li><li>to shift</li></ul> in /home/kurt/php-translation-and-dictionary-rest-api-classes/src/HtmlBuilder.php on line 41
-PHP Warning:  DOMDocumentFragment::appendXML():                                                                                ^ in /home/kurt/php-translation-and-dictionary-rest-api-classes/src/HtmlBuilder.php on line 41
-
-because 'sich verändern' is a new rod. See how Collins handles this and Pons. Ceate the html accordingly.
- 
-
-[DOM Tutorial](https://www.w3schools.com/xml/dom_intro.asp)
-
-[PHP DOM Tutorial](https://www.bitdegree.org/learn/php-domdocument)
-
-PHP [XPath Examples](https://www.bitbook.io/domdocument-php-tutorial)
-
-PHP [DOMDocument Examples](https://eecs.blog/php-using-domdocument-to-work-with-html/)
-
-PHP [DOMDocument::createTextNode](https://www.php.net/manual/en/domdocument.createtextnode.php)
-o
-Q: Try using `createelement`. Can it be used with a fragement?
+Use <dl> or <ol>
 
 Definition Lists
 
