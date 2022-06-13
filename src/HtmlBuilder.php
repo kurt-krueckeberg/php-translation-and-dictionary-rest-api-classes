@@ -6,41 +6,27 @@ use LanguageTools\SystranDictResult;
 
 class HtmlBuilder {
 
-static private string $html = <<<html
+static private string $html = <<<html_start
 <!DOCTYPE html>
 <html lang="de">
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link rel="stylesheet" href="screen.css"> 
     </head>
     <body>
+html_start;
+
+
+static private string $html = <<<html_end
     </body>
 </html>
-html;
+html_end;
 
-   private \DOMNode $body;
-
-   private \DOMDocument $dom;   
-
-   public function get_dom() : \DOMDocument
-   {
-       return $this->dom;       
-   }
    
    public function add_lookup_results(string $word, ResultsIterator $iter) 
    {
-       $str = $this->build_lookup_str($word, $iter);
-       
-       $frag = $this->dom->createDocumentFragment();
-       
-       $frag->appendXML($str); 
-       
-       $this->body->appendChild($frag);;
-   }
-   
-   public function build_lookup_str(string $word, ResultsIterator $iter) : string
-   {       
        $str = "<section>";
        
        foreach($iter as $defns)  {
@@ -56,10 +42,11 @@ html;
      }
      
      $str .= "</section>";
+     
+     // todo: $this->tidy($str). See other .php file that uses tidy.   
      return $str;
    }
 
-    // New prospective code  
     private function build_defns(array $definitions) : string
     {       
         $ul = '<ul class="definitions">';
@@ -87,15 +74,8 @@ html;
         return $ul;
     }
 
-    public function __construct()
+    public function __construct(string $fname)
     { 
-       $this->dom = new \DOMDocument("1.0", "UTF8");
-       $this->format = true; 
-      
-       $this->dom->preserveWhiteSpace = false;
-
-       $this->dom->loadHTML(self::$html);
-
-       $this->body = $this->dom->getElementsByTagName('body')->item(0);
+       $this->html = new File($fname, "w"); 
     }
 }
