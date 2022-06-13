@@ -40,38 +40,43 @@ html_end;
 
       return (string) $tidy;  
    }
-   
+ 
    public function add_definitions($word, string $src, string $dest) : int
    {
-       $iter = $this->dict->lookup($word, $src, $dest);
-
-       if (count($iter) == 0) {
-
-           return count($iter);
-       } 
-
-       $str = "\n<section>";
-       
-       foreach($iter as $defns)  {
-
-           $str .= '<dl class="defn" class="hwd">';
-
-           $str .= "<dt>{$defns->term} <span class='pos'>[{$defns->pos}]</span></dt>";    
-
-           $dd = $this->build_defns($defns->definitions);
-           
-           $str .= $dd . "</dl>";
-     }
-     
-     $str .= "</section>";
-     
-     $str = $this->tidy($str); 
-
-     $this->html->fwrite($str);
-
-     return count($iter); 
+      $iter = $this->dict->lookup($word, $src, $dest);
+ 
+      $str = "\n<section>";
+ 
+      if (count($iter) > 0) {
+ 
+          foreach($iter as $defns)  {
+          
+             $str .= '<dl class="defn" class="hwd">';
+          
+             $str .= "<dt>{$defns->term} <span class='pos'>[{$defns->pos}]</span></dt>";    
+          
+             $dd = $this->build_defns($defns->definitions);
+             
+             $str .= $dd . "</dl>";
+          }
+ 
+      } else {
+ 
+          $str .= '<dl class="defn" class="hwd">';
+          
+          $str .= "<dt>$word</dt><dd>No defintions found.</dd>";    
+      } 
+      
+      $str .= "</section>";
+      
+      $str = $this->tidy($str); 
+ 
+      $this->html->fwrite($str);
+ 
+      return count($iter); 
    }
 
+  
    private function build_defns(array $definitions) : string
    {       
         $dd = '';
