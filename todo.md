@@ -1,8 +1,9 @@
 #  Todo
 
-Use <dl> or <ol>
+Understand grid layout and grid overflow. See [CSS notes](doc/css-notes.md)
 
-Definition Lists
+
+## Definition Lists
 
 [Definition Lists](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl)
 
