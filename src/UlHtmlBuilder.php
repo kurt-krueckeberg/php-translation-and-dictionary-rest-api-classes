@@ -5,7 +5,7 @@ namespace LanguageTools;
 use LanguageTools\{DictionaryInterface, TranslateInterface, SentenceFetchInterface};
 use \SplFileObject as File; 
 
-class HtmlBuilder implements ResultfileInterface {
+class UlHtmlBuilder implements ResultfileInterface {
 
 static private string $html_start = <<<html_eos
 <?xml version="1.0" encoding="UTF-8"?>
