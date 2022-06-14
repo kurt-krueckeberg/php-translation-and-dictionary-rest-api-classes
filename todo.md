@@ -1,6 +1,59 @@
 #  Todo
 
-1. Add better CSS for <dl>s. So understand grid layout and grid overflow. See [CSS notes](doc/css-notes.md)
+1. Add better CSS for <dl>s. See 
+
+CSS Grid:
+
+- [Mozilla Developer: Using Mutlti-Column Layouts](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Columns/Using_multi-column_layouts)
+
+- [Grid Explanied](https://www.w3schools.com/css/css_grid.asp)
+
+- CSS [column properties](https://www.w3schools.com/Css/css3_multiple_columns.asp)
+
+## Grid and Overflow
+
+- [How to solve a CSS grid overflow](https://datacadamia.com/web/css/grid/overflow)
+
+## Styling deinition lists (includes using grid)
+
+[CSS: Formatting a Definition List](https://www.the-art-of-web.com/css/format-dl/)
+
+``html
+<!DOCTYPE html>
+<html>
+<head>
+ <title>dt.html</title>
+ <meta charset="UTF-8">
+<style>
+dl {
+  display: grid;
+  grid-template: auto / 200px 1fr;
+}
+dt, dd {
+  margin: 0;
+}
+dt {
+  background-color: #eee;
+}
+dd {
+  background-color: #ddd;
+}
+</style>
+</head>
+   <body>
+     <div>
+        <dl>
+	   <dt>term</dt>
+	   <dd>description</dd>
+	   <dt>term</dt>
+	   <dd>description</dd>
+	   <dt>term</dt>
+	   <dd>description</dd>
+       </dl>
+     </div>
+ </body>
+</html>
+```
 2. Add to SystrandCitResult `other_expressions`, which is in `$match->source->other_expressions`. It is an array of stdClass objects (with propertires of 'source' and 'destination').
 
 ## Definition Lists
