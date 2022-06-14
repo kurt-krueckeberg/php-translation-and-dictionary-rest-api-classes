@@ -10,8 +10,6 @@
 
 - [How to solve a CSS grid overflow](https://datacadamia.com/web/css/grid/overflow)
 
-- [CSS Grid and Overlow](https://stackoverflow.com/questions/53422110/css-grid-and-overflow) on Stackexhange
-
 ## Styling deinition lists (includes using grid)
 
 [CSS: Formatting a Definition List](https://www.the-art-of-web.com/css/format-dl/)

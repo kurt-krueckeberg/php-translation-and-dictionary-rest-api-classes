@@ -28,7 +28,7 @@ section {
   display: grid; 
   width: 70%;
   margin: auto;
-  grid-template-columns: auto auto; /* grid-template-columns: 40% 40%;  */
+  grid-template-columns: 1fr 1fr; 
   column-gap: 10px;
   
   /* padding-left: 2em; */

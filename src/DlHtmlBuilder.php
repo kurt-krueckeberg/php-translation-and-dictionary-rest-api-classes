@@ -117,20 +117,17 @@ html_end;
     {
        $iter = $this->fetcher->fetch($word, $cnt); 
 
-       if (count($iter) == 0) {
-           $str = "<section class='samples'><p>There are no sample sentences for $word.</p></section>"; 
-           $this->html->fwrite($this->tidy($str));
-           return count($iter);
-       }
+       $str = "<section class='samples'>";
 
-       $str = "<section class='samples'>\n";
+       if (count($iter) == 0)
 
-       foreach ($iter as $src) {
+           $str =. "<p>There are no sample sentences for " . trim($word) . '.</p>'; 
 
-           $dest = $this->trans->translate($src, $this->dest, $this->src);
-
-           $str .= "<p>$src</p><p>$dest</p>";
-       } 
+       else 
+   
+          foreach ($iter as $src) 
+   
+              $str .= "<p>$src</p><p>" . $this->trans->translate($src, $this->dest, $this->src) . "</p>";
 
        $str .= "</section>";
 
