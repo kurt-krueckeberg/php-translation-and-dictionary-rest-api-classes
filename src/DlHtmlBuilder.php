@@ -46,7 +46,7 @@ html_end;
    {
       $iter = $this->dict->lookup($word, $src, $dest);
  
-      $str = "\n<section>";
+      $str = "<section>";
  
       if (count($iter) > 0) {
  
@@ -122,7 +122,7 @@ html_end;
            return count($iter);
        }
 
-       $str = "\n<section class='samples'>\n";
+       $str = "<section class='samples'>\n";
 
        foreach ($iter as $src) {
 
@@ -131,7 +131,7 @@ html_end;
            $str .= "<p>$src</p><p>$dest</p>";
        } 
 
-       $str .= "</section>\n";
+       $str .= "</section>";
 
        $this->html->fwrite($this->tidy($str));
 
