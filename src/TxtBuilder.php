@@ -6,8 +6,6 @@ use LanguageTools\{DictionaryInterface, TranslateInterface, SentenceFetchInterfa
 use \SplFileObject as File; 
 
 class TxtBuilder implements ResultfileInterface {
-
-   
    
    public function add_definitions($word, string $src, string $dest) : int
    {
@@ -18,19 +16,18 @@ class TxtBuilder implements ResultfileInterface {
            return count($iter);
        } 
 
-       $str = "Definitions:\n";
+       $str = "----------\n";
        
        foreach($iter as $defns)  {
 
-           $str .= 'Headword: ' . $defns->term . " [{$defns->pos}]\n";    
+           $str .= 'Headword: ' . $defns->term . " [" . strtoupper($defns->pos) . "]\n";    
 
-           // todo: Should the <ul> be within a <p>?    
-           $ul_str = $this->build_defns($defns->definitions);
+           $str .= $this->build_defns($defns->definitions);
            
            $str .=  "\n";
      }
      
-     $this->html->fwrite($str);
+     echo $str;
 
      return count($iter); 
    }
@@ -43,13 +40,13 @@ class TxtBuilder implements ResultfileInterface {
 
             $str .= $defn["definition"] . "\n"; 
 
-            if (isset($defn["expressions"]) && count($defn['expressions']) > 0) {
+            if (count($defn['expressions']) > 0) {
                 
-               $str .= "\n\texpressions:\n"; 
+               $str .= "\texpressions:\n"; 
 
                foreach ($defn['expressions'] as $expression) 
 
-                       $str .= "\t\t{$expression->source} ({$expression->target})\n";
+                       $str .= "\t\t{$expression->source} - {$expression->target}\n";
             }  
         } 
 
@@ -60,23 +57,19 @@ class TxtBuilder implements ResultfileInterface {
     {
        $iter = $this->fetcher->fetch($word, $cnt); 
 
-       if (count($iter) == 0) {
+       $str = '';
 
-           return count($iter);
-       }
+       if (count($iter) == 0) 
 
-       $str = "\n";
+          $str = "There are no sample sentences for " . trim($word) . "."; 
 
-       foreach ($iter as $src) {
+       else 
+   
+          foreach ($iter as $src) 
+   
+              $str .= "$src (" . $this->trans->translate($src, $this->dest, $this->src) . ").\n";
 
-           $dest = $this->trans->translate($src, $this->dest, $this->src);
-
-           $str .= "$src&nbsp;&mdash;&nbsp;$dest";
-       } 
-
-       $str .= "n";
-
-       $this->file-<fwrite($str);
+       $str .= "\n";
 
        return count($iter);
     } 
@@ -90,7 +83,7 @@ class TxtBuilder implements ResultfileInterface {
     {
        if (!$this->b_saved) {
 
-            $this->html->fwrite(self::$html_end);
+            echo "\n"; 
             $this->b_saved = true;
         } 
     }
@@ -98,9 +91,5 @@ class TxtBuilder implements ResultfileInterface {
     public function __construct(string $fname, private readonly string $src, private readonly string $dest, private readonly DictionaryInterface $dict, private readonly TranslateInterface $trans, private readonly SentenceFetchInterface $fetcher)
     { 
        $this->b_saved = false;
-
-       $this->html = new File($fname, "w"); 
-
-       $this->html->fwrite(self::$html_start);
     }
 }
