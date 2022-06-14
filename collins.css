@@ -53,8 +53,12 @@ section p { /* paragraph style--font, text color, background color, spacig with 
  */
 }
 
+.pos {
+  font-weight: bold;
+}
+
 dl.hwd dd {
- color: #b71533;  /* redw */
+ color: #b71533;  /* red */
 }
 
 dl.expressions dd {
@@ -71,9 +75,28 @@ dl.expressions dt {
 
  color: #000000;  /* red */
 }
+/* NOTE:  From https://www.the-art-of-web.com/css/format-dl/  example #5 using Flexbox. */
+dl.expressions {
+    display: flex;
+    flex-flow: row wrap;
+    border: solid #333;
+    border-width: 1px 1px 0 0;
+}
 
-.pos {
-  font-weight: bold;
+dl.expressions  dt {
+    flex-basis: 35%;
+    padding: 2px 4px;
+/*    background: #333; */
+/*   text-align: right; */
+/*    color: #fff;      */
+}
+
+dl.expressions  dd {
+    flex-basis: 55%;
+    flex-grow: 1;
+    margin: 0;
+    padding: 2px 4px;
+    border-bottom: 1px solid #333;
 }
 
 h1, h2, h3, h4, h5 {
