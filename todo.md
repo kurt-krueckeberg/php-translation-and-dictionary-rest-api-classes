@@ -1,6 +1,9 @@
 #  Todo
 
-1. Add better CSS for <dl>s. See 
+Look at the three dl CSS styles in ~/r/dl.html and also the other examples from [CSS: Formatting a Definition List](https://www.the-art-of-web.com/css/format-dl/). Determine which one will work best. Don't waste 
+time trying to understand flex and grid. Instead choose one that works best and add appropriate margins.
+
+For background colors we can go with either what is in collins-dl.css or screen.css.
 
 CSS Grid:
 
