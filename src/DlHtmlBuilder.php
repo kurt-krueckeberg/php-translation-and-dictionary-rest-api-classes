@@ -54,7 +54,7 @@ html_end;
           
              $str .= '<dl class="defn" class="hwd">';
           
-             $str .= "<dt>{$defns->term} <span class='pos'>[{$defns->pos}]</span></dt>";    
+             $str .= "<dt>{$defns->term} <span class='pos'>" . strtoupper($defns->pos) . "</span></dt>";    
           
              $dd = $this->build_defns($defns->definitions);
              

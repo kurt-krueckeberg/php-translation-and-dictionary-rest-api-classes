@@ -1,7 +1,7 @@
 #  Todo
 
-Understand grid layout and grid overflow. See [CSS notes](doc/css-notes.md)
-
+1. Add better CSS for <dl>s. So understand grid layout and grid overflow. See [CSS notes](doc/css-notes.md)
+2. Add to SystrandCitResult `other_expressions`, which is in `$match->source->other_expressions`. It is an array of stdClass objects (with propertires of 'source' and 'destination').
 
 ## Definition Lists
 
