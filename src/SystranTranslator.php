@@ -76,24 +76,22 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
       return new ResultsIterator($obj->outputs[0]->output->matches, SystranTranslator::results_filter(...));
     }
 
+    // results_filter(mixed $match) returns a SystranDictResultthat has three properties: 1. the word being defined ($match->source->lemma) 2. its part-of-speech ($match->source->pos) 3. an array of definitions that hss two elements:
+    // 1. 'definition', a definition, and 2. an array 'expressions' of zero or more associated expressions.
     public static function results_filter(mixed $match) :  SystranDictResult
     {
-       // First we build the $defintions array
-       // The definitions array will be the 3rd propery of the returned SystranDictResult.
+       // First ,we create SystranDictResult::definitions, the array of definitions.       
        $definitions = array();
 
-       // $match->targets[] holds the definitions. Individual defintions are in the 'lemma' property. A definition can also have example expressions.
+       /* Each $target below holds: 1. a definition in $target['lemma'], 2. the part of speech in $target['pos'] and 3. zero or more example/usage expressions. :w*/
        foreach($match->targets as $index => $target) { 
          
-           $definitions[$index]['definition'] = $target->lemma; // 'lemma' is one single definition (with possible associated expressions)  
-
-           //--if (count($target->expressions) > 0)  
+           $definitions[$index]['definition'] = $target->lemma; 
   
-           // expression is an array of a \stdClass with two properties: source and target.
+           // expression is an array of a \stdClass objects that have two properties: source and target.
            $definitions[$index]['expressions'] = (count($target->expressions) > 0) ? $target->expressions : array();
         }
 
-       // We return: 1. a definition, the part-of-speech, an array (possibly empty) of associated definitions 
-       return new SystranDictResult($match->source->lemma, $match->source->pos, $definitions);
+       return new SystranDictResult($match->source->lemma, $match->source->pos, $definitions); // TODO: <--- Is this correct?
     }
 }

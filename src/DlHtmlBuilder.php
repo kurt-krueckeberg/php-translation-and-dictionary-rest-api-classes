@@ -118,7 +118,8 @@ html_end;
        $iter = $this->fetcher->fetch($word, $cnt); 
 
        if (count($iter) == 0) {
-
+           $str = "<section class='samples'><p>There are no sample sentences for $word.</p></section>"; 
+           $this->html->fwrite($this->tidy($str));
            return count($iter);
        }
 
