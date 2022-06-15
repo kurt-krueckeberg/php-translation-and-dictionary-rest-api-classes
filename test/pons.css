@@ -63,7 +63,7 @@ dl.hwd dd {
 
 dl.expressions {
  color: #333333;
- background: #000000;  /* red */
+ background: #ffffff;  /* red */
 }
 
 /* NOTE:  From https://www.the-art-of-web.com/css/format-dl/  example #5 using Flexbox. */
@@ -75,7 +75,7 @@ dl.expressions {
 }
 
 dl.expressions  dt {
-    flex-basis: 35%;
+    flex-basis: 45%;
     padding: 2px 4px;
 /*    background: #333; */
 /*   text-align: right; */
@@ -83,7 +83,7 @@ dl.expressions  dt {
 }
 
 dl.expressions  dd {
-    flex-basis: 55%;
+    flex-basis: 45%;
     flex-grow: 1;
     margin: 0;
     padding: 2px 4px;
