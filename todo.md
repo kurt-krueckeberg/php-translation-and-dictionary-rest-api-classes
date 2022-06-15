@@ -2,7 +2,7 @@
 
 Adjust the margins of the <dl> so they line up under the word like pons.
 
-For background colors we can go with either what is in collins-dl.css or screen.css.
+For background colors we can go with either what is in azure.css or collins-dl.css or screen.css.
 
 CSS Grid:
 
