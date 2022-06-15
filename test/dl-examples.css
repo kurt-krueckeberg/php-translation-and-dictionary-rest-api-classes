@@ -1,0 +1,49 @@
+body {
+ font-family: 'Open Sans';
+}
+
+div {
+ width: 60%;
+ margin: auto auto;
+}
+
+dl.ex1 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+dl.ex2 {
+  display: grid;
+  grid-template-columns: max-content auto;
+}
+
+dl.ex2 dt {
+  grid-column-start: 1;
+}
+
+dl.ex2 dd {
+  grid-column-start: 2;
+}
+
+dl.ex3 {
+  display: flex;
+  flex-flow: row wrap;
+  border: solid #666;
+  border-width: 1px 1px 0 0;
+}
+
+dl.ex3 dt {
+  flex-basis: 20%;
+  padding: 2px 4px;
+  background: #666;
+  text-align: right;
+  color: #fff;
+}
+
+dl.ex3 dd {
+  flex-basis: 70%;
+  flex-grow: 1;
+  margin: 0;
+  padding: 2px 4px;
+  border-bottom: 1px solid #666;
+}

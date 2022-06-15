@@ -25,13 +25,14 @@ body {
 section {
 
   font-family: 'Lato Medium', Arial, sans-serif;
+  background: #ffffff;
   display: grid; 
   width: 70%;
-  margin: auto;
+  margin: auto auto;
   grid-template-columns: 1fr 1fr; 
   column-gap: 10px;
-  
-  /* padding-left: 2em; */
+  padding: 10px; 
+
 }
 
 section p { /* paragraph style--font, text color, background color, spacig with paragraphs and between paragraphs */
