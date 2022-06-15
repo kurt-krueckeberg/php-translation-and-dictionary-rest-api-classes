@@ -46,9 +46,16 @@ section p { /* paragraph style--font, text color, background color, spacig with 
   font-weight: bold;
 }
 
-dl.hwd  dd {
+
+dl.hwd >  dd {
  color:#75b6e7;
  margin-left: 20px;
+ margin-top: .75em;
+ margin-bottom: .75em;
+}
+
+dl.expressions {
+color: #E6E6E6; 
 }
 
 /* NOTE:  From https://www.the-art-of-web.com/css/format-dl/  example #5 using Flexbox. */
