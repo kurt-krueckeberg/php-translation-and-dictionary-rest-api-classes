@@ -1,8 +1,10 @@
 #  Todo
 
-Adjust the margins of the <dl> so they line up under the word like pons.
+Adjust margins for <dl> elements, using the w3schools Try-Me.  Adjust them so they line up under the word like pons.
 
 For background colors we can go with either what is in azure.css or collins-dl.css or screen.css.
+
+If azure, then make the definitions the azure blue used bu <ul> elements, and maybe make the 
 
 CSS Grid:
 
