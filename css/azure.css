@@ -48,6 +48,7 @@ section p { /* paragraph style--font, text color, background color, spacig with 
 
 dl.hwd  dd {
  color:#75b6e7;
+ margin-left: 20px;
 }
 
 /* NOTE:  From https://www.the-art-of-web.com/css/format-dl/  example #5 using Flexbox. */
@@ -55,6 +56,7 @@ dl.expressions {
     display: flex;
     flex-flow: row wrap;
     color: #e6e6e6;
+    margin-left: 20px;
 /*
     border: solid #333;
     border-width: 1px 1px 0 0;
