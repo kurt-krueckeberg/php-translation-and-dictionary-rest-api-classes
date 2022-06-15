@@ -1,13 +1,13 @@
 #  Todo
 
-Adjust margins for <dl>, <dt> and <dd> using the w3schools try me:
+Adjust left and right margins for <dl>, <dt> and <dd> using the w3schools try me:
 
 1. [<dl> Try Me](https://www.w3schools.com/TAGS/tag_dl.asp)
 2. [<dt> Try Me](https://www.w3schools.com/TAGS/tag_dt.asp)
 3. [<dd> Try Me](https://www.w3schools.com/TAGS/tag_dd.asp)
 
 
-Great html/css [Testin Site](https://way2tutorial.com/css/snippet_editor/?file=descendant_selector)
+This is a great html/css [Testin Site](https://way2tutorial.com/css/snippet_editor/?file=descendant_selector)
 
 For background colors we can go with either what is in azure.css or collins-dl.css or screen.css.
 

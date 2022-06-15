@@ -65,7 +65,10 @@ section p { /* paragraph style--font, text color, background color, spacig with 
 }
 
 dl.hwd > dd {
- color: #b71533;  /* red */
+ color: #b71533; 
+ margin-left: 20px;
+ margin-top: .75em;
+ margin-bottom: .75em;
 }
 
 dl.expressions {
@@ -77,6 +80,7 @@ dl.expressions {
 dl.expressions {
     display: flex;
     flex-flow: row wrap;
+    margin-left: 20px;
 /*
     border: solid #333;
     border-width: 1px 1px 0 0;
