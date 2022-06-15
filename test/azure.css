@@ -1,0 +1,115 @@
+/*
+ CSS color picker : https://www.quackit.com/css/color/tools/css_color_scheme_generator.cfm
+*/
+body {
+ color: #E6E6E6;  i/* colors from Azure documentation */
+ background-color: #171717;
+}
+
+section {
+  font-family: 'Lato Medium', Arial, sans-serif;
+  margin: auto;
+  padding-left: 1em;
+  width: 63%;
+
+  /*
+  Alernate colors:
+
+  background-color: #f5f5f5;
+  color: #2c2cd2c;
+
+  color: #FFFFFF;            VS Code Blue dar theme 
+  background-color: #002451;  #001b33 <-- darker blue. Better blue?
+
+  color: #FFFFFF;  
+  background-color: #102450;
+
+  color: #FFFFFF;                     VS Code Blue dar theme
+  background-color: #002451; 
+  color: #D0CFCC;              
+  background-color: #171421;  
+  */
+}
+
+
+section p { 
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 6px;
+  line-height: 1.7em; /* <--- Spacing between line within paragraph */ 
+}
+
+/* unvisited link */
+a:link {
+  color:#ffd700;
+}
+
+/* visited link */
+a:visited {
+  color:#ffd700;
+}
+
+/* mouse over link */
+a:hover {
+  color: #FFFFFF;
+}
+
+/* selected link */
+a:active {
+  color: white;
+}
+
+
+h1, h2, h3, h4, h5 {
+
+  font-family: 'Karla Semibold', 'Open Sans', Arial, sans-serif;
+}
+
+/*
+ * Specify table width
+*/	
+div.w50 {
+    width: 50%;	
+}
+
+div.w60 {
+    width: 60%;	
+}
+
+div.w70 {
+    width: 70%;	
+}
+
+div.grid table {
+
+}
+
+table {
+ /* 
+  font-family: Arial, Helvetica, sans-serif;
+  */
+  border-collapse: collapse;
+}
+
+table td, table th {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+table tr:nth-child(even){
+
+  background-color: #f2f2f2;
+}
+
+table tr:hover {
+
+  background-color: #ddd;
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}

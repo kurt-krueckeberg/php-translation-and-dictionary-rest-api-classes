@@ -121,7 +121,7 @@ html_end;
 
        if (count($iter) == 0)
 
-           $str =. "<p>There are no sample sentences for " . trim($word) . '.</p>'; 
+           $str .= "<p>There are no sample sentences for " . trim($word) . '.</p>'; 
 
        else 
    

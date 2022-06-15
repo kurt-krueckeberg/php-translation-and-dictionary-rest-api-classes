@@ -6,7 +6,7 @@ use LanguageTools\RestClient;
 use LanguageTools\ClassID;
 use LanguageTools\FileReader;
 use LanguageTools\HtmlBuilder;
-use LanguageTools\UlHtmlBuilder;
+use LanguageTools\DlHtmlBuilder;
 
 include 'vendor/autoload.php';
 
@@ -31,7 +31,7 @@ try {
     
     $file = new FileReader($fname);
     
-    $html = new UlHtmlBuilder("german.html", "de", "en", $trans, $trans, $leipzig);
+    $html = new DlHtmlBuilder("german.html", "de", "en", $trans, $trans, $leipzig);
    
     foreach ($file as $word) {
         

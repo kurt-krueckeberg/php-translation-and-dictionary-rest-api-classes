@@ -1,0 +1,93 @@
+body {
+
+  margin-left: 3em;
+
+  color: #FFFFFF;  
+  background-color: #002451;
+
+  /* Alernate colors: */
+  /* 
+  color: #FFFFFF;  
+  background-color: #102450;
+   */
+
+  /* 
+  color: black;        
+  background-color: white;   
+   */
+
+  /* 
+  color: #D0CFCC;              
+  background-color: #171421;  
+  */
+}
+
+section {
+
+  font-family: 'Lato Medium', Arial, sans-serif;
+  display: grid; 
+  width: 70%;
+  margin: auto;
+  grid-template-columns: 1fr 1fr; 
+  column-gap: 10px;
+  
+  /* padding-left: 2em; */
+}
+
+section p { /* paragraph style--font, text color, background color, spacig with paragraphs and between paragraphs */
+
+
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 6px;
+  line-height: 1.6em; 
+  margin: 3px 0;     
+/*  line-height: 1.7em;  <--- Spacing between line within paragraph */ 
+/*  margin: 4px 0;       <--- Spacing between paragraphs. It is equivalent to the statements
+    
+  below: 
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-left: 0px;
+  margin-right: 0px;  
+ */
+}
+
+section p:hover {
+	background-color:  #1a346c; 
+
+}	
+
+p.new-speaker {
+  font-weight: 600;
+}
+
+h1, h2, h3, h4, h5 {
+
+  font-family: 'Karla Semibold', 'Open Sans', Arial, sans-serif;
+}
+
+table {
+ /* 
+  font-family: Arial, Helvetica, sans-serif;
+  */
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td, table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table tr:nth-child(even){background-color: #f2f2f2;}
+
+table tr:hover {background-color: #ddd;}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
