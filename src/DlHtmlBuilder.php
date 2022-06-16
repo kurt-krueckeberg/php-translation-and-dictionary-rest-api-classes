@@ -41,9 +41,44 @@ html_end;
 
       return (string) $tidy;  
    }
+
+  /*
+     case--mas, fem, neu
+     plural
+    */ 
+   private function get_noun_info($word)
+   {
+     // look for grmGrp
+     static $query = "/div/....";
+  
+      
+      $info = array();
+
+      $html = $this->collins->get_best_matching($word);
+
+      $dom = new \DOMDocument("1.0", 'utf-8');
+
+      $frag = $dom->createDocmentFragment();
+
+      $frag->appendXML($html);
+
+      $dom->getElementsByTagName('body')->item(0)->appendChild($frag); 
+
+      $xpath = new \DOMXpath($dom);
+
+      $genderNode = $xpath->query($query);
+      //...
+
+   }
+ 
  
    public function add_definitions($word, string $src, string $dest) : int
    {
+      if ($word[0] >= 'A') { // if noun, lookup in Collins
+
+         $this->get_noun_info($word);       
+      }
+
       $iter = $this->dict->lookup($word, $src, $dest);
  
       $str = "<section>";
@@ -150,7 +185,7 @@ html_end;
         } 
     }
     
-    public function __construct(string $fname, private readonly string $src, private readonly string $dest, private readonly DictionaryInterface $dict, private readonly TranslateInterface $trans, private readonly SentenceFetchInterface $fetcher)
+    public function __construct(string $fname, private readonly string $src, private readonly string $dest, private readonly $collins CollinsGermanDictionary, private readonly DictionaryInterface $dict, private readonly TranslateInterface $trans, private readonly SentenceFetchInterface $fetcher)
     { 
        $this->b_saved = false;
 

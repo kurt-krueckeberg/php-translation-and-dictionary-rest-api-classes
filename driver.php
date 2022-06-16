@@ -5,7 +5,6 @@ use \SplFileObject as File;
 use LanguageTools\RestClient;
 use LanguageTools\ClassID;
 use LanguageTools\FileReader;
-use LanguageTools\HtmlBuilder;
 use LanguageTools\DlHtmlBuilder;
 
 include 'vendor/autoload.php';
@@ -28,6 +27,8 @@ try {
     $trans = RestClient::createClient(ClassID::Systran); 
 
     $leipzig = RestClient::createClient(ClassID::Leipzig); 
+
+    $collins = RestClient::createClient(ClassID::Collins); 
     
     $file = new FileReader($fname);
     
