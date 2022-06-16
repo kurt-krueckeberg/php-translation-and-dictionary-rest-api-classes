@@ -125,7 +125,8 @@ EOS;
                
              $gender = '';
            
-             if ($word[0] >= 'A') {
+             if ($word[0] >= 'A' && $word[0] <= 'Z' ) { // In utf-8, the lowercase characters
+                             // have a larger code point value than the uppercase.
 
                 $gender = $this->get_noun_info($word);       
 
