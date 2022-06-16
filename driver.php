@@ -32,7 +32,7 @@ try {
     
     $file = new FileReader($fname);
     
-    $html = new DlHtmlBuilder("german.html", "de", "en", $trans, $trans, $leipzig);
+    $html = new DlHtmlBuilder("german.html", "de", "en", $collins, $trans, $trans, $leipzig);
    
     foreach ($file as $word) {
         

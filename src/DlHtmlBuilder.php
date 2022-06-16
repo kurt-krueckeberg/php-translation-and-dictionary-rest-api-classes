@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace LanguageTools;
 
-use LanguageTools\{DictionaryInterface, TranslateInterface, SentenceFetchInterface};
+use LanguageTools\{DictionaryInterface, TranslateInterface, SentenceFetchInterface, CollinsGermanDictionary};
 use \SplFileObject as File; 
 
 class DlHtmlBuilder implements ResultfileInterface {
@@ -57,56 +57,67 @@ EOS;
    */ 
    private function get_noun_info($word) : string
    {
-      static $q1 = "//span[@class='gramGrp pos']/text()";
+      static $q1 = "//span[@class='gramGrp pos']";
 
-      static $q2 = "//span[@class='gramGrp']/span[class='pos']/text()";
+      static $q2 = "//span[@class='gramGrp']/span[class='pos']";
+
+static $noun_start =<<<EOS
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
+    <head>
+    </head>
+    <body>
+EOS;
 
       $div = $this->collins->get_best_matching($word);
 
       $html = $noun_start;
+
       $html .= $div;
+
       $html .= '</body.</html>';
 
-      $dom = new \DOMDocument("1.0", "utf-8");
- 
+      $dom = new \DOMDocument("1.0", 'utf-8');
+     
+      $html = $noun_start;
+     
+      $html .= $div;
+     
+      $html .= "</body></html>";
+      
       $dom->loadHTML($html);
-
+          
       $body = $dom->getElementsByTagName('body')->item(0);
-
+      
       $xpath = new \DOMXpath($dom);
-
+     
       // try the most common query first....
       $nodeList = $xpath->query($q1);
-
+       
       $str = '';
-
-      if ($nodeList->count == 1) { // ...if it fails, we try the other query
-
+     
+      if ($nodeList->count() == 1) { // ...if it fails, we try the other query
+     
           $node = $nodeList->item(0); // \DOMText
-
+     
           $str = $node->textContent;
-
+     
       } else {
-
-         $nodeList = $xpath->query($q1);
-
-         foreach($nodeList $as $node) {
-
-            str .= $node->textContent . ' ';
+     
+         $nodeList = $xpath->query($q2);
+     
+         foreach($nodeList as $node) {
+     
+            $str .= $node->textContent . ' ';
          } 
       }
-
       // todo: plural queries
       return $str;
    }
  
    public function add_definitions($word, string $src, string $dest) : int
    {
-      $gender = '';
-
-      if ($word[0] >= 'A') 
-
-          $gender = $this->get_noun_info($word);       
 
       $iter = $this->dict->lookup($word, $src, $dest);
  
@@ -117,8 +128,19 @@ EOS;
           foreach($iter as $defns)  {
           
              $str .= '<dl class="defn" class="hwd">';
-          
-             $str .= "<dt>{$defns->term} <span class='pos'>" . strtoupper($defns->pos) . "</span></dt>";    
+               
+             $gender = '';
+
+             if ($word[0] >= 'A') {
+
+                $gender = $this->get_noun_info($word);       
+
+                $str .= "<dt>{$defns->term} <span class='pos'>" . strtoupper($defns->pos) . "</span> <span class='gender'>$gender</span></dt>";    
+
+             } else {
+                   $str .= "<dt>{$defns->term} <span class='pos'>" . strtoupper($defns->pos) . "</span></dt>";    
+
+             }
           
              $dd = $this->build_defns($defns->definitions);
              
@@ -214,7 +236,7 @@ EOS;
         } 
     }
     
-    public function __construct(string $fname, private readonly string $src, private readonly string $dest, private readonly $collins CollinsGermanDictionary, private readonly DictionaryInterface $dict, private readonly TranslateInterface $trans, private readonly SentenceFetchInterface $fetcher)
+    public function __construct(string $fname, private readonly string $src, private readonly string $dest, private readonly CollinsGermanDictionary $collins, private readonly DictionaryInterface $dict, private readonly TranslateInterface $trans, private readonly SentenceFetchInterface $fetcher)
     { 
        $this->b_saved = false;
 
