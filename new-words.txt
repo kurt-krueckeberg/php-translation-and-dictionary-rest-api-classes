@@ -9,7 +9,6 @@ greifbar
 verdanken 
 seinerzeit 
 zurückgreifen 
-Geschichte schreiben 
 vorherbestimmt 
 Ruhm
 Ehre 
@@ -32,7 +31,7 @@ hinsetzen
 hinsetzen 
 aufregen 
 aufregen 
-etwas ausrechnen 
+ausrechnen 
 ausgerechnet 
 verfpflichten 
 verpflichten 
@@ -52,6 +51,8 @@ ausstatten
 Behörde
 bestellen 
 jagen 
+Qual
+quälen
 hüten 
 ehren 
 entehrt 

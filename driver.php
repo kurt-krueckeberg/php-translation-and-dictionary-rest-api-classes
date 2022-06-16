@@ -36,6 +36,8 @@ try {
    
     foreach ($file as $word) {
         
+        if ($word[0] == '#') continue;
+        
         echo "About to add definitions for $word.\n";
         
         $cnt = $html->add_definitions($word, "de", "en");

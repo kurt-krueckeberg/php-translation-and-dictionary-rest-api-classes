@@ -9,7 +9,7 @@ greifbar
 verdanken 
 seinerzeit 
 zurückgreifen 
-Geschichte schreiben 
+#Geschichte schreiben 
 vorherbestimmt 
 Ruhm
 Ehre 
@@ -32,7 +32,7 @@ hinsetzen
 hinsetzen 
 aufregen 
 aufregen 
-etwas ausrechnen 
+ausrechnen 
 ausgerechnet 
 verfpflichten 
 verpflichten 
@@ -40,7 +40,8 @@ Schützenverein
 Pflicht
 kloppen 
 hänseln 
-jdn. mobben 
+mobben 
+hänseln
 eigen 
 gierig 
 ausgerechtnet 
@@ -96,17 +97,17 @@ Münze
 schwitzen
 stecken
 Madel
-war nie eine Thema
+#war nie eine Thema
 Parktikum
-unter einen Hut bringen
+#unter einen Hut bringen
 durchsetzen
 Haufen
 Wettbewerrb
 jeweilig
 neidisch
-lesiten - to afford
-stellt nicht zu Frage
-stand an este Stelle
+lesiten
+#stellt nicht zu Frage
+#stand an este Stelle
 Inhaber
 vereinbaren
 Krähe
@@ -119,8 +120,6 @@ mählen
 Motorrad
 Abkürzung
 Auswahl
-Krähe
-auskrachen
 glänzen
 Verräter
 Vertreter
