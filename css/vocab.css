@@ -1,12 +1,9 @@
 body {
 
-  margin-left: 3em;
+/*  margin-left: 3em;*/
 
-/*  color: #000; 333333;*/
   background-image: url('./bkgnd_pons_grey.png');
   background-attachment: fixed;
-
-/*  background: #f0f0f0; */
 
   /* Alernate colors: */
   /* 
@@ -50,14 +47,7 @@ section p { /* paragraph style--font, text color, background color, spacig with 
   line-height: 1.6em; 
   margin: 3px 0;     
 /*  line-height: 1.7em;  <--- Spacing between line within paragraph */ 
-/*  margin: 4px 0;       <--- Spacing between paragraphs. It is equivalent to the statements
-    
-  below: 
-  margin-top: 7px;
-  margin-bottom: 7px;
-  margin-left: 0px;
-  margin-right: 0px;  
- */
+/*  margin: 4px 0;    */ 
 }
 
 .pos {
