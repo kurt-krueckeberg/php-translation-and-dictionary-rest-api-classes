@@ -48,7 +48,7 @@ section p { /* paragraph style--font, text color, background color, spacig with 
 
 
 dl.hwd >  dd {
- color:#75b6e7;
+ color:#75b6e7; /* #268bd2 */
  margin-left: 20px;
  margin-top: .75em;
  margin-bottom: .75em;
