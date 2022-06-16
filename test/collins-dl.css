@@ -58,22 +58,22 @@ section p { /* paragraph style--font, text color, background color, spacig with 
 }
 
 dl.hwd dd {
- color: #b71533;  /* red */
+ color: #b71533;  
 }
 
 dl.expressions dd {
 
- color: #b71533;  /* red */
+ color: #b71533;  
 }
 
 dl.expressions dt {
 
- color: #ffffff;  /* red */
+ color: #ffffff;  
 }
 
 dl.expressions dt {
 
- color: #000000;  /* red */
+ color: #000000;  
 }
 /* NOTE:  From https://www.the-art-of-web.com/css/format-dl/  example #5 using Flexbox. */
 dl.expressions {

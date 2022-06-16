@@ -1,9 +1,25 @@
 body {
 
-/* margin-left: 3em; */
+  margin-left: 3em;
 
- color: #E6E6E6;  /* colors from Azure documentation */
- background-color: #171717;
+  color:#000000;  
+  background-color:#ffffff;
+
+  /* Alernate colors: */
+  /* 
+  color: #FFFFFF;  
+  background-color: #102450;
+   */
+
+  /* 
+  color: black;        
+  background-color: white;   
+   */
+
+  /* 
+  color: #D0CFCC;              
+  background-color: #171421;  
+  */
 }
 
 section {
@@ -11,15 +27,11 @@ section {
   font-family: 'Lato Medium', Arial, sans-serif;
   display: grid; 
   width: 70%;
-  margin: auto auto;
+  margin: auto;
   grid-template-columns: 1fr 1fr; 
   column-gap: 10px;
-
-  padding: 10px;  /* kurt */
-  /* ?????
-  border-left: 1px solid #666;
-  border-right: 1px solid #666;
-  */
+  
+  /* padding-left: 2em; */
 }
 
 section p { /* paragraph style--font, text color, background color, spacig with paragraphs and between paragraphs */
@@ -43,26 +55,34 @@ section p { /* paragraph style--font, text color, background color, spacig with 
 
 .pos {
   font-weight: bold;
-  color: #ffd700;
 }
 
-
-dl.hwd >  dd {
- color:#75b6e7; /* #268bd2 */
+dl.hwd  > dd {
+ color: #b71533;  
  margin-left: 20px;
  margin-top: .75em;
  margin-bottom: .75em;
+
 }
 
-dl.expressions {
-  color: #E6E6E6; 
+dl.expressions dd {
+
+ color: #b71533;  
 }
 
+dl.expressions dt {
+
+ color: #ffffff;  
+}
+
+dl.expressions dt {
+
+ color: #000000;  
+}
 /* NOTE:  From https://www.the-art-of-web.com/css/format-dl/  example #5 using Flexbox. */
 dl.expressions {
     display: flex;
     flex-flow: row wrap;
-    color: #e6e6e6;
     margin-left: 20px;
 /*
     border: solid #333;
@@ -71,7 +91,7 @@ dl.expressions {
 }
 
 dl.expressions  dt {
-    flex-basis: 45%;
+    flex-basis: 35%;
     padding: 2px 4px;
 /*    background: #333; */
 /*   text-align: right; */
@@ -79,12 +99,12 @@ dl.expressions  dt {
 }
 
 dl.expressions  dd {
-    flex-basis: 45%;
+    flex-basis: 55%;
     flex-grow: 1;
     margin: 0;
     padding: 2px 4px;
 
-/*  border-bottom: 1px solid #333;*/
+/*   border-bottom: 1px solid #333; */
 }
 
 h1, h2, h3, h4, h5 {

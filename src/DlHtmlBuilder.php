@@ -101,9 +101,7 @@ EOS;
      
          $nodeList = $xpath->query($q2);
      
-         foreach($nodeList as $node) {
-     
-            $str .= $node->textContent . ', ';
+         $str = $nodeList->item(0)->textContent . ", " . $nodeList->item(1)->textContent; 
          } 
       }
       // todo: plural queries
@@ -121,7 +119,7 @@ EOS;
  
           foreach($iter as $defns)  {
           
-             $str .= '<dl class="defn" class="hwd">';
+             $str .= "<dl class='defn hwd'>\n";
                
              $gender = '';
            
