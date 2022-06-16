@@ -59,7 +59,7 @@ EOS;
    {
       static $q1 = "//span[@class='gramGrp pos']";
 
-      static $q2 = "//span[@class='gramGrp']/span[class='pos']";
+      static $q2 = "//span[@class='gramGrp']/span[@class='pos']";
 
 static $noun_start =<<<EOS
 <?xml version="1.0" encoding="UTF-8"?>
@@ -80,12 +80,6 @@ EOS;
 
       $dom = new \DOMDocument("1.0", 'utf-8');
      
-      $html = $noun_start;
-     
-      $html .= $div;
-     
-      $html .= "</body></html>";
-      
       @$dom->loadHTML($html);
           
       $body = $dom->getElementsByTagName('body')->item(0);
@@ -109,7 +103,7 @@ EOS;
      
          foreach($nodeList as $node) {
      
-            $str .= $node->textContent . ' ';
+            $str .= $node->textContent . ', ';
          } 
       }
       // todo: plural queries
@@ -130,12 +124,12 @@ EOS;
              $str .= '<dl class="defn" class="hwd">';
                
              $gender = '';
-
+           
              if ($word[0] >= 'A') {
 
                 $gender = $this->get_noun_info($word);       
 
-                $str .= "<dt>{$defns->term} <span class='pos'>" . strtoupper($defns->pos) . "</span> <span class='gender'>$gender</span></dt>";    
+                $str .= "<dt>{$defns->term} <span class='pos'>" . strtoupper($gender) . "</span></dt>";    
 
              } else {
                    $str .= "<dt>{$defns->term} <span class='pos'>" . strtoupper($defns->pos) . "</span></dt>";    
