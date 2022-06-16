@@ -55,13 +55,11 @@ EOS;
   /*
      Get Gender of noun and its plural form
    */ 
-   private function get_noun_info($word)
+   private function get_noun_info($word) : string
    {
       static $q1 = "//span[@class='gramGrp pos']/text()";
 
       static $q2 = "//span[@class='gramGrp']/span[class='pos']/text()";
-
-      $info = array();
 
       $div = $this->collins->get_best_matching($word);
 
@@ -80,30 +78,35 @@ EOS;
       // try the most common query first....
       $nodeList = $xpath->query($q1);
 
+      $str = '';
+
       if ($nodeList->count == 1) { // ...if it fails, we try the other query
 
           $node = $nodeList->item(0); // \DOMText
 
-          //...
+          $str = $node->textContent;
+
       } else {
 
          $nodeList = $xpath->query($q1);
 
          foreach($nodeList $as $node) {
 
-                
+            str .= $node->textContent . ' ';
          } 
       }
 
       // todo: plural queries
+      return $str;
    }
  
    public function add_definitions($word, string $src, string $dest) : int
    {
-      if ($word[0] >= 'A') { // if noun, lookup in Collins
+      $gender = '';
 
-         $this->get_noun_info($word);       
-      }
+      if ($word[0] >= 'A') 
+
+          $gender = $this->get_noun_info($word);       
 
       $iter = $this->dict->lookup($word, $src, $dest);
  
