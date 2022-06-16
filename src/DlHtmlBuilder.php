@@ -86,7 +86,7 @@ EOS;
      
       $html .= "</body></html>";
       
-      $dom->loadHTML($html);
+      @$dom->loadHTML($html);
           
       $body = $dom->getElementsByTagName('body')->item(0);
       
