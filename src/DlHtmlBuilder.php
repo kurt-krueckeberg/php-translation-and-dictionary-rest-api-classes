@@ -53,14 +53,13 @@ EOS;
    }
 
   /*
-     case--mas, fem, neu
-     plural
-    */ 
+     Get Gender of noun and its plural form
+   */ 
    private function get_noun_info($word)
    {
       $info = array();
 
-      // Add the collins results to an in-memory html document, so we can run xpath queries to get:
+      // Add the collins html results for the noun to an in-memory DOMDument, so xpath queries cabe done:
       // gender and plurals
       $frag = $this->dom->createDocmentFragment();
 
@@ -81,7 +80,7 @@ EOS;
    {
       //todo: Include a query for the actual text in the node.
       // See this for how to construct the xpath query: https://www.educba.com/xpath-class/
-      static $query = //<span class="gramGrp pos">masculine noun</span>
+      static $query = "//span[@class='gramGrp pos']";
 
       static $nested_query ='';     
 

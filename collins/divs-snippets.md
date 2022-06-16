@@ -1,3 +1,20 @@
+## Understading XPath
+
+- Excellent [Ultimate XPath Writing Cheat Sheet Tutorial with Syntax and Examples](https://www.softwaretestinghelp.com/xpath-writing-cheat-sheet-tutorial-examples/) 
+
+- Good :[XPath Cheat Sheet](https://hackr.io/blog/xpath-cheat-sheet)
+
+- [XPath cheatsheet](https://www.scraperapi.com/blog/xpath-cheat-sheet/)
+
+- [Extensive XPath cheatsheet](https://www.lambdatest.com/blog/most-exhaustive-xpath-locators-cheat-sheet/)
+
+
+//span[@class='gramGrp pos']
+//span[@class='gramGrp']/span[class='pos']
+
+//span[@class='gramGrp pos']/text()
+//span[@class='gramGrp']/span[class='pos']/text()
+
 ## Comments on Gender xpaths:
 
 The gender often is in this span with these two classes: <span class="gramGrp pos">masculine noun</span>
@@ -6,7 +23,6 @@ For words (like those for occupations) that have both masculine and feminine (-i
 <span class="gramGrp"><span class="pos">masculine noun</span><span>,</span> <span class="pos">feminine noun</span></span>
 
 
-See: https://www.educba.com/xpath-class/
 ## Comments on Plural xpath
 
 TODO.
