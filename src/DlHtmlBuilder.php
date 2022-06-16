@@ -130,10 +130,10 @@ EOS;
 
                 $gender = $this->get_noun_info($word);       
 
-                $str .= "<dt>{$defns->term} <span class='pos'>" . strtoupper($gender) . "</span></dt>";    
+                $str .= "<dt><p>{$defns->term}</p><p class='pos'>" . strtoupper($gender) . "</p></dt>";    
 
              } else {
-                   $str .= "<dt>{$defns->term} <span class='pos'>" . strtoupper($defns->pos) . "</span></dt>";    
+                   $str .= "<dt><p>{$defns->term}</p><p class='pos'>" . strtoupper($defns->pos) . "</p></dt>";    
 
              }
           
