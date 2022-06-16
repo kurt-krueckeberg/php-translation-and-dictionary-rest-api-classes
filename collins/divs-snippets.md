@@ -5,6 +5,8 @@ But sometimes, like with Unverständnis' it is in a nested span::<span class="gr
 For words (like those for occupations) that have both masculine and feminine (-in) forms, it gets even more complicated. You then have two nested spans:
 <span class="gramGrp"><span class="pos">masculine noun</span><span>,</span> <span class="pos">feminine noun</span></span>
 
+
+See: https://www.educba.com/xpath-class/
 ## Comments on Plural xpath
 
 TODO.

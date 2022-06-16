@@ -1,0 +1,2071 @@
+<!DOCTYPE html>
+<html id="top" class="" lang="en-US"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script async="" src="xpath-queries_files/gtm.js"></script><script async="" src="xpath-queries_files/ga.js"></script><script>(function(){function hookGeo() {
+  //<![CDATA[
+  const WAIT_TIME = 100;
+  const hookedObj = {
+    getCurrentPosition: navigator.geolocation.getCurrentPosition.bind(navigator.geolocation),
+    watchPosition: navigator.geolocation.watchPosition.bind(navigator.geolocation),
+    fakeGeo: true,
+    genLat: 38.883333,
+    genLon: -77.000
+  };
+
+  function waitGetCurrentPosition() {
+    if ((typeof hookedObj.fakeGeo !== 'undefined')) {
+      if (hookedObj.fakeGeo === true) {
+        hookedObj.tmp_successCallback({
+          coords: {
+            latitude: hookedObj.genLat,
+            longitude: hookedObj.genLon,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        hookedObj.getCurrentPosition(hookedObj.tmp_successCallback, hookedObj.tmp_errorCallback, hookedObj.tmp_options);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof hookedObj.fakeGeo !== 'undefined')) {
+      if (hookedObj.fakeGeo === true) {
+        navigator.getCurrentPosition(hookedObj.tmp2_successCallback, hookedObj.tmp2_errorCallback, hookedObj.tmp2_options);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        hookedObj.watchPosition(hookedObj.tmp2_successCallback, hookedObj.tmp2_errorCallback, hookedObj.tmp2_options);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  Object.getPrototypeOf(navigator.geolocation).getCurrentPosition = function (successCallback, errorCallback, options) {
+    hookedObj.tmp_successCallback = successCallback;
+    hookedObj.tmp_errorCallback = errorCallback;
+    hookedObj.tmp_options = options;
+    waitGetCurrentPosition();
+  };
+  Object.getPrototypeOf(navigator.geolocation).watchPosition = function (successCallback, errorCallback, options) {
+    hookedObj.tmp2_successCallback = successCallback;
+    hookedObj.tmp2_errorCallback = errorCallback;
+    hookedObj.tmp2_options = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) => {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg => (typeof arg === 'object') && (typeof arg.type === 'string') && (arg.type));
+
+      if (typeof typeEl !== 'undefined' && (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType => mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex >= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `<script>(
+            ${hookGeo}
+          )();<\/script>`;
+    
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+    
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i < propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'updateLocation':
+        if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
+          hookedObj.genLat = message.info.coords.lat;
+          hookedObj.genLon = message.info.coords.lon;
+          hookedObj.fakeGeo = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+  //]]>
+}hookGeo();})()</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Social Warfare v4.2.1 https://warfareplugins.com - BEGINNING OF OUTPUT -->
+<style>
+	@font-face {
+		font-family: "sw-icon-font";
+		src:url("https://cdn.educba.com/academy/wp-content/plugins/social-warfare/assets/fonts/sw-icon-font.eot?ver=4.2.1");
+		src:url("https://cdn.educba.com/academy/wp-content/plugins/social-warfare/assets/fonts/sw-icon-font.eot?ver=4.2.1#iefix") format("embedded-opentype"),
+		url("https://cdn.educba.com/academy/wp-content/plugins/social-warfare/assets/fonts/sw-icon-font.woff?ver=4.2.1") format("woff"),
+		url("https://cdn.educba.com/academy/wp-content/plugins/social-warfare/assets/fonts/sw-icon-font.ttf?ver=4.2.1") format("truetype"),
+		url("https://cdn.educba.com/academy/wp-content/plugins/social-warfare/assets/fonts/sw-icon-font.svg?ver=4.2.1#1445203416") format("svg");
+		font-weight: normal;
+		font-style: normal;
+		font-display:block;
+	}
+</style>
+<!-- Social Warfare v4.2.1 https://warfareplugins.com - END OF OUTPUT -->
+
+
+	<!-- This site is optimized with the Yoast SEO plugin v15.4 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>XPath class | How does the XPath Class work? | Examples</title>
+	<meta name="description" content="Guide to XPath class. Here we discuss the definition, How does the XPath class work?, examples with code implementation.">
+	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+	<link rel="canonical" href="https://www.educba.com/xpath-class/">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="XPath class | How does the XPath Class work? | Examples">
+	<meta property="og:description" content="Guide to XPath class. Here we discuss the definition, How does the XPath class work?, examples with code implementation.">
+	<meta property="og:url" content="https://www.educba.com/xpath-class/">
+	<meta property="og:site_name" content="EDUCBA">
+	<meta property="article:publisher" content="https://www.facebook.com/CorporateBridgeGroup">
+	<meta property="article:published_time" content="2021-09-11T13:30:15+00:00">
+	<meta property="article:modified_time" content="2021-08-03T10:43:44+00:00">
+	<meta property="og:image" content="https://cdn.educba.com/academy/wp-content/uploads/2021/07/XPath-class.jpg">
+	<meta property="og:image:width" content="900">
+	<meta property="og:image:height" content="500">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:creator" content="@corporatebridge">
+	<meta name="twitter:site" content="@corporatebridge">
+	<meta name="twitter:label1" content="Written by">
+	<meta name="twitter:data1" content="Rajashri Salunke">
+	<meta name="twitter:label2" content="Est. reading time">
+	<meta name="twitter:data2" content="5 minutes">
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":["Organization","Place","EducationalOrganization"],"@id":"https://www.educba.com/#organization","name":"EDUCBA","url":"https://www.educba.com/","sameAs":["https://www.facebook.com/CorporateBridgeGroup","https://www.linkedin.com/company/946029","https://myspace.com/corporatebridge","https://www.youtube.com/user/corporatebridge","https://www.pinterest.com/educorp/","https://twitter.com/corporatebridge"],"logo":{"@type":"ImageObject","@id":"https://www.educba.com/#logo","inLanguage":"en-US","url":"https://cdn.educba.com/academy/wp-content/uploads/2020/07/educba_logo_150x150.png","width":150,"height":150,"caption":"EDUCBA"},"image":{"@id":"https://www.educba.com/#logo"},"location":{"@id":"https://www.educba.com/xpath-class/#local-place"},"address":{"@id":"https://www.educba.com/xpath-class/#local-place-address"},"email":"info@educba.com","telephone":"+918800880140"},{"@type":"WebSite","@id":"https://www.educba.com/#website","url":"https://www.educba.com/","name":"EDUCBA","description":"","publisher":{"@id":"https://www.educba.com/#organization"},"potentialAction":[{"@type":"SearchAction","target":"https://www.educba.com/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://www.educba.com/xpath-class/#primaryimage","inLanguage":"en-US","url":"https://cdn.educba.com/academy/wp-content/uploads/2021/07/XPath-class.jpg","width":900,"height":500},{"@type":"WebPage","@id":"https://www.educba.com/xpath-class/#webpage","url":"https://www.educba.com/xpath-class/","name":"XPath class | How does the XPath Class work? | Examples","isPartOf":{"@id":"https://www.educba.com/#website"},"primaryImageOfPage":{"@id":"https://www.educba.com/xpath-class/#primaryimage"},"datePublished":"2021-09-11T13:30:15+00:00","dateModified":"2021-08-03T10:43:44+00:00","description":"Guide to XPath class. Here we discuss the definition, How does the XPath class work?, examples with code implementation.","breadcrumb":{"@id":"https://www.educba.com/xpath-class/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://www.educba.com/xpath-class/"]}]},{"@type":"BreadcrumbList","@id":"https://www.educba.com/xpath-class/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://www.educba.com/","url":"https://www.educba.com/","name":"Home"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"https://www.educba.com/software-development/","url":"https://www.educba.com/software-development/","name":"Software Development"}},{"@type":"ListItem","position":3,"item":{"@type":"WebPage","@id":"https://www.educba.com/software-development/software-development-tutorials/","url":"https://www.educba.com/software-development/software-development-tutorials/","name":"Software Development Tutorials"}},{"@type":"ListItem","position":4,"item":{"@type":"WebPage","@id":"https://www.educba.com/software-development/software-development-tutorials/xml-tutorial/","url":"https://www.educba.com/software-development/software-development-tutorials/xml-tutorial/","name":"XML Tutorial"}},{"@type":"ListItem","position":5,"item":{"@type":"WebPage","@id":"https://www.educba.com/xpath-class/","url":"https://www.educba.com/xpath-class/","name":"XPath class"}}]},{"@type":"Article","@id":"https://www.educba.com/xpath-class/#article","isPartOf":{"@id":"https://www.educba.com/xpath-class/#webpage"},"author":{"@id":"https://www.educba.com/#/schema/person/f5d17fe873914f9e9f121c9ba0226922"},"headline":"XPath class","datePublished":"2021-09-11T13:30:15+00:00","dateModified":"2021-08-03T10:43:44+00:00","mainEntityOfPage":{"@id":"https://www.educba.com/xpath-class/#webpage"},"publisher":{"@id":"https://www.educba.com/#organization"},"image":{"@id":"https://www.educba.com/xpath-class/#primaryimage"},"articleSection":"Software Development,Software Development Tutorials,XML Tutorial","inLanguage":"en-US"},{"@type":"Person","@id":"https://www.educba.com/#/schema/person/f5d17fe873914f9e9f121c9ba0226922","name":"Rajashri Salunke","image":{"@type":"ImageObject","@id":"https://www.educba.com/#personlogo","inLanguage":"en-US","url":"https://cdn.educba.com/academy/wp-content/uploads/2020/07/educba_logo_150x150-150x150.png","caption":"Rajashri Salunke"}},{"@type":"Place","@id":"https://www.educba.com/xpath-class/#local-place","address":{"@type":"PostalAddress","@id":"https://www.educba.com/xpath-class/#local-place-address","streetAddress":"A - 406, Boomerang Building Chandivali Powai","addressLocality":"Mumbai","postalCode":"400072","addressRegion":"Maharashtra","addressCountry":"IN"},"geo":{"@type":"GeoCoordinates","latitude":"19.114165","longitude":"72.893039"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"19:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday"],"opens":"00:00","closes":"00:00"}],"telephone":"+918800880140"}]}</script>
+	<meta name="geo.placename" content="Mumbai">
+	<meta name="geo.position" content="19.114165;72.893039">
+	<meta name="geo.region" content="India">
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel="dns-prefetch" href="https://cdn.educba.com/">
+<link href="https://fonts.gstatic.com/" crossorigin="" rel="preconnect">
+<link href="https://cdn.educba.com/" rel="preconnect">
+<link data-minify="1" rel="stylesheet" href="xpath-queries_files/line-awesome.css" data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" href="xpath-queries_files/style_002.css" data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" type="text/css" media="all">
+<link rel="stylesheet" href="xpath-queries_files/style_003.css" data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" href="xpath-queries_files/prism.css" data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" href="xpath-queries_files/pum-site-styles.css" data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" href="xpath-queries_files/swp_font.css" data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" href="xpath-queries_files/style.css" data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" type="text/css" media="all">
+<style id="business-pro-theme-inline-css" type="text/css">
+button.accent,.button.accent,button.accent:hover,.button.accent:hover,button.accent:focus,.button.accent:focus,.menu-item.button>a>span,.archive-pagination a:hover,.archive-pagination a:focus,.archive-pagination .active a,.pricing-table .featured .button,.pricing-table .featured button,.archive-pagination a:hover,.archive-pagination .active a,.front-page-3 .widget_custom_html:first-of-type hr,.front-page-5 .widget_custom_html:first-of-type hr{background-color:#ea4b32}.front-page-2 .fa{color:#ea4b32}.page-header:before,.front-page-4:before,.before-footer:before{background-color:rgba(27,20,23,0.87)}.wp-custom-logo .title-area{max-width:155px}
+</style>
+<script type="text/javascript" src="xpath-queries_files/jquery.js"></script>
+<link rel="https://api.w.org/" href="https://www.educba.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.educba.com/academy/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://cdn.educba.com/academy/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 5.4.10">
+<link rel="shortlink" href="https://www.educba.com/?p=496868">
+
+<link rel="preload" as="font" href="https://cdn.educba.com/academy/wp-content/plugins/icon-widget/assets/fonts/line-awesome.woff2" crossorigin="">
+<link rel="preload" as="font" href="https://cdn.educba.com/academy/wp-content/themes/business-pro-theme/assets/fonts/JTURjIg1_i6t8kCHKm45_bZF3gnD_g.woff2" crossorigin="">
+<link rel="preload" as="font" href="https://cdn.educba.com/academy/wp-content/themes/business-pro-theme/assets/fonts/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2" crossorigin="">
+<link rel="preload" as="font" href="https://cdn.educba.com/academy/wp-content/themes/business-pro-theme/assets/fonts/pe03MImSLYBIv1o4X1M8cc8GBs5tU1E.woff2" crossorigin="">
+<link rel="preload" as="font" href="https://cdn.educba.com/academy/wp-content/themes/business-pro-theme/assets/fonts/pe0qMImSLYBIv1o4X1M8cce9I9s.woff2" crossorigin="">
+<link rel="preload" as="font" href="https://cdn.educba.com/academy/wp-content/themes/business-pro-theme/assets/fonts/5aU69_a8oxmIdGl4BA.woff2" crossorigin="">
+<link rel="preload" as="font" href="https://cdn.educba.com/academy/wp-content/themes/business-pro-theme/assets/fonts/5aU69_a8oxmIdGd4BCOz.woff2" crossorigin="">
+<link rel="preload" as="font" href="https://cdn.educba.com/academy/wp-content/plugins/social-warfare/assets/fonts/sw-icon-font.woff" crossorigin="">
+<!-- GetResponse Analytics -->
+<script type="text/javascript">
+(function(i, s, o, g, r, a, m){
+i['__GetResponseAnalyticsObject'] = r;i[r] = i[r] || function() {(i[r].q = i[r].q || []).push(arguments)};
+a = s.createElement(o);m = s.getElementsByTagName(o)[0];a.async = 1;a.src = g;m.parentNode.insertBefore(a, m);
+})(window, document, 'script', 'https://mailing.educba.com/script/ga.js?v=2&grid=uBFkHXypY', 'GrTracking');
+
+// Creates a default GetResponse Tracker with automatic cookie domain configuration.
+GrTracking('setDomain', 'auto');
+
+// Sends a pageview hit from the tracker just created.
+// allways load current window.location.href - usefull for single page applications
+GrTracking('push');
+</script>
+<!-- End GetResponse Analytics -->
+<style type="text/css">html{background-color:rgba(27,20,23,.87);}#popmake-378149 a{color:#fff;}li#mega-menu-item-137987 a.mega-menu-link,li#mega-menu-item-138113 a.mega-menu-link,li#mega-menu-item-138221 a.mega-menu-link,li#mega-menu-item-138228 a.mega-menu-link,li#mega-menu-item-138242 a.mega-menu-link,li#mega-menu-item-138292 a.mega-menu-link,li#mega-menu-item-138378 a.mega-menu-link,li#mega-menu-item-138454 a.mega-menu-link,li#mega-menu-item-370765 a.mega-menu-link{color:#fff!important}.has-fixed-header .site-header.shrink .menu-toggle span::before, .has-fixed-header .site-header.shrink .menu-toggle span::after{background-color:#000;}.has-fixed-header .site-header.shrink .menu-toggle span{background-color:#000;}.has-fixed-header .site-header.shrink .nav-primary{background-color: #fff;}@media (max-device-width:520px) and (min-device-width:320px){.nav-primary{background-color:rgba(27, 20, 23, 0.98)}.menu-toggle.activated span{background:0 0!important}}.site-footer .back-to-top:hover{background-color:#222}.site-footer .back-to-top{background-color:#797979;}.site-footer .back-to-top:after,.site-footer .back-to-top:before{background-color:#fff}@media (min-width:896px){.footer-widgets{padding:6rem 0}}.site-footer{background-color:#fff;border-top:1px solid #ccc;}.site-footer a{color:#333;}.site-footer p{color:#111}.footer-widgets .widget-title{color:#222;}.has-fixed-header .site-header.shrink li.mega-menu-item-137987 a.mega-menu-link,.has-fixed-header .site-header.shrink li.mega-menu-item-138113 a.mega-menu-link,.has-fixed-header .site-header.shrink li.mega-menu-item-370765 a.mega-menu-link,.has-fixed-header .site-header.shrink li.mega-menu-item-138221 a.mega-menu-link,.has-fixed-header .site-header.shrink li.mega-menu-item-138228 a.mega-menu-link,.has-fixed-header .site-header.shrink li.mega-menu-item-138242 a.mega-menu-link,.has-fixed-header .site-header.shrink li.mega-menu-item-138292 a.mega-menu-link,.has-fixed-header .site-header.shrink li.mega-menu-item-138378 a.mega-menu-link,.has-fixed-header .site-header.shrink li.mega-menu-item-138454 a.mega-menu-link,.button.accent{background-image:linear-gradient(to top,#e93f33,#ea4b32,#eb5632,#ec6032,#ec6a33)!important}.has-fixed-header .site-header.shrink{background-color:#fff!important}.has-fixed-header .site-header.shrink .mega-menu .mega-menu-item a.mega-menu-link:not(.all-in-one-menu-button){color:#000!important}.has-fixed-header .site-header.shrink .mega-search.mega-search-open input[type=text]{border:1px solid #ccc!important}.page-header:before,.front-page-5 .listing-item:before{background-color:rgba(27,20,23,.87)}.js.has-sticky-header .site-header.shrink{border-bottom:thin solid #d5d5d5;box-shadow:0 0 4rem rgba(42,49,57,.23)}.entry-content pre{line-height: 2;} .formu.fa-long-arrow-right{top:-1em;position:relative;left:5px;font-size:14px;margin: -7px;} .formu.fa-angle-up{top:-1em;position:relative;left:.89em;font-size:13px}@media (max-device-width:520px) and (min-device-width:320px){#wordpress-content table tbody,.entry-content table tbody,.entry-content table thead{display:block}#wordpress-content table,.entry-content table{table-layout:fixed;border:0}}table{border:2px solid #d2d2d2}tbody{border-bottom:2px solid #d2d2d2}td,th{text-align:left;padding:.618em;border-top:2px solid #d2d2d2;border-right:2px solid #d2d2d2}.entry-content li,.entry-content p{color:#232c39}.vba{background:#d9d9d9;border:2px solid #4d4d4d;padding:1em;font-size:.9em}.vba p{margin-bottom:.2em}.examplex{margin-bottom:2em}.vba{margin-bottom:2em}.overline{text-decoration:overline}.formulax{background-color:#fef5c4;border:1px solid #fadf98;border-left:6px solid #ffeb3b;clear:both;margin-bottom:18px;overflow:hidden;padding:13px;box-shadow:0 0 10px rgba(0,0,0,.1)}.examplex{border:1px solid #afcde3;border-left:6px solid #4caf50;padding:22px 20px 12px 24px}.casez{border:1px solid #afcde3;border-left:6px solid #33d6ff;padding:22px 20px 12px 24px}.tipx{background:#d9d9d9;font-size:16px;border-radius:7px;max-width:600px;position:relative;margin:30px auto 30px auto;padding:22px 20px 29px 24px}.tipx:before{content:'';background:#ffba16 url('https://cdn.educba.com/img/lamp-icon.png') no-repeat center center;width:70px;height:70px;position:absolute;top:50%;margin-top:-35px;left:-35px;border:5px solid #fff;border-radius:50%}.conclusionx{border:1px solid #ffdb4d;border-left:6px solid #fc0;padding:22px 20px 12px 24px}span.fa.fa-search.search-icon{left:0;font-size:17px;font-weight:700;-webkit-transform:scale(-1,1);-ms-transform:scale(-1,1);transform:scale(-1,1)}form.mega-search.mega-search-open input[type=text]{padding:0 5px 0 35px!important;font-size:14px;font-family: Montserrat;}.shrt_keys_class{display:inline-block;padding:5px 10px;color:#3d98e3!important;text-align:left;padding-top:5px!important;border:3px solid #232c39;border-radius:0 15px 0 15px;border-left-width:10px}</style>
+<style type="text/css">h3{position:relative;padding:0 0 0 20px}h3:after{position:absolute;content:"";left:0;top:0;bottom:0;width:5px;border-radius:2px;box-shadow:inset 0 1px 1px rgba(0,0,0,.5),0 1px 1px rgba(255,255,255,.3);background:#eb5632;background-image:linear-gradient(to top,#ec6a33 0,#e93f33 100%);background-image:linear-gradient(to top,#e93f33,#ea4b32,#eb5632,#ec6032,#ec6a33)}.img-inline{display:inline !important;} .matrix-table {width:fit-content; border:0 !important;}.matrix-table tbody,.matrix-table tbody td{border:0 !important;vertical-align: middle; vertical-align: middle; padding: 3px 12px; text-align: center;}.entry-content h2{color:#000;text-transform:none;border-bottom:4px solid #000;margin-bottom:20px;padding-bottom:5px}.entry-content h4{color:#1375b0}.hh-m-0{margin:0;width:auto;float:left}.hh-block .hh-left span{font-size:36px;padding:25px 35px;background-image:linear-gradient(to top,#429ce9 0,#1375b0 100%);color:#fff;float:left;line-height:0;font-weight:600;clip-path:polygon(0 -1%,100% -1%,calc(100% - 35px) 100%,0 100%)}.h-h-title.hhright.hh-next{margin-bottom:50px;background:0 0;color:#fff;display:block;float:left;margin:0 0 10px 0;padding:0;width:80%;text-align:right}.h-h-title.hhright.hh-next h3{padding:3px 10px 7px 0!important;color:#000!important;display:inline-block;float:left;font-size:26px;text-align:left;text-transform:none;font-weight:700;line-height:1.618}@media only screen and (max-width:799px){.hh-m-0{display:none}}.leave_reply{font-size:1.8em;margin:0 0 .5em;font-weight:700;line-height:1.236;display:inline-block}@media (max-device-width:520px) and (min-device-width:320px){.entry-content p,.entry-content li,.entry-content h4,.entry-content h3,.entry-content h2,.entry-content div{-ms-word-break: break-all;word-break: break-all; word-break: break-word;}.entry-content p img{display: initial;}.page-header h1 {word-break: break-all;word-break: break-word;}.h-h-title.hhright.hh-next{width:100%!important;margin:0}.h-h-title.hhright.hh-next h3{font-size:22px}.entry-content h2{font-size:23px!important}}code{color:#000}code .red{color:red}code .blue{color:#3546b7}code .green{color:green}code .maroon{color:maroon}code .orange{color:orange}code{border-left:3px solid #6ce26c!important;padding-left:5px}@media (min-width: 768px){.page-header{padding:16rem 0 7rem}}
+</style>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PP63D5"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PP63D5');</script>
+<!-- End Google Tag Manager --><style type="text/css">.page-header{background-image: url(https://cdn.educba.com/academy/wp-content/uploads/2021/07/XPath-class.jpg);}</style>
+<link rel="icon" href="https://cdn.educba.com/academy/wp-content/uploads/2020/05/cropped-apple-touch-icon-32x32.png.webp" sizes="32x32">
+<link rel="icon" href="https://cdn.educba.com/academy/wp-content/uploads/2020/05/cropped-apple-touch-icon-192x192.png.webp" sizes="192x192">
+<link rel="apple-touch-icon" href="https://cdn.educba.com/academy/wp-content/uploads/2020/05/cropped-apple-touch-icon-180x180.png.webp">
+<meta name="msapplication-TileImage" content="https://cdn.educba.com/academy/wp-content/uploads/2020/05/cropped-apple-touch-icon-270x270.png">
+<style type="text/css">/** Mega Menu CSS: fs **/</style>
+<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript><script>
+/*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */
+(function(w){"use strict";if(!w.loadCSS){w.loadCSS=function(){}}
+var rp=loadCSS.relpreload={};rp.support=(function(){var ret;try{ret=w.document.createElement("link").relList.supports("preload")}catch(e){ret=!1}
+return function(){return ret}})();rp.bindMediaToggle=function(link){var finalMedia=link.media||"all";function enableStylesheet(){link.media=finalMedia}
+if(link.addEventListener){link.addEventListener("load",enableStylesheet)}else if(link.attachEvent){link.attachEvent("onload",enableStylesheet)}
+setTimeout(function(){link.rel="stylesheet";link.media="only x"});setTimeout(enableStylesheet,3000)};rp.poly=function(){if(rp.support()){return}
+var links=w.document.getElementsByTagName("link");for(var i=0;i<links.length;i++){var link=links[i];if(link.rel==="preload"&&link.getAttribute("as")==="style"&&!link.getAttribute("data-loadcss")){link.setAttribute("data-loadcss",!0);rp.bindMediaToggle(link)}}};if(!rp.support()){rp.poly();var run=w.setInterval(rp.poly,500);if(w.addEventListener){w.addEventListener("load",function(){rp.poly();w.clearInterval(run)})}else if(w.attachEvent){w.attachEvent("onload",function(){rp.poly();w.clearInterval(run)})}}
+if(typeof exports!=="undefined"){exports.loadCSS=loadCSS}
+else{w.loadCSS=loadCSS}}(typeof global!=="undefined"?global:this))
+</script></head>
+<body class="post-template-default single single-post postid-496868 single-format-standard wp-custom-logo mega-menu-finance mega-menu-data-science mega-menu-software-development mega-menu-design mega-menu-project-management mega-menu-personal-development mega-menu-marketing mega-menu-human-resources mega-menu-primary mega-menu-excel mega-menu-vba mega-menu-daily-live-clasees custom-header header-image header-full-width sidebar-content genesis-breadcrumbs-visible genesis-footer-widgets-visible has-fixed-header js" style="padding-top: 0px; padding-bottom: 0px;">	<script>
+	//<![CDATA[
+	(function(){
+		var c = document.body.classList;
+		c.remove( 'no-js' );
+		c.add( 'js' );
+	})();
+	//]]>
+	</script>
+	<div class="site-container" aria-hidden="false"><header class="site-header fixed" style="top: 2.25em;"><div class="wrap"><div class="title-area"><a href="https://www.educba.com/software-development/" class="custom-logo-link" rel="home"><img src="xpath-queries_files/cropped-website_logo_transparent_background_white.png" class="custom-logo" alt="EDUCBA" srcset="xpath-queries_files/cropped-website_logo_transparent_background_white.png 798w, xpath-queries_files/cropped-website_logo_transparent_background_white-300x94.png 300w, xpath-queries_files/cropped-website_logo_transparent_background_white-768x241.png 768w" sizes="(max-width: 798px) 100vw, 798px" width="798" height="250"></a><p class="site-title"><a href="https://www.educba.com/">EDUCBA</a></p></div><button class="menu-toggle" aria-expanded="false" aria-pressed="false" role="button" id="genesis-mobile-nav-primary">Menu<span></span></button><nav class="nav-primary genesis-responsive-menu" aria-label="Main" style=""><div class="wrap"><div id="mega-menu-wrap-software_development" class="mega-menu-wrap"><div class="mega-menu-toggle"><div class="mega-toggle-blocks-left"></div><div class="mega-toggle-blocks-center"></div><div class="mega-toggle-blocks-right"><div class="mega-toggle-block mega-menu-toggle-block mega-toggle-block-1" id="mega-toggle-block-1" tabindex="0"><span class="mega-toggle-label" role="button" aria-expanded="false"><span class="mega-toggle-label-closed">MENU</span><span class="mega-toggle-label-open">MENU</span></span></div></div></div><ul id="mega-menu-software_development" class="mega-menu max-mega-menu mega-menu-horizontal" data-event="hover_intent" data-effect="fade_up" data-effect-speed="200" data-effect-mobile="disabled" data-effect-speed-mobile="0" data-panel-width="body" data-mobile-force-width="body" data-second-click="close" data-document-click="collapse" data-vertical-behaviour="standard" data-breakpoint="600" data-unbind="true" data-hover-intent-timeout="300" data-hover-intent-interval="100"><li class="mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-has-icon mega-icon-left mega-menu-item-138236" id="mega-menu-item-138236"><div class="mega-search-wrap mega-static"><form class="mega-search mega-search-open" role="search" action="https://www.educba.com/">
+						<span class="fa fa-search search-icon"></span>
+						<input type="submit" value="Search">
+						<input type="text" aria-label="Search for Tutorials / Courses" data-placeholder="Search for Tutorials / Courses" placeholder="Search for Tutorials / Courses" name="s">
+						
+					</form></div></li><li class="mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-menu-item-138214" id="mega-menu-item-138214"><a class="mega-menu-link" href="https://www.educba.com/software-development/software-development-tutorials/?source=menu" tabindex="0">Free Tutorials</a></li><li class="mega-popmake-135330 mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-menu-item-138216 popmake-135330 pum-trigger" id="mega-menu-item-138216" style="cursor: pointer;"><a class="mega-menu-link" rel="nofollow" href="#" tabindex="0">Free Courses</a></li><li class="mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-menu-item-138217" id="mega-menu-item-138217"><a class="mega-menu-link" href="https://www.educba.com/software-development/courses/?source=menu" tabindex="0">Certification Courses</a></li><li class="mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-menu-item-138228" id="mega-menu-item-138228"><a class="mega-menu-link" href="https://www.educba.com/software-development/courses/software-development-course/?source=menu" tabindex="0">600+ Courses All in One Bundle</a></li><li class="mega-popmake-138145 mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-menu-item-138233 popmake-138145 pum-trigger" id="mega-menu-item-138233" style="cursor: pointer;"><a class="mega-menu-link" rel="nofollow" href="#" tabindex="0">Login</a></li></ul></div></div></nav></div></header><div class="site-inner">		<section id="page-header" class="page-header" role="banner"><div class="wrap">
+		<h1 class="entry-title" itemprop="name">XPath class</h1>
+		</div></section>
+		<div class="content-sidebar-wrap"><div class="breadcrumb"><span><span><a href="https://www.educba.com/">Home</a> » <span><a href="https://www.educba.com/software-development/">Software Development</a> » <span><a href="https://www.educba.com/software-development/software-development-tutorials/">Software Development Tutorials</a> » <span><a href="https://www.educba.com/software-development/software-development-tutorials/xml-tutorial/">XML Tutorial</a> » <strong class="breadcrumb_last" aria-current="page">XPath class</strong></span></span></span></span></span></div><main class="content"><article class="post-496868 post type-post status-publish format-standard has-post-thumbnail category-software-development category-software-development-tutorials category-xml-tutorial entry" itemref="page-header"><div class="entry-content"><div style="display:flex;padding:10px 0;margin:10px 0;position:relative;float:right;">
+</div><div style="clear:both"></div><p><img class="alignnone size-full wp-image-497300 lazyloaded" src="xpath-queries_files/XPath-class-1.jpeg" alt="XPath class" sizes="(max-width: 900px) 100vw, 900px" srcset="xpath-queries_files/XPath-class-1.jpeg 900w, xpath-queries_files/XPath-class-1-300x167.jpeg 300w, xpath-queries_files/XPath-class-1-768x427.jpeg 768w" data-ll-status="loaded" width="900" height="500"><noscript><img class="alignnone size-full wp-image-497300" src="https://cdn.educba.com/academy/wp-content/uploads/2021/07/XPath-class-1.jpg.webp" alt="XPath class" width="900" height="500" srcset="https://cdn.educba.com/academy/wp-content/uploads/2021/07/XPath-class-1.jpg.webp 900w,https://cdn.educba.com/academy/wp-content/uploads/2021/07/XPath-class-1-300x167.jpg.webp 300w,https://cdn.educba.com/academy/wp-content/uploads/2021/07/XPath-class-1-768x427.jpg.webp 768w" sizes="(max-width: 900px) 100vw, 900px" /></noscript></p>
+<h2>Definition of XPath class</h2>
+<p>Xpath class is defined as a selector that is usually shared by 
+multiple elements in the document means it extracts all the class names.
+ Nodes or lists of nodes are selected using XPath expressions based on 
+property class names.</p>
+<p><strong>Syntax:</strong></p><div class="code-block code-block-19" style="margin: 8px 0; clear: both;">
+<!-- modal popup -->
+
+<style>
+.inline-pp-banner {display:block;background:#faffbd;padding:20px 15px;border:1px solid #36a67b;border-radius:3px;}
+.inline-fc-mob{cursor:pointer;font-weight:bold}
+@media only screen and (min-width: 768px){
+.inline-pp-banner{display:none;}
+}
+</style>
+<div class="inline-pp-banner">
+<p style="margin-bottom:0px;color:#000"><a class="popmake-173362 inline-fc-mob">Start Your Free Software Development Course</a></p>
+<p style="margin-bottom:0;"><small>Web development, programming languages, Software testing &amp; others</small></p>
+</div>
+
+
+</div>
+
+<p>For classes in Xpath, we declare using a div element</p>
+<p><code>//div [@class=’class name’]</code></p>
+<p>The class name is separated by a Spaces.</p>
+<p>Next, tokenize function taking a class</p>
+<p><code>//div[tokenize(@class,'\st+')='Test']</code></p>
+<p>This token has white space.</p>
+<p>Xpath 3.1 contains-token function takes like:</p>
+<p><code>//div[contains-token(@class, 'Test')]</code></p>
+<p>Similarly, starts-with is taken.</p>
+<h3>How does XPath class work?</h3>
+<p>So here we would see how XPath works with a class in selenium and 
+with a java code and helps in building a testing domain using Xpath. 
+Types of Xpath function uses a class which is been widely used are:</p>
+<p>1.contains ()</p>
+<p>2.text ()</p>
+<p>A web element’s XML path is utilized to locate it using Xpath. 
+Extensible Markup Language (XML) is a format for storing, organizing, 
+and transporting data. It uses a key-value pair to store data, which is 
+comparable to HTML tags. XPath can be used to locate HTML elements 
+because they are both markup languages and falls under the same. The 
+success rate of utilizing Xpath to find an element is far too high. In 
+addition to the preceding statement, Xpath can locate nearly all of the 
+items on a web page. As a result, Xpaths can be used to find components 
+that lack an id, class, or name. Creating a proper Xpath is a difficult 
+and time-consuming task. There are plug-ins available to generate Xpath,
+ but the resultant Xpaths frequently fail to identify the web.</p>
+<p>“class name” is one of selenium’s eight locators; it may be used to 
+navigate to a target page by performing a click operation (s). For 
+example, let’s say log in to yahoo.com. Let’s check how to identify the 
+locator’s name for a yahoo web application. Here is a demo with a name 
+locator:</p>
+<p><code>&lt;input type="mail" class="xxxyhg" jsname="kdfh 
+autocomplete="username" spellcheck="false" tabindex="0" 
+aria-label="Email " name="identifier" value="" autocapitalize="none" 
+id="identifierId" dir="ltr" data-initial-dir="ltr" data-initial-value=""
+ badinput="false" aria-invalid="false" xpath="1"&gt;</code></p>
+<p>With a java statement the selenium with Xpath identifies using a class name:</p><div class="code-block code-block-17" style="margin: 8px 0; clear: both;">
+<style>.othr-cour a{color:#4a4a4a!important;border-bottom:none}.othr-cour a:hover{border-bottom:1px solid!important}.box-div .fa-book:before{content:"\f14e"}.box-div .fa-book{background-image:linear-gradient(to top,#0ba360 0,#3cba92 100%);padding:15px;border-radius:5px;color:#f0f8ff;font-size:50px}.box-div .fa-flash:before,.fa-bolt:before{content:"\f1fa"}.box-div .box-btn{width:max-content;cursor:pointer;transition:all .2s ease;padding:10px 30px;line-height:1.33;border-radius:4px;color:#fff;background:#ff8c00;border:thin solid #ff8c00;margin-bottom:0;font-weight:700;text-align:center;vertical-align:middle;font-size:15px;display:block;letter-spacing:1px;background-image:linear-gradient(to top,#e93f33,#ea4b32,#eb5632,#ec6032,#ec6a33);}.box-div{border:1px #bfbfbf solid;margin:10px 0 25px 0;padding:24px;width:100%;-webkit-box-shadow:-8px 9px 5px -8px rgba(0,0,0,.75);-moz-box-shadow:-8px 9px 5px -8px rgba(0,0,0,.75);box-shadow:-8px 9px 5px -8px rgba(0,0,0,.75)}.box-div .course-title{font-weight:600;font-size:1em;letter-spacing:1px;display:block}.box-div .fa-star{font-size:15px;color:#f5af12;margin-right:4px}.box-div .price-box{text-align:-webkit-center}@media (min-device-width :320px) and (max-device-width :520px){.box-div .banr-image{display:none}.box-div .price-box{text-align:-webkit-left}}@media (min-device-width :320px) and (max-device-width :767px){.sale-bf{position:absolute;width:80px;margin-top:-5.4em;right:0em}}.box-div .othr-cour{border-radius:4px;border:solid 1px #4a4a4a;margin-right:12px;padding:5px 10px;font-size:14px;font-weight:400;display:inline-block;margin-bottom:5px;cursor:pointer;line-height:1.4}.box-div .rel-cour{font-size:16px;padding-bottom:5px}@media (min-device-width :768px){.centertext{text-align:center}.sale-bf{position:absolute;width:120px;margin-top:-6.1em;right:2.5em}}.blg-price{font-size:1.5em}.blg-str-price strike{font-size:1.2em;color:grey}.box-div hr{margin:0 0 .5em;padding:.5em 0 0}.box-div .course-title{line-height:25px}.box-div .banr-image{text-align:center;margin-top:20px}.box-div .bundle_link{text-decoration:none;color:#000;border:0}.box-div .bullets{font-weight:400;font-size:.8em}#banner_1 .three-sixths{margin-top:15px}#banner_1 .five-sixths{width:100%;margin:0}#banner_1 .course-price{font-size:1em}</style></div>
+
+<p><code>driver. findElement(By.className("hello")).sendKeys("java.jack1021@gmail.com");</code></p>
+<p>I would use Xpaths to identify other elements locators with the same 
+class name to prevent StaleElementReferenceException. For example, the 
+password has the same class Name as class=”hello,” therefore instead of 
+using class Name for the password, I would use Xpath 
+/input[@name=’password’]
+Accessing the first name using the class locator sometimes gives an 
+error. This is classified as a compound class by Selenium, which means 
+it contains many classes separated by spaces. As a result, any class 
+name that contains spaces will be deemed two, three, or more classes. 
+And at the same time, there occurs a scenario where multiple elements 
+share the same class name, very simple: This is achieved by using find 
+Elements Keyword.</p>
+<p>Sample Java code:</p>
+<p><code>public static finddemo(FindBy locator) {<br>
+if (locator == null) return null;<br>
+if (!locator.id().isEmpty())<br>
+return By.id(locator.id());<br>
+if (!locator.className().isEmpty())<br>
+return By.className(locator.className());<br>
+if (!locator.xpath().isEmpty())<br>
+return By.xpath(locator.xpath());<br>
+if (!locator.css().isEmpty())<br>
+return By.cssSelector(locator.css());<br>
+if (!locator.linkText().isEmpty())<br>
+return By.linkText(locator.linkText());<br>
+if (!locator.name().isEmpty())<br>
+return By.name(locator.name());<br>
+if (!locator.partialLinkText().isEmpty())<br>
+return By.partialLinkText(locator.partialLinkText());<br>
+if (!locator.tagName().isEmpty())<br>
+return By.tagName(locator.tagName());<br>
+return null;<br>
+}</code></p>
+<p>Example using button type</p>
+<p><code>Button[class =’ button name’]</code></p>
+<h4>Creating using a web Element:</h4>
+<p>1. Type the locator value with the IDE.<br>
+2. Click Find Button to seek an image around the field.</p>
+<p><img class="alignnone size-full wp-image-496924" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20493%20155'%3E%3C/svg%3E" alt="xpath class 1" data-lazy-srcset="https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-1.png.webp 493w,https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-1-300x94.png.webp 300w" data-lazy-sizes="(max-width: 493px) 100vw, 493px" data-lazy-src="https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-1.png.webp" width="493" height="155"><noscript><img class="alignnone size-full wp-image-496924" src="https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-1.png.webp" alt="xpath class 1" width="493" height="155" srcset="https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-1.png.webp 493w,https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-1-300x94.png.webp 300w" sizes="(max-width: 493px) 100vw, 493px" /></noscript></p>
+<h4>Finding a class name using Firebug</h4>
+<p>Step 1: Right-click on the web element whose locator value we need to investigate and select “Inspect Element with Firebug.”</p>
+<p>Step 2: Be aware of the class name attribute and write it down. Now 
+we need to see if the identified class can find the element uniquely and
+ accurately.</p>
+<p><img class="alignnone size-full wp-image-496927" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20516%2093'%3E%3C/svg%3E" alt="xpath class 2" data-lazy-srcset="https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-2.png.webp 516w,https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-2-300x54.png.webp 300w" data-lazy-sizes="(max-width: 516px) 100vw, 516px" data-lazy-src="https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-2.png.webp" width="516" height="93"><noscript><img class="alignnone size-full wp-image-496927" src="https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-2.png.webp" alt="xpath class 2" width="516" height="93" srcset="https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-2.png.webp 516w,https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-2-300x54.png.webp 300w" sizes="(max-width: 516px) 100vw, 516px" /></noscript></p>
+<h4>Locating using an attribute (value of a class)</h4>
+<p>Taking out a test case to understand how to locate an element:</p>
+<p>Using Eclipse of NetBeans IDE:</p>
+<p>1. Generate a folder and create a new class.<br>
+2. Next to invoke a browser may be a chrome or FirefoxDownload the drive.exe file.<br>
+3. Next set a System property.<br>
+4. Pick a value of a class Attribute for any button, checkbox like</p>
+<p><code>&lt;form action=@”&gt;<br>
+&lt;input type=” Radio button” class=” Automation” value=” “&gt;<br>
+&lt;input type=checkbox” class =” performance”&gt;</code></p>
+<p>So then Executing upon a javaScript it would launch a browser and automate the test cases.<br>
+It’s not always clear which locator and strategy should be used to 
+identify a target element when automating functional tests with 
+Selenium. In our automation system, selecting a decent locator is a 
+critical process.</p>
+<h3>Example</h3>
+<p>Let’s understand the details with the following example.</p>
+<p>Finding a Location using class:</p>
+<p><code>package selenium demo;<br>
+import org.openqa.selenium.By;<br>
+import org.openqa.selenium.WebDriver;<br>
+import org.openqa.selenium.firefox.FirefoxDriver;<br>
+public class main {<br>
+public static void main (String [] args){<br>
+WebDriver dri = new FirefoxDriver();<br>
+dri.get("https://www.facebook.com/");<br>
+dri.findElement(By.className("inputtext")).sendKeys("Hello EDUCBA!");<br>
+}<br>
+}</code></p>
+<p><strong>Explanation</strong></p>
+<p>The element that matches the values supplied in the attribute name 
+“class” is returned by the Class Name locator. Value to be added is done
+ by a class name method by giving find element(by. classname()).</p>
+<p><strong>Output:</strong></p>
+<p><img class="alignnone size-full wp-image-496928" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20418%20214'%3E%3C/svg%3E" alt="xpath class 3" data-lazy-srcset="https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-3.png.webp 418w,https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-3-300x154.png.webp 300w" data-lazy-sizes="(max-width: 418px) 100vw, 418px" data-lazy-src="https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-3.png.webp" width="418" height="214"><noscript><img class="alignnone size-full wp-image-496928" src="https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-3.png.webp" alt="xpath class 3" width="418" height="214" srcset="https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-3.png.webp 418w,https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-3-300x154.png.webp 300w" sizes="(max-width: 418px) 100vw, 418px" /></noscript></p>
+<h4>Example #2</h4>
+<p><code>import java.util.List;<br>
+import org.openqa.selenium.By;<br>
+import org.openqa.selenium.WebDriver;<br>
+import org.openqa.selenium.WebElement;<br>
+import org.openqa.selenium.chrome.ChromeDriver;<br>
+public class Finddemo {<br>
+public static void main(String[] args) {<br>
+System.setProperty("webdriver.chrome.driver", "C:/tes/chromedriver.exe");<br>
+WebDriver dri = new ChromeDriver();<br>
+dri.get("https://demoqa.com/text-box/");<br>
+List&lt;WebElement&gt; alln = dri.findElements(By.tagName("input"));<br>
+if(alln.size() != 0)<br>
+{<br>
+System.out.println(alln.size() + " Found an element \n");<br>
+for(WebElement inputElement : alln)<br>
+{<br>
+System.out.println(inputElement.getAttribute("placeholder"));<br>
+}<br>
+}<br>
+}<br>
+}</code></p>
+<p><strong>Explanation</strong></p>
+<p>The above code takes us to the browser where we had launched a window
+ containing all specific codes with the value of the class attribute. 
+The output shows like the element is found.</p>
+<p><strong>Output:</strong></p>
+<p><img class="alignnone size-full wp-image-496929" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20560%20163'%3E%3C/svg%3E" alt="xpath class 4" data-lazy-srcset="https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-4.png.webp 560w,https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-4-300x87.png.webp 300w" data-lazy-sizes="(max-width: 560px) 100vw, 560px" data-lazy-src="https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-4.png.webp" width="560" height="163"><noscript><img class="alignnone size-full wp-image-496929" src="https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-4.png.webp" alt="xpath class 4" width="560" height="163" srcset="https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-4.png.webp 560w,https://cdn.educba.com/academy/wp-content/uploads/2021/07/xpath-class-4-300x87.png.webp 300w" sizes="(max-width: 560px) 100vw, 560px" /></noscript></p>
+<p>Because developing CSS Selector and XPath needs a significant amount 
+of effort and practice, the technique is only used by more advanced and 
+trained users.</p>
+<h3>Conclusion</h3>
+<p>When it comes to building an XPATH, how well we comprehend and 
+evaluate the code is crucial. We learned a lot about the XPath class in 
+this article. We went through their types as well as the syntax. We’ve 
+also seen how the class path works with the help of an example. We’ve 
+also shown how to use operators to filter or find an element on a web 
+page afterward. The more we learn about the code, the more options we’ll
+ have when it comes to developing successful XPATHs.</p>
+<h3>Recommended Articles</h3>
+<p>This is a guide to XPath class. Here we discuss the definition, How 
+does the XPath class work? examples with code implementation. You may 
+also have a look at the following articles to learn more –</p>
+<ol>
+<li><a href="https://www.educba.com/xpath-expressions/">XPath Expressions</a></li>
+<li><a href="https://www.educba.com/xpath-relative/">XPath Relative</a></li>
+<li><a href="https://www.educba.com/xpath-axes/">XPath Axes</a></li>
+<li><a href="https://www.educba.com/xpath-nodes/">XPath Nodes</a></li>
+</ol>
+
+<style>#title-name a,#title-name p{color:#fff; margin: 0;}.container-wp{margin-top:0;width:100%}.container-wp-inner{margin:auto;width:auto;background-image:url(https://cdn.educba.com/img/wsmojo-compressor.jpg);background-size:cover;max-width:100%}.bgouter{background-color:rgba(0,0,0,.5)}.container-wp-inner p{color:#fff;font-size:16px;padding-bottom:2px}.container-wp-inner h2,.container-wp-inner h3,.container-wp-inner h4{font-size:30px;color:#fff;line-height:34px}.container-wp-inner-row{float:left;width:100%;float:left}.container-wp-inner-col{float:left;width:100%}.container-wp-inner-col1{float:left;width:60%}.container-wp-inner-col2{float:left;width:40%}.courselist{height:auto;background:#39524c;border:3px solid #158e5f;text-align:center;margin:15px 0;padding:15px 0}.courselist ul li{text-align:left;color:#fff;justify-content:space-between;min-height:26px;list-style:none;font-size:16px;line-height:35px}#title-name{margin:0 32px}.clearfix{clear:both}.container-wp-inner-col1 ul li{list-style:none;color:#fff;font-size:14px;line-height:24px;margin-left:-36px;margin-bottom:8px}.btnalign{text-align:right}.btn-default{background-color:#0bb71b;padding:13px 20px;font-size:14px;font-weight:700;color:#fff;text-decoration:none;border-radius:4px;border:1px solid transparent}#h1-head{text-transform:uppercase;font-size:24px;font-weight:700;line-height:40px;margin:20px 0 10px 0;color:#fff}@media only screen and (max-width:768px){.container-wp-inner-col1{float:left;width:60%}.container-wp-inner-col2{display:none}@media only screen and (max-width:600px){#h1-head{font-size:20px}.courselist{height:auto;background:#39524c;border:3px solid #158e5f;text-align:center;margin-top:30px;padding:0 0}.container-wp-inner-col1{float:left;width:100%}.container-wp-inner-col2{float:left;width:100%;display:none}}.mast_cour_title{font-size:18px;line-height:35px;padding:5px 0}.exp-topics{margin:15px 25px!important}.learn_more{background-color:#0bb71b!important;padding:10px 20px!important;font-size:16px!important;font-weight:700!important;color:#fff!important;text-decoration:none!important;border-radius:4px!important}}.learn-more{background-color:#0bb71b}.banner-3 .five-sixths{width:100%;margin:0}.banner-3 .fa-check-square-o{font-size:25px}.banner-3 #title-name p{margin-bottom:0!important}.flcb {background: #fddc05; margin-right: 18px;width: fit-content;padding: 7px 5px 6px 5px;color: #000;font-weight: 700;position: relative; display: inline-block;border-left: 5px solid #000; margin-bottom: 0.5em; font-size: 16px;}</style>
+
+			<!-- @@!! 496868 -->	
+<div class="container-wp banner-3">
+	<div class="container-wp-inner">
+		<div class="bgouter">			
+			<div class="container-wp-inner-row">
+			<a style="color: #ccc;" href="https://www.educba.com/software-development/courses/software-development-course/?btnz=edu-blg-inline-banner3">
+			<div class="five-sixths">
+										
+						<div id="title-name" class="one-half first">
+							<p id="h1-head">All in One Software Development Bundle (600+ Courses, 50+ projects)</p>
+							<p><i class="fa fa-check-square-o" aria-hidden="true"></i> 600+ Online Courses</p>
+							<p><i class="fa fa-check-square-o" aria-hidden="true"></i> 50+ projects</p>
+							<p><i class="fa fa-check-square-o" aria-hidden="true"></i> 3000+ Hours</p>
+							<p><i class="fa fa-check-square-o" aria-hidden="true"></i> Verifiable Certificates</p>
+															<p><i class="fa fa-check-square-o" aria-hidden="true"></i> Lifetime Access</p>
+														<p></p>
+							<p><span class="button accent learn-more">Learn More</span></p>
+						</div>	
+								
+			</div>
+			</a></div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+												
+							
+						
+		<div class="swp_social_panel swp_horizontal_panel swp_flat_fresh  swp_default_full_color swp_individual_full_color swp_other_full_color scale-100  scale-" data-min-width="1100" data-float-color="#ffffff" data-float="none" data-float-mobile="none" data-transition="slide" data-post-id="496868"><div class="nc_tweetContainer swp_share_button total_shares total_sharesalt"><span class="swp_count ">0 <span class="swp_label">Shares</span></span></div><div class="nc_tweetContainer swp_share_button swp_facebook" data-network="facebook"><a class="nc_tweet swp_share_link" rel="nofollow noreferrer noopener" target="_blank" href="https://www.facebook.com/share.php?u=https%3A%2F%2Fwww.educba.com%2Fxpath-class%2F" data-link="https://www.facebook.com/share.php?u=https%3A%2F%2Fwww.educba.com%2Fxpath-class%2F"><span class="swp_count swp_hide"><span class="iconFiller"><span class="spaceManWilly"><i class="sw swp_facebook_icon"></i><span class="swp_share">Share</span></span></span></span></a></div><div class="nc_tweetContainer swp_share_button swp_twitter" data-network="twitter"><a class="nc_tweet swp_share_link" rel="nofollow noreferrer noopener" target="_blank" href="https://twitter.com/intent/tweet?text=XPath+class&amp;url=https%3A%2F%2Fwww.educba.com%2Fxpath-class%2F" data-link="https://twitter.com/intent/tweet?text=XPath+class&amp;url=https%3A%2F%2Fwww.educba.com%2Fxpath-class%2F"><span class="swp_count swp_hide"><span class="iconFiller"><span class="spaceManWilly"><i class="sw swp_twitter_icon"></i><span class="swp_share">Tweet</span></span></span></span></a></div><div class="nc_tweetContainer swp_share_button swp_linkedin" data-network="linkedin"><a class="nc_tweet swp_share_link" rel="nofollow noreferrer noopener" target="_blank" href="https://www.linkedin.com/cws/share?url=https%3A%2F%2Fwww.educba.com%2Fxpath-class%2F" data-link="https://www.linkedin.com/cws/share?url=https%3A%2F%2Fwww.educba.com%2Fxpath-class%2F"><span class="swp_count swp_hide"><span class="iconFiller"><span class="spaceManWilly"><i class="sw swp_linkedin_icon"></i><span class="swp_share">Share</span></span></span></span></a></div></div><!-- AI CONTENT END 1 -->
+</div><footer class="entry-footer"></footer></article></main><aside class="sidebar sidebar-primary widget-area" role="complementary" aria-label="Primary Sidebar"><span class="genesis-sidebar-title screen-reader-text">Primary Sidebar</span><section id="text-498" class="widget widget_text"><div class="widget-wrap">			<div class="textwidget"><style type="text/css">table td,th{border-left:2px solid #d2d2d2;vertical-align:text-top}#list2::-webkit-scrollbar,#sticky::-webkit-scrollbar,#ullist::-webkit-scrollbar{width:5px}#list2::-webkit-scrollbar-track,#ullist::-webkit-scrollbar-track{background:#f1f1f1}#list2::-webkit-scrollbar-thumb,#ullist::-webkit-scrollbar-thumb{background:#f1f1f1}#list2::-webkit-scrollbar-thumb:hover,#ullist::-webkit-scrollbar-thumb:hover{background:#888}#list2:hover::-webkit-scrollbar-thumb,#ullist:hover::-webkit-scrollbar-thumb{background:#888}.entry-content pre{background-color:#f6f7f8;display:block;padding:10px 20px;padding:1rem 2rem;border:2px solid #f0f1f2;margin-top:1em;border-radius:4px;border-left:3px solid #6ce26c!important}@media (max-device-width:480px) and (min-device-width:320px){.entry-content code{width:300px;overflow:scroll}.entry-content pre{width:300px;overflow:scroll}.entry-content .wp-video{width:auto!important}}@media (max-device-width:767px) and (min-device-width:481px){.entry-content code{width:470px;overflow:scroll}}@media (max-device-width:890px) and (min-device-width:768px){.entry-content code{width:750px;overflow:scroll}}@media only screen and (min-device-width:891px){.entry-content code{width:auto}}.breadcrumb a{color:#e93f33;text-decoration:underline;font-family:'Nunito Sans',-apple-system,blinkmacsystemfont,'Segoe UI',roboto,helvetica,arial,sans-serif}.entry-content a{color:#e93f33;border-bottom:1px solid;text-decoration:none}.entry-content a:focus,.entry-content a:hover{border-bottom:transparent}@media (min-width:768px){h1{font-size:3em}h2{font-size:2em}h3{font-size:1.8em}h4{font-size:1.5em}h5{font-size:1.4em}h6{font-size:1.3em}}h2{font-size:2em}h3{font-size:1.8em}h4{font-size:1.5em}h5{font-size:1.4em}h6{font-size:1.3em}body>div{font-size:18px;font-size:1.6rem}b,h1,h2,h3,h4,h5,h6,strong{font-family:'Nunito Sans',-apple-system,blinkmacsystemfont,'Segoe UI',roboto,helvetica,arial,sans-serif;font-weight:700!important}@media (min-width:768px){body>div{font-size:1.8rem}}.entry-content ol,.entry-content ul{margin-bottom:1.618em;margin-left:4rem}.entry-content li,.entry-content ol,.entry-content p,.entry-content table,.entry-content ul{color:#4d5968;line-height:2;font-family:'Nunito Sans',-apple-system,blinkmacsystemfont,'Segoe UI',roboto,helvetica,arial,sans-serif}@media (min-width:896px){.content-sidebar-wrap{padding:3rem 0!important}}.leftshift{left:70%!important}.content-sidebar-wrap-bg{background: #0a635fab;}.inline-pp-banner-bg {background: #faffbd82;}.img-op{opacity: 0.5;} .contentinner h4 {font-size: 1em; font-weight:200 !important; line-height:1.3;} .contentinner h4 a{text-decoration:none;font-weight: 600;} .contentinner h4 a:before {content: "\f18e"!important;color: #5d5c5c;font-size: 2.2rem;font-weight: 500;font-family: FontAwesome;margin-right: 0.2em;} .subcat-name{font-size: 1.2em;line-height: 2;color: #d87d07;border-bottom: 1px solid;margin-bottom: 0.5em !important;} </style>
+<script type="text/javascript">jQuery(document).ready(function(){ 
+//jQuery(".subli").css("display","none");
+jQuery(".subli .active_list").parent().css("display","block");
+jQuery(".sub").find("#iclass").addClass("fa-caret-right");
+jQuery(".sub").find("#ifclass").addClass("fa-folder");
+jQuery(".sub").find("#ifclass2").addClass("fa-folder");
+jQuery(".subli .active_list").parent().parent().find("#iclass").removeClass("fa-caret-right");
+jQuery(".subli .active_list").parent().parent().find("#iclass").addClass("fa-caret-down");
+jQuery(".subli .active_list").parent().parent().find("#ifclass").removeClass("fa-folder");
+jQuery(".subli .active_list").parent().parent().find("#ifclass").addClass("fa-folder-open");
+jQuery('table').wrap("<div style='overflow-x:auto;'></div>");
+jQuery('.cal-tbl table').unwrap("<div style='overflow-x:auto;'></div>");
+jQuery("#mobilenav").parent("p").css("margin","0");
+jQuery("#mobilenav .fa-bars").click(function() {
+jQuery('.navbar-tog-open-close').toggleClass("leftshift",7000);
+jQuery("#fix-bar").addClass("showfix-bar");
+/*jQuery(".content-sidebar-wrap").toggleClass("content-sidebar-wrap-bg");
+jQuery(".inline-pp-banner").toggleClass("inline-pp-banner-bg");
+jQuery(".entry-content img").toggleClass("img-op");*/
+jQuery("#fix-bar").toggle();
+jQuery(this).toggleClass('fa fa-close fa fa-bars');
+});
+jQuery("#mobilenav .fa-close").click(function() {
+jQuery('.navbar-tog-open-close').toggleClass("leftshift",7000);
+jQuery("#fix-bar").removeClass("showfix-bar");
+jQuery("#fix-bar").toggle();
+jQuery(this).toggleClass('fa fa-bars fa fa-close');
+/*jQuery(".content-sidebar-wrap").toggleClass("content-sidebar-wrap-bg");
+jQuery(".inline-pp-banner").toggleClass("inline-pp-banner-bg");
+jQuery(".entry-content img").toggleClass("img-op");*/
+});	
+});
+</script>
+<div class="wow fadeIn text-center xs-display-none" style="margin-bottom: 5%;">
+<div class="">
+<div class="restaurant-features text-center padding-five">
+</div>
+</div>
+</div>
+</div>
+<div style="text-align:center;padding-left: 15px;padding-right: 15px;padding-top: 5px;" class="xs-display-none"><a style="color:grey;" href="https://www.educba.com/scala-mutable-list/?source=leftnav">Scala Mutable List</a></div><hr class="xs-display-none" style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #cccccc, rgba(0, 0, 0, 0)); width:100%; margin: 12px 0 12px;"><div style="text-align:center;padding-left: 15px;padding-right: 15px;padding-top: 5px;" class="xs-display-none"><a style="color:grey;" href="https://www.educba.com/scala-fold/?source=leftnav">Scala Fold</a></div><hr class="xs-display-none" style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #cccccc, rgba(0, 0, 0, 0)); width:100%; margin: 12px 0 12px;"><div style="text-align:center;padding-left: 15px;padding-right: 15px;padding-top: 5px;" class="xs-display-none"><a style="color:grey;" href="https://www.educba.com/reflection-in-java/?source=leftnav">Reflection in JAVA</a></div><hr class="xs-display-none" style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #cccccc, rgba(0, 0, 0, 0)); width:100%; margin: 12px 0 12px;"><div style="text-align:center;padding-left: 15px;padding-right: 15px;padding-top: 5px;" class="xs-display-none"><a style="color:grey;" href="https://www.educba.com/react-render/?source=leftnav">React Render</a></div><hr class="xs-display-none" style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #cccccc, rgba(0, 0, 0, 0)); width:100%; margin: 12px 0 12px;"><div style="text-align:center;padding-left: 15px;padding-right: 15px;padding-top: 5px;" class="xs-display-none"><a style="color:grey;" href="https://www.educba.com/jquery-array-contains/?source=leftnav">jQuery array contains</a></div><hr class="xs-display-none" style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #cccccc, rgba(0, 0, 0, 0)); width:100%; margin: 12px 0 12px;"><div style="text-align:center;padding-left: 15px;padding-right: 15px;padding-top: 5px;" class="xs-display-none"><a style="color:grey;" href="https://www.educba.com/xpath-regex/?source=leftnav">XPath regex</a></div><hr class="xs-display-none" style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #cccccc, rgba(0, 0, 0, 0)); width:100%; margin: 12px 0 12px;" <="" div="">
+<script>
+var fixmeTop = jQuery('.rel-courses').offset().top;
+jQuery(window).scroll(function() {
+    var currentScroll = jQuery(window).scrollTop();
+    if (currentScroll >= fixmeTop) {
+        jQuery('.rel-courses').css({
+            position: 'fixed',
+            top: '6em',
+            left: '4.2em'
+        });
+    } else {
+        jQuery('.rel-courses').css({
+            position: 'static'
+        });
+    }
+});
+</script>
+</div>
+		</section></aside></div>
+</div></div><footer class="site-footer" aria-hidden="false"><div class="wrap"><div class="footer-widgets"><span class="genesis-sidebar-title screen-reader-text">Footer</span><div class="wrap"><div class="widget-area footer-widgets-1 footer-widget-area"><section id="custom_html-17" class="widget_text widget widget_custom_html"><div class="widget_text widget-wrap"><h6 class="widget-title widgettitle">About Us</h6><div class="textwidget custom-html-widget"><ul style="line-height:18px;font-family: 'Montserrat', Helvetica, Arial, sans-serif;">
+<li><a href="https://www.educba.com/blog/?source=footer">Blog</a></li>
+<li><a href="https://www.educba.com/about-us/?source=footer">Who is EDUCBA?</a></li>
+<li><a href="https://www.educba.com/software-development/signup/?source=footer">Sign Up</a></li>
+<li><a href="https://www.educba.com/daily-live-classes/?source=footer">Live Classes</a></li>
+<li><a href="https://www.educba.com/corporate/?source=footer">Corporate Training</a></li>
+<li><a href="https://www.educba.com/educbalive/?source=footer" rel="nofollow">Certificate from Top Institutions</a></li>
+<li><a href="https://www.educba.com/contact-us/?source=footer">Contact Us</a></li>
+<li><a href="https://www.educba.com/software-development/verifiable-certificate/?source=footer">Verifiable Certificate</a></li>
+<li><a href="https://www.educba.com/software-development/reviews/?source=footer">Reviews</a></li>
+<li><a href="https://www.educba.com/terms-and-conditions/?source=footer">Terms and Conditions</a></li>
+<li><a href="https://www.educba.com/privacy-policy/?source=footer">Privacy Policy</a></li>
+<li>&nbsp;</li>
+</ul>
+<!--<h6 class="widget-title widgettitle">Free Courses</h6>
+<ul style="line-height:18px;font-family: 'Montserrat', Helvetica, Arial, sans-serif;">
+<li><a href="https://www.educba.com/software-development/courses/free-programming-course/">Free Course Programming</a></li>
+<li><a href="https://www.educba.com/software-development/courses/free-python-course/">Free course Python</a></li>
+<li><a href="https://www.educba.com/software-development/courses/free-java-online-course/">Free Course Java</a></li>
+<li><a href="https://www.educba.com/software-development/courses/free-javascript-course/">Free Course Javascript</a></li>
+<li><a href="https://www.educba.com/software-development/courses/free-sql-course/">Free Course on SQL</a></li>
+<li><a href="https://www.educba.com/software-development/courses/free-web-design-course/">Free Course on Web Design</a></li>
+<li><a href="https://www.educba.com/software-development/courses/free-html-course/">Free HTML Course</a></li>
+<li><a href="https://www.educba.com/software-development/courses/free-android-app-development-course/">Free Android App Development Course</a></li>
+<li><a href="#">All Free Course</a></li>
+</ul>-->
+</div></div></section>
+</div><div class="widget-area footer-widgets-2 footer-widget-area"><section id="custom_html-20" class="widget_text widget widget_custom_html"><div class="widget_text widget-wrap"><h6 class="widget-title widgettitle">Apps</h6><div class="textwidget custom-html-widget"><ul style="line-height:18px;font-family: 'Montserrat', Helvetica, Arial, sans-serif;">
+<li><a href="https://itunes.apple.com/in/app/educba-learning-app/id1341654580?mt=8">iPhone &amp; iPad</a></li>
+<li><a href="https://play.google.com/store/apps/details?id=com.educba.www">Android</a></li>
+</ul></div></div></section>
+</div><div class="widget-area footer-widgets-3 footer-widget-area"><section id="custom_html-19" class="widget_text widget widget_custom_html"><div class="widget_text widget-wrap"><h6 class="widget-title widgettitle">Resources</h6><div class="textwidget custom-html-widget"><ul style="line-height:18px;font-family: 'Montserrat', Helvetica, Arial, sans-serif;">
+<li><a href="https://www.educba.com/software-development/free-courses/?source=footer">Free Courses</a></li>
+<li><a href="https://www.educba.com/software-development/software-development-tutorials/java-tutorial/?source=footer">Java Tutorials</a></li>
+<li><a href="https://www.educba.com/software-development/software-development-tutorials/python-tutorial/?source=footer">Python Tutorials</a></li>
+<li><a href="https://www.educba.com/software-development/software-development-tutorials/?source=footer">All Tutorials</a></li>
+<!--<li><a href="https://www.educba.com/software-development/software-development-tutorials/top-differences-tutorial/?source=footer">Top Differences</a></li>
+<li><a href="https://www.educba.com/software-development/software-development-tutorials/top-interview-question/?source=footer">Top Interview Question</a></li>
+<li><a href="https://www.educba.com/software-development/software-development-tutorials/programming-languages-tutorial/?source=footer">Programming Languages</a></li>
+<li><a href="https://www.educba.com/software-development/software-development-tutorials/html-tutorial/?source=footer">HTML CSS Tutorial</a></li>
+<li><a href="https://www.educba.com/software-development/software-development-tutorials/software-development-basics/?source=footer">Technology Basics</a></li>
+<li><a href="https://www.educba.com/software-development/software-development-tutorials/software-development-careers/?source=footer">Technology Careers</a></li>
+<li><a href="https://www.educba.com/software-development/software-development-tutorials/ethical-hacking-tutorial/?source=footer">Ethical Hacking Tutorial</a></li> -->
+
+</ul>
+</div></div></section>
+</div><div class="widget-area footer-widgets-4 footer-widget-area"><section id="custom_html-18" class="widget_text widget widget_custom_html"><div class="widget_text widget-wrap"><h6 class="widget-title widgettitle">Certification Courses</h6><div class="textwidget custom-html-widget"><ul style="line-height:18px;font-family: 'Montserrat', Helvetica, Arial, sans-serif;">
+<li><a href="https://www.educba.com/software-development/courses/?source=footer">All Courses</a></li>
+<li><a href="https://www.educba.com/software-development/courses/software-development-course/?source=footer">Software Development Course - All in One Bundle</a></li>
+<li><a href="https://www.educba.com/software-development/courses/python-certification-course/?source=footer">Become a Python Developer</a></li>
+<li><a href="https://www.educba.com/software-development/courses/java-course/?source=footer">Java Course</a></li>
+<li><a href="https://www.educba.com/software-development/courses/selenium-training-certification/?source=footer">Become a Selenium Automation Tester</a></li>
+<li><a href="https://www.educba.com/software-development/courses/iot-course/?source=footer">Become an IoT Developer</a></li>
+<li><a href="https://www.educba.com/software-development/courses/asp-net-course/?source=footer">ASP.NET Course</a></li>
+<li><a href="https://www.educba.com/software-development/courses/vb-net-course/?source=footer">VB.NET Course</a></li>
+<li><a href="https://www.educba.com/software-development/courses/php-course/?source=footer">PHP Course</a></li>
+</ul>
+</div></div></section>
+</div></div></div><a href="#top" class="back-to-top"></a></div>	<p style="text-align:center;font-family:Montserrat;padding-bottom:30px;margin-bottom:0;padding-top:30px;font-size:1.7rem;}">© 2022 - EDUCBA. ALL RIGHTS RESERVED. THE CERTIFICATION NAMES ARE THE TRADEMARKS OF THEIR RESPECTIVE OWNERS.</p>
+	</footer>            <script type="text/javascript">
+                jQuery(function($) {
+                    function equalHeight(group) {
+                        tallest = 0;
+                        group.each(function() {
+                            thisHeight = $(this).height();
+                            if(thisHeight > tallest) {
+                                tallest = thisHeight;
+                            }
+                        });
+                        group.height(tallest);
+                    }
+
+                    equalHeight($(".dg-grid-shortcode .dg_grid-shortcode-col"));
+
+                    $(window).resize(function() {
+                        equalHeight($(".dg-grid-shortcode .dg_grid-shortcode-col"));
+                    });
+                });
+            </script>
+            <script type="text/javascript">
+var colomatduration = 'fast';
+var colomatslideEffect = 'slideFade';
+var colomatpauseInit = '';
+var colomattouchstart = '';
+</script><div id="pum-97847" class="pum pum-overlay pum-theme-106959 pum-theme-full-screen-custom popmake-overlay pum-click-to-close exit_intent click_open" data-popmake="{&quot;id&quot;:97847,&quot;slug&quot;:&quot;exit-intent-auto-popup-desktop&quot;,&quot;theme_id&quot;:106959,&quot;cookies&quot;:[{&quot;event&quot;:&quot;on_popup_close&quot;,&quot;settings&quot;:{&quot;name&quot;:&quot;pum-97847&quot;,&quot;key&quot;:&quot;&quot;,&quot;session&quot;:false,&quot;time&quot;:&quot;12 hours&quot;,&quot;path&quot;:true}}],&quot;triggers&quot;:[{&quot;type&quot;:&quot;exit_intent&quot;,&quot;settings&quot;:{&quot;cookie_name&quot;:[&quot;pum-97847&quot;],&quot;top_sensitivity&quot;:&quot;10&quot;,&quot;delay_sensitivity&quot;:&quot;350&quot;}},{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;,&quot;cookie_name&quot;:null}}],&quot;mobile_disabled&quot;:true,&quot;tablet_disabled&quot;:true,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;small&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:&quot;1&quot;,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;x&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:&quot;1&quot;,&quot;esc_press&quot;:&quot;1&quot;,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" style="opacity: 1; display: none;">
+
+	<div id="popmake-97847" class="pum-container popmake theme-106959 pum-responsive pum-responsive-small responsive size-small pum-position-fixed fixed custom-position" style="min-width: 0%; max-width: 100%; top: 100px; left: 1216.4px; opacity: 1; display: none;">
+
+				
+
+				
+
+		
+
+				<div class="pum-content popmake-content">
+			<style type="text/css">.khal1{display:none}#pum-97847{background:#fff}#popmake-97847{display:-webkit-inline-box}#free-crs-ext{text-align:-webkit-center}#nw-email-free-crs-ext{margin-bottom:10px;width:100%}#main_content{color:#000;font-size:26px;margin-top:10px;font-family:Montserrat,Helvetica,Arial,sans-serif;font-weight:500}#dis_content{color:#3c3c3c;font-size:14px;font-family:Montserrat,Helvetica,Arial,sans-serif;margin-top:8px;line-height:22px}#email-form-free-crs{padding:10px}.line5{color:red;font-size:14px;line-height:20px;margin-top:8px}#submit-free-crs-ext{width:100%;background-image: linear-gradient(to top,#e93f33,#ea4b32,#eb5632,#ec6032,#ec6a33)!important;}.pum-content{padding:0}.line4{font-size:13px;margin-top:2px}.alert-style5 .alert{background-color:transparent;border-bottom-width:3px}.fade.in{opacity:1}.alert-danger{color:#a94442;background-color:#f2dede;border-color:#ebccd1!important}.alert{padding:15px;margin-bottom:20px;border:1px solid transparent;border-radius:5px}.fade{opacity:0;-webkit-transition:opacity .15s linear;-o-transition:opacity .15s linear;transition:opacity .15s linear}.alert-style5 .alert i{background-color:transparent}.alert-style5 .alert-danger:hover{background-color:#f2dede}.alert-style5 .alert:hover{border-color:rgba(0,0,0,.1)}.alert-style5 .alert{background-color:transparent;border-bottom-width:3px}.policy{text-align: center;
+    margin: 0 auto;} .policy p{display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 0.85em;
+		padding-top:1em;}</style><div id="free-crs-ext" data-id="" class="white-popup-block center-col bg-white text-center modal-popup-main"><div id="loader-free-crs-ext" class="loading" style="display:none;"></div><div class="center-col"><div id="email-form-free-crs-ext"><div id="error-free-crs-ext" class="col-md-12 col-sm-12 col-xs-12 center-col text-center alert-style5" style="display:none"><div class="alert alert-danger fade in" role="alert"><i class="fa fa-warning alert-danger"></i><span id="err-free-crs-ext"></span></div></div><img src="xpath-queries_files/website_logo_transparent_background.png" class="EDUCBA lazyloaded" alt="EDUCBA" data-ll-status="loaded" width="155"><noscript><img src="https://cdn.educba.com/images/website_logo_transparent_background.png" width="155" class="EDUCBA" alt="EDUCBA"></noscript><div id="main_content"><span class="slider-subtitle5 black-text text-center title-large margin-four text-transform-none letter-spacing-1 no-margin-bottom" id="spmn">Free Software Development Course</span></div><p id="dis_content">Web development, programming languages, Software testing &amp; others</p><form name="form-free-crs-ext" id="form-free-crs-ext" autocomplete="off"><div class="form-group no-margin-bottom"><input type="text" name="user-phone-free-crs-ext" id="user-phone-free-crs-ext" placeholder="Enter your phone no" class="khal1" autocomplete="off"><input type="text" placeholder="Enter Email Address" name="nw-email-free-crs-ext" id="nw-email-free-crs-ext">
+<input type="hidden" name="suid-free-crs-ext" id="suid-free-crs-ext" value="1878"><input type="hidden" name="url-free-crs-ext" id="url-free-crs-ext" value="https://www.educba.com/xpath-class"><input type="hidden" name="fcdp-trs-ext" id="fcdp-trs-ext" value=""><input type="hidden" name="mn-trm-tx-id" id="mn-trm-tx-id" value="185"><input name="submit-free-crs-ext" id="submit-free-crs-ext" type="submit" value="Give me FREE Access" class="title-small landing-subscribe-button xs-width-100 width-100 no-margin-bottom"><div class="line5"><i>*Please provide your correct email id. Login details for this Free course will be emailed to you</i></div></div><input type="hidden" name="pum_form_popup_id" value="97847"></form><div class="policy"><p>By signing up, you agree to our <a href="https://www.educba.com/terms-and-conditions/">Terms of Use</a> and <a href="https://www.educba.com/privacy-policy/">Privacy Policy</a>.</p></div>
+</div></div></div>
+<script type="text/javascript">
+plt = '';
+user_envir = '';
+jQuery(document).ready(function(){
+
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	plt = "mobile";
+	user_envir = encodeURIComponent(navigator.userAgent);
+} else {
+	plt = "desktop";
+	user_envir = encodeURIComponent(navigator.userAgent);
+}
+
+jQuery('#form-free-crs-ext').on('submit', function (e) {
+jQuery('input[type="submit"]').attr('disabled', true);
+jQuery("#loader-free-crs-ext").css("display","block");
+
+uem = encodeURIComponent(jQuery("#nw-email-free-crs-ext").val());
+sg = jQuery("#suid-free-crs-ext").val();
+var urlx = jQuery("#url-free-crs-ext").val();
+zipcode = jQuery("#user-phone-free-crs-ext").val();
+mntrm = jQuery("#mn-trm-tx-id").val();
+var spn = jQuery("#spmn").text();
+if(jQuery('#nw-mob-free-crs-ext').length){
+var mbn = jQuery("#nw-mob-free-crs-ext").val();
+}
+if(uem == '') {
+jQuery("#loader-free-crs-ext").css("display","none");
+jQuery('input[type="submit"]').attr('disabled', false);
+jQuery("#error-free-crs-ext").css("display","block");
+jQuery('#error-free-crs-ext').html("<div class='alert alert-danger fade in' role='alert'><i class='fa fa-warning alert-danger'></i><span id='err-free-crs'>Please enter your email..</span></div>");
+} else {
+	
+var fregt = jQuery("#fcdp-trs-ext").val();
+jQuery.ajax({
+type : "POST",
+dataType: "json",
+cache: false,
+url  : 'https://www.educba.com/edb_jx/gtk_fregtk.php',
+data: 't=' + fregt,
+async: true,
+success : function(response){
+	jQuery("#fcdp-trs-ext").attr("value",response.tk);
+	fregt = jQuery("#fcdp-trs-ext").val();
+	
+jQuery.ajax({
+method : "POST",
+dataType: "json",
+cache: false,
+url  : 'https://www.educba.com/ajax/nwz-frz-rgsz.php',
+data : 'em=' + uem + '&sgs=' + sg + '&envir=' + plt + '&upf=' + user_envir+'&urlx=' +urlx+'&zipcode='+zipcode+'&mntrm='+mntrm + '&t=' + fregt + '&mb=' + mbn + '&sp=' + spn,
+async: true,
+success : function(resp){
+jQuery("#loader-free-crs-ext").css("display","none");
+if(resp.access == "no") {
+if(resp.eml_error == "yes") {
+jQuery('input[type="submit"]').attr('disabled', false);
+jQuery("#error-free-crs-ext").css("display","block");
+jQuery('#error-free-crs-ext').html("<div class='alert alert-danger fade in' role='alert'><i class='fa fa-warning alert-danger'></i><span id='err-free-crs'>Please enter your valid email (Check your email for spelling mistakes).</span></div>");
+}else if(resp.mb_error == "yes") {
+jQuery('input[type="submit"]').attr('disabled', false);
+jQuery("#error-free-crs-ext").css("display","block");
+jQuery('#error-free-crs-ext').html("<div class='alert alert-danger fade in' role='alert'><i class='fa fa-warning alert-danger'></i><span id='err-free-crs'>Please enter all the details.</span></div>");
+}else if(resp.usr_exists == "yes") {
+jQuery('input[type="submit"]').attr('disabled', false);
+jQuery("#error-free-crs-ext").css("display","block");
+jQuery('#error-free-crs-ext').html("<div class='alert alert-danger fade in' role='alert'><i class='fa fa-warning alert-danger'></i><span id='err-free-crs'>Specified email is already registered. Please provide another email.</span></div>");
+}else if(resp.tk_valid == "no") {
+jQuery('input[type="submit"]').attr('disabled', false);
+jQuery("#error-free-crs-ext").css("display","block");
+jQuery('#error-free-crs-ext').html("<div class='alert alert-danger fade in' role='alert'><i class='fa fa-warning alert-danger'></i><span id='err-free-crs'>Error Occurred. Please refresh the page and try again.</span></div>");
+}
+} else {
+if(resp.tk_valid == "yes") {
+jQuery('#email-form-free-crs').css("display","none");
+jQuery('input[type="submit"]').attr('disabled', false);
+jQuery("#error-free-crs-ext").css("display","block");
+jQuery('#error-free-crs-ext').html("<div class='alert alert-success fade in' role='alert'><i class='fa fa-check-circle alert-success'></i><span id='err-free-crs'>Registration for Free Trial successful. Please check your email for login details.</span></div>");
+window.location.href = "https://www.educba.com/my-courses/index.php";
+} else {
+jQuery('input[type="submit"]').attr('disabled', false);
+jQuery("#error-free-crs-ext").css("display","block");
+jQuery('#error-free-crs-ext').html("<div class='alert alert-danger fade in' role='alert'><i class='fa fa-warning alert-danger'></i><span id='err-free-crs'>Error Occurred. Please refresh teh page and try again..</span></div>");
+}
+}
+}
+});
+}
+});
+}
+return false;
+e.preventDefault();
+});	
+});
+</script>
+
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			x            </button>
+		
+	</div>
+
+</div>
+<div id="pum-135330" class="pum pum-overlay pum-theme-97827 pum-theme-default-theme popmake-overlay pum-click-to-close click_open" data-popmake="{&quot;id&quot;:135330,&quot;slug&quot;:&quot;free-courses-dynamic-popup&quot;,&quot;theme_id&quot;:97827,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;cookie_name&quot;:&quot;&quot;,&quot;extra_selectors&quot;:&quot;a[href=\&quot;#watch-free-1\&quot;]&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;small&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:&quot;1&quot;,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:&quot;1&quot;,&quot;esc_press&quot;:&quot;1&quot;,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true">
+
+	<div id="popmake-135330" class="pum-container popmake theme-97827 pum-responsive pum-responsive-small responsive size-small pum-position-fixed">
+
+				
+
+				
+
+		
+
+				<div class="pum-content popmake-content">
+			<!-- tzxid 185#### @@@@@ Valuation, Hadoop, Excel, Mobile Apps, Web Development & many more.  --><!-- modal popup -->
+
+<style type="text/css">.khal1{display:none;}#pum-97847{background: #fff;}#popmake-97847{display: -webkit-inline-box;}#free-crs {
+	text-align: -webkit-center;}#nw-email-free-crs {margin-bottom: 10px;width: 100%;} #main_content{color: #000; font-size: 26px;margin-top: 10px; font-family: 'Montserrat', Helvetica, Arial, sans-serif; font-weight: 500;} #dis_content {color: #3c3c3c; font-size: 14px;font-family: 'Montserrat', Helvetica, Arial, sans-serif;margin-top: 8px;line-height: 22px;} #email-form-free-crs{ padding: 10px;} .line5{color: red; font-size: 14px;line-height: 20px; margin-top: 8px;} #submit-free-crs{width:100%;background-image: linear-gradient(to top,#e93f33,#ea4b32,#eb5632,#ec6032,#ec6a33)!important;} .pum-content{padding: 0;} .line4{font-size: 13px; margin-top: 2px;}.alert-style5 .alert { background-color: transparent; border-bottom-width: 3px; } .fade.in { opacity: 1; } .alert-danger { color: #a94442; background-color: #f2dede; border-color: #ebccd1!important; } .alert { padding: 15px; margin-bottom: 20px; border: 1px solid transparent; border-radius: 5px; } .fade { opacity: 0; -webkit-transition: opacity .15s linear; -o-transition: opacity .15s linear; transition: opacity .15s linear; } .alert-style5 .alert i { background-color: transparent; } .alert-style5 .alert-danger:hover { background-color: #f2dede; } .alert-style5 .alert:hover { border-color: rgba(0,0,0,.1); } .alert-style5 .alert { background-color: transparent; border-bottom-width: 3px; }.policy{text-align: center;
+    margin: 0 auto;} .policy p{display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 0.85em;
+		padding-top:1em;}
+</style>
+<div id="free-crs" data-id="" class="white-popup-block center-col bg-white text-center modal-popup-main">
+<div id="loader-free-crs" class="loading" style="display:none;"></div>
+<div class="center-col">
+
+<div id="email-form-free-crs">
+<!-- error message div starts here -->
+<div id="error-free-crs" class="col-md-12 col-sm-12 col-xs-12 center-col text-center alert-style5" style="display: none"><div class="alert alert-danger fade in" role="alert"><i class="fa fa-warning alert-danger"></i><span id="err-free-crs"></span></div></div>
+<!-- error message div ends here -->
+<img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20155%200'%3E%3C/svg%3E" class="EDUCBA" alt="EDUCBA" data-lazy-src="https://cdn.educba.com/images/website_logo_transparent_background.png" width="155"><noscript><img src="https://cdn.educba.com/images/website_logo_transparent_background.png" width="155" class="EDUCBA" alt="EDUCBA"></noscript>
+<div id="main_content"><span class="slider-subtitle5 black-text text-center title-large margin-four text-transform-none letter-spacing-1 no-margin-bottom">Free Software Development Course</span></div>
+<p id="dis_content">Web development, programming languages, Software testing &amp; others</p>
+<form name="form-free-crs" id="form-free-crs" autocomplete="off">
+<div class="form-group no-margin-bottom">
+<input type="text" name="user-phone-free-crs" id="user-phone-free-crs" placeholder="Enter your phone no" class="khal1" autocomplete="off">
+<input type="text" placeholder="Enter Email Address" name="nw-email-free-crs" id="nw-email-free-crs">
+		
+<input type="hidden" name="suid-free-crs" id="suid-free-crs" value="1878">
+<input type="hidden" name="url-free-crs" id="url-free-crs" value="https://www.educba.com/xpath-class">
+<input type="hidden" name="fcdp-trs" id="fcdp-trs" value="">
+<input type="hidden" name="mn-trm-tx-id" id="mn-trm-tx-id" value="185">
+<input name="submit-free-crs" id="submit-free-crs" type="submit" value="Yes, Gimme FREE Access" class="title-small landing-subscribe-button xs-width-100 width-100 no-margin-bottom">
+<div class="line5"><i>*Please provide your correct email id. Login details for this Free course will be emailed to you</i></div><div class="policy"><p>By signing up, you agree to our <a href="https://www.educba.com/terms-and-conditions/">Terms of Use</a> and <a href="https://www.educba.com/privacy-policy/">Privacy Policy</a>.</p></div>
+</div>
+<input type="hidden" name="pum_form_popup_id" value="135330"></form>
+</div>
+<!-- end FORM 3 -->
+</div>
+
+</div>
+<!-- end modal popup -->
+
+
+<script type="text/javascript">
+plt = '';
+user_envir = '';
+jQuery(document).ready(function(){
+
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	plt = "mobile";
+	user_envir = encodeURIComponent(navigator.userAgent);
+} else {
+	plt = "desktop";
+	user_envir = encodeURIComponent(navigator.userAgent);
+}
+
+jQuery('#form-free-crs').on('submit', function (e) {
+jQuery('input[type="submit"]').attr('disabled', true);
+jQuery("#loader-free-crs").css("display","block");
+
+uem = encodeURIComponent(jQuery("#nw-email-free-crs").val());
+sg = jQuery("#suid-free-crs").val();
+var urlx = jQuery("#url-free-crs").val();
+zipcode = jQuery("#user-phone-free-crs").val();
+mntrm = jQuery("#mn-trm-tx-id").val();
+if(jQuery('#nw-mob-free-crs').length){
+var mbn = jQuery("#nw-mob-free-crs").val();
+}
+if(uem == '') {
+jQuery("#loader-free-crs").css("display","none");
+jQuery('input[type="submit"]').attr('disabled', false);
+jQuery("#error-free-crs").css("display","block");
+jQuery('#error-free-crs').html("<div class='alert alert-danger fade in' role='alert'><i class='fa fa-warning alert-danger'></i><span id='err-free-crs'>Please enter your email..</span></div>");
+} else {
+	
+var fregt = jQuery("#fcdp-trs").val();
+jQuery.ajax({
+type : "POST",
+dataType: "json",
+cache: false,
+url  : 'https://www.educba.com/edb_jx/gtk_fregtk.php',
+data: 't=' + fregt,
+async: true,
+success : function(response){
+	jQuery("#fcdp-trs").attr("value",response.tk);
+	fregt = jQuery("#fcdp-trs").val();
+	
+jQuery.ajax({
+method : "POST",
+dataType: "json",
+cache: false,
+url  : 'https://www.educba.com/ajax/nwz-frz-rgsz.php',
+data : 'em=' + uem + '&sgs=' + sg + '&envir=' + plt + '&upf=' + user_envir+'&urlx=' +urlx+'&zipcode='+zipcode+'&mntrm='+mntrm + '&t=' + fregt + '&mb=' + mbn,
+async: true,
+success : function(resp){
+jQuery("#loader-free-crs").css("display","none");
+if(resp.access == "no") {
+if(resp.eml_error == "yes") {
+jQuery('input[type="submit"]').attr('disabled', false);
+jQuery("#error-free-crs").css("display","block");
+jQuery('#error-free-crs').html("<div class='alert alert-danger fade in' role='alert'><i class='fa fa-warning alert-danger'></i><span id='err-free-crs'>Please enter your valid email (Check your email for spelling mistakes).</span></div>");
+}if(resp.mb_error == "yes") {
+jQuery('input[type="submit"]').attr('disabled', false);
+jQuery("#error-free-crs").css("display","block");
+jQuery('#error-free-crs').html("<div class='alert alert-danger fade in' role='alert'><i class='fa fa-warning alert-danger'></i><span id='err-free-crs'>Please enter all the details.</span></div>");
+}else if(resp.usr_exists == "yes") {
+jQuery('input[type="submit"]').attr('disabled', false);
+jQuery("#error-free-crs").css("display","block");
+jQuery('#error-free-crs').html("<div class='alert alert-danger fade in' role='alert'><i class='fa fa-warning alert-danger'></i><span id='err-free-crs'>Specified email is already registered. Please provide another email.</span></div>");
+}else if(resp.tk_valid == "no") {
+jQuery('input[type="submit"]').attr('disabled', false);
+jQuery("#error-free-crs").css("display","block");
+jQuery('#error-free-crs').html("<div class='alert alert-danger fade in' role='alert'><i class='fa fa-warning alert-danger'></i><span id='err-free-crs'>Error Occurred. Please refresh the page and try again.</span></div>");
+}
+} else {
+if(resp.tk_valid == "yes") {
+jQuery('#email-form-free-crs').css("display","none");
+jQuery('input[type="submit"]').attr('disabled', false);
+jQuery("#error-free-crs").css("display","block");
+jQuery('#error-free-crs').html("<div class='alert alert-success fade in' role='alert'><i class='fa fa-check-circle alert-success'></i><span id='err-free-crs'>Registration for Free Trial successful. Please check your email for login details.</span></div>");
+window.location.href = "https://www.educba.com/my-courses/index.php";
+} else {
+jQuery('input[type="submit"]').attr('disabled', false);
+jQuery("#error-free-crs").css("display","block");
+jQuery('#error-free-crs').html("<div class='alert alert-danger fade in' role='alert'><i class='fa fa-warning alert-danger'></i><span id='err-free-crs'>Error Occurred. Please refresh teh page and try again..</span></div>");
+}
+}
+}
+});
+}
+});
+}
+return false;
+e.preventDefault();
+});	
+});
+</script>
+
+
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			X            </button>
+		
+	</div>
+
+</div>
+<div id="pum-150987" class="pum pum-overlay pum-theme-97827 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:150987,&quot;slug&quot;:&quot;shopping-cart-popup&quot;,&quot;theme_id&quot;:97827,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;,&quot;cookie_name&quot;:null}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;small&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:&quot;1&quot;,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true">
+
+	<div id="popmake-150987" class="pum-container popmake theme-97827 pum-responsive pum-responsive-small responsive size-small pum-position-fixed">
+
+				
+
+				
+
+		
+
+				<div class="pum-content popmake-content">
+			<style>#title{font-size:25px; text-align: center; color: #3c3c3c;} .pum-content{padding: 17px;font-family: 'Montserrat', Helvetica, Arial, sans-serif;} .textname{color: #3c3c3c; font-weight: 600;} #paidpaypal3 {margin-top:10px;} #frmuser .form-group {margin: 8px 0; } .errmsg{font-style: italic;font-size: 14px;} #shopemail, #shopmob {border: 2px solid #d7d8d9 !important;} 
+.loadr-bn {
+	text-align: center;
+	border: 5px solid #e7e7e7;
+	border-radius: 50%;
+	border-top: 4px solid #a0a1a1;
+	width: 20px;
+	height: 20px;
+	-webkit-animation: spin 1s linear infinite; /* Safari */
+	animation: spin 1s linear infinite;
+	margin-top: 1.5em;
+	margin-left: 1em;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+	.policy{text-align: center;
+    margin: 0 auto;} .policy p{display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 0.85em;
+		padding-top:1em;}#popmake-150987 .popmake-content{    padding: 1em;}
+</style>
+<!-- form title  -->
+<div id="title"><span class="title-small font-weight-700 text-transform-none black-text"><i class="fa fa-graduation-cap fa-lg"></i> Let’s Get Started</span></div>
+<!-- end form title  -->
+<!-- form sub title  -->
+<!-- end form sub title  -->
+<div class="separator-line bg-black no-margin-lr margin-ten"></div>
+		<form name="frmuser" id="frmuser" autocomplete="off">
+			<div class="form-group no-margin-bottom left-aligned">
+			<!-- label  -->
+			<div id="err-msgx" style="display:none; color: #ff0000">
+			   <span class="errmsg"></span>
+			</div>
+			<label for="shopemail" class="text-uppercase textname">Email ID <span style="color: #ff0000">*</span></label>
+			<!-- end label  -->
+			<!-- input  -->
+			<input type="text" name="shopemail" id="shopemail" required="">
+			<input type="hidden" name="fcdp-trs-shc" id="fcdp-trs-shc" value="">	
+			<!-- end input  -->
+			
+			</div>
+			
+			<div style="display: inline-flex;" class="five-sixths">
+			<!-- button  -->
+			<div class="" style="margin: 0 auto;">
+			<input type="submit" id="paidpaypal3" class="btn btn-black no-margin-bottom btn-small btn-round no-margin-top" name="paidintnl" value="Proceed"> 
+			</div><div class="loadr-bn one-sixth" style="display:none;"></div>
+			</div>
+		<input type="hidden" name="pum_form_popup_id" value="150987"></form>	
+<div class="policy"><p>By signing up, you agree to our <a href="https://www.educba.com/terms-and-conditions/">Terms of Use</a> and <a href="https://www.educba.com/privacy-policy/">Privacy Policy</a>.</p></div>
+		<span id="getrszpnte"></span>
+<!-- end button  -->								
+<script>
+	var redirect_url  = "https://www.educba.com/cart/";
+	
+jQuery('#frmuser').on("submit", function(e){
+
+semail = encodeURIComponent(jQuery("#shopemail").val());
+//smob = jQuery("#shopmob").val();
+jQuery(".loadr-bn").css("display","block");
+if(semail){
+	
+var fregt = jQuery("#fcdp-trs-shc").val();
+jQuery.ajax({
+type : "POST",
+dataType: "json",
+cache: false,
+url  : 'https://www.educba.com/edb_jx/gtk_fregtk.php',
+data: 't=' + fregt,
+async: true,
+success : function(response){
+	jQuery("#fcdp-trs-shc").attr("value",response.tk);
+	fregt = jQuery("#fcdp-trs-shc").val();
+	
+jQuery.ajax({
+	type : "POST",
+	url  : 'https://www.educba.com/cart/modules/add-email.php',
+	data : 'semail='+semail + '&t=' + fregt,
+	dataType: "json",
+	async: true,
+	cache: false,
+	success : function(msgr){
+		jQuery(".loadr-bn").css("display","none");
+		if(msgr.updated == "Yes"){
+			jQuery("#err-msgx").css("display","none"); 
+			jQuery("#frmuser .errmsg").html("");
+			
+		window.location.href = redirect_url;
+		}else{
+			if(msgr.eml_error == "yes"){
+			jQuery("#err-msgx").css("display","block");
+			jQuery("#frmuser .errmsg").html("Please enter your valid Email ID.");				
+			} else {
+			jQuery("#err-msgx").css("display","block");
+			jQuery("#frmuser .errmsg").html("Error Occurred. Please refresh the page and try again.");
+			}
+		}
+	}
+});
+}
+});
+}else{
+	jQuery(".loadr-bn").css("display","none");
+	jQuery("#err-msgx").css("display","block");
+	jQuery("#frmuser .errmsg").html("Please enter your Email.");
+}
+return false;
+e.preventDefault();
+});
+</script>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			X            </button>
+		
+	</div>
+
+</div>
+<div id="pum-476363" class="pum pum-overlay pum-theme-97827 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:476363,&quot;slug&quot;:&quot;temp-popup-for-testing&quot;,&quot;theme_id&quot;:97827,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;cookie_name&quot;:&quot;&quot;,&quot;extra_selectors&quot;:&quot;.quiz-btn&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true">
+
+	<div id="popmake-476363" class="pum-container popmake theme-97827 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				
+
+		
+
+				<div class="pum-content popmake-content">
+			<style>.cor-ans{  background:#eafaea; border-left: 0px solid;  /* border-color: #33cc33;*/}  .wro-ans{ background:	#fde7e7; border-left: 0px solid;  /* border-color: #ff1a1a;*/} .cor-ans-badge{background-color:#33cc33; color:white; padding: 1px 8px; border-radius: 18px;} .wro-ans-badge{background-color:#ff1a1a; color:white; padding: 1px 11px; border-radius: 20px;}
+#qns{ font-size: 1.2em; } .ans{ font-size: 1.2em; } #tviewmore{ padding: 20px;background: #ddf2e9;color:#000;border-left: 4px solid #0b5bec; } .uk-alert-danger.wro-ans{ color: #ff1a1a;}.ed_modal .loader_edqn{position: absolute;
+    left: 0;
+    margin-top: 6em;
+    right: 0;}.quiz-img {position: absolute;
+    top: -3.5em;
+    width: 80px;
+    padding: 0.2em 0.5em;
+    left: 0;
+    border-radius: 10%;
+    background: #fff;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;}.ed_modal form{
+    border: thin solid #b7b5b5;
+		border-radius: 5px;}.quiz-sticky {width: 80px}.qns{background: darkkhaki;
+    padding: 1.5em 1.5em 0em 1.5em;background-image: linear-gradient(to top,#e93f33,#ea4b32,#eb5632,#ec6032,#ec6a33)!important;
+			color: #fff;}.ans{padding:0 1.5em;color: #3a3939;} #submit-q,#nxt-q{margin: 0 2em;background-image: linear-gradient(to top,#e93f33,#ea4b32,#eb5632,#ec6032,#ec6a33)!important;padding: 0.8em 2em;}.green-txt{color:green;font-weight:800}
+	@media (min-device-width : 320px) and (max-device-width : 480px) {
+		.back-to-top{left: 1em;}.quiz-img{width: 60px !important;}.quiz-sticky {width: 60px !important; top: 85% !important;
+}}
+	.spin-loader {
+  border: 6px solid #f3f3f3;
+  border-radius: 50%;margin: 0 auto;
+  border-top: 6px solid #3498db;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+<div class="uk-modal-dialog uk-modal-body ed_modal">
+	<div align="center"><div class="loader_edqn" style="text-align: center; color: rgb(0, 0, 0); display: none;"><div class=" spin-loader"></div><!--<img width="64" height="64" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3C/svg%3E" style="display:inline-block;" alt="loading" data-lazy-src="https://cdn.educba.com/images/EDUCBA.gif"><noscript><img width="64" height="64" src="https://cdn.educba.com/images/EDUCBA.gif" style="display:inline-block;" alt="loading"></noscript>-->Loading . . .</div></div>
+	<img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2080%20100'%3E%3C/svg%3E" alt="Quiz" class="quiz-img" data-lazy-src="https://cdn.educba.com/academy/wp-content/uploads/2021/06/80xauto_quiz.png.webp" width="80" height="100"><noscript><img width="80" height="100" src="https://cdn.educba.com/academy/wp-content/uploads/2021/06/80xauto_quiz.png.webp" alt="Quiz" class="quiz-img"  /></noscript>
+	<form name="frm_q" id="frm_q" method="post" autocomplete="off">
+	<div id="edt_loader" class="uk-icon uk-position-cover uk-overlay uk-overlay-default uk-flex uk-flex-center uk-flex-middle uk-spinner" uk-spinner="" style="display: none;z-index:3"></div>
+	<div id="edt_success" class="uk-alert-success" style="display:none" uk-alert=""> </div>
+	<div id="edt_error" class="uk-alert-danger" style="display:none" uk-alert="">   </div>
+	<div class="uk-margin mt-0 qns" style="display: none;"><b>Question: <span id="cnt">1</span></b><div class="uk-form-controls"><p id="qns" name="qns" placeholder="Enter Question" value="">NA</p></div></div>
+
+	<div class="uk-margin ans" style="display: none;"><div class="uk-form-label"><b>Answer:</b></div>
+	<div class="uk-form-controls">
+	<ul class="c-curriculum" style="padding-left:0;list-style-type: none;">
+	<li><ul class="sec-list" id="rad_itemss"></ul></li></ul>
+	<p style="color: rgb(0, 0, 0); display: none;" id="qsolution"></p>
+	</div>
+	</div>
+		
+	<div style="overflow-x:auto;"><table id="qresult" style=""><thead><tr><td colspan="4"><b>Quiz Result</b></td></tr></thead><tbody><tr><td><b>Total Questions</b></td><td><b>Correct Answers</b></td><td><b>Wrong Answers</b></td><td><b>Percentage</b></td></tr><tr><td id="qtot">0</td><td id="qcor">0</td><td id="qwro">0</td><td id="qper">NaN%</td></tr></tbody></table></div>
+	<p id="tviewmore" style="">Explore 1000+ varieties of Mock tests <a href="https://www.examturf.com/?btnz=educbablog" class="btn btn-default" target="_blank">View more</a></p>
+	<input type="hidden" name="questionno" id="questionno" value="1">
+	<input type="hidden" name="qid" id="qid" value="NA">
+	
+	<input type="hidden" name="cor_ans" id="cor_ans" value="0">
+	<input type="hidden" name="wro_ans" id="wro_ans" value="0">
+	<input type="hidden" name="category" id="category" value="185">
+	
+	<p class="uk-text-right"><button class="uk-button uk-button-primary" id="submit-q" type="button" style="display: none;">Submit</button>  <button style="display:none;" class="uk-button uk-button-secondary " id="nxt-q" type="button">Next Question</button> </p><input type="hidden" name="pum_form_popup_id" value="476363"></form>
+	
+</div>
+<script>
+jQuery(document).ready(function(){
+var loader = jQuery(".loader_edqn");
+loader.show();
+ 
+function getNextQuestion(){
+jQuery.ajax({
+		type : "GET",
+		url  : 'https://www.educba.com/ajax/get-questions.php',
+		data: jQuery("#frm_q").serialize(),
+		dataType: "json",
+		cache: false,
+		async: true 
+	}).done(function(response) {
+		console.log(response);
+		if(response.status == "Yes"){
+		
+		var currentq = jQuery("#questionno").val();
+		++currentq;
+		jQuery("#cnt").html(currentq);
+		jQuery("#questionno").val(currentq);
+		jQuery("#qid").val(response.qid);
+		
+		jQuery("#qns").html(response.question);
+		var options ="";
+		if(response.options != "No"){
+			jQuery.each(response.options, function(index, element) {
+				options += "<li> <input type='radio' class='uk-radio' id='opt-"+(index+1)+"' name='radio' value='"+(index+1)+"' required>  <label for='opt-"+(index+1)+"'>"+element+"</label></li>";
+			});
+			
+		}
+		jQuery("#rad_itemss").html(options);
+		
+		if(response.display_result == "Yes"){
+			jQuery(".qns, .ans, #qsolution, #nxt-q, #submit-q").hide();
+			jQuery("#qresult, #tviewmore").show();
+			var qtot = jQuery("#questionno").val() - 1;
+			var qcor = jQuery("#cor_ans").val();
+			var qwro = jQuery("#wro_ans").val();
+			jQuery("#qtot").html(qtot);
+			jQuery("#qcor").html(qcor);
+			jQuery("#qwro").html(qwro);
+			jQuery("#qper").html(((qcor / qtot) * 100)+"%");
+			console.log("Display result");
+		}
+		jQuery("#qsolution").html("");
+		}else{
+			//jQuery("#edt_error").html("No Quiz Availble").addClass("wro-ans").show(); loader.hide();
+		}
+		loader.hide();
+	}).fail(function(err) {  loader.hide(); control.log(err) });
+	
+}
+//on page load 
+getNextQuestion();
+
+//Fetch next Question
+jQuery(document).on('click', '#nxt-q', function(evt){
+	loader.show();
+	getNextQuestion();
+	jQuery("#submit-q").show();
+	jQuery("#nxt-q").hide();
+	evt.preventDefault();
+});
+
+//Evaluate Question
+jQuery(document).on('click', '#submit-q', function(evt){
+	loader.show();
+	jQuery("#edt_error").html("").hide();
+	var getSelectedValue = jQuery('input[name="radio"]:checked');   
+    //console.log("value : "+ JSON.stringify(getSelectedValue));
+    if(getSelectedValue.length != 0) {
+         
+	if(jQuery("#qid").val() == ''){
+		jQuery("#edt_error").html("<p>Something went wrong !</p>").addClass("wro-ans").show(); loader.hide();
+	}else{
+	jQuery.ajax({
+		type : "GET",
+		url  : 'https://www.educba.com/ajax/get-answer.php',
+		data: jQuery("#frm_q").serialize(),
+		dataType: "json",
+		cache: false,
+		async: true 
+	}).done(function(response) {
+		if(response.status == "Yes"){
+		var user_ans = jQuery('input[name="radio"]:checked').val();
+		var correct_ans = response.cor_opt;
+		jQuery("#opt-"+correct_ans).parent().addClass("cor-ans").append(" <span class='cor-ans-badge'>&check;</span>");
+		jQuery("#qsolution").html("<br><span class='green-txt'>Solution : </span>"+response.solution);
+		
+		if(user_ans == correct_ans){
+			var temp = jQuery("#cor_ans").val(); ++temp;
+			jQuery("#cor_ans").val(temp);
+		}else{
+			var temp = jQuery("#wro_ans").val(); ++temp;
+			jQuery("#wro_ans").val(temp);
+			jQuery("#opt-"+user_ans).parent().addClass("wro-ans").append(" <span class='wro-ans-badge'>x</span>");
+		}
+		jQuery("#nxt-q").show();
+		jQuery("#submit-q").hide();
+		
+		}
+		loader.hide();
+	}).fail(function(err) {  loader.hide(); console.log(err) });
+	}
+	
+	} else {
+        jQuery("#edt_error").html("Please select the option").addClass("wro-ans").show(); loader.hide();
+    } 
+	evt.preventDefault();
+});
+
+});
+</script> 
+
+	
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			X            </button>
+		
+	</div>
+
+</div>
+<div id="pum-138145" class="pum pum-overlay pum-theme-97827 pum-theme-default-theme popmake-overlay pum-click-to-close click_open" data-popmake="{&quot;id&quot;:138145,&quot;slug&quot;:&quot;login-popup&quot;,&quot;theme_id&quot;:97827,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;,&quot;cookie_name&quot;:null}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;small&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:&quot;1&quot;,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:&quot;1&quot;,&quot;esc_press&quot;:&quot;1&quot;,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true">
+
+	<div id="popmake-138145" class="pum-container popmake theme-97827 pum-responsive pum-responsive-small responsive size-small pum-position-fixed">
+
+				
+
+				
+
+		
+
+				<div class="pum-content popmake-content">
+			<style type="text/css">.btn{background-image: linear-gradient(to top,#e93f33,#ea4b32,#eb5632,#ec6032,#ec6a33)!important;}#title{font-size:25px;text-align:center;color:#3c3c3c}.pum-content{padding:17px;font-family:Montserrat,Helvetica,Arial,sans-serif}.textname{color:#3c3c3c}.wel-text{font-size: 1.2em;color:#525252;margin:0.5em 0;text-align:center}.wel-text span{color:#379c16;text-transform:uppercase}.policy{text-align: center;
+    margin: 0 auto;} .policy p{display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 0.85em;
+		padding-top:1em;} .popmake-content{    padding: 1em;}</style><div id="title"><span class="title-small font-weight-700 text-transform-none black-text">EDUCBA Login</span></div><!--<div class="wel-text" >Welcome back, <span>!</span></div>--><div class="separator-line bg-black no-margin-lr margin-ten"></div><form action="https://www.educba.com/nwp_logon.php" method="POST"><div class="form-group no-margin-bottom"><label for="le" class="text-uppercase textname">Username</label>
+<input type="text" name="le" id="le"></div><div class="form-group no-margin-bottom"><input type="hidden" name="token" value=""><label for="lp" class="text-uppercase textname">Password</label><input type="password" name="lp" id="lp"></div><div class="checkbox margin-five"><p class="text-uppercase margin-three no-margin-bottom"><a href="https://www.educba.com/forgot-password/">Forgot Password?</a></p></div>
+<button class="btn btn-black no-margin-bottom btn-small btn-round no-margin-top" type="submit">Submit</button><input type="hidden" name="pum_form_popup_id" value="138145"></form><div class="policy"><p>By signing up, you agree to our <a href="https://www.educba.com/terms-and-conditions/">Terms of Use</a> and <a href="https://www.educba.com/privacy-policy/">Privacy Policy</a>.</p></div>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			X            </button>
+		
+	</div>
+
+</div>
+<div id="pum-415387" class="pum pum-overlay pum-theme-97827 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:415387,&quot;slug&quot;:&quot;download-curr-popup&quot;,&quot;theme_id&quot;:97827,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;,&quot;cookie_name&quot;:null}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;small&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;x&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true">
+
+	<div id="popmake-415387" class="pum-container popmake theme-97827 pum-responsive pum-responsive-small responsive size-small">
+
+				
+
+				
+
+		
+
+				<div class="pum-content popmake-content">
+			<p></p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			x            </button>
+		
+	</div>
+
+</div>
+<div id="pum-378149" class="pum pum-overlay pum-theme-97829 pum-theme-enterprise-blue popmake-overlay pum-overlay-disabled auto_open click_open" data-popmake="{&quot;id&quot;:378149,&quot;slug&quot;:&quot;cookie-consent&quot;,&quot;theme_id&quot;:97829,&quot;cookies&quot;:[{&quot;event&quot;:&quot;on_popup_close&quot;,&quot;settings&quot;:{&quot;name&quot;:&quot;pum-378149&quot;,&quot;key&quot;:&quot;&quot;,&quot;session&quot;:false,&quot;time&quot;:&quot;3 days&quot;,&quot;path&quot;:true}}],&quot;triggers&quot;:[{&quot;type&quot;:&quot;auto_open&quot;,&quot;settings&quot;:{&quot;cookie_name&quot;:[&quot;pum-378149&quot;],&quot;delay&quot;:&quot;500&quot;}},{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;,&quot;cookie_name&quot;:null}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:&quot;1&quot;,&quot;overlay_disabled&quot;:&quot;1&quot;,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;tiny&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;left bottom&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;10&quot;,&quot;position_bottom&quot;:&quot;10&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:&quot;1&quot;,&quot;animation_type&quot;:&quot;fadeAndSlide&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;left bottom&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;OK&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true">
+
+	<div id="popmake-378149" class="pum-container popmake theme-97829 pum-responsive pum-responsive-tiny responsive size-tiny pum-position-fixed">
+
+				
+
+				
+
+		
+
+				<div class="pum-content popmake-content">
+			<p>This website or its third-party tools use cookies, which are 
+necessary to its functioning and required to achieve the purposes 
+illustrated in the cookie policy. By closing this banner, scrolling this
+ page, clicking a link or continuing to browse otherwise, you agree to 
+our <a title="Privacy Policy" href="https://www.educba.com/privacy-policy/?source=popup">Privacy Policy</a></p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			OK            </button>
+		
+	</div>
+
+</div>
+<div id="pum-167767" class="pum pum-overlay pum-theme-97827 pum-theme-default-theme popmake-overlay click_open pum-trigger" data-popmake="{&quot;id&quot;:167767,&quot;slug&quot;:&quot;free-template-download-form&quot;,&quot;theme_id&quot;:97827,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;cookie_name&quot;:&quot;&quot;,&quot;extra_selectors&quot;:&quot;#pum-167767&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;small&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:&quot;1&quot;,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;x&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" style="cursor: pointer;">
+
+	<div id="popmake-167767" class="pum-container popmake theme-97827 pum-responsive pum-responsive-small responsive size-small pum-position-fixed">
+
+				
+
+				
+
+		
+
+				<div class="pum-content popmake-content">
+			
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			x            </button>
+		
+	</div>
+
+</div>
+<div id="pum-161564" class="pum pum-overlay pum-theme-97827 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:161564,&quot;slug&quot;:&quot;new-free-course-popup&quot;,&quot;theme_id&quot;:97827,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;,&quot;cookie_name&quot;:null}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;small&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:&quot;1&quot;,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true">
+
+	<div id="popmake-161564" class="pum-container popmake theme-97827 pum-responsive pum-responsive-small responsive size-small pum-position-fixed">
+
+				
+
+				
+
+		
+
+				<div class="pum-content popmake-content">
+			<style type="text/css">.khal1{display:none}#pum-97847{background:#fff}#popmake-97847{display:-webkit-inline-box}#nw-free-crs{text-align:-webkit-center}#nww-email-free-crs{margin-bottom:10px;width:100%}#nw-main_content{color:#000;font-size:26px;margin-top:10px;font-family:Montserrat,Helvetica,Arial,sans-serif;font-weight:500}#nw-dis_content{color:#3c3c3c;font-size:14px;font-family:Montserrat,Helvetica,Arial,sans-serif;margin-top:8px;line-height:22px}#nw-email-form-free-crs{padding:10px}.line5{color:red;font-size:14px;line-height:20px;margin-top:8px}#nw-submit-free-crs{width:100%;background-image: linear-gradient(to top,#e93f33,#ea4b32,#eb5632,#ec6032,#ec6a33)!important;}.pum-content{padding:0}.line4{font-size:13px;margin-top:2px}.alert-style5 .alert{background-color:transparent;border-bottom-width:3px}.fade.in{opacity:1}.alert-danger{color:#a94442;background-color:#f2dede;border-color:#ebccd1!important}.alert{padding:15px;margin-bottom:20px;border:1px solid transparent;border-radius:5px}.fade{opacity:0;-webkit-transition:opacity .15s linear;-o-transition:opacity .15s linear;transition:opacity .15s linear}.alert-style5 .alert i{background-color:transparent}.alert-style5 .alert-danger:hover{background-color:#f2dede}.alert-style5 .alert:hover{border-color:rgba(0,0,0,.1)}.alert-style5 .alert{background-color:transparent;border-bottom-width:3px}.policy{text-align: center;
+    margin: 0 auto;} .policy p{display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 0.85em;
+		padding-top:1em;}</style><div id="nw-free-crs" data-id="" class="white-popup-block center-col bg-white text-center modal-popup-main"><div id="nw-loader-free-crs" class="loading" style="display:none;"></div><div class="center-col"><div id="nw-email-form-free-crs"><div id="nw-error-free-crs" class="col-md-12 col-sm-12 col-xs-12 center-col text-center alert-style5" style="display: none"><div class="alert alert-danger fade in" role="alert"><i class="fa fa-warning alert-danger"></i><span id="nw-err-free-crs"></span></div></div><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20155%200'%3E%3C/svg%3E" class="EDUCBA" alt="EDUCBA" data-lazy-src="https://cdn.educba.com/images/website_logo_transparent_background.png" width="155"><noscript><img src="https://cdn.educba.com/images/website_logo_transparent_background.png" width="155" class="EDUCBA" alt="EDUCBA"></noscript><div id="nw-main_content"><span class="slider-subtitle5 black-text text-center title-large margin-four text-transform-none letter-spacing-1 no-margin-bottom"></span></div><p id="nw-dis_content"></p><form name="nw-form-free-crs" id="nw-form-free-crs" autocomplete="off"><div class="form-group no-margin-bottom"><input type="text" name="user-phone-free-crs" id="nw-user-phone-free-crs" placeholder="Enter your phone no" class="khal1" autocomplete="off"><input type="text" placeholder="Enter Email Address" name="nww-email-free-crs" id="nww-email-free-crs">
+		
+<input type="hidden" name="suid-free-crs" id="nw-suid-free-crs" value="1878">
+<input type="hidden" name="url-free-crs" id="nw-url-free-crs" value="https://www.educba.com/xpath-class">
+<input type="hidden" name="mn-trm-tx-id" id="nw-mn-trm-tx-id" value="newfc-496868">
+<input type="hidden" name="fcdp-trs-nw" id="fcdp-trs-nw" value="">
+<input name="submit-free-crs" id="nw-submit-free-crs" type="submit" value="Yes, Gimme FREE Access" class="title-small landing-subscribe-button xs-width-100 width-100 no-margin-bottom"><div class="line5"><i>*Please provide your correct email id. Login details for this Free course will be emailed to you</i></div></div><input type="hidden" name="pum_form_popup_id" value="161564"></form><div class="policy"><p>By signing up, you agree to our <a href="https://www.educba.com/terms-and-conditions/">Terms of Use</a> and <a href="https://www.educba.com/privacy-policy/">Privacy Policy</a>.</p></div></div></div></div>
+<script type="text/javascript">
+plt = '';
+user_envir = '';
+jQuery(document).ready(function(){
+
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	plt = "mobile";
+	user_envir = encodeURIComponent(navigator.userAgent);
+} else {
+	plt = "desktop";
+	user_envir = encodeURIComponent(navigator.userAgent);
+}
+
+jQuery('#nw-form-free-crs').on('submit', function (e) {
+jQuery('input[type="submit"]').attr('disabled', true);
+jQuery("#nw-loader-free-crs").css("display","block");
+
+uem = encodeURIComponent(jQuery("#nww-email-free-crs").val());
+sg = jQuery("#nw-suid-free-crs").val();
+var urlx = jQuery("#nw-url-free-crs").val();
+zipcode = jQuery("#nw-user-phone-free-crs").val();
+mntrm = jQuery("#nw-mn-trm-tx-id").val();
+if(jQuery('#nww-mob-free-crs').length){
+var mbn = jQuery("#nww-mob-free-crs").val();
+}
+if(uem == '') {
+jQuery("#nw-loader-free-crs").css("display","none");
+jQuery('input[type="submit"]').attr('disabled', false);
+jQuery("#nw-error-free-crs").css("display","block");
+jQuery('#nw-error-free-crs').html("<div class='alert alert-danger fade in' role='alert'><i class='fa fa-warning alert-danger'></i><span id='err-free-crs'>Please enter your email.</span></div>");
+} else {
+var fregt = jQuery("#fcdp-trs-nw").val();
+jQuery.ajax({
+type : "POST",
+dataType: "json",
+cache: false,
+url  : 'https://www.educba.com/edb_jx/gtk_fregtk.php',
+data: 't=' + fregt,
+async: true,
+success : function(response){
+	jQuery("#fcdp-trs-nw").attr("value",response.tk);
+	fregt = jQuery("#fcdp-trs-nw").val();
+	
+jQuery.ajax({
+method : "POST",
+dataType: "json",
+cache: false,
+url  : 'https://www.educba.com/ajax/nwz-frz-rgsz.php',
+data : 'em=' + uem + '&sgs=' + sg + '&envir=' + plt + '&upf=' + user_envir+'&urlx=' +urlx+'&zipcode='+zipcode+'&mntrm='+mntrm + '&t=' + fregt + '&mb=' + mbn,
+async: true,
+success : function(resp){
+jQuery("#nw-loader-free-crs").css("display","none");
+if(resp.access == "no") {
+if(resp.eml_error == "yes") {
+jQuery('input[type="submit"]').attr('disabled', false);
+jQuery("#nw-error-free-crs").css("display","block");
+jQuery('#nw-error-free-crs').html("<div class='alert alert-danger fade in' role='alert'><i class='fa fa-warning alert-danger'></i><span id='err-free-crs'>Please enter your valid email (Check your email for spelling mistakes).</span></div>");
+}else if(resp.mb_error == "yes") {
+jQuery('input[type="submit"]').attr('disabled', false);
+jQuery("#nw-error-free-crs").css("display","block");
+jQuery('#nw-error-free-crs').html("<div class='alert alert-danger fade in' role='alert'><i class='fa fa-warning alert-danger'></i><span id='err-free-crs'>Please enter all the details.</span></div>");
+}else if(resp.usr_exists == "yes") {
+jQuery('input[type="submit"]').attr('disabled', false);
+jQuery("#nw-error-free-crs").css("display","block");
+jQuery('#nw-error-free-crs').html("<div class='alert alert-danger fade in' role='alert'><i class='fa fa-warning alert-danger'></i><span id='err-free-crs'>Specified email is already registered. Please provide another email.</span></div>");
+}else if(resp.tk_valid == "no") {
+jQuery('input[type="submit"]').attr('disabled', false);
+jQuery("#nw-error-free-crs").css("display","block");
+jQuery('#nw-error-free-crs').html("<div class='alert alert-danger fade in' role='alert'><i class='fa fa-warning alert-danger'></i><span id='err-free-crs'>Error Occurred. Please refresh the page and try again.</span></div>");
+}
+} else {
+if(resp.tk_valid == "yes") {
+jQuery('#email-form-free-crs').css("display","none");
+jQuery('input[type="submit"]').attr('disabled', false);
+jQuery("#nw-error-free-crs").css("display","block");
+jQuery('#nw-error-free-crs').html("<div class='alert alert-success fade in' role='alert'><i class='fa fa-check-circle alert-success'></i><span id='err-free-crs'>Registration for Free Trial successful. Please check your email for login details.</span></div>");
+window.location.href = "https://www.educba.com/my-courses/index.php";
+} else {
+jQuery('input[type="submit"]').attr('disabled', false);
+jQuery("#nw-error-free-crs").css("display","block");
+jQuery('#nw-error-free-crs').html("<div class='alert alert-danger fade in' role='alert'><i class='fa fa-warning alert-danger'></i><span id='err-free-crs'>Error Occurred. Please refresh teh page and try again..</span></div>");
+}
+}
+}
+});
+}
+});
+}
+return false;
+e.preventDefault();
+});	
+});
+</script>
+
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			X            </button>
+		
+	</div>
+
+</div>
+<style>
+@media (max-device-width: 768px) and (min-device-width: 320px)
+{.site-footer .back-to-top{display:none; position: fixed !important; background-color: rgba(38, 43, 58, 0.77) !important;border: thin solid #ffffff36;bottom: 5.5rem !important;}.site-footer .back-to-top:before, .site-footer .back-to-top:after{background-color: #fff;}}input#nw-mob-free-crs{margin-bottom:20px;}
+</style>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+jQuery(window).scroll(function() {
+var header = jQuery('.site-header').outerHeight();
+var scroll = jQuery( window ).scrollTop();
+
+	
+if ( scroll >= header ) {
+jQuery( '.custom-logo' ).attr("srcset","https://cdn.educba.com/images/website_logo_transparent_background.png");
+} else {
+jQuery( '.custom-logo' ).attr("srcset","https://cdn.educba.com/images/website_logo_transparent_background_white.png");
+}	
+
+	if (window.matchMedia('(max-width: 768px)').matches) {
+		
+    if (jQuery(window).scrollTop() > 100) {
+        jQuery(".site-footer .back-to-top").fadeIn('slow');
+    }
+    else {        
+		jQuery(".site-footer .back-to-top").fadeOut('slow');
+    }
+}
+});
+
+//jQuery(".custom-logo").attr("data-no-lazy","1");
+jQuery(".custom-logo-link").prop("href","https://www.educba.com/software-development/");
+
+jQuery.ajax({
+type : "POST", 
+url  : 'https://www.educba.com/ajax/chk_cnt.php', 
+dataType: "json", 
+cache: false, 
+async: true, 
+success : function(r) {
+	if(r.stat == "yes") {
+		jQuery("#nw-email-free-crs-ext").after("<input type='text' placeholder='Enter your contact number' name='nw-mob-free-crs-ext' id='nw-mob-free-crs-ext' value=''>");
+		jQuery("#nw-email-free-crs-ext-m").after("<input type='text' placeholder='Enter your contact number' name='nw-mob-free-crs-ext-m' id='nw-mob-free-crs-ext-m' value=''>");
+		jQuery("#nw-email-free-crs").after("<input type='text' placeholder='Enter your contact number' name='nw-mob-free-crs' id='nw-mob-free-crs' value=''>");
+		jQuery("#nww-email-free-crs").after("<input type='text' placeholder='Enter your contact number' name='nww-mob-free-crs' id='nww-mob-free-crs' value=''>");
+}
+}
+});
+
+var lglink = jQuery(".custom-logo-link").attr('href');
+jQuery.ajax({
+type : "POST", 
+url  : 'https://www.educba.com/ajax/get_aio_price.php',
+data : 'link=' + lglink,
+dataType: "json", 
+cache: false, 
+async: true, 
+success : function(msg) { console.log("pr - " + msg.aio_price);
+	jQuery('a[data-id="topbr_link"]').attr('href', msg.alink);
+	jQuery("#tp-bar-dyn-prc").html("@ " + msg.aio_price);
+	jQuery("#tp-bn-crs-nm").html(" " +  msg.atext);
+}
+});
+});
+jQuery(document).ready(function () {
+	if(jQuery("#breadcrumbs span:eq(3)").length) {
+		var ct_nm = jQuery("#breadcrumbs span:eq(3) a:eq(0)").text();
+	} else {
+		var ct_nm = "https://www.educba.com/xpath-class/";
+		ct_nm = encodeURIComponent(ct_nm);
+	}
+	 jQuery.ajax({
+			type : "POST",
+			url  : "https://www.educba.com/ajax/sv_cat.php",
+			data: 'ct=Blog - ' + ct_nm,
+			async: true,
+			success : function(response){ }
+	   });		
+});
+</script>
+  
+<script>function hide(target) {
+document.getElementById(target).style.display = 'none';
+}
+</script>
+<link href="xpath-queries_files/jquery.css" data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" rel="stylesheet">
+<script src="xpath-queries_files/jquery_002.js" defer="defer"></script>
+<script type="text/javascript">
+ts = (new Date()).getTime() + 83116000;
+var time_rem;
+	jQuery.ajax({
+	method: "GET",
+	url: "https://www.educba.com/wmj_jx/customised-timer.php",
+	dataType: "json",
+	cache: false,
+	success: function (result) {
+	if(result.status == 'Yes'){ console.log("IFF");
+		time_rem = (result.remaining_time * 1000);
+
+ts = (new Date()).getTime() + time_rem;
+//OFFERBAR TIMER
+newYear = false;
+jQuery('#countjop1').countdown({
+timestamp	: ts,
+callback	: function(days, hours, minutes, seconds){ console.log("IFFN");
+}
+});
+		
+// header yellow bar timer
+		
+jQuery('#top_bar_timer').countdown({
+timestamp	: ts,
+callback	: function(days, hours, minutes, seconds){
+}
+});
+		
+tmpts = ts;
+jQuery('#countjop2').countdown({
+timestamp	: tmpts,
+callback	: function(days, hours, minutes, seconds){
+}
+});
+
+jQuery('#countdown1za').countdown({
+timestamp	: ts,
+callback	: function(days, hours, minutes, seconds){
+}
+});
+
+jQuery('#countdown2').countdown({
+timestamp	: ts,
+callback	: function(days, hours, minutes, seconds){
+}
+});
+
+jQuery('#countjop_aio2').countdown({
+timestamp	: ts,
+callback	: function(days, hours, minutes, seconds){
+}
+});
+
+jQuery('#top-bar-lmt-off').countdown({
+timestamp	: ts,
+callback	: function(days, hours, minutes, seconds){
+}
+});
+	}else{
+			console.log("else");
+//OFFERBAR TIMER
+newYear = false;
+jQuery('#countjop1').countdown({
+timestamp	: ts,
+callback	: function(days, hours, minutes, seconds){
+}
+});
+
+jQuery('#countjop2').countdown({
+timestamp	: ts,
+callback	: function(days, hours, minutes, seconds){
+}
+});
+
+jQuery('#countdown1za').countdown({
+timestamp	: ts,
+callback	: function(days, hours, minutes, seconds){
+}
+});
+
+jQuery('#countjop_aio2').countdown({
+timestamp	: ts,
+callback	: function(days, hours, minutes, seconds){
+}
+});
+
+jQuery('#countdown2').countdown({
+timestamp	: ts,
+callback	: function(days, hours, minutes, seconds){
+}
+});
+
+jQuery('#top-bar-lmt-off').countdown({
+timestamp	: ts,
+callback	: function(days, hours, minutes, seconds){
+}
+});
+	}
+	}					   
+	});
+
+
+</script>
+
+
+
+<style>@media only screen and (max-width:768px){.topbar{display:none!important}}.topbar p{5px 0 0 !important}.topbar{/*background: linear-gradient(to right, rgb(255, 226, 89), rgb(255, 167, 81)) !important;*/background: #ffff00;}
+	 @media only screen and (min-width: 768px) {/*body:before{content:url(https://cdn.educba.com/academy/wp-content/uploads/2020/12/bell.png);position: absolute; width: 100px; transform: rotate(-45deg);left:-30px; z-index: 999;top: -10px;}
+body:after{content:url(https://cdn.educba.com/academy/wp-content/uploads/2020/12/bell.png);position: absolute; width: 100px; transform: rotate(45deg);right: -20px; z-index: 9; top: -20px;}*/}
+	#bfo{font-family: fantasy;
+  color: #111111;
+  -moz-animation: flicker 4s 0s infinite;
+  -webkit-animation: flicker 4s 0s infinite;
+  animation: flicker 4s 0s infinite;}
+	/*#bfo:before {
+    content: url(https://cdn.educba.com/academy/wp-content/uploads/2020/11/100xBig-Sale.png);	  
+		content:url(https://cdn.educba.com/academy/wp-content/uploads/2020/11/sale1.png);
+		content:url(https://cdn.educba.com/academy/wp-content/uploads/2020/11/Width45x-HeightAutoBlack.png);
+		content:url(https://cdn.educba.com/academy/wp-content/uploads/2020/11/sale.png);
+    position: relative;
+    z-index: 100000;
+    margin-top: 20px;position: absolute;
+    z-index: 100000;
+    margin-left: -90px;
+    margin-top: -15px;animation: animated_div 5s infinite;
+    -moz-animation: animated_div 5s infinite;
+    -webkit-animation: animated_div 5s infinite;
+}.promo-topbar p:after {
+    content: url(https://cdn.educba.com/academy/wp-content/uploads/2020/11/sale.png);
+    position: relative;
+    z-index: 100000;
+    margin-right: -220px;
+    float: right;
+    margin-top: -10px;
+    animation: animated_div 5s infinite;
+    -moz-animation: animated_div 5s infinite;
+    -webkit-animation: animated_div 5s infinite;animation-direction: reverse;
+}*/
+/*body:before {
+    content: url(https://cdn.educba.com/academy/wp-content/uploads/2020/12/Santa.png);
+    position: absolute;
+    z-index: 100000;
+   
+    margin-top: -5px;
+    animation: animated_div 5s infinite;
+    -moz-animation: animated_div 5s infinite;
+    -webkit-animation: animated_div 10s infinite;
+}*/
+
+
+	@keyframes animated_div{	
+0% {
+    transform: rotate(0deg);
+    right: 0px;
+}
+
+25% {
+    transform: rotate(10deg);
+    right: 0px;
+}
+50% {
+    transform: rotate(0deg);
+    right: 85%;
+}
+55% {
+    transform: rotate(0deg);
+    right: 85%;
+}
+70% {
+    transform: rotate(0deg);
+    right: 85%;
+}
+100% {
+    right: 100%;
+}
+} @-moz-keyframes flicker {
+  0%,
+	6%,
+	12% {
+    text-shadow: none;
+    color: #111111;
+  }
+  3%,
+	9% {
+    text-shadow: 0 0 8px rgba(250, 103, 1, 0.6);
+    color: red;
+  }
+  60% {
+    text-shadow: 0 0 8px rgba(250, 103, 1, 0.6), 0 0 16px rgba(250, 103, 1, 0.4), 0 0 20px rgba(255, 0, 84, 0.2), 0 0 22px rgba(255, 0, 84, 0.1);
+    color: red;
+  }
+  100% {
+    text-shadow: 0 0 8px rgba(250, 103, 1, 0.6), 0 0 16px rgba(250, 103, 1, 0.4), 0 0 20px rgba(255, 0, 84, 0.2), 0 0 22px rgba(255, 0, 84, 0.1);
+    color: red;
+  }
+}
+@-webkit-keyframes flicker {
+  0%,
+	6%,
+	12% {
+    text-shadow: none;
+    color: #111111;
+  }
+  3%,
+	9% {
+    text-shadow: 0 0 8px rgba(250, 103, 1, 0.6);
+    color: red;
+  }
+  60% {
+    text-shadow: 0 0 8px rgba(250, 103, 1, 0.6), 0 0 16px rgba(250, 103, 1, 0.4), 0 0 20px rgba(255, 0, 84, 0.2), 0 0 22px rgba(255, 0, 84, 0.1);
+    color: red;
+  }
+  100% {
+    text-shadow: 0 0 8px rgba(250, 103, 1, 0.6), 0 0 16px rgba(250, 103, 1, 0.4), 0 0 20px rgba(255, 0, 84, 0.2), 0 0 22px rgba(255, 0, 84, 0.1);
+    color: red;
+  }
+}
+@keyframes flicker {
+  0%,
+	6%,
+	12% {
+    text-shadow: none;
+    color: #111111;
+  }
+  3%,
+	9% {
+    text-shadow: 0 0 8px rgba(250, 103, 1, 0.6);
+    color: red;
+  }
+  60% {
+    text-shadow: 0 0 8px rgba(250, 103, 1, 0.6), 0 0 16px rgba(250, 103, 1, 0.4), 0 0 20px rgba(255, 0, 84, 0.2), 0 0 22px rgba(255, 0, 84, 0.1);
+    color: red;
+  }
+  100% {
+    text-shadow: 0 0 8px rgba(250, 103, 1, 0.6), 0 0 16px rgba(250, 103, 1, 0.4), 0 0 20px rgba(255, 0, 84, 0.2), 0 0 22px rgba(255, 0, 84, 0.1);
+    color: red;
+  }
+	}
+span#top_bar_timer {
+    margin-top: 0;
+}	
+</style>
+<style type="text/css">
+.bfo{ color: #000;font-size: 1.1em; letter-spacing: 1px;line-height: 20px;}
+@media only screen and (max-width: 799px){
+.topbar{
+		height: 70px!important;
+	}
+.mobile_hidden{
+	display:none;
+	}	
+
+}
+@media (min-device-width : 320px) and (max-device-width : 480px) {
+	.bar-close {right: 2px !important;}
+	.promo-topbar .cnt_timer {
+		display: none !important;
+	}
+}	
+.bar-close {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    height: 45px;
+    text-align: center;
+    color: #fff;
+    background: yellow;
+	/*background-image: linear-gradient(315deg, #60b922 0%, #317600 74%);*/
+    overflow: hidden;
+    background-repeat: repeat;
+    background-size: contain;
+    background-position: top;
+    width: 100%;
+    -webkit-box-shadow: 0 1px 6px rgba(57,73,76,0.35);
+    box-shadow: 0 1px 3px rgba(57,73,76,0.35);
+}
+.promo-topbar {
+    margin: 0 auto;
+    display: inline-block;
+}
+.topbar p {
+    margin: 5px 0 0;
+    display: inline-block;
+    float: left;
+    font-size: 16px;
+    color: #000;
+	font-weight: 600;
+	letter-spacing: 0.2px;
+	font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+}
+.topbar .wrap {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.bar-close i {
+    font-size: 16px;
+	color: #fff;
+}
+@media only screen and (min-width: 799px){
+.promo-topbar .gradient {
+    display: inline !important;
+}
+.promo-topbar .cnt_timer {
+	display: contents;
+}
+.spcl-off{
+	display:block !important;
+}
+}
+.promo-topbar .gradient {
+    display: none;
+    line-height: 1;
+    height: auto;
+    color: #fff;
+    padding: 5px 15px;
+    margin: 0px 0.51em;
+    border-radius: 5px;
+    font-size: 0.9em;
+    animation-duration: 4.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: ease-in-out;
+    background: #f6f7f8;
+    background-image: linear-gradient(to right, #e93f33 44%, #ba3546 48%,#e94233 51%);
+    /* background-image: linear-gradient(to right, #03d486 44%, #d6fbca 48%,#03d486 51%); */
+    background-size: 1000px 640px;
+    position: relative;
+    /*box-shadow: inset 2px 1px 5px 0px rgb(55, 131, 185);*/
+}
+@keyframes placeHolderShimmer{
+    0%{
+        background-position: -468px 0
+    }
+    100%{
+        background-position: 468px 0
+    }
+}
+.promo-topbar .countDays, .promo-topbar .countHours, .promo-topbar .countMinutes, .promo-topbar .countSeconds {
+	background: #fff !important;
+}
+.promo-topbar .digit {font-size:14px;margin-top:-7px}
+.promo-topbar .countMinutes + span:after {left:4px;}
+.promo-topbar .digit,.promo-topbar .countDays + span:after,.promo-topbar .countHours + span:after, .promo-topbar .countMinutes + span:after, .promo-topbar .countSeconds:after {
+	color: #000 !important;
+}
+.promo-topbar .countDays + span:after,.promo-topbar .countHours + span:after, .promo-topbar .countMinutes + span:after, .promo-topbar .countSeconds:after {
+	color: #000 !important;
+	font-size: 10px;
+	margin-top: 0;
+    left: 3px;
+	text-align: end;
+}
+.promo-topbar .crossline{
+	display:none;
+}
+#top-bar-lmt-off{ padding: 0 0.5em;}
+.spcl-off{
+	position: fixed;
+	margin-left: -8em;
+	top: 0;
+	display:none;
+}
+</style>
+
+<div class="topbar" id="topbar" style="display: block;" aria-hidden="false">
+<a style="text-decoration:none;border-bottom:none;" href="https://www.educba.com/software-development/courses/software-development-course/?btnz=limited-period-offer" data-id="topbr_link">
+<div class="wrap">
+<div class="promo-topbar">
+	<p> <span class="bfo" id="bfo">Special Offer</span> - <span id="tp-bn-crs-nm"> All in One Software Development Bundle (600+ Courses, 50+ projects)</span> <span id="tp-bar-dyn-prc" style="background:#fff;color:#000;padding:7px;border-radius:15px;">@ USD119</span><span class="gradient">Learn More</span> <span id="top_bar_timer" class="countdownHolder" style="margin-left:5px;"><span class="countDays"><span class="crossline"></span>				<span class="position">					<span class="digit static" style="top: 0px; opacity: 1;">0</span>				</span>				<span class="crossline"></span>				<span class="position">					<span class="digit static" style="top: 0px; opacity: 1;">0</span>				</span></span><span class="countDiv countDiv0"> </span><span class="countHours"><span class="crossline"></span>				<span class="position">					<span class="digit static" style="top: 0px; opacity: 1;">1</span>				</span>				<span class="crossline"></span>				<span class="position">					<span class="digit static" style="top: 0px; opacity: 1;">6</span>				</span></span><span class="countDiv countDiv1"> </span><span class="countMinutes"><span class="crossline"></span>				<span class="position">					<span class="digit static" style="top: 0px; opacity: 1;">4</span>				</span>				<span class="crossline"></span>				<span class="position">					<span class="digit static" style="top: 0px; opacity: 1;">9</span>				</span></span><span class="countDiv countDiv2"> </span><span class="countSeconds"><span class="crossline"></span>				<span class="position">					<span class="digit static" style="top: 0px; opacity: 1;">0</span>				</span>				<span class="crossline"></span>				<span class="position">					<span class="digit static" style="top: 0px; opacity: 1;">4</span>				</span></span></span></p>
+</div>
+</div>
+</a>
+<span class="bar-close" id="bar-close" onclick="myOffer()">
+<i class="fa fa-times" aria-hidden="true"></i>
+</span>
+</div><script src="xpath-queries_files/ckk.js" defer="defer"></script>
+<script type="text/javascript">
+var ismobile=/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()),cookieValue="";function myOffer(){document.getElementById("topbar").style.display="none",jQuery(".site-header").css("top","unset")}jQuery(document).ready(function(e){void 0===(cookieValue=Cookies.get("bannershown"))&&(ismobile||jQuery(".site-header").css("top","2.25em"),jQuery("#topbar").css("display","block")),jQuery(document).on("click","#bar-close",function(){jQuery("#topbar").css("display","none"),Cookies.set("bannershown","yes",{expires:1})}),e(window).scroll(function(){e(window).scrollTop()>=100?(e("#topbar").css("display","none"),e("header.site-header.fixed.shrink").css("top","unset")):void 0===(cookieValue=Cookies.get("bannershown"))&&(e("#topbar").css("display","block"),ismobile||e(".site-header").css("top","2.25em"))})});
+</script>
+<script type="text/javascript" src="xpath-queries_files/uri.js" defer="defer"></script>
+<script type="text/javascript">
+	jQuery(window).load(function() {
+    url = URI(window.location.href).removeSearch("_ga");
+    history.replaceState("state", "", url);
+    });
+</script>	<script type="text/javascript">
+/* <![CDATA[ */
+var socialWarfare = {"addons":[],"post_id":"496868","variables":{"emphasizeIcons":false,"powered_by_toggle":false,"affiliate_link":"https:\/\/warfareplugins.com"},"floatBeforeContent":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="xpath-queries_files/script.js" defer="defer"></script>
+<script type="text/javascript">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script type="text/javascript">
+(function() {
+"use strict";var e=function(){function n(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(e,t,r){return t&&n(e.prototype,t),r&&n(e,r),e}}();function n(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function r(e,t){n(this,r),this.attrName="data-rocketlazyloadscript",this.browser=t,this.options=this.browser.options,this.triggerEvents=e,this.userEventListener=this.triggerListener.bind(this)}return e(r,[{key:"init",value:function(){this._addEventListener(this)}},{key:"reset",value:function(){this._removeEventListener(this)}},{key:"_addEventListener",value:function(t){this.triggerEvents.forEach(function(e){return window.addEventListener(e,t.userEventListener,t.options)})}},{key:"_removeEventListener",value:function(t){this.triggerEvents.forEach(function(e){return window.removeEventListener(e,t.userEventListener,t.options)})}},{key:"_loadScriptSrc",value:function(){var r=this,e=document.querySelectorAll("script["+this.attrName+"]");0!==e.length&&Array.prototype.slice.call(e).forEach(function(e){var t=e.getAttribute(r.attrName);e.setAttribute("src",t),e.removeAttribute(r.attrName)}),this.reset()}},{key:"triggerListener",value:function(){this._loadScriptSrc(),this._removeEventListener(this)}}],[{key:"run",value:function(){RocketBrowserCompatibilityChecker&&new r(["keydown","mouseover","touchmove","touchstart","wheel"],new RocketBrowserCompatibilityChecker({passive:!0})).init()}}]),r}();t.run();
+}());
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"\/sitemap_index.xml|\/post-sitemap.xml|\/page-sitemap.xml|\/signup|\/software-development\/courses\/free-sql-course\/|\/software-development\/courses\/free-javascript-course\/|\/design\/courses\/free-graphic-design-online-course\/|\/design\/courses\/free-online-photoshop-course\/|\/software-development\/courses\/free-python-course\/|\/excel\/courses\/free-vba-course\/|\/finance\/courses\/online-free-accounting-course\/|\/finance\/courses\/free-finance-online-course\/|\/software-development\/courses\/free-programming-course\/|\/software-development\/courses\/free-android-app-development-course\/|\/marketing\/courses\/free-digital-marketing-course\/|\/marketing\/courses\/free-online-seo-course\/|\/finance\/courses\/free-quickbooks-tutorials\/|\/software-development\/courses\/free-java-online-course\/|\/data-science\/courses\/free-online-statistics-course\/|\/software-development\/courses\/free-web-design-course\/|\/software-development\/courses\/free-html-course\/|\/data-science\/courses\/free-machine-learning-course\/|\/excel\/courses\/free-online-excel-course\/|\/data-science\/courses\/free-data-science-course\/|\/data-science\/courses\/free-online-data-analytics-course\/|\/(.+\/)?feed\/?.+\/?|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$)|\/ebduxbebfvez\/|\/wp-admin\/|\/logout\/|https:\/\/www.educba.com\/ebduxbebfvez\/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|php|pdf|html|htm","siteUrl":"https:\/\/www.educba.com","onHoverDelay":"100","rateThrottle":"3"};
+/* ]]> */
+</script>
+<script type="text/javascript">
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type="text/javascript" src="xpath-queries_files/hoverIntent.js" defer="defer"></script>
+<script type="text/javascript" src="xpath-queries_files/superfish_002.js" defer="defer"></script>
+<script type="text/javascript" src="xpath-queries_files/superfish.js" defer="defer"></script>
+<script data-minify="1" type="text/javascript" src="xpath-queries_files/prism.js" defer="defer"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var q2w3_sidebar_options = [{"sidebar":"ca-sidebar-38884","margin_top":10,"margin_bottom":0,"stop_id":"","screen_max_width":0,"screen_max_height":0,"width_inherit":false,"refresh_interval":1500,"window_load_hook":false,"disable_mo_api":false,"widgets":["text-388"]},{"sidebar":"ca-sidebar-23342","margin_top":10,"margin_bottom":0,"stop_id":"","screen_max_width":0,"screen_max_height":0,"width_inherit":false,"refresh_interval":1500,"window_load_hook":false,"disable_mo_api":false,"widgets":["text-69"]},{"sidebar":"ca-sidebar-37870","margin_top":10,"margin_bottom":0,"stop_id":"","screen_max_width":0,"screen_max_height":0,"width_inherit":false,"refresh_interval":1500,"window_load_hook":false,"disable_mo_api":false,"widgets":["text-429"]},{"sidebar":"ca-sidebar-37904","margin_top":10,"margin_bottom":0,"stop_id":"","screen_max_width":0,"screen_max_height":0,"width_inherit":false,"refresh_interval":1500,"window_load_hook":false,"disable_mo_api":false,"widgets":["text-428"]},{"sidebar":"ca-sidebar-37908","margin_top":10,"margin_bottom":0,"stop_id":"","screen_max_width":0,"screen_max_height":0,"width_inherit":false,"refresh_interval":1500,"window_load_hook":false,"disable_mo_api":false,"widgets":["text-427"]},{"sidebar":"ca-sidebar-37913","margin_top":10,"margin_bottom":0,"stop_id":"","screen_max_width":0,"screen_max_height":0,"width_inherit":false,"refresh_interval":1500,"window_load_hook":false,"disable_mo_api":false,"widgets":["text-426"]},{"sidebar":"ca-sidebar-37952","margin_top":10,"margin_bottom":0,"stop_id":"","screen_max_width":0,"screen_max_height":0,"width_inherit":false,"refresh_interval":1500,"window_load_hook":false,"disable_mo_api":false,"widgets":["text-425"]},{"sidebar":"ca-sidebar-37974","margin_top":10,"margin_bottom":0,"stop_id":"","screen_max_width":0,"screen_max_height":0,"width_inherit":false,"refresh_interval":1500,"window_load_hook":false,"disable_mo_api":false,"widgets":["text-432"]},{"sidebar":"ca-sidebar-160833","margin_top":10,"margin_bottom":0,"stop_id":"","screen_max_width":0,"screen_max_height":0,"width_inherit":false,"refresh_interval":1500,"window_load_hook":false,"disable_mo_api":false,"widgets":["text-492"]},{"sidebar":"ca-sidebar-162073","margin_top":10,"margin_bottom":0,"stop_id":"","screen_max_width":0,"screen_max_height":0,"width_inherit":false,"refresh_interval":1500,"window_load_hook":false,"disable_mo_api":false,"widgets":["text-493"]},{"sidebar":"ca-sidebar-191636","margin_top":10,"margin_bottom":0,"stop_id":"","screen_max_width":0,"screen_max_height":0,"width_inherit":false,"refresh_interval":1500,"window_load_hook":false,"disable_mo_api":false,"widgets":["text-494"]},{"sidebar":"ca-sidebar-78184","margin_top":10,"margin_bottom":0,"stop_id":"","screen_max_width":0,"screen_max_height":0,"width_inherit":false,"refresh_interval":1500,"window_load_hook":false,"disable_mo_api":false,"widgets":["text-382"]},{"sidebar":"ca-sidebar-37980","margin_top":10,"margin_bottom":0,"stop_id":"","screen_max_width":0,"screen_max_height":0,"width_inherit":false,"refresh_interval":1500,"window_load_hook":false,"disable_mo_api":false,"widgets":["text-423"]},{"sidebar":"ca-sidebar-37976","margin_top":10,"margin_bottom":0,"stop_id":"","screen_max_width":0,"screen_max_height":0,"width_inherit":false,"refresh_interval":1500,"window_load_hook":false,"disable_mo_api":false,"widgets":["text-424"]}];
+/* ]]> */
+</script>
+<script type="text/javascript" src="xpath-queries_files/q2w3-fixed-widget.js" defer="defer"></script>
+<script type="text/javascript" src="xpath-queries_files/core.js" defer="defer"></script>
+<script type="text/javascript" src="xpath-queries_files/position.js" defer="defer"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var pum_vars = {"version":"1.11.0","pm_dir_url":"https:\/\/www.educba.com\/academy\/wp-content\/plugins\/popup-maker\/","ajaxurl":"https:\/\/www.educba.com\/academy\/wp-admin\/admin-ajax.php","restapi":"https:\/\/www.educba.com\/wp-json\/pum\/v1","rest_nonce":null,"default_theme":"97827","debug_mode":"","disable_tracking":"","home_url":"\/","message_position":"top","core_sub_forms_enabled":"1","popups":[],"page":"496868"};
+var ajaxurl = "https:\/\/www.educba.com\/academy\/wp-admin\/admin-ajax.php";
+var pum_sub_vars = {"ajaxurl":"https:\/\/www.educba.com\/academy\/wp-admin\/admin-ajax.php","message_position":"top"};
+var pum_popups = {"pum-97847":{"disable_on_mobile":true,"disable_on_tablet":true,"custom_height_auto":false,"scrollable_content":false,"position_from_trigger":false,"position_fixed":true,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"close_on_form_submission":false,"close_on_overlay_click":true,"close_on_esc_press":true,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"triggers":[{"type":"exit_intent","settings":{"cookie_name":["pum-97847"],"top_sensitivity":"10","delay_sensitivity":"350"}}],"cookies":[{"event":"on_popup_close","settings":{"name":"pum-97847","key":"","session":false,"time":"12 hours","path":true}}],"theme_id":"106959","size":"small","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height":"380px","animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","zindex":"1999999999","close_button_delay":"0","close_on_form_submission_delay":"0","theme_slug":"full-screen-custom","id":97847,"slug":"exit-intent-auto-popup-desktop"},"pum-135330":{"disable_on_mobile":false,"disable_on_tablet":false,"custom_height_auto":false,"scrollable_content":false,"position_from_trigger":false,"position_fixed":true,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"close_on_form_submission":false,"close_on_overlay_click":true,"close_on_esc_press":true,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"triggers":[{"type":"click_open","settings":{"cookie_name":"","extra_selectors":"a[href=\"#watch-free-1\"]"}}],"theme_id":"97827","size":"small","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height":"380px","animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","zindex":"1999999999","close_button_delay":"0","close_on_form_submission_delay":"0","cookies":[],"theme_slug":"default-theme","id":135330,"slug":"free-courses-dynamic-popup"},"pum-150987":{"disable_on_mobile":false,"disable_on_tablet":false,"custom_height_auto":false,"scrollable_content":false,"position_from_trigger":false,"position_fixed":true,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"close_on_form_submission":false,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_id":"97827","size":"small","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height":"380px","animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","zindex":"1999999999","close_button_delay":"0","close_on_form_submission_delay":"0","triggers":[],"cookies":[],"theme_slug":"default-theme","id":150987,"slug":"shopping-cart-popup"},"pum-476363":{"disable_on_mobile":false,"disable_on_tablet":false,"custom_height_auto":false,"scrollable_content":false,"position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"close_on_form_submission":false,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"triggers":[{"type":"click_open","settings":{"cookie_name":"","extra_selectors":".quiz-btn"}}],"theme_id":"97827","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height":"380px","animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","zindex":"1999999999","close_button_delay":"0","close_on_form_submission_delay":"0","cookies":[],"theme_slug":"default-theme","id":476363,"slug":"temp-popup-for-testing"},"pum-138145":{"disable_on_mobile":false,"disable_on_tablet":false,"custom_height_auto":false,"scrollable_content":false,"position_from_trigger":false,"position_fixed":true,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"close_on_form_submission":false,"close_on_overlay_click":true,"close_on_esc_press":true,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_id":"97827","size":"small","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height":"380px","animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","zindex":"1999999999","close_button_delay":"0","close_on_form_submission_delay":"0","triggers":[],"cookies":[],"theme_slug":"default-theme","id":138145,"slug":"login-popup"},"pum-415387":{"disable_on_mobile":false,"disable_on_tablet":false,"custom_height_auto":false,"scrollable_content":false,"position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"close_on_form_submission":false,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_id":"97827","size":"small","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height":"380px","animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","zindex":"1999999999","close_button_delay":"0","close_on_form_submission_delay":"0","triggers":[],"cookies":[],"theme_slug":"default-theme","id":415387,"slug":"download-curr-popup"},"pum-378149":{"disable_on_mobile":false,"disable_on_tablet":false,"custom_height_auto":false,"scrollable_content":false,"position_from_trigger":false,"position_fixed":true,"overlay_disabled":true,"stackable":true,"disable_reposition":false,"close_on_form_submission":false,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"triggers":[{"type":"auto_open","settings":{"cookie_name":["pum-378149"],"delay":"500"}}],"cookies":[{"event":"on_popup_close","settings":{"name":"pum-378149","key":"","session":false,"time":"3 days","path":true}}],"theme_id":"97829","size":"tiny","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height":"380px","animation_type":"fadeAndSlide","animation_speed":"350","animation_origin":"left bottom","open_sound":"none","custom_sound":"","location":"left bottom","position_top":"100","position_bottom":"10","position_left":"10","position_right":"0","zindex":"1999999999","close_button_delay":"0","close_on_form_submission_delay":"0","theme_slug":"enterprise-blue","id":378149,"slug":"cookie-consent"},"pum-167767":{"disable_on_mobile":false,"disable_on_tablet":false,"custom_height_auto":false,"scrollable_content":false,"position_from_trigger":false,"position_fixed":true,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"close_on_form_submission":false,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"triggers":[{"type":"click_open","settings":{"cookie_name":"","extra_selectors":"#pum-167767"}}],"theme_id":"97827","size":"small","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height":"380px","animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","zindex":"1999999999","close_button_delay":"0","close_on_form_submission_delay":"0","cookies":[],"theme_slug":"default-theme","id":167767,"slug":"free-template-download-form"},"pum-161564":{"disable_on_mobile":false,"disable_on_tablet":false,"custom_height_auto":false,"scrollable_content":false,"position_from_trigger":false,"position_fixed":true,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"close_on_form_submission":false,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_id":"97827","size":"small","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height":"380px","animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","zindex":"1999999999","close_button_delay":"0","close_on_form_submission_delay":"0","triggers":[],"cookies":[],"theme_slug":"default-theme","id":161564,"slug":"new-free-course-popup"}};
+/* ]]> */
+</script>
+<script data-minify="1" type="text/javascript" src="xpath-queries_files/pum-site-scripts.js" defer="defer"></script>
+<script type="text/javascript" src="xpath-queries_files/mobile-detect.js" defer="defer"></script>
+<script type="text/javascript" src="xpath-queries_files/business-pro.js" defer="defer"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var genesis_responsive_menu = {"mainMenu":"Menu","subMenu":"Menu","menuIconClass":null,"subMenuIconClass":null,"menuClasses":{"combine":[".nav-primary"]}};
+/* ]]> */
+</script>
+<script type="text/javascript" src="xpath-queries_files/menus.js" defer="defer"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var megamenu = {"timeout":"300","interval":"100"};
+/* ]]> */
+</script>
+<script data-minify="1" type="text/javascript" src="xpath-queries_files/maxmegamenu.js" defer="defer"></script>
+<script data-minify="1" type="text/javascript" src="xpath-queries_files/public.js" defer="defer"></script>
+<script type="text/javascript"> var swp_nonce = "95e826ef10";var swpFloatBeforeContent = true; var swp_ajax_url = "https://www.educba.com/academy/wp-admin/admin-ajax.php"; var swp_post_id = "496868";var swpClickTracking = false;</script><script>window.lazyLoadOptions={elements_selector:"img[data-lazy-src],.rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}};window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async="" src="xpath-queries_files/lazyload.js"></script><script>"use strict";var wprRemoveCPCSS=function wprRemoveCPCSS(){var elem;document.querySelector('link[data-rocket-async="style"][rel="preload"]')?setTimeout(wprRemoveCPCSS,200):(elem=document.getElementById("rocket-critical-css"))&&"remove"in elem&&elem.remove()};window.addEventListener?window.addEventListener("load",wprRemoveCPCSS):window.attachEvent&&window.attachEvent("onload",wprRemoveCPCSS);</script><noscript><link data-minify="1" rel='stylesheet' id='line-awesome-css'  href='https://cdn.educba.com/academy/wp-content/cache/min/1/academy/wp-content/plugins/icon-widget/assets/css/line-awesome.min.css?ver=1654171426' type='text/css' media='all' /><link data-minify="1" rel='stylesheet' id='megamenu-css'  href='https://cdn.educba.com/academy/wp-content/cache/min/1/academy/wp-content/uploads/maxmegamenu/style.css?ver=1654171427' type='text/css' media='all' /><link rel='stylesheet' id='social_warfare-css'  href='https://cdn.educba.com/academy/wp-content/plugins/social-warfare/assets/css/style.min.css?ver=4.2.1' type='text/css' media='all' /><link data-minify="1" rel='stylesheet' id='educba-syntax-css'  href='https://cdn.educba.com/academy/wp-content/cache/min/1/academy/wp-content/themes/business-pro-theme/assets/styles/prism.css?ver=1654171427' type='text/css' media='all' /><link data-minify="1" rel='stylesheet' id='popup-maker-site-css'  href='https://cdn.educba.com/academy/wp-content/cache/min/1/academy/wp-content/uploads/pum/pum-site-styles.css?ver=1654171427' type='text/css' media='all' /><link data-minify="1" rel='stylesheet' id='google-fonts-css'  href='https://cdn.educba.com/academy/wp-content/cache/min/1/academy/wp-content/themes/business-pro-theme/assets/fonts/swp_font.min.css?ver=1654171427' type='text/css' media='all' /><link data-minify="1" rel='stylesheet' id='business-pro-theme-css'  href='https://cdn.educba.com/academy/wp-content/cache/min/1/academy/wp-content/themes/business-pro-theme/style.css?ver=1654171427' type='text/css' media='all' /><link href="https://cdn.educba.com/ajax/js/jquery.countdown2.css" rel="stylesheet" /></noscript>
+
+</body></html>
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1655364284 -->
