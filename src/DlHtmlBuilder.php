@@ -57,7 +57,9 @@ EOS;
    */ 
    private function get_noun_info($word)
    {
-      static $query = "//span[@class='gramGrp pos']/text()";
+      static $q1 = "//span[@class='gramGrp pos']/text()";
+
+      static $q2 = "//span[@class='gramGrp']/span[class='pos']/text()";
 
       $info = array();
 
@@ -76,7 +78,7 @@ EOS;
       $xpath = new \DOMXpath($dom);
 
       // try the most common query first....
-      $nodeList = $xpath->query($query);
+      $nodeList = $xpath->query($q1);
 
       if ($nodeList->count == 1) { // ...if it fails, we try the other query
 
@@ -85,6 +87,12 @@ EOS;
           //...
       } else {
 
+         $nodeList = $xpath->query($q1);
+
+         foreach($nodeList $as $node) {
+
+                
+         } 
       }
 
       // todo: plural queries
