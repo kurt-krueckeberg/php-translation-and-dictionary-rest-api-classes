@@ -60,6 +60,8 @@ EOS;
    {
       $info = array();
 
+      // Add the collins results to an in-memory html document, so we can run xpath queries to get:
+      // gender and plurals
       $frag = $this->dom->createDocmentFragment();
 
       $html = $this->collins->get_best_matching($word);
@@ -70,14 +72,14 @@ EOS;
 
       $this->noun_query($this->dom);
 
-      //todo: delete the just appended child
-       $this->dom->removeChild($child);
+      // delete the just appended child
+      $this->dom->removeChild($child);
 
    }
  
    public function noun_query(\DOMDocument $dom)
    {
-
+      //todo: Include a query for the actual text in the node.
       // See this for how to construct the xpath query: https://www.educba.com/xpath-class/
       static $query = //<span class="gramGrp pos">masculine noun</span>
 
@@ -85,10 +87,12 @@ EOS;
 
       $xpath = new \DOMXpath($dom);
 
+      // try the most common query first....
       $genderNode = $xpath->query($query);
 
-      if (not found) {
+      if (not found) { // ...if it fails, we try the other query
 
+            
           $genderNode = $xpath->query($nested_query);
 
       }
