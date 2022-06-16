@@ -1,6 +1,6 @@
 body {
 
- margin-left: 3em;
+/* margin-left: 3em; */
 
  color: #E6E6E6;  /* colors from Azure documentation */
  background-color: #171717;
@@ -9,7 +9,6 @@ body {
 section {
 
   font-family: 'Lato Medium', Arial, sans-serif;
-  /*background: #ffffff; */
   display: grid; 
   width: 70%;
   margin: auto auto;
@@ -45,6 +44,7 @@ section p { /* paragraph style--font, text color, background color, spacig with 
 .pos {
   font-weight: bold;
   font-size: 80%;
+  color: #ffd700;
 }
 
 
