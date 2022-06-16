@@ -130,28 +130,28 @@ EOS;
 
                 $gender = $this->get_noun_info($word);       
 
-                $str .= "<dt><p>{$defns->term}</p><p class='pos'>" . strtoupper($gender) . "</p></dt>";    
+                $str .= "<dt><p>{$defns->term}</p>\n<p class='pos'>" . strtoupper($gender) . "</p></dt>\n";    
 
              } else {
-                   $str .= "<dt><p>{$defns->term}</p><p class='pos'>" . strtoupper($defns->pos) . "</p></dt>";    
+                   $str .= "<dt><p>{$defns->term}</p><p class='pos'>" . strtoupper($defns->pos) . "</p></dt>\n";    
 
              }
           
              $dd = $this->build_defns($defns->definitions);
              
-             $str .= $dd . "</dl>";
+             $str .= $dd . "</dl>\n";
           }
  
       } else {
  
-          $str .= '<dl class="defn" class="hwd">';
+          $str .= "<dl class='defn' class='hwd'>\n";
           
-          $str .= "<dt>$word</dt><dd>No defintions found.</dd>";    
+          $str .= "<dt>$word</dt>\n<dd>No defintions found.</dd></dl>\n";    
       } 
       
-      $str .= "</section>";
+      $str .= "\n</section>\n";
       
-      $str = $this->tidy($str); 
+      //$str = $this->tidy($str); 
  
       $this->html->fwrite($str);
  
@@ -165,7 +165,7 @@ EOS;
 
         foreach ($definitions as $defn) {
 
-             $dd .= "<dd>" . $defn["definition"] . "</dd>";
+             $dd .= "<dd>" . $defn["definition"] . "</dd>\n";
 
              if (count($defn['expressions']) > 0) {
                 
@@ -180,13 +180,13 @@ EOS;
                */
 
                // We use a nested <dl> for the expressions.
-               $dd .= "<dd><dl class='expressions'>"; 
+               $dd .= "<dd>\n<dl class='expressions'>\n"; 
 
                 foreach ($defn['expressions'] as $expression) 
 
-                        $dd .= "<dt>{$expression->source}</dt><dd>{$expression->target}</dd>";
+                        $dd .= "<dt>{$expression->source}</dt>\n<dd>{$expression->target}</dd>\n";
 
-                $dd .= '</dl></dd>';
+                $dd .= "</dl>\n</dd>\n";
 
              }  
         } 
