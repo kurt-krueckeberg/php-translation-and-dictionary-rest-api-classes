@@ -82,7 +82,7 @@ EOS;
 
       if ($nodeList->count == 1) { // ...if it fails, we try the other query
 
-          $node = $nodeList->item(0);
+          $node = $nodeList->item(0); // \DOMText
 
           //...
       } else {
