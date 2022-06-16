@@ -7,22 +7,16 @@ function test()
  static $query = "//span[@class='gramGrp pos']";
  static $qtext = "//span[@class='gramGrp pos']/text()";
 
-static $noun_html =<<<EOS
+static $noun_start =<<<EOS
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de">
     <head>
     </head>
     <body>
- </body>
-</html>
 EOS;
 
  $dom = new \DOMDocument("1.0", 'utf-8');
-
- $dom->loadHTML($noun_html);
-
- $xpath = new \DOMXpath($dom);
 
 $div = <<<DIV
 <div class="entry_container">
@@ -40,12 +34,15 @@ $div = <<<DIV
 </div>
 DIV;
 
-     $frag = $dom->createDocmentFragment();
-
-     $frag->appendXML($html);
-
-     $child = $dom->getElementsByTagName('body')->item(0)->appendChild($frag); 
-
+ $html = $noun_start;
+ $html .= $div;
+ $html .= "</body></html>";
+ 
+ $dom->loadHTML($html);
+     
+     $body = $dom->getElementsByTagName('body')->item(0);
+ 
+ $xpath = new \DOMXpath($dom);
 
   // try the most common query first....
   $nodeList = $xpath->query($qtext);

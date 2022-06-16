@@ -25,7 +25,7 @@ static private string $html_end = <<<html_end
 </html>
 html_end;
 
-  static $noun_html = <<<EOS
+  static $noun_start = <<<EOS
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de">
@@ -57,49 +57,38 @@ EOS;
    */ 
    private function get_noun_info($word)
    {
+      static $query = "//span[@class='gramGrp pos']/text()";
+
       $info = array();
 
-      // Add the collins html results for the noun to an in-memory DOMDument, so xpath queries cabe done:
-      // gender and plurals
-      $frag = $this->dom->createDocmentFragment();
+      $div = $this->collins->get_best_matching($word);
 
-      $html = $this->collins->get_best_matching($word);
+      $html = $noun_start;
+      $html .= $div;
+      $html .= '</body.</html>';
 
-      $frag->appendXML($html);
-
-      $child = $this->dom->getElementsByTagName('body')->item(0)->appendChild($frag); 
-
-      $this->noun_query($this->dom);
-
-      // delete the just appended child
-      $this->dom->removeChild($child);
-
-   }
+      $dom = new \DOMDocument("1.0", "utf-8");
  
-   public function noun_query(\DOMDocument $dom)
-   {
-      //todo: Include a query for the actual text in the node.
-      // See this for how to construct the xpath query: https://www.educba.com/xpath-class/
-      static $query = "//span[@class='gramGrp pos']";
+      $dom->loadHTML($html);
 
-      static $nested_query ='';     
+      $body = $dom->getElementsByTagName('body')->item(0);
 
       $xpath = new \DOMXpath($dom);
 
       // try the most common query first....
-      $genderNode = $xpath->query($query);
+      $nodeList = $xpath->query($query);
 
-      if (not found) { // ...if it fails, we try the other query
+      if ($nodeList->count == 1) { // ...if it fails, we try the other query
 
-            
-          $genderNode = $xpath->query($nested_query);
+          $node = $nodeList->item(0);
+
+          //...
+      } else {
 
       }
+
       // todo: plural queries
-
-
    }
-
  
    public function add_definitions($word, string $src, string $dest) : int
    {
@@ -216,11 +205,6 @@ EOS;
     
     public function __construct(string $fname, private readonly string $src, private readonly string $dest, private readonly $collins CollinsGermanDictionary, private readonly DictionaryInterface $dict, private readonly TranslateInterface $trans, private readonly SentenceFetchInterface $fetcher)
     { 
-       
-       $dom = new \DOMDocument("1.0", 'utf-8');
-       $dom->loadHTML(self::$noun_html);
-       $this->dom = $dom;
-
        $this->b_saved = false;
 
        $this->html = new File($fname, "w"); 
