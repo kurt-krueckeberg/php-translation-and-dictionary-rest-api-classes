@@ -48,17 +48,13 @@ EOS;
     /*
      * For words Unverständnis, Krähe, Veräter neither query below returns a results.
      */
+/*
     function get_gender(\DOMDocument $dom) : string
     {  
-        /*
-      static $posq1 = "//span[@class='gramGrp pos']";
-
-      static $posq2 = "//span[@class='gramGrp']/span[@class='pos']"; //<--- Want 2nd one
-        */
-
       static $q1 = "//span[@class='gramGrp pos']";
       
       static $q2 = "//span[@class='pos']";
+      static $q3 =  "//span[contains(@class,'pos')]";
 
       $xpath = new \DOMXpath($dom);
      
@@ -82,6 +78,31 @@ EOS;
       
       return $gender;
    }
+*/
+    function get_gender(\DOMDocument $dom) : string
+    {  
+      static $q =  "//span[contains(@class,'pos')]";
+
+      $xpath = new \DOMXpath($dom);
+     
+      $list = $xpath->query($q);
+                
+      if ($list->count() == 0) {
+          "\tGender: failed\n----END OF GENDER ------\n";
+          return "gender failed";
+      }
+      
+      $gender = $list->item(0)->textContent;
+      
+      if ($list->count() == 2)  
+          
+           $gender .= ", " . $list->item(1)->textContent . "\n";
+              
+      echo "\tGender: $gender\n";
+      
+      return $gender;
+   }
+
 
    // todo: Thisonly works sometimes. The query must be query 
    function get_plural(\DOMDocument $dom) : string

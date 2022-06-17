@@ -1,73 +1,3 @@
-Befund
-stets 
-verändern
-verlaufen
-genügend
-Facharbeiter
-genügen 
-greifbar 
-verdanken 
-seinerzeit 
-zurückgreifen 
-vorherbestimmt 
-Ruhm
-Ehre 
-alten 
-stoßen
-Unverständnis 
-seinesgleichen 
-Neuling
-unentbehrlich 
-Zeile
-Schlagzeile
-vielversprechend 
-Verstand 
-umsonst 
-korrodieren
-hingehen 
-herkommen 
-Anatolien 
-hinsetzen 
-hinsetzen 
-aufregen 
-aufregen 
-ausrechnen 
-ausgerechnet 
-verfpflichten 
-verpflichten 
-Schützenverein
-Pflicht
-kloppen 
-hänseln 
-jdn. mobben 
-eigen 
-gierig 
-ausgerechtnet 
-berühren 
-kotzen 
-kaum 
-Arbeitsmoral 
-ausstatten
-Behörde
-bestellen 
-jagen 
-Qual
-quälen
-hüten 
-ehren 
-entehrt 
-Ehre
-entehrt 
-nötig 
-offenbar 
-scharf 
-schwanger 
-sowiewo 
-anbeten 
-begreifen 
-entführen 
-kotzen 
-erinnern 
 passieren 
 zurückkehren 
 kaum 
@@ -97,17 +27,17 @@ Münze
 schwitzen
 stecken
 Madel
-war nie eine Thema
-Parktikum
-unter einen Hut bringen
+#war nie eine Thema
+Praktikum
+#unter einen Hut bringen
 durchsetzen
 Haufen
-Wettbewerrb
+Wettbewerb
 jeweilig
 neidisch
-lesiten - to afford
-stellt nicht zu Frage
-stand an este Stelle
+lesiten
+#stellt nicht zu Frage
+#stand an este Stelle
 Inhaber
 vereinbaren
 Krähe
@@ -120,8 +50,6 @@ mählen
 Motorrad
 Abkürzung
 Auswahl
-Krähe
-auskrachen
 glänzen
 Verräter
 Vertreter

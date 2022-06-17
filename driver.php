@@ -48,7 +48,7 @@ try {
 
         echo "Looking for samples sentences for $word.\n";
 
-        $cnt = $html->add_samples($word, 3); 
+        $cnt = $html->add_samples($word, 10); 
 
         echo "Added $cnt samples sentences for $word.\n";
     }

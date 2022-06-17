@@ -99,18 +99,12 @@ EOS;
      */
     private function get_gender(\DOMDocument $dom) : string
     {  
-      static $q1 = "//span[@class='gramGrp pos']";
-      
-      static $q2 = "//span[@class='pos']";
+      static $q =  "//span[contains(@class,'pos')]";
 
       $xpath = new \DOMXpath($dom);
      
       $list = $xpath->query($q1);
                 
-      if ($list->count() == 0)
-
-           $list = $xpath->query($q2);
-           
       $gender = $list->item(0)->textContent;
       
       if ($list->count() == 2)  
