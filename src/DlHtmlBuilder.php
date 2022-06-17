@@ -120,12 +120,24 @@ EOS;
    // todo: Thisonly works sometimes. The query must be query 
    private function get_plural(\DOMDocument $dom) : string
    {
-      static $plq = "//span[@class='orth'][2]"; // get the second instance of <span class="orth">.
+      static $plq = "//span[@class='orth']"; // get the second instance of <span class="orth">.
 
       $xpath = new \DOMXpath($dom);
      
       $nodeList = $xpath->query($plq);
-       
+      
+      foreach ($nodeList as $node) {
+          
+          echo $node->textContent . "\n";
+      }
+      $list = $xpath->query("//span[@class='orth'][2]"); // <-- This query is not correct. I need to read that link.
+      
+      if ($list->count() > 0) 
+               
+           echo "Reulst of query(//span[@class='ortho'][2]) = " . $list->item(0)->textContent  . "\n";
+      
+      return '';
+      
       $plural = '';
      
       if ($nodeList->count() == 1) { // ...if it fails, we try the other query
@@ -150,13 +162,14 @@ EOS;
           foreach($iter as $defns)  {
           
              $str .= "<dl class='defn hwd'>\n";
-               
-             if ($word[0] >= 'A' && $word[0] <= 'Z' ) { // Tn utf-8 code point collection, the lowercase characters
-                             // have a larger code point value than the uppercase.
+             
+            // Test if the word is a noun.Note: Tn the utf-8 (code point collection) lowercase characters
+            // have a larger code point values than uppercase.   
+             if ($word[0] >= 'A' && $word[0] <= 'Z' ) { 
+                 
+                $info = $this->get_noun_info($word);       
 
-                $gender = $this->get_noun_info($word);       
-
-                $str .= "<dt><p>{$defns->term}</p>\n<p class='pos'>" . strtoupper($gender) . "</p></dt>\n";    
+                $str .= "<dt><p>{$defns->term}</p>\n<p class='pos'>" . strtoupper($info) . "</p></dt>\n";    
 
              } else 
 
@@ -168,7 +181,7 @@ EOS;
           }
  
       } else {
- 
+          
           $str .= "<dl class='defn' class='hwd'>\n";
           
           $str .= "<dt>$word</dt>\n<dd>No defintions found.</dd></dl>\n";    
@@ -176,7 +189,8 @@ EOS;
       
       $str .= "\n</section>\n";
       
-      $this->html->fwrite($str); // Note: Calling $this->tidy($str) remove <p> tags.
+      // Note: Calling $this->tidy($str) changes <p> tags to <br />.
+      $this->html->fwrite($str); 
  
       return count($iter); 
    }
