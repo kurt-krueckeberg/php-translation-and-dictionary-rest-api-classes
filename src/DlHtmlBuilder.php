@@ -85,7 +85,7 @@ EOS;
 
       $plural = $this->get_plural($dom);
 
-      return $gender . ' ' . $plural;
+      return strtoupper($gender) . ' ' . $plural;
     }
   
     private function get_gender(\DOMDocument $dom) : string
@@ -126,33 +126,9 @@ EOS;
      
       $nodeList = $xpath->query($plq);
       
-      /*
-      foreach ($nodeList as $node) {
-          
-          echo $node->textContent . "\n";
-      }
-      
-      $list = $xpath->query("(//span[@class='orth'])[2]"); // <-- This query is not correct. I need to read that link.
-      
-      if ($list->count() > 0) 
-               
-           echo "Result of query (//span[@class='ortho'])[2]) = " . $list->item(0)->textContent  . "\n";
-      
-      return '';
-       * 
-       */
-      
-      $plural = '';
+      if ($node->count() !== 1) new \Exception( " XPath query (//span[@class='orth'])[2] failed");
      
-      if ($nodeList->count() == 1) { // ...if it failed, say there is no plural. 
-     
-          $node = $nodeList->item(0); 
-     
-          $plural = $node->textContent;
-
-      } else $plural = "pl. not found";
-      
-      return $plural;
+      return $nodeList->item(0)->textContent; 
    }
 
    public function add_definitions($word, string $src, string $dest) : int
@@ -173,7 +149,7 @@ EOS;
                  
                 $info = $this->get_noun_info($word);       
 
-                $str .= "<dt><p>{$defns->term}</p>\n<p class='pos'>" . strtoupper($info) . "</p></dt>\n";    
+                $str .= "<dt><p>{$defns->term}</p>\n<p class='pos'>" . $info . "</p></dt>\n";    
 
              } else 
 
