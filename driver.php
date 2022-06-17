@@ -5,7 +5,7 @@ use \SplFileObject as File;
 use LanguageTools\RestClient;
 use LanguageTools\ClassID;
 use LanguageTools\FileReader;
-use LanguageTools\UlHtmlBuilder;
+use LanguageTools\DlHtmlBuilder;
 
 include 'vendor/autoload.php';
 
@@ -32,7 +32,7 @@ try {
     
     $file = new FileReader($fname);
     
-    $html = new UlHtmlBuilder($argv[2] . ".html", "de", "en", $collins, $trans, $trans, $leipzig);
+    $html = new DlHtmlBuilder($argv[2] . ".html", "de", "en", $collins, $trans, $trans, $leipzig);
    
     foreach ($file as $word) {
         

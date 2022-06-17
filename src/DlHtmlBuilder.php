@@ -103,7 +103,7 @@ EOS;
 
       $xpath = new \DOMXpath($dom);
      
-      $list = $xpath->query($q1);
+      $list = $xpath->query($q);
                 
       $gender = $list->item(0)->textContent;
       
