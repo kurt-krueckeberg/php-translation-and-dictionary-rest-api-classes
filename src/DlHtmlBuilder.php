@@ -120,27 +120,31 @@ EOS;
    // todo: Thisonly works sometimes. The query must be query 
    private function get_plural(\DOMDocument $dom) : string
    {
-      static $plq = "//span[@class='orth']"; // get the second instance of <span class="orth">.
+      static $plq = "(//span[@class='orth'])[2]"; // get the second instance of <span class="orth">.
 
       $xpath = new \DOMXpath($dom);
      
       $nodeList = $xpath->query($plq);
       
+      /*
       foreach ($nodeList as $node) {
           
           echo $node->textContent . "\n";
       }
-      $list = $xpath->query("//span[@class='orth'][2]"); // <-- This query is not correct. I need to read that link.
+      
+      $list = $xpath->query("(//span[@class='orth'])[2]"); // <-- This query is not correct. I need to read that link.
       
       if ($list->count() > 0) 
                
-           echo "Reulst of query(//span[@class='ortho'][2]) = " . $list->item(0)->textContent  . "\n";
+           echo "Result of query (//span[@class='ortho'])[2]) = " . $list->item(0)->textContent  . "\n";
       
       return '';
+       * 
+       */
       
       $plural = '';
      
-      if ($nodeList->count() == 1) { // ...if it fails, we try the other query
+      if ($nodeList->count() == 1) { // ...if it failed, say there is no plural. 
      
           $node = $nodeList->item(0); 
      
