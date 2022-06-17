@@ -81,11 +81,11 @@ EOS;
           
       $body = $dom->getElementsByTagName('body')->item(0);
      
-      $gender = $this->get_gender($dom);
+      $gender = trim($this->get_gender($dom));
 
-      $plural = $this->get_plural($dom);
+      $plural = 'plural ' . trim($this->get_plural($dom), ",");
 
-      return strtoupper($gender) . ' ' . $plural;
+      return strtoupper($gender) . ', ' . $plural;
     }
   
     private function get_gender(\DOMDocument $dom) : string
@@ -124,11 +124,11 @@ EOS;
 
       $xpath = new \DOMXpath($dom);
      
-      $nodeList = $xpath->query($plq);
+      $list = $xpath->query($plq);
       
-      if ($node->count() !== 1) new \Exception( " XPath query (//span[@class='orth'])[2] failed");
+      if ($list->count() !== 1) new \Exception( " XPath query (//span[@class='orth'])[2] failed");
      
-      return $nodeList->item(0)->textContent; 
+      return $list->item(0)->textContent; 
    }
 
    public function add_definitions($word, string $src, string $dest) : int
