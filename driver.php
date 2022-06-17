@@ -36,6 +36,8 @@ try {
    
     foreach ($file as $word) {
         
+        $word = trim($word);
+                
         if ($word[0] == '#') continue;
         
         echo "About to add definitions for $word.\n";
@@ -43,12 +45,13 @@ try {
         $cnt = $html->add_definitions($word, "de", "en");
 
         echo "Added $cnt definitions for $word.\n";
-        
+/*        
         echo "Looking for samples sentences for $word.\n";
 
         $cnt = $html->add_samples($word, 3); 
 
         echo "Added $cnt samples sentences for $word.\n";
+*/
     }
  
   } catch (Exception $e) {

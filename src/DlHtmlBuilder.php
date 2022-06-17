@@ -83,41 +83,43 @@ EOS;
      
       $gender = trim($this->get_gender($dom));
 
-      $plural = 'plural ' . trim($this->get_plural($dom), ",");
+      $gender = strtoupper($gender);
 
-      return strtoupper($gender) . ', ' . $plural;
+      $plural = trim($this->get_plural($dom), ",");
+
+      if ($plural !== '')  
+
+            return $gender . "; plural " . $plural;
+      else 
+            return  $gender;
     }
-  
+    
+    /*
+     * For words Unverständnis, Krähe, Veräter neither query below returns a results.
+     */
     private function get_gender(\DOMDocument $dom) : string
     {  
-      static $posq1 = "//span[@class='gramGrp pos']";
-
-      static $posq2 = "//span[@class='gramGrp']/span[@class='pos']";
+      static $q1 = "//span[@class='gramGrp pos']";
+      
+      static $q2 = "//span[@class='pos']";
 
       $xpath = new \DOMXpath($dom);
      
-      // try the most common query first....
-      $nodeList = $xpath->query($posq1);
-       
-      $gender = '';
-     
-      if ($nodeList->count() == 1) { // ...if it fails, we try the other query
-     
-          $node = $nodeList->item(0); // \DOMText
-     
-          $gender = $node->textContent;
-     
-      } else {
-     
-          $nodeList = $xpath->query($posq2);
-     
-          $gender = $nodeList->item(0)->textContent . ", " . $nodeList->item(1)->textContent; 
-      } 
+      $list = $xpath->query($q1);
+                
+      if ($list->count() == 0)
 
+           $list = $xpath->query($q2);
+           
+      $gender = $list->item(0)->textContent;
+      
+      if ($list->count() == 2)  
+          
+           $gender .= ", " . $list->item(1)->textContent . "\n";
+         
       return $gender;
    }
 
-   // todo: Thisonly works sometimes. The query must be query 
    private function get_plural(\DOMDocument $dom) : string
    {
       static $plq = "(//span[@class='orth'])[2]"; // get the second instance of <span class="orth">.
@@ -126,13 +128,19 @@ EOS;
      
       $list = $xpath->query($plq);
       
-      if ($list->count() !== 1) new \Exception( " XPath query (//span[@class='orth'])[2] failed");
-     
-      return $list->item(0)->textContent; 
+      if ($list->count() == 0) 
+
+          return '';
+      
+      else
+          return $list->item(0)->textContent; 
    }
 
    public function add_definitions($word, string $src, string $dest) : int
    {
+      if ($word == 'Unverständnis')
+              $debug = 10;
+      
       $iter = $this->dict->lookup($word, $src, $dest);
  
       $str = "<section>";

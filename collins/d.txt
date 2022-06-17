@@ -1,0 +1,149 @@
+WORD: Verräter
+	Gender: masculine noun, feminine noun
+
+	plural:  Verräter
+------------
+WORD: Vertreter
+	Gender: masculine noun, feminine noun
+
+	plural:  Vertreter
+------------
+WORD: Unverständnis
+	Gender: neuter noun
+	plural: none
+------------
+WORD: Vater
+	Gender: masculine noun
+	plural:  Väter
+------------
+WORD: Sohn
+	Gender: masculine noun
+	plural:  Söhne
+------------
+WORD: Mutter
+	Gender: feminine noun
+	plural:  Mütter
+------------
+WORD: Befund
+	Gender: masculine noun
+	plural: none
+------------
+WORD: Facharbeiter
+	Gender: masculine noun, feminine noun
+
+	plural: none
+------------
+WORD: Ruhm
+	Gender: masculine noun
+	plural: none
+------------
+WORD: Ehre
+	Gender: feminine noun
+	plural:  Ehren
+------------
+WORD: Neuling
+	Gender: masculine noun
+	plural:  Neulinge
+------------
+WORD: Zeile
+	Gender: feminine noun
+	plural:  Zeilen
+------------
+WORD: Schlagzeile
+	Gender: feminine noun
+	plural: none
+------------
+WORD: Verstand
+	Gender: masculine noun
+	plural: none
+------------
+WORD: Anatolien
+	Gender: neuter noun
+	plural: none
+------------
+WORD: Schützenverein
+	Gender: masculine noun
+	plural: none
+------------
+WORD: Pflicht
+	Gender: feminine noun
+	plural:  Pflichten
+------------
+WORD: Arbeitsmoral
+	Gender: feminine noun
+	plural: none
+------------
+WORD: Behörde
+	Gender: feminine noun
+	plural:  Behörden
+------------
+WORD: Ehre
+	Gender: feminine noun
+	plural:  Ehren
+------------
+WORD: Zusammenarbeit
+	Gender: feminine noun
+	plural: none
+------------
+WORD: Abschied
+	Gender: masculine noun
+	plural:  Abschiede
+------------
+WORD: Anlass
+	Gender: masculine noun
+	plural:  Anlässe
+------------
+WORD: Anlagen
+	Gender: feminine noun
+	plural: none
+------------
+WORD: Ernte
+	Gender: feminine noun
+	plural:  Ernten
+------------
+WORD: Ausfall
+	Gender: masculine noun
+	plural: none
+------------
+WORD: Münze
+	Gender: feminine noun
+	plural:  Münzen
+------------
+WORD: Madel
+	Gender: neuter noun, neuter noun
+
+	plural:  Mädel(s)
+------------
+WORD: Praktikum
+	Gender: neuter noun
+	plural:  Praktika
+------------
+WORD: Wettbewerb
+	Gender: masculine noun
+	plural: none
+------------
+WORD: Inhaber
+	Gender: masculine noun, feminine noun
+
+	plural:  Inhaber
+------------
+WORD: Krähe
+	Gender: feminine noun
+	plural:  Krähen
+------------
+WORD: Instandhaltung
+	Gender: feminine noun
+	plural: none
+------------
+WORD: Motorrad
+	Gender: neuter noun
+	plural: none
+------------
+WORD: Abkürzung
+	Gender: feminine noun
+	plural: none
+------------
+WORD: Auswahl
+	Gender: feminine noun
+	plural: none
+------------

@@ -16,7 +16,7 @@ class Config {
    {
        if (self::$is_loaded == false) {
 
-            self::$xml = simplexml_load_file('config.xml');
+            self::$xml = simplexml_load_file('./config.xml');
             self::$is_loaded = true; 
        }
     
