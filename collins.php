@@ -10,7 +10,7 @@ include "vendor/autoload.php";
   try {
    
     $t = new CollinsGermanDictionary();
-    $file = new File("new-words.txt");
+    $file = new File("x.txt");
 
     foreach ($file as $word) {
 

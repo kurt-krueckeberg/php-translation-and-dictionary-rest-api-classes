@@ -99,11 +99,11 @@ EOS;
      
       } else {
      
-         $nodeList = $xpath->query($q2);
+          $nodeList = $xpath->query($q2);
      
-         $str = $nodeList->item(0)->textContent . ", " . $nodeList->item(1)->textContent; 
+          $str = $nodeList->item(0)->textContent . ", " . $nodeList->item(1)->textContent; 
          } 
-      }
+
       // todo: plural queries
       return $str;
    }

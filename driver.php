@@ -9,9 +9,9 @@ use LanguageTools\DlHtmlBuilder;
 
 include 'vendor/autoload.php';
 
-if ($argc != 2) {
+if ($argc != 3) {
 
-  echo "Enter the vocabulary words input file.\n";
+  echo "Enter the vocabulary words input file follow by html file name (without .html).\n";
   return;
 
 } else if (!file_exists($argv[1])) {
@@ -32,7 +32,7 @@ try {
     
     $file = new FileReader($fname);
     
-    $html = new DlHtmlBuilder("german.html", "de", "en", $collins, $trans, $trans, $leipzig);
+    $html = new DlHtmlBuilder($argv[2] . ".html", "de", "en", $collins, $trans, $trans, $leipzig);
    
     foreach ($file as $word) {
         
