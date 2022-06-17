@@ -116,7 +116,8 @@ EOS;
 
       return $gender;
    }
- 
+
+   // todo: Thisonly works sometimes. The query must be query 
    private function get_plural(\DOMDocument $dom) : string
    {
       static $plq = "//span[@class='orth'][2]"; // get the second instance of <span class="orth">.
