@@ -5,7 +5,7 @@ namespace LanguageTools;
 use LanguageTools\{DictionaryInterface, TranslateInterface, SentenceFetchInterface, CollinsGermanDictionary};
 use \SplFileObject as File; 
 
-class UlHtmlBuilder implements ResultfileInterface {
+class BaseHtmlBuilder implements ResultfileInterface {
 
 static private string $html_start = <<<html_eos
 <?xml version="1.0" encoding="UTF-8"?>
@@ -136,7 +136,7 @@ EOS;
           return $list->item(0)->textContent; 
    }
 
-   public function add_definitions($word, string $src, string $dest) : int
+   public function add_definitions($word, string $src, string $dest, string $) : int
    {
       if ($word == 'Unverständnis')
               $debug = 10;
@@ -149,7 +149,7 @@ EOS;
  
           foreach($iter as $defns)  {
           
-             $str .= "<ol class='defn hwd'>\n";
+             $str .= "<dl class='defn hwd'>\n";
              
             // Test if the word is a noun.Note: Tn the utf-8 (code point collection) lowercase characters
             // have a larger code point values than uppercase.   
@@ -157,22 +157,22 @@ EOS;
                  
                 $info = $this->get_noun_info($word);       
 
-                $str .= "<li><p>{$defns->term}</p>\n<p class='pos'>" . $info . "</p></li>\n";    
+                $str .= "<dt><p>{$defns->term}</p>\n<p class='pos'>" . $info . "</p></dt>\n";    
 
              } else 
 
-                $str .= "<li><p>{$defns->term}</p><p class='pos'>" . strtoupper($defns->pos) . "</p></li>\n";    
+                $str .= "<dt><p>{$defns->term}</p><p class='pos'>" . strtoupper($defns->pos) . "</p></dt>\n";    
           
-             $ol = $this->build_defns($defns->definitions);
+             $dd = $this->build_defns($defns->definitions);
              
-             $str .= $ol . "</ul>\n";
+             $str .= $dd . "</dl>\n";
           }
  
       } else {
           
-          $str .= "<ul class='defn' class='hwd'>\n";
+          $str .= "<dl class='defn' class='hwd'>\n";
           
-          $str .= "<li>$word No defintions found.</li></ul>\n";    
+          $str .= "<dt>$word</dt>\n<dd>No defintions found.</dd></dl>\n";    
       } 
       
       $str .= "\n</section>\n";
@@ -185,27 +185,27 @@ EOS;
   
    private function build_defns(array $definitions) : string
    {       
-      $li = '';
+      $dd = '';
 
       foreach ($definitions as $defn) {
 
-           $li .= "<li>" . $defn["definition"] . "</li>\n";
+           $dd .= "<dd>" . $defn["definition"] . "</dd>\n";
 
            if (count($defn['expressions']) > 0) {
               
              // We use a nested <dl> for the expressions.
-             $li .= "<li>\n<dl class='expressions'>\n"; 
+             $dd .= "<dd>\n<dl class='expressions'>\n"; 
 
               foreach ($defn['expressions'] as $expression) 
 
-                      $li .= "<dt>{$expression->source}</dt>\n<dd>{$expression->target}</dd>\n";
+                      $dd .= "<dt>{$expression->source}</dt>\n<dd>{$expression->target}</dd>\n";
 
-              $li .= "</dl>\n</li>\n";
+              $dd .= "</dl>\n</dd>\n";
 
            }  
       } 
 
-      return $li;
+      return $dd;
     }
 
     public function add_samples(string $word, int $cnt) : int 
