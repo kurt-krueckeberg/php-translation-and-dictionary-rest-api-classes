@@ -1,8 +1,6 @@
 #  Todo
 
-Plural: //span[@class="orth"][2]      <-- The 2nd instance.
-
-Adjust left and right margins for <dl>, <dt> and <dd> using the w3schools try me:
+To adjust margins for <dl>, <dt> and <dd, see the W3schools try me:
 
 1. [<dl> Try Me](https://www.w3schools.com/TAGS/tag_dl.asp)
 2. [<dt> Try Me](https://www.w3schools.com/TAGS/tag_dt.asp)

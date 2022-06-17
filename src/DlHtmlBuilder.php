@@ -57,9 +57,6 @@ EOS;
    */ 
    private function get_noun_info($word) : string
    {
-      static $q1 = "//span[@class='gramGrp pos']";
-
-      static $q2 = "//span[@class='gramGrp']/span[@class='pos']";
 
 static $noun_start =<<<EOS
 <?xml version="1.0" encoding="UTF-8"?>
@@ -83,34 +80,66 @@ EOS;
       @$dom->loadHTML($html);
           
       $body = $dom->getElementsByTagName('body')->item(0);
-      
+     
+      $gender = $this->get_gender($dom);
+
+      $plural = $this->get_plural($dom);
+
+      return $gender . ' ' . $plural;
+    }
+  
+    private function get_gender(\DOMDocument $dom) : string
+    {  
+      static $posq1 = "//span[@class='gramGrp pos']";
+
+      static $posq2 = "//span[@class='gramGrp']/span[@class='pos']";
+
       $xpath = new \DOMXpath($dom);
      
       // try the most common query first....
-      $nodeList = $xpath->query($q1);
+      $nodeList = $xpath->query($posq1);
        
-      $str = '';
+      $gender = '';
      
       if ($nodeList->count() == 1) { // ...if it fails, we try the other query
      
           $node = $nodeList->item(0); // \DOMText
      
-          $str = $node->textContent;
+          $gender = $node->textContent;
      
       } else {
      
-          $nodeList = $xpath->query($q2);
+          $nodeList = $xpath->query($posq2);
      
-          $str = $nodeList->item(0)->textContent . ", " . $nodeList->item(1)->textContent; 
-         } 
+          $gender = $nodeList->item(0)->textContent . ", " . $nodeList->item(1)->textContent; 
+      } 
 
-      // todo: plural queries
-      return $str;
+      return $gender;
    }
  
+   private function get_plural(\DOMDocument $dom) : string
+   {
+      static $plq = "//span[@class='orth'][2]"; // get the second instance of <span class="orth">.
+
+      $xpath = new \DOMXpath($dom);
+     
+      $nodeList = $xpath->query($plq);
+       
+      $plural = '';
+     
+      if ($nodeList->count() == 1) { // ...if it fails, we try the other query
+     
+          $node = $nodeList->item(0); 
+     
+          $plural = $node->textContent;
+
+      } else $plural = "pl. not found";
+      
+      return $plural;
+   }
+
    public function add_definitions($word, string $src, string $dest) : int
    {
-
       $iter = $this->dict->lookup($word, $src, $dest);
  
       $str = "<section>";
@@ -121,19 +150,16 @@ EOS;
           
              $str .= "<dl class='defn hwd'>\n";
                
-             $gender = '';
-           
-             if ($word[0] >= 'A' && $word[0] <= 'Z' ) { // In utf-8, the lowercase characters
+             if ($word[0] >= 'A' && $word[0] <= 'Z' ) { // Tn utf-8 code point collection, the lowercase characters
                              // have a larger code point value than the uppercase.
 
                 $gender = $this->get_noun_info($word);       
 
                 $str .= "<dt><p>{$defns->term}</p>\n<p class='pos'>" . strtoupper($gender) . "</p></dt>\n";    
 
-             } else {
-                   $str .= "<dt><p>{$defns->term}</p><p class='pos'>" . strtoupper($defns->pos) . "</p></dt>\n";    
+             } else 
 
-             }
+                $str .= "<dt><p>{$defns->term}</p><p class='pos'>" . strtoupper($defns->pos) . "</p></dt>\n";    
           
              $dd = $this->build_defns($defns->definitions);
              
@@ -149,47 +175,34 @@ EOS;
       
       $str .= "\n</section>\n";
       
-      //$str = $this->tidy($str); 
- 
-      $this->html->fwrite($str);
+      $this->html->fwrite($str); // Note: Calling $this->tidy($str) remove <p> tags.
  
       return count($iter); 
    }
-
   
    private function build_defns(array $definitions) : string
    {       
-        $dd = '';
+      $dd = '';
 
-        foreach ($definitions as $defn) {
+      foreach ($definitions as $defn) {
 
-             $dd .= "<dd>" . $defn["definition"] . "</dd>\n";
+           $dd .= "<dd>" . $defn["definition"] . "</dd>\n";
 
-             if (count($defn['expressions']) > 0) {
-                
-                /* We use a nested <ul> for the expressions.
-                $dd .= "<dd><ul class='expressions'>"; 
+           if (count($defn['expressions']) > 0) {
+              
+             // We use a nested <dl> for the expressions.
+             $dd .= "<dd>\n<dl class='expressions'>\n"; 
 
-                foreach ($defn['expressions'] as $expression) 
+              foreach ($defn['expressions'] as $expression) 
 
-                        $dd .= "<li>". $expression->source  . " - ". $expression->target . "</li>";
+                      $dd .= "<dt>{$expression->source}</dt>\n<dd>{$expression->target}</dd>\n";
 
-                $dd .= '</ul></dd>';
-               */
+              $dd .= "</dl>\n</dd>\n";
 
-               // We use a nested <dl> for the expressions.
-               $dd .= "<dd>\n<dl class='expressions'>\n"; 
+           }  
+      } 
 
-                foreach ($defn['expressions'] as $expression) 
-
-                        $dd .= "<dt>{$expression->source}</dt>\n<dd>{$expression->target}</dd>\n";
-
-                $dd .= "</dl>\n</dd>\n";
-
-             }  
-        } 
-
-        return $dd;
+      return $dd;
     }
 
     public function add_samples(string $word, int $cnt) : int 
