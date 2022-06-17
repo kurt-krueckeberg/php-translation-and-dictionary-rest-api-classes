@@ -1,7 +1,1 @@
-Gesicht
-Mund
-Geschichte
-Mutter
-Vater 
-Sohn
-Zeitung
+Befund

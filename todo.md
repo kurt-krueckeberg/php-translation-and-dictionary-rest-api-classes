@@ -1,6 +1,6 @@
 #  Todo
 
-Add plurals. Determine xpath query. See bookmnarked sites.
+Bug in plural code. Test cas: Befund
 
 To adjust margins for <dl>, <dt> and <dd, see the W3schools try me:
 
