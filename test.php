@@ -16,7 +16,6 @@ if ($argc != 3) {
 
 } else if (!file_exists($argv[1])) {
 
-
   echo "Input file does not exist.\n";
   return;
 }

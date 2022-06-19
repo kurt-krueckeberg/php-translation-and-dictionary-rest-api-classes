@@ -11,13 +11,13 @@ static private string $html_start = <<<html_eos
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de">
-    <head>
-        <title>German Vocab</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="css/dark-vocab.css"> 
-    </head>
-    <body>
+   <head>
+      <title>German Vocab</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="css/dark-vocab.css"> 
+   </head>
+<body>
 html_eos;
 
 static private string $html_end = <<<html_end
@@ -132,28 +132,31 @@ EOS;
 
    public function add_definitions($word, string $src, string $dest) : int
    {
-      if ($word == 'Unverständnis')
-              $debug = 10;
-      
+      // We use a definitin list of class "hwd", headword, to display definitions. For those invidual 
+       // definitions that have associated expressions, we use  a nested <dl class="expressions">.
+      // associated with a given definition.
+      // The word, a new 'head word': hwd
+      static $dl_hwd =  "<dl class='hwd'>\n";
+
       $iter = $this->dict->lookup($word, $src, $dest);
  
-      $str = "<section>";
+      $str = "<section>\n";
  
       if (count($iter) > 0) {
  
           foreach($iter as $defns)  {
           
-             $str .= "<dl class='defn hwd'>\n";
+             $str .= $dl_hwd;
              
-            // Test if the word is a noun.Note: Tn the utf-8 (code point collection) lowercase characters
-            // have a larger code point values than uppercase.   
+            // If noun (Tn the utf-8 (code point collection) lowercase characters
+            // have a larger code point values than uppercase)   
              if ($word[0] >= 'A' && $word[0] <= 'Z' ) { 
                  
                 $info = $this->get_noun_info($word);       
 
-                $str .= "<dt><p>{$defns->term}</p>\n<p class='pos'>" . $info . "</p></dt>\n";    
+                $str .= "<dt><p>{$defns->term}</p><p class='pos'>" . $info . "</p></dt>\n";    
 
-             } else 
+             } else // Not a noun
 
                 $str .= "<dt><p>{$defns->term}</p><p class='pos'>" . strtoupper($defns->pos) . "</p></dt>\n";    
           
@@ -164,12 +167,10 @@ EOS;
  
       } else {
           
-          $str .= "<dl class='defn' class='hwd'>\n";
-          
-          $str .= "<dt>$word</dt>\n<dd>No defintions found.</dd></dl>\n";    
+          $str .= $dl_hwd . "<dt>$word</dt>\n<dd>No defintions found.</dd></dl>\n";    
       } 
       
-      $str .= "\n</section>\n";
+      $str .= "</section>\n";
       
       // Note: Calling $this->tidy($str) changes <p> tags to <br />.
       $this->html->fwrite($str); 
@@ -179,24 +180,25 @@ EOS;
   
    private function build_defns(array $definitions) : string
    {       
-      $dd = '';
+      static $dl_exp = "<dl class='expressions'>";
+
+      $dd = ' ';
 
       foreach ($definitions as $defn) {
 
-           $dd .= "<dd>" . $defn["definition"] . "</dd>\n";
+          $dd .= "<dd>" . $defn["definition"] . "</dd>\n";
 
-           if (count($defn['expressions']) > 0) {
-              
+          if (count($defn['expressions']) > 0) {
+             
              // We use a nested <dl> for the expressions.
-             $dd .= "<dd>\n<dl class='expressions'>\n"; 
+             $dd .= "<dd>\n    $dl_exp\n"; 
 
-              foreach ($defn['expressions'] as $expression) 
+             foreach ($defn['expressions'] as $expression) 
 
-                      $dd .= "<dt>{$expression->source}</dt>\n<dd>{$expression->target}</dd>\n";
+                     $dd .= "    <dt>{$expression->source}</dt>\n    <dd>{$expression->target}</dd>\n";
 
-              $dd .= "</dl>\n</dd>\n";
-
-           }  
+             $dd .= "    </dl>\n</dd>\n";
+          }  
       } 
 
       return $dd;
@@ -204,9 +206,11 @@ EOS;
 
     public function add_samples(string $word, int $cnt) : int 
     {
+       static $sec_samples = "<section class='samples'>";
+
        $iter = $this->fetcher->fetch($word, $cnt); 
 
-       $str = "<section class='samples'>";
+       $str = $sec_samples;
 
        if (count($iter) == 0)
 

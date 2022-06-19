@@ -1,19 +1,17 @@
 Abkürzung
 Abschied
-alten 
-Anatolien 
-anbeten 
-anbeten              
+alten
+Anatolien
+anbeten
 anderthalb
 Anlagen
 Anlass
-Arbeitsmoral 
-aufregen 
+Arbeitsmoral
+aufregen
 aufziehen
 Ausfall
-ausgerechnet 
-ausgerechnet   
-ausgerechtnet 
+ausgerechnet
+ausgerechtnet
 auskratzen
 ausstatten
 Auswahl
@@ -21,33 +19,27 @@ Auswanderer
 Bart
 Befund
 begreifen
-begreifen 
 Behörde
-beistehen            
-berühren 
-berühren             
-bestellen 
-beten                
+beistehen
+berühren
+bestellen
+beten
 Dorf
-durchleben           
+durchleben
 durchsetzen
 Ehre
-Ehre 
-ehren 
-eigen 
-eigen          
+ehren
+eigen
 einsetzen
 Einwanderer
-entehrt 
-entehrt        
-entführen 
-entführen            
+entehrt
+entführen
 entsetzen
 Enttäuschung
-erinnern 
+erinnern
 Ernte
 erwichen
-etwas ausrechnen 
+etwas ausrechnen
 etwas satthaben
 Facharbeiter
 festhalten
@@ -56,64 +48,57 @@ füttern
 Gast
 Gastarbeiter
 geizig
-geizig         
-genügen 
+genügen
 genügend
 Geschichte
-gierig 
+gierig
 glänzen
-greifbar 
-großziehen           
-hänseln 
+greifbar
+großziehen
+hänseln
 Haufen
 Haus
 Heimat
-herkommen 
-hingehen 
-hinsetzen 
+herkommen
+hingehen
+hinsetzen
 Huhn
-hüten 
+hüten
 immerhin
 Inhaber
 instand halten
 Instandhaltung
-jagen 
+jagen
 jeweilig
 kapieren
 kapiern
 Karte
-kaum 
-kaum           
-kloppen 
+kaum
+kloppen
 korrodieren
 kotzen
-kotzen 
-kräftig        
+kräftig
 Krähe
-Kreuz 
+Kreuz
 Land
-leer 
-leer           
-leider 
-leider         
+leer
+leider
 lesiten
 Liebe
 Madel
 mählen
-mobben 
+mobben
 Motorrad
 Müll
 Müllmann
 Münze
 neidisch
 Neuling
-nötig 
-nötig          
-offenbar 
-offenbar       
+nötig
+offenbar
 Parktikum
 Pass
-passieren 
+passieren
 Person
 Pflicht
 Praktikum
@@ -123,27 +108,25 @@ Rekord
 rosten
 Ruhm
 satthaben
-scharf 
-scharf         
+scharf
 Schlagzeile
 schmeißen
 Schnauzbart
 Schnurrbart
 Schützenverein
-schwanger 
-schwanger      
+schwanger
 schwänzen
 schwitzen
-seinerzeit 
-seinesgleichen 
-sich bemühen         
-sich erinnern        
-sich freuen          
-sich überlegen 
-sich verfahren       
-sich verpflichten    
-sowieso        
-sowiewo 
+seinerzeit
+seinesgleichen
+sich bemühen
+sich erinnern
+sich freuen
+sich überlegen
+sich verfahren
+sich verpflichten
+sowieso
+sowiewo
 Sprache
 Staat
 Stadt
@@ -151,33 +134,30 @@ Stadt
 stattgeben
 stecken
 #stellt nicht zu Frage
-stets 
+stets
 stoßen
 Summe
-übernehmen           
+übernehmen
 Überraschung
-umsonst 
-umsonst        
-unentbehrlich 
-unentbehrlich  
+umsonst
+unentbehrlich
 #unter einen Hut bringen
-unterstützen         
-Unverständnis 
+unterstützen
+Unverständnis
 verändern
-verdanken 
+verdanken
 vereinbaren
-verfpflichten 
-verführen            
+verfpflichten
+verführen
 verheimlichen
 verlassen
 verlaufen
-verpflichten 
+verpflichten
 Verräter
 versetzen
 Verstand
-Verstand 
-vielversprechend 
-vorherbestimmt 
+vielversprechend
+vorherbestimmt
 #war nie eine Thema
 Weg
 Welt
@@ -185,8 +165,8 @@ Wettbewerb
 Wettbewerrb
 Zeile
 zukommen
-zurückgreifen 
-zurückkehren 
+zurückgreifen
+zurückkehren
 Zusammenarbeit
 zusammenfassen
 zusammenhalten
