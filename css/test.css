@@ -1,0 +1,118 @@
+body {
+
+/* margin-left: 3em; */
+
+ color: #E6E6E6;  /* colors from Azure documentation */
+ background-color: #171717;
+}
+
+section {
+
+  font-family: 'Lato Medium', Arial, sans-serif;
+  display: grid; 
+  width: 70%;
+  margin: auto auto;
+  grid-template-columns: 1fr 1fr; 
+  column-gap: 10px;
+
+  padding: 10px;  /* kurt */
+  /* ?????
+  border-left: 1px solid #666;
+  border-right: 1px solid #666;
+  */
+}
+
+section p { /* paragraph style--font, text color, background color, spacig with paragraphs and between paragraphs */
+
+
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 6px;
+  line-height: 1.6em; 
+  margin: 3px 0;     
+/*  line-height: 1.7em;  <--- Spacing between line within paragraph */ 
+/*  margin: 4px 0;       <--- Spacing between paragraphs. It is equivalent to the statements
+    
+  below: 
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-left: 0px;
+  margin-right: 0px;  
+ */
+}
+
+.pos {
+  font-weight: bold;
+  color: #ffd700;
+}
+
+
+dl.hwd >  dd {
+ color:#75b6e7; /* #268bd2 */
+ margin-left: 20px;
+ margin-top: .75em;
+ margin-bottom: .75em;
+}
+
+dl.expressions {
+  color: #E6E6E6; 
+}
+
+/* NOTE:  From https://www.the-art-of-web.com/css/format-dl/  example #5 using Flexbox. */
+dl.expressions {
+    display: flex;
+    flex-flow: row wrap;
+    color: #e6e6e6;
+    margin-left: 20px;
+/*
+    border: solid #333;
+    border-width: 1px 1px 0 0;
+*/
+}
+
+dl.expressions  dt {
+    flex-basis: 45%;
+    padding: 2px 4px;
+/*    background: #333; */
+/*   text-align: right; */
+/*    color: #fff;      */
+}
+
+dl.expressions  dd {
+    flex-basis: 45%;
+    flex-grow: 1;
+    margin: 0;
+    padding: 2px 4px;
+
+/*  border-bottom: 1px solid #333;*/
+}
+
+h1, h2, h3, h4, h5 {
+
+  font-family: 'Karla Semibold', 'Open Sans', Arial, sans-serif;
+}
+
+table {
+ /* 
+  font-family: Arial, Helvetica, sans-serif;
+  */
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td, table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table tr:nth-child(even){background-color: #f2f2f2;}
+
+table tr:hover {background-color: #ddd;}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
