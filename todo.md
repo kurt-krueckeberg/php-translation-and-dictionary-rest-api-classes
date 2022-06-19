@@ -1,6 +1,10 @@
 #  Todo
 
-Bug in plural code. Test cas: Befund
+To add numbering or list symbol to definitions:
+
+- see the bookmarked css-counter links under the Html folder bookmark.
+
+- Likely move `<dl class="expressions">` to the outer enclosing `<dd>`
 
 To adjust margins for <dl>, <dt> and <dd, see the W3schools try me:
 
