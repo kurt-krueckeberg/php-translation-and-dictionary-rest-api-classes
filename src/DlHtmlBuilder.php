@@ -182,7 +182,7 @@ EOS;
    {       
       static $dl_exp = "<dl class='expressions'>";
 
-      $dd = ' ';
+      $dd = '';
 
       foreach ($definitions as $defn) {
 
@@ -191,13 +191,13 @@ EOS;
           if (count($defn['expressions']) > 0) {
              
              // We use a nested <dl> for the expressions.
-             $dd .= "<dd>\n    $dl_exp\n"; 
+             $dd .= "<dd>\n  $dl_exp\n"; 
 
              foreach ($defn['expressions'] as $expression) 
 
                      $dd .= "    <dt>{$expression->source}</dt>\n    <dd>{$expression->target}</dd>\n";
 
-             $dd .= "    </dl>\n</dd>\n";
+             $dd .= "  </dl>\n</dd>\n";
           }  
       } 
 
