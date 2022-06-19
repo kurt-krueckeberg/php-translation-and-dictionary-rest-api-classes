@@ -1,6 +1,6 @@
 #  Todo
 
-To add numbering or list symbol to definitions:
+The Dl...php code has functions with unclar names.
 
 - see the bookmarked css-counter links under the Html folder bookmark.
 

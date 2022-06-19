@@ -152,20 +152,18 @@ EOS;
                  
                 $info = $this->get_noun_info($word);       
 
-                $str .= "<li<p>{$defns->term}</p><p class='pos'>" . $info . "</p></li\n";    
+                $str .= "<div><p>{$defns->term}</p><p class='pos'>" . $info . "</p></div>\n";    
 
              } else // Not a noun
 
-                $str .= "<li<p>{$defns->term}</p><p class='pos'>" . strtoupper($defns->pos) . "</p></li\n";    
+                $str .= "<div><p>{$defns->term}</p><p class='pos'>" . strtoupper($defns->pos) . "</p></div>\n";    
           
-             $dd = $this->build_defns($defns->definitions);
-             
-             $str .= $dd . "</ul>\n";
+             $defns = $this->build_defns($defns->definitions);
           }
  
       } else {
           
-          $str .= $dl_hwd . "<li$word</li\n<liNo defintions found.</li</ul>\n";    
+          $str .= "<div><p>$word No defintions found.</p></div>\n";    
       } 
       
       $str .= "</section>\n";
