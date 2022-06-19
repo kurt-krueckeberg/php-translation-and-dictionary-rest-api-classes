@@ -16,6 +16,7 @@ if ($argc != 3) {
 
 } else if (!file_exists($argv[1])) {
 
+
   echo "Input file does not exist.\n";
   return;
 }
@@ -35,13 +36,15 @@ try {
    
     foreach ($file as $word) {
         
+        $word = trim($word);
+                
         if ($word[0] == '#') continue;
         
-        echo "About to add definitions for $word.\n";
-        
-        $cnt = $html->add_definitions($word, "de", "en");
+        echo "Looking for samples sentences for $word.\n";
 
-        echo "Added $cnt definitions for $word.\n";
+        $cnt = $html->add_samples($word, 10); 
+
+        echo "Added $cnt samples sentences for $word.\n";
     }
  
   } catch (Exception $e) {
