@@ -76,8 +76,12 @@ class SystranTranslator extends RestClient implements TranslateInterface, Dictio
       return new ResultsIterator($obj->outputs[0]->output->matches, SystranTranslator::results_filter(...));
     }
 
-    // results_filter(mixed $match) returns a SystranDictResultthat has three properties: 1. the word being defined ($match->source->lemma) 2. its part-of-speech ($match->source->pos) 3. an array of definitions that hss two elements:
+    /* results_filter(mixed $match) returns SystranDictResult with  three properties:
+          1. the word being defined ($match->source->lemma) 
+          2. its part-of-speech ($match->source->pos) 
+          3. an array of definitions that hss two elements:
     // 1. 'definition', a definition, and 2. an array 'expressions' of zero or more associated expressions.
+    */
     public static function results_filter(mixed $match) :  SystranDictResult
     {
        // First ,we create SystranDictResult::definitions, the array of definitions.       

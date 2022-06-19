@@ -55,7 +55,7 @@ EOS;
   /*
      Get Gender of noun and its plural form
    */ 
-   private function get_noun_info($word) : string
+   private function get_noun_gender_pl($word) : string
    {
 
 static $noun_start =<<<EOS
@@ -133,10 +133,10 @@ EOS;
    public function add_definitions($word, string $src, string $dest) : int
    {
       // We use a definitin list of class "hwd", headword, to display definitions. For those invidual 
-       // definitions that have associated expressions, we use  a nested <dl class="expressions">.
+      // definitions that have associated expressions, we use  a nested <dl class="expressions">.
       // associated with a given definition.
       // The word, a new 'head word': hwd
-      static $ul_hwd =  "<ul class='hwd'>\n";
+      static $ul_hwd =  "<ul class='defns'>\n";
 
       $iter = $this->dict->lookup($word, $src, $dest);
  
@@ -144,21 +144,21 @@ EOS;
  
       if (count($iter) > 0) {
  
-          foreach($iter as $defns)  {
+          foreach($iter as $set)  {
           
             // If noun (Tn the utf-8 (code point collection) lowercase characters
             // have a larger code point values than uppercase)   
              if ($word[0] >= 'A' && $word[0] <= 'Z' ) { 
                  
-                $info = $this->get_noun_info($word);       
+                $gender_pl = $this->get_noun_gender_pl($word);       
 
-                $str .= "<div><p>{$defns->term}</p><p class='pos'>" . $info . "</p></div>\n";    
+                $str .= "<div class="hwd"><p>{$set->term}</p><p class='pos'>" . $gender_pl . "</p></div>\n";    
 
              } else // Not a noun
 
-                $str .= "<div><p>{$defns->term}</p><p class='pos'>" . strtoupper($defns->pos) . "</p></div>\n";    
+                $str .= "<div><p>{$set->term}</p><p class='pos'>" . strtoupper($set->pos) . "</p></div>\n";    
           
-             $defns = $this->build_defns($defns->definitions);
+             $set = $this->build_defns($set->definitions);
           }
  
       } else {
