@@ -153,11 +153,11 @@ EOS;
                  
                 $gender_pl = $this->get_noun_gender_pl($word);       
 
-                $str .= "<div class="hwd"><p>{$set->term}</p><p class='pos'>" . $gender_pl . "</p></div>\n";    
+                $str .= "<div class='hwd'><p>{$set->term}</p><p class='pos'>" . $gender_pl . "</p></div>\n";    
 
              } else // Not a noun
 
-                $str .= "<div><p>{$set->term}</p><p class='pos'>" . strtoupper($set->pos) . "</p></div>\n";    
+                $str .= "<div class='hwd'><p>{$set->term}</p><p class='pos'>" . strtoupper($set->pos) . "</p></div>\n";    
           
              $set = $this->build_defns($set->definitions);
           }

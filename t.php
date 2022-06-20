@@ -39,7 +39,6 @@ try {
         $word = trim($word);
                 
         if ($word[0] == '#') continue;
-         $trans->lookup($word
 
         echo "About to add definitions for $word.\n";
         
