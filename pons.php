@@ -5,6 +5,8 @@ use \SplFileObject as File;
 use LanguageTools\RestClient;
 use LanguageTools\ClassID;
 use LanguageTools\FileReader;
+use \LanguageTools\PonsDictionary;
+use LanguageTools\ResultsIterator;
 
 include 'vendor/autoload.php';
 
@@ -18,6 +20,14 @@ if ($argc != 3) {
 
   echo "Input file does not exist.\n";
   return;
+}
+function display(ResultsIterator $iter)
+{
+  foreach($iter as $r) {
+     
+     print_r($defn);
+   }
+    
 }
 
 try {
@@ -35,9 +45,12 @@ try {
 
         echo "About to add definitions for $word.\n";
         
-        $cnt = $dict->search($word, "de", "en");
+        $iter = $dict->search($word, "de", "en");
 
-        echo "Added $cnt definitions for $word.\n";
+        echo "Added " . count($iter) . " definitions for $word.\n";
+        
+        display($iter);
+        
     }
  
   } catch (Exception $e) {

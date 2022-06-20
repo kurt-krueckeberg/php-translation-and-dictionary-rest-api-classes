@@ -91,41 +91,55 @@ class PonsDictionary extends  RestClient {
    static private function get_result(mixed $obj) : \stdClass | null
    { 
       $result = new \stdClass;
-      /* 
-       * Emprically it appears all actual defnitions are in the first 'rom' and subsequent roms contain example phrses.
-       * The problem is, there is no documentation explaining this.
-       * The first hits' rom's arbas's header's being with an numeral, indicatingg the defnition number. They alkso have enbedded html.
-       * 
-       * Summarizing: The lack of documentation and the embedded html make the Pons API impractical to use.
-       *  
-       * * arabs are 'definitions' but a 'definition' can be simply an example phrase.       
-       */
     
-      if (count($hit->roms) == 0) 
+      if (count($obj->roms) == 0) 
           return null; 
-      
-      foreach($hit->roms as $rom) {
+
+      /*
+         The [Pons documentation ](doc/pons-api.pdf) explains that each separate rom (Roamn numeral) correspondss to a part of speech:
+
+           "For each part of speech there is one rom (roman numeral). For example "cut" may be a
+            noun, adjective, interjection, transitive or intransitive verb and has the roms I to V."
+
+          Each rom in turn has an array of arab's. Each arab stands for a specific meaning of the $rom->headword.
+
+          Each arab contains a 'header' string and an array, 'translations', of \stdClass'es. For, say, the input word 'Abschied', the 1st
+          rom's first arab:
+
+            echo $obj->roms[0]->arabs[0]->header;
           
-           $result->term = $rom->headword; // Is the term being defined
-           $result->pos = rom->wordclass; // Is the part of speech
-                   
+          is
+              `1. Abschied <span class="sense">(Trennung)</span>`
+          
+          header can contain more spans with more information. The transations array holds \stdClasses with two strings: source and target.
+          target is the English translation of the source. It can contain the 'sense', the 'headword' of an 'example'. This information is 
+          in a <span>'s class, say: <span class="sense"> or <span class="example"> , etc.
+       */
+      
+      foreach($obj->roms as $rom) { // rom == pos
+          
+           $result->headword = $rom->headword; // todo: rename $result->headword.
+           $result->pos = $rom->wordclass; // Is the part of speech
            
-           if (count($rom->arabs) == 0)
-               continue;
+           if (count($rom->arabs) == 0) continue;
         
             foreach ($rom->arabs as $arab) {
                 
-                if (count($arab->translations) == 0)
+                if (count($arab->translations) == 0) // Sometimes there aren't definitions but something else.
                     continue;
-        
+
+                $definitions = array();
+
+                       
                 foreach($arab->translations as $translation) {
         
-                      $results[] = $translation;//strip_tags($translation->target);
-                 }  
+                      $definitions[] = $translation;//strip_tags($translation->target);
+                 }
+
+                 $result->definitions = $defintions;  
             }
       }
-      return $result; //new ResultsIterator($results, function($x) { return $x;});              
+
+      return $result; 
     }
-
-
 }
