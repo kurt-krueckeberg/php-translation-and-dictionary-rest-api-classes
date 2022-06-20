@@ -11,6 +11,7 @@ aufziehen
 Ausfall
 ausgerechnet
 auskratzen
+ausrechnen
 ausstatten
 Auswahl
 Auswanderer
@@ -37,8 +38,7 @@ Enttäuschung
 erinnern
 Ernte
 erwichen
-etwas ausrechnen
-etwas satthaben
+ausrechnen
 Facharbeiter
 festhalten
 Freund

@@ -1,12 +1,12 @@
 #!/usr/bin/env php
 <?php
 declare(strict_types=1);
-use \SplFileObject as File;
 use LanguageTools\RestClient;
 use LanguageTools\ClassID;
 use LanguageTools\FileReader;
-use \LanguageTools\PonsDictionary;
+use LanguageTools\PonsDictionary;
 use LanguageTools\ResultsIterator;
+use \SplFileObject as File;
 
 include 'vendor/autoload.php';
 
@@ -21,14 +21,21 @@ if ($argc != 2) {
   return;
 }
 
-function display(ResultsIterator $iter)
-{
+function display(string $word, ResultsIterator $iter, File $ofile)
+{ 
+  echo "Display results for word $word.\n"  ;
+  
+  $ofile->fwrite("ResultsIerator out for $word:\n"); 
+
   foreach($iter as $r) {
-     
-     print_r($r);
-   }
-    
-}
+  
+    $x =  print_r($r, true);
+
+    $ofile->fwrite($x . "\n");
+  }
+
+   $ofile->fwrite("==============\n"); 
+ }
 
 try {
     $fname = $argv[1];
@@ -36,6 +43,8 @@ try {
     $dict = RestClient::createClient(ClassID::Pons); 
     
     $file = new FileReader($fname);
+
+    $ofile = new File("pons-output", "w");
     
     foreach ($file as $word) {
         
@@ -49,8 +58,7 @@ try {
 
         echo "Added " . count($iter) . " definitions for $word.\n";
         
-        display($iter);
-        
+        display($word, $iter, $ofile);
     }
  
   } catch (Exception $e) {

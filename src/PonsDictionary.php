@@ -13,10 +13,9 @@ class PonsDictionary extends  RestClient {
    static string  $credential = "X-Secret";
    static string  $dictiony_language_parm = "language";
 
-
    public function __construct()
    {   
-       parent::__construct(ClassID::Pons);
+      parent::__construct(ClassID::Pons);
    } 
 
    final public function getDictionaryLanguages() : array 
@@ -30,7 +29,6 @@ class PonsDictionary extends  RestClient {
 
    final public function getDictionaryForLanguages(string $lang) : array // todo: check the actual array to confirm it is what we want.
    {
-
       $contents = $this->request(self::$languages['method'], self::$languages['route'],  ['query' => ['language' => $lang ]]);
              
       $arr = json_decode($contents, true);
@@ -38,29 +36,31 @@ class PonsDictionary extends  RestClient {
       return $arr;
    } 
    
-   public function search(string $word, string $src, string $dest) : null | ResultsIterator
+   public function search(string $word, string $src, string $dest) : array | ResultsIterator
    {
-
        $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['query' => [ 'q' => $word, 'in'=> strtolower($src), 'language' => strtolower($dest), 'l' =>   strtolower($src . $dest)]  ]); 
        
        if (empty($contents)) {
            
              echo "Response contenst for $word is empty.\n";
-             return $results;
+             return array(); 
        }
-       
        $obj = json_decode($contents)[0];
-       
+             
        if (is_null($obj) || count($obj->hits) == 0) 
              return null;
-
+       /*
+       $obj->type == dictionary 'entry' or 'translation'
+        */
        return new ResultsIterator($obj->hits, PonsDictionary::get_result(...));
    }
 
    static private function get_result(mixed $obj) : \stdClass | null
    { 
       $result = new \stdClass;
-    
+      
+      $result->type = $obj->type;
+      
       if (count($obj->roms) == 0) 
           return null; 
 
@@ -90,17 +90,20 @@ class PonsDictionary extends  RestClient {
       foreach($obj->roms as $rom) { // rom == pos
           
            $result->headword = $rom->headword; // todo: rename $result->headword.
-           $result->pos = $rom->wordclass; // Is the part of speech
+           
+           if (isset($rom->wordclass))  {// not sure why this isn't always set.
+               
+               $result->pos = $rom->wordclass;    // Is the part of speech
+           }
            
            if (count($rom->arabs) == 0) continue;
         
-            foreach ($rom->arabs as $arab) {
+           foreach ($rom->arabs as $arab) {
                 
                 if (count($arab->translations) == 0) // Sometimes there aren't definitions but something else.
                     continue;
 
                 $definitions = array();
-
                        
                 foreach($arab->translations as $translation) {
         

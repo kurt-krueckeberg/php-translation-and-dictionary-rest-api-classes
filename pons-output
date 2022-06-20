@@ -1,0 +1,4087 @@
+ResultsIerator out for Abkürzung:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Ab·kür·zung
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Abkürzung</strong>
+                    [target] => cutting short
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Abschied:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Ab·schied
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="full_collocation"><acronym title="jemandem">jdm</acronym> den <strong class="tilde">Abschied</strong> geben</span>
+                    [target] => to dismiss <acronym title="somebody">sb</acronym>
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">seinen <strong class="tilde">Abschied</strong> nehmen</span>
+                    [target] => to resign
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => ab|schei·den
+    [pos] => reflexive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> von <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span> <strong class="tilde">abscheiden
+</strong> </span>
+                    [target] => to separate from <acronym title="something">sth</acronym>
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> von <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span> <strong class="tilde">abscheiden
+</strong> </span>
+                    [target] => to precipitate from <acronym title="something">sth</acronym> <span class="restriction"><acronym title="specialist term">spec</acronym></span>
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="example">Öl und Wasser scheiden sich voneinander ab</span>
+                    [target] => oil and water separate
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Anatolien:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Ana·to·li·en
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Anatolien</strong>
+                    [target] => Anatolia
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for anbeten:
+stdClass Object
+(
+    [type] => entry
+    [headword] => an|be·ten
+    [pos] => transitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="jemanden">jdn</acronym> <strong class="tilde">anbeten
+</strong> </span>
+                    [target] => to adore <span class="target">[<span class="or"><acronym title="or">or</acronym></span> worship]</span> <acronym title="somebody">sb</acronym>
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for anderthalb:
+stdClass Object
+(
+    [type] => entry
+    [headword] => an·dert·halb
+    [pos] => adjective and adverb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">anderthalb</strong>
+                    [target] => one and a half
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="example">meine Tochter ist <strong class="tilde">anderthalb</strong> Jahre alt</span>
+                    [target] => my daughter is one and a half
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="full_collocation"> <strong class="tilde">anderthalb</strong> Kilometer</span>
+                    [target] => one kilometer and a half
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="full_collocation"> <strong class="tilde">anderthalb</strong> Stunden</span>
+                    [target] => an hour and a half
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Anlagen:
+stdClass Object
+(
+    [type] => entry
+    [headword] => festverzinsliche Anlagen
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">festverzinsliche Anlagen</strong> <span class="sense">(Obligationen, Geldmarktanlagen, Festgeldkonten, Sparguthaben)</span>
+                    [target] => fixed rate investments <span class="number"><acronym title="plural">pl</acronym></span>
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => kurzfristige Anlagen
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">kurzfristige Anlagen</strong> <span class="sense">(Anlagen mit Laufzeiten bis zu einem Jahr)</span>
+                    [target] => short-term investments <span class="number"><acronym title="plural">pl</acronym></span>
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Maschinen und maschinelle Anlagen
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Maschinen und maschinelle Anlagen</strong> <span class="sense">(Bilanzposten)</span>
+                    [target] => plant and equipment
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Zwei-Anlagen-Fall
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Zwei-Anlagen-Fall</strong> <span class="sense">(Begriff aus der Aktienanalyse)</span>
+                    [target] => dual investment model
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => An·la·ge
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Anlage</strong>
+                    [target] => conception
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Anlage
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Anlage</strong> <span class="sense">(zum Geschäftsbericht)</span>
+                    [target] => amendment
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <strong class="headword">Anlage</strong> <span class="sense">(zum Geschäftsbericht)</span>
+                    [target] => attachment
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Anlage
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Anlage</strong> <span class="sense">(Investition)</span>
+                    [target] => investment
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Anlage
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Anlage</strong> <span class="sense">(Ortswahl)</span> <span class="topic"><acronym title="land use">LAND USE</acronym></span>
+                    [target] => siting
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">Anlage für ruhenden Verkehr</span> <span class="topic"><acronym title="land use">LAND USE</acronym>, <acronym title="infrastructure">INFRASTR</acronym></span>
+                    [target] => parking facility
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">Anlage für ruhenden Verkehr</span> <span class="topic"><acronym title="land use">LAND USE</acronym>, <acronym title="infrastructure">INFRASTR</acronym></span>
+                    [target] => parking lot
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">Anlage für ruhenden Verkehr</span> <span class="topic"><acronym title="land use">LAND USE</acronym>, <acronym title="infrastructure">INFRASTR</acronym></span>
+                    [target] => carpark <span class="region"><acronym title="British English" class="Brit">Brit</acronym></span>
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => EDV-An·la·ge
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">EDV-Anlage</strong>
+                    [target] => computer system
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <strong class="headword">EDV-Anlage</strong>
+                    [target] => EDP equipment
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => EDV-Anlage
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">EDV-Anlage</strong>
+                    [target] => computer equipment
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => fiduziarische Anlage
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">fiduziarische Anlage</strong> <span class="sense">(Treuhandanlage)</span>
+                    [target] => fiduciary investment
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => geldnahe Anlage
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">geldnahe Anlage</strong> <span class="sense">(flüssige Mittel)</span>
+                    [target] => near-money
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <strong class="headword">geldnahe Anlage</strong> <span class="sense">(flüssige Mittel)</span>
+                    [target] => quasi-money
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => langfristige Anlage
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">langfristige Anlage</strong> <span class="sense">(Anlage mit Laufzeit von über 4 Jahren)</span>
+                    [target] => long-dated investment
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => mittelfristige Anlage
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">mittelfristige Anlage</strong> <span class="sense">(Anlage mit Laufzeiten zwischen 1 und 4 Jahren)</span>
+                    [target] => medium-term investment
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => risikobehaftete Anlage
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">risikobehaftete Anlage</strong>
+                    [target] => risk asset
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => PA-An·la·ge
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">PA-Anlage</strong>
+                    [target] => PA system
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Hi-Fi-An·la·ge
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Hi-Fi-Anlage</strong>
+                    [target] => stereo <span class="target">[<span class="or"><acronym title="or">or</acronym></span> sound]</span> system
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <strong class="headword">Hi-Fi-Anlage</strong>
+                    [target] => hi-fi
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Anlass:
+stdClass Object
+(
+    [type] => entry
+    [headword] => An·lass
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Anlass</strong>
+                    [target] => occasion
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">dem <strong class="tilde">Anlass</strong> entsprechend</span>
+                    [target] => to fit the occasion
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="example">sie war immer dem <strong class="tilde">Anlass</strong> entsprechend angezogen</span>
+                    [target] => she was always dressed for the occasion
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">beim geringsten <strong class="tilde">Anlass
+</strong> </span>
+                    [target] => at the slightest opportunity
+                )
+
+            [4] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">bei jedem <strong class="tilde">Anlass
+</strong> </span>
+                    [target] => at every opportunity
+                )
+
+            [5] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">aus <strong class="tilde">Anlass</strong> einer <acronym title="Sache">S.</acronym> <span class="case"><acronym title="genitive">gen</acronym></span></span>
+                    [target] => on the occasion of <acronym title="something">sth</acronym>
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Anlass
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => keinen <strong class="tilde">Anlass</strong> für <acronym title="etwas">etw</acronym> (akk) sehen
+                    [target] => to see no reason for <acronym title="something">sth</acronym>
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => keinen <strong class="tilde">Anlass</strong> sehen, <acronym title="etwas">etw</acronym> zu tun
+                    [target] => to see no reason for doing <acronym title="something">sth</acronym>
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Arbeitsmoral:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Ar·beits·mo·ral
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Arbeitsmoral</strong>
+                    [target] => work morale <span class="target">[<span class="or"><acronym title="or">or</acronym></span> ethic]</span>
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for aufregen:
+stdClass Object
+(
+    [type] => entry
+    [headword] => auf|re·gen
+    [pos] => reflexive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> [über <acronym title="jemanden">jdn</acronym>/<acronym title="etwas">etw</acronym>] <strong class="tilde">aufregen
+</strong> </span>
+                    [target] => to get worked up [about <acronym title="somebody">sb</acronym>/<acronym title="something">sth</acronym>] <span class="style"><acronym title="informal">inf</acronym></span>
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> [über <acronym title="jemanden">jdn</acronym>/<acronym title="etwas">etw</acronym>] <strong class="tilde">aufregen
+</strong> </span>
+                    [target] => to get upset [about <acronym title="somebody">sb</acronym>/<acronym title="something">sth</acronym>]
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="example">reg dich nicht so auf!</span>
+                    [target] => don&#39;t get [yourself] so worked up!
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for aufziehen:
+stdClass Object
+(
+    [type] => entry
+    [headword] => auf|zie·hen
+    [pos] => intransitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">[vor <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>] <strong class="tilde">aufziehen
+</strong> </span>
+                    [target] => to march up [in front of <acronym title="something">sth</acronym>]
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">[vor <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>] <strong class="tilde">aufziehen
+</strong> </span> <span class="collocator">Wache</span>
+                    [target] => to mount guard [in front of <acronym title="something">sth</acronym>]
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Ausfall:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Aus·fall
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Ausfall</strong> <span class="sense">(Ausbruch)</span>
+                    [target] => sortie
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <strong class="headword">Ausfall</strong> <span class="sense">(Ausbruch)</span>
+                    [target] => sally
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <strong class="headword">Ausfall</strong> <span class="sense">(beim Fechten)</span>
+                    [target] => thrust
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <strong class="headword">Ausfall</strong> <span class="sense">(beim Fechten)</span>
+                    [target] => lunge
+                )
+
+            [4] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">einen <strong class="tilde">Ausfall</strong> [mit <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>] machen</span>
+                    [target] => to [make a] lunge <span class="target">[<span class="or"><acronym title="or">or</acronym></span> thrust]</span> [with <acronym title="something">sth</acronym>]
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Ausfall
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Ausfall</strong> <span class="sense">(Nichterfüllung)</span>
+                    [target] => default
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <strong class="headword">Ausfall</strong> <span class="sense">(Nichterfüllung)</span>
+                    [target] => loan loss
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Ausfall
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Ausfall</strong> <span class="sense">(Versagen, Ausbleiben von Leistungen)</span>
+                    [target] => failure
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Ausfall
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">sicher bei <strong class="tilde">Ausfall</strong></span> <span class="topic"><acronym title="transport safety">TRANSP SAFETY</acronym></span>
+                    [target] => fail-safe
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Ausfall
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="tilde">Ausfall</strong> <span class="sense">(eines Servers etc)</span> <span class="grammar SUBST"><acronym title="masculine">m</acronym></span>
+                    [target] => breakdown
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for ausgerechnet:
+stdClass Object
+(
+    [type] => entry
+    [headword] => aus·ge·rech·net
+    [pos] => adverb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="example"> <strong class="tilde">ausgerechnet</strong> Bananen haben wir vergessen!</span>
+                    [target] => we forgot bananas of all things!
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => aus|rech·nen
+    [pos] => reflexive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="etwas">etw</acronym> lässt sich <strong class="tilde">ausrechnen
+</strong> </span>
+                    [target] => <acronym title="something">sth</acronym> can be calculated
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="example">diese Gleichung lässt sich <strong class="tilde">ausrechnen
+</strong> </span>
+                    [target] => this equation can be solved
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="example">diese Gleichung lässt sich <strong class="tilde">ausrechnen
+</strong> </span> <span class="sense">(sich vorstellen können)</span>
+                    [target] => <acronym title="something">sth</acronym> can be imagined
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="example">es lässt sich [leicht] <strong class="tilde">ausrechnen</strong>, dass ...</span>
+                    [target] => you/I etc. can [easily] imagine that ...
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for auskratzen:
+stdClass Object
+(
+    [type] => entry
+    [headword] => aus|krat·zen
+    [pos] => transitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => 
+                    [target] => 
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for ausrechnen:
+stdClass Object
+(
+    [type] => entry
+    [headword] => aus|rech·nen
+    [pos] => reflexive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="etwas">etw</acronym> lässt sich <strong class="tilde">ausrechnen
+</strong> </span>
+                    [target] => <acronym title="something">sth</acronym> can be calculated
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="example">diese Gleichung lässt sich <strong class="tilde">ausrechnen
+</strong> </span>
+                    [target] => this equation can be solved
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="example">diese Gleichung lässt sich <strong class="tilde">ausrechnen
+</strong> </span> <span class="sense">(sich vorstellen können)</span>
+                    [target] => <acronym title="something">sth</acronym> can be imagined
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="example">es lässt sich [leicht] <strong class="tilde">ausrechnen</strong>, dass ...</span>
+                    [target] => you/I etc. can [easily] imagine that ...
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for ausstatten:
+stdClass Object
+(
+    [type] => entry
+    [headword] => aus|stat·ten
+    [pos] => transitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="etwas">etw</acronym> [mit <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>] <strong class="tilde">ausstatten
+</strong> </span>
+                    [target] => to equip <acronym title="something">sth</acronym> with <acronym title="something">sth</acronym>
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="example">der Bildband ist gut ausgestattet</span>
+                    [target] => the book is well illustrated
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="example">dieses Modell ist serienmäßig mit elektrischen Fenstern ausgestattet</span>
+                    [target] => this model has electric windows as a standard fitting
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Auswahl:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Aus·wahl
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Auswahl</strong>
+                    [target] => representative team
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Auswahl an Backwerk
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Auswahl an Backwerk</strong>
+                    [target] => assorted pastries
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Auswanderer:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Aus·wan·de·rer
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Auswanderer</strong> <span class="feminine">(-wan·de·rin)</span>
+                    [target] => emigrant
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Bart:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Bart
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">der <strong class="tilde">Bart</strong> ist ab</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => that&#39;s it!
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">der <strong class="tilde">Bart</strong> ist ab</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => that&#39;s that!
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"><acronym title="jemandem">jdm</acronym> um den <strong class="tilde">Bart</strong> gehen</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => to butter <acronym title="somebody">sb</acronym> up
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">einen <strong class="tilde">Bart</strong> haben</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => to be as old as the hills
+                )
+
+            [4] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">beim <strong class="tilde">Barte</strong> des Propheten</span>
+                    [target] => cross my heart
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Befund:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Be·fund
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Befund</strong>
+                    [target] => result[s <span class="info"><acronym title="plural">pl</acronym></span> ]
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">negativer/positiver <strong class="tilde">Befund
+</strong> </span>
+                    [target] => negative/positive result[s <span class="info"><acronym title="plural">pl</acronym></span> ]
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">ohne <strong class="tilde">Befund
+</strong> </span>
+                    [target] => negative
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for begreifen:
+stdClass Object
+(
+    [type] => entry
+    [headword] => be·grei·fen
+    [pos] => reflexive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> als <acronym title="etwas">etw</acronym> <strong class="tilde">begreifen
+</strong> </span>
+                    [target] => to consider <span class="target">[<span class="or"><acronym title="or">or</acronym></span> see]</span> oneself to be <acronym title="something">sth</acronym>
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Behörde:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Be·hör·de
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Behörde</strong>
+                    [target] => [government] <span class="target">[<span class="or"><acronym title="or">or</acronym></span> [local] council]</span> offices
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Behörde
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Behörde</strong>
+                    [target] => authority
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => EU-Be·hör·de
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">EU-Behörde</strong>
+                    [target] => EU authority
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => geldpolitische Behörde
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">geldpolitische Behörde</strong>
+                    [target] => monetary board
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => monetäre Behörde
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">monetäre Behörde</strong>
+                    [target] => monetary board
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for beistehen:
+stdClass Object
+(
+    [type] => entry
+    [headword] => bei|ste·hen
+    [pos] => intransitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="jemandem">jdm</acronym> [gegen <acronym title="jemanden">jdn</acronym>/<acronym title="etwas">etw</acronym>] <strong class="tilde">beistehen
+</strong> </span>
+                    [target] => to stand by <acronym title="somebody">sb</acronym> [before <acronym title="somebody">sb</acronym>/<acronym title="something">sth</acronym>]
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="full_collocation"><acronym title="jemandem">jdm</acronym> helfend/tatkräftig <strong class="tilde">beistehen
+</strong> </span>
+                    [target] => to give <acronym title="somebody">sb</acronym> assistance/one&#39;s active support
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">einander [<span class="or"><acronym title="oder">o.</acronym></span> sich] <strong class="tilde">beistehen
+</strong> </span>
+                    [target] => to stand by each other
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for berühren:
+stdClass Object
+(
+    [type] => entry
+    [headword] => be·rüh·ren
+    [pos] => reflexive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> [in <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>] <strong class="tilde">berühren
+</strong> </span>
+                    [target] => to meet
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> [in <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>] <strong class="tilde">berühren
+</strong> </span>
+                    [target] => to converge
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="example">in einigen Punkten <strong class="tilde">berühren</strong> wir uns</span>
+                    [target] => we agree on a couple of points
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for bestellen:
+stdClass Object
+(
+    [type] => entry
+    [headword] => be·stel·len
+    [pos] => intransitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">[bei <acronym title="jemandem">jdm</acronym>] <strong class="tilde">bestellen
+</strong> </span>
+                    [target] => to order [from <acronym title="somebody">sb</acronym>]
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => bestellen
+    [pos] => transitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">bestellen</strong> <span class="sense">(Hypothek, Pfandrecht: begründen)</span>
+                    [target] => create
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => bestellen
+    [pos] => verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => den Boden/das Land <strong class="tilde">bestellen</strong> <span class="topic"><acronym title="agriculture">AGR</acronym></span>
+                    [target] => to till [or cultivate] the soil/the land
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for beten:
+stdClass Object
+(
+    [type] => entry
+    [headword] => be·ten
+    [pos] => transitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="etwas">etw</acronym> <strong class="tilde">beten
+</strong> </span>
+                    [target] => to recite <span class="target">[<span class="or"><acronym title="or">or</acronym></span> say]</span> <acronym title="something">sth</acronym>
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="example">das Vaterunser <strong class="tilde">beten
+</strong> </span>
+                    [target] => to recite <span class="target">[<span class="or"><acronym title="or">or</acronym></span> say]</span> the Lord&#39;s Prayer
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Be·te
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">Rote <strong class="tilde">Bete</strong> </span>
+                    [target] => beetroot
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Beete, Bete
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => Rote Beete, Rote Bete
+                    [target] => red beet <span class="region"><acronym title="American English" class="Am">Am</acronym></span>
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Dorf:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Dorf
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">für <acronym title="jemanden">jdn</acronym> böhmische Dörfer sein</span>
+                    [target] => to be all Greek <span class="target">[<span class="or"><acronym title="or">or</acronym></span> <span class="region"><acronym title="British English" class="Brit">Brit</acronym></span> double Dutch]</span> to <acronym title="somebody">sb</acronym>
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">Potemkinsche Dörfer</span> <span class="style"><acronym title="formal language">form</acronym></span>
+                    [target] => a façade
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">Potemkinsche Dörfer</span> <span class="style"><acronym title="formal language">form</acronym></span>
+                    [target] => a sham
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for durchleben:
+stdClass Object
+(
+    [type] => entry
+    [headword] => durch·le·ben
+    [pos] => transitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="etwas">etw</acronym> <strong class="tilde">durchleben </strong> </span>
+                    [target] => to experience <acronym title="something">sth</acronym>
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">schwere Zeiten <strong class="tilde">durchleben </strong> </span>
+                    [target] => to go <span class="target">[<span class="or"><acronym title="or">or</acronym></span> live]</span> through hard times
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for durchsetzen:
+stdClass Object
+(
+    [type] => entry
+    [headword] => durch|set·zen
+    [pos] => reflexive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> <strong class="tilde">durchsetzen
+</strong> </span>
+                    [target] => to be accepted
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> <strong class="tilde">durchsetzen
+</strong> </span>
+                    [target] => to gain acceptance
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> <strong class="tilde">durchsetzen
+</strong> </span> <span class="collocator">Trend</span>
+                    [target] => to catch on
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => durch·set·zen
+    [pos] => transitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="etwas">etw</acronym> mit <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span> <strong class="tilde">durchsetzen
+</strong> </span>
+                    [target] => to intersperse <acronym title="something">sth</acronym> with <acronym title="something">sth</acronym>
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="etwas">etw</acronym> mit <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span> <strong class="tilde">durchsetzen
+</strong> </span> <span class="collocator">mit Spitzeln</span>
+                    [target] => to infiltrate <acronym title="something">sth</acronym> with <acronym title="something">sth</acronym>
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">mit [<span class="or"><acronym title="oder">o.</acronym></span> von] <acronym title="jemandem">jdm</acronym> durchsetzt sein</span>
+                    [target] => to be infiltrated by <span class="target">[<span class="or"><acronym title="or">or</acronym></span> with]</span> <acronym title="somebody">sb</acronym>
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Ehre:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Eh·re
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">in <strong class="tilde">Ehren</strong> ergraut sein</span> <span class="style"><acronym title="formal language">form</acronym></span>
+                    [target] => to have reached a venerable old age <span class="style"><acronym title="formal language">form</acronym></span>
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"> <strong class="tilde">Ehre</strong>, wem <strong class="tilde">Ehre</strong> gebührt</span> <span class="rhetoric"><acronym title="proverb">prov</acronym></span>
+                    [target] => honour where honour is due <span class="rhetoric"><acronym title="proverb">prov</acronym></span>
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">auf <strong class="tilde">Ehre</strong> und Gewissen</span> <span class="style"><acronym title="formal language">form</acronym></span>
+                    [target] => on one&#39;s honour <span class="style"><acronym title="formal language">form</acronym></span>
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="example">auf <strong class="tilde">Ehre</strong> und Gewissen?</span>
+                    [target] => on your honour? <span class="style"><acronym title="formal language">form</acronym></span>
+                )
+
+            [4] => stdClass Object
+                (
+                    [source] => <span class="example">auf <strong class="tilde">Ehre</strong> und Gewissen, ich weiß nicht, wo sie ist!</span>
+                    [target] => I swear <span class="target">[<span class="or"><acronym title="or">or</acronym></span> <span class="style"><acronym title="formal language">form</acronym></span> on my honour]</span> , I don&#39;t know where she is!
+                )
+
+            [5] => stdClass Object
+                (
+                    [source] => <span class="full_collocation"><acronym title="etwas">etw</acronym> auf <strong class="tilde">Ehre</strong> und Gewissen beteuern</span>
+                    [target] => to assert <acronym title="something">sth</acronym>
+                )
+
+            [6] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"> <strong class="tilde">Ehre</strong> sei Gott in der Höhe</span>
+                    [target] => glory to God in the highest
+                )
+
+            [7] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">habe die <strong class="tilde">Ehre!</strong></span> <span class="region"><acronym title="Southern German" class="südd">SGer</acronym>, <acronym title="Austrian" class="österr">A</acronym></span>
+                    [target] => [I&#39;m] pleased to meet you
+                )
+
+            [8] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">mit wem habe ich die <strong class="tilde">Ehre?</strong></span> <span class="style"><acronym title="formal language">form</acronym></span> <span class="rhetoric"><acronym title="ironic">iron</acronym></span>
+                    [target] => with whom do I have the honour [of speaking]? <span class="style"><acronym title="formal language">form</acronym></span> <span class="rhetoric"><acronym title="ironic">iron</acronym></span>
+                )
+
+            [9] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">... in [allen] <strong class="tilde">Ehren</strong></span>
+                    [target] => with [all] due respect to ...
+                )
+
+            [10] => stdClass Object
+                (
+                    [source] => <span class="example">seine Meinung in allen <strong class="tilde">Ehren</strong>, aber ich kann ihm nicht so recht zustimmen</span>
+                    [target] => with [all] due respect to his opinion, I feel I can&#39;t agree
+                )
+
+            [11] => stdClass Object
+                (
+                    [source] => <span class="example">dein Mut in allen <strong class="tilde">Ehren</strong>, aber du gehst eindeutig zu weit!</span>
+                    [target] => with [all] due respect to your courage, you are definitely going too far!
+                )
+
+            [12] => stdClass Object
+                (
+                    [source] => <span class="example">sein Wort [<span class="or"><acronym title="oder">o.</acronym></span> seine Aufrichtigkeit] in [allen] <strong class="tilde">Ehren</strong>, aber du solltest dir eine eigene Meinung bilden</span>
+                    [target] => his honesty is not in doubt, but you should form your own opinion
+                )
+
+            [13] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"><acronym title="jemanden">jdn</acronym> bei seiner <strong class="tilde">Ehre</strong> packen</span>
+                    [target] => to appeal to <acronym title="somebody's">sb's</acronym> sense of honour
+                )
+
+            [14] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">was verschafft mir die <strong class="tilde">Ehre?</strong></span> <span class="style"><acronym title="formal language">form</acronym></span> <span class="rhetoric"><acronym title="ironic">iron</acronym></span>
+                    [target] => to what do I owe the honour? <span class="style"><acronym title="formal language">form</acronym></span> <span class="rhetoric"><acronym title="ironic">iron</acronym></span>
+                )
+
+            [15] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">[das ist] zu viel der <strong class="tilde">Ehre!</strong></span>
+                    [target] => you do me too great an honour! <span class="rhetoric"><acronym title="auch">a.</acronym> <acronym title="humorous">hum</acronym></span>
+                )
+
+            [16] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">um der Wahrheit die <strong class="tilde">Ehre</strong> zu geben</span> <span class="style"><acronym title="formal language">form</acronym></span>
+                    [target] => to be quite honest
+                )
+
+            [17] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">um der Wahrheit die <strong class="tilde">Ehre</strong> zu geben</span> <span class="style"><acronym title="formal language">form</acronym></span>
+                    [target] => to tell the truth
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Ehre
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => wie komme ich zu der <strong class="tilde">Ehre?</strong> <span class="grammar SUBST"><acronym title="feminine">f</acronym></span>
+                    [target] => how do I deserve this honour?
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => eh·ren
+    [pos] => transitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="jemanden">jdn</acronym> <strong class="tilde">ehren
+</strong> </span>
+                    [target] => to make <acronym title="somebody">sb</acronym> feel honoured <span class="target">[<span class="or"><acronym title="or">or</acronym></span> <span class="region"><acronym title="American English" class="Am">Am</acronym></span> -ored]</span>
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="example">dieser Besuch ehrt uns sehr</span>
+                    [target] => we are very much honoured by this visit
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for ehren:
+stdClass Object
+(
+    [type] => entry
+    [headword] => eh·ren
+    [pos] => transitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="jemanden">jdn</acronym> <strong class="tilde">ehren
+</strong> </span>
+                    [target] => to make <acronym title="somebody">sb</acronym> feel honoured <span class="target">[<span class="or"><acronym title="or">or</acronym></span> <span class="region"><acronym title="American English" class="Am">Am</acronym></span> -ored]</span>
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="example">dieser Besuch ehrt uns sehr</span>
+                    [target] => we are very much honoured by this visit
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Eh·re
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">in <strong class="tilde">Ehren</strong> ergraut sein</span> <span class="style"><acronym title="formal language">form</acronym></span>
+                    [target] => to have reached a venerable old age <span class="style"><acronym title="formal language">form</acronym></span>
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"> <strong class="tilde">Ehre</strong>, wem <strong class="tilde">Ehre</strong> gebührt</span> <span class="rhetoric"><acronym title="proverb">prov</acronym></span>
+                    [target] => honour where honour is due <span class="rhetoric"><acronym title="proverb">prov</acronym></span>
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">auf <strong class="tilde">Ehre</strong> und Gewissen</span> <span class="style"><acronym title="formal language">form</acronym></span>
+                    [target] => on one&#39;s honour <span class="style"><acronym title="formal language">form</acronym></span>
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="example">auf <strong class="tilde">Ehre</strong> und Gewissen?</span>
+                    [target] => on your honour? <span class="style"><acronym title="formal language">form</acronym></span>
+                )
+
+            [4] => stdClass Object
+                (
+                    [source] => <span class="example">auf <strong class="tilde">Ehre</strong> und Gewissen, ich weiß nicht, wo sie ist!</span>
+                    [target] => I swear <span class="target">[<span class="or"><acronym title="or">or</acronym></span> <span class="style"><acronym title="formal language">form</acronym></span> on my honour]</span> , I don&#39;t know where she is!
+                )
+
+            [5] => stdClass Object
+                (
+                    [source] => <span class="full_collocation"><acronym title="etwas">etw</acronym> auf <strong class="tilde">Ehre</strong> und Gewissen beteuern</span>
+                    [target] => to assert <acronym title="something">sth</acronym>
+                )
+
+            [6] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"> <strong class="tilde">Ehre</strong> sei Gott in der Höhe</span>
+                    [target] => glory to God in the highest
+                )
+
+            [7] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">habe die <strong class="tilde">Ehre!</strong></span> <span class="region"><acronym title="Southern German" class="südd">SGer</acronym>, <acronym title="Austrian" class="österr">A</acronym></span>
+                    [target] => [I&#39;m] pleased to meet you
+                )
+
+            [8] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">mit wem habe ich die <strong class="tilde">Ehre?</strong></span> <span class="style"><acronym title="formal language">form</acronym></span> <span class="rhetoric"><acronym title="ironic">iron</acronym></span>
+                    [target] => with whom do I have the honour [of speaking]? <span class="style"><acronym title="formal language">form</acronym></span> <span class="rhetoric"><acronym title="ironic">iron</acronym></span>
+                )
+
+            [9] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">... in [allen] <strong class="tilde">Ehren</strong></span>
+                    [target] => with [all] due respect to ...
+                )
+
+            [10] => stdClass Object
+                (
+                    [source] => <span class="example">seine Meinung in allen <strong class="tilde">Ehren</strong>, aber ich kann ihm nicht so recht zustimmen</span>
+                    [target] => with [all] due respect to his opinion, I feel I can&#39;t agree
+                )
+
+            [11] => stdClass Object
+                (
+                    [source] => <span class="example">dein Mut in allen <strong class="tilde">Ehren</strong>, aber du gehst eindeutig zu weit!</span>
+                    [target] => with [all] due respect to your courage, you are definitely going too far!
+                )
+
+            [12] => stdClass Object
+                (
+                    [source] => <span class="example">sein Wort [<span class="or"><acronym title="oder">o.</acronym></span> seine Aufrichtigkeit] in [allen] <strong class="tilde">Ehren</strong>, aber du solltest dir eine eigene Meinung bilden</span>
+                    [target] => his honesty is not in doubt, but you should form your own opinion
+                )
+
+            [13] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"><acronym title="jemanden">jdn</acronym> bei seiner <strong class="tilde">Ehre</strong> packen</span>
+                    [target] => to appeal to <acronym title="somebody's">sb's</acronym> sense of honour
+                )
+
+            [14] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">was verschafft mir die <strong class="tilde">Ehre?</strong></span> <span class="style"><acronym title="formal language">form</acronym></span> <span class="rhetoric"><acronym title="ironic">iron</acronym></span>
+                    [target] => to what do I owe the honour? <span class="style"><acronym title="formal language">form</acronym></span> <span class="rhetoric"><acronym title="ironic">iron</acronym></span>
+                )
+
+            [15] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">[das ist] zu viel der <strong class="tilde">Ehre!</strong></span>
+                    [target] => you do me too great an honour! <span class="rhetoric"><acronym title="auch">a.</acronym> <acronym title="humorous">hum</acronym></span>
+                )
+
+            [16] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">um der Wahrheit die <strong class="tilde">Ehre</strong> zu geben</span> <span class="style"><acronym title="formal language">form</acronym></span>
+                    [target] => to be quite honest
+                )
+
+            [17] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">um der Wahrheit die <strong class="tilde">Ehre</strong> zu geben</span> <span class="style"><acronym title="formal language">form</acronym></span>
+                    [target] => to tell the truth
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Ehre
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => wie komme ich zu der <strong class="tilde">Ehre?</strong> <span class="grammar SUBST"><acronym title="feminine">f</acronym></span>
+                    [target] => how do I deserve this honour?
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for eigen:
+stdClass Object
+(
+    [type] => entry
+    [headword] => ei·gen
+    [pos] => adjective and adverb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="jemand">jd</acronym> ist in <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span> <strong class="tilde">eigen
+</strong> </span>
+                    [target] => <acronym title="somebody">sb</acronym> is particular in <acronym title="something">sth</acronym>
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="example">darin [<span class="or"><acronym title="oder">o.</acronym></span> was das angeht,] bin ich [sehr] <strong class="tilde">eigen
+</strong> </span>
+                    [target] => I am [very] particular about that
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for einsetzen:
+stdClass Object
+(
+    [type] => entry
+    [headword] => ein|set·zen
+    [pos] => reflexive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> für <acronym title="jemanden">jdn</acronym>/<acronym title="etwas">etw</acronym> <strong class="tilde">einsetzen
+</strong> </span>
+                    [target] => to be active on <acronym title="somebody's">sb's</acronym>/<acronym title="something's">sth's</acronym> behalf
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> für <acronym title="jemanden">jdn</acronym>/<acronym title="etwas">etw</acronym> <strong class="tilde">einsetzen
+</strong> </span>
+                    [target] => to stand up for <span class="target">[<span class="or"><acronym title="or">or</acronym></span> support]</span> <acronym title="somebody">sb</acronym>/<acronym title="something">sth</acronym>
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="example">sie hat sich immer öffentlich für die Abschaffung des Gesetzes eingesetzt</span>
+                    [target] => she has always spoken out in favour of getting rid of this law
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> bei <acronym title="jemandem">jdm</acronym> für <acronym title="jemanden">jdn</acronym>/<acronym title="etwas">etw</acronym> <strong class="tilde">einsetzen
+</strong> </span>
+                    [target] => to intercede with <acronym title="somebody">sb</acronym> on <acronym title="somebody's">sb's</acronym>/<acronym title="something's">sth's</acronym> behalf
+                )
+
+            [4] => stdClass Object
+                (
+                    [source] => <span class="example">ich werde mich beim Direktor für dich <strong class="tilde">einsetzen
+</strong> </span>
+                    [target] => I&#39;ll have a word with the director on your behalf
+                )
+
+            [5] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> dafür <strong class="tilde">einsetzen</strong>, dass ...</span>
+                    [target] => to speak out for <span class="target">[<span class="or"><acronym title="or">or</acronym></span> in favour of]</span> <acronym title="something">sth</acronym>
+                )
+
+            [6] => stdClass Object
+                (
+                    [source] => <span class="example">er versprach, sich dafür einzusetzen, dass die Haftbedingungen erleichtert würden</span>
+                    [target] => he promised to do what he could to make sure prison conditions were improved
+                )
+
+            [7] => stdClass Object
+                (
+                    [source] => <span class="example">kannst du dich nicht bei ihm dafür einsetzen, dass er mir den Betrag noch etwas stundet?</span>
+                    [target] => can&#39;t you have a word with him so that he gives me time to pay?
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Ein·set·zen
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Einsetzen</strong>
+                    [target] => nomination
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <strong class="headword">Einsetzen</strong>
+                    [target] => appointment
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="full_collocation"> <strong class="tilde">Einsetzen</strong> eines Begünstigten</span>
+                    [target] => nomination of a beneficiary
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">testamentarisches <strong class="tilde">Einsetzen
+</strong> </span>
+                    [target] => appointment by will
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Einwanderer:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Ein·wan·de·rer
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Einwanderer</strong> <span class="feminine">(-wan·d[r]e·rin)</span>
+                    [target] => immigrant
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for entehrt:
+stdClass Object
+(
+    [type] => entry
+    [headword] => ent·eh·ren
+    [pos] => transitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="jemanden">jdn</acronym>/<acronym title="etwas">etw</acronym> <strong class="tilde">entehren
+</strong> </span>
+                    [target] => to dishonour <span class="target">[<span class="or"><acronym title="or">or</acronym></span> <span class="region"><acronym title="American English" class="Am">Am</acronym></span> -or]</span> <acronym title="somebody">sb</acronym>/<acronym title="something">sth</acronym>
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"> <strong class="tilde">entehrend</strong></span>
+                    [target] => degrading
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">eine <strong class="tilde">entehrende</strong> Anschuldigung</span>
+                    [target] => a defamatory accusation
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for entführen:
+stdClass Object
+(
+    [type] => entry
+    [headword] => ent·füh·ren
+    [pos] => transitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="jemandem">jdm</acronym> <acronym title="jemanden">jdn</acronym>/<acronym title="etwas">etw</acronym> <strong class="tilde">entführen
+</strong> </span>
+                    [target] => to steal <acronym title="something">sth</acronym>/<acronym title="somebody">sb</acronym> from <acronym title="somebody">sb</acronym>
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="jemandem">jdm</acronym> <acronym title="jemanden">jdn</acronym>/<acronym title="etwas">etw</acronym> <strong class="tilde">entführen
+</strong> </span>
+                    [target] => to make off with <acronym title="somebody's">sb's</acronym> <acronym title="something">sth</acronym>/<acronym title="somebody">sb</acronym>
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="example">darf ich Ihnen eben mal Ihre Kollegin <strong class="tilde">entführen?</strong></span>
+                    [target] => can I just steal your colleague for a moment?
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => entführen
+    [pos] => verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => lassen Sie sich <strong class="tilde">entführen!</strong> <span class="sense">(Werbung, Prospekt)</span> <span class="style"><acronym title="figurative">fig</acronym></span>
+                    [target] => be whisked away!
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => ent·fah·ren
+    [pos] => intransitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="etwas">etw</acronym> entfährt <acronym title="jemandem">jdm</acronym></span>
+                    [target] => <acronym title="something">sth</acronym> slips out
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="etwas">etw</acronym> entfährt <acronym title="jemandem">jdm</acronym></span>
+                    [target] => <acronym title="something">sth</acronym> escapes <acronym title="somebody's">sb's</acronym> lips
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="example">das Wort ist ihm nur so <strong class="tilde">entfahren
+</strong> </span>
+                    [target] => the word just escaped his lips
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="example">das Wort ist ihm nur so <strong class="tilde">entfahren
+</strong> </span>
+                    [target] => he just used the word inadvertently
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for entsetzen:
+stdClass Object
+(
+    [type] => entry
+    [headword] => ent·set·zen
+    [pos] => reflexive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> [über <acronym title="jemanden">jdn</acronym>/<acronym title="etwas">etw</acronym>] <strong class="tilde">entsetzen
+</strong> </span>
+                    [target] => to be horrified [at <acronym title="somebody">sb</acronym>/<acronym title="something">sth</acronym>]
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Ent·set·zen
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Entsetzen</strong>
+                    [target] => horror
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <strong class="headword">Entsetzen</strong>
+                    [target] => dismay
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">voller <strong class="tilde">Entsetzen
+</strong> </span>
+                    [target] => filled with horror <span class="target">[<span class="or"><acronym title="or">or</acronym></span> dismay]</span>
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">voller <strong class="tilde">Entsetzen
+</strong> </span>
+                    [target] => horror-struck <span class="target">[<span class="or"><acronym title="or">or</acronym></span> -stricken]</span>
+                )
+
+            [4] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">mit <strong class="tilde">Entsetzen
+</strong> </span>
+                    [target] => horrified
+                )
+
+            [5] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">mit <strong class="tilde">Entsetzen
+</strong> </span>
+                    [target] => dismayed
+                )
+
+            [6] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">[bleich/kreideweiß/versteinert] vor <strong class="tilde">Entsetzen
+</strong> </span>
+                    [target] => [pale/as white as a sheet/petrified] with horror
+                )
+
+            [7] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">zu <acronym title="jemandes">jds</acronym> [großen [<span class="or"><acronym title="oder">o.</acronym></span> größten]] <strong class="tilde">Entsetzen
+</strong> </span>
+                    [target] => to <acronym title="somebody's">sb's</acronym> [great] horror <span class="target">[<span class="or"><acronym title="or">or</acronym></span> dismay]</span>
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Enttäuschung:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Ent·täu·schung
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Enttäuschung</strong>
+                    [target] => disappointment
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">eine große <strong class="tilde">Enttäuschung
+</strong> </span>
+                    [target] => a big disappointment
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="full_collocation"><acronym title="jemandem">jdm</acronym> eine <strong class="tilde">Enttäuschung</strong> bereiten</span>
+                    [target] => to disappoint <acronym title="somebody">sb</acronym>
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">zu <acronym title="jemandes">jds</acronym> <strong class="tilde">Enttäuschung
+</strong> </span>
+                    [target] => to <acronym title="somebody's">sb's</acronym> disappointment
+                )
+
+            [4] => stdClass Object
+                (
+                    [source] => <span class="example">zu ihrer großen <strong class="tilde">Enttäuschung</strong> erhielt sie die Stelle nicht</span>
+                    [target] => to her great disappointment she didn&#39;t get the job
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Enttäuschung
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="tilde">Enttäuschung</strong> <span class="grammar SUBST"><acronym title="feminine">f</acronym></span>
+                    [target] => let-down <span class="grammar SUBST"><acronym title="singular noun">nsing</acronym></span> <span class="style"><acronym title="informal">inf</acronym></span>
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for erinnern:
+stdClass Object
+(
+    [type] => entry
+    [headword] => er·in·nern
+    [pos] => intransitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">daran <strong class="tilde">erinnern</strong>, dass ...</span>
+                    [target] => to point out that ...
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Ernte:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Ern·te
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Ernte</strong>
+                    [target] => harvest
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Ernte
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="tilde">Ernte</strong> <span class="sense">(Ertrag)</span> <span class="grammar SUBST"><acronym title="feminine">f</acronym></span> <span class="topic"><acronym title="agriculture">AGR</acronym></span>, <span class="topic"><acronym title="gardening">HORT</acronym></span>
+                    [target] => crop
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => ern·ten
+    [pos] => transitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="etwas">etw</acronym> <strong class="tilde">ernten
+</strong> </span>
+                    [target] => to earn <acronym title="something">sth</acronym>
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">Anerkennung <strong class="tilde">ernten
+</strong> </span>
+                    [target] => to gain <span class="target">[<span class="or"><acronym title="or">or</acronym></span> receive]</span> recognition
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">Applaus <strong class="tilde">ernten
+</strong> </span>
+                    [target] => to win <span class="target">[<span class="or"><acronym title="or">or</acronym></span> get]</span> applause
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">die Früchte seiner Arbeit <strong class="tilde">ernten
+</strong> </span>
+                    [target] => to reap the fruits of one&#39;s labour <span class="target">[<span class="or"><acronym title="or">or</acronym></span> <span class="region"><acronym title="American English" class="Am">Am</acronym></span> -or]</span>
+                )
+
+            [4] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">Lob/Spott <strong class="tilde">ernten
+</strong> </span>
+                    [target] => to earn praise/scorn
+                )
+
+            [5] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">Undank <strong class="tilde">ernten
+</strong> </span>
+                    [target] => to get little thanks
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for erwichen:
+stdClass Object
+(
+    [type] => entry
+    [headword] => er·wei·chen
+    [pos] => transitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="etwas">etw</acronym> <strong class="tilde">erweichen
+</strong> </span>
+                    [target] => to soften <acronym title="something">sth</acronym>
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for ausrechnen:
+stdClass Object
+(
+    [type] => entry
+    [headword] => aus|rech·nen
+    [pos] => reflexive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="etwas">etw</acronym> lässt sich <strong class="tilde">ausrechnen
+</strong> </span>
+                    [target] => <acronym title="something">sth</acronym> can be calculated
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="example">diese Gleichung lässt sich <strong class="tilde">ausrechnen
+</strong> </span>
+                    [target] => this equation can be solved
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="example">diese Gleichung lässt sich <strong class="tilde">ausrechnen
+</strong> </span> <span class="sense">(sich vorstellen können)</span>
+                    [target] => <acronym title="something">sth</acronym> can be imagined
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="example">es lässt sich [leicht] <strong class="tilde">ausrechnen</strong>, dass ...</span>
+                    [target] => you/I etc. can [easily] imagine that ...
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Facharbeiter:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Fach·ar·bei·ter
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Facharbeiter</strong><span class="feminine">(in)</span>
+                    [target] => skilled worker
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for festhalten:
+stdClass Object
+(
+    [type] => entry
+    [headword] => fest|hal·ten
+    [pos] => reflexive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> [an <acronym title="jemandem">jdm</acronym>/<acronym title="etwas">etw</acronym>] <strong class="tilde">festhalten
+</strong> </span>
+                    [target] => to hold on [to <acronym title="somebody">sb</acronym>/<acronym title="something">sth</acronym>]
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => festhalten
+    [pos] => verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => den Augenblick <strong class="tilde">festhalten</strong>
+                    [target] => to capture the moment
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => festhalten
+    [pos] => verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <acronym title="etwas">etw</acronym> schriftlich <strong class="tilde">festhalten</strong>
+                    [target] => to record <acronym title="something">sth</acronym>
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Freund:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Freund
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Freund</strong><span class="feminine">(in)</span>
+                    [target] => lover
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">ein <strong class="tilde">Freund</strong> der Natur</span>
+                    [target] => a nature-lover
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">ein <strong class="tilde">Freund</strong> der Natur</span>
+                    [target] => a lover of nature
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">kein <strong class="tilde">Freund</strong> von <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span> sein</span>
+                    [target] => to not be one for <acronym title="something">sth</acronym>
+                )
+
+            [4] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">kein <strong class="tilde">Freund</strong> von vielen Worten sein</span>
+                    [target] => to not be one for talking much
+                )
+
+            [5] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">kein <strong class="tilde">Freund</strong> von vielen Worten sein</span>
+                    [target] => to be a man/woman of few words
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Freund
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => Freunde finden
+                    [target] => to find friends
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => Freunde finden
+                    [target] => to make friends
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => an|freun·den
+    [pos] => reflexive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> mit <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span> <strong class="tilde">anfreunden
+</strong> </span>
+                    [target] => to get to like <acronym title="something">sth</acronym>
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> mit <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span> <strong class="tilde">anfreunden
+</strong> </span>
+                    [target] => to get used to the idea of <acronym title="something">sth</acronym>
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> mit <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span> <strong class="tilde">anfreunden
+</strong> </span>
+                    [target] => to acquire a taste for <acronym title="something">sth</acronym>
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="example">ich könnte mich schon mit der Vorstellung <strong class="tilde">anfreunden</strong>, in München zu leben</span>
+                    [target] => I could get used to the idea of living in Munich
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Ex-Freund
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Ex-Freund</strong>
+                    [target] => ex[-boyfriend]
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Ex-Freund
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Ex-Freund</strong><span class="feminine">(in)</span>
+                    [target] => ex boyfriend <span class="feminine">(ex girlfriend)</span>
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Freund-Feind-Den·ken
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Freund-Feind-Denken</strong>
+                    [target] => attitude of “if you&#39;re not for us, you&#39;re against us”
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => E-Mail Freund
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">E-Mail Freund</strong><span class="feminine">(in)</span>
+                    [target] => e-friend
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <strong class="headword">E-Mail Freund</strong><span class="feminine">(in)</span>
+                    [target] => e-pal
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Ex-Freun·din
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Ex-Freundin</strong>
+                    [target] => ex[-girlfriend]
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for füttern:
+stdClass Object
+(
+    [type] => entry
+    [headword] => füt·tern
+    [pos] => transitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="jemanden">jdn</acronym> [mit <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>] <strong class="tilde">füttern
+</strong> </span>
+                    [target] => to feed <acronym title="somebody">sb</acronym> [with <span class="target">[<span class="or"><acronym title="or">or</acronym></span> on]</span> <acronym title="something">sth</acronym>]
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">ein Tier [mit <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>] <strong class="tilde">füttern
+</strong> </span> <span class="grammatical_construction">[<span class="or"><acronym title="oder">o.</acronym></span> einem Tier <acronym title="etwas">etw</acronym> <strong class="tilde">füttern
+</strong> ]</span>
+                    [target] => to feed an animal on <acronym title="something">sth</acronym>
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">ein Tier [mit <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>] <strong class="tilde">füttern
+</strong> </span> <span class="grammatical_construction">[<span class="or"><acronym title="oder">o.</acronym></span> einem Tier <acronym title="etwas">etw</acronym> <strong class="tilde">füttern
+</strong> ]</span>
+                    [target] => to give an animal <acronym title="something">sth</acronym> [to eat]
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="example"><strong class="tilde">„Füttern</strong> verboten“</span>
+                    [target] => “do not feed the animals”
+                )
+
+            [4] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">Hafer/Klee <strong class="tilde">füttern
+</strong> </span>
+                    [target] => to feed an animal with <span class="target">[<span class="or"><acronym title="or">or</acronym></span> on]</span> oats/clover
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => füt·tern
+    [pos] => transitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="etwas">etw</acronym> [mit <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>] <strong class="tilde">füttern
+</strong> </span>
+                    [target] => to line <acronym title="something">sth</acronym> [with <acronym title="something">sth</acronym>]
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="full_collocation"><acronym title="etwas">etw</acronym> neu <strong class="tilde">füttern
+</strong> </span>
+                    [target] => to re[-]line <acronym title="something">sth</acronym>
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Füt·tern
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Füttern</strong> <span class="collocator">Baby</span>
+                    [target] => bottle feeding
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => fut·tern
+    [pos] => transitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="etwas">etw</acronym> <strong class="tilde">futtern
+</strong> </span>
+                    [target] => to scoff <acronym title="something">sth</acronym>
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Gast:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Gast
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Gast</strong>
+                    [target] => customer
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="example">wir bitten alle Gäste, ihre Zimmer bis spätestens 12 Uhr zu räumen</span>
+                    [target] => all guests are kindly requested to vacate their rooms by midday
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">einen <strong class="tilde">Gast</strong> bedienen</span>
+                    [target] => to serve a customer
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => ga·sen
+    [pos] => intransitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">gasen</strong> <span class="style"><acronym title="very informal">inf!</acronym></span>
+                    [target] => to fart
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Gastarbeiter:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Gast·ar·bei·ter
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Gastarbeiter</strong><span class="feminine">(in)</span>
+                    [target] => guest worker
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Gastarbeiter(in)
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => Gastarbeiter(in) <span class="grammar SUBST"><acronym title="masculine and feminine">mf</acronym></span> <span class="topic"><acronym title="economy">ECON</acronym></span>
+                    [target] => foreign worker
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for geizig:
+stdClass Object
+(
+    [type] => entry
+    [headword] => gei·zig
+    [pos] => adjective and adverb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">geizig</strong>
+                    [target] => mean <span class="region"><acronym title="British English" class="Brit">Brit</acronym></span>
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <strong class="headword">geizig</strong>
+                    [target] => stingy <span class="style"><acronym title="informal">inf</acronym></span>
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <strong class="headword">geizig</strong>
+                    [target] => tight-fisted <span class="style"><acronym title="informal">inf</acronym></span>
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <strong class="headword">geizig</strong>
+                    [target] => miserly
+                )
+
+            [4] => stdClass Object
+                (
+                    [source] => <strong class="headword">geizig</strong>
+                    [target] => cheap <span class="region"><acronym title="American English" class="Am">Am</acronym></span>
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for genügen:
+stdClass Object
+(
+    [type] => entry
+    [headword] => ge·nü·gen
+    [pos] => intransitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span> <strong class="tilde">genügen
+</strong> </span>
+                    [target] => to fulfil <span class="target">[<span class="or"><acronym title="or">or</acronym></span> <span class="region"><acronym title="American English" class="Am">Am</acronym> <acronym title="gewöhnlich">usu</acronym></span> -ll]</span> <acronym title="something">sth</acronym>
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => genügen
+    [pos] => verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="tilde">genügen</strong>
+                    [target] => to suffice
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for genügend:
+stdClass Object
+(
+    [type] => entry
+    [headword] => ge·nü·gend
+    [pos] => adverb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">genügend</strong>
+                    [target] => enough
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <strong class="headword">genügend</strong>
+                    [target] => sufficient
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => ge·nü·gen
+    [pos] => intransitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span> <strong class="tilde">genügen
+</strong> </span>
+                    [target] => to fulfil <span class="target">[<span class="or"><acronym title="or">or</acronym></span> <span class="region"><acronym title="American English" class="Am">Am</acronym> <acronym title="gewöhnlich">usu</acronym></span> -ll]</span> <acronym title="something">sth</acronym>
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => genügen
+    [pos] => verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="tilde">genügen</strong>
+                    [target] => to suffice
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Geschichte:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Ge·schich·te
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">[und] der Rest ist <strong class="tilde">Geschichte
+</strong> </span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => [and] the rest is history
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for gierig:
+stdClass Object
+(
+    [type] => entry
+    [headword] => gie·rig
+    [pos] => adverb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">gierig</strong>
+                    [target] => greedily
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="full_collocation"><acronym title="etwas">etw</acronym> <strong class="tilde">gierig</strong> essen</span> <span class="full_collocation">[<span class="or"><acronym title="oder">o.</acronym></span> verschlingen]</span>
+                    [target] => to devour <acronym title="something">sth</acronym> greedily
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="full_collocation"><acronym title="etwas">etw</acronym> <strong class="tilde">gierig</strong> essen</span> <span class="full_collocation">[<span class="or"><acronym title="oder">o.</acronym></span> verschlingen]</span>
+                    [target] => to guzzle [down <span class="info"><acronym title="separable">sep</acronym></span> ] <acronym title="something">sth</acronym> <span class="style"><acronym title="informal">inf</acronym></span>
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="full_collocation"><acronym title="etwas">etw</acronym> <strong class="tilde">gierig</strong> trinken</span>
+                    [target] => to gulp down <acronym title="something">sth</acronym> <span class="info"><acronym title="separable">sep</acronym></span>
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for glänzen:
+stdClass Object
+(
+    [type] => entry
+    [headword] => glän·zen
+    [pos] => intransitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">glänzen</strong>
+                    [target] => to shine
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for greifbar:
+stdClass Object
+(
+    [type] => entry
+    [headword] => greif·bar
+    [pos] => adjective and adverb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">greifbar</strong>
+                    [target] => tangible
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <strong class="headword">greifbar</strong>
+                    [target] => concrete
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="full_collocation"> <strong class="tilde">greifbare</strong> Vorteile</span>
+                    [target] => genuine advantages
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"> die Gespräche brachten keine <strong class="tilde">greifbaren</strong> Ergebnisse</span>
+                    [target] => the talks brought no results
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for großziehen:
+stdClass Object
+(
+    [type] => entry
+    [headword] => groß|zie·hen
+    [pos] => transitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">ein Kind <strong class="tilde">großziehen
+</strong> </span>
+                    [target] => to bring up <span class="info"><acronym title="separable">sep</acronym></span> <span class="target">[<span class="or"><acronym title="or">or</acronym></span> raise]</span> a child
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">ein Tier <strong class="tilde">großziehen
+</strong> </span>
+                    [target] => to rear an animal
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for hänseln:
+stdClass Object
+(
+    [type] => entry
+    [headword] => hän·seln
+    [pos] => transitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="jemanden">jdn</acronym> [wegen einer <acronym title="Sache">S.</acronym> <span class="case"><acronym title="genitive">gen</acronym></span>] <strong class="tilde">hänseln
+</strong> </span>
+                    [target] => to tease <acronym title="somebody">sb</acronym> [constantly] [about <acronym title="something">sth</acronym>]
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => hänseln
+    [pos] => verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <acronym title="jemanden">jdn</acronym> <strong class="tilde">hänseln</strong> <span class="sense">(indem man ihn auch beschimpft)</span>
+                    [target] => to call <acronym title="somebody">sb</acronym> names
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => hänseln
+    [pos] => verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <acronym title="jemanden">jdn</acronym> <strong class="tilde">hänseln</strong>
+                    [target] => to pick on <acronym title="somebody">sb</acronym>
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Han·sel
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Hansel</strong>
+                    [target] => twit <span class="rhetoric"><acronym title="pejorative">pej</acronym></span> <span class="style"><acronym title="informal">inf</acronym></span>
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Hän·sel
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"> <strong class="tilde">Hänsel</strong> und Gretel</span>
+                    [target] => Hansel and Gretel
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Haufen:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Hau·fen
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">auf einem <strong class="tilde">Haufen
+</strong> </span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => in one place
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">einen <strong class="tilde">Haufen</strong> machen</span> <span class="rhetoric"><acronym title="euphemistic">euph</acronym></span>
+                    [target] => to do one&#39;s business
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="example">Vorsicht, da hat ein Hund einen <strong class="tilde">Haufen</strong> gemacht!</span>
+                    [target] => watch out for that dog poop <span class="target">[<span class="or"><acronym title="or">or</acronym></span> pooh]</span> <span class="target">[<span class="or"><acronym title="or">or</acronym></span> doo]</span>
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"><acronym title="jemanden">jdn</acronym>/ein Tier über den <strong class="tilde">Haufen</strong> rennen/fahren</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => to run over <acronym title="somebody">sb</acronym>/an animal <span class="info"><acronym title="separable">sep</acronym></span>
+                )
+
+            [4] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"><acronym title="jemanden">jdn</acronym>/ein Tier über den <strong class="tilde">Haufen</strong> schießen</span> <span class="idiom_proverb">[<span class="or"><acronym title="oder">o.</acronym></span> knallen]</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => to shoot <acronym title="somebody">sb</acronym>/an animal down
+                )
+
+            [5] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"><acronym title="etwas">etw</acronym> über den <strong class="tilde">Haufen</strong> werfen</span> <span class="idiom_proverb">[<span class="or"><acronym title="oder">o.</acronym></span> schmeißen]</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => to throw out <acronym title="something">sth</acronym> <span class="info"><acronym title="separable">sep</acronym></span>
+                )
+
+            [6] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">[<acronym title="jemandem">jdm</acronym>] <acronym title="etwas">etw</acronym> über den <strong class="tilde">Haufen</strong> werfen</span> <span class="idiom_proverb">[<span class="or"><acronym title="oder">o.</acronym></span> schmeißen]</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => to mess up <acronym title="something">sth</acronym> [for <acronym title="somebody">sb</acronym>] <span class="info"><acronym title="separable">sep</acronym></span>
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => häu·fen
+    [pos] => reflexive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="dative">dat</acronym></span> <acronym title="etwas">etw</acronym> auf <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span> <strong class="tilde">häufen
+</strong> </span>
+                    [target] => to pile <acronym title="something">sth</acronym> on <acronym title="something">sth</acronym>
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Haus:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Haus
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"><acronym title="jemandem">jdm</acronym> das <strong class="tilde">Haus</strong> einrennen</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => to be constantly on <acronym title="somebody's">sb's</acronym> doorstep <span class="style"><acronym title="informal">inf</acronym></span>
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">das europäische <strong class="tilde">Haus
+</strong> </span>
+                    [target] => the family of Europe
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"><acronym title="jemanden">jdn</acronym> ans <strong class="tilde">Haus</strong> fesseln</span>
+                    [target] => to confine <acronym title="somebody">sb</acronym> to the house
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="example">seit sie krank ist, ist sie ans <strong class="tilde">Haus</strong> gefesselt</span>
+                    [target] => since she&#39;s been ill she&#39;s been confined to the house
+                )
+
+            [4] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">[mit <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>] <strong class="tilde">Haus</strong> halten</span> <span class="sense">(sparsam wirtschaften)</span>
+                    [target] => to be economical [with <acronym title="something">sth</acronym>]
+                )
+
+            [5] => stdClass Object
+                (
+                    [source] => <span class="example">wir müssen mit den Vorräten <strong class="tilde">Haus</strong> halten</span>
+                    [target] => we have to be careful with our provisions
+                )
+
+            [6] => stdClass Object
+                (
+                    [source] => <span class="example">sie kann nicht <strong class="tilde">Haus</strong> halten</span>
+                    [target] => she cannot hold onto her money
+                )
+
+            [7] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">[mit <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>] <strong class="tilde">Haus</strong> halten</span> <span class="sense">(dosiert einsetzen)</span>
+                    [target] => to conserve <acronym title="something">sth</acronym>
+                )
+
+            [8] => stdClass Object
+                (
+                    [source] => <span class="example">ich muss mit meinen Kräften <strong class="tilde">Haus</strong> halten</span>
+                    [target] => I must conserve my strength
+                )
+
+            [9] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">das <strong class="tilde">Haus</strong> hüten müssen</span>
+                    [target] => to have to stay at home
+                )
+
+            [10] => stdClass Object
+                (
+                    [source] => <span class="example">ich muss wegen einer Grippe das <strong class="tilde">Haus</strong> hüten</span>
+                    [target] => I have to stay in due to a bout of flu
+                )
+
+            [11] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">für <acronym title="jemanden">jdn</acronym> ein offenes <strong class="tilde">Haus</strong> haben</span>
+                    [target] => to keep open house for <acronym title="somebody">sb</acronym>
+                )
+
+            [12] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"><acronym title="jemandem">jdm</acronym> ins <strong class="tilde">Haus</strong> schneien</span> <span class="idiom_proverb">[<span class="or"><acronym title="oder">o.</acronym></span> geschneit kommen]</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => to descend on <acronym title="somebody">sb</acronym>
+                )
+
+            [13] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">in <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span> zu <strong class="tilde">Hause</strong> sein</span>
+                    [target] => to be at home in <acronym title="something">sth</acronym>
+                )
+
+            [14] => stdClass Object
+                (
+                    [source] => <span class="example">in der Physik bin ich nicht so zu <strong class="tilde">Hause</strong> wie Sie!</span>
+                    [target] => I&#39;m not as much at home in physics as you are!
+                )
+
+            [15] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">[<acronym title="jemandem">jdm</acronym>] ins <strong class="tilde">Haus</strong> stehen</span>
+                    [target] => to be in store [for <acronym title="somebody">sb</acronym>]
+                )
+
+            [16] => stdClass Object
+                (
+                    [source] => <span class="example">vielleicht steht uns ein großer Lottogewinn ins <strong class="tilde">Haus
+</strong> </span>
+                    [target] => perhaps we&#39;re in store for a big win on the lottery
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Haus
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => das geht aufs <strong class="tilde">Haus</strong> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => it&#39;s on the house
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Haus-Haus-Ver·kehr
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Haus-Haus-Verkehr</strong>
+                    [target] => door-to-door delivery service
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Haus-zu-Haus-Ver·kauf
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Haus-zu-Haus-Verkauf</strong>
+                    [target] => door-to-door selling
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Frei-Haus-Lie·fe·rung
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Frei-Haus-Lieferung</strong>
+                    [target] => carriage-free delivery
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Haus- und Grund·stücks·ver·wal·tung
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Haus- und Grundstücksverwaltung</strong>
+                    [target] => house and property administration
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => hau·sen
+    [pos] => intransitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">irgendwo <strong class="tilde">hausen </strong> </span>
+                    [target] => to wreak havoc somewhere
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Hau
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">einen <strong class="tilde">Hau</strong> haben</span> <span class="age"><acronym title="old-fashioned, used by older people">dated</acronym></span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => to be barking mad
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">einen <strong class="tilde">Hau</strong> haben</span> <span class="age"><acronym title="old-fashioned, used by older people">dated</acronym></span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => to not be in one&#39;s right mind
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => hau ruck
+    [pos] => interjection
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">hau ruck</strong>
+                    [target] => heave
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="example">so, jetzt ziehen wir alle gemeinsam an dem Seil — <strong class="tilde">hau ruck!</strong> <strong class="tilde">hau ruck!</strong></span>
+                    [target] => right, let&#39;s all pull on the rope together — heave-ho! heave-ho!
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Heimat:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Hei·mat
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Heimat</strong>
+                    [target] => home
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="full_collocation"><acronym title="jemandes">jds</acronym> geistige <strong class="tilde">Heimat
+</strong> </span>
+                    [target] => <acronym title="somebody's">sb's</acronym> spiritual home
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for herkommen:
+stdClass Object
+(
+    [type] => entry
+    [headword] => her|kom·men
+    [pos] => intransitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">irgendwo <strong class="tilde">herkommen
+</strong> </span>
+                    [target] => to come from somewhere
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="example">ich weiß beim besten Willen nicht, wo das Ersatzteil so schnell <strong class="tilde">herkommen</strong> soll</span>
+                    [target] => I honestly don&#39;t know where I&#39;m going to get my hands on the spare part so quickly
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for hingehen:
+stdClass Object
+(
+    [type] => entry
+    [headword] => hin|ge·hen
+    [pos] => intransitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"><acronym title="etwas">etw</acronym> <strong class="tilde">hingehen</strong> lassen</span>
+                    [target] => to let <acronym title="something">sth</acronym> pass
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"><acronym title="jemandem">jdm</acronym> <acronym title="etwas">etw</acronym> <strong class="tilde">hingehen</strong> lassen</span>
+                    [target] => to let <acronym title="somebody">sb</acronym> get away with <acronym title="something">sth</acronym>
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="example">du lässt dem Kind zu viel <strong class="tilde">hingehen!</strong></span>
+                    [target] => you let that child get away with too much!
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for hinsetzen:
+stdClass Object
+(
+    [type] => entry
+    [headword] => hin|set·zen
+    [pos] => transitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="jemanden">jdn</acronym> <strong class="tilde">hinsetzen
+</strong> </span>
+                    [target] => to put <span class="target">[<span class="or"><acronym title="or">or</acronym></span> sit]</span> <acronym title="somebody">sb</acronym> down
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Huhn:
+stdClass Object
+(
+    [type] => entry
+    [headword] => Huhn
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">wie ein aufgescheuchtes <strong class="tilde">Huhn</strong> herumlaufen</span>
+                    [target] => to run round like a headless chicken
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">mit den Hühnern aufstehen</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => to get up at the crack of dawn
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">mit den Hühnern zu Bett gehen</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => to go to bed [nice and] early
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">ein blindes <strong class="tilde">Huhn</strong> findet auch einmal ein Korn</span> <span class="rhetoric"><acronym title="proverb">prov</acronym></span>
+                    [target] => every dog has its day <span class="rhetoric"><acronym title="proverb">prov</acronym></span>
+                )
+
+            [4] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">da lachen ja die Hühner!</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => pull the other one, you must be joking!
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for hüten:
+stdClass Object
+(
+    [type] => entry
+    [headword] => hü·ten
+    [pos] => reflexive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> vor <acronym title="jemandem">jdm</acronym>/<acronym title="etwas">etw</acronym> <strong class="tilde">hüten
+</strong> </span>
+                    [target] => to be on one&#39;s guard against <acronym title="somebody">sb</acronym>/<acronym title="something">sth</acronym>
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="example">hüte dich vor unüberlegten Entscheidungen</span>
+                    [target] => beware of making rash decisions
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">sich <span class="case"><acronym title="accusative">acc</acronym></span> <strong class="tilde">hüten</strong>, <acronym title="etwas">etw</acronym> zu tun</span>
+                    [target] => to take care not to do <acronym title="something">sth</acronym>
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="example">ich werde mich [schwer] <strong class="tilde">hüten!</strong></span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => not [bloody] likely! <span class="style"><acronym title="slang">sl</acronym></span>
+                )
+
+            [4] => stdClass Object
+                (
+                    [source] => <span class="example">ich werde mich [schwer] <strong class="tilde">hüten!</strong></span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => I&#39;ll do nothing of the kind
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Hut
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"> <strong class="tilde">Hut</strong> ab [vor <acronym title="jemandem">jdm</acronym>]!</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => hats off to sb!
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"> <strong class="tilde">Hut</strong> ab [vor <acronym title="jemandem">jdm</acronym>]!</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => well done!
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"> <strong class="tilde">Hut</strong> ab [vor <acronym title="jemandem">jdm</acronym>]!</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => I take my hat off [to <acronym title="somebody">sb</acronym>]
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">vor <acronym title="jemandem">jdm</acronym>/<acronym title="etwas">etw</acronym> den <strong class="tilde">Hut</strong> abnehmen</span> <span class="idiom_proverb">[<span class="or"><acronym title="oder">o.</acronym></span> ziehen]</span>
+                    [target] => to take one&#39;s hat off to <acronym title="somebody">sb</acronym>/<acronym title="something">sth</acronym>
+                )
+
+            [4] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">ein alter <strong class="tilde">Hut</strong> sein</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => to be old hat
+                )
+
+            [5] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">mit dem <strong class="tilde">Hut[e]</strong> in der Hand kommt man durch das ganze Land</span> <span class="rhetoric"><acronym title="proverb">prov</acronym></span>
+                    [target] => a little politeness goes a long way
+                )
+
+            [6] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"><acronym title="etwas">etw</acronym> unter einen <strong class="tilde">Hut</strong> bringen</span> <span class="idiom_proverb">[<span class="or"><acronym title="oder">o.</acronym></span> kriegen]</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => to reconcile <acronym title="something">sth</acronym>
+                )
+
+            [7] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"><acronym title="etwas">etw</acronym> unter einen <strong class="tilde">Hut</strong> bringen</span> <span class="idiom_proverb">[<span class="or"><acronym title="oder">o.</acronym></span> kriegen]</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => to accommodate <acronym title="something">sth</acronym>
+                )
+
+            [8] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"><acronym title="etwas">etw</acronym> unter einen <strong class="tilde">Hut</strong> bringen</span> <span class="idiom_proverb">[<span class="or"><acronym title="oder">o.</acronym></span> kriegen]</span> <span class="sense">(Termine)</span>
+                    [target] => to fit in <acronym title="something">sth</acronym>
+                )
+
+            [9] => stdClass Object
+                (
+                    [source] => <span class="example">man kann nicht alle Menschen unter einen <strong class="tilde">Hut</strong> bringen</span>
+                    [target] => you can&#39;t please everyone all of the time
+                )
+
+            [10] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">da geht einem ja der <strong class="tilde">Hut</strong> hoch</span>
+                    [target] => it&#39;s enough to make you blow your top
+                )
+
+            [11] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">mit <acronym title="jemandem">jdm</acronym>/<acronym title="etwas">etw</acronym> nichts/nicht viel am <strong class="tilde">Hut</strong> haben</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => to not have anything in common with/to not [really] go in for <acronym title="somebody">sb</acronym>/<acronym title="something">sth</acronym>
+                )
+
+            [12] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">eins auf den <strong class="tilde">Hut</strong> kriegen</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => to get a dressing-down <span class="target">[<span class="or"><acronym title="or">or</acronym></span> telling-off]</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                )
+
+            [13] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">den [<span class="or"><acronym title="oder">o.</acronym></span> seinen] <strong class="tilde">Hut</strong> nehmen müssen</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => to have to pack one&#39;s bags <span class="rhetoric"><acronym title="figurative">fig</acronym></span>
+                )
+
+            [14] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">den [<span class="or"><acronym title="oder">o.</acronym></span> seinen] <strong class="tilde">Hut</strong> nehmen müssen</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => to have to step <span class="target">[<span class="or"><acronym title="or">or</acronym></span> stand]</span> down
+                )
+
+            [15] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb">den [<span class="or"><acronym title="oder">o.</acronym></span> seinen] <strong class="tilde">Hut</strong> nehmen müssen</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => to be dismissed
+                )
+
+            [16] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"><acronym title="etwas">etw</acronym> an den <strong class="tilde">Hut</strong> stecken können</span> <span class="style"><acronym title="informal">inf</acronym></span>
+                    [target] => to stick <span class="target">[<span class="or"><acronym title="or">or</acronym></span> keep]</span> <acronym title="something">sth</acronym> <span class="style"><acronym title="slang">sl</acronym></span>
+                )
+
+            [17] => stdClass Object
+                (
+                    [source] => <span class="idiom_proverb"><acronym title="etwas">etw</acronym> aus dem <strong class="tilde">Hut</strong> zaubern</span> <span class="style"><acronym title="informal">inf</acronym></span> <span class="sense">(<acronym title="etwas">etw</acronym> improvisieren)</span>
+                    [target] => to pull <acronym title="something">sth</acronym> out of the hat
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Hut
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Hut</strong>
+                    [target] => protection
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">irgendwo/bei <acronym title="jemandem">jdm</acronym> in bester [<span class="or"><acronym title="oder">o.</acronym></span> sicherer] <strong class="tilde">Hut</strong> sein</span>
+                    [target] => to be in safe hands somewhere/with <acronym title="somebody">sb</acronym>
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="example">ich habe die Diamanten in meiner <strong class="tilde">Hut
+</strong> </span>
+                    [target] => I have the diamonds in safe keeping
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">auf der <strong class="tilde">Hut</strong> [vor <acronym title="jemandem">jdm</acronym>/<acronym title="etwas">etw</acronym>] sein</span>
+                    [target] => to be on one&#39;s guard [against <acronym title="somebody">sb</acronym>/<acronym title="something">sth</acronym>]
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for immerhin:
+stdClass Object
+(
+    [type] => entry
+    [headword] => im·mer·hin
+    [pos] => adverb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">immerhin</strong>
+                    [target] => all the same
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <strong class="headword">immerhin</strong>
+                    [target] => at any rate
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <strong class="headword">immerhin</strong>
+                    [target] => anyhow
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="full_collocation"> <strong class="tilde">immerhin!</strong></span>
+                    [target] => all the same!
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Inhaber:
+stdClass Object
+(
+    [type] => entry
+    [headword] => In·ha·ber
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Inhaber</strong><span class="feminine">(in)</span>
+                    [target] => holder
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <strong class="headword">Inhaber</strong><span class="feminine">(in)</span> <span class="collocator">Scheck</span>
+                    [target] => bearer
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Cap-Inhaber
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Cap-Inhaber</strong>
+                    [target] => cap bearer
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [type] => entry
+    [headword] => Inhaber-Optionsgenussschein
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Inhaber-Optionsgenussschein</strong>
+                    [target] => bearer participatory certificate
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for instand halten:
+stdClass Object
+(
+    [type] => entry
+    [headword] => instand halten
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">instand halten</strong>
+                    [target] => maintain
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for Instandhaltung:
+stdClass Object
+(
+    [type] => entry
+    [headword] => In·stand·hal·tung
+    [pos] => noun
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">Instandhaltung</strong>
+                    [target] => maintenance
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="full_collocation"> <strong class="tilde">Instandhaltung</strong> des Programms</span> <span class="topic"><acronym title="computing">COMPUT</acronym></span>
+                    [target] => program maintenance
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <span class="full_collocation">laufende <strong class="tilde">Instandhaltung
+</strong> </span>
+                    [target] => routine maintenance
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for jagen:
+stdClass Object
+(
+    [type] => entry
+    [headword] => ja·gen
+    [pos] => intransitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction">aus <acronym title="etwas">etw</acronym> <span class="case"><acronym title="dative">dat</acronym></span>/durch <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span>/in <acronym title="etwas">etw</acronym> <span class="case"><acronym title="accusative">acc</acronym></span> <strong class="tilde">jagen
+</strong> </span>
+                    [target] => to race <span class="target">[<span class="or"><acronym title="or">or</acronym></span> tear]</span> out of <acronym title="something">sth</acronym>/through <acronym title="something">sth</acronym>/into <acronym title="something">sth</acronym>
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <span class="example">er kam plötzlich aus dem Haus gejagt</span>
+                    [target] => he suddenly came racing out of the house
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for jeweilig:
+stdClass Object
+(
+    [type] => entry
+    [headword] => je·wei·lig
+    [pos] => adjective and adverb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <strong class="headword">jeweilig</strong>
+                    [target] => current
+                )
+
+            [1] => stdClass Object
+                (
+                    [source] => <strong class="headword">jeweilig</strong>
+                    [target] => prevailing
+                )
+
+            [2] => stdClass Object
+                (
+                    [source] => <strong class="headword">jeweilig</strong>
+                    [target] => respective
+                )
+
+            [3] => stdClass Object
+                (
+                    [source] => <span class="example">es gibt Geschichtswerke, in denen zu jeder Epoche Bilder der <strong class="tilde">jeweiligen</strong> Mode gezeigt werden</span>
+                    [target] => there are historical works showing pictures of the prevailing fashions for each epoch
+                )
+
+        )
+
+)
+
+==============
+ResultsIerator out for kapieren:
+stdClass Object
+(
+    [type] => entry
+    [headword] => ka·pie·ren
+    [pos] => transitive verb
+    [definitions] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [source] => <span class="grammatical_construction"><acronym title="etwas">etw</acronym> <strong class="tilde">kapieren
+</strong> </span>
+                    [target] => to get <span class="target">[<span class="or"><acronym title="or">or</acronym></span> understand]</span> <acronym title="something">sth</acronym>
+                )
+
+        )
+
+)
+
+==============
