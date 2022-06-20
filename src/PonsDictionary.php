@@ -38,38 +38,11 @@ class PonsDictionary extends  RestClient {
       return $arr;
    } 
    
-   /*
-    * Calling urlencode() for German words with umlauts or sharp s, results in no definition returned.
-    * 
-    */
-   /*
-     PONS json repsonse object layout:
-   
-      [lang] => 'de'
-      [hits] => Array of stdClass objects
-              [type]
-              [opendict]
-              [roms] => Array of stdClass objects 
-                   [headword] => 
-                   [headword_full] =>  
-                   [wordclass] => 
-                   [arabs] => Array of stdClass objects
-                                   [header] => 1. Handeln <span class="sense">(Feilschen)</span>:
-                                   [translations] => Array of stdClass objects
-                                                   [source] => <strong class="headword">Handeln</strong>
-                                                   [target] => haggling
-      
-   Some of the returned 'translation' or definition objects are actually example sentence objects. To
-   detremine if  an object is an example, check its html <span class='example'> for the 'example' class.
-    
-   */
    public function search(string $word, string $src, string $dest) : null | ResultsIterator
    {
 
        $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['query' => [ 'q' => $word, 'in'=> strtolower($src), 'language' => strtolower($dest), 'l' =>   strtolower($src . $dest)]  ]); 
        
-       $results = array();
-              
        if (empty($contents)) {
            
              echo "Response contenst for $word is empty.\n";
@@ -77,13 +50,9 @@ class PonsDictionary extends  RestClient {
        }
        
        $obj = json_decode($contents)[0];
-
-       print_r($obj);
-
-       echo "\n--------------------\n";
        
-      if (is_null($obj) || count($obj->hits) == 0) 
-             return $results;
+       if (is_null($obj) || count($obj->hits) == 0) 
+             return null;
 
        return new ResultsIterator($obj->hits, PonsDictionary::get_result(...));
    }
@@ -112,8 +81,10 @@ class PonsDictionary extends  RestClient {
               `1. Abschied <span class="sense">(Trennung)</span>`
           
           header can contain more spans with more information. The transations array holds \stdClasses with two strings: source and target.
-          target is the English translation of the source. It can contain the 'sense', the 'headword' of an 'example'. This information is 
-          in a <span>'s class, say: <span class="sense"> or <span class="example"> , etc.
+          target is the English translation of the source. It can contain the 'sense', 'gramatical_constructions` 'headword' or an 'example'.
+          This information is in a <span>'s class, say: <span class="sense"> or <span class="example"> , etc.
+
+          These span classes are undocumented, however!
        */
       
       foreach($obj->roms as $rom) { // rom == pos
