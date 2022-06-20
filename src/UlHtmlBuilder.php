@@ -190,11 +190,11 @@ EOS;
           if (count($defn['expressions']) > 0) { // Build expression <dl>
              
               // We use a nested <dl> for the expressions.
-              $li .= "<li class="expressions">\n  $dl_exp\n"; 
+              $li = "<li class='expressions'>\n{$dl_exp}\n"; 
 
               foreach ($defn['expressions'] as $expression) 
 
-                     $dd .= "    <dt>{$expression->source}</dt>\n    <dd>{$expression->target}</dd>\n";
+                     $dd = "    <dt>{$expression->source}</dt>\n    <dd>{$expression->target}</dd>\n";
 
               $dd .= "  </dl>\n</li>\n";
           }
@@ -202,7 +202,7 @@ EOS;
           $ul .= "</ul>\n";  
       } 
 
-      return $dd;
+      return $ul;
     }
 
     public function add_samples(string $word, int $cnt) : int 
