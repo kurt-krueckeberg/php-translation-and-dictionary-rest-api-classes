@@ -10,22 +10,22 @@ use LanguageTools\ResultsIterator;
 
 include 'vendor/autoload.php';
 
-if ($argc != 3) {
+if ($argc != 2) {
 
-  echo "Enter the vocabulary words input file follow by html file name (without .html).\n";
+  echo "Enter the vocabulary words input file.\n";
   return;
 
 } else if (!file_exists($argv[1])) {
 
-
   echo "Input file does not exist.\n";
   return;
 }
+
 function display(ResultsIterator $iter)
 {
   foreach($iter as $r) {
      
-     print_r($defn);
+     print_r($r);
    }
     
 }

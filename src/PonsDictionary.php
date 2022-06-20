@@ -136,7 +136,7 @@ class PonsDictionary extends  RestClient {
                       $definitions[] = $translation;//strip_tags($translation->target);
                  }
 
-                 $result->definitions = $defintions;  
+                 $result->definitions = $definitions;
             }
       }
 
