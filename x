@@ -1,0 +1,10 @@
+Abkürzung
+AbschiedBart
+Befund
+Ehre
+Ausfall
+anbeten
+anderthalb
+Anlagen
+Anlass
+Arbeitsmoral

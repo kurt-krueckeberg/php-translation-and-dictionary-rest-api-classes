@@ -142,6 +142,8 @@ EOS;
       $iter = $this->dict->lookup($word, $src, $dest);
  
       $sec = "<section>\n";
+
+      echo "Section Start:\n$sec\n";
  
       if (count($iter) > 0) {
  
@@ -153,24 +155,27 @@ EOS;
                  
                   $gender_pl = $this->get_noun_gender_pl($word);       
 
-                  $sec .= "<div class='hwd'><p>{$set->term}</p><p class='pos'>" . $gender_pl . "</p></div>\n";    
+                  $sec .= "<div class='hwd'><p>{$set->term}</p><p class='pos'>" . $gender_pl . "</p>\n";    
 
               } else // Not a noun
 
-                  $sec .= "<div class='hwd'><p>{$set->term}</p><p class='pos'>" . strtoupper($set->pos) . "</p></div>\n";    
-          
-              $set = $this->build_defns($set->definitions);
+                  $sec .= "<div class='hwd'><p>{$set->term}</p><p class='pos'>" . strtoupper($set->pos) . "</p>\n";    
+                  
+              $defns = $this->build_defns($set->definitions);
+
+              $sec .= $defns;
            }
            
-           $sec .= $set . '</ul'; // append definitions
+           $sec .= $sec . '</ul'; // append definitions
            
       } else {
           
           $sec .= "<div><p>$word No defintions found.</p></div>\n";    
       } 
       
-      $sec .= "</section>\n";
-      
+      $sec .= "</div>\n</section>\n";
+
+      echo "Section End:\n$sec\n";
       // Note: Calling $this->tidy($str) changes <p> tags to <br />.
       $this->html->fwrite($sec );
  
@@ -179,9 +184,8 @@ EOS;
   
    private function build_defns(array $definitions) : string
    {       
-      static $dl_exp = "<dl class='expressions'>";
-
       static $ul_defn = "<ul class='defn'>";
+      static $dl = "<dl class='expressions'>";
 
       $ul = $ul_defn;
 
@@ -190,20 +194,23 @@ EOS;
           $ul .= "<li>" . $defn["definition"] . "</li>\n";
 
           if (count($defn['expressions']) > 0) { // Build expression <dl>
-             
+               
               // We use a nested <dl> for the expressions.
-              $li = "<li class='expressions'>\n{$dl_exp}\n"; 
-
+              $li_exp = "<li class='expressions'>\n$dl\n"; 
+              
+              $rows = ''; 
+              
               foreach ($defn['expressions'] as $expression) 
 
-                     $dd = "    <dt>{$expression->source}</dt>\n    <dd>{$expression->target}</dd>\n";
+                     $rows .= "    <dt>{$expression->source}</dt>\n    <dd>{$expression->target}</dd>\n";
 
-              $dd .= "  </dl>\n</li>\n";
-          }
-
-          $ul .= "</ul>\n";  
-      } 
-
+              $li_exp .= "$rows</dl>\n</li>\n";
+              
+               $ul .=  $li_exp;              
+          }                   
+      }
+      
+      $ul .= "</ul>\n";  
       return $ul;
     }
 
