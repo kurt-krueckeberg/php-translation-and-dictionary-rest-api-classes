@@ -35,7 +35,7 @@ try {
 
         echo "About to add definitions for $word.\n";
         
-        $cnt = $dict->lookup($word, "de", "en");
+        $cnt = $dict->search($word, "de", "en");
 
         echo "Added $cnt definitions for $word.\n";
     }

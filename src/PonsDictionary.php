@@ -6,27 +6,6 @@ use LanguageTools\ClassID;
 use LanguageTools\ResultsIterator;
 use LanguageTools\RestClient;
 
-/*
-  PONS json repsonse object layout:
-
-   [lang] => 'de'
-   [hits] => Array of stdClass objects
-           [type]
-           [opendict]
-           [roms] => Array of stdClass objects 
-                [headword] => 
-                [headword_full] =>  
-                [wordclass] => 
-                [arabs] => Array of stdClass objects
-                                [header] => 1. Handeln <span class="sense">(Feilschen)</span>:
-                                [translations] => Array of stdClass objects
-                                                [source] => <strong class="headword">Handeln</strong>
-                                                [target] => haggling
-   
-Some of the returned 'translation' or definition objects are actually example sentence objects. To
-detremine if  an object is an example, check its html <span class='example'> for the 'example' class.
- 
-*/
 class PonsDictionary extends  RestClient {
 
    static array   $lookup   = array('method' => 'GET', 'route' => "dictionary");
@@ -63,7 +42,27 @@ class PonsDictionary extends  RestClient {
     * Calling urlencode() for German words with umlauts or sharp s, results in no definition returned.
     * 
     */
-
+   /*
+     PONS json repsonse object layout:
+   
+      [lang] => 'de'
+      [hits] => Array of stdClass objects
+              [type]
+              [opendict]
+              [roms] => Array of stdClass objects 
+                   [headword] => 
+                   [headword_full] =>  
+                   [wordclass] => 
+                   [arabs] => Array of stdClass objects
+                                   [header] => 1. Handeln <span class="sense">(Feilschen)</span>:
+                                   [translations] => Array of stdClass objects
+                                                   [source] => <strong class="headword">Handeln</strong>
+                                                   [target] => haggling
+      
+   Some of the returned 'translation' or definition objects are actually example sentence objects. To
+   detremine if  an object is an example, check its html <span class='example'> for the 'example' class.
+    
+   */
    public function search(string $word, string $src, string $dest) : null | ResultsIterator
    {
 
