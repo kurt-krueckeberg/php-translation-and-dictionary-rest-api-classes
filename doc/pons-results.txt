@@ -1,0 +1,11 @@
+- The 'headword' should be compared with the input word. If the same then it is not a phrase or expression. Therefore scan all the results first for those where:
+
+  $r->headword == $word
+
+- Next put output where 
+
+  $r->headword == $word && isset($r->pos)
+
+  - The 'pos' can be missing
+
+- Then output based on the class styles in the words.

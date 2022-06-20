@@ -21,7 +21,7 @@ if ($argc != 2) {
   return;
 }
 
-function display(string $word, ResultsIterator $iter, File $ofile)
+function display(string $word, ResultsIterator|array $iter, File $ofile)
 { 
   echo "Display results for word $word.\n"  ;
   
@@ -44,7 +44,7 @@ try {
     
     $file = new FileReader($fname);
 
-    $ofile = new File("pons-output", "w");
+    $ofile = new File("analysis-pons.txt", "w");
     
     foreach ($file as $word) {
         
