@@ -141,36 +141,38 @@ EOS;
 
       $iter = $this->dict->lookup($word, $src, $dest);
  
-      $str = "<section>\n";
+      $sec = "<section>\n";
  
       if (count($iter) > 0) {
  
           foreach($iter as $set)  {
           
-            // If noun (Tn the utf-8 (code point collection) lowercase characters
-            // have a larger code point values than uppercase)   
-             if ($word[0] >= 'A' && $word[0] <= 'Z' ) { 
+              // If noun (Tn the utf-8 (code point collection) lowercase characters
+              // have a larger code point values than uppercase)   
+              if ($word[0] >= 'A' && $word[0] <= 'Z' ) { 
                  
-                $gender_pl = $this->get_noun_gender_pl($word);       
+                  $gender_pl = $this->get_noun_gender_pl($word);       
 
-                $str .= "<div class='hwd'><p>{$set->term}</p><p class='pos'>" . $gender_pl . "</p></div>\n";    
+                  $sec .= "<div class='hwd'><p>{$set->term}</p><p class='pos'>" . $gender_pl . "</p></div>\n";    
 
-             } else // Not a noun
+              } else // Not a noun
 
-                $str .= "<div class='hwd'><p>{$set->term}</p><p class='pos'>" . strtoupper($set->pos) . "</p></div>\n";    
+                  $sec .= "<div class='hwd'><p>{$set->term}</p><p class='pos'>" . strtoupper($set->pos) . "</p></div>\n";    
           
-             $set = $this->build_defns($set->definitions);
-          }
- 
+              $set = $this->build_defns($set->definitions);
+           }
+           
+           $sec .= $set . '</ul'; // append definitions
+           
       } else {
           
-          $str .= "<div><p>$word No defintions found.</p></div>\n";    
+          $sec .= "<div><p>$word No defintions found.</p></div>\n";    
       } 
       
-      $str .= "</section>\n";
+      $sec .= "</section>\n";
       
       // Note: Calling $this->tidy($str) changes <p> tags to <br />.
-      $this->html->fwrite($str); 
+      $this->html->fwrite($sec );
  
       return count($iter); 
    }

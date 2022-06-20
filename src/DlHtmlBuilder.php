@@ -140,13 +140,13 @@ EOS;
 
       $iter = $this->dict->lookup($word, $src, $dest);
  
-      $str = "<section>\n";
+      $sec = "<section>\n";
  
       if (count($iter) > 0) {
  
           foreach($iter as $defns)  {
           
-             $str .= $dl_hwd;
+             $sec .= $dl_hwd;
              
             // If noun (Tn the utf-8 (code point collection) lowercase characters
             // have a larger code point values than uppercase)   
@@ -154,26 +154,26 @@ EOS;
                  
                 $info = $this->get_noun_info($word);       
 
-                $str .= "<dt><p>{$defns->term}</p><p class='pos'>" . $info . "</p></dt>\n";    
+                $sec .= "<dt><p>{$defns->term}</p><p class='pos'>" . $info . "</p></dt>\n";    
 
              } else // Not a noun
 
-                $str .= "<dt><p>{$defns->term}</p><p class='pos'>" . strtoupper($defns->pos) . "</p></dt>\n";    
+                $sec .= "<dt><p>{$defns->term}</p><p class='pos'>" . strtoupper($defns->pos) . "</p></dt>\n";    
           
              $dd = $this->build_defns($defns->definitions);
              
-             $str .= $dd . "</dl>\n";
+             $sec .= $dd . "</dl>\n";
           }
  
       } else {
           
-          $str .= $dl_hwd . "<dt>$word</dt>\n<dd>No defintions found.</dd></dl>\n";    
+          $sec .= $dl_hwd . "<dt>$word</dt>\n<dd>No defintions found.</dd></dl>\n";    
       } 
       
-      $str .= "</section>\n";
+      $sec .= "</section>\n";
       
       // Note: Calling $this->tidy($str) changes <p> tags to <br />.
-      $this->html->fwrite($str); 
+      $this->html->fwrite($sec); 
  
       return count($iter); 
    }
