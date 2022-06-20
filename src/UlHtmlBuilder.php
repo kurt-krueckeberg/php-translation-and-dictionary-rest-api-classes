@@ -99,7 +99,7 @@ EOS;
      */
     private function get_gender(\DOMDocument $dom) : string
     {  
-      static $q =  "//span[contains(@class,'pos')]";
+      static $q =  "//span[contains(@class,'pos')]"; // query for CollinsGermanDictionary
 
       $xpath = new \DOMXpath($dom);
      
@@ -116,7 +116,8 @@ EOS;
 
    private function get_plural(\DOMDocument $dom) : string
    {
-      static $plq = "(//span[@class='orth'])[2]"; // get the second instance of <span class="orth">.
+     // query for CollinsGermanDictionary. Get the second instance of <span class="orth">.
+      static $plq = "(//span[@class='orth'])[2]"; 
 
       $xpath = new \DOMXpath($dom);
      
@@ -178,23 +179,27 @@ EOS;
    {       
       static $dl_exp = "<dl class='expressions'>";
 
-      $dd = '';
+      static $ul_defn = "<ul class='defn'>";
+
+      $ul = $ul_defn;
 
       foreach ($definitions as $defn) {
 
-          $dd .= "<dd>" . $defn["definition"] . "</dd>\n";
+          $ul .= "<li>" . $defn["definition"] . "</li>\n";
 
-          if (count($defn['expressions']) > 0) {
+          if (count($defn['expressions']) > 0) { // Build expression <dl>
              
-             // We use a nested <dl> for the expressions.
-             $dd .= "<dd>\n  $dl_exp\n"; 
+              // We use a nested <dl> for the expressions.
+              $li .= "<li class="expressions">\n  $dl_exp\n"; 
 
-             foreach ($defn['expressions'] as $expression) 
+              foreach ($defn['expressions'] as $expression) 
 
                      $dd .= "    <dt>{$expression->source}</dt>\n    <dd>{$expression->target}</dd>\n";
 
-             $dd .= "  </dl>\n</dd>\n";
-          }  
+              $dd .= "  </dl>\n</li>\n";
+          }
+
+          $ul .= "</ul>\n";  
       } 
 
       return $dd;
