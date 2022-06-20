@@ -1,5 +1,39 @@
 #  Todo
 
+## Pons
+
+Pons search calls returns not just results for one word but all words that mathc in part. A search on Abschied will return abschieden, too., and its associated definitions.
+
+- The 'headword' should be compared with the input word. If they match, save `headword_full`:
+
+This headword_full for Abschied:
+
+```html
+"Ab<span class="separator">·</span>kür<span class="separator">·</span>zung <span class="wordclass"><acronym title="noun">N</acronym></span> <span class="genus"><acronym title="feminine">f</acronym></span>"
+```
+
+```php
+  $r->headword == $word
+
+
+$results = $roms
+$x;
+
+foreach ($roms as $rom) {
+
+      if ($rom->headword == $input_word && isset($rom->wordclass)) {
+
+         $x = $rom->headword_full;
+         break;
+      } 
+} 
+
+$query = '//span[@class="genus"]/acronym';
+
+// Run Xpath query against $x.
+$dom = ...
+```
+
 Collins dictionary is no loner returning requests. To get Pons dictionary code working instead, we must compare the html results for a given word returned from an API calls with the html used on the PONS website (for the word).
 This way we can determine the html tages and their CSS classes and ids that identity the data for 1. pos, 2. the definitions and any associated expressions, etc. Since the output might vary a lot depending on the wor, this is a lot of leg
 work.

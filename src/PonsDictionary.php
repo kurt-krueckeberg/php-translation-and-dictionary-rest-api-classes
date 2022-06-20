@@ -87,13 +87,19 @@ class PonsDictionary extends  RestClient {
           These span classes are undocumented, however!
        */
       
-      foreach($obj->roms as $rom) { // rom == pos
+      foreach($obj->roms as $rom) { 
           
-           $result->headword = $rom->headword; // todo: rename $result->headword.
+           $result->headword = $rom->headword; 
+           
+           /* rom->headword_full Contains span classes that tell us:
+            * 1. the part-of-speech, which is also in rom->wordclass
+            * 2. the gender
+            */
+           $result->headword_full = $rom->headword_full; 
            
            if (isset($rom->wordclass))  {// not sure why this isn't always set.
                
-               $result->pos = $rom->wordclass;    // Is the part of speech
+               $result->pos = $rom->wordclass;    // Part-of-speech
            }
            
            if (count($rom->arabs) == 0) continue;
