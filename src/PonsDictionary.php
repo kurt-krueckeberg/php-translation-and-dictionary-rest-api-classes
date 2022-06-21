@@ -36,6 +36,35 @@ class PonsDictionary extends  RestClient {
       return $arr;
    } 
    
+   public function get_german_noun_gender(string $word) : array
+   {
+       $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['query' => [ 'q' => $word, 'in'=> strtolower('de'), 'language' => strtolower('en'), 'l' =>   'deen']  ]); 
+       
+       if (empty($contents)) {
+           
+             echo "Response contenst for $word is empty.\n";
+             return null; 
+       }
+
+       $obj = json_decode($contents)[0];
+
+       foreach ($obj->hits as $hit) {
+
+         foreach ($hhits->roms as $rom)  {
+
+          if ($rom->headword == $input_word && isset($rom->wordclass)) {
+
+                  $hwf = "<p>" . $rom->headword_full . "</p>";
+                  break;
+         } 
+       }
+
+      $matches = preg_match('<acronym title="([^")]+">([a-z])</acronym>', $hwf);
+
+      return array (matches[1], $matches[2]);  
+    }
+
+   }
    public function search(string $word, string $src, string $dest) : array | ResultsIterator
    {
        $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['query' => [ 'q' => $word, 'in'=> strtolower($src), 'language' => strtolower($dest), 'l' =>   strtolower($src . $dest)]  ]); 

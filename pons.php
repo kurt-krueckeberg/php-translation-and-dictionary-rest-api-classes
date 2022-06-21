@@ -54,11 +54,10 @@ try {
 
         echo "About to add definitions for $word.\n";
         
-        $iter = $dict->search($word, "de", "en");
+        $a = $dict->get_german_noun_gender($word);
+        print_r($a);
 
-        echo "Added " . count($iter) . " definitions for $word.\n";
-        
-        display($word, $iter, $ofile);
+        return;
     }
  
   } catch (Exception $e) {

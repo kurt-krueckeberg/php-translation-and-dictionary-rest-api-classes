@@ -57,7 +57,6 @@ EOS;
    */ 
    private function get_noun_info($word) : string
    {
-
 static $noun_start =<<<EOS
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
