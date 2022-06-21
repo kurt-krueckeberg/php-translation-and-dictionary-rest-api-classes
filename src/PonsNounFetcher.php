@@ -42,7 +42,7 @@ EOS;
         return null;
    }
 
-   public function get_noun(string $word) : string | null
+   public function get_gender(string $word) : string | null
    {       
       // sample:  <span class="genus"><acronym title="feminine">
       static $query = "//span[@class='genus']/acronym/@title";

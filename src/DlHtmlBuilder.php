@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace LanguageTools;
 
-use LanguageTools\{DictionaryInterface, TranslateInterface, SentenceFetchInterface, CollinsGermanDictionary};
+use LanguageTools\{DictionaryInterface, TranslateInterface, SentenceFetchInterface, CollinsGermanDictionary, NounFetchInterface};
 use \SplFileObject as File; 
 
 class DlHtmlBuilder implements ResultfileInterface {
@@ -52,9 +52,7 @@ EOS;
       return (string) $tidy;  
    }
 
-  /*
-     Get Gender of noun and its plural form
-   */ 
+   
    private function get_noun_info($word) : string
    {
 static $noun_start =<<<EOS
@@ -242,7 +240,7 @@ EOS;
         } 
     }
     
-    public function __construct(string $fname, private readonly string $src, private readonly string $dest, private readonly CollinsGermanDictionary $collins, private readonly DictionaryInterface $dict, private readonly TranslateInterface $trans, private readonly SentenceFetchInterface $fetcher)
+    public function __construct(string $fname, private readonly string $src, private readonly string $dest, private readonly NounFetchInterface $collins, private readonly DictionaryInterface $dict, private readonly TranslateInterface $trans, private readonly SentenceFetchInterface $fetcher)
     { 
        $this->b_saved = false;
 
