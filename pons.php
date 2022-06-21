@@ -47,7 +47,7 @@ try {
 
     $ofile = new File("analysis-pons.txt", "w");
 
-    $fetcher = new PonsNounfetcher($dict);
+    $fetcher = new PonsNounFetcher($dict);
     
     foreach ($file as $word) {
         
@@ -57,7 +57,7 @@ try {
 
         echo "About to add definitions for $word.\n";
         
-        echo $fetcher($word) . "\n";    }
+        echo $fetcher->get_gender($word) . "\n";    }
  
   } catch (Exception $e) {
 
