@@ -57,10 +57,7 @@ try {
 
         echo "About to add definitions for $word.\n";
         
-        $a = $fetcher($word);
-        print_r($a);
-
-    }
+        echo $fetcher($word) . "\n";    }
  
   } catch (Exception $e) {
 

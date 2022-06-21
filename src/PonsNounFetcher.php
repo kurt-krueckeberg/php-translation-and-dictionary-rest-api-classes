@@ -4,7 +4,7 @@ namespace LanguageTools;
 
 use LanguageTools\PonsDictionary;
 
-class PonsNounFetcher  {
+class PonsNounFetcher implements NounFetchInterface  {
       
       private \DOMDocument $dom;
       private PonsDictionary $dict;
@@ -37,9 +37,15 @@ EOS;
       $this->xpath = new \DOMXpath($this->dom);
    } 
 
-   public function __invoke(string $word) : string | null
+   public function get_plural(string $word) : string | null
+   {
+        return null;
+   }
+
+   public function get_noun(string $word) : string | null
    {       
-      static $query = "//span[@class='genus']/acronym[@class='title']";
+      // sample:  <span class="genus"><acronym title="feminine">
+      static $query = "//span[@class='genus']/acronym/@title";
 
       $iter = $this->dict->search($word, "de", "en");
 
@@ -60,16 +66,14 @@ EOS;
 
        $frag->appendXML("<p>$hwf</p>");
 
-       $node = $this->body->appendChild($frag);
+       $child = $this->body->appendChild($frag);
 
-       $r = $this->xpath->query($query);
+       $list = $this->xpath->query($query);
+              
+       $result = ($list !== false && $list->count() == 1) ? $list->item(0)->textContent : null;        
+       
+       $this->body->removeChild($child);
 
-       $this->body->removeChild($node);
-
-       if ($r !== false) 
-          return $r->textContext;        
-       else
-          return null;  
+      return $result;  
     }
-
 }
