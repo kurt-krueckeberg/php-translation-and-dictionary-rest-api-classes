@@ -57,7 +57,6 @@ try {
         $a = $dict->get_german_noun_gender($word);
         print_r($a);
 
-        return;
     }
  
   } catch (Exception $e) {

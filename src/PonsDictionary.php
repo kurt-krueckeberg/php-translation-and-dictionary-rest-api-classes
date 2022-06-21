@@ -36,8 +36,8 @@ class PonsDictionary extends  RestClient {
       return $arr;
    } 
    
-   public function get_german_noun_gender(string $word) : array
-   {
+   public function get_german_noun_gender(string $word) : string
+   {       
        $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['query' => [ 'q' => $word, 'in'=> strtolower('de'), 'language' => strtolower('en'), 'l' =>   'deen']  ]); 
        
        if (empty($contents)) {
@@ -50,18 +50,31 @@ class PonsDictionary extends  RestClient {
 
        foreach ($obj->hits as $hit) {
 
-         foreach ($hhits->roms as $rom)  {
-
-          if ($rom->headword == $input_word && isset($rom->wordclass)) {
+         foreach ($hit->roms as $rom)  {
+             
+          //  $x = strip_Tags($rom->headword); // and we must remove the spearator
+          // $x = trim($x, "" )
+          
+          //if ($x == $word && isset($rom->wordclass)) {
+          if (isset($rom->wordclass) && $rom->wordclass == "noun") {
 
                   $hwf = "<p>" . $rom->headword_full . "</p>";
                   break;
          } 
        }
-
-      $matches = preg_match('<acronym title="([^")]+">([a-z])</acronym>', $hwf);
-
-      return array (matches[1], $matches[2]);  
+       // XPath query is: "//span[@class="genus"]/acronym[@title]
+       // todo: query a domdocument as in DlHtmlBuilder::get_gender()
+       // 
+       // $this-query($hwf);
+       /*
+       $rc = preg_match('@<acronym title="([^"]+)">([a-z])</acronym>@', $hwf, $matches);
+      
+      if ($rc === false)
+          return '';
+      
+      return $matches[1];
+        * 
+        */
     }
 
    }
