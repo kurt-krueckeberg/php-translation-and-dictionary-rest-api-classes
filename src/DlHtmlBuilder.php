@@ -241,10 +241,11 @@ EOS;
     }
 
     /*
-      'in_file'
-      'src'
-      'target'
-        
+      array('in_file' =>
+      'src' => "de",
+      'target' => "en",
+      'nouns' or 'collins' nounfetchinterface
+       bool => provide sample sentences,too 
 
      */ 
     static public function create(array $options)
