@@ -239,7 +239,20 @@ EOS;
             $this->b_saved = true;
         } 
     }
-    
+
+    /*
+      'in_file'
+      'src'
+      'target'
+        
+
+     */ 
+    static public function create(array $options)
+    {
+      string $fname, private readonly string $src, private readonly string $dest, private readonly NounFetchInterface $collins, private readonly DictionaryInterface $dict, private readonly TranslateInterface $trans, private readonly SentenceFetchInterface $fetcher)
+
+    }
+ 
     public function __construct(string $fname, private readonly string $src, private readonly string $dest, private readonly NounFetchInterface $collins, private readonly DictionaryInterface $dict, private readonly TranslateInterface $trans, private readonly SentenceFetchInterface $fetcher)
     { 
        $this->b_saved = false;
