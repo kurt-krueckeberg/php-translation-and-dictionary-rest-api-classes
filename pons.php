@@ -5,6 +5,7 @@ use LanguageTools\RestClient;
 use LanguageTools\ClassID;
 use LanguageTools\FileReader;
 use LanguageTools\PonsDictionary;
+use LanguageTools\PonsNounFetcher;
 use LanguageTools\ResultsIterator;
 use \SplFileObject as File;
 
@@ -45,6 +46,8 @@ try {
     $file = new FileReader($fname);
 
     $ofile = new File("analysis-pons.txt", "w");
+
+    $fetcher = new PonsNounfetcher($dict);
     
     foreach ($file as $word) {
         
@@ -54,7 +57,7 @@ try {
 
         echo "About to add definitions for $word.\n";
         
-        $a = $dict->get_german_noun_gender($word);
+        $a = $fetcher($word);
         print_r($a);
 
     }
