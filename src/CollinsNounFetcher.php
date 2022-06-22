@@ -28,9 +28,7 @@ EOS;
      
       $div = $this->collins->get_best_matching($word);
 
-      $html .= $div . '</body.</html>';
-
-      $dom->loadHTML($html);
+      @$dom->loadHTML($html . $div . '</body.</html>');
 
       return $dom; 
     }
@@ -40,44 +38,7 @@ EOS;
       static $q_gender = "//span[contains(@class,'pos')]";
       static $q_pl = "(//span[@class='orth'])[2]"; // get the second instance of <span class="orth">.
       
-
       $dom = $this->create_dom($word);
-
-      echo "==============> \ndiv = \n$div";
-
-      echo "\n\n"; 
-      
-      echo "================> DOM::textContent\n";
-
-      echo $dom->textContent;
-
-      $xpath = new \DOMXpath($dom);
-     
-      $list = $xpath->query($q_gender);
-                
-      $gender = $list->item(0)->textContent;
-      
-      if ($list->count() == 2)  
-          
-           $gender .= ", " . $list->item(1)->textContent . "\n";
-      
-      $a = array('gender' => $gender, 'plural' => 'b');
-      return $a;
-    }
-
-/*
-
-      $dom = $this->create_dom($div);
-
-      echo "==============> \ndiv = \n$div";
-
-      echo "\n\n"; 
-      
-      echo "================> DOM::textContent\n";
-
-      echo $dom->textContent;
-
-      echo "\n\n";
 
       $xpath = new \DOMXpath($dom);
      
@@ -91,17 +52,12 @@ EOS;
       
       $gender = trim($gender);
 
-      echo "GENDER = $gender\n\n;
-      
       $list = $xpath->query($q_pl);
 
-      $plural = '';
-       
-      $a = array('gender' => $gender, 'plural' => $plural);
+      $plural = ($list->count() !== 0) ? $list->item(0)->textContent : "";
 
-      $plural = ($list->count() !== 0) ? $list->item(0)->textContent;
+      $a = array('gender' => $gender, 'plural' => $plural);
 
       return $a;
    }
-*/
 }
