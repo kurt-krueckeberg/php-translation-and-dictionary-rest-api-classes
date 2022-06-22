@@ -7,5 +7,33 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" type="text/css" href="css/dark-vocab.css"> 
    </head>
-<body>    </body>
+<body><section>
+<div class='hwd'><p>Tür</p><p class='pos'>feminine </p>
+<ul class='defn'><li>door</li>
+<li class='expressions'>
+<dl class='expressions'>
+    <dt>verschlossene Tür</dt>
+    <dd>closed door</dd>
+    <dt>offene Tür</dt>
+    <dd>open door</dd>
+</dl>
+</li>
+<li>doorstep</li>
+</ul>
+<section>
+<div class='hwd'><p>Tür</p><p class='pos'>feminine </p>
+<ul class='defn'><li>door</li>
+<li class='expressions'>
+<dl class='expressions'>
+    <dt>verschlossene Tür</dt>
+    <dd>closed door</dd>
+    <dt>offene Tür</dt>
+    <dd>open door</dd>
+</dl>
+</li>
+<li>doorstep</li>
+</ul>
+</ul></div>
+</section>
+    </body>
 </html>

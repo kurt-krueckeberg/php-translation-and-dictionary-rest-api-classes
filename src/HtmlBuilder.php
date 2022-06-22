@@ -187,7 +187,7 @@ EOS;
     
     public function __construct(string $ofname, string $src, string $dest, ClassID $dict_id)
     { 
-        $t = RestClient::createClient(ClassID::Systran);
+        $this->dict = $this->trans = RestClient::createClient(ClassID::Systran);
 
         if ($dict_id == ClassID::Pons) {
 
@@ -203,15 +203,13 @@ EOS;
         }
         
        $this->nfetcher = $f;
-
-       $this->dict = $d;
        
+       $this->sfetcher = new LeipzigSentenceFetcher(ClassID::Leipzig);
+
        $this->b_saved = false;
 
        $this->html = new File($ofname, "w"); 
 
        $this->html->fwrite(self::$html_start);
-       
-       $this->sfetcher = new LeipzigSentenceFetcher(ClassID::Leipzig);
     }
 }

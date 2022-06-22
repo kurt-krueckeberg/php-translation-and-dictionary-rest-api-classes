@@ -36,48 +36,6 @@ class PonsDictionary extends  RestClient {
       return $arr;
    } 
    
-   public function get_german_noun_gender(string $word) : string
-   {       
-       $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['query' => [ 'q' => $word, 'in'=> strtolower('de'), 'language' => strtolower('en'), 'l' =>   'deen']  ]); 
-       
-       if (empty($contents)) {
-           
-             echo "Response contenst for $word is empty.\n";
-             return null; 
-       }
-
-       $obj = json_decode($contents)[0];
-
-       foreach ($obj->hits as $hit) {
-
-         foreach ($hit->roms as $rom)  {
-             
-          //  $x = strip_Tags($rom->headword); // and we must remove the spearator
-          // $x = trim($x, "" )
-          
-          //if ($x == $word && isset($rom->wordclass)) {
-          if (isset($rom->wordclass) && $rom->wordclass == "noun") {
-
-                  $hwf = "<p>" . $rom->headword_full . "</p>";
-                  break;
-         } 
-       }
-       // XPath query is: "//span[@class="genus"]/acronym[@title]
-       // todo: query a domdocument as in DlHtmlBuilder::get_gender()
-       // 
-       // $this-query($hwf);
-       /*
-       $rc = preg_match('@<acronym title="([^"]+)">([a-z])</acronym>@', $hwf, $matches);
-      
-      if ($rc === false)
-          return '';
-      
-      return $matches[1];
-        * 
-        */
-    }
-
-   }
    public function search(string $word, string $src, string $dest) : array | ResultsIterator
    {
        $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['query' => [ 'q' => $word, 'in'=> strtolower($src), 'language' => strtolower($dest), 'l' =>   strtolower($src . $dest)]  ]); 
