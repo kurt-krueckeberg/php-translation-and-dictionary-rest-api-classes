@@ -33,9 +33,11 @@ try {
 
     foreach ($file as $word) {
 
-       // echo "Added $cnt definitions for $word.\n";
+        echo "About to add definitions for $word.\n";
 
-        echo "Looking for samples sentences for $word.\n";
+        $cnt = $html->add_defns($word); 
+
+        echo "Looking for samples sentences for $word.\n"
 
         $cnt = $html->add_samples($word, 3); 
 
