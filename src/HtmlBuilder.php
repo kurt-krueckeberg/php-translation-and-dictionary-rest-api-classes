@@ -12,7 +12,7 @@ class HtmlBuilder implements ResultfileInterface {
      private TranslateInterface     $trans;
      private SentenceFetchInterface $sfetch;
      
-     private DictionaryInterface $dict;
+     private DictionaryInterface    $dict;
 
 static private string $html_start = <<<html_eos
 <?xml version="1.0" encoding="UTF-8"?>
@@ -203,6 +203,8 @@ EOS;
         }
         
        $this->nfetcher = $f;
+
+       $this->dict = $d;
        
        $this->b_saved = false;
 
