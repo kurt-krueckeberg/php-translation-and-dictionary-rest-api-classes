@@ -5,9 +5,9 @@ namespace LanguageTools;
 use LanguageTools\{ClassID, DictionaryInterface, TranslateInterface, SentenceFetchInterface, CollinsGermanDictionary, PonsDictionary, PonsNounFetcher,  CollinsNounFetcher};
 use \SplFileObject as File; 
 
-class HtmlBuilder implements ResultfileInterface {
+class HtmlBuilder {
 
-     private File $html;
+     private File                   $html;
      private NounFetchInterface     $nfetcher;
      private TranslateInterface     $trans;
      private SentenceFetchInterface $sfetch;
@@ -59,15 +59,43 @@ EOS;
       return (string) $tidy;  
    }
 
+   private function build_defns(array $definitions) : string
+   {       
+      static $ul_defn = "<ul class='defn'>";
+      static $dl = "<dl class='expressions'>";
+
+      $ul = $ul_defn;
+
+      foreach ($definitions as $defn) {
+
+          $ul .= "<li>" . $defn["definition"] . "</li>\n";
+
+          if (count($defn['expressions']) > 0) { // Build expression <dl>
+               
+              // We use a nested <dl> for the expressions.
+              $li_exp = "<li class='expressions'>\n$dl\n"; 
+              
+              $rows = ''; 
+              
+              foreach ($defn['expressions'] as $expression) 
+
+                     $rows .= "    <dt>{$expression->source}</dt>\n<dd>{$expression->target}</dd>\n";
+
+              $li_exp .= "$rows</dl>\n</li>\n";
+              
+               $ul .=  $li_exp;              
+          }                   
+      }
+      
+      $ul .= "</ul>\n";  
+      return $ul;
+    }
+
   /*
      Get Gender of noun and its plural form
    */ 
-   public function add_definitions($word, string $src, string $dest) : int
+   public function add_definitions(string $word, string $src, string $dest) : int
    {
-      // We use a definitin list of class "hwd", headword, to display definitions. For those invidual 
-      // definitions that have associated expressions, we use  a nested <dl class="expressions">.
-      // associated with a given definition.
-      // The word, a new 'head word': hwd
       static $ul_hwd =  "<ul class='defns'>\n";
 
       $iter = $this->dict->lookup($word, $src, $dest);
@@ -110,37 +138,6 @@ EOS;
       return count($iter); 
    }
   
-   private function build_defns(array $definitions) : string
-   {       
-      static $ul_defn = "<ul class='defn'>";
-      static $dl = "<dl class='expressions'>";
-
-      $ul = $ul_defn;
-
-      foreach ($definitions as $defn) {
-
-          $ul .= "<li>" . $defn["definition"] . "</li>\n";
-
-          if (count($defn['expressions']) > 0) { // Build expression <dl>
-               
-              // We use a nested <dl> for the expressions.
-              $li_exp = "<li class='expressions'>\n$dl\n"; 
-              
-              $rows = ''; 
-              
-              foreach ($defn['expressions'] as $expression) 
-
-                     $rows .= "    <dt>{$expression->source}</dt>\n    <dd>{$expression->target}</dd>\n";
-
-              $li_exp .= "$rows</dl>\n</li>\n";
-              
-               $ul .=  $li_exp;              
-          }                   
-      }
-      
-      $ul .= "</ul>\n";  
-      return $ul;
-    }
 
     public function add_samples(string $word, int $cnt) : int 
     {
