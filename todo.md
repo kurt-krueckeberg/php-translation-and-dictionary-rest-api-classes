@@ -2,7 +2,7 @@
 
 - Test PonsNounFetcher 
 
-- Create correct CSS code for <ul>s.
+- Convert the CSS code in dark-vocab.css for use with the <ul> created by Htmlbuilder.php.
 
 Note:
 
