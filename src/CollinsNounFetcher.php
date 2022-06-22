@@ -6,43 +6,14 @@ use LanguageTools\CollinsGermanDictionary;
 
 class CollinsNounFetcher implements NounFetchInterface  {
       
-      private \DOMDocument $dom;
-      private CollinsGermanDictionary $collins;
+   private CollinsGermanDictionary $collins;
      
-      private \DOMNode $body;
-
-      private \DOMXpath $xpath;
-
    public function __construct(CollinsGermanDictionary$dict)
    {   
-static $html =<<<EOS
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
-  <head>
-  </head>
-EOS;
-
-     /*
-        todo: Move the CollinsGermanDictionary::get_noun_info()
-        code here and implement the NounFetchInterace method with it.  
-      */
       $this->collins = $dict;
+   }      
 
-      $this->dom = new \DOMDocument("1.0", 'utf-8');
-    }      
-    
-
-   public function get_plural(string $word) : string | null
-   {
-        return null;
-   }
-
-   public function get_gender(string $word) : string | null
-   {       
-   }
-
-   private function create_dom($word) : \DOMDocument
+   private function create_dom(string $div) : \DOMDocument
    {
 static $html =<<<EOS
 <?xml version="1.0" encoding="UTF-8"?>
@@ -53,22 +24,32 @@ static $html =<<<EOS
     <body>
 EOS;
 
-      $html .= $this->collins->get_best_matching($word);
-
-      $html .= '</body.</html>';
-
       $dom = new \DOMDocument("1.0", 'utf-8');
      
+      $html .= $div . '</body.</html>';
+
       @$dom->loadHTML($html);
 
       return $dom; 
     }
-          
+
+    public function get_noun_info(string $word) : array
+    {
+       $div = $this->collins->get_best_matching($word);
+
+       // todo: what if word is not found in dictionary?
+     
+       $dom = $this->create_dom($div);
+        
+       return array('gender' => $this->get_gender($dom), 'plural' => $this->get_plural($dom) ); 
+    }
+    
     /*
      * For words Unverständnis, Krähe, Veräter neither query below returns a results.
      */
     private function get_gender(\DOMDocument $dom) : string
     {  
+
       static $q =  "//span[contains(@class,'pos')]";
 
       $xpath = new \DOMXpath($dom);
@@ -81,26 +62,22 @@ EOS;
           
            $gender .= ", " . $list->item(1)->textContent . "\n";
       
-      $gender = trim($gender);
-        
-      return $gender;
+      return trim($gender);
    }
 
-   private function get_plural(\DOMDocument $dom) : string | null
+   private function get_plural(\DOMDocument $dom) : string
    {
-      static $plq = "(//span[@class='orth'])[2]"; // get the second instance of <span class="orth">.
+      static $q = "(//span[@class='orth'])[2]"; // get the second instance of <span class="orth">.
 
       $xpath = new \DOMXpath($dom);
      
-      $list = $xpath->query($plq);
+      $list = $xpath->query($q);
       
-      if ($list->count() == 0) 
+      if ($list->count() == 0) // no plural found. 
 
-          return null;
+          return '';
       
       else
           return $list->item(0)->textContent; 
    }
-
-
 }

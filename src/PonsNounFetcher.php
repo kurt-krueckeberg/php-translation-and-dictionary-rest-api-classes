@@ -37,12 +37,7 @@ EOS;
       $this->xpath = new \DOMXpath($this->dom);
    } 
 
-   public function get_plural(string $word) : string | null
-   {
-        return null;
-   }
-
-   public function get_gender(string $word) : string | null
+   public function get_nounf_info(string $word) : string | null
    {       
       // sample:  <span class="genus"><acronym title="feminine">
       static $query = "//span[@class='genus']/acronym/@title";
@@ -51,29 +46,39 @@ EOS;
 
       foreach ($iter as $r) {
             
-         //  $x = strip_Tags($rom->headword); // and we must remove the spearator
-         // $x = trim($x, "" )
+         /* Note: If we do
+
+           $x = strip_tags($rom->headword); <--- We must also remove the syllabul separator
+
+           $x = trim($x, $separator)
          
-         //if ($x == $word && isset($rom->wordclass)) {
-         if (isset($r->pos) && $r->pos == "noun") {
+           if ($x == $word && isset($rom->wordclass)) {
 
                  $hwf = "<p>" . $r->headword_full . "</p>";
                  break;
          } 
-       }
+         */ 
+            if ($r->pos !== "noun") continue;
+           
+            else {
+           
+               $hwd_full = $r->headword_full;
+               break;
+            }
+        }
 
-       $frag = $this->dom->createDocumentFragment(); 
+        $frag = $this->dom->createDocumentFragment(); 
+ 
+        $frag->appendXML("<p>$hwd_full</p>");
+ 
+        $child = $this->body->appendChild($frag);
+ 
+        $list = $this->xpath->query($query);
+               
+        $result = ($list !== false && $list->count() == 1) ? $list->item(0)->textContent : '';        
+        
+        $this->body->removeChild($child);
 
-       $frag->appendXML("<p>$hwf</p>");
-
-       $child = $this->body->appendChild($frag);
-
-       $list = $this->xpath->query($query);
-              
-       $result = ($list !== false && $list->count() == 1) ? $list->item(0)->textContent : null;        
-       
-       $this->body->removeChild($child);
-
-      return $result;  
+        return array('gender' => $result, 'plural' => '');
     }
 }
