@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace LanguageTools;
 
-use LanguageTools\{DictionaryInterface, TranslateInterface, SentenceFetchInterface, CollinsGermanDictionary};
+use LanguageTools\{ClassID, DictionaryInterface, TranslateInterface, SentenceFetchInterface, CollinsGermanDictionary, PonsDictionary, PonsNounFetcher,  CollinsNounFetcher};
 use \SplFileObject as File; 
 
 class HtmlBuilder implements ResultfileInterface {
@@ -180,18 +180,20 @@ EOS;
         } 
     }
     
-    public function create(string $ofname, string $src, string $dest, ClassID $dict_id)
+    public static function create(string $ofname, string $src, string $dest, ClassID $dict_id)
     { 
-        $t = new SystranTranslator();
+        $t = RestClient::createClient(ClassID::Systran);
 
-        if ($dict_id == ClassID::Pons)
+        if ($dict_id == ClassID::Pons) {
 
-             $d = new PonsDictionary()
+             $d = new PonsDictionary();
+        
              $f = new PonsNounFetcher($d);  
 
         } else if ($dict_id == ClassID::Collins) {
 
-             $d = new CollinsGermanDictionary()
+             $d = new CollinsGermanDictionary();
+             
              $f = new CollinsNounFetcher($d);  
         }
 

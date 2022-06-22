@@ -6,5 +6,5 @@ use LanguageTools\PonsDictionary;
 
 interface NounFetchInterface  {
 
-    public function get_noun_info(string $word) : array 
+    public function get_noun_info(string $word) : array;
 }

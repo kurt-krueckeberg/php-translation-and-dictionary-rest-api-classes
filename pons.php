@@ -26,7 +26,7 @@ try {
  
     $file = new FileReader($fname);
     
-    $html = HtmlBuilder::create($fname, $argv[2] . ".html", "de", "en", ClassID::Pons); 
+    $html = HtmlBuilder::create($argv[2] . ".html", "de", "en", ClassID::Pons); 
    
     foreach ($file as $word) {
         

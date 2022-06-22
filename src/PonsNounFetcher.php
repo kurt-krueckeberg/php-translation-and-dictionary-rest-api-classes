@@ -37,7 +37,7 @@ EOS;
       $this->xpath = new \DOMXpath($this->dom);
    } 
 
-   public function get_nounf_info(string $word) : string | null
+   public function get_noun_info(string $word) : array
    {       
       // sample:  <span class="genus"><acronym title="feminine">
       static $query = "//span[@class='genus']/acronym/@title";
