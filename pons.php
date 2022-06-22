@@ -40,7 +40,6 @@ try {
 
         echo "Added $cnt definitions for $word.\n";
 
-        return;
         /*
         echo "Looking for samples sentences for $word.\n";
 

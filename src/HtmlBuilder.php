@@ -204,7 +204,7 @@ EOS;
 
        $this->b_saved = false;
 
-       $this->html = new File($ofname, "w"); 
+       $this->html = new File($ofname . ".html", "w"); 
 
        $this->html->fwrite(self::$html_start);
     }
