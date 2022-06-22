@@ -1,6 +1,9 @@
 #  Todo
 
-Create correct CSS code for <ul>s.
+- Bug in CollinsNounFetcher -- returns the sanme gender and plural
+:wq
+
+- Create correct CSS code for <ul>s.
 
 Note:
 

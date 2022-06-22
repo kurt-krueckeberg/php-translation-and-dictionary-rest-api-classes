@@ -133,7 +133,7 @@ EOS;
       $sec .= "</div>\n</section>\n";
 
       // Note: Calling $this->tidy($str) changes <p> tags to <br />.
-      $this->html->fwrite($sec );
+      $this->html->fwrite($sec);
  
       return count($iter); 
    }

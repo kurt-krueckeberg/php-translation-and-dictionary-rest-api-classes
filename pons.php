@@ -2,10 +2,7 @@
 <?php
 declare(strict_types=1);
 use \SplFileObject as File;
-use LanguageTools\RestClient;
-use LanguageTools\ClassID;
-use LanguageTools\FileReader;
-use LanguageTools\HtmlBuilder;
+use LanguageTools\{RestClient, ClassID, FileReader, HtmlBuilder, CollinsNounFetcher, CollinsGermanDictionary, DictionaryInterface};
 
 include 'vendor/autoload.php';
 
@@ -21,32 +18,45 @@ if ($argc != 3) {
   return;
 }
 
+function test(string $word, DictionaryInterface $dict, $nfetcher)
+{
+  $iter = $dict->lookup($word, "de", "en"); 
+
+  if (count($iter) > 0) {
+
+      // If Noun (Tn the utf-8 (code point collection) lowercase characters
+      // have a larger code point values than uppercase)   
+      if ($word[0] >= 'A' && $word[0] <= 'Z' ) { 
+         
+          $info = $nfetcher->get_noun_info($word);       
+
+          echo "Printing gender and plural of @word.\n";
+
+          print_r($info);
+      } 
+  } else {
+      
+      echo "No definition found for $word\n";
+  } 
+}
+
 try {
+
     $fname = $argv[1];
  
     $file = new FileReader($fname);
-    
-    $html = new HtmlBuilder($argv[2], "de", "en", ClassID::Collins); 
-   
+        
+    $dict = RestClient::createClient(ClassID::Systran);
+
+    $nfetcher = new CollinsNounFetcher(new CollinsGermanDictionary());
+ 
     foreach ($file as $word) {
         
         $word = trim($word);
                 
         if ($word[0] == '#') continue;
         
-        echo "About to add definitions for $word.\n";
-        
-        $cnt = $html->add_definitions($word, "de", "en");
-
-        echo "Added $cnt definitions for $word.\n";
-
-        /*
-        echo "Looking for samples sentences for $word.\n";
-
-        $cnt = $html->add_samples($word, 10); 
-
-        echo "Added $cnt samples sentences for $word.\n";
-        */ 
+        test($word, $dict, $nfetcher);
     }
  
   } catch (Exception $e) {

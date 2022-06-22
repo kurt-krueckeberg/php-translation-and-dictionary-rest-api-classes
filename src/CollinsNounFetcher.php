@@ -8,7 +8,7 @@ class CollinsNounFetcher implements NounFetchInterface  {
       
    private CollinsGermanDictionary $collins;
      
-   public function __construct(CollinsGermanDictionary$dict)
+   public function __construct(CollinsGermanDictionary $dict)
    {   
       $this->collins = $dict;
    }      
@@ -32,29 +32,29 @@ EOS;
 
       return $dom; 
     }
-
-    public function get_noun_info(string $word) : array
-    {
-       $div = $this->collins->get_best_matching($word);
-
-       // todo: what if word is not found in dictionary?
-     
-       $dom = $this->create_dom($div);
-        
-       return array('gender' => $this->get_gender($dom), 'plural' => $this->get_plural($dom) ); 
-    }
     
-    /*
-     * For words Unverständnis, Krähe, Veräter neither query below returns a results.
-     */
-    private function get_gender(\DOMDocument $dom) : string
+    public function get_noun_info(string $word) : array
     {  
+      static $q_gender = "//span[contains(@class,'pos')]";
+      static $q_pl = "(//span[@class='orth'])[2]"; // get the second instance of <span class="orth">.
+      
+      $div = $this->collins->get_best_matching($word);
 
-      static $q =  "//span[contains(@class,'pos')]";
+      $dom = $this->create_dom($div);
+
+      echo "==============> \ndiv = \n$div";
+
+      echo "\n\n"; 
+      
+      echo "================> DOM::textContent\n";
+
+      echo $dom->textContent;
+
+      echo "\n\n";
 
       $xpath = new \DOMXpath($dom);
      
-      $list = $xpath->query($q);
+      $list = $xpath->query($q_gender);
                 
       $gender = $list->item(0)->textContent;
       
@@ -62,22 +62,13 @@ EOS;
           
            $gender .= ", " . $list->item(1)->textContent . "\n";
       
-      return trim($gender);
-   }
+      $gender = trim($gender);
 
-   private function get_plural(\DOMDocument $dom) : string
-   {
-      static $q = "(//span[@class='orth'])[2]"; // get the second instance of <span class="orth">.
-
-      $xpath = new \DOMXpath($dom);
-     
-      $list = $xpath->query($q);
+      echo "GENDER = $gender\n\n;
       
-      if ($list->count() == 0) // no plural found. 
-
-          return '';
+      $list = $xpath->query($q_pl);
       
-      else
-          return $list->item(0)->textContent; 
+      $plural = ($list->count() !== 0) ? $list->item(0)->textContent;
+
    }
 }
