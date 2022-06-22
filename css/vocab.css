@@ -51,6 +51,10 @@ ul.defn {
  color:#75b6e7; /* #268bd2 */
 }
 
+li.expressions {
+ list-style-type: none;
+}
+
 dl.expressions {
   color: #E6E6E6; 
 }
