@@ -8,6 +8,11 @@ use \SplFileObject as File;
 class HtmlBuilder implements ResultfileInterface {
 
      private File $html;
+     private NounFetchInterface     $nfetcher;
+     private TranslateInterface     $trans;
+     private SentenceFetchInterface $sfetch;
+     
+     private DictionaryInterface $dict;
 
 static private string $html_start = <<<html_eos
 <?xml version="1.0" encoding="UTF-8"?>
@@ -79,7 +84,7 @@ EOS;
               // have a larger code point values than uppercase)   
               if ($word[0] >= 'A' && $word[0] <= 'Z' ) { 
                  
-                  $info = $this->get_noun_info($word);       
+                  $info = $this->nfetcher->get_noun_info($word);       
 
                   $sec .= "<div class='hwd'><p>{$set->term}</p><p class='pos'>{$info['gender']} {$info['plural']}</p>\n";    
 
@@ -180,7 +185,7 @@ EOS;
         } 
     }
     
-    public static function create(string $ofname, string $src, string $dest, ClassID $dict_id)
+    public function __construct(string $ofname, string $src, string $dest, ClassID $dict_id)
     { 
         $t = RestClient::createClient(ClassID::Systran);
 
@@ -196,16 +201,15 @@ EOS;
              
              $f = new CollinsNounFetcher($d);  
         }
-
-        return new HtmlBuilder($ofname . ".html", $src, $dest, $t, $f);
-    }
-
-    public function __construct(string $ofname, private readonly string $src, private readonly string $dest, private readonly TranslateInterface $trans, private readonly NounFetchInterface $nfetch,  private readonly SentenceFetchInterface $sfetcher)
-    { 
+        
+       $this->nfetcher = $f;
+       
        $this->b_saved = false;
 
        $this->html = new File($ofname, "w"); 
 
        $this->html->fwrite(self::$html_start);
+       
+       $this->sfetcher = new LeipzigSentenceFetcher(ClassID::Leipzig);
     }
 }
