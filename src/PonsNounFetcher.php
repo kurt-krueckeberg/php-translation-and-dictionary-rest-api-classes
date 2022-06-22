@@ -48,7 +48,7 @@ EOS;
             
          /* Note: If we do
 
-           $x = strip_tags($rom->headword); <--- We must also remove the syllabul separator
+           $x = strip_tags($rom->headword); <--- We must also remove the syllable separator
 
            $x = trim($x, $separator)
          

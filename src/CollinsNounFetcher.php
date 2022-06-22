@@ -36,7 +36,7 @@ EOS;
     public function get_noun_info(string $word) : array
     {  
       static $q_gender = "//span[contains(@class,'pos')]";
-      static $q_pl = "(//span[@class='orth'])[2]"; // get the second instance of <span class="orth">.
+      static $q_pl = "(//span[@class='orth'])[2]";       // gets the second instance of <span class="orth">.
       
       $dom = $this->create_dom($word);
 
@@ -56,8 +56,6 @@ EOS;
 
       $plural = ($list->count() !== 0) ? $list->item(0)->textContent : "";
 
-      $a = array('gender' => $gender, 'plural' => $plural);
-
-      return $a;
+      return array('gender' => $gender, 'plural' => $plural);
    }
 }
