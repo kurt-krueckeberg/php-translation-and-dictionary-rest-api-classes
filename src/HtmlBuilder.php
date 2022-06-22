@@ -22,7 +22,7 @@ static private string $html_start = <<<html_eos
       <title>German Vocab</title>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" type="text/css" href="css/dark-vocab.css"> 
+      <link rel="stylesheet" type="text/css" href="css/vocab.css"> 
    </head>
 <body>
 html_eos;
@@ -200,6 +200,10 @@ EOS;
        $this->sfetcher = new LeipzigSentenceFetcher(ClassID::Leipzig);
 
        $this->b_saved = false;
+       
+       $this->src = $src;
+       
+       $this->dest = $dest;
 
        $this->html = new File($ofname . ".html", "w"); 
 

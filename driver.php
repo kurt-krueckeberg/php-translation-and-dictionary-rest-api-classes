@@ -2,10 +2,7 @@
 <?php
 declare(strict_types=1);
 use \SplFileObject as File;
-use LanguageTools\RestClient;
-use LanguageTools\ClassID;
-use LanguageTools\FileReader;
-use LanguageTools\DlHtmlBuilder;
+use LanguageTools\{RestClient, ClassID, FileReader, HtmlBuilder};
 
 include 'vendor/autoload.php';
 
@@ -32,19 +29,11 @@ try {
     
     $file = new FileReader($fname);
     
-    $html = new DlHtmlBuilder($argv[2] . ".html", "de", "en", $collins, $trans, $trans, $leipzig);
-   
-    foreach ($file as $word) {
-        
-        $word = trim($word);
-                
-        if ($word[0] == '#') continue;
-        
-        echo "About to add definitions for $word.\n";
-        
-        $cnt = $html->add_definitions($word, "de", "en");
+    $html = new HtmlBuilder($argv[2] . ".html", "de", "en", ClassID::Collins);
 
-        echo "Added $cnt definitions for $word.\n";
+    foreach ($file as $word) {
+
+       // echo "Added $cnt definitions for $word.\n";
 
         echo "Looking for samples sentences for $word.\n";
 

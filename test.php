@@ -2,7 +2,7 @@
 <?php
 declare(strict_types=1);
 use \SplFileObject as File;
-use LanguageTools\{RestClient, ClassID, FileReader, HtmlBuilder, PonsNounFetcher, PonsDictionary, DictionaryInterface};
+use LanguageTools\{RestClient, ClassID, FileReader, HtmlBuilder, PonsNounFetcher, PonsDictionary, DictionaryInterface, CollinsGermanDictionary, CollinsNounFetcher};
 
 include 'vendor/autoload.php';
 
@@ -48,8 +48,8 @@ try {
         
     $dict = RestClient::createClient(ClassID::Systran);
 
-    $nfetcher = new PonsNounFetcher(new PonsDictionary());
- 
+    $nfetcher = new CollinsNounFetcher(new CollinsGermanDictionary());
+
     foreach ($file as $word) {
         
         $word = trim($word);
