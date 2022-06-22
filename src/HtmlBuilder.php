@@ -74,8 +74,6 @@ EOS;
  
       $sec = "<section>\n";
 
-      echo "Section Start:\n$sec\n";
- 
       if (count($iter) > 0) {
  
           foreach($iter as $set)  {
@@ -105,8 +103,6 @@ EOS;
       } 
       
       $sec .= "</div>\n</section>\n";
-
-      echo "Section End:\n$sec\n";
 
       // Note: Calling $this->tidy($str) changes <p> tags to <br />.
       $this->html->fwrite($sec );

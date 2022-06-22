@@ -178,7 +178,7 @@ class CollinsGermanDictionary extends RestClient {
         
         $obj = json_decode($json);
         
-        $res = urldecode($obj->entryContent)
+        $res = urldecode($obj->entryContent);
                 
         return  $this->tidy($res); // Calling tidy() on the result corrupts German characters. 
     }

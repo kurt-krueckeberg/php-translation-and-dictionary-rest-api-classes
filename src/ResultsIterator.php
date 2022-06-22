@@ -66,8 +66,8 @@ class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
     public function next(): void
     {
        ++$this->current;
-
     }
+    
     public function rewind(): void
     {
        $this->current = 0; 

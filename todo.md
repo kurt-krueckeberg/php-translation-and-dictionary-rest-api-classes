@@ -1,6 +1,6 @@
 #  Todo
 
-Implement CollinsNounFetcher and change DlHtmlBuilder to use the NounFetchInterface.
+Create correct CSS code for <ul>s.
 
 Note:
 
