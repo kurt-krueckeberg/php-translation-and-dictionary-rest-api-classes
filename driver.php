@@ -29,7 +29,7 @@ try {
     
     $file = new FileReader($fname);
     
-    $html = new HtmlBuilder($argv[2] . ".html", "de", "en", ClassID::Collins);
+    $html = new HtmlBuilder($argv[2], "de", "en", ClassID::Collins);
 
     foreach ($file as $word) {
 
@@ -37,7 +37,7 @@ try {
 
         echo "Looking for samples sentences for $word.\n";
 
-        $cnt = $html->add_samples($word, 10); 
+        $cnt = $html->add_samples($word, 3); 
 
         echo "Added $cnt samples sentences for $word.\n";
     }
