@@ -1,31 +1,14 @@
 body {
 
-/*  margin-left: 3em;*/
+/* margin-left: 3em; */
 
-  background-image: url('./bkgnd_pons_grey.png');
-  background-attachment: fixed;
-
-  /* Alernate colors: */
-  /* 
-  color: #FFFFFF;  
-  background-color: #102450;
-   */
-
-  /* 
-  color: black;        
-  background-color: white;   
-   */
-
-  /* 
-  color: #D0CFCC;              
-  background-color: #171421;  
-  */
+ color: #E6E6E6;  /* colors from Azure documentation */
+ background-color: #171717;
 }
 
 section {
 
   font-family: 'Lato Medium', Arial, sans-serif;
-  background: #ffffff;
   display: grid; 
   width: 70%;
   margin: auto auto;
@@ -33,9 +16,10 @@ section {
   column-gap: 10px;
 
   padding: 10px;  /* kurt */
+  /* ?????
   border-left: 1px solid #666;
   border-right: 1px solid #666;
-
+  */
 }
 
 section p { /* paragraph style--font, text color, background color, spacig with paragraphs and between paragraphs */
@@ -47,29 +31,35 @@ section p { /* paragraph style--font, text color, background color, spacig with 
   line-height: 1.6em; 
   margin: 3px 0;     
 /*  line-height: 1.7em;  <--- Spacing between line within paragraph */ 
-/*  margin: 4px 0;    */ 
+/*  margin: 4px 0;       <--- Spacing between paragraphs. It is equivalent to the statements
+    
+  below: 
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-left: 0px;
+  margin-right: 0px;  
+ */
 }
 
 .pos {
   font-weight: bold;
+  color: #ffd700;
 }
 
-dl.hwd > dd {
- color: #b71533; 
- margin-left: 20px;
- margin-top: .75em;
- margin-bottom: .75em;
+
+ul.defn {
+ color:#75b6e7; /* #268bd2 */
 }
 
 dl.expressions {
- color: #333333;
- background: #ffffff;  
+  color: #E6E6E6; 
 }
 
 /* NOTE:  From https://www.the-art-of-web.com/css/format-dl/  example #5 using Flexbox. */
 dl.expressions {
     display: flex;
     flex-flow: row wrap;
+    color: #e6e6e6;
     margin-left: 20px;
 /*
     border: solid #333;
