@@ -35,9 +35,9 @@ try {
 
         echo "About to add definitions for $word.\n";
 
-        $cnt = $html->add_defns($word); 
+        $cnt = $html->add_definitions($word); 
 
-        echo "Looking for samples sentences for $word.\n"
+        echo "Looking for samples sentences for $word.\n";
 
         $cnt = $html->add_samples($word, 3); 
 

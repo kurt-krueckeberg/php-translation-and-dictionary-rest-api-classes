@@ -94,11 +94,11 @@ EOS;
   /*
      Get Gender of noun and its plural form
    */ 
-   public function add_definitions(string $word, string $src, string $dest) : int
+   public function add_definitions(string $word) : int
    {
       static $ul_hwd =  "<ul class='defns'>\n";
 
-      $iter = $this->dict->lookup($word, $src, $dest);
+      $iter = $this->dict->lookup($word, $this->src, $this->dest);
  
       $sec = "<section>\n";
 
