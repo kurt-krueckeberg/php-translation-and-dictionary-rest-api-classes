@@ -46,6 +46,19 @@ section p { /* paragraph style--font, text color, background color, spacig with 
   color: #ffd700;
 }
 
+dl.hwd {
+ counter-reset: defn-counter;
+}
+
+dl.hwd > dd {
+
+  counter-increment: defn-counter;
+}
+
+dl.hwd > dd:before {
+ content: counter(defn-counter) " ";
+}
+
 dl.hwd >  dd {
  color:#75b6e7; /* #268bd2 */
  margin-left: 20px;
