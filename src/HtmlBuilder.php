@@ -7,6 +7,8 @@ use \SplFileObject as File;
 
 class HtmlBuilder implements ResultfileInterface {
 
+     private File $html;
+
 static private string $html_start = <<<html_eos
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
@@ -178,7 +180,7 @@ EOS;
         } 
     }
     
-    public function create(string $fname, string $src, string $dest, ClassID $dict_id)
+    public function create(string $ofname, string $src, string $dest, ClassID $dict_id)
     { 
         $t = new SystranTranslator();
 
@@ -193,16 +195,14 @@ EOS;
              $f = new CollinsNounFetcher($d);  
         }
 
-        $f = new FileReader($fname); 
-
-        return new HtmlBuilder($f, $src, $dest, $t, $f);
+        return new HtmlBuilder($ofname . ".html", $src, $dest, $t, $f);
     }
 
-    public function __construct(private readonly FileReader $f, private readonly string $src, private readonly string $dest, private readonly TranslateInterface $trans, private readonly NounFetchInterface $nfetch,  private readonly SentenceFetchInterface $sfetcher)
+    public function __construct(string $ofname, private readonly string $src, private readonly string $dest, private readonly TranslateInterface $trans, private readonly NounFetchInterface $nfetch,  private readonly SentenceFetchInterface $sfetcher)
     { 
        $this->b_saved = false;
 
-       $this->html = new File($fname, "w"); 
+       $this->html = new File($ofname, "w"); 
 
        $this->html->fwrite(self::$html_start);
     }

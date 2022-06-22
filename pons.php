@@ -5,7 +5,7 @@ use \SplFileObject as File;
 use LanguageTools\RestClient;
 use LanguageTools\ClassID;
 use LanguageTools\FileReader;
-use LanguageTools\DlHtmlBuilder;
+use LanguageTools\HtmlBuilder;
 
 include 'vendor/autoload.php';
 
@@ -24,15 +24,9 @@ if ($argc != 3) {
 try {
     $fname = $argv[1];
  
-    $trans = RestClient::createClient(ClassID::Systran); 
-
-    $leipzig = RestClient::createClient(ClassID::Leipzig); 
-
-    $collins = RestClient::createClient(ClassID::Collins); 
-    
     $file = new FileReader($fname);
     
-    $html = new DlHtmlBuilder($argv[2] . ".html", "de", "en", $collins, $trans, $trans, $leipzig);
+    $html = HtmlBuilder::create($fname, $argv[2] . ".html", "de", "en", ClassID::Pons); 
    
     foreach ($file as $word) {
         
@@ -46,11 +40,14 @@ try {
 
         echo "Added $cnt definitions for $word.\n";
 
+        return;
+        /*
         echo "Looking for samples sentences for $word.\n";
 
         $cnt = $html->add_samples($word, 10); 
 
         echo "Added $cnt samples sentences for $word.\n";
+        */ 
     }
  
   } catch (Exception $e) {
