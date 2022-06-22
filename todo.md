@@ -1,7 +1,6 @@
 #  Todo
 
-- Bug in CollinsNounFetcher -- returns the sanme gender and plural
-:wq
+- Test PonsNounFetcher 
 
 - Create correct CSS code for <ul>s.
 
