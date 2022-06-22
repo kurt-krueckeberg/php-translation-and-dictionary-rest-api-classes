@@ -1,7 +1,5 @@
 #  Todo
 
-- Test PonsNounFetcher 
-
 - Convert the CSS code in dark-vocab.css for use with the <ul> created by Htmlbuilder.php.
 
 Note:
