@@ -52,65 +52,6 @@ EOS;
       return (string) $tidy;  
    }
 
-   
-   private function get_noun_info($word) : string
-   {
-static $noun_start =<<<EOS
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
-    <head>
-    </head>
-    <body>
-EOS;
-
-      $div = $this->collins->get_best_matching($word);
-
-      $html = $noun_start;
-
-      $html .= $div;
-
-      $html .= '</body.</html>';
-
-      $dom = new \DOMDocument("1.0", 'utf-8');
-     
-      @$dom->loadHTML($html);
-          
-      $body = $dom->getElementsByTagName('body')->item(0);
-     
-      $gender = trim($this->get_gender($dom));
-
-      $gender = strtoupper($gender);
-
-      $plural = trim($this->get_plural($dom), ",");
-
-      if ($plural !== '')  
-
-            return $gender . "; plural " . $plural;
-      else 
-            return  $gender;
-    }
-    
-    /*
-     * For words Unverständnis, Krähe, Veräter neither query below returns a results.
-     */
-    private function get_gender(\DOMDocument $dom) : string
-    {  
-      static $q =  "//span[contains(@class,'pos')]";
-
-      $xpath = new \DOMXpath($dom);
-     
-      $list = $xpath->query($q);
-                
-      $gender = $list->item(0)->textContent;
-      
-      if ($list->count() == 2)  
-          
-           $gender .= ", " . $list->item(1)->textContent . "\n";
-         
-      return $gender;
-   }
-
    private function get_plural(\DOMDocument $dom) : string
    {
       static $plq = "(//span[@class='orth'])[2]"; // get the second instance of <span class="orth">.
