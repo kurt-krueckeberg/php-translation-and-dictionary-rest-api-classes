@@ -2,7 +2,7 @@
 <?php
 declare(strict_types=1);
 use \SplFileObject as File;
-use LanguageTools\{RestClient, ClassID, FileReader, NewHtmlBuilder};
+use LanguageTools\{RestClient, ClassID, FileReader, HtmlBuilder};
 
 include 'vendor/autoload.php';
 
@@ -29,7 +29,7 @@ try {
     
     $file = new FileReader($fname);
     
-    $html = new NewHtmlBuilder($argv[2], "de", "en", ClassID::Collins);
+    $html = new HtmlBuilder($argv[2], "de", "en", ClassID::Collins);
 
     foreach ($file as $word) {
 
