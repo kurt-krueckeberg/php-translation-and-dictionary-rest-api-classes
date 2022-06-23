@@ -5,7 +5,7 @@ namespace LanguageTools;
 use LanguageTools\{ClassID, DictionaryInterface, TranslateInterface, SentenceFetchInterface, CollinsGermanDictionary, PonsDictionary, PonsNounFetcher,  CollinsNounFetcher};
 use \SplFileObject as File; 
 
-class HtmlBuilder {
+class NewHtmlBuilder {
 
      private File                   $html;
      private NounFetchInterface     $nfetcher;
@@ -61,34 +61,31 @@ EOS;
 
    private function build_defns(array $definitions) : string
    {       
-      static $ul_defn = "<ul class='defn'>";
-      static $dl = "<dl class='expressions'>";
-
-      $ul = $ul_defn;
+      static $sp = '      ';
+      $dds = '';
 
       foreach ($definitions as $defn) {
 
-          $ul .= "<li>" . $defn["definition"] . "</li>\n";
+          $dds .= "$sp<dd>" . $defn["definition"] . "</dd>\n";
 
           if (count($defn['expressions']) > 0) { // Build expression <dl>
                
               // We use a nested <dl> for the expressions.
-              $li_exp = "<li class='expressions'>\n$dl\n"; 
+              $exps = "$sp<dd class='expressions'>\n$sp$sp<dl>\n"; 
               
               $rows = ''; 
               
               foreach ($defn['expressions'] as $expression) 
 
-                     $rows .= "    <dt>{$expression->source}</dt>\n<dd>{$expression->target}</dd>\n";
+                     $rows .= "$sp$sp<dt>{$expression->source}</dt>\n$sp$sp<dd>{$expression->target}</dd>\n";
 
-              $li_exp .= "$rows</dl>\n</li>\n";
+              $exps .= "$rows$sp$sp</dl>\n$sp</dd>\n";
               
-               $ul .=  $li_exp;              
+              $dds .=  $exps;              
           }                   
       }
       
-      $ul .= "</ul>\n";  
-      return $ul;
+      return $dds;
     }
 
   /*
@@ -96,12 +93,12 @@ EOS;
    */ 
    public function add_definitions(string $word) : int
    {
-      static $ul_hwd =  "<ul class='defns'>\n";
+      static $sec_start =  "<section>\n  <dl class='hwd'>\n";
+
+      $sec = $sec_start;
 
       $iter = $this->dict->lookup($word, $this->src, $this->dest);
  
-      $sec = "<section>\n";
-
       if (count($iter) > 0) {
  
           foreach($iter as $set)  {
@@ -112,27 +109,27 @@ EOS;
                  
                   $info = $this->nfetcher->get_noun_info($word);       
 
-                  $sec .= "<div class='hwd'><p>{$set->term}</p><p class='pos'>{$info['gender']} {$info['plural']}</p>\n";    
+                  $sec .= "     <dt><p>{$set->term}</p><p class='pos'>{$info['gender']} {$info['plural']}</p></dt>\n";    
 
               } else // Not a noun
 
-                  $sec .= "<div class='hwd'><p>{$set->term}</p><p class='pos'>" . strtoupper($set->pos) . "</p>\n";    
-                  
+                  $sec .= "     <dt><p>{$set->term}</p><p class='pos'>" . strtoupper($set->pos) . "</p></dt>\n";    
+                    
               $defns = $this->build_defns($set->definitions);
-
+             
               $sec .= $defns;
            }
            
-           $sec .= $sec . '</ul>'; // append definitions
+           $sec .= "   </dl>\n"; 
            
       } else {
           
-          $sec .= "<div><p>$word No defintions found.</p></div>\n";    
+          $sec .= "   <dl>><p>$word No defintions found.</p>\n   </dl\n";    
       } 
       
-      $sec .= "</div>\n</section>\n";
+      $sec .= "</section>\n";
 
-      // Note: Calling $this->tidy($str) changes <p> tags to <br />.
+      // todo: BUD Calling $this->tidy($str) changes <p> tags to <br />.
       $this->html->fwrite($sec);
  
       return count($iter); 
