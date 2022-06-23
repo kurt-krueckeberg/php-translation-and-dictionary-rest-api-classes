@@ -29,6 +29,20 @@ section p {
   font-weight: bold;
   color: #ffd700;
 }
+/* Start prospective new code */`
+dl.hwd > dt > ul {
+  list-style-type: none;
+
+  margin-left: 0;
+  padding-left: 0;
+}
+
+dl.hwd > dt > ul > li {
+
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+/* End prospective new code */
 
 /*
  Use this `:not()` selector to select dd's that do not have a class set to 'expessions':
