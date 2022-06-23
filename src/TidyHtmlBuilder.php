@@ -61,25 +61,24 @@ EOS;
 
    private function build_defns(array $definitions) : string
    {       
-      static $sp = '      ';
       $dds = '';
 
       foreach ($definitions as $defn) {
 
-          $dds .= "$sp<dd>" . $defn["definition"] . "</dd>\n";
+          $dds .= "<dd>" . $defn["definition"] . "</dd>";
 
           if (count($defn['expressions']) > 0) { // Build expression <dl>
                
               // We use a nested <dl> for the expressions.
-              $exps = "$sp<dd class='expressions'>\n$sp$sp<dl>\n"; 
+              $exps = "<dd class='expressions'><dl>"; 
               
               $rows = ''; 
               
               foreach ($defn['expressions'] as $expression) 
 
-                     $rows .= "$sp$sp<dt>{$expression->source}</dt>\n$sp$sp<dd>{$expression->target}</dd>\n";
+                     $rows .= "<dt>{$expression->source}</dt><dd>{$expression->target}</dd>";
 
-              $exps .= "$rows$sp$sp</dl>\n$sp</dd>\n";
+              $exps .= "$rows</dl></dd>";
               
               $dds .=  $exps;              
           }                   
@@ -93,7 +92,7 @@ EOS;
    */ 
    public function add_definitions(string $word) : int
    {
-      static $sec_start =  "<section>\n  <dl class='hwd'>\n";
+      static $sec_start =  "<section><dl class='hwd'>";
 
       $sec = $sec_start;
 
@@ -109,25 +108,27 @@ EOS;
                  
                   $info = $this->nfetcher->get_noun_info($word);       
 
-                  $sec .= "     <dt><p>{$set->term}</p><p class='pos'>{$info['gender']} {$info['plural']}</p></dt>\n";    
+                  $sec .= "     <dt><p>{$set->term}</p><p class='pos'>{$info['gender']} {$info['plural']}</p></dt>";    
 
               } else // Not a noun
 
-                  $sec .= "     <dt><p>{$set->term}</p><p class='pos'>" . strtoupper($set->pos) . "</p></dt>\n";    
+                  $sec .= "     <dt><p>{$set->term}</p><p class='pos'>" . strtoupper($set->pos) . "</p></dt>";    
                     
               $defns = $this->build_defns($set->definitions);
              
               $sec .= $defns;
            }
            
-           $sec .= "   </dl>\n"; 
+           $sec .= "   </dl>"; 
            
       } else {
           
-          $sec .= "   <dl>><p>$word No defintions found.</p>\n   </dl\n";    
+          $sec .= "   <dl>><p>$word No defintions found.</p></dl>";    
       } 
       
-      $sec .= "</section>\n";
+      $sec .= "</section>";
+
+      $sec = $this->tidy($sec);
 
       // Note: Calling $this->tidy($str) changes <p> tags to <br />.
       $this->html->fwrite($sec);

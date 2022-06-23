@@ -1,11 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
-   <head>
-      <title>German Vocab</title>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
 body {
 
  color: #E6E6E6;  /* colors from Azure documentation */
@@ -123,52 +115,3 @@ table th {
   background-color: #04AA6D;
   color: white;
 }
-</style>
-</head>
-<body>
-<section>
-<dl class='hwd'>
-<dt><p>Abkürzung</p><p class='pos'>FEMININE NOUN</p></dt>
-<dd>abbreviation</dd>
-<dd class="expressions">
-  <dl>
-    <dt>anerkannte Abkürzung</dt>
-    <dd>established abbreviation</dd>
-  </dl>
-</dd>
-<dd>shortcut</dd>
-<dd class="expressions">
-  <dl>
-    <dt>Abkürzung der Entwicklung</dt>
-    <dd>development shortcut</dd>
-  </dl>
-</dd>
-<dd>acronym</dd>
-<dd>short cut</dd>
-</dl>
-</section>
-<section class='samples'>
-  <p>
-    Lassen Sie die Maustaste los, dann bietet Ihnen der Windows-Explorer zumindest mal eine Abkürzung zum Ordner.
-  </p>
-  <p>
-    Release the mouse button and Windows Explorer will give you at least an abbreviation of the folder.
-  </p>
-</section><section>
-<dl class='hwd'>
-<dt><p>Abschied</p><p class='pos'>MASCULINE NOUN; plural  Abschiede</p></dt>
-<dd>departure</dd>
-<dd>farewell</dd>
-<dd>leave</dd>
-</dl>
-</section>
-<section class='samples'>
-  <p>
-    Microsoft sieht den Abschied anscheinend auch mit einem lachenden Auge, wie das kleine Video beweist.
-  </p>
-  <p>
-    Microsoft also seems to see the farewell with a laughing eye, as the little video shows.
-  </p>
-</section>
-</body>
-</html>

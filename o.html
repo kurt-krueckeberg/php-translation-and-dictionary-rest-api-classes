@@ -5,171 +5,139 @@
       <title>German Vocab</title>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-body {
-
- color: #E6E6E6;  /* colors from Azure documentation */
- background-color: #171717;
-}
-
-section {
-
-  font-family: 'Lato Medium', Arial, sans-serif;
-  display: grid; 
-  width: 70%;
-  margin: auto auto;
-  grid-template-columns: 1fr 1fr; 
-  column-gap: 10px;
-
-  padding: 10px; 
-}
-
-section p { 
-
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-right: 6px;
-  line-height: 1.6em; 
-  margin: 3px 0;     
-}
-
-.pos {
-  font-weight: bold;
-  color: #ffd700;
-}
-
-/*
- Use this `:not()` selector to select dd's that do not have a class set to 'expessions':
-*/
-dl.hwd > dd:not(.expressions) {
-  display: list-item;
-  list-style-type: disc;
-}
-
-dl.hwd >  dd {
- color:#75b6e7; /* #268bd2 */
- margin-left: 20px;
- margin-top: .75em;
- margin-bottom: .75em;
-}
-/*
- Solution 2 for removing disc's from <dd class="expressions"> is
-
-dl.hwd > :not(dd.expressions) {
-  display: list-item;
-  list-style-type: disc;
-}
-*/
-dd.expressions dl {
-  color: #E6E6E6; 
-}
-
-/* NOTE:  From https://www.the-art-of-web.com/css/format-dl/  example #5 using Flexbox. */
-dd.expressions > dl {
-    display: flex;
-    flex-flow: row wrap;
-    color: #e6e6e6;
-    margin-left: 20px;
-/*
-    border: solid #333;
-    border-width: 1px 1px 0 0;
-*/
-}
-
-dd.expressions > dl >  dt {
-    flex-basis: 45%;
-    padding: 2px 4px;
-/*    background: #333; */
-/*   text-align: right; */
-/*    color: #fff;      */
-}
-
-dd.expression > dl > dd {
-    flex-basis: 45%;
-    flex-grow: 1;
-    margin: 0;
-    padding: 2px 4px;
-
-  list-style-type: none;
-/*  border-bottom: 1px solid #333;*/
-}
-
-h1, h2, h3, h4, h5 {
-
-  font-family: 'Karla Semibold', 'Open Sans', Arial, sans-serif;
-}
-
-table {
- /* 
-  font-family: Arial, Helvetica, sans-serif;
-  */
-  border-collapse: collapse;
-  width: 100%;
-}
-
-table td, table th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-table tr:nth-child(even){background-color: #f2f2f2;}
-
-table tr:hover {background-color: #ddd;}
-
-table th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04AA6D;
-  color: white;
-}
-</style>
-</head>
-<body>
-<section>
-<dl class='hwd'>
-<dt><p>Abkürzung</p><p class='pos'>FEMININE NOUN</p></dt>
-<dd>abbreviation</dd>
-<dd class="expressions">
-  <dl>
-    <dt>anerkannte Abkürzung</dt>
-    <dd>established abbreviation</dd>
+      <link rel="stylesheet" type="text/css" href="css/vocab.css"> 
+   </head>
+<body><section>
+  <dl class='hwd'>
+    <dt>
+      <br />
+      Tür<br />
+      <br />
+      <br class='pos' />
+      feminine noun , Türen<br />
+      <br />
+    </dt>
+    <dd>
+      door
+    </dd>
+    <dd class='expressions'>
+      <dl>
+        <dt>
+          verschlossene Tür
+        </dt>
+        <dd>
+          closed door
+        </dd>
+        <dt>
+          offene Tür
+        </dt>
+        <dd>
+          open door
+        </dd>
+      </dl>
+    </dd>
+    <dd>
+      doorstep
+    </dd>
   </dl>
-</dd>
-<dd>shortcut</dd>
-<dd class="expressions">
-  <dl>
-    <dt>Abkürzung der Entwicklung</dt>
-    <dd>development shortcut</dd>
-  </dl>
-</dd>
-<dd>acronym</dd>
-<dd>short cut</dd>
-</dl>
-</section>
-<section class='samples'>
+</section><section class='samples'>
   <p>
-    Lassen Sie die Maustaste los, dann bietet Ihnen der Windows-Explorer zumindest mal eine Abkürzung zum Ordner.
+    Die Tür aufhalten, als Frau dem Geschäftspartner in den Mantel helfen, Gesundheit wünschen, ja oder nein?
   </p>
   <p>
-    Release the mouse button and Windows Explorer will give you at least an abbreviation of the folder.
+    Stop the door when woman helps the business partner in the coat, wish health, yes or no?
+  </p>
+  <p>
+    Der Favorit für die Nachfolge des chinesischen Präsidenten ließ selbst Hillary Clinton vor der Tür stehen.
+  </p>
+  <p>
+    The favorite for Chinese President's succession even left Hillary Clinton on the door.
+  </p>
+  <p>
+    Dadurch wurde allerdings auch die Tür für viele andere Cookies weit aufgestoßen.
+  </p>
+  <p>
+    However, this also opened the door for many other cookies.
   </p>
 </section><section>
-<dl class='hwd'>
-<dt><p>Abschied</p><p class='pos'>MASCULINE NOUN; plural  Abschiede</p></dt>
-<dd>departure</dd>
-<dd>farewell</dd>
-<dd>leave</dd>
-</dl>
-</section>
-<section class='samples'>
+  <dl class='hwd'>
+    <dt>
+      <br />
+      Vater<br />
+      <br />
+      <br class='pos' />
+      masculine noun , Väter<br />
+      <br />
+    </dt>
+    <dd>
+      father
+    </dd>
+    <dd class='expressions'>
+      <dl>
+        <dt>
+          heiliger Vater
+        </dt>
+        <dd>
+          holy father
+        </dd>
+        <dt>
+          politischer Vater
+        </dt>
+        <dd>
+          political father
+        </dd>
+        <dt>
+          afrikanischer Vater
+        </dt>
+        <dd>
+          African father
+        </dd>
+        <dt>
+          kenianischer Vater
+        </dt>
+        <dd>
+          Kenyan father
+        </dd>
+      </dl>
+    </dd>
+    <dd>
+      dad
+    </dd>
+    <dd class='expressions'>
+      <dl>
+        <dt>
+          guter Vater
+        </dt>
+        <dd>
+          good dad
+        </dd>
+        <dt>
+          idealer Vater
+        </dt>
+        <dd>
+          ideal dad
+        </dd>
+      </dl>
+    </dd>
+  </dl>
+</section><section class='samples'>
   <p>
-    Microsoft sieht den Abschied anscheinend auch mit einem lachenden Auge, wie das kleine Video beweist.
+    Jeder, der früh Mutter oder Vater wird, verzichtet auf eine Menge unbeschwerten Spaß.
   </p>
   <p>
-    Microsoft also seems to see the farewell with a laughing eye, as the little video shows.
+    Everyone who becomes a mother or father early doesn't have a lot of fun to do.
   </p>
-</section>
-
-</body>
+  <p>
+    Vom Vater gabs immer wieder Schläge.
+  </p>
+  <p>
+    Father kept beating.
+  </p>
+  <p>
+    Ihr Vater sei nach Problemen mit äthiopischen Behörden nach Eritrea gezogen.
+  </p>
+  <p>
+    Her father moved to Eritrea after problems with the Ethiopian authorities.
+  </p>
+</section>    </body>
 </html>
