@@ -50,7 +50,6 @@ dl.hwd > dt > ul > li {
 */
 dl.hwd > dd:not(.expressions) {
   display: list-item;
-/*  list-style-type: disc; */
 }
 
 dl.hwd >  dd {
