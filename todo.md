@@ -1,7 +1,6 @@
 #  Todo
 
-We want to use the code in DlHtmlBuilder because we want <dl> output. But first we need to incorporate the recent changes to the basic builder logict found in HtmlBuilder like the use of the NounFetchInterface.
-We want to use the improved CSS file 'vocab.css" that addes discs to the <dd> elements.
+<dl> should not contain nested <p>'s., so try a nested `<ul>` or nested `<dl>`. And then add tidy support.
 
 ## Displaying discs for <dl> list elements
 

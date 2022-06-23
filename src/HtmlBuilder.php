@@ -45,7 +45,7 @@ EOS;
    private function tidy(string $html)
    { 
      static $tidy_config = array(
-                     'clean' => true,
+                  /*   'clean' => true, */
                      'output-xhtml' => true,
                      'show-body-only' => true,
                      'wrap' => 0,
