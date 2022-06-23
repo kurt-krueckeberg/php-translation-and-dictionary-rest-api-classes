@@ -38,25 +38,25 @@ section p {
   color: #ffd700;
 }
 
-/*
-dl.hwd > dt > ul > li {
 
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-*/
-/* End prospective new code */
+/* 
+ * New code 
+ */
+
 dl.hwd > dt > ul {
+
 list-style-type: none;
 margin-left: 0;
 padding-left: 0;
+
 }
 
 dl.hwd > dt > ul > li {
   margin-bottom: 1em;
 }
+
 /* 
-  Use this `:not()` selector to select dd's that do not have a class set to 'expessions': 
+  Select dd's that do not have a class set to 'expessions': 
  */
 
 dl.hwd > dd:not(.expressions) {
@@ -65,7 +65,8 @@ dl.hwd > dd:not(.expressions) {
 }
 
 dl.hwd >  dd {
- color:#75b6e7; /* #268bd2 */
+
+ color:#75b6e7; 
  margin-left: 20px;
  margin-top: .75em;
  margin-bottom: .75em;
@@ -75,24 +76,21 @@ dd.expressions dl {
   color: #E6E6E6; 
 }
 
-/* NOTE:  From https://www.the-art-of-web.com/css/format-dl/  example #5 using Flexbox. */
+/*
+   From https://www.the-art-of-web.com/css/format-dl/  example #5 using Flexbox. 
+*/
+
 dd.expressions > dl {
     display: flex;
     flex-flow: row wrap;
     color: #e6e6e6;
     margin-left: 20px;
-/*
-    border: solid #333;
-    border-width: 1px 1px 0 0;
-*/
 }
 
 dd.expressions > dl >  dt {
+
     flex-basis: 45%;
     padding: 2px 4px;
-/*    background: #333; */
-/*   text-align: right; */
-/*    color: #fff;      */
 }
 
 dd.expression > dl > dd {
@@ -101,8 +99,9 @@ dd.expression > dl > dd {
     margin: 0;
     padding: 2px 4px;
 
-  list-style-type: none;
-/*  border-bottom: 1px solid #333;*/
+    list-style-type: none;  /* Can this be eliminated?  */
+
+ /*  border-bottom: 1px solid #333;*/
 }
 
 h1, h2, h3, h4, h5 {
@@ -143,7 +142,7 @@ table th {
     <dt>
       <ul>
       <li>Tür</li>
-      <li>
+      <li class="pos">
       feminine noun , Türen</li>
       </ul>
     </dt>
@@ -189,92 +188,6 @@ table th {
   <p>
     However, this also opened the door for many other cookies.
   </p>
-</section><section>
-  <dl class='hwd'>
-    <dt>
-      <ul>
-      <li>Tür</li>
-      <li>
-      feminine noun , Türen</li>
-      </ul>
-    </dt>
-    <dd>
-      <p>
-      Vater
-      </p>
-      <p class='pos' />
-      masculine noun , Väter
-      </p>
-    </dt>
-    <dd>
-      father
-    </dd>
-    <dd class='expressions'>
-      <dl>
-        <dt>
-          heiliger Vater
-        </dt>
-        <dd>
-          holy father
-        </dd>
-        <dt>
-          politischer Vater
-        </dt>
-        <dd>
-          political father
-        </dd>
-        <dt>
-          afrikanischer Vater
-        </dt>
-        <dd>
-          African father
-        </dd>
-        <dt>
-          kenianischer Vater
-        </dt>
-        <dd>
-          Kenyan father
-        </dd>
-      </dl>
-    </dd>
-    <dd>
-      dad
-    </dd>
-    <dd class='expressions'>
-      <dl>
-        <dt>
-          guter Vater
-        </dt>
-        <dd>
-          good dad
-        </dd>
-        <dt>
-          idealer Vater
-        </dt>
-        <dd>
-          ideal dad
-        </dd>
-      </dl>
-    </dd>
-  </dl>
-</section><section class='samples'>
-  <p>
-    Jeder, der früh Mutter oder Vater wird, verzichtet auf eine Menge unbeschwerten Spaß.
-  </p>
-  <p>
-    Everyone who becomes a mother or father early doesn't have a lot of fun to do.
-  </p>
-  <p>
-    Vom Vater gabs immer wieder Schläge.
-  </p>
-  <p>
-    Father kept beating.
-  </p>
-  <p>
-    Ihr Vater sei nach Problemen mit äthiopischen Behörden nach Eritrea gezogen.
-  </p>
-  <p>
-    Her father moved to Eritrea after problems with the Ethiopian authorities.
-  </p>
-</section>    </body>
+</section>
+</body>
 </html>

@@ -30,20 +30,19 @@ section p {
   color: #ffd700;
 }
 
-/* Start prospective new code */`
-ul {
-  list-style-type: none;
+dl.hwd > dt > ul {
 
-  margin-left: 0;
-  padding-left: 0;
+list-style-type: none;
+margin-left: 0;
+padding-left: 0;
 }
-/*
+
 dl.hwd > dt > ul > li {
 
-  margin-top: 1em;
   margin-bottom: 1em;
 }
-*/
+
+
 /* End prospective new code */
 
 /*
@@ -51,7 +50,7 @@ dl.hwd > dt > ul > li {
 */
 dl.hwd > dd:not(.expressions) {
   display: list-item;
-  list-style-type: disc;
+/*  list-style-type: disc; */
 }
 
 dl.hwd >  dd {
@@ -60,14 +59,7 @@ dl.hwd >  dd {
  margin-top: .75em;
  margin-bottom: .75em;
 }
-/*
- Solution 2 for removing disc's from <dd class="expressions"> is
 
-dl.hwd > :not(dd.expressions) {
-  display: list-item;
-  list-style-type: disc;
-}
-*/
 dd.expressions dl {
   color: #E6E6E6; 
 }
@@ -78,18 +70,11 @@ dd.expressions > dl {
     flex-flow: row wrap;
     color: #e6e6e6;
     margin-left: 20px;
-/*
-    border: solid #333;
-    border-width: 1px 1px 0 0;
-*/
 }
 
 dd.expressions > dl >  dt {
     flex-basis: 45%;
     padding: 2px 4px;
-/*    background: #333; */
-/*   text-align: right; */
-/*    color: #fff;      */
 }
 
 dd.expression > dl > dd {
@@ -99,7 +84,6 @@ dd.expression > dl > dd {
     padding: 2px 4px;
 
   list-style-type: none;
-/*  border-bottom: 1px solid #333;*/
 }
 
 h1, h2, h3, h4, h5 {
