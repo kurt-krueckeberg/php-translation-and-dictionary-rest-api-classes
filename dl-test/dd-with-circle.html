@@ -1,0 +1,67 @@
+<html>
+ <head>
+ <title>dd bulltets</title>
+<style>
+dl.show-circles dd {
+  display: list-item;
+  list-style-type: circle;
+
+/* Identifier matching an @counter-style rule */
+/* list-style-type: custom-counter-style; */
+}
+
+dl.show-discs  {
+ display: list-item;
+  list-style-type: disc; /* default is cirelc */
+}
+/*
+dl.show-circles dd {
+  display: list-item;
+  list-style-type: circle;
+
+}
+*/
+
+/* Identifier matching an @counter-style rule */
+/* list-style-type: custom-counter-style; */
+dl.show-squares  dd {
+ display: list-item;
+  list-style-type: square; /* default is cirelc */
+}
+
+dl.show-circles dd {
+  display: list-item;
+  list-style-type: circle;
+
+/* Identifier matching an @counter-style rule */
+/* list-style-type: custom-counter-style; */
+}
+dl.test {
+display: list-item;
+}
+
+dl.test dd::before {
+content: "\200B";
+}
+</style>
+</head>
+  <body>
+    <dl class="show-discs">
+      <dt>Example dl with discs</dt>
+      <dd>Term description</dd>
+    </dl>
+    <dl class="show-circles">
+      <dt>Example dl with circles</dt>
+      <dd>Term description</dd>
+    </dl>
+     <dl class="show-squares">
+      <dt>Example dl with squares</dt>
+      <dd>Term description</dd>
+    </dl>
+<dl class="test">
+ <dt>Example dl with squares</dt>
+ <dd>content set with dd::before</dd>
+</dl>
+  </body>
+</html>
+

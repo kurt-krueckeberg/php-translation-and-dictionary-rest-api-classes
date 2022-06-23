@@ -1,16 +1,34 @@
 #  Todo
 
-- Try to use counters again by finding older version of .css file. This time turn off the counter on the <dd> with the nested <dl> by using `.some-class:before { display: none; }` 
+## Display discs for <dl> list elements
 
-- To skip using a counter, where one is specified by the CSS, give the elementa class and use `display: none`
+There are two solutions to prevent displaying discs for the <dd class="expressions"> that has the nested definitinos list of expressions:
 
-```css
-.class:before { display: none; }
-```
+- Use this `:not()` selector to select dd's that do not have a class set to 'expessions':
 
-- see the bookmarked css-counter links under the Html folder bookmark.
+dl.hwd > :not(dd.expressions) {
+  display: list-item;
+  list-style-type: disc;
+}
 
-- Likely move `<dl class="expressions">` to the outer enclosing `<dd>`
+- Use an additional rule of `dl.hwe > dd.expressions { list-style-type: none;}` to override the `dl.hw > dd` rule.
+
+dl.hwd >  dd {
+ color:#75b6e7; 
+ margin-left: 20px;
+ margin-top: .75em;
+ margin-bottom: .75em;
+}
+
+dl.hwd > dd.expressions {
+  list-style-type: none;
+}
+
+See the two examples: [ex1.html](dl-test/ex1.html) and [ex2.html](dl-test/ex2.html) in [dl-test/](dl-test/)
+
+- And maybe correctin margins (or padding).
+
+## Adjusting `<dl>` margins 
 
 To adjust margins for <dl>, <dt> and <dd, see the W3schools try me:
 
