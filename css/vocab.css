@@ -31,7 +31,7 @@ section p {
 }
 
 /* Start prospective new code */`
-dl.hwd > dt > ul {
+ul {
   list-style-type: none;
 
   margin-left: 0;

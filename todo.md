@@ -1,8 +1,6 @@
 #  Todo
 
-<dl> should not contain nested <p>'s., so try a nested `<ul>` or nested `<dl>`. And then add tidy support.
-
-## Displaying discs for <dl> list elements
+The dl-test/t.html files works with the CSS in that file. Therefore, it is correct. The same CSS fragment does not work with an enst <ul> under the first <dtan enst <ul> under the first <dt>laying discs for <dl> list elements
 
 There are at least three solutions to prevent displaying discs for the <dd class="expressions"> that has the nested definitinos list of expressions:
 
