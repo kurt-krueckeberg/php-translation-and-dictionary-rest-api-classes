@@ -1,6 +1,6 @@
 #  Todo
 
-The dl-test/t.html files works with the CSS in that file. Therefore, it is correct. The same CSS fragment does not work with an enst <ul> under the first <dtan enst <ul> under the first <dt>laying discs for <dl> list elements
+Cahnge HtmlBuildr to use <ul> with two <li> for the first <dt>: <dl class='hwd'><dt><ul><li>....</li></ul>...</dl>.
 
 There are at least three solutions to prevent displaying discs for the <dd class="expressions"> that has the nested definitinos list of expressions:
 
