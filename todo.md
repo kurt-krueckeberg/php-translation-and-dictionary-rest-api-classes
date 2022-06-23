@@ -1,18 +1,24 @@
 #  Todo
 
-## Display discs for <dl> list elements
+We want to use the code in DlHtmlBuilder because we want <dl> output. But first we need to incorporate any recent 'improvments' to the basic builder logict found in HtmlBuilder. 
+We want to use the improved CSS file 'vocab.css" that addes discs to the <dd> elements.
 
-There are two solutions to prevent displaying discs for the <dd class="expressions"> that has the nested definitinos list of expressions:
+## Displaying discs for <dl> list elements
+
+There are at least three solutions to prevent displaying discs for the <dd class="expressions"> that has the nested definitinos list of expressions:
 
 - Use this `:not()` selector to select dd's that do not have a class set to 'expessions':
 
-dl.hwd > :not(dd.expressions) {
+```css
+dl.hwd > dd:not(.expressions) {
   display: list-item;
   list-style-type: disc;
 }
+```
 
 - Use an additional rule of `dl.hwe > dd.expressions { list-style-type: none;}` to override the `dl.hw > dd` rule.
 
+```css
 dl.hwd >  dd {
  color:#75b6e7; 
  margin-left: 20px;
@@ -23,6 +29,16 @@ dl.hwd >  dd {
 dl.hwd > dd.expressions {
   list-style-type: none;
 }
+```
+
+- Use `dd:not(.expressions)`
+
+```css
+dd:not(.expressions) {
+  display: list-item;
+  list-style-type: disc;
+}
+```
 
 See the two examples: [ex1.html](dl-test/ex1.html) and [ex2.html](dl-test/ex2.html) in [dl-test/](dl-test/)
 

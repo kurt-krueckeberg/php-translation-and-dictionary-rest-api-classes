@@ -24,7 +24,7 @@ section {
   padding: 10px; 
 }
 
-section p {
+section p { 
 
   padding-top: 3px;
   padding-bottom: 3px;
@@ -38,7 +38,10 @@ section p {
   color: #ffd700;
 }
 
-dl.hwd > dd {
+/*
+ Use this `:not()` selector to select dd's that do not have a class set to 'expessions':
+*/
+dl.hwd > dd:not(.expressions) {
   display: list-item;
   list-style-type: disc;
 }
@@ -50,19 +53,13 @@ dl.hwd >  dd {
  margin-bottom: .75em;
 }
 /*
- Solution 1 for removing disc's from <dd class="expressions"> is
- 
-   dl.hwe > dd.expressions { list-style-type: none;}
+ Solution 2 for removing disc's from <dd class="expressions"> is
 
-because this does not work
-
-   dd.expressions { list-style-type: none; }
-
-*/
-dl.hwd > dd.expressions {
-  list-style-type: none;
+dl.hwd > :not(dd.expressions) {
+  display: list-item;
+  list-style-type: disc;
 }
-
+*/
 dd.expressions dl {
   color: #E6E6E6; 
 }
