@@ -1,41 +1,8 @@
 #  Todo
 
-Cahnge HtmlBuildr to use <ul> with two <li> for the first <dt>: <dl class='hwd'><dt><ul><li>....</li></ul>...</dl>.
+Maybe work on top and ottom margsin between <ul> with word and part-of-speech and surrounding elements.
 
 There are at least three solutions to prevent displaying discs for the <dd class="expressions"> that has the nested definitinos list of expressions:
-
-- Use this `:not()` selector to select dd's that do not have a class set to 'expessions':
-
-```css
-dl.hwd > dd:not(.expressions) {
-  display: list-item;
-  list-style-type: disc;
-}
-```
-
-- Use an additional rule of `dl.hwe > dd.expressions { list-style-type: none;}` to override the `dl.hw > dd` rule.
-
-```css
-dl.hwd >  dd {
- color:#75b6e7; 
- margin-left: 20px;
- margin-top: .75em;
- margin-bottom: .75em;
-}
-
-dl.hwd > dd.expressions {
-  list-style-type: none;
-}
-```
-
-- Use `dd:not(.expressions)`
-
-```css
-dd:not(.expressions) {
-  display: list-item;
-  list-style-type: disc;
-}
-```
 
 See the two examples: [ex1.html](dl-test/ex1.html) and [ex2.html](dl-test/ex2.html) in [dl-test/](dl-test/)
 
