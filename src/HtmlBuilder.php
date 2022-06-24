@@ -65,25 +65,24 @@ EOS;
 
       foreach ($definitions as $defn) {
 
-          $dds .= "<dd>" . $defn["definition"] . "</dd>";
+          $dds .= "  <dd>" . $defn["definition"] . "</dd>\n";
 
           if (count($defn['expressions']) > 0) { // Build expression <dl>
                
               // We use a nested <dl> for the expressions.
-              $exps = "<dd class='expressions'><dl>"; 
+              $exps = "  <dd class='expressions'>\n<dl>\n"; 
               
               $rows = ''; 
               
               foreach ($defn['expressions'] as $expression) 
 
-                     $rows .= "<dt>{$expression->source}</dt><dd>{$expression->target}</dd>";
+                     $rows .= "    <dt>{$expression->source}</dt>\n    <dd>{$expression->target}</dd>\n";
 
-              $exps .= "$rows</dl></dd>";
+              $exps .= "$rows</dl>\n  </dd>";
               
               $dds .=  $exps;              
           }                   
       }
-      
       return $dds;
     }
 
@@ -108,11 +107,11 @@ EOS;
                  
                   $info = $this->nfetcher->get_noun_info($word);       
 
-                  $sec .= "     <dt><ul><li>{$result->term}</li><li class='pos'>{$info['gender']} {$info['plural']}</li></ul></dt>";    
+                  $sec .= "\n<dt>\n  <ul>\n   <li>{$result->term}</li>\n   <li class='pos'>{$info['gender']} {$info['plural']}</li>\n  </ul>\n </dt>";    
 
               } else // Not a noun
 
-                  $sec .= "     <dt><ul><li>{$result->term}</li><li class='pos'>" . strtoupper($result->pos) . "</li></ul></dt>";    
+                  $sec .= "\n<dt>\n  <ul>\n   <li>{$result->term}</li>\n   <li class='pos'>" . strtoupper($result->pos) . "</li>\n  </ul>\n </dt>";    
                     
               $defns = $this->build_defns($result->definitions);
              
@@ -123,10 +122,10 @@ EOS;
            
       } else {
           
-          $sec .= "   <dl>><p>$word No defintions found.</p>   </dl";    
+          $sec .= "\n<dl>$word No defintions found.</dl>\n";    
       } 
       
-      $sec .= "</section>";
+      $sec .= "</section>\n";
       
       $this->html->fwrite($sec);
  
