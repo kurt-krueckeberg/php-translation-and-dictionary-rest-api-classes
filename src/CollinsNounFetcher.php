@@ -51,10 +51,19 @@ EOS;
            $gender .= ", " . $list->item(1)->textContent . "\n";
       
       $gender = trim($gender);
+      
+      if ($gender[0] == 'f')
+          $gender = "die";
+      else if ($gender[0] == 'n')
+           $gender = 'das';
+      else 
+           $gender= 'der'; 
 
       $list = $xpath->query($q_pl);
 
       $plural = ($list->count() !== 0) ? $list->item(0)->textContent : "";
+      
+      $plural = trim($plural, ", ");
 
       return array('gender' => $gender, 'plural' => $plural);
    }

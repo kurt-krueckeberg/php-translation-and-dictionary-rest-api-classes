@@ -23,7 +23,7 @@ try {
  
     $file = new FileReader($fname);
     
-    $html = new HtmlBuilder($argv[2], "de", "en", ClassID::Pons);
+    $html = new HtmlBuilder($argv[2], "de", "en", ClassID::Collins);
 
     foreach ($file as $word) {
 

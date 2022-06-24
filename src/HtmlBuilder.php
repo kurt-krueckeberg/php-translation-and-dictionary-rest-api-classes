@@ -105,9 +105,15 @@ EOS;
               // have a larger code point values than uppercase)   
               if ($word[0] >= 'A' && $word[0] <= 'Z' ) { 
                  
-                  $info = $this->nfetcher->get_noun_info($word);       
-
-                  $sec .= "\n<dt>\n  <ul>\n   <li>{$result->term}</li>\n   <li class='pos'>{$info['gender']} {$info['plural']}</li>\n  </ul>\n </dt>";    
+                  $info = $this->nfetcher->get_noun_info($word);  
+                  
+                  $noun_str = "{$info['gender']} {$result->term}";
+                  
+                  if ($info['plural'] != '') 
+                      
+                      $noun_str .= ", die  {$info['plural']}";
+                  
+                  $sec .= "\n<dt>\n  <ul>\n   <li>$noun_str</li>\n   <li class='pos'>NOUN</li>\n  </ul>\n </dt>";    
 
               } else // Not a noun
 
