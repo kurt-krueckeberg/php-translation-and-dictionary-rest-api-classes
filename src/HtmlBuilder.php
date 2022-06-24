@@ -107,13 +107,13 @@ EOS;
                  
                   $info = $this->nfetcher->get_noun_info($word);  
                   
-                  $noun_str = "{$info['gender']} {$result->term}";
+                  $noun_str = "{$info['article']} {$result->term}";
                   
                   if ($info['plural'] != '') 
                       
                       $noun_str .= ", die  {$info['plural']}";
                   
-                  $sec .= "\n<dt>\n  <ul>\n   <li>$noun_str</li>\n   <li class='pos'>NOUN</li>\n  </ul>\n </dt>";    
+                  $sec .= "\n<dt>\n  <ul>\n   <li>$noun_str</li>\n   <li class='pos'>{$info['gender']}</li>\n  </ul>\n </dt>";    
 
               } else // Not a noun
 

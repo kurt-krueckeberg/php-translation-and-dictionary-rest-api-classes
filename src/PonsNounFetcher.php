@@ -40,8 +40,8 @@ EOS;
    public function get_noun_info(string $word) : array
    {       
       // sample:  <span class="genus"><acronym title="feminine">
-      // $query = "//span[@class='genus']/acronym/@title
-      static $query = "//span[@class='genus']/acronym/text()";
+      static $query = "//span[@class='genus']/acronym/@title";
+      // static $query = "//span[@class='genus']/acronym/text()";
 
       $iter = $this->dict->search($word, "de", "en");
 
@@ -81,11 +81,11 @@ EOS;
         $this->body->removeChild($child);
         
         if ($result == 'f')
-             $result = 'die';
+             $article = 'die';
         else if ($result == 'n') 
-             $result = 'das';
-        else $result = 'der';
+             $article = 'das';
+        else $article = 'der';
             
-        return array('gender' => $result, 'plural' => '');
+        return array('gender' => $result, 'article' => $article, 'plural' => '');
     }
 }
