@@ -34,7 +34,7 @@ class PonsDictionary extends  RestClient {
       return $arr;
    } 
 
-   public function search(string $word, string $src, string $dest) : PonsIterator 
+   public function search(string $word, string $src, string $dest) : PonsIterator | null
    {
        $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['query' => [ 'q' => $word, 'in'=> strtolower($src), 'language' => strtolower($dest), 'l' =>   strtolower($src . $dest)]  ]); 
        
@@ -53,73 +53,4 @@ class PonsDictionary extends  RestClient {
         */
        return  new PonsIterator($obj->hits);
    }
-
-   static private function get_result(mixed $element) : \stdClass | null
-   { 
-      $result = new \stdClass;
-      
-      // type of dictionary entyr. Most often "entry". If not, then the result is a translation.
-      $result->type = $element->type;
-      
-      if (count($element->roms) == 0) 
-          return null; 
-
-      /*
-         The [Pons documentation ](doc/pons-api.pdf) explains that each separate rom (Roamn numeral) correspondss to a part of speech:
-
-           "For each part of speech there is one rom (roman numeral). For example "cut" may be a
-            noun, adjective, interjection, transitive or intransitive verb and has the roms I to V."
-
-          Each rom in turn has an array of arab's. Each arab stands for a specific meaning of the $rom->headword.
-
-          Each arab contains a 'header' string and an array, 'translations', of \stdClass'es. For, say, the input word 'Abschied', the 1st
-          rom's first arab:
-
-            echo $element->roms[0]->arabs[0]->header;
-          
-          is
-              `1. Abschied <span class="sense">(Trennung)</span>`
-          
-          header can contain more spans with more information. The transations array holds \stdClasses with two strings: source and target.
-          target is the English translation of the source. It can contain the 'sense', 'gramatical_constructions` 'headword' or an 'example'.
-          This information is in a <span>'s class, say: <span class="sense"> or <span class="example"> , etc.
-
-          These span classes are undocumented, however!
-       */
-      
-      foreach($element->roms as $rom) { // <-- BUG: We don't want to koop.
-          
-           $result->headword = $rom->headword;  // <--- BUG: This gets overwritten
-           
-           /* rom->headword_full Contains text with <span class='...'> that give:
-            * 1. the part-of-speech, which is also in rom->wordclass
-            * 2. the gender, if a noun.
-            */
-           $result->headword_full = $rom->headword_full; 
-           
-           if (isset($rom->wordclass))  {// not sure why this isn't always set.
-               
-               $result->pos = $rom->wordclass;    // Part-of-speech
-           }
-           
-           if (count($rom->arabs) == 0) continue;
-        
-           foreach ($rom->arabs as $arab) {
-                
-                if (count($arab->translations) == 0) // Sometimes there aren't definitions but something else.
-                    continue;
-
-                $definitions = array();
-                       
-                foreach($arab->translations as $translation) {
-        
-                      $definitions[] = $translation;//strip_tags($translation->target);
-                 }
-
-                 $result->definitions = $definitions;
-            }
-      }
-
-      return $result; 
-    }
 }
