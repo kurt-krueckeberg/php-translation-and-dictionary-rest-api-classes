@@ -100,7 +100,7 @@ EOS;
  
       if (count($iter) > 0) {
  
-          foreach($iter as $set)  {
+          foreach($iter as $result)  {
           
               // If Noun (Tn the utf-8 (code point collection) lowercase characters
               // have a larger code point values than uppercase)   
@@ -108,13 +108,13 @@ EOS;
                  
                   $info = $this->nfetcher->get_noun_info($word);       
 
-                  $sec .= "     <dt><ul><li>{$set->term}</li><li class='pos'>{$info['gender']} {$info['plural']}</li></ul></dt>";    
+                  $sec .= "     <dt><ul><li>{$result->term}</li><li class='pos'>{$info['gender']} {$info['plural']}</li></ul></dt>";    
 
               } else // Not a noun
 
-                  $sec .= "     <dt><ul><li>{$set->term}</li><li class='pos'>" . strtoupper($set->pos) . "</li></ul></dt>";    
+                  $sec .= "     <dt><ul><li>{$result->term}</li><li class='pos'>" . strtoupper($result->pos) . "</li></ul></dt>";    
                     
-              $defns = $this->build_defns($set->definitions);
+              $defns = $this->build_defns($result->definitions);
              
               $sec .= $defns;
            }

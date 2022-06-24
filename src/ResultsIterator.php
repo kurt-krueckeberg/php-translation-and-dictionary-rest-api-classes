@@ -4,17 +4,23 @@ namespace LanguageTools;
 
 class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
 
-    private array|\stdClass $objs;
+    private array|\stdClass $results;
     private int $count;
     private int $current;
-    private $get_result;
+
+    // Callable method that is invoked by current() to return
+    // current result.
+    private $get_result; 
     
 
-    public function __construct(array $objs, callable $func)
+    public function __construct(array $results, callable $func)
     {
-       $this->objs = $objs;
-       $this->cnt = count($objs);
+       $this->results = $results;
+
+       $this->cnt = count($results);
+
        $this->current = 0; 
+
        $this->get_result = $func;
     }
 
@@ -26,7 +32,7 @@ class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
 
     public function offsetExists($offset) : bool
     {
-        return isset($this->objs[$offset]);
+        return isset($this->results[$offset]);
     }
 
     public function offsetUnset($offset) : void
@@ -36,7 +42,7 @@ class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
 
     public function offsetGet($offset) : mixed
     {
-        return isset($this->objs[$offset]) ? ($this->get_result)( $this->objs[$offset] ) : null;
+        return isset($this->results[$offset]) ? ($this->get_result)( $this->results[$offset] ) : null;
     }
   
     public function count(): int // Countable
@@ -55,7 +61,7 @@ class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
    
     public function current(): mixed
     {        
-        return ($this->get_result)( $this->objs[$this->current] );
+        return ($this->get_result)( $this->results[$this->current] );
     }
 
     public function key(): mixed
