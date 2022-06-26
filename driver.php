@@ -21,12 +21,6 @@ if ($argc != 3) {
 try {
     $fname = $argv[1];
  
-    $trans = RestClient::createClient(ClassID::Systran); 
-
-    $leipzig = RestClient::createClient(ClassID::Leipzig); 
-
-    $collins = RestClient::createClient(ClassID::Collins); 
-    
     $file = new FileReader($fname);
     
     $html = new HtmlBuilder($argv[2], "de", "en", ClassID::Collins);
