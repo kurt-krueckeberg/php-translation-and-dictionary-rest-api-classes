@@ -7,14 +7,14 @@ use \SplFileObject as File;
 
 class HtmlBuilder {
 
-     private File                   $html;
+     private File                   $fout;
      private NounFetchInterface     $nfetcher;
      private TranslateInterface     $trans;
      private SentenceFetchInterface $sfetch;
      
      private DictionaryInterface    $dict;
 
-static private string $html_start = <<<html_eos
+static private string $fout_start = <<<html_eos
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de">
@@ -27,32 +27,22 @@ static private string $html_start = <<<html_eos
 <body>
 html_eos;
 
-static private string $html_end = <<<html_end
+static private string $fout_end = <<<html_end
     </body>
 </html>
 html_end;
 
-  static $noun_start = <<<EOS
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
-    <head>
-        <meta charset="UTF-8">
-    </head>
-    <body>
-EOS;
-
-   private function tidy(string $html)
+   private function tidy(string $fout)
    { 
      static $tidy_config = array(
-                       'clean' => true, 
-                   /*  'output-xhtml' => true, */
+                     'clean' => true, 
+                     'output-xhtml' => true, 
                      'show-body-only' => true,
                      'wrap' => 0,
                      'indent' => true
                      ); 
                      
-      $tidy = tidy_parse_string($html, $tidy_config, 'UTF8');
+      $tidy = tidy_parse_string($fout, $tidy_config, 'UTF8');
 
       $tidy->cleanRepair();
 
@@ -101,8 +91,8 @@ EOS;
  
           foreach($iter as $result)  {
           
-              // If Noun (Tn the utf-8 (code point collection) lowercase characters
-              // have a larger code point values than uppercase)   
+              // Lowecase letters in the utf-8 code point collection
+              // have a larger code point values than uppercase characters.
               if ($word[0] >= 'A' && $word[0] <= 'Z' ) { 
                  
                   $info = $this->nfetcher->get_noun_info($word);  
@@ -111,7 +101,7 @@ EOS;
                   
                   if ($info['plural'] != '') 
                       
-                      $noun_str .= ", die  {$info['plural']}";
+                      $noun_str .= ", die  {$info['plural']}"; // German-only code
                   
                   $sec .= "\n<dt>\n  <ul>\n   <li>$noun_str</li>\n   <li class='pos'>{$info['gender']}</li>\n  </ul>\n </dt>";    
 
@@ -133,7 +123,7 @@ EOS;
       
       $sec .= "</section>\n";
       
-      $this->html->fwrite($sec);
+      $this->fout->fwrite($sec);
  
       return count($iter); 
    }
@@ -159,7 +149,7 @@ EOS;
 
        $str .= "</section>";
 
-       $this->html->fwrite($this->tidy($str));
+       $this->fout->fwrite($this->tidy($str));
 
        return count($iter);
     } 
@@ -173,29 +163,16 @@ EOS;
     {
        if (!$this->b_saved) {
 
-            $this->html->fwrite(self::$html_end);
+            $this->fout->fwrite(self::$fout_end);
             $this->b_saved = true;
         } 
     }
     
     public function __construct(string $ofname, string $src, string $dest, ClassID $dict_id)
     { 
-        $this->dict = $this->trans = RestClient::createClient(ClassID::Systran);
+       $this->dict = $this->trans = RestClient::createClient(ClassID::Systran);
 
-        if ($dict_id == ClassID::Pons) {
-
-             $d = new PonsDictionary();
-        
-             $f = new PonsNounFetcher($d);  
-
-        } else if ($dict_id == ClassID::Collins) {
-
-             $d = new CollinsGermanDictionary();
-             
-             $f = new CollinsNounFetcher($d);  
-        }
-        
-       $this->nfetcher = $f;
+       $this->nfetcher = ($dict_id == ClassID::Pons) ? new PonsNounFetcher(new PonsDictionary()) : new CollinsNounFetcher(new CollinsGermanDictionary());    
        
        $this->sfetcher = new LeipzigSentenceFetcher(ClassID::Leipzig);
 
@@ -205,8 +182,8 @@ EOS;
        
        $this->dest = $dest;
 
-       $this->html = new File($ofname . ".html", "w"); 
+       $this->fout = new File($ofname . ".html", "w"); 
 
-       $this->html->fwrite(self::$html_start);
+       $this->fout->fwrite(self::$fout_start);
     }
 }
