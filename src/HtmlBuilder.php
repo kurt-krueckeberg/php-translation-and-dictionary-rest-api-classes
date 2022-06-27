@@ -1,20 +1,29 @@
 <?php
 declare(strict_types=1);
+
 namespace LanguageTools;
 
-use LanguageTools\{ClassID, DictionaryInterface, TranslateInterface, SentenceFetchInterface, CollinsGermanDictionary, PonsDictionary, PonsNounFetcher,  CollinsNounFetcher};
+use LanguageTools\{ClassID,
+DictionaryInterface,
+TranslateInterface,
+SentenceFetchInterface,
+CollinsGermanDictionary,
+PonsDictionary,
+PonsNounFetcher,
+CollinsNounFetcher};
+
 use \SplFileObject as File; 
 
 class HtmlBuilder {
 
-     private File                   $fout;
-     private NounFetchInterface     $nfetcher;
+     private File                   $out;
+     private NounFetchInterface     $noun_;
      private TranslateInterface     $trans;
      private SentenceFetchInterface $sfetch;
      
      private DictionaryInterface    $dict;
 
-static private string $fout_start = <<<html_eos
+static private string $out_start = <<<html_eos
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de">
@@ -27,12 +36,12 @@ static private string $fout_start = <<<html_eos
 <body>
 html_eos;
 
-static private string $fout_end = <<<html_end
+static private string $out_end = <<<html_end
     </body>
 </html>
 html_end;
 
-   private function tidy(string $fout)
+   private function tidy(string $out)
    { 
      static $tidy_config = array(
                      'clean' => true, 
@@ -42,7 +51,7 @@ html_end;
                      'indent' => true
                      ); 
                      
-      $tidy = tidy_parse_string($fout, $tidy_config, 'UTF8');
+      $tidy = tidy_parse_string($out, $tidy_config, 'UTF8');
 
       $tidy->cleanRepair();
 
@@ -55,23 +64,20 @@ html_end;
 
       foreach ($definitions as $defn) {
 
-          $dds .= "  <dd>" . $defn["definition"] . "</dd>\n";
+         $dds .= "  <dd>" . $defn["definition"] . "</dd>\n";
 
-          if (count($defn['expressions']) > 0) { // Build expression <dl>
-               
-              // We use a nested <dl> for the expressions.
-              $exps = "  <dd class='expressions'>\n<dl>\n"; 
+         if (count($defn['expressions']) == 0) continue;
               
-              $rows = ''; 
-              
-              foreach ($defn['expressions'] as $expression) 
+         // Add the expressions. We use a nested <dl> for the expressions.
+         $exps = "  <dd class='expressions'>\n<dl>\n"; 
+         
+         foreach ($defn['expressions'] as $expression) 
 
-                     $rows .= "    <dt>{$expression->source}</dt>\n    <dd>{$expression->target}</dd>\n";
+                $exps .= "    <dt>{$expression->source}</dt>\n    <dd>{$expression->target}</dd>\n";
 
-              $exps .= "$rows</dl>\n  </dd>";
-              
-              $dds .=  $exps;              
-          }                   
+         $exps .= "$exps</dl>\n  </dd>";
+         
+         $dds .=  $exps;              
       }
       return $dds;
     }
@@ -95,7 +101,7 @@ html_end;
               // have a larger code point values than uppercase characters.
               if ($word[0] >= 'A' && $word[0] <= 'Z' ) { 
                  
-                  $info = $this->nfetcher->get_noun_info($word);  
+                  $info = $this->noun_->get_noun_info($word);  
                   
                   $noun_str = "{$info['article']} {$result->term}";
                   
@@ -123,7 +129,7 @@ html_end;
       
       $sec .= "</section>\n";
       
-      $this->fout->fwrite($sec);
+      $this->out->fwrite($sec);
  
       return count($iter); 
    }
@@ -133,23 +139,21 @@ html_end;
     {
        static $sec_samples = "<section class='samples'>";
 
-       $iter = $this->sfetcher->fetch($word, $cnt); 
+       $iter = $this->sents->fetch($word, $cnt); 
 
        $str = $sec_samples;
 
        if (count($iter) == 0)
 
-           $str .= "<p>There are no sample sentences for " . trim($word) . '.</p>'; 
+           $str .= "<p>There are no sample sentsences for " . trim($word) . '.</p>'; 
 
-       else 
-   
-          foreach ($iter as $src) 
+       else foreach ($iter as $src) 
    
               $str .= "<p>$src</p><p>" . $this->trans->translate($src, $this->dest, $this->src) . "</p>";
 
        $str .= "</section>";
 
-       $this->fout->fwrite($this->tidy($str));
+       $this->out->fwrite($this->tidy($str));
 
        return count($iter);
     } 
@@ -163,7 +167,7 @@ html_end;
     {
        if (!$this->b_saved) {
 
-            $this->fout->fwrite(self::$fout_end);
+            $this->out->fwrite(self::$out_end);
             $this->b_saved = true;
         } 
     }
@@ -172,9 +176,9 @@ html_end;
     { 
        $this->dict = $this->trans = RestClient::createClient(ClassID::Systran);
 
-       $this->nfetcher = ($dict_id == ClassID::Pons) ? new PonsNounFetcher(new PonsDictionary()) : new CollinsNounFetcher(new CollinsGermanDictionary());    
+       $this->noun_ = ($dict_id == ClassID::Pons) ? new PonsNounFetcher(new PonsDictionary()) : new CollinsNounFetcher(new CollinsGermanDictionary());    
        
-       $this->sfetcher = new LeipzigSentenceFetcher(ClassID::Leipzig);
+       $this->sents = new LeipzigSentenceFetcher(ClassID::Leipzig);
 
        $this->b_saved = false;
        
@@ -182,8 +186,8 @@ html_end;
        
        $this->dest = $dest;
 
-       $this->fout = new File($ofname . ".html", "w"); 
+       $this->out = new File($ofname . ".html", "w"); 
 
-       $this->fout->fwrite(self::$fout_start);
+       $this->out->fwrite(self::$out_start);
     }
 }

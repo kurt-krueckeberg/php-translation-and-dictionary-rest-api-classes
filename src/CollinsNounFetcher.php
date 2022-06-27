@@ -35,8 +35,10 @@ EOS;
     
     public function get_noun_info(string $word) : array
     {  
-      static $q_gender = "//span[contains(@class,'pos')]";
-      static $q_pl = "(//span[@class='orth'])[2]";       // gets the second instance of <span class="orth">.
+      static $q_gender = "//span[contains(@class,'pos')]"; 
+
+      // The plural is the second instance of <span class="orth">.
+      static $q_pl = "(//span[@class='orth'])[2]";       
       
       $dom = $this->create_dom($word);
 
@@ -53,9 +55,13 @@ EOS;
       $gender = trim($gender);
       
       if ($gender[0] == 'f')
+
           $article = "die";
+
       else if ($gender[0] == 'n')
+
            $article = 'das';
+
       else 
            $article = 'der'; 
 
