@@ -24,7 +24,7 @@ class ResultsIterator implements  \SeekableIterator, \ArrayAccess, \Countable {
        $this->get_result = $func;
     }
 
-    // no-op todo: throw an execption
+    // no-op
     public function offsetSet(mixed $offset, mixed $value) : void
     {
         return; 
