@@ -24,7 +24,6 @@ class HtmlBuilder {
      private DictionaryInterface    $dict;
 
 static private string $out_start = <<<html_eos
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de">
    <head>
@@ -62,8 +61,8 @@ html_end;
    */ 
    public function add_definitions(string $word) : int
    {
-      static $sec_start =  "<section>\n   <dl class='hwd'>\n";
-      static $def_fmt = "  <dt>\n  <ul>\n   <li>%s</li>\n   <li class='pos'>%s</li>\n  </ul>\n  </dt>\n";    
+      static $sec_start =  "<section>\n  <dl class='hwd'>\n";
+      static $def_fmt = "  <dt>\n   <ul>\n    <li>%s</li>\n    <li class='pos'>%s</li>\n   </ul>\n  </dt>\n";    
 
       $sec = $sec_start;
 
@@ -104,7 +103,7 @@ html_end;
           $sec .= "\n<dl>$word No defintions found.</dl>\n";    
       } 
       
-      $sec .= "</section>\n";
+      $sec .= "\n</section>\n";
       
       $this->out->fwrite($sec);
  
@@ -115,7 +114,7 @@ html_end;
    {       
       $dds = '';
       static $defn_fmt =  "  <dd>%s</dd>\n";
-      static $exp_fmt =  "  <dt>%s</dt>\n  <dd>%s</dd>\n";
+      static $exp_fmt =  "    <dt>%s</dt>\n    <dd>%s</dd>\n";
 
       foreach ($definitions as $defn) {
 
@@ -124,13 +123,13 @@ html_end;
          if (count($defn['expressions']) == 0) continue;
               
          // We have exprrssion to adda. We use a nested <dl> for the expressions.
-         $exps = "  <dd class='expressions'>\n<dl>\n"; 
+         $exps = "  <dd class='expressions'>\n   <dl>\n"; 
          
          foreach ($defn['expressions'] as $expression) 
 
                 $exps .= sprintf($exp_fmt, $expression->source, $expression->target);
 
-         $exps .= "</dl>\n  </dd>";
+         $exps .= "  </dl>\n  </dd>\n";
          
          $dds .=  $exps ;              
       }
