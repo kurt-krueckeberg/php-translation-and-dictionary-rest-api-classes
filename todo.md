@@ -1,5 +1,10 @@
 #  Todo
 
+## Bug
+
+The PriorHtmlBuildr properly creates the outtput, but HtmlBuilder doesn't. The htnl is wrong somewhere.
+
+
 Maybe work on top and ottom margsin between <ul> with word and part-of-speech and surrounding elements.
 
 There are at least three solutions to prevent displaying discs for the <dd class="expressions"> that has the nested definitinos list of expressions:

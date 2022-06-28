@@ -17,7 +17,7 @@ section {
 }
 
 section p { 
-
+  border-top: 1px solid #4f4f4f;
   padding-top: 3px;
   padding-bottom: 3px;
   padding-right: 6px;

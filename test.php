@@ -2,7 +2,7 @@
 <?php
 declare(strict_types=1);
 use \SplFileObject as File;
-use LanguageTools\{RestClient, ClassID, FileReader, HtmlBuilder};
+use LanguageTools\{RestClient, ClassID, FileReader, HtmlBuilder, PriorHtmlBuilder};
 
 include 'vendor/autoload.php';
 
@@ -32,10 +32,11 @@ try {
         $cnt = $html->add_definitions($word); 
 
         echo "Looking for samples sentences for $word.\n";
-
+/*
         $cnt = $html->add_samples($word, 3); 
 
-        echo "Added $cnt samples sentences for $word.\n";
+  
+*/      echo "Added $cnt samples sentences for $word.\n";
     }
  
   } catch (Exception $e) {

@@ -5,7 +5,7 @@ namespace LanguageTools;
 use LanguageTools\{ClassID, DictionaryInterface, TranslateInterface, SentenceFetchInterface, CollinsGermanDictionary, PonsDictionary, PonsNounFetcher,  CollinsNounFetcher};
 use \SplFileObject as File; 
 
-class PriorHtmlBuilder {
+class HtmlBuilder {
 
      private File                   $html;
      private NounFetchInterface     $nfetcher;

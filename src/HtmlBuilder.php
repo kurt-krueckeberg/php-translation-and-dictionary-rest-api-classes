@@ -57,37 +57,13 @@ html_end;
 
       return (string) $tidy;  
    }
-
-   private function build_defns(array $definitions) : string
-   {       
-      $dds = '';
-
-      foreach ($definitions as $defn) {
-
-         $dds .= "  <dd>" . $defn["definition"] . "</dd>\n";
-
-         if (count($defn['expressions']) == 0) continue;
-              
-         // Add the expressions. We use a nested <dl> for the expressions.
-         $exps = "  <dd class='expressions'>\n<dl>\n"; 
-         
-         foreach ($defn['expressions'] as $expression) 
-
-                $exps .= "    <dt>{$expression->source}</dt>\n    <dd>{$expression->target}</dd>\n";
-
-         $exps .= "$exps</dl>\n  </dd>";
-         
-         $dds .=  $exps;              
-      }
-      return $dds;
-    }
-
   /*
      Get Gender of noun and its plural form
    */ 
    public function add_definitions(string $word) : int
    {
-      static $sec_start =  "<section><dl class='hwd'>";
+      static $sec_start =  "<section>\n   <dl class='hwd>\n";
+      static $def_fmt = "  <dt>\n  <ul>\n   <li>%s</li>\n   <li class='pos'>%s</li>\n  </ul>\n  </dt>\n";    
 
       $sec = $sec_start;
 
@@ -109,18 +85,19 @@ html_end;
                       
                       $noun_str .= ", die  {$info['plural']}"; // German-only code
                   
-                  $sec .= "\n<dt>\n  <ul>\n   <li>$noun_str</li>\n   <li class='pos'>{$info['gender']}</li>\n  </ul>\n </dt>";    
+                  $sec .= sprintf($def_fmt, $result->term, strtoupper($result->pos));
 
               } else // Not a noun
 
-                  $sec .= "\n<dt>\n  <ul>\n   <li>{$result->term}</li>\n   <li class='pos'>" . strtoupper($result->pos) . "</li>\n  </ul>\n </dt>";    
+                  $sec .= sprintf($def_fmt, $result->term, strtoupper($result->pos));
+              
                     
               $defns = $this->build_defns($result->definitions);
-             
+              
               $sec .= $defns;
            }
            
-           $sec .= "   </dl>"; 
+           $sec .= "\n   </dl>"; 
            
       } else {
           
@@ -134,6 +111,32 @@ html_end;
       return count($iter); 
    }
   
+   private function build_defns(array $definitions) : string
+   {       
+      $dds = '';
+      static $defn_fmt =  "  <dd>%s</dd>\n";
+      static $exp_fmt =  "  <dt>%s</dt>\n  <dd>%s</dd>\n";
+
+      foreach ($definitions as $defn) {
+
+         $dds .= sprintf($defn_fmt, $defn["definition"]);
+
+         if (count($defn['expressions']) == 0) continue;
+              
+         // We have exprrssion to adda. We use a nested <dl> for the expressions.
+         $exps = "  <dd class='expressions'>\n<dl>\n"; 
+         
+         foreach ($defn['expressions'] as $expression) 
+
+                $exps .= sprintf($exp_fmt, $expression->source, $expression->target);
+
+         $exps .= "</dl>\n  </dd>";
+         
+         $dds .=  $exps ;              
+      }
+      return $dds;
+    }
+
 
     public function add_samples(string $word, int $cnt) : int 
     {
