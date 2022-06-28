@@ -65,20 +65,20 @@ EOS;
 
       foreach ($definitions as $defn) {
 
-          $dds .= "<dd>" . $defn["definition"] . "</dd>";
+          $dds .= "\n<dd>" . $defn["definition"] . "</dd>\n";
 
           if (count($defn['expressions']) > 0) { // Build expression <dl>
                
               // We use a nested <dl> for the expressions.
-              $exps = "<dd class='expressions'><dl>"; 
+              $exps = "  <dd class='expressions'>\n   <dl>"; 
               
               $rows = ''; 
               
               foreach ($defn['expressions'] as $expression) 
 
-                     $rows .= "<dt>{$expression->source}</dt><dd>{$expression->target}</dd>";
+                     $rows .= "\n  <dt>{$expression->source}</dt>\n   <dd>{$expression->target}</dd>\n";
 
-              $exps .= "$rows</dl></dd>";
+              $exps .= "$rows\n </dl>\n</dd>";
               
               $dds .=  $exps;              
           }                   
@@ -92,7 +92,7 @@ EOS;
    */ 
    public function add_definitions(string $word) : int
    {
-      static $sec_start =  "<section><dl class='hwd'>";
+      static $sec_start =  "<section>\n <dl class='hwd'>\n";
 
       $sec = $sec_start;
 
@@ -108,11 +108,11 @@ EOS;
                  
                   $info = $this->nfetcher->get_noun_info($word);       
 
-                  $sec .= "     <dt><ul><li>{$set->term}</li><li class='pos'>{$info['gender']} {$info['plural']}</li></ul></dt>";    
+                  $sec .= "\n  <dt>\n    <ul>\n    <li>{$set->term}</li>\n    <li class='pos'>{$info['gender']} {$info['plural']}</li>\n    </ul>\n   </dt>\n";    
 
               } else // Not a noun
 
-                  $sec .= "     <dt><ul><li>{$set->term}</li><li class='pos'>" . strtoupper($set->pos) . "</li></ul></dt>";    
+                  $sec .= "\n  <dt>\n    <ul>\n    <li>{$set->term}</li>\n    <li class='pos'>" . strtoupper($set->pos) . "</li>\n      </ul>\n    </dt>\n";    
                     
               $defns = $this->build_defns($set->definitions);
              
@@ -123,7 +123,7 @@ EOS;
            
       } else {
           
-          $sec .= "   <dl>><p>$word No defintions found.</p>   </dl";    
+          $sec .= "   \n<dl><p>$word No defintions found.</p></dl";    
       } 
       
       $sec .= "</section>";

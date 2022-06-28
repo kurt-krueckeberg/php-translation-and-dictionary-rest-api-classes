@@ -1,8 +1,7 @@
 #  Todo
 
-## Bug
-
-The PriorHtmlBuildr properly creates the outtput, but HtmlBuilder doesn't. The htnl is wrong somewhere.
+Correct the formatting for HtmlBuildr. Can I use tidy without screwing up the nested <ul> s that has the definitions?
+The PriorHtmlBuildr properly creates the output (see good.htl), but HtmlBuilder doesn't (see bad.html). The htnl is wrong somewhere.
 
 
 Maybe work on top and ottom margsin between <ul> with word and part-of-speech and surrounding elements.
