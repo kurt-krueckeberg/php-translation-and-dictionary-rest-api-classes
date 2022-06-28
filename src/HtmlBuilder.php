@@ -61,7 +61,7 @@ html_end;
    */ 
    public function add_definitions(string $word) : int
    {
-      static $sec_start =  "<section>\n  <dl class='hwd'>\n";
+      static $sec_start =  "<section>\n <dl class='hwd'>\n";
       static $def_fmt = "  <dt>\n   <ul>\n    <li>%s</li>\n    <li class='pos'>%s</li>\n   </ul>\n  </dt>\n";    
 
       $sec = $sec_start;
@@ -96,7 +96,7 @@ html_end;
               $sec .= $defns;
            }
            
-           $sec .= "\n   </dl>"; 
+           $sec .= " </dl>"; 
            
       } else {
           
