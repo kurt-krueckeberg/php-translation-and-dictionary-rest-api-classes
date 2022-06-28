@@ -26,7 +26,7 @@ EOS;
 
       $dom = new \DOMDocument("1.0", 'utf-8');
      
-      $div = $this->collins->get_best_matching($word);
+      $div = $this->collins->lookup($word);
 
       @$dom->loadHTML($html . $div . '</body.</html>');
 

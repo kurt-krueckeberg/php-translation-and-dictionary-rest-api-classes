@@ -126,7 +126,7 @@ class CollinsGermanDictionary extends RestClient {
     }
 
      /*
-        Gets the first/best matching entry
+        Gets the first/best matching entry: get_best_matching($word)
                
         API call = `/api/v1/dictionaries/{dictionaryCode}/search/first/?q={searchWord}&format={format}`
               
@@ -161,7 +161,8 @@ class CollinsGermanDictionary extends RestClient {
                 - topicUrl - the direct url to the topic page on the main
        
      */
-    public function get_best_matching(string $word) : null | string 
+
+    public function lookup(string $word) : null | string 
     {
         static $method = "GET";                         
         static $route  = "api/v1/dictionaries/german-english/search/first/";

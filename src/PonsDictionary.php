@@ -4,7 +4,7 @@ namespace LanguageTools;
 
 //use LanguageTools\{ClassID, ResultsIterator, RestClient, PonsIterator}; 
 
-class PonsDictionary extends  RestClient {
+class PonsDictionary extends  RestClient implements DictionaryInterface {
 
    static array   $lookup   = array('method' => 'GET', 'route' => "dictionary");
    static array   $languages   = array('method' => 'GET', 'route' => "dictionaries");
@@ -34,7 +34,7 @@ class PonsDictionary extends  RestClient {
       return $arr;
    } 
 
-   public function search(string $word, string $src, string $dest) : PonsIterator | null
+   public function lookup(string $word, string $src, string $dest) : PonsIterator | null
    {
        $contents = $this->request(self::$lookup['method'], self::$lookup['route'], ['query' => [ 'q' => $word, 'in'=> strtolower($src), 'language' => strtolower($dest), 'l' =>   strtolower($src . $dest)]  ]); 
        

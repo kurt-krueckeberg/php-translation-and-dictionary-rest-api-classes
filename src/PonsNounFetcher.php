@@ -43,7 +43,7 @@ EOS;
       static $query = "//span[@class='genus']/acronym/@title";
       // static $query = "//span[@class='genus']/acronym/text()";
 
-      $iter = $this->dict->search($word, "de", "en");
+      $iter = $this->dict->lookup($word, "de", "en");
 
       foreach ($iter as $r) {
             
