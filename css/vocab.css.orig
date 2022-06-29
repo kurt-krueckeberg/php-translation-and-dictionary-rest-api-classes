@@ -6,6 +6,7 @@ body {
 
 section {
 
+  border-bottom: 1px solid #4f4f4f;
   font-family: 'Lato Medium', Arial, sans-serif;
   display: grid; 
   width: 70%;
@@ -21,8 +22,6 @@ section.definitions {
 }
 
 section.samples {
-
-  border-bottom: 1px solid #4f4f4f;
 }
 
 section p { 

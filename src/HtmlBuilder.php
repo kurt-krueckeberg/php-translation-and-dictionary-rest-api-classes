@@ -61,56 +61,60 @@ html_end;
    */ 
    public function add_definitions(string $word) : int
    {
-      static $sec_start =  "<section>\n <dl class='hwd'>\n";
+      static $sec_start =  "<section class='definitions'>\n";
+      static $dl_start = "  <dl class='hwd'>\n";
+
       static $def_fmt = "  <dt>\n   <ul>\n    <li>%s</li>\n    <li class='pos'>%s</li>\n   </ul>\n  </dt>\n";    
 
+      
       $sec = $sec_start;
 
       $iter = $this->dict->lookup($word, $this->src, $this->dest);
  
       if (count($iter) > 0) {
  
-          foreach($iter as $result)  {
-          
+          foreach($iter as $defn_set)  {
+
+              $dl = $dl_start;
+       
               // Lowecase letters in the utf-8 code point collection
               // have a larger code point values than uppercase characters.
               if ($word[0] >= 'A' && $word[0] <= 'Z' ) { 
                  
                   $info = $this->noun_->get_noun_info($word);  
                   
-                  $noun_str = "{$info['article']} {$result->term}";
+                  $noun_str = "{$info['article']} {$defn_set->term}";
                   
                   if ($info['plural'] != '') 
                       
                       $noun_str .= ", die  {$info['plural']}"; // German-only code
                   
-                  $sec .= sprintf($def_fmt, $result->term, strtoupper($result->pos));
+                  $dl .= sprintf($def_fmt, $defn_set->term, strtoupper($defn_set->pos));
 
               } else // Not a noun
 
-                  $sec .= sprintf($def_fmt, $result->term, strtoupper($result->pos));
+                  $dl .= sprintf($def_fmt, $defn_set->term, strtoupper($defn_set->pos));
               
                     
-              $defns = $this->build_defns($result->definitions);
+              $defns = $this->add_defn_set($defn_set->definitions);
               
-              $sec .= $defns;
+              $dl .= $defns . " </dl>\n";
+              $sec .= $dl;
            }
-           
-           $sec .= " </dl>"; 
            
       } else {
           
           $sec .= "\n<dl>$word No defintions found.</dl>\n";    
       } 
       
-      $sec .= "\n</section>\n";
+      $sec .= "</section>\n";
       
       $this->out->fwrite($sec);
  
       return count($iter); 
    }
   
-   private function build_defns(array $definitions) : string
+   private function add_defn_set(array $definitions) : string
    {       
       $dds = '';
       static $defn_fmt =  "  <dd>%s</dd>\n";
