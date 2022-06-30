@@ -17,7 +17,7 @@ use \SplFileObject as File;
 class HtmlBuilder {
 
      private File                   $out;
-     private NounFetchInterface     $noun_;
+     private NounFetchInterface     $nfetch;
      private TranslateInterface     $trans;
      private SentenceFetchInterface $sfetch;
      
@@ -81,22 +81,27 @@ html_end;
               // have a larger code point values than uppercase characters.
               if ($word[0] >= 'A' && $word[0] <= 'Z' ) { 
                  
-                  $info = $this->noun_->get_noun_info($word);  
+                  $info = $this->nfetch->get_noun_info($word);  
                   
-                  $noun_str = "{$info['article']} {$defn_set->term}";
+                  $nfetchstr = "{$info['article']} {$defn_set->term}";
                   
                   if ($info['plural'] != '') 
                       
-                      $noun_str .= ", die  {$info['plural']}"; // German-only code
+                      $nfetchstr .= ", die  {$info['plural']}"; // German-only code
                   
                   $dl .= sprintf($def_fmt, $defn_set->term, strtoupper($defn_set->pos));
 
               } else // Not a noun
 
                   $dl .= sprintf($def_fmt, $defn_set->term, strtoupper($defn_set->pos));
-              
-                    
-              $defns = $this->add_defn_set($defn_set->definitions);
+
+              /*
+                 The iterator can return separate sets of definitions. If the input word is, for example,  
+                 'verändern', then a set of definitions for 'verändern' and 'sich verändern' will be
+                 returned. Another example is 'Handeln'. lookup results are returned for both the noun 'Handeln'
+                 and the verb 'handeln'
+               */     
+              $defns = $this->add_defn($defn_set->definitions);
               
               $dl .= $defns . " </dl>\n";
               $sec .= $dl;
@@ -114,7 +119,7 @@ html_end;
       return count($iter); 
    }
   
-   private function add_defn_set(array $definitions) : string
+   private function add_defn(array $definitions) : string
    {       
       $dds = '';
       static $defn_fmt =  "  <dd>%s</dd>\n";
@@ -182,7 +187,7 @@ html_end;
     { 
        $this->dict = $this->trans = RestClient::createClient(ClassID::Systran);
 
-       $this->noun_ = ($dict_id == ClassID::Pons) ? new PonsNounFetcher(new PonsDictionary()) : new CollinsNounFetcher(new CollinsGermanDictionary());    
+       $this->nfetch = ($dict_id == ClassID::Pons) ? new PonsNounFetcher(new PonsDictionary()) : new CollinsNounFetcher(new CollinsGermanDictionary());    
        
        $this->sents = new LeipzigSentenceFetcher(ClassID::Leipzig);
 
